@@ -1,0 +1,20 @@
+{
+  "name": "swe-l4-overview",
+  "version": "1.0.0",
+  "description": "Overview repository",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rehype-document": "^5.1.0",
+    "rehype-format": "^3.1.0",
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^8.0.3",
+    "remark-rehype": "^7.0.0",
+    "unified": "^9.2.0",
+    "vfile-reporter": "^6.0.1"
+  }
+}
