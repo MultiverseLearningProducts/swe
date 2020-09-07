@@ -15,7 +15,7 @@ unified()
   .use(format)
   .use(html)
   .process('# SWE L4 Overview', async function (err, file) {
-    fs.writeFile(path.join(__dirname, 'dist', 'index.html'), String(file), () => {
+    fs.writeFile(path.join(__dirname, 'docs', 'index.html'), String(file), () => {
       console.error(report(err || file))
     })
   })
