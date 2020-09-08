@@ -7,6 +7,7 @@ const html = require('rehype-stringify')
 const report = require('vfile-reporter')
 const fs = require('fs')
 const path = require('path')
+const tree = require('./lib/main')
 
 unified()
   .use(markdown)
@@ -19,3 +20,5 @@ unified()
       console.error(report(err || file))
     })
   })
+
+tree()

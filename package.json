@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "directory-tree": "^2.2.4",
     "rehype-document": "^5.1.0",
     "rehype-format": "^3.1.0",
     "rehype-stringify": "^8.0.0",
