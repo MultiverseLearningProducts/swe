@@ -8,6 +8,10 @@ Day one is about the cohort getting to know each other. Being introduced to the 
 
 # Session 1
 
+## Flying start
+
+Your apprenticeship starts today
+
 ## Learning Objectives
 
 * Recall the names of other members of the cohort
