@@ -1,5 +1,7 @@
 # Bootcamp > Week 1 > Day 1 (Coach Notes)
 
+[Bootcamp > Week 1 > Day 1](https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day1.html)
+
 ## Overview of the day
 
 Day one is about the cohort getting to know each other. Being introduced to the standard and getting their computer set up. Introduce Objects and functions in Javascript.
