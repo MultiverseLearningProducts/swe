@@ -1,3 +1,5 @@
+# Welcome to SWE
+
 ![Welcome to SWE](https://user-images.githubusercontent.com/4499581/92381014-fec7f500-f101-11ea-8fcd-506232e5de87.png)
 
 ## SWE Curriculum Overview
