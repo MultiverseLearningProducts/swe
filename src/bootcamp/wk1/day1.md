@@ -1,6 +1,6 @@
-# Day1
+# Bootcamp > Week 1 > Day 1
 
-* some
-* list
+## Objects and Functions
 
-[back](/swe)
+[next](/swe/bootcamp/wk/day2.html)
+[main](/swe)
