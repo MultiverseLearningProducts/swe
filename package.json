@@ -4,7 +4,7 @@
   "description": "Overview repository",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node ./lib/main.js"
   },
   "author": "",
   "license": "ISC",

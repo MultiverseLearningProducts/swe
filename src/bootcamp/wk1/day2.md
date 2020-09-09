@@ -1,3 +1,7 @@
 # Day 2
 
-![tag](/images/sample.jpg)
+![tag](/swe/images/sample.jpg)
+
+|Day|2|
+|:--|:--|
+|nice|table|
