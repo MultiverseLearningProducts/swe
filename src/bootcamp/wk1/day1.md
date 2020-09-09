@@ -21,7 +21,7 @@ Your apprenticeship starts today
 
 ## Before we start
 
-* You will need your appli.ed/platform login credentials
+* You will need your platform login credentials
 
 ## Materials needed
 
@@ -89,7 +89,26 @@ but this will
 ```javascript
 person1['full-name'] = 'Bosola Randle'
 ```
-Try for yourself.
+Try it for yourself.
+
+Objects can reference other objects. Lets say we have a person. They will have parents. If we made a couple of parents, we could reference them inside our original person object. To group objects together we can use an array.
+
+How can we create a parents property on our person?
+How can we assign the value of an array of parents to that property?
+Can you access the name of the two parents?
+
+If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called `childOf` and it should return the names of that object's parrents.
+
+So in our function, we want to be able to access the parents array of itself. To do this we use the `this` keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this.
+
+```javascript
+function () {
+  return this.parents.map(parent => parent.name).join(' & ') || "parents unknown"
+}
+```
+In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method `join` and give it a delimiter to use as it takes all the names in our array and joins them together with a "&" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates a falsey, so we can use the `||` double pipes of the OR operator to return a default value.
+
+Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our `childOf` property can have as it's value a reference to the `childOf` function. You must use the `function` keyword for this to work. Arrow functions reference the `this` of the parent's scope so it will not work the same way. We'll come back to that.
 
 ## Assignment
 
@@ -97,11 +116,11 @@ Can you create an object that represents your family tree? A person in your fami
 
 * name String
 * parents Array
-* says Function
+* childOf Function
 
-The name property should be a string, the parents property should be an array, and that array should contain references to that persons parents. The say property should be a function that console.logs that persons catch phrase.
+The name property should be a string, the parents property should be an array, and that array should contain references to that persons parents. The childOf property should return a string of the parent's names.
 
-Use a combination of objects arranged in arrays to represent different generations.
+Use a combination of objects arranged in arrays to represent different generations. Use the `this` keyword to create a childOf function that references the parents array of itself.
 
 Once constructed you should be able to traverse from you to your grand-parents, and then call the function to log out your grand-parent's catch phrase.
 
