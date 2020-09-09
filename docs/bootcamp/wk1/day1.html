@@ -8,7 +8,78 @@
   </head>
   <body>
     <h1>Bootcamp > Week 1 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <p>Day one is about the cohort getting to know each other. Being introduced to the standard and getting their computer set up. Introduce Objects and functions in Javascript</p>
+    <h1>Session 1</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Recall the names of other members of the cohort</li>
+      <li>List the places other members of the cohort work</li>
+      <li>Share a fact about another member of the cohort</li>
+      <li>Recall 3 key competencies from the standard</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You will need your appli.ed/platform login credentials</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://applied.whitehat.org.uk">applied</a></li>
+      <li><a href="https://cognassist.com/">cognassist</a></li>
+    </ul>
+    <h2>Lesson</h2>
+    <h2>Assignment</h2>
+    <ul>
+      <li>In pairs in your breakout rooms find out about each other be ready to come back to the group and introduce your partner.</li>
+      <li>Complete the Cognassist exercise.</li>
+    </ul>
+    <h1>Session 2</h1>
     <h2>Objects and Functions</h2>
+    <p>Understanding objects and functions is key to reading and writing Javascript. This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now.</p>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate creating objects in Javascript</li>
+      <li>Demonstrate creating functions with the function keyword in Javascript</li>
+      <li>Use arrays to organise objects into groups</li>
+      <li>Create references to objects inside other objects</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now. You will also need Node.js installed and be able to access the node REPL in a terminal programme like 'terminal', 'PowerShell' or 'iTerm'.</p>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Node.js</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Objects are the main primitive in Javascript. Lets start by looking at the three different ways we can make an object:</p>
+    <pre><code class="language-javascript">const person1 = {}
+const person2 = new Object()
+const person3 = Object.create({})
+</code></pre>
+    <p>You can just declare a new object using <code>{}</code>. The other two methods do the same kind of thing. <code>Object.create()</code> gives you the option to inherit the prototypal chain from an object you pass to create. We will come back to this later.</p>
+    <p>Once you have an object you can add properties to it. We are creating a person so lets give them a <code>name</code> property:</p>
+    <pre><code class="language-javascript">person1.name = 'Bosola'
+</code></pre>
+    <p>Very easy we just use the 'dot' notation and equal's oporator to assign the property and a value. Now we can read the value from the property in a couple of different ways:</p>
+    <pre><code class="language-javascript">person1.name
+person1['name']
+</code></pre>
+    <p>Both do the same think. The reason for using the bracket notation is when our property is a string that has an unusual characture in it. For example this will not work:</p>
+    <pre><code class="language-javascript">person1.full-name = 'Bosola Randle'
+</code></pre>
+    <p>but this will</p>
+    <pre><code class="language-javascript">person1['full-name'] = 'Bosola Randle'
+</code></pre>
+    <p>Try for yourself.</p>
+    <h2>Assignment</h2>
+    <p>Can you create an object that represents your family tree? A person in your family tree should have the following properties:</p>
+    <ul>
+      <li>name String</li>
+      <li>parents Array</li>
+      <li>says Function</li>
+    </ul>
+    <p>The name property should be a string, the parents property should be an array, and that array should contain references to that persons parents. The say property should be a function that console.logs that persons catch phrase.</p>
+    <p>Use a combination of objects arranged in arrays to represent different generations.</p>
+    <p>Once constructed you should be able to traverse from you to your grand-parents, and then call the function to log out your grand-parent's catch phrase.</p>
     <p>
       <a href="/swe/bootcamp/wk/day2.html">next</a>
       <a href="/swe">main</a>
