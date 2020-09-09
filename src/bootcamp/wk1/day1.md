@@ -6,9 +6,7 @@ Day one is about the cohort getting to know each other. Being introduced to the 
 
 <hr/>
 
-# Session 1
-
-## Flying start
+# Session 1 - Flying start
 
 Your apprenticeship starts today
 
@@ -39,9 +37,7 @@ Your apprenticeship starts today
 
 <hr/>
 
-# Session 2
-
-## Objects and Functions
+# Session 2 - Objects and Functions
 
 Understanding objects and functions is key to reading and writing Javascript. This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now.
 
@@ -123,6 +119,8 @@ The name property should be a string, the parents property should be an array, a
 Use a combination of objects arranged in arrays to represent different generations. Use the `this` keyword to create a childOf function that references the parents array of itself.
 
 Once constructed you should be able to traverse from you to your grand-parents, and then call the function to log out your grand-parent's catch phrase.
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
 [next](/swe/bootcamp/wk/day2.html)
 [main](/swe)

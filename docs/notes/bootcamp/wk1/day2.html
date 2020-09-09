@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style.</p>
+    <h1>Lesson 1 - Your first failing test</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Write a unit test</li>
+      <li>Describe the purpose of a unit test</li>
+      <li>Implement the TDD cycle of red, green, refactor</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>create a new project folder and run <code>npm init</code></li>
+      <li>install jest <code>npm install jest</code></li>
+      <li>create two files <code>person.js</code> and <code>person.test.js</code></li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>code editor</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>What are tests? Code does things on computers for us. How do we know that our code is working the way we think it is? Usually we would run the code and see if it is working. Are we not just testing the code?</p>
+    <p>As the programmes we write get larger and more complex, it is not always possible to test our code by just running it. For example we may be unable to force a particular kind of error that we want to make sure we are handling correctly.</p>
+    <p>This is why we write tests. They ensure that our software is working as we have designed. We are trying to prevent 3 things with our tests:</p>
+    <ul>
+      <li>Errors</li>
+      <li>Defects (bugs)</li>
+      <li>Failures</li>
+    </ul>
+    <p>Errors can be further divided into 7 types:</p>
+    <ul>
+      <li>EvalError</li>
+      <li>InternalError</li>
+      <li>RangeError</li>
+      <li>ReferenceError</li>
+      <li>SyntaxError</li>
+      <li>TypeError</li>
+      <li>URIError</li>
+    </ul>
+    <p>Some of these errors can be caught and handled safely in our programme. You are likely as beginners to experience may SyntaxErrors. SyntaxErrors will cause your programme to fail.</p>
+    <p>You can read more about these in the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">mozilla documentation</a>.</p>
+    <p>With defects our code works, but not as we intended. These are often called "bugs". They are called bugs because when computers originally where more analogy with valves instead of Electronic circuits, sometimes programs would malfunction because actual insects would get into the physical valves of the computer and prevent the programme from running correctly.</p>
+    <p>Failures are when our programme "crashes" it stops running and errors in a way that cannot be recovered from.</p>
+    <p>Write tests to prevent these 3 things.</p>
+    <h3>Jest</h3>
+    <p>Jest is a testing framework developed at Facebook. TDD starts with a failing test. So we write a test that we know will fail.</p>
+    <pre><code class="language-javascript">describe('person objects', () => {
+    test('have a name', () => {
+        expect(person.name).toEqual("test person")
+    })
+})
+</code></pre>
+    <p><code>person</code> is not defined. Lets create a person in our <code>person.js</code> file and export it, then import them into our test file.</p>
+    <pre><code class="language-javascript">const person = {
+    name: "test person"
+}
+module.exports = person
+</code></pre>
+    <p>then import it into the test file by adding this line to the top of the file.</p>
+    <pre><code class="language-javascript">const person = require('./person')
+</code></pre>
+    <p>Now our tests pass!</p>
+    <p>This process has us write the test first. It should fail. Then we write the code that makes the test pass. Then go back and write the next test etc.</p>
+    <h2>Assignment</h2>
+    <p>Can you use TDD to recreate the family tree that you previously constructed?</p>
+  </body>
+</html>
