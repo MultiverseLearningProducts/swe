@@ -53,7 +53,12 @@
     <h2>Notes</h2>
     <p>Walk them through creation of objects in 3 ways. The third way is more advanced. Basically if you create an object like this <code>Object.create(null)</code> it does not inherit any thing from the prototypal chain, but if you give it another object it will. We visit this again in Mod 2 when talking about prototypal inheritance. Plant the seed now, then move on.</p>
     <p>One really important thing to start doing is introducing the terminology of an object, for example a property, what a key is, what a value is. How to access properties, how to call functions on an object and how you can create structures using objects and arrays.</p>
+    <p>Talk about <code>this</code> when you create the <code>childOf</code> function. It's the <code>this</code> of the object to which it belongs.</p>
     <h2>Assignment</h2>
-    <p>A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable. Then do the same with the next generation, and the next. Then you can start to relate them together. Use a <code>parents</code> property on the person object and in an array make references to the parents in the correct generation array.</p>
+    <p>A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable.</p>
+    <p>Then do the same with the next generation but write the definition above the <code>firstGen</code> variable (because you will not be able to reference some thing that has not been defined yet), and the third generation above the second.</p>
+    <p>Then you can start to relate them together. Use a <code>parents</code> property on the person object and in an array make references to the parents in the correct generation array.</p>
+    <p>Finally add a <code>childOf</code> function that uses this to reference the parents array of itself. You can also return a cheeky default using the <code>||</code> or operator.</p>
+    <p>Check out the <a href="https://codepen.io/bmordan/pen/poyLzBa?editors=0010">codepen</a></p>
   </body>
 </html>

@@ -60,6 +60,16 @@ Walk them through creation of objects in 3 ways. The third way is more advanced.
 
 One really important thing to start doing is introducing the terminology of an object, for example a property, what a key is, what a value is. How to access properties, how to call functions on an object and how you can create structures using objects and arrays.
 
+Talk about `this` when you create the `childOf` function. It's the `this` of the object to which it belongs.
+
 ## Assignment
 
-A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable. Then do the same with the next generation, and the next. Then you can start to relate them together. Use a `parents` property on the person object and in an array make references to the parents in the correct generation array.
+A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable.
+
+Then do the same with the next generation but write the definition above the `firstGen` variable (because you will not be able to reference some thing that has not been defined yet), and the third generation above the second.
+
+Then you can start to relate them together. Use a `parents` property on the person object and in an array make references to the parents in the correct generation array.
+
+Finally add a `childOf` function that uses this to reference the parents array of itself. You can also return a cheeky default using the `||` or operator.
+
+Check out the [codepen](https://codepen.io/bmordan/pen/poyLzBa?editors=0010)
