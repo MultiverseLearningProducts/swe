@@ -1,0 +1,5 @@
+# Mod 3 > Week 1 > Day 3
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[prev](/swe/mod3/wk1/day2.html) | [next](/swe/mod3/wk1/day4.html)
+[main](/swe)

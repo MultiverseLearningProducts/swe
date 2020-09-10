@@ -12,3 +12,8 @@
 * Module 1
     + Week 1
         - [Day 1](/swe/mod1/wk1/day1.html)
+* Module 2
+    + Week 1
+* Module 3 - BCS Software Methodologies
+    + Week 1
+        - [Day 1](/swe/mod3/wk1/day1.html)
