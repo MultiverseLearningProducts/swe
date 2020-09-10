@@ -1,161 +1,152 @@
 @media print {
-    *,
-    *:before,
-    *:after {
-      background: transparent !important;
-      color: #000 !important;
-      box-shadow: none !important;
-      text-shadow: none !important;
-    }
-  
-    a,
-    a:visited {
-      text-decoration: underline;
-    }
-  
-    a[href]:after {
-      content: " (" attr(href) ")";
-    }
-  
-    abbr[title]:after {
-      content: " (" attr(title) ")";
-    }
-  
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-      content: "";
-    }
-  
-    pre,
-    blockquote {
-      border: 1px solid #999;
-      page-break-inside: avoid;
-    }
-  
-    thead {
-      display: table-header-group;
-    }
-  
-    tr,
-    img {
-      page-break-inside: avoid;
-    }
-  
-    img {
-      max-width: 100% !important;
-    }
-  
-    p,
-    h2,
-    h3 {
-      orphans: 3;
-      widows: 3;
-    }
-  
-    h2,
-    h3 {
-      page-break-after: avoid;
-    }
-  }
-  
-  pre,
-  code {
-    font-family: Menlo, Monaco, "Courier New", monospace;
-  }
-  
-  pre {
-    padding: .5rem;
-    line-height: 1.25;
-    overflow-x: scroll;
-  }
-  
-  a,
-  a:visited {
-    color: #3498db;
-  }
-  
-  a:hover,
-  a:focus,
-  a:active {
-    color: #2980b9;
-  }
-  
-  .modest-no-decoration {
-    text-decoration: none;
-  }
-  
-  html {
-    font-size: 12px;
-  }
-  
-  @media screen and (min-width: 32rem) and (max-width: 48rem) {
-    html {
-      font-size: 15px;
-    }
-  }
-  
-  @media screen and (min-width: 48rem) {
-    html {
-      font-size: 16px;
-    }
-  }
-  
-  body {
-    line-height: 1.85;
-  }
-  
-  p,
-  .modest-p {
-    font-size: 1rem;
-    margin-bottom: 1.3rem;
-  }
-  
-  /* https://github.com/mrmrs/fluidity */
-  
-  img,
-  canvas,
-  iframe,
-  video,
-  svg,
-  select,
-  textarea {
-    max-width: 100%;
-  }
-  
-  @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
-  
-  @import url(http://fonts.googleapis.com/css?family=Roboto);
-  
-  html {
-    font-size: 16px;
-    max-width: 100%;
-  }
-  
-  body {
-    color: rgba(0,0,0,0.9);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 300;
-    margin: 0 auto;
-    max-width: 48rem;
-    line-height: 1.45;
-    padding: .25rem;
-  }
-  
-  h1,h2,h3 {
-    margin-bottom: 1.15rem;
-    padding-bottom: .5rem;
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
   }
 
-  h1 {
-    border-bottom: 2px solid #fafafa;
+  a,
+  a:visited {
+    text-decoration: underline;
   }
-  
-  blockquote {
-    border-left: 8px solid #fafafa;
-    padding: 1rem;
+
+  a[href]:after {
+    content: " (" attr(href) ")";
   }
-  
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
   pre,
-  code {
-    background-color: #fafafa;
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
   }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+  
+pre,
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+pre {
+  padding: .5rem;
+  line-height: 1.25;
+  overflow-x: scroll;
+}
+
+a,
+a:visited {
+  color: #3498db;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #2980b9;
+}
+
+.modest-no-decoration {
+  text-decoration: none;
+}
+
+html {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  line-height: 1.85;
+}
+
+p,
+.modest-p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+/* https://github.com/mrmrs/fluidity */
+
+img,
+canvas,
+iframe,
+video,
+svg,
+select,
+textarea {
+  max-width: 100%;
+}
+
+html {
+  font-size: 16px;
+  max-width: 100%;
+}
+
+body {
+  color: rgba(0,0,0,0.9);
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: 48rem;
+  line-height: 1.45;
+  padding: .25rem;
+}
+
+h1,h2,h3 {
+  margin-bottom: 1.15rem;
+  padding-bottom: .5rem;
+}
+
+h1 {
+  border-bottom: 2px solid #1add97;
+}
+
+blockquote {
+  border-left: 8px solid #1add97;
+  padding: 1rem;
+}
