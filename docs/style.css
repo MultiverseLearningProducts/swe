@@ -5,3 +5,7 @@ body {
     background-size: 100% auto;
     background-repeat: no-repeat;
 }
+
+hr {
+    border: solid 1px #1add97;
+}

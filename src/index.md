@@ -32,6 +32,9 @@
         - [Day 5](/swe/bootcamp/wk4/day5.html)
     + Week 5
         - [Day 1 - 5](/swe/bootcamp/wk5/day1-5.html)
+
+<hr/>
+
 * Module 1 - RESTful applications
     + Week 1
         - [Day 1](/swe/mod1/wk1/day1.html)
@@ -45,6 +48,9 @@
         - [Day 3](/swe/mod1/wk2/day3.html)
         - [Day 4](/swe/mod1/wk2/day4.html)
         - [Day 5](/swe/mod1/wk2/day5.html)
+
+<hr/>
+
 * Module 2 - MTA HTML, CSS & Javascript
     + Week 1
         - [Day 1](/swe/mod2/wk1/day1.html)
@@ -58,6 +64,9 @@
         - [Day 3](/swe/mod2/wk2/day3.html)
         - [Day 4](/swe/mod2/wk2/day4.html)
         - [Day 5](/swe/mod2/wk2/day5.html)
+
+<hr/>
+
 * Module 3 - BCS Software Methodologies
     + Week 1
         - [Day 1](/swe/mod3/wk1/day1.html)
@@ -71,6 +80,9 @@
         - [Day 3](/swe/mod3/wk2/day3.html)
         - [Day 4](/swe/mod3/wk2/day4.html)
         - [Day 5](/swe/mod3/wk2/day5.html)
+
+<hr/>
+
 * Module 4 - EPA preparation
     + Week 1
         - [Day 1](/swe/mod4/wk1/day1.html)
@@ -84,3 +96,5 @@
         - [Day 3](/swe/mod4/wk2/day3.html)
         - [Day 4](/swe/mod4/wk2/day4.html)
         - [Day 5](/swe/mod4/wk2/day5.html)
+
+* EPA checklist
