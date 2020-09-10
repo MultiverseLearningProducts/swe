@@ -54,7 +54,7 @@ Cognassist will give you a bar chart of an apprentices neuro-diversity. This is 
 ## Materials
 
 * [lesson](https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day1.html)
-* [codepen](https://codepen.io/bmordan/pen/poyLzBa?editors=0010)
+* [assignment code example](https://gist.github.com/bmordan/72cc6820141fa976a7b8e443df65a206)
 
 ## Notes
 

@@ -72,7 +72,7 @@ Once you have an object you can add properties to it. We are creating a person s
 ```javascript
 person1.name = 'Bosola'
 ```
-Very easy we just use the 'dot' notation and equal's oporator to assign the property and a value. Now we can read the value from the property in a couple of different ways:
+Very easy we just use the 'dot' notation and equal's operator to assign the property and a value. Now we can read the value from the property in a couple of different ways:
 ```javascript
 person1.name
 person1['name']
