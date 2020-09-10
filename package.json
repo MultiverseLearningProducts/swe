@@ -4,8 +4,8 @@
   "description": "Overview repository",
   "main": "index.js",
   "scripts": {
-    "start": "node ./lib/main.js",
-    "build": "node ./lib/main.js && git add -A && git commit -m 'rebuild pages' --allow-empty && git push origin master"
+    "build": "node ./lib/main.js",
+    "publish": "node ./lib/main.js && git add -A && git commit -m 'rebuild pages' --allow-empty && git push origin master"
   },
   "author": "",
   "license": "ISC",

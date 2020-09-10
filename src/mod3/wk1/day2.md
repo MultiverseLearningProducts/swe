@@ -27,6 +27,8 @@
 
 ## Materials needed
 
+* [slides](https://docs.google.com/presentation/d/1hmRdZZZ6KMa5i9hFEJTnAUYi5XwEBOMHzR8Uc2JLptU/edit?usp=sharing)
+
 ## Lesson
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
@@ -172,7 +174,7 @@ In your own words can you explain the difference between the Project Sponsor and
 
 <iframe width="100%" height="444" src="https://www.youtube.com/embed/zCX-N1H8Vps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-# The Output
+### The Output
 
 The output of this stage is a requirements document. There are various forms this document might take. Below is a break down of the main 4.
 
@@ -228,7 +230,7 @@ The output of this stage is a requirements document. There are various forms thi
 
 </table>
 
-## What makes a “Good” requirement
+### What makes a “Good” requirement
 
 There is quite an art to form a good requirement. Below are the main qualities your requirement must have:
 
