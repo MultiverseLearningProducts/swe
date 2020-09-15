@@ -108,17 +108,19 @@ Finally since we want all our person objects to have this function we can declar
 
 ## Assignment
 
-Can you create an object that represents your family tree? A person in your family tree should have the following properties:
+Can you create an object that represents 3 generations of your family tree? A person in your family tree should have the following properties:
 
 * name String
 * parents Array
 * childOf Function
 
-The name property should be a string, the parents property should be an array, and that array should contain references to that persons parents. The childOf property should return a string of the parent's names.
+The name property should be a string, the parents property should be an array, and that array should contain references to that person's parents. The childOf property should return a string of the parent's names.
 
 Use a combination of objects arranged in arrays to represent different generations. Use the `this` keyword to create a childOf function that references the parents array of itself.
 
-Once constructed you should be able to traverse from you to your grand-parents, and then call the function to log out your grand-parent's catch phrase.
+Once constructed you should be able to traverse from you to your grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob & Samantha" or "parents unknown".
+
+Commit your code into Github and share the link with your coach.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 

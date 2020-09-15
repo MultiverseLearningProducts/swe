@@ -73,7 +73,108 @@ module.exports = person
     <p>Now our tests pass!</p>
     <p>This process has us write the test first. It should fail. Then we write the code that makes the test pass. Then go back and write the next test etc.</p>
     <h2>Assignment</h2>
-    <p>Can you use TDD to recreate the family tree that you previously constructed?</p>
+    <p>Can you use TDD to recreate the family tree that you previously constructed? Only now there should be a set of tests that you can run to prove your family tree is constructed correctly.</p>
+    <h1>Lesson 2 - Airports</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Create an object using the <code>new</code> keyword</li>
+      <li>Explain what the <code>new</code> keyword does when you use it to create an object</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You should be able to scaffold a project using the Jest testing framework</li>
+      <li>You should be able to export and import code from one file to another</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Jest testing framework</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>We are going to create a Airports system. This exercise is designed to introduce you to the idea of Object Orientated Programming (OOP). In OOP we construct our programmes using objects. These objects are often abstractions of real life objects. For example it is common for a person who uses a programme to be represented in the programme with a User object.</p>
+    <h3>👩🏾‍💻👨🏻‍💻 In pairs</h3>
+    <p>What are some of the objects that you might expect to find in an airport?</p>
+    <h3>Objects and Classes</h3>
+    <p>Our airport system is going to have the following objects in it:</p>
+    <ol>
+      <li>Bag</li>
+      <li>Person</li>
+      <li>Plane</li>
+      <li>Airport</li>
+    </ol>
+    <p>What does a bag have? A weight. It also has a relationship to a person a person has a bag. One of the important things to think about in OOP is which object is responsible for what properties or behaviors. Our bag should have a weight. Now in our airport system there are going to be lots and lots of bags. We can make a bag each time in our code like this:</p>
+    <pre><code class="language-javascript">const bag = {weight: 16}
+</code></pre>
+    <p>That is fine for a simple object, but someone might come along and make a bag like this:</p>
+    <pre><code class="language-javascript">const bag = {kg: 16}
+</code></pre>
+    <p>We actually want to standardise our bags. Why do you think we might want to do that? What we want is a way to create bags, that all follow the same format. Like a rubber stamp, stamping out the same graphic each time.</p>
+    <p>
+      <img src="https://media.giphy.com/media/LpGDCmF87M24T6Sn6p/giphy.gif" alt="stamp">
+    </p>
+    <p>The way to make yourself a "rubber object stamper" is to create a class and use the <code>new</code> keyword to instantiate instances of your class. In other words you use the <code>Bag</code> class to make bag objects in your programme.</p>
+    <pre><code class="language-javascript">class Bag {
+    constructor(weight) {
+        this.weight = weight
+    }
+}
+
+const bag = new Bag(16)
+console.log(bag.weight) // 16
+</code></pre>
+    <p>In the code example above we declare a class using the <code>class</code> keyword. The name of the class should be capitalised and singular. After the class name comes the block that contains the class definition. Seeing as when we create a new bag we want it to have a weight, we have declared a "constructor" function. This is called when we use the <code>new</code> keyword, and any arguments are passed into this function. Can you see how we add a property <code>weight</code> to the <code>this</code> object? <code>this</code> refers to the instance of the class that we just created.</p>
+    <h3>TDD for bags</h3>
+    <ul>
+      <li>Can you create a unit test for this Bag class?</li>
+    </ul>
+    <p>If you try to create a bag without a weight - the constructor should throw an Error. This protects our programme from trying to do calculations on bag.weight and reading <code>undefined</code> as the value for weight. Why would the weight be undefined?</p>
+    <ul>
+      <li>Write a failing test first<em>HINT: <code>expect(() => new Bag()).toThrowError('bag must have a weight')</code></em></li>
+    </ul>
+    <p>Notice how we have to run a function inside <code>expect</code> to trigger the error and catch it. If we just wrote the following:</p>
+    <p><code>expect(new Bag()).toThrowError('bag must have a weight')</code></p>
+    <p>It would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it wont, it's too late the trap has been sprung). You'll need to update your Bag class to throw an error if no weight is passed into your constructor. Below is the syntax to throw an error.</p>
+    <p><code>throw new Error('some error message in here')</code></p>
+    <p>Can you stop the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
+    <h3>Bags belong to a Passenger</h3>
+    <p>Our airport system has bags. We also need passengers. Lets make a Passenger class. Passengers should have:</p>
+    <ol>
+      <li>A name</li>
+      <li>Bags</li>
+    </ol>
+    <p>People often fly with a few bags. Our passengers should be able to carry a few bags. Which data structure would work well here?</p>
+    <p>Create new files for your Passenger tests and Passenger class. Write the tests as you go. To add a bag to a passenger I should be able to call a function on the instance of a passenger. Read the code below:</p>
+    <pre><code class="language-javascript">const bob = new Passenger('Bob the Builder')
+const bobsCabinBag = new Bag(9)
+const bobsHullBag = new Bag(23)
+bob.addBag(bobsCabinBag)
+bob.addBag(bobsHullBag)
+console.log(bob.bags) // [ Bag { weight: 9 }, Bag { weight: 23 } ]
+</code></pre>
+    <p>The way to define a function on a class is like this:</p>
+    <pre><code class="language-javascript">class Passenger {
+    constructor(name) {
+        this.name = name
+        this.bags = []
+    }
+
+    addBag(bag) {
+        this.bags.push(bag)
+    }
+}
+
+module.exports = Passenger
+</code></pre>
+    <h2>Assignment</h2>
+    <p>Now we have passengers with bags, they are ready to board their flight! Can you:</p>
+    <ol>
+      <li>Create a Plane class</li>
+      <li>instances of a Plane should have a function to <code>board</code> passengers</li>
+      <li>a Plane should also have a destination that is an Airport name</li>
+      <li>Create an Airport class</li>
+      <li>Airports should have a name</li>
+      <li>Airports should have <code>planes</code></li>
+    </ol>
+    <p>Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane.</p>
     <script src="/swe/prism.js"></script>
   </body>
 </html>

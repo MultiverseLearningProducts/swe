@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 3</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. During the second session we start to look at async functions, and how to test code that work asynchronously.</p>
+    <h2>Lesson 1 - Take off and landing</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Define static class functions and properties</li>
+      <li>Access static class functions and properties</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>You need to have completed the work on airports so you have a codebase with the following classes defined and tested:</p>
+    <ul>
+      <li>Bag</li>
+      <li>Passenger</li>
+      <li>Plane</li>
+      <li>Airport</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Jest</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Previously we have been created objects using classes and the <code>new</code> keyword. We have been constructing data structures in our code. For example the plane class contained passengers and each passenger had 1 or more bags. To complete our programme we really want to be able to move our planes (and the passengers they contain) from one airport to another.</p>
+    <p>To do this, we need to be able to access one airport from another airport. We can't do this using the properties and functions of an instance of an airport. For example if we created London Heathrow (LHR). Then Los Angles (LAX). How can we connect them?</p>
+    <p><code>london.addAirport(LAX)</code></p>
+    <p>You can see that is clumsy, hard to keep track of. Each new airport needs to be in sync with all the rest.</p>
+    <h3>Static properties</h3>
+    <p>You can tell we need somewhere we can keep all the airports that we create. If we use a static class property we can easily keep all the instances of the airports we create in one place. Read the code snippet below. Can you see what we are doing here?</p>
+    <pre><code class="language-javascript">class Airport {
+    static airports = []
+    
+    constructor(name) {
+        this.name = name
+        this.planes = []
+        this.constructor.airports.push(this)
+    }
+    
+    land(plane) {
+        this.planes.push(plane)
+    }
+}
+</code></pre>
+    <p>On the <code>Airport</code> class itself we are able to access each instance of an airport that is created <code>Airport.airports</code> is an array of all instance of <code>Airport</code>.</p>
+    <h2>Assignment</h2>
+    <p>Can you write the <code>takeOff</code> function on an instance of an airport that should take a plane as an argument, find that plane in the airport's planes array and remove it, then push it into the inbound airport's array of planes. This will effectively move the plane object from one airport to another.</p>
+    <p>Remember to write tests that prove all the functionality that we have talked about.</p>
+    <h2>Lesson 2 - Airports Async</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Explain the differences between the way synchronous and asynchronous functions work.</li>
+      <li>Demonstrate the methods to test async code in Jest</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You need to have an Airport class</li>
+      <li>You should be familiar with Object.keys as a way to access the keys of an object</li>
+      <li>You should have iterated over an object in javascript before</li>
+      <li>You should recognise deconstructing assignment</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>You need <a href="https://github.com/mwgg/Airports/blob/master/airports.json">this file</a> saved in your airports project folder</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>So far our code executes synchronously. That means the code in the line above has been evaluated and any values are available for us to use on our current line. Async functions, they do not return straight away. For example if we want to read something from disc, that is an async function. It will not return immediately.</p>
+    <p>There are 3 ways to write and get values from async functions and in this session we are going to look at each of them. They are:</p>
+    <ol>
+      <li>Use a callback function</li>
+      <li>Use Promises</li>
+      <li>Use 'async await'</li>
+    </ol>
+    <p>Above is a link to a file with 28,000 airports in it. The file is in JSON so we can read it into our javascript programme and use that data to augment our Airport instances.</p>
+    <p>To start with lets write a test like this.</p>
+    <pre><code class="language-javascript">test('airports have a city', () => {
+    const CDG = new Airport('CDG')
+    CDG.getInfo((err, info) => {
+        console.log(info)
+        expect(err).toBeNull()
+        expect(info.country).toEqual('FR')
+    })
+})
+</code></pre>
+    <p>Here is the way we are going to start doing this. In our test you can see I'm using a callback function. In Node.js callbacks follow this signature and <code>err</code> followed by your async value being returned. If there are no errors the <code>err</code> object is <code>null</code>. Run your tests.</p>
+    <p>Lets turn to our <code>Airport</code> class and write the <code>getInfo</code> function (that will take a callback). You will have to require the fs or 'file system' module from Node.js.</p>
+    <pre><code class="language-javascript">const fs = require('fs')
+// add this function to your Airport class definition
+getInfo(callback) {
+    fs.readFile('./airports.json', (err, data) => {
+        callback(err, JSON.parse(String(data)))
+    })
+}
+</code></pre>
+    <p>This is async code. We read the file from disk. The file contents comes out as a Buffer - you can console.log it to have a look at it. We need to turn the Buffer into a String, then that string we turn into a javascript object using JSON.parse. Finally we call the callback with an error if there is one or our file content nicely parsed into JSON.</p>
+    <p>But what? in our test we should see it logged out. But we don't. Why do we not see the contents of the file?</p>
+    <p>The test is called synchronously, it does not wait for the result of calling <code>CDG.getInfo</code>. To test an async function in jest pass in a "done" function and then call it when you are done.</p>
+    <pre><code class="language-javascript">test('airports have a city', (done) => {
+    const CDG = new Airport('CDG')
+    CDG.getInfo((err, info) => {
+        console.log(info)
+        expect(err).toBeNull()
+        expect(info.country).toEqual('FR')
+        done()
+    })
+})
+</code></pre>
+    <p>Can you see how that is working. You should now see your logging. Look at one of the entries in the airport data. We want to filter out an airport using the "iata" code. Can your <code>getInfo</code> function filter out the right airport and return just that data point?</p>
+    <h3>Promises</h3>
+    <p>Another way to write and organise async code is using Promises. Lets refactor our getInfo function to return a promise.</p>
+    <pre><code class="language-javascript">getInfo() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./airports.json', (err, data) => {
+            if (err) return reject(err)
+            
+            const airports = JSON.parse(String(data))
+            const [airport] = Object.keys(airports)
+                .filter(airportCode => airports[airportCode].iata === this.name)
+                .map(airportCode => airports[airportCode])
+            
+            resolve(airport)
+        })
+    })
+}
+</code></pre>
+    <p>Can you see the <code>new</code> keyword? What does that tell you about a Promise? What do you initialise a Promise with? Our callback style structure that we use with the <code>fs</code> module is wrapped in a promise. Now when resolve is finally called it will trigger the <code>.then</code> part of a promise object.</p>
+    <p>So to use our code now it will look different in our test:</p>
+    <pre><code class="language-javascript">test('airports have a city', () => {
+    const CDG = new Airport('CDG')
+    return CDG.getInfo()
+        .then(info => {
+            expect(info.city).toEqual('Paris')
+        })
+        .catch(err => {
+            expect(err).toBeNull()
+        })
+})
+</code></pre>
+    <p>Notice now we don't need the <code>done</code> callback in the test, this is because we are returning a promise from our test, and Jest will figure this is an async test and will wait for the promise to resolve or reject.</p>
+    <p>The promise object is "thenable" you can chain a series of promises together using 'then' like this:</p>
+    <pre><code class="language-javascript">return doSomeThing()
+    .then(thing => {
+        return theNextPromise(thing)
+    })
+    .then(next => {
+        return anotherPromise(next)
+    })
+    .catch(err => {
+        console.error('this catch block will catch any reject(err) in the chain.')
+    })
+</code></pre>
+    <p>Take note you must return a promise from the <code>then</code> block if you want to keep chaining. This avoids the pattern of deeply nesting callbacks, which some people find hard to read.</p>
+    <h3>Async await</h3>
+    <p>Finally we can use the <code>async</code> and <code>await</code> keywords to make our Asynchronous code read more synchronously. Lets update our test:</p>
+    <pre><code class="language-javascript">test('can get information like the city from an airport instance', async () => {
+    const CDG = new Airport('CDG')
+    const airport = await CDG.getInfo()
+    expect(airport.city).toEqual('Paris')
+})
+</code></pre>
+    <p>Notice how we use the 2 keywords. First of all we need to declare an <code>async</code> function. We use the <code>async</code> keyword before our function definition. Then inside the async function we can use the <code>await</code> keyword to pause, and wait for our async value to resolve. That means we don't need the <code>done</code> callback, we don't need to use a promise with <code>then</code>, we can just write it nice and simple, line by line. Jest knows that this is an async test because we used the <code>async</code> keyword before the function definition.</p>
+    <p>Can you refactor your <code>getInfo</code> function to use async await?</p>
+    <p>It's a bit tricky because <code>fs.readFile</code> takes a callback. It's not really designed to work with async await. However from Node.js 11.0 onwards you can require a version of the <code>fs</code> functions that are wrapped in a promise object. Add this to the top of your Airport class:</p>
+    <pre><code class="language-javascript">const { readFile } = require('fs/promises')
+</code></pre>
+    <p>Now you can use the <code>readFile</code> function with the <code>await</code> keyword because this <code>readFile</code> function is wrapped in a promise.</p>
+    <p>That is a lot to get your head around! Async functions are a key characteristic of javascript. Objects, functions and async are the building blocks of the language. Spending time now learning how to work with them will enable you to start writing more complex code more quickly.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.</li>
+      <li>Use the three different ways of forming async functions in the Airport class</li>
+      <li>write async tests for each version in Jest</li>
+    </ul>
+    <script src="/swe/prism.js"></script>
+  </body>
+</html>

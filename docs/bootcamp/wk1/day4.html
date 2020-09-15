@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 4</h1>
+    <h2>Overview of the day</h2>
+    <h2>Lesson 1 - The Event Loop</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate a deeper understanding of async code in javascript by naming key parts of the event loop</li>
+      <li>Recall the meaning of 'stack overflow'</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You should have written an async function in the 3 different styles: callbacks, promises and async await</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://youtu.be/8aGhZQkoFbQ">reference video</a></li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Javascript is a single threaded runtime. Single threaded means one thing at a time. In reality that means one stack.</p>
+    <h3>What is the stack?</h3>
+    <p>The stack is a data structure in the runtime that functions to organise the running or 'execution' of your code.</p>
+    <p>
+      <img src="https://miro.medium.com/max/1280/0*SESFJYWU5a-3XM9m.gif" alt="an animation of a stack">
+    </p>
+    <p>Last on first off. Imagine a stick over which you can place hoops. To get to the bottom hoop, all the other hoops above it have to come off first.</p>
+    <p>
+      <img src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&#x26;ASIN=B000U02LXY&#x26;Format=_SL250_&#x26;ID=AsinImage&#x26;MarketPlace=US&#x26;ServiceVersion=20070822&#x26;WS=1&#x26;tag=toy-ideas-20&#x26;language=en_US" alt="stack of hoops">.
+    </p>
+    <p>When your code is executed, javascript will run it in 2 passes. The first pass optimises your code for execution. The second pass actually runs your code, and it is in this second pass that javascript uses the stack.</p>
+    <h3>How does javascript use the stack?</h3>
+    <p>Lets take the following code example:</p>
+    <pre><code class="language-javascript">function multiply(a, b) {
+    return a * b
+}
+function square(n) {
+    return multiply(n, n)
+}
+function printSquare(n) {
+    const result = square(n)
+    console.log(result)
+}
+
+printSquare(4)
+</code></pre>
+    <p>Read the code above. First of all there are 3 function definitions, then one of those functions is called. When <code>printSquare</code> is called it is put onto the stack. <code>printSquare</code> is evaluated and calls <code>square</code> which is added to the stack, <code>square</code> calls <code>multiply</code> which is added to the stack. <code>multiply</code> does not call any other function so it returns the value 16. the <code>return</code> keyword means that function pops off the stack, now inside <code>square</code> that function is evaluated to 16, and returns so <code>square</code> is then popped off the stack. Now back in <code>printSquare</code> the called to <code>square</code> is evaluated and assigned in memory to the variable <code>result</code>. Next line console.log is called with 16 and the function implicitly returns (without a value) as there is nothing more to execute. See below:</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93218919-af697080-f762-11ea-8a8b-f2ab1b39b4fb.gif" alt="call stack">
+    </p>
+    <h3>What is a stack trace?</h3>
+    <p>The stack is very help to know about. When your code errors, you often get a 'stack trace' as part of the error message. Being able to read the 'stack trace' can help us follow the executing code, and that can lead us to our piece of code that is causing the error.</p>
+    <p>Try running the code below in your browser.</p>
+    <pre><code class="language-javascript">function multiply(a, b) {
+    throw new Error(`can't multiply ${a} and ${b}`)
+}
+function square(n) {
+    return multiply(n, n)
+}
+function printSquare(n) {
+    const result = square(n)
+    console.log(result)
+}
+
+printSquare(4)
+</code></pre>
+    <p>
+      This is the error. Read the stack trace from the bottom up.
+      
+      <img src="https://user-images.githubusercontent.com/4499581/93219628-78e02580-f763-11ea-9948-81d558dbf65d.png" alt="stack trace">
+      What do you think the numbers like (&#x3C;anonymous:5:12>) refer to?
+    </p>
+    <h3>Stack overflow</h3>
+    <pre><code class="language-javascript">function hello() {
+    hello()
+}
+hello()
+</code></pre>
+    <p>
+      This will break.
+      
+      <img src="https://user-images.githubusercontent.com/4499581/93220411-65818a00-f764-11ea-9a64-b5a92881ecaa.png" alt="stack overflow error message">
+      Can you explain what is going on here? What other code might cause a max call stack size exceeded (stack overflow)?
+    </p>
+    <h2>Assignment</h2>
+    <h2>Lesson 2 -</h2>
+    <h2>Learning Objectives</h2>
+    <h2>Before we start</h2>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <h2>Assignment</h2>
+    <script src="/swe/prism.js"></script>
+  </body>
+</html>

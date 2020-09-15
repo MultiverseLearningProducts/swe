@@ -74,4 +74,4 @@ Then you can start to relate them together. Use a `parents` property on the pers
 
 Finally add a `childOf` function that uses this to reference the parents array of itself. You can also return a cheeky default using the `||` or operator.
 
-Check out the [codepen](https://codepen.io/bmordan/pen/poyLzBa?editors=0010)
+Check out a finished [example](https://gist.github.com/bmordan/72cc6820141fa976a7b8e443df65a206)
