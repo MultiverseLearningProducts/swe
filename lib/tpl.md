@@ -4,6 +4,22 @@ Lessons
 
 ## Overview of the day
 
+<hr/>
+
+## Lesson ? - ???
+
+## Learning Objectives
+
+## Before we start
+
+## Materials needed
+
+## Lesson
+
+## Assignment
+
+<hr/>
+
 ## Lesson ? - ???
 
 ## Learning Objectives
@@ -18,11 +34,27 @@ Lessons
 
 Notes
 
-# Breadcrumb
+# Bootcamp > Week # > Day #
 
 ## Overview of the day
 
-# Session # - Title
+# Session 1 - Title
+
+## Learning Objectives
+
+## Pre-work or Assumed knowledge
+
+## Materials
+
+## Notes
+
+## Assignment
+
+## Additional Reading
+
+<hr/>
+
+# Session 2 - Title
 
 ## Learning Objectives
 

@@ -84,6 +84,8 @@ This process has us write the test first. It should fail. Then we write the code
 
 Can you use TDD to recreate the family tree that you previously constructed? Only now there should be a set of tests that you can run to prove your family tree is constructed correctly.
 
+<hr/>
+
 # Lesson 2 - Airports
 
 ## Learning Objectives
@@ -212,3 +214,8 @@ Now we have passengers with bags, they are ready to board their flight! Can you:
 1. Airports should have `planes`
 
 Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane. 
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+
+[prev](/swe/bootcamp/wk1/day1.html)|[next](/swe/bootcamp/wk1/day3.html)
+[main](/swe)

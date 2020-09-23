@@ -124,5 +124,5 @@ Commit your code into Github and share the link with your coach.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[next](/swe/bootcamp/wk/day2.html)
+[next](/swe/bootcamp/wk1/day2.html)
 [main](/swe)

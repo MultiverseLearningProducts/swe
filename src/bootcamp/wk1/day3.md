@@ -218,3 +218,8 @@ That is a lot to get your head around! Async functions are a key characteristic 
 * In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.
 * Use the three different ways of forming async functions in the Airport class
 * write async tests for each version in Jest
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+
+[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)
+[main](/swe)

@@ -206,3 +206,8 @@ Then run `npm run test:report` you are aiming for 100% test coverage. When you r
 ![test coverage report](https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png)
 
 This is interactive try clicking on one of the class definitions.
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+
+[prev](/swe/bootcamp/wk1/day3.html)|[next](/swe/bootcamp/wk1/day5.html)
+[main](/swe)

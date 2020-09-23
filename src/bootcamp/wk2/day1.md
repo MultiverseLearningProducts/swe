@@ -1,0 +1,100 @@
+# Bootcamp > Week 2 > Day 1
+
+## Overview of the day
+
+This week we are going to build a complete app. Like deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.
+
+<hr/>
+
+## Lesson 1 - UML
+
+## Learning Objectives
+
+* Create UML data model diagram
+* Use 'has many' and 'belongs to' to correctly label relationship between classes
+
+## Before we start
+
+* You should have completed the Airports exercise
+
+## Materials needed
+
+* https://planttext.com for UML diagrams
+
+## Lesson
+
+In a restaurant ordering system what are some of the objects you would expect to find?
+
+1. Restaurant
+1. Menu
+1. Item
+1. Order
+
+What are the relationships between these? A Restaurant can have many menus, for example:
+
+* a drinks menu
+* a mains menu
+* a desert menu
+
+A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.
+
+### UML
+
+Unified Modeling Language is a standardized way to represent abstract structures in programming, like a data model.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+Example of Airports in UML
+
+![UML of airports](https://user-images.githubusercontent.com/4499581/93352652-fa52b900-f832-11ea-81a8-ebd2b8e43f97.png)
+
+## Assignment
+
+Can you design a data model for the following classes:
+
+1. Restaurant
+1. Menu
+1. Item
+1. Order
+
+A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.
+
+When you think you have something save your model and share the diagram with your coach.
+
+<hr/>
+
+## Lesson 2 - Implement your model
+
+## Learning Objectives
+
+* Demonstrate knowledge of unit tests
+* Demonstrate knowledge of classes
+
+## Before we start
+
+* Have you coach check through your UML diagram
+
+## Materials needed
+
+* UML data model diagram
+
+## Lesson
+
+From the design you can begin to write a set of tests that will prove your model is sound. Use the examples from the Airport exercise to implement your data model for your restaurant ordering app.
+
+## Assignment
+
+Create a new project folder and use `npm init` to start a new Node.js app. Create 4 class definitions with tests. You should be able to:
+
+1. Create a Restaurant (with a name, and hero image URL, and a city)
+1. Create a Menu and associate it with a Restaurant (the Menu should have a 'type' property and an 'icon' you can use emojis for icons)
+1. Create an Item and associate it with a Menu (Item should have a name, price and image URL)
+1. Create an Order
+1. Add an Item to an Order
+1. Remove an Item from an Order
+1. Submit an order (you should get a final price, and the name of the Restaurant returned to you)
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+
+[prev](/swe/bootcamp/wk1/day5.html)|[next](/swe/bootcamp/wk2/day2.html)
+[main](/swe)

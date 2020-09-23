@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <p>This week we are going to build a complete app. Like deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.</p>
+    <h2>Lesson 1 - UML</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Create UML data model diagram</li>
+      <li>Use 'has many' and 'belongs to' to correctly label relationship between classes</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You should have completed the Airports exercise</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://planttext.com">https://planttext.com</a> for UML diagrams</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>In a restaurant ordering system what are some of the objects you would expect to find?</p>
+    <ol>
+      <li>Restaurant</li>
+      <li>Menu</li>
+      <li>Item</li>
+      <li>Order</li>
+    </ol>
+    <p>What are the relationships between these? A Restaurant can have many menus, for example:</p>
+    <ul>
+      <li>a drinks menu</li>
+      <li>a mains menu</li>
+      <li>a desert menu</li>
+    </ul>
+    <p>A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.</p>
+    <h3>UML</h3>
+    <p>Unified Modeling Language is a standardized way to represent abstract structures in programming, like a data model.</p>
+    <p>Example of Airports in UML</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93352652-fa52b900-f832-11ea-81a8-ebd2b8e43f97.png" alt="UML of airports">
+    </p>
+    <h2>Assignment</h2>
+    <p>Can you design a data model for the following classes:</p>
+    <ol>
+      <li>Restaurant</li>
+      <li>Menu</li>
+      <li>Item</li>
+      <li>Order</li>
+    </ol>
+    <p>A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.</p>
+    <p>When you think you have something save your model and share the diagram with your coach.</p>
+    <h2>Lesson 2 - Implement your model</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate knowledge of unit tests</li>
+      <li>Demonstrate knowledge of classes</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Have you coach check through your UML diagram</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>UML data model diagram</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>From the design you can begin to write a set of tests that will prove your model is sound. Use the examples from the Airport exercise to implement your data model for your restaurant ordering app.</p>
+    <h2>Assignment</h2>
+    <p>Create a new project folder and use <code>npm init</code> to start a new Node.js app. Create 4 class definitions with tests. You should be able to:</p>
+    <ol>
+      <li>Create a Restaurant (with a name, and hero image URL, and a city)</li>
+      <li>Create a Menu and associate it with a Restaurant (the Menu should have a 'type' property and an 'icon' you can use emojis for icons)</li>
+      <li>Create an Item and associate it with a Menu (Item should have a name, price and image URL)</li>
+      <li>Create an Order</li>
+      <li>Add an Item to an Order</li>
+      <li>Remove an Item from an Order</li>
+      <li>Submit an order (you should get a final price, and the name of the Restaurant returned to you)</li>
+    </ol>
+    <p><a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a></p>
+    <p>
+      <a href="/swe/bootcamp/wk1/day5.html">prev</a>|<a href="/swe/bootcamp/wk2/day2.html">next</a>
+      <a href="/swe">main</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+  </body>
+</html>
