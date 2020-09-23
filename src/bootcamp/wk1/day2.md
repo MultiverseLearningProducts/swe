@@ -217,5 +217,5 @@ Write tests as you go in the test driven development style. You should be able t
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[prev](/swe/bootcamp/wk1/day1.html)|[next](/swe/bootcamp/wk1/day3.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/bootcamp/wk1/day1.html)|[next](/swe/bootcamp/wk1/day3.html)
+

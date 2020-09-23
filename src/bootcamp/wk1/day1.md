@@ -77,7 +77,7 @@ Very easy we just use the 'dot' notation and equal's operator to assign the prop
 person1.name
 person1['name']
 ```
-Both do the same think. The reason for using the bracket notation is when our property is a string that has an unusual characture in it. For example this will not work:
+Both do the same thing. The reason for using the bracket notation is when our property is a string that has an unusual character in it i.e. "full-name". For example this will not work:
 ```javascript
 person1.full-name = 'Bosola Randle'
 ```
@@ -102,7 +102,7 @@ function () {
   return this.parents.map(parent => parent.name).join(' & ') || "parents unknown"
 }
 ```
-In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method `join` and give it a delimiter to use as it takes all the names in our array and joins them together with a "&" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates a falsey, so we can use the `||` double pipes of the OR operator to return a default value.
+In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method `join` and give it a delimiter to use as it takes all the names in our array and joins them together with an "&" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates as falsey, so we can use the `||` double pipes of the OR operator to return a default value.
 
 Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our `childOf` property can have as it's value a reference to the `childOf` function. You must use the `function` keyword for this to work. Arrow functions reference the `this` of the parent's scope so it will not work the same way. We'll come back to that.
 
@@ -124,5 +124,4 @@ Commit your code into Github and share the link with your coach.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[next](/swe/bootcamp/wk1/day2.html)
-[main](/swe)
+[main](/swe)|[next](/swe/bootcamp/wk1/day2.html)

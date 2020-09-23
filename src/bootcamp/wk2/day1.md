@@ -96,5 +96,5 @@ Create a new project folder and use `npm init` to start a new Node.js app. Creat
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[prev](/swe/bootcamp/wk1/day5.html)|[next](/swe/bootcamp/wk2/day2.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/bootcamp/wk1/day5.html)|[next](/swe/bootcamp/wk2/day2.html)
+

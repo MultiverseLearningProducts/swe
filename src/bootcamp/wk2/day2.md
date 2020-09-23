@@ -61,5 +61,5 @@ The aim of this session is to integrate our classes with a persistent layer. So 
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[prev](/swe/bootcamp/wk2/day1.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/bootcamp/wk2/day1.html)
+

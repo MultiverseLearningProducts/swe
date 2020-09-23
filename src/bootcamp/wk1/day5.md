@@ -27,5 +27,5 @@ Practice building Airports from scratch.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
-[prev](/swe/bootcamp/wk1/day4.html)|[next](/swe/bootcamp/wk2/day1.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/bootcamp/wk1/day4.html)|[next](/swe/bootcamp/wk2/day1.html)
+
