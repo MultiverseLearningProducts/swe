@@ -8,13 +8,15 @@
 * Bootcamp
     + <u>Week 1</u>
     _This week we start with understanding javascript objects and start to build structures in code using Object Orientated Programming patterns, for example using single responsibility and inheritance. We also start to use Jest to write unit tests for our code._
-        - [Day 1](/swe/bootcamp/wk1/day1.html)
-        - [Day 2](/swe/bootcamp/wk1/day2.html)
-        - [Day 3](/swe/bootcamp/wk1/day3.html)
-        - [Day 4](/swe/bootcamp/wk1/day4.html)
-        - [Day 5](/swe/bootcamp/wk1/day5.html)
+
+    - [Day 1](/swe/bootcamp/wk1/day1.html)
+    - [Day 2](/swe/bootcamp/wk1/day2.html)
+    - [Day 3](/swe/bootcamp/wk1/day3.html)
+    - [Day 4](/swe/bootcamp/wk1/day4.html)
+    - [Day 5](/swe/bootcamp/wk1/day5.html)
     + <u>Week 2</u>
-    _Our focus this week is on relational databases. We are going to use SQLite3 and start to write SQL queries. We then bring together our new knowledge of SQL and the work on Objects from the previous week to create a hand-rolled ORM (Object Relational Mapping) layer in an app that will also have a frontend so we can practice displaying our data model in a browser._ 
+    _Our focus this week is on relational databases. We are going to use SQLite3 and start to write SQL queries. We then bring together our new knowledge of SQL and the work on Objects from the previous week to create a hand-rolled ORM (Object Relational Mapping) layer in an app that will also have a frontend so we can practice displaying our data model in a browser._
+
         - [Day 1](/swe/bootcamp/wk2/day1.html)
         - [Day 2](/swe/bootcamp/wk2/day2.html)
         - [Day 3](/swe/bootcamp/wk2/day3.html)
