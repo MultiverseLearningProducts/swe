@@ -55,9 +55,8 @@ Can you design a data model for the following classes:
 1. Restaurant
 1. Menu
 1. Item
-1. Order
 
-A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.
+A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out so we can clearly communicate our design.
 
 When you think you have something save your model and share the diagram with your coach.
 
@@ -86,13 +85,9 @@ From the design you can begin to write a set of tests that will prove your model
 
 Create a new project folder and use `npm init` to start a new Node.js app. Create 4 class definitions with tests. You should be able to:
 
-1. Create a Restaurant (with a name, and hero image URL, and a city)
-1. Create a Menu and associate it with a Restaurant (the Menu should have a 'type' property and an 'icon' you can use emojis for icons)
-1. Create an Item and associate it with a Menu (Item should have a name, price and image URL)
-1. Create an Order
-1. Add an Item to an Order
-1. Remove an Item from an Order
-1. Submit an order (you should get a final price, and the name of the Restaurant returned to you)
+1. Create a Restaurant (with a name, image URL, and a city)
+1. Create a Menu and associate it with a Restaurant (the Menu should have a 'title' property and an 'icon' you can use emojis for icons)
+1. Create an Item and associate it with a Menu (Item should have a name and price)
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 

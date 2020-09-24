@@ -33,7 +33,8 @@ You have a data model for a restaurant ordering app. The problem is all the data
 
 ## Assignment
 
-Complete the rest of the data model
+1. Complete the rest of the data model
+1. Compose the query to select a restaurant, all it's menus, and all the items for each menu
 
 <hr/>
 
@@ -55,7 +56,9 @@ Complete the rest of the data model
 
 ## Lesson
 
-The aim of this session is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next.
+The aim of this session is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant.
+
+
 
 ## Assignment
 
