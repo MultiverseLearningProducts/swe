@@ -86,7 +86,7 @@ Can you use TDD to recreate the family tree that you previously constructed? Onl
 
 <hr/>
 
-<h1 id="Lesson2">Lesson 2 - Airports</h1>
+# <a name="lesson2">Lesson 2 - Airports</a>
 
 ## Learning Objectives
 
@@ -104,7 +104,7 @@ Can you use TDD to recreate the family tree that you previously constructed? Onl
 
 ## Lesson
 
-We are going to create a Airports system. This exercise is designed to introduce you to the idea of Object Orientated Programming (OOP). In OOP we construct our programmes using objects. These objects are often abstractions of real life objects. For example it is common for a person who uses a programme to be represented in the programme with a User object.
+We are going to create an Airports system. This exercise is designed to introduce you to the idea of Object Orientated Programming (OOP). In OOP we construct our programmes using objects. These objects are often abstractions of real life objects. For example it is common for a person who uses a programme to be represented in the programme with a User object.
 
 ### 👩🏾‍💻👨🏻‍💻 In pairs
 
