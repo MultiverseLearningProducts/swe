@@ -55,131 +55,83 @@
     <h2>Assignment</h2>
     <p>Can you write the <code>takeOff</code> function on an instance of an airport that should take a plane as an argument, find that plane in the airport's planes array and remove it, then push it into the inbound airport's array of planes. This will effectively move the plane object from one airport to another.</p>
     <p>Remember to write tests that prove all the functionality that we have talked about.</p>
-    <h2>Lesson 2 - Airports Async</h2>
+    <h2>Lesson 2 - Inheritance</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Explain the differences between the way synchronous and asynchronous functions work.</li>
-      <li>Demonstrate the methods to test async code in Jest</li>
+      <li>Demonstrate sharing functionality through inheritance</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>You need to have an Airport class</li>
-      <li>You should be familiar with Object.keys as a way to access the keys of an object</li>
-      <li>You should have iterated over an object in javascript before</li>
-      <li>You should recognise deconstructing assignment</li>
+      <li>You should have created a Passenger class in your airports exercise</li>
     </ul>
     <h2>Materials needed</h2>
-    <ul>
-      <li>You need <a href="https://github.com/mwgg/Airports/blob/master/airports.json">this file</a> saved in your airports project folder</li>
-    </ul>
     <h2>Lesson</h2>
-    <p>So far our code executes synchronously. That means the code in the line above has been evaluated and any values are available for us to use on our current line. Async functions, they do not return straight away. For example if we want to read something from disc, that is an async function. It will not return immediately.</p>
-    <p>There are 3 ways to write and get values from async functions and in this session we are going to look at each of them. They are:</p>
-    <ol>
-      <li>Use a callback function</li>
-      <li>Use Promises</li>
-      <li>Use 'async await'</li>
-    </ol>
-    <p>Above is a link to a file with 28,000 airports in it. The file is in JSON so we can read it into our javascript programme and use that data to augment our Airport instances.</p>
-    <p>To start with lets write a test like this.</p>
-    <pre><code class="language-javascript">test('airports have a city', () => {
-    const CDG = new Airport('CDG')
-    CDG.getInfo((err, info) => {
-        console.log(info)
-        expect(err).toBeNull()
-        expect(info.country).toEqual('FR')
-    })
-})
+    <p>The final object orientated pattern we are going to look at is inheritance. This is a way to share functionality in an object orientated paradigm. The idea is very simple. You extend base classes that already exist with additional functionality. If we look at our airports system we have 2 kinds of travellers.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Passengers</th>
+          <th>Crew</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="https://user-images.githubusercontent.com/4499581/93331580-6b38a780-f818-11ea-835c-1c579dfe481d.jpg" alt="passengers">
+          </td>
+          <td>
+            <img src="https://user-images.githubusercontent.com/4499581/93331575-67a52080-f818-11ea-8308-af97a9a6d6cc.jpg" alt="crew">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Both are people, both have a name and bags when they travel.</p>
+    <h3>Base class <code>Person</code></h3>
+    <p>A base class is the base from which you might create other types of classes. Lets refactor our code to use a base class <code>Person</code>. A person will have a name and bags - basically the current Passenger class definition we have now needs to be renames to be <code>Person</code>. Now to restore our <code>Passenger</code> class we should import the base class into our <code>Passenger</code> definition and extend it like this.</p>
+    <pre><code class="language-javascript">const Person = require('./Person')
+
+class Passenger extends Person {}
 </code></pre>
-    <p>Here is the way we are going to start doing this. In our test you can see I'm using a callback function. In Node.js callbacks follow this signature and <code>err</code> followed by your async value being returned. If there are no errors the <code>err</code> object is <code>null</code>. Run your tests.</p>
-    <p>Lets turn to our <code>Airport</code> class and write the <code>getInfo</code> function (that will take a callback). You will have to require the fs or 'file system' module from Node.js.</p>
-    <pre><code class="language-javascript">const fs = require('fs')
-// add this function to your Airport class definition
-getInfo(callback) {
-    fs.readFile('./airports.json', (err, data) => {
-        callback(err, JSON.parse(String(data)))
-    })
+    <p>That is enough to fix all our current tests. Everything should work as it was. When we create a <code>new Passenger('bob')</code> we will be able to call <code>addBag</code> as this functionality has been inherited from the <code>Person</code> class. Our passengers might want particular functionality like <code>callAttendant</code>.</p>
+    <pre><code class="language-javascript">const Person = require('./Person')
+
+class Passenger extends Person {
+    callAttendant() {
+        console.log('Excuses me, Hay there!')
+    }
 }
 </code></pre>
-    <p>This is async code. We read the file from disk. The file contents comes out as a Buffer - you can console.log it to have a look at it. We need to turn the Buffer into a String, then that string we turn into a javascript object using JSON.parse. Finally we call the callback with an error if there is one or our file content nicely parsed into JSON.</p>
-    <p>But what? in our test we should see it logged out. But we don't. Why do we not see the contents of the file?</p>
-    <p>The test is called synchronously, it does not wait for the result of calling <code>CDG.getInfo</code>. To test an async function in jest pass in a "done" function and then call it when you are done.</p>
-    <pre><code class="language-javascript">test('airports have a city', (done) => {
-    const CDG = new Airport('CDG')
-    CDG.getInfo((err, info) => {
-        console.log(info)
-        expect(err).toBeNull()
-        expect(info.country).toEqual('FR')
-        done()
-    })
+    <h3>instanceof</h3>
+    <p>Can you see where this is going? One useful operator I want to introduce at this point is <code>instanceof</code>. Now you can make classes, in your code some times you'll want to know what an object is. For example, you might want to know is this person a <code>Passenger</code> or a <code>Crew</code> member? You can use <code>instanceof</code> to help you work that out.</p>
+    <pre><code class="language-javascript">test('is an instance of a Passenger', () => {
+    const betty = new Passenger('Betty')
+    expect(betty instanceof Passenger).toBeTruthy()
 })
 </code></pre>
-    <p>Can you see how that is working. You should now see your logging. Look at one of the entries in the airport data. We want to filter out an airport using the "iata" code. Can your <code>getInfo</code> function filter out the right airport and return just that data point?</p>
-    <h3>Promises</h3>
-    <p>Another way to write and organise async code is using Promises. Lets refactor our getInfo function to return a promise.</p>
-    <pre><code class="language-javascript">getInfo() {
-    return new Promise((resolve, reject) => {
-        fs.readFile('./airports.json', (err, data) => {
-            if (err) return reject(err)
-            
-            const airports = JSON.parse(String(data))
-            const [airport] = Object.keys(airports)
-                .filter(airportCode => airports[airportCode].iata === this.name)
-                .map(airportCode => airports[airportCode])
-            
-            resolve(airport)
-        })
-    })
-}
-</code></pre>
-    <p>Can you see the <code>new</code> keyword? What does that tell you about a Promise? What do you initialise a Promise with? Our callback style structure that we use with the <code>fs</code> module is wrapped in a promise. Now when resolve is finally called it will trigger the <code>.then</code> part of a promise object.</p>
-    <p>So to use our code now it will look different in our test:</p>
-    <pre><code class="language-javascript">test('airports have a city', () => {
-    const CDG = new Airport('CDG')
-    return CDG.getInfo()
-        .then(info => {
-            expect(info.city).toEqual('Paris')
-        })
-        .catch(err => {
-            expect(err).toBeNull()
-        })
-})
-</code></pre>
-    <p>Notice now we don't need the <code>done</code> callback in the test, this is because we are returning a promise from our test, and Jest will figure this is an async test and will wait for the promise to resolve or reject.</p>
-    <p>The promise object is "thenable" you can chain a series of promises together using 'then' like this:</p>
-    <pre><code class="language-javascript">return doSomeThing()
-    .then(thing => {
-        return theNextPromise(thing)
-    })
-    .then(next => {
-        return anotherPromise(next)
-    })
-    .catch(err => {
-        console.error('this catch block will catch any reject(err) in the chain.')
-    })
-</code></pre>
-    <p>Take note you must return a promise from the <code>then</code> block if you want to keep chaining. This avoids the pattern of deeply nesting callbacks, which some people find hard to read.</p>
-    <h3>Async await</h3>
-    <p>Finally we can use the <code>async</code> and <code>await</code> keywords to make our Asynchronous code read more synchronously. Lets update our test:</p>
-    <pre><code class="language-javascript">test('can get information like the city from an airport instance', async () => {
-    const CDG = new Airport('CDG')
-    const airport = await CDG.getInfo()
-    expect(airport.city).toEqual('Paris')
-})
-</code></pre>
-    <p>Notice how we use the 2 keywords. First of all we need to declare an <code>async</code> function. We use the <code>async</code> keyword before our function definition. Then inside the async function we can use the <code>await</code> keyword to pause, and wait for our async value to resolve. That means we don't need the <code>done</code> callback, we don't need to use a promise with <code>then</code>, we can just write it nice and simple, line by line. Jest knows that this is an async test because we used the <code>async</code> keyword before the function definition.</p>
-    <p>Can you refactor your <code>getInfo</code> function to use async await?</p>
-    <p>It's a bit tricky because <code>fs.readFile</code> takes a callback. It's not really designed to work with async await. However from Node.js 11.0 onwards you can require a version of the <code>fs</code> functions that are wrapped in a promise object. Add this to the top of your Airport class:</p>
-    <pre><code class="language-javascript">const { readFile } = require('fs/promises')
-</code></pre>
-    <p>Now you can use the <code>readFile</code> function with the <code>await</code> keyword because this <code>readFile</code> function is wrapped in a promise.</p>
-    <p>That is a lot to get your head around! Async functions are a key characteristic of javascript. Objects, functions and async are the building blocks of the language. Spending time now learning how to work with them will enable you to start writing more complex code more quickly.</p>
     <h2>Assignment</h2>
     <ul>
-      <li>In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.</li>
-      <li>Use the three different ways of forming async functions in the Airport class</li>
-      <li>write async tests for each version in Jest</li>
+      <li>Can you create the <code>Crew</code> class by extending the <code>Person</code> class?</li>
+      <li>Refactor the <code>Plane</code> class to have a <code>crew</code> property</li>
+      <li>When <code>board</code> is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.</li>
+      <li><code>Crew</code> members should be able to <code>crossCheck</code> make sure you can call <code>crossCheck</code> on a crew member, it should return a boolean. If all the crew on the plane are instances of the <code>Crew</code> class <code>crossCheck</code> should return true, otherwise it should return false.</li>
+      <li>All your refactoring should have tests that cover it</li>
     </ul>
+    <p>When you have completed these tasks can you create a coverage report using Jest. Add the following line to your package.json</p>
+    <pre><code class="language-json">{
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:report": "jest --coverage=true"
+  },
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
+</code></pre>
+    <p>Then run <code>npm run test:report</code> you are aiming for 100% test coverage. When you run this you should see that Jest generated a 'coverage' report in your project folder. If you navigate to <code>/coverage/Icov-report/index.html</code> and open it in your browser you'll see a helpful report of your test coverage.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report">
+    </p>
+    <p>This is interactive try clicking on one of the class definitions.</p>
     <p><a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day2.html">prev</a>|<a href="/swe/bootcamp/wk1/day4.html">next</a></p>
     <script src="/swe/prism.js"></script>

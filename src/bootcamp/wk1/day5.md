@@ -23,7 +23,7 @@ Today is just about practicing what you have learnt so far.
 
 ## Assignment
 
-Practice building Airports from scratch.
+Practice building a bike hire system from scratch.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 
