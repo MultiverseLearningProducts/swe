@@ -2,14 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>The aim of this session is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant.</title>
+    <title>Week 2 > Day 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/swe/modest.css">
     <link rel="stylesheet" href="/swe/prism.css">
     <link rel="stylesheet" href="/swe/style.css">
   </head>
   <body>
+    <h1>Week 2 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <h2>Lesson 1 - SQLite3</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Install and initiate a database in a Node.js project</li>
+      <li>Execute queries on our database in Node.js</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>ensure you have <code>sqlite3</code> installed</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>Make a new project folder and <code>cd</code> into it. <code>npm init</code> and install sqlite3 in your node project.</p>
+    <h3>Initiation and connection to the database</h3>
+    <pre><code class="language-javascript">const sqlite3 = require('sqlite3')
+const db = new sqlite3.Database('./db.sqlite')
+</code></pre>
+    <h2>Assignment</h2>
+    <h2>Lesson ? - ???</h2>
+    <h2>Learning Objectives</h2>
+    <h2>Before we start</h2>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
     <p>The aim of this session is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant.</p>
+    <h2>Assignment</h2>
     <script src="/swe/prism.js"></script>
   </body>
 </html>
