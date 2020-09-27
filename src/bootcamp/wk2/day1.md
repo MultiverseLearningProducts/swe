@@ -19,7 +19,7 @@ This week we are going to build a complete app. Like deliveroo or Uber Eats. On 
 
 ## Materials needed
 
-* https://planttext.com for UML diagrams
+* https://planttext.com for UML diagrams || install the plantuml plugin for VSCode
 
 ## Lesson
 
@@ -27,8 +27,7 @@ In a restaurant ordering system what are some of the objects you would expect to
 
 1. Restaurant
 1. Menu
-1. Item
-1. Order
+1. Item (a Dish with a price)
 
 What are the relationships between these? A Restaurant can have many menus, for example:
 
@@ -36,7 +35,7 @@ What are the relationships between these? A Restaurant can have many menus, for 
 * a mains menu
 * a desert menu
 
-A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. An Order has many Items. An Item can belong to a Menu and an Order. An Order belongs to a Restaurant. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.
+A Restaurant can have 1 or more menus. A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.
 
 ### UML
 
@@ -71,23 +70,44 @@ When you think you have something save your model and share the diagram with you
 
 ## Before we start
 
-* Have you coach check through your UML diagram
+* Have your coach check through your UML diagram
 
 ## Materials needed
 
 * UML data model diagram
+* Jest
 
 ## Lesson
 
 From the design you can begin to write a set of tests that will prove your model is sound. Use the examples from the Airport exercise to implement your data model for your restaurant ordering app.
 
+When you have completed these tasks, can you create a coverage report using Jest? A coverage report is going to run your tests and analysis the code that your tests hit or execute. This data can be compiled into a coverage report. The "coverage" metric is how much of your code is executed during your tests. Add the following line to your package.json
+
+```json
+{
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:report": "jest --coverage=true"
+  },
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
+```
+Then run `npm run test:report` you are aiming for 100% test coverage. When you run this you should see that Jest generated a 'coverage' report in your project folder. If you navigate to `/coverage/Icov-report/index.html` and open it in your browser you'll see a helpful report of your test coverage.
+
+![test coverage report](https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png)
+
+This is interactive try clicking on one of the class definitions.
+
 ## Assignment
 
-Create a new project folder and use `npm init` to start a new Node.js app. Create 4 class definitions with tests. You should be able to:
+Create a new project folder and use `npm init` to start a new Node.js app. Create 3 class definitions with tests. You should be able to:
 
 1. Create a Restaurant (with a name, image URL, and a city)
 1. Create a Menu and associate it with a Restaurant (the Menu should have a 'title' property and an 'icon' you can use emojis for icons)
 1. Create an Item and associate it with a Menu (Item should have a name and price)
+1. Sumbit your coverage report to your coach
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 

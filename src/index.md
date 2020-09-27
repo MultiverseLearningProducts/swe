@@ -18,9 +18,9 @@
     _Our focus this week is on relational databases. We are going to use SQLite3 and start to write SQL queries. We then bring together our new knowledge of SQL and the work on Objects from the previous week to create a hand-rolled ORM (Object Relational Mapping) layer in an app that will also have a frontend so we can practice displaying our data model in a browser._
     * [Day 1](/swe/bootcamp/wk2/day1.html)
     * [Day 2](/swe/bootcamp/wk2/day2.html)
-    - Day 3
-    - Day 4
-    - Day 5
+    * [Day 3](/swe/bootcamp/wk2/day3.html)
+    * [Day 4](/swe/bootcamp/wk2/day4.html)
+    * [Day 5](/swe/bootcamp/wk2/day5.html)
 
     <u>Week 3</u>
     _In the previous week we created a ORM from scratch. This week we'll save ourselves some effort and use [sequelize](https://www.npmjs.com/package/sequelize) as our ORM. This week our focus is on inputs and interactions in the browser. We will work toward building our own todo list._
