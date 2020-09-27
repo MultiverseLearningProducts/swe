@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Week 2 > Day 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Week 2 > Day 4</h1>
+    <h2>Overview of the day</h2>
+    <p>The aim of today is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. You know how to write data into a database. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant. When we get a restaurant out of the database, we want to instantiate a new instance of our Restaurant class with that data.</p>
+    <p>This mapping between databases and classes is called Object Relational Mapping.</p>
+    <h2>Lesson 1 - Object Relational Mapping</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Implement an ORM design pattern</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>install jest &#x26; sqlite3</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Find your class definitions for Restaurant, Menu &#x26; Item</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>We are representing objects in our programme with classes, and in the database as rows. We can't store an instance of class in the row of a database. We can't really use the row of a database in our programme. The ORM pattern is about abstracting away the database layer. In our programme we just need to think about instances of Restaturant the work of adding them and getting them from the database is removed from our programme interface, and contained in the class definition.</p>
+    <p>Lets start in a simple way by looking at the work of adapting our class definition for Restaturant to also create and be able to fetch Restaturants backed by a database. In both our tests and our programme we have to make sure the database is set up with the tables we need to store our restaurants in. I would suggest creating a file that initialises the database and exports it.</p>
+    <pre><code class="language-javascript">// db.js
+const {Database} = require('sqlite3')
+const location = process.env.NODE_ENV === 'test' ? ':memory:' : './db.sqlite'
+module.exports = new Database(location)
+</code></pre>
+    <p>In the example above if we are running out tests, the value of <code>process.env.NODE_ENV</code> will be 'test', so when our tests are running we always start with an empty database, it will be a new instance of the database each time we run our tests. When we come to just run this code in 'development' or 'production' we'll locate a file that will hold our data.</p>
+    <p>We should start with a failing test, and practice "Test Driven Development" (TTD). Our class can assume that the database is ready to read and write to. So for our tests we can use the <code>beforeAll</code> function that Jest gives us to run some async code before all our tests run. Our test wants to make sure when we create a new restaurant it is saved to the database.</p>
+    <pre><code class="language-javascript">const Restaurant = require('./Restaurant')
+const db = require('./db.js')
+
+describe('Restaurants', () => {
+    beforeAll((done) => {
+        db.run('CREATE TABLE IF NOT EXISTS restaurants(id INTEGER PRIMARY KEY, name TEXT, image TEXT);', done)
+    })
+
+    test('When a Restaurant is created it is stored in the database', async (done) => {
+        const restaurant = await new Restaurant({name: 'Boo Jangles', image: 'https://some.image.url'})
+        expect(restaurant.id).toBe(1)
+        db.get('SELECT * FROM restaurants WHERE id=?;', 1, (err, row) => {
+            expect(row.name).toBe('Boo Jangles')
+            done()
+        })
+    })
+})
+</code></pre>
+    <p>Nice. We also want to test that we can create a new instance of a Restaurant from a row. Can you make sure this test also passes:</p>
+    <pre><code class="language-javascript">test('can create an instance of an restaurant from a row', (done) => {
+    db.get('SELECT * FROM restaurants WHERE id=?', 1, async (err, row) => {
+        const restaurant = await new Restaurant(row)
+        expect(restaurant.id).toBe(1)
+        expect(restaurant.name).toBe('Boo Jangles')
+        db.get('SELECT COUNT(id) AS total FROM restaurants;', (err, count) => {
+            expect(count.total).toBe(1)
+            done()
+        })
+    })        
+})
+</code></pre>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Completely build out the whole data model, with tests, for Restaurant, Menu, Item</li>
+      <li>Don't worry about the associations just yet, we will do that next</li>
+    </ul>
+    <h2>Lesson 2 - hasMany &#x26; belongsTo</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Write logical code in javascript to interact with a SQL database</li>
+      <li>Write async code in javascript</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You will need your 3 classes defined (with tests)</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Jest and Sqlite3</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>There is an important dimention missing from our implementation. Relationships. Our restaurants have menus. We want to be able to access our menus like this:</p>
+    <pre><code class="language-javascript">restaurant.menus // [Menu, Menu]
+</code></pre>
+    <p>and each menu we want to be able to access the items of a menu:</p>
+    <pre><code class="language-javascript">menu.items // [Item, Item]
+</code></pre>
+    <p>That means there is more work to be done. Our Restaurant class needs a function that will create and add a menu instance to the restaurant. The same will apply with the menu class and an item.</p>
+    <pre><code class="language-javascript">async addMenu(title) {
+    const menu = await new Menu({title, restaurant_id: this.id})
+    this.menus.push(menu)
+}
+</code></pre>
+    <p>Then we have the work to go get the items for a menu, and the menus for a restaurant. So when I instantiate a Restaurant with a row from the database (the restaurant is stored with an id), I will also need to go get all the menus. That way a new instance of a restaurant has all it's menus in place, and each of those menus have their items in place. I expect to be able to drill down through all my connected data like this:</p>
+    <pre><code class="language-javascript">restaurant.menus[0].items[0].price // 12.50
+</code></pre>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Complete the relationships between your classes</li>
+      <li>Make sure you have tests that cover the functionality</li>
+      <li>Share your test coverage report with your coach (screen grab in Slack will be fine)</li>
+    </ul>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk2/day3.html">prev</a>|<a href="/swe/bootcamp/wk2/day5.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+  </body>
+</html>

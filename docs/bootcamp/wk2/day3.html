@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Week 2 > Day 1</title>
+    <title>Week 2 > Day 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/swe/modest.css">
     <link rel="stylesheet" href="/swe/prism.css">
     <link rel="stylesheet" href="/swe/style.css">
   </head>
   <body>
-    <h1>Week 2 > Day 1</h1>
+    <h1>Week 2 > Day 3</h1>
     <h2>Overview of the day</h2>
-    <h2>Lesson 1 - SQLite3</h2>
+    <p>Today we are starting to use our SQL skills in our Node.js code. This is an important step where we start to connect our code to a database.</p>
+    <h2>Lesson 1 - SQLite3 in Node.js</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Install and initiate a database in a Node.js project</li>
@@ -22,20 +23,133 @@
       <li>ensure you have <code>sqlite3</code> installed</li>
     </ul>
     <h2>Materials needed</h2>
+    <ul>
+      <li>airports.json file from week 1</li>
+    </ul>
     <h2>Lesson</h2>
     <p>Make a new project folder and <code>cd</code> into it. <code>npm init</code> and install sqlite3 in your node project.</p>
     <h3>Initiation and connection to the database</h3>
     <pre><code class="language-javascript">const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('./db.sqlite')
 </code></pre>
+    <p>In the lines above we import the <code>sqlite3</code> package then on the next line we access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instanciate a new instance of our database for our programe. We can pass some config to our <code>Database</code> constructor. We are passing in a relative path where the database file either already exists, or if it doesn't exist where we would like it to be created and with what name.</p>
+    <p>This file/database will be written to disc, data we store here we can access even when our programme has stopped running. We are going to interact with our database using javascript. The challenage we can use to start working with a database in our Node.js programme is to load the data from our file of airports into our database.</p>
+    <p>Have a look at an example of an airport object:</p>
+    <pre><code class="language-json">{
+  "icao": "KPAE",
+  "iata": "PAE",
+  "name": "Snohomish County (Paine Field) Airport",
+  "city": "Everett",
+  "state": "Washington",
+  "country": "US",
+  "elevation": 606,
+  "lat": 47.90629959,
+  "lon": -122.2819977,
+  "tz": "America/Los_Angeles"
+}
+</code></pre>
+    <p>What are the field names and types we will need to set up in our database? This is called the schema. Once you have figured out the schema, can you compose a query that will create the airports table if it does not exist? We will want to run this before we read the data out of our file.</p>
+    <p>Once you have your query ready how do we run it? You can use the <code>run</code> function.</p>
+    <pre><code class="language-javascript">db.run('YOUR SQL QUERY;', function (error) {
+    // this callback function runs after Node.js has run the query on sqlite3 database, and the database has emited an event saying it's finished. In this callback function on the `this` context you can access the id of the last record you inserted. This will be useful later
+    const id = this.lastID
+})
+</code></pre>
+    <h3>Extract &#x26; Load</h3>
+    <h4>Extract airport data from file</h4>
+    <p>Once our database is setup. We are ready to go get the data into it. Can you read the data from your .json file into an array of javascript objects? Try this and console.log your array to your terminal. (you can just use <code>require</code> to load the file).</p>
+    <pre><code class="language-javascript">const airports = require('./airport.json')
+</code></pre>
+    <h4>Load each airport object into the database</h4>
+    <p>To insert the data we need to iterate over our array of airports and use the airport object to form an SQL insert query.</p>
+    <pre><code class="language-json">{
+  "icao": "KPAE",
+  "iata": "PAE",
+  "name": "Snohomish County (Paine Field) Airport",
+  "city": "Everett",
+  "state": "Washington",
+  "country": "US",
+  "elevation": 606,
+  "lat": 47.90629959,
+  "lon": -122.2819977,
+  "tz": "America/Los_Angeles"
+}
+</code></pre>
+    <pre><code class="language-SQL">INSERT INTO airports (icao, iata, name, city, state, country, elevation, lat, lon, tz) VALUES (?,?,?,?,?,?,?,?,?,?);
+</code></pre>
+    <p>All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of airports. When you call <code>db.run</code> the first argument is the string above, and the second is a list of all the values, the values get swapped with the "?".</p>
+    <h4>Async?</h4>
+    <p>Maybe this seems easy. We have an array of airports, we just iterate over the array and call <code>db.run</code> on for each airport. The thing is; inserting into a database is an async function. If we just call <code>db.run</code> on every item in the array what do you think will happen to the "pending callbacks" stack? Also how do we know when all the airports have been inserted into the database?</p>
+    <p>When we have a queue of async tasks we want to perform a recursive pattern is a better option that <code>Array.forEach</code>. Let's start with a failing test:</p>
+    <pre><code class="language-javascript">const load = require('./index')
+
+describe('SQLite3', () => {
+    test('airports are loaded into the database', (done) => {
+        load((db) => {
+            db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
+                expect(row.length).toBe(3)
+                expect(row[0].name).toBe('Shenyang Dongta Airport')
+                db.get('SELECT COUNT(id) AS total FROM airports;', (err, count) => {
+                    expect(count.total).toBe(28868)
+                    done()
+                })
+            })
+        })
+    })
+})
+</code></pre>
     <h2>Assignment</h2>
-    <h2>Lesson ? - ???</h2>
+    <ul>
+      <li>write a <code>load</code> function that will take a callback and call it when all the airport data has been inserted into the database</li>
+      <li>write an <code>insert</code> function that will take; the airports array, the callback passed to <code>load</code>, the database instance <code>db</code></li>
+      <li>the first thing your <code>load</code> function needs to do is make sure the airports table has been created i.e. <code>CREATE TABLE IF NOT EXISTS airports</code></li>
+      <li>once the table is ready call <code>insert</code> with the airports array, the callback passed to <code>load</code>, the database instance <code>db</code></li>
+      <li>in your <code>insert</code> function check that the airports array is empty. If it is empty call the callback function with the <code>db</code> instance</li>
+      <li>if the airport array is not empty, in your <code>insert</code> function call <code>.pop()</code> on the airport array to remove the last airport from the array, then insert that item into the database</li>
+      <li>in the <code>db.run</code> callback call the <code>insert</code> function again with the same arguments (this is called recursion)</li>
+      <li>check that your tests are passing ok</li>
+    </ul>
+    <h2>Lesson 2 - Consolidate SQLite3 in Node.js</h2>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Use the following sqlite3 functions; all, get, run</li>
+      <li>Create your own valid JSON</li>
+      <li>Relate data using foreign keys</li>
+    </ul>
     <h2>Before we start</h2>
+    <ul>
+      <li>Have your UML diagram for restaurants handy</li>
+    </ul>
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
-    <p>The aim of this session is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant.</p>
+    <p>Practice what we have looked at so far. Begin by creating; a <code>restaurants.json</code> file, a <code>menus.json</code> file, a <code>items.json</code> file. Create for yourself a few restaurants, create menus for those restaurants and finally, make some items for the menus. This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
+    <p><code>restaurants.json</code></p>
+    <pre><code class="language-json">[
+    {
+        "id": 1,
+        "name": "reup princess"
+    },
+    {
+        "id": 2,
+        "name": "Coming soom"
+    }
+]
+</code></pre>
+    <p><code>menus.json</code></p>
+    <pre><code class="language-json">[
+  {
+    "id": 1,
+    "title": "set menu 1",
+    "restaurant_id": 1
+  }
+]
+</code></pre>
     <h2>Assignment</h2>
+    <p>Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is the database in your Node.js script write the queries to select a restaurant, all it's menus, and all the items for each menu. For now you can console.log this data out.</p>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk2/day2.html">prev</a>|<a href="/swe/bootcamp/wk2/day4.html">next</a>
+    </p>
     <script src="/swe/prism.js"></script>
   </body>
 </html>
