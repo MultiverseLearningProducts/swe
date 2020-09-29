@@ -28,7 +28,7 @@ Your apprenticeship starts today
 
 ## Lesson
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRpv5_qiaX5Ob2GF-NS0YgOEF8G3TwMsJBLVsLp0ok8nSmlBR_Nk85Go4_L8nBNpElT5YcKM5Mk9NaK/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+!(https://docs.google.com/presentation/d/e/2PACX-1vRpv5_qiaX5Ob2GF-NS0YgOEF8G3TwMsJBLVsLp0ok8nSmlBR_Nk85Go4_L8nBNpElT5YcKM5Mk9NaK/embed)
 
 ## Assignment
 

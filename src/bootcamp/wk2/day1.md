@@ -41,7 +41,7 @@ A Restaurant can have 1 or more menus. A Menu belongs to a Restaurant. A Menu ha
 
 Unified Modeling Language is a standardized way to represent abstract structures in programming, like a data model.
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+!(https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed)
 
 Example of Airports in UML
 
