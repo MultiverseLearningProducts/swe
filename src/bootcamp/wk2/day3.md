@@ -22,7 +22,7 @@ Today we are starting to use our SQL skills in our Node.js code. This is an impo
 * [airports.json](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
 
 ```sh
-`curl https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json --output airports.json`
+curl https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json --output airports.json
 ```
 
 ## Lesson
