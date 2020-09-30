@@ -20,7 +20,10 @@ Today we are starting to use our SQL skills in our Node.js code. This is an impo
 ## Materials needed
 
 * [airports.json](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
+
+```sh
 `curl https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json --output airports.json`
+```
 
 ## Lesson
 
@@ -137,7 +140,7 @@ describe('SQLite3', () => {
 * in the `db.run` callback call the `insert` function <u>again</u> with the same arguments (this is called recursion)
 * check that your tests are passing ok
 
-<hr/>
+----
 
 ## Lesson 2 - Consolidate SQLite3 in Node.js 
 

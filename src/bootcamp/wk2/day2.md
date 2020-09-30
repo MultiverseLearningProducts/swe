@@ -38,7 +38,7 @@ The `WHERE` clause is really important when querying. Often we want one record, 
     * Delete your restaurant using "DELETE"
     * Use the WHERE clause to filter results
 
-<hr/>
+----
 
 ## Lesson 2 - JOIN tables
 

@@ -59,7 +59,7 @@ A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu
 
 When you think you have something save your model and share the diagram with your coach.
 
-<hr/>
+----
 
 ## Lesson 2 - Implement your model
 
