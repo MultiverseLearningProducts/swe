@@ -6,7 +6,7 @@ The aim of today is to integrate our classes with a persistent layer. So the sta
 
 This mapping between databases and classes is called Object Relational Mapping.
 
-<hr/>
+----
 
 ## Lesson 1 - Object Relational Mapping
 
@@ -77,7 +77,7 @@ test('can create an instance of an restaurant from a row', (done) => {
 * Completely build out the whole data model, with tests, for Restaurant, Menu, Item
 * Don't worry about the associations just yet, we will do that next
 
-<hr/>
+----
 
 ## Lesson 2 - hasMany & belongsTo
 

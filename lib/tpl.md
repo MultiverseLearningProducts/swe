@@ -4,7 +4,7 @@ Lessons
 
 ## Overview of the day
 
-<hr/>
+----
 
 ## Lesson ? - ???
 
@@ -18,7 +18,7 @@ Lessons
 
 ## Assignment
 
-<hr/>
+----
 
 ## Lesson ? - ???
 

@@ -4,7 +4,7 @@
 
 Knowing the ORM pattern learn to use the most popular SQL ORM avaliable for Node.js - [Sequelize](https://www.npmjs.com/package/sequelize). This is a day to practice and consolidate what you have learnt this week.
 
-<hr/>
+----
 
 ## Lesson 1 - Sequelize
 
@@ -71,7 +71,7 @@ Our class definition is very simple (seems like cheating) we get all the functio
 * Set up a project with sqlite3, jest and sequelize
 * Create a data model with Restaurant, Menu and Item (like we have before)
 
-<hr/>
+----
 
 ## Lesson 2 - Sequelize relationships
 
