@@ -12,14 +12,15 @@
   <body>
     <h1>Bootcamp > Week 3 > Day 1</h1>
     <h2>Overview of the day</h2>
-    <p>Today we need to understand servers. In particular stateless and stateful servers. In the second part of the day we are going to look at the steps to render our Restaurant data in a browser.</p>
+    <p>Today we are going to build a web server. In particular we want to understand the difference between static and dynamic content. We are going to set up a simple express server, and also use some templating to create dynamic content.</p>
     <hr>
     <h2>Lesson 1 - Web Server</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Define what makes a computer a server</li>
-      <li>Create html pages</li>
-      <li>Create css files and apply them to a html page</li>
+      <li>Create an html page</li>
+      <li>Create a static web server</li>
+      <li>Create css files and apply them to an html page</li>
       <li>Create links between pages</li>
     </ul>
     <h2>Before we start</h2>
@@ -29,8 +30,8 @@
       <li>the node module 'express'</li>
     </ul>
     <h2>Lesson</h2>
-    <p>What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example an office might have a 'file server' a computer were office workers can read and write files that can be accessed by any other computer on the network.</p>
-    <p>The kind of servers we are going to focus on are a 'web server' and an 'app server'. A 'web server' responds to requests for .html files by sending back the .html contents of that file. Lets look at setting up a simple 'web server'.</p>
+    <p>What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example an office might have a 'file server' a computer where office workers can read and write files that can be accessed by any other computer on the network.</p>
+    <p>The kind of servers we are going to focus on are 'web server' and an 'app server'. A 'web server' responds to requests for .html files by sending back the .html contents of that file. Lets look at setting up a simple 'web server'.</p>
     <p>Install the node module 'express' and create a new file called <code>server.js</code>. Create a folder called <code>public</code> and then in your server file add the following.</p>
     <pre><code class="language-javascript">const express = require('express')
 const app = express()
@@ -90,7 +91,6 @@ body {
     <h2>Learning Objectives</h2>
     <ul>
       <li>Explain the difference between static and dynamic content</li>
-      <li>Name the libraries we are using to server dynamic content</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
@@ -102,10 +102,11 @@ body {
     </ul>
     <h2>Lesson</h2>
     <p>What makes content static? Static content is usually read from disc, it is the same every request, it is the same for everyone. We have been working with static files so far on our web server.</p>
-    <p>Dynamic content is content that can change from request to request, and might be different for different people. For example everyone has the same basic facebook page, but each persons page is filled with content that is particular to them. What is shared between users is the page's template. The content that is changeable or dynamic.</p>
-    <p>Templates are easy to understand they are static assets. So where does the dynamic content come from?</p>
+    <p>Dynamic content is content that can change from request to request, and might be different for different people. For example everyone has the same basic facebook page, but each persons page is filled with content that is particular to them. What is shared between users is the page's template. The content is changeable or dynamic.</p>
+    <p>So where does the dynamic content come from? Dynamic content is usally stored in a database, or comes from another service, the app then responds to a request by fetching some specific content for that user/request parsing that content with a template, and then responding with the resultant html. The page is build per request "on-the-fly" and is assempled by our app.</p>
+    <p>If we are serving dynamic content like this our server is now an 'app server'.</p>
     <h3>Create a Route</h3>
-    <p>Our server need to intercept the http request. It's not good just responding with the content of a static file. The way we intercept or 'handle' requests is by declaring a 'route'</p>
+    <p>Our server needs to intercept the http request. It's no good just responding with the content of a static file or template. The way we intercept or 'handle' requests is by declaring a 'route' in our server.js file.</p>
     <pre><code class="language-javascript">app.get('/', (request, response) => {
     const date = new Date()
     response.send(date)
@@ -115,7 +116,7 @@ body {
     <h3>Create a Template</h3>
     <p>Our dynamic content is going to be driven by our data model. We will want to display our particular list of restaurants. For this we are going to set up 'handlebar' templates. This is a well known and supported template library in which you write html (which is good for you an an apprentice) and have place holders for dynamic content. Follow these steps;</p>
     <ol>
-      <li><code>npm install express-handlebars</code></li>
+      <li><code>npm install handlebars express-handlebars @handlebars/allow-prototype-access</code></li>
       <li>require <code>express-handlebars</code> in your server and set it up (see below)</li>
       <li>create a <code>views</code> folder</li>
       <li>create a <code>layouts</code> folder in the <code>views</code> folder</li>
@@ -128,11 +129,17 @@ body {
     └── main.handlebars
 </code></pre>
     <pre><code class="language-javascript">const express = require('express')
-const handlebars = require('express-handlebars')
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const app = express()
 
+const handlebars = expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+})
+
 app.use(express.static('public'))
-app.engine('handlebars', handlebars())
+app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
 app.get('/', (request, response) => {
@@ -166,6 +173,10 @@ app.listen(3000, () => console.log('web server running on port 3000'))
       <li>Create another template for your new <code>/about</code> page</li>
       <li>Display your name on the about page</li>
     </ul>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk2/day5.html">prev</a>|<a href="/swe/bootcamp/wk3/day2.html">next</a>
+    </p>
     <script src="/swe/prism.js"></script>
   </body>
 </html>

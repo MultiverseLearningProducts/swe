@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Today we need to understand servers. In particular stateless and stateful servers. In the second part of the day we are going to look at the steps to render our Restaurant data in a browser.
+Today we are going to build a web server. In particular we want to understand the difference between static and dynamic content. We are going to set up a simple express server, and also use some templating to create dynamic content.
 
 ----
 
@@ -11,8 +11,9 @@ Today we need to understand servers. In particular stateless and stateful server
 ## Learning Objectives
 
 * Define what makes a computer a server
-* Create html pages
-* Create css files and apply them to a html page
+* Create an html page
+* Create a static web server
+* Create css files and apply them to an html page
 * Create links between pages
 
 ## Before we start
@@ -25,9 +26,9 @@ Have your project with the Restaurant models handy
 
 ## Lesson
 
-What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example an office might have a 'file server' a computer were office workers can read and write files that can be accessed by any other computer on the network.
+What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example an office might have a 'file server' a computer where office workers can read and write files that can be accessed by any other computer on the network.
 
-The kind of servers we are going to focus on are a 'web server' and an 'app server'. A 'web server' responds to requests for .html files by sending back the .html contents of that file. Lets look at setting up a simple 'web server'.
+The kind of servers we are going to focus on are 'web server' and an 'app server'. A 'web server' responds to requests for .html files by sending back the .html contents of that file. Lets look at setting up a simple 'web server'.
 
 Install the node module 'express' and create a new file called `server.js`. Create a folder called `public` and then in your server file add the following.
 ```javascript
@@ -103,7 +104,6 @@ So 1 http request actually spawned a number of additional requests. You can see 
 ## Learning Objectives
 
 * Explain the difference between static and dynamic content
-* Name the libraries we are using to server dynamic content
 
 ## Before we start
 
@@ -117,13 +117,15 @@ So 1 http request actually spawned a number of additional requests. You can see 
 
 What makes content static? Static content is usually read from disc, it is the same every request, it is the same for everyone. We have been working with static files so far on our web server.
 
-Dynamic content is content that can change from request to request, and might be different for different people. For example everyone has the same basic facebook page, but each persons page is filled with content that is particular to them. What is shared between users is the page's template. The content that is changeable or dynamic.
+Dynamic content is content that can change from request to request, and might be different for different people. For example everyone has the same basic facebook page, but each persons page is filled with content that is particular to them. What is shared between users is the page's template. The content is changeable or dynamic.
 
-Templates are easy to understand they are static assets. So where does the dynamic content come from?
+So where does the dynamic content come from? Dynamic content is usally stored in a database, or comes from another service, the app then responds to a request by fetching some specific content for that user/request parsing that content with a template, and then responding with the resultant html. The page is build per request "on-the-fly" and is assempled by our app.
+
+If we are serving dynamic content like this our server is now an 'app server'.
 
 ### Create a Route
 
-Our server need to intercept the http request. It's not good just responding with the content of a static file. The way we intercept or 'handle' requests is by declaring a 'route'
+Our server needs to intercept the http request. It's no good just responding with the content of a static file or template. The way we intercept or 'handle' requests is by declaring a 'route' in our server.js file.
 
 ```javascript
 app.get('/', (request, response) => {
@@ -137,7 +139,7 @@ Add this route definition <u>after</u> setting your config with `app.use`, but <
 
 Our dynamic content is going to be driven by our data model. We will want to display our particular list of restaurants. For this we are going to set up 'handlebar' templates. This is a well known and supported template library in which you write html (which is good for you an an apprentice) and have place holders for dynamic content. Follow these steps;
 
-1. `npm install express-handlebars`
+1. `npm install handlebars express-handlebars @handlebars/allow-prototype-access`
 1. require `express-handlebars` in your server and set it up (see below)
 1. create a `views` folder
 1. create a `layouts` folder in the `views` folder
@@ -153,11 +155,17 @@ views
 
 ```javascript
 const express = require('express')
-const handlebars = require('express-handlebars')
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const app = express()
 
+const handlebars = expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+})
+
 app.use(express.static('public'))
-app.engine('handlebars', handlebars())
+app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
 app.get('/', (request, response) => {
@@ -193,3 +201,6 @@ Finally remove the `public/index.html` file as that will interfere with your `/`
 * Create another route handler on your server `/about`
 * Create another template for your new `/about` page
 * Display your name on the about page
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[main](/swe)|[prev](/swe/bootcamp/wk2/day5.html)|[next](/swe/bootcamp/wk3/day2.html)

@@ -32,6 +32,9 @@ Lessons
 
 ## Assignment
 
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[main](/swe)|[prev](/swe/bootcamp/wk#/day#.html)|[next](/swe/bootcamp/wk#/day#.html)
+
 Notes
 
 # Bootcamp > Week # > Day #
