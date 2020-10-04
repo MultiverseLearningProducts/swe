@@ -38,7 +38,7 @@ You will find yourself thinking "what shall I name this route". This morning I w
 
 ## Learning Objectives
 
-* Extend a model
+* Extend a data model
 
 ## Before we start
 
@@ -46,9 +46,15 @@ You will find yourself thinking "what shall I name this route". This morning I w
 
 ## Lesson
 
-
+Using unicode charactures.
 
 ## Assignment
+
+Add a ratings system for the restaurant model
+
+* The restaurant should display the average rating out of 5 stars, from all the ratings that have been awarded to it.
+* On a restaurant page you should be able to add a rating.
+* Ratings need to be displayed on the restaurant page, and the card.
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day3.html)|[next](/swe/bootcamp/wk3/day5.html)
