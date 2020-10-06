@@ -158,9 +158,9 @@ article {
 ```
 Now we have a card shape box in which we can display information about each restaurant (including it's 'thumbnail' image). They are spaced out evenly and we can scroll through them. I am also using `calc()` to calculate the width of the viewport minus the margins either side.
 
-What happends a the first breakpoint?
+What happens a the first breakpoint?
 
-Once our viewport size has broken through to be greater than `40em` the next block of css will overide previous styles. We want to jump from a single column layout to a 2 column layout.
+Once our viewport size has broken through to be greater than `40em` the next block of css will override previous styles. We want to jump from a single column layout to a 2 column layout.
 
 ```css
 @media screen and (min-width: 40em) {
@@ -178,7 +178,7 @@ Once our viewport size has broken through to be greater than `40em` the next blo
     }
 }
 ```
-We now apply a grid layout to the `<section>` element. That grid is applyed to the section's childern elements (all the `<article>` elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the `<article>` elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy `gap` property that will deal with spacing between grid elements. Finally we can use the margin of the `<section>` to add some spacing all round the items in the grid.
+We now apply a grid layout to the `<section>` element. That grid is applied to the section's children elements (all the `<article>` elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the `<article>` elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy `gap` property that will deal with spacing between grid elements. Finally we can use the margin of the `<section>` to add some spacing all round the items in the grid.
 
 The next break point we want to jump to 3 columns. Now we just need to override one property.
 

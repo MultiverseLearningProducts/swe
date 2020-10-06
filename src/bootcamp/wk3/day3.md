@@ -4,7 +4,7 @@
 
 ----
 
-## Lesson 1 - The box model
+## Lesson 1 - The Box Model
 
 ## Learning Objectives
 
@@ -23,7 +23,7 @@
 
 Previously we considered the layout of all the elements on our page. Now we need to consider the individual components. To really get to grips with styling html using css you need to study and understand the box model.
 
-### The box model
+### The Box Model
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed)
 
@@ -117,7 +117,7 @@ Like before we add a new route, but in the string definition of the route we ind
 
 ### New template
 
-Before we get our data, lets just create the new template for this view. In the `views` folder add a file called `restaturant.handlebars`. Add some html so you know you have wired the route up to the template ok. Can you pass the correct arguments to your `res.render()`?
+Before we get our data, lets just create the new template for this view. In the `views` folder add a file called `restaurant.handlebars`. Add some html so you know you have wired the route up to the template ok. Can you pass the correct arguments to your `res.render()`?
 
 Now we can focus on getting our data for this view.
 
@@ -153,7 +153,7 @@ This view of a restaurant requires us to iterate over the array of menus, and wi
     {{/each}}
 </section>
 ```
-Finally we have some menus, the fact we are using the same elements in the same order means our css is already being applied. The `<dl>` element is a 'discription list' you can read more about it [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl). To get the item name and price to line up nicely like below I am using flexbox. More about flexbox later...
+Finally we have some menus, the fact we are using the same elements in the same order means our css is already being applied. The `<dl>` element is a 'description list' you can read more about it [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl). To get the item name and price to line up nicely like below I am using flexbox. More about flexbox later...
 
 ![flexbox example](https://user-images.githubusercontent.com/4499581/95021384-9caed100-0668-11eb-9fbc-9d93ea06a54b.jpg)
 
@@ -167,7 +167,7 @@ dl div{
 
 ## Assignment
 
-* Create the route and template to veiw a single restaurant.
+* Create the route and template to view a single restaurant.
 * Include a "back" or "main menu" button on your page.
 * Render the menus, and the menu items in a grid on the page.
 * Create a hero image for the page like below.

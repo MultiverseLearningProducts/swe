@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-We have rendered data from our data model in a browser. Today we start to look at adding to our data model throught the browser.
+We have rendered data from our data model in a browser. Today we start to look at adding to our data model through the browser.
 
 ----
 

@@ -134,8 +134,8 @@ article {
 }
 </code></pre>
     <p>Now we have a card shape box in which we can display information about each restaurant (including it's 'thumbnail' image). They are spaced out evenly and we can scroll through them. I am also using <code>calc()</code> to calculate the width of the viewport minus the margins either side.</p>
-    <p>What happends a the first breakpoint?</p>
-    <p>Once our viewport size has broken through to be greater than <code>40em</code> the next block of css will overide previous styles. We want to jump from a single column layout to a 2 column layout.</p>
+    <p>What happens a the first breakpoint?</p>
+    <p>Once our viewport size has broken through to be greater than <code>40em</code> the next block of css will override previous styles. We want to jump from a single column layout to a 2 column layout.</p>
     <pre><code class="language-css">@media screen and (min-width: 40em) {
   /* css for mid screens goes here */
     section {
@@ -151,7 +151,7 @@ article {
     }
 }
 </code></pre>
-    <p>We now apply a grid layout to the <code>&#x3C;section></code> element. That grid is applyed to the section's childern elements (all the <code>&#x3C;article></code> elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the <code>&#x3C;article></code> elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy <code>gap</code> property that will deal with spacing between grid elements. Finally we can use the margin of the <code>&#x3C;section></code> to add some spacing all round the items in the grid.</p>
+    <p>We now apply a grid layout to the <code>&#x3C;section></code> element. That grid is applied to the section's children elements (all the <code>&#x3C;article></code> elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the <code>&#x3C;article></code> elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy <code>gap</code> property that will deal with spacing between grid elements. Finally we can use the margin of the <code>&#x3C;section></code> to add some spacing all round the items in the grid.</p>
     <p>The next break point we want to jump to 3 columns. Now we just need to override one property.</p>
     <pre><code class="language-css">@media screen and (min-width: 60em) {
   /* css for massive screens goes here */

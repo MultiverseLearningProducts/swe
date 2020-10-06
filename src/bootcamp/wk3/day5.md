@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Today is about consolidating all the new things we have learnt in the week
+Today is about consolidating all the new things we have learnt in the week.
 
 ----
 
@@ -10,7 +10,7 @@ Today is about consolidating all the new things we have learnt in the week
 
 ## Learning Objectives
 
-* Demonstrate the 4 operations of create, read, update and destory
+* Demonstrate the 4 operations of create, read, update and destroy
 
 ## Before we start
 
@@ -34,7 +34,7 @@ You will find yourself thinking "what shall I name this route". This morning I w
 
 ----
 
-## Lesson 2 - Ratings
+## Lesson 2 - Ratings (extension assignment)
 
 ## Learning Objectives
 
@@ -42,7 +42,12 @@ You will find yourself thinking "what shall I name this route". This morning I w
 
 ## Before we start
 
+* You should have completed the work to enable users to perform CRUD operations on each model (Restaurant, Menu, Item).
+
 ## Materials needed
+
+* sequelize
+* star icons ☆ ★
 
 ## Lesson
 

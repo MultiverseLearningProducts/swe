@@ -80,7 +80,7 @@ person1['name']
       How can we assign the value of an array of parents to that property?
       Can you access the name of the two parents?
     </p>
-    <p>If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called <code>childOf</code> and it should return the names of that object's parrents.</p>
+    <p>If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called <code>childOf</code> and it should return the names of that object's parents.</p>
     <p>So in our function, we want to be able to access the parents array of itself. To do this we use the <code>this</code> keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this.</p>
     <pre><code class="language-javascript">function () {
   return this.parents.map(parent => parent.name).join(' &#x26; ') || "parents unknown"

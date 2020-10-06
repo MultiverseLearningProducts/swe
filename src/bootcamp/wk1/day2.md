@@ -84,9 +84,9 @@ This process has us write the test first. It should fail. Then we write the code
 
 Can you use TDD to recreate the family tree that you previously constructed? Only now there should be a set of tests that you can run to prove your family tree is constructed correctly.
 
-<hr/>
+----
 
-# <a name="lesson2">Lesson 2 - Airports</a>
+# Lesson 2 - Airports
 
 ## Learning Objectives
 

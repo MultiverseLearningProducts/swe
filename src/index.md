@@ -8,26 +8,26 @@
 * Bootcamp
     + Week 1
         - [Day 1](/swe/bootcamp/wk1/day1.html)
-        - [Day 3](/swe/bootcamp/wk1/day3.html)
         - [Day 2](/swe/bootcamp/wk1/day2.html)
+        - [Day 3](/swe/bootcamp/wk1/day3.html)
         - [Day 4](/swe/bootcamp/wk1/day4.html)
         - [Day 5](/swe/bootcamp/wk1/day5.html)
     + Week 2
         - [Day 1](/swe/bootcamp/wk2/day1.html)
-        - [Day 3](/swe/bootcamp/wk2/day3.html)
         - [Day 2](/swe/bootcamp/wk2/day2.html)
+        - [Day 3](/swe/bootcamp/wk2/day3.html)
         - [Day 4](/swe/bootcamp/wk2/day4.html)
         - [Day 5](/swe/bootcamp/wk2/day5.html)
     + Week 3
         - [Day 1](/swe/bootcamp/wk3/day1.html)
-        - [Day 3](/swe/bootcamp/wk3/day3.html)
         - [Day 2](/swe/bootcamp/wk3/day2.html)
+        - [Day 3](/swe/bootcamp/wk3/day3.html)
         - [Day 4](/swe/bootcamp/wk3/day4.html)
         - [Day 5](/swe/bootcamp/wk3/day5.html)
     + Week 4
         - [Day 1](/swe/bootcamp/wk4/day1.html)
-        - [Day 3](/swe/bootcamp/wk4/day3.html)
         - [Day 2](/swe/bootcamp/wk4/day2.html)
+        - [Day 3](/swe/bootcamp/wk4/day3.html)
         - [Day 4](/swe/bootcamp/wk4/day4.html)
         - [Day 5](/swe/bootcamp/wk4/day5.htm)
     + Week 5

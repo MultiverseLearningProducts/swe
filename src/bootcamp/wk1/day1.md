@@ -93,7 +93,7 @@ How can we create a parents property on our person?
 How can we assign the value of an array of parents to that property?
 Can you access the name of the two parents?
 
-If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called `childOf` and it should return the names of that object's parrents.
+If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called `childOf` and it should return the names of that object's parents.
 
 So in our function, we want to be able to access the parents array of itself. To do this we use the `this` keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this.
 

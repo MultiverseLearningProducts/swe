@@ -13,7 +13,7 @@
     <h1>Bootcamp > Week 3 > Day 3</h1>
     <h2>Overview of the day</h2>
     <hr>
-    <h2>Lesson 1 - The box model</h2>
+    <h2>Lesson 1 - The Box Model</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Style the background properties of an html element</li>
@@ -29,7 +29,7 @@
     </ul>
     <h2>Lesson</h2>
     <p>Previously we considered the layout of all the elements on our page. Now we need to consider the individual components. To really get to grips with styling html using css you need to study and understand the box model.</p>
-    <h3>The box model</h3>
+    <h3>The Box Model</h3>
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>We are creating a card element. We want to display an image in our card. The issue we face is that our different images are different sizes, yet we want them all to fit in our card nicely regardless. The trick that lots of developers use to accomplish this is use the <code>background-image</code> property. Setting an image as a background image in CSS gives us flexible sizing and cropping capabilities. This is very useful when our content is dynamic and we have images of varying sizes to deal with.</p>
     <h3>Background-image</h3>
@@ -100,7 +100,7 @@
 </code></pre>
     <p>Like before we add a new route, but in the string definition of the route we indicate a route parameter <code>/:id</code> called 'id'. We can now read that value in our route handler. What do you think we are going to do with this id?</p>
     <h3>New template</h3>
-    <p>Before we get our data, lets just create the new template for this view. In the <code>views</code> folder add a file called <code>restaturant.handlebars</code>. Add some html so you know you have wired the route up to the template ok. Can you pass the correct arguments to your <code>res.render()</code>?</p>
+    <p>Before we get our data, lets just create the new template for this view. In the <code>views</code> folder add a file called <code>restaurant.handlebars</code>. Add some html so you know you have wired the route up to the template ok. Can you pass the correct arguments to your <code>res.render()</code>?</p>
     <p>Now we can focus on getting our data for this view.</p>
     <pre><code class="language-javascript">app.get('/restaurants/:id', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
@@ -130,7 +130,7 @@
     {{/each}}
 &#x3C;/section>
 </code></pre>
-    <p>Finally we have some menus, the fact we are using the same elements in the same order means our css is already being applied. The <code>&#x3C;dl></code> element is a 'discription list' you can read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">here</a>. To get the item name and price to line up nicely like below I am using flexbox. More about flexbox later...</p>
+    <p>Finally we have some menus, the fact we are using the same elements in the same order means our css is already being applied. The <code>&#x3C;dl></code> element is a 'description list' you can read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">here</a>. To get the item name and price to line up nicely like below I am using flexbox. More about flexbox later...</p>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/95021384-9caed100-0668-11eb-9fbc-9d93ea06a54b.jpg" alt="flexbox example">
     </p>
@@ -142,7 +142,7 @@
 </code></pre>
     <h2>Assignment</h2>
     <ul>
-      <li>Create the route and template to veiw a single restaurant.</li>
+      <li>Create the route and template to view a single restaurant.</li>
       <li>Include a "back" or "main menu" button on your page.</li>
       <li>Render the menus, and the menu items in a grid on the page.</li>
       <li>Create a hero image for the page like below.</li>
