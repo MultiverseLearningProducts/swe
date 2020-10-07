@@ -54,6 +54,7 @@ article header {
     background-position: center center;
 }
 ```
+Flexbox is really powerful when styling smaller components. Once a parent element is `display:flex` it's behavior changes. Now items line up in a row. You can change this flex-direction to column. The beauty of flex is being able to have elements fill (or flex) arbitrary space. We can also position elements along the flex axis.
 
 ## Assignment
 

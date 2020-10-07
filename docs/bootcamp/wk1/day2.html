@@ -136,9 +136,9 @@ console.log(bag.weight) // 16
     <p><code>expect(new Bag()).toThrowError('bag must have a weight')</code></p>
     <p>It would be like calling expect with <code>Error</code> and then expecting the Error to throw (which it wont, it's too late the trap has been sprung). You'll need to update your Bag class to throw an error if no weight is passed into your constructor. Below is the syntax to throw an error.</p>
     <p><code>throw new Error('some error message in here')</code></p>
-    <p>Can you stop the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
+    <p>Can you spot the <code>new</code> keyword above? What do you think that is doing in the Error class definition?</p>
     <h3>Bags belong to a Passenger</h3>
-    <p>Our airport system has bags. We also need passengers. Lets make a Passenger class. Passengers should have:</p>
+    <p>Our airport system has bags. We also need passengers. Let's make a Passenger class. Passengers should have:</p>
     <ol>
       <li>A name</li>
       <li>Bags</li>
@@ -174,7 +174,8 @@ module.exports = Passenger
       <li>a Plane should also have a destination that is an Airport name</li>
       <li>Create an Airport class</li>
       <li>Airports should have a name</li>
-      <li>Airports should have <code>planes</code></li>
+      <li>instances of an Airport should have a function to <code>land</code> planes</li>
+      <li>One test should assert you have an airport, with a plane, on the plane are passengers &#x26; you can read the weight of one of the bags of a passenger</li>
     </ol>
     <p>Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane.</p>
     <p><a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a></p>

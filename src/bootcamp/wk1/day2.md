@@ -165,11 +165,11 @@ It would be like calling expect with `Error` and then expecting the Error to thr
 
 `throw new Error('some error message in here')`
 
-Can you stop the `new` keyword above? What do you think that is doing in the Error class definition?
+Can you spot the `new` keyword above? What do you think that is doing in the Error class definition?
 
 ### Bags belong to a Passenger
 
-Our airport system has bags. We also need passengers. Lets make a Passenger class. Passengers should have:
+Our airport system has bags. We also need passengers. Let's make a Passenger class. Passengers should have:
 
 1. A name
 2. Bags
@@ -211,7 +211,8 @@ Now we have passengers with bags, they are ready to board their flight! Can you:
 1. a Plane should also have a destination that is an Airport name
 1. Create an Airport class
 1. Airports should have a name
-1. Airports should have `planes`
+1. instances of an Airport should have a function to `land` planes
+1. One test should assert you have an airport, with a plane, on the plane are passengers & you can read the weight of one of the bags of a passenger
 
 Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane. 
 
