@@ -20,7 +20,7 @@
 
 ## Materials needed
 
-* You need [this file](https://github.com/mwgg/Airports/blob/master/airports.json) saved in your airports project folder
+* You need [this file](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) saved in your airports project folder
 
 ## Lesson
 
