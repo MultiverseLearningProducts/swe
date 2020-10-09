@@ -137,6 +137,7 @@ getInfo(callback) {
       <li>Use the three different ways of forming async functions in the Airport class</li>
       <li>write async tests for each version in Jest</li>
     </ul>
+    <hr>
     <h2>Lesson 2 - The Event Loop</h2>
     <h2>Learning Objectives</h2>
     <ul>
@@ -154,11 +155,11 @@ getInfo(callback) {
     <h2>Lesson</h2>
     <p>Javascript is a single threaded runtime. Single threaded means one thing at a time. In reality that means one stack.</p>
     <h3>What is the stack?</h3>
-    <p>The stack is a data structure in the runtime that functions to organise the running or 'execution' of your code.</p>
+    <p>The stack is a data structure in the runtime of javascript that functions to organise the running or 'execution' of your code.</p>
     <p>
       <img src="https://miro.medium.com/max/1280/0*SESFJYWU5a-3XM9m.gif" alt="an animation of a stack">
     </p>
-    <p>Last on first off. Imagine a stick over which you can place hoops. To get to the bottom hoop, all the other hoops above it have to come off first.</p>
+    <p>Last on first off. Imagine a stick over which you can place hoops. To get to the bottom hoop, all the other hoops have to come off first.</p>
     <p>
       <img src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&#x26;ASIN=B000U02LXY&#x26;Format=_SL250_&#x26;ID=AsinImage&#x26;MarketPlace=US&#x26;ServiceVersion=20070822&#x26;WS=1&#x26;tag=toy-ideas-20&#x26;language=en_US" alt="stack of hoops">.
     </p>
@@ -217,7 +218,7 @@ hello()
       Can you explain what is going on here? What other code might cause a max call stack size exceeded (stack overflow)?
     </p>
     <h3>Async and the task que</h3>
-    <p>In addition to the stack lets imagine another data structure a 'pending callback' que. We have seen that async functions get called, but don't return their values straight away. So you can imagine those async functions on the stack get put on, then popped off. We saw this in the example of the async Jest test before we used the <code>done</code> callback. However these async functions are recognised by Node.js so it places the callback function into another stack structure called the 'pending callback phase' and then polls (regularly checks) the computer for the completion of the reading from disc operation.</p>
+    <p>In addition to the stack lets imagine another data structure a 'pending callback' que. We have seen that async functions get called, but don't return their values straight away. So you can imagine those async functions on the stack get put on, then popped off. We saw this in the example of the async Jest test before we used the <code>done</code> callback. However these async functions are recognized by Node.js so it places the callback function into another stack structure called the 'pending callback phase' and then polls (regularly checks) the computer for the completion of the reading from disc operation.</p>
     <p>When the 'poll phase' receives an event indicating that the content of the file has been read into memory, it moves the pending callback back onto the stack the next time that the stack is emptied. It waits for the stack to be empty, because otherwise it would randomly interrupt the execution of whatever sequence of function calls were queued up on the stack.</p>
     <p>Below is an example.</p>
     <p>
