@@ -12,23 +12,611 @@
   <body>
     <h1>Bootcamp > Week 4 > Day 1</h1>
     <h2>Overview of the day</h2>
+    <p>Today we are turning our attention to the Browser. Modern web applications are powered by javascript. There are lots of popular javascript frameworks like; React, Angular, Vue and others that help to organise and support building applications in a browser.</p>
+    <p>We are going to look at a micro-framework call <a href="https://apprun.js.org/">AppRun</a>. I have selected this framework because of the design pattern it implements. It mimics the design of React, Elm and to some degree Vue and Angular. Learn this pattern of event driven programming and you'll feel at home as you pick up React or Elm.</p>
     <hr>
-    <h2>Lesson ? - ???</h2>
+    <h2>Lesson 1 - The Event Object</h2>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>understand how the <code>event</code> object is 'injected' into event handlers</li>
+      <li>add event listeners to HTML elements</li>
+      <li>create event handlers in javascript and attach them to event listeners</li>
+    </ul>
     <h2>Before we start</h2>
+    <ul>
+      <li>You will need a new empty project</li>
+      <li>Create a index.html, style.css and main.js</li>
+    </ul>
     <h2>Materials needed</h2>
+    <ul>
+      <li>You just need your html file and a browser</li>
+    </ul>
     <h2>Lesson</h2>
+    <p>First of all how can you run javascript in the browser? There are 2 main ways:</p>
+    <h3>Inline javascript</h3>
+    <p>You can write javascript in an HTML file. You enclose your javascript in a <code>&#x3C;script></code> tag. As the page loads in the browser the HTML file is read from top to bottom, and any javascript in a <code>&#x3C;script></code> tag is executed when the page loads.</p>
+    <p>Often times there is javascript included like this, for example the Google analytics function is often included inline in an HTML file.</p>
+    <h3>Loaded from a source</h3>
+    <p>You can load javascript from one or more files. When your javascript file has been loaded by the page, it will be executed. The way to include javascript that is loaded from an external file is to use the <code>&#x3C;script></code> tag and include the <code>src</code> HTML attribute with a URL as it's value. For example:</p>
+    <pre><code class="language-html">&#x3C;script src="/main.js">&#x3C;/script>
+</code></pre>
+    <p>The line above will load and execute our <code>main.js</code> file. The final consideration for now is where and when our javascript is loaded.</p>
+    <h4>🐘 Remember HTML files are read from the top down</h4>
+    <p>If we have libraries, modules or 3rd party javascript that we want to load these usually go in the <code>&#x3C;head></code> tag of the HTML page. Javascript that targets HTML elements (usually our app code) should be the final thing on the page to be included. In practice that means your app code should be included in a <code>&#x3C;script></code> tag just before the closing <code>&#x3C;/body></code> tag. Often app code will target an HTML element, and if that element has not been loaded our javascript will Error and Fail 😟.</p>
+    <h4>module.exports and require</h4>
+    <p>You can't use the file system in the browser. Things like <code>module.exports</code> and <code>require</code> are part of Node.js. We can load multiple <code>.js</code> files on our page, that is one way to breakup our code and make it easier to work with. However, you must be aware that each separate file is a separate round trip to the server, and you can't guarantee the order the files will be returned to you. You should be aware that each file that loads shared the Global scope of the window object; for example a class defined in one file, will be available for another file to access once they are both loaded on the page.</p>
+    <h4>Browserify</h4>
+    <p>You can use <code>module.exports</code> and <code>require</code> if you add a 'build step' to your frontend javascript. There are a few 'bundlers'; Webpack, rollup, parcel and browserify are the main ones. These bundlers will take javascript you have written in multiple files and 'bundle' them (with any dependencies) into one single file that you can server to the client. There is other set up that works best with these build steps (like nodemon) you need to re-pack or re-bundle your javascript after each file change you make. Tools like watchify can help with this, rollup has this built into it. Its called 'hot reloading'.</p>
+    <h3>The Event Object</h3>
+    <p>Javascript's main primitive is the <code>Object</code>. Lets start to learn about javascript in the browser by understanding the Event object. We can target parts of the HTML DOM (Document Object Model) using javascript HTML attributes. For example lets create a simple HTML button that triggers a javascript <code>Event</code> object.</p>
+    <pre><code class="language-html">&#x3C;button onclick="console.log(event)">Click me&#x3C;/button>
+</code></pre>
+    <p>What kind of <code>Event</code> is triggered? What else can you learn about the event that just happened? Where on earth does the <code>event</code> that we are console.logging come from anyway?</p>
+    <p>The <code>event</code> object (and it must be named 'event' not 'evt', 'e' or anything else) is injected by the browser. The event object is injected into every event handler. We are using the HTML attribute <code>onclick</code> and the value is a string that is the javascript to run upon that event.</p>
+    <p>We can also have a named function defined in our <code>main.js</code> file, and include that in the string of javascript that is run when the event is triggered.</p>
+    <pre><code class="language-javascript">function myButtonHasBeenClicked(event) {
+    console.log(event)
+}
+</code></pre>
+    <pre><code class="language-html">&#x3C;button onclick="myButtonHasBeenClicked(event)">Click me&#x3C;/button>
+</code></pre>
+    <h3>Event Listeners &#x26; Event Handlers</h3>
+    <p><code>onclick</code> is an 'event listener'. It listens for clicks. An event listener will have a companion called an 'event handler'. <code>myButtonHasBeenClicked</code> is an 'event handler'. There are other ways to attach event listeners to elements in the DOM. For example the code below is another way to do the same thing we are doing above, but just using javascript.</p>
+    <pre><code class="language-javascript">const button = document.getElementById('my-button')
+button.addEventListener('click', myButtonHasBeenClicked)
+</code></pre>
+    <p>The button has an id of 'my-button' that enables me to target the HTML element. Then instead of adding the event listener inline, we add it to the instance of the element in javascript. I am calling <code>addEventListener</code> with 2 arguments, a string that is the name of the type of listener, and the second argument is the function to call (with the event object) to handle the event.</p>
+    <p>You can remove an event listener:</p>
+    <pre><code class="language-javascript">button.removeEventListener('click', myButtonHasBeenClicked)
+</code></pre>
+    <h3>Types of listeners</h3>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">type</th>
+          <th align="left">description</th>
+          <th>Belongs To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">abort</td>
+          <td align="left">The event occurs when the loading of a media is aborted</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">afterprint</td>
+          <td align="left">The event occurs when a page has started printing, or if the print dialogue box has been closed</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">animationend</td>
+          <td align="left">The event occurs when a CSS animation has completed</td>
+          <td>AnimationEvent</td>
+        </tr>
+        <tr>
+          <td align="left">animationiteration</td>
+          <td align="left">The event occurs when a CSS animation is repeated</td>
+          <td>AnimationEvent</td>
+        </tr>
+        <tr>
+          <td align="left">animationstart</td>
+          <td align="left">The event occurs when a CSS animation has started</td>
+          <td>AnimationEvent</td>
+        </tr>
+        <tr>
+          <td align="left">beforeprint</td>
+          <td align="left">The event occurs when a page is about to be printed</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">beforeunload</td>
+          <td align="left">The event occurs before the document is about to be unloaded</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">blur</td>
+          <td align="left">The event occurs when an element loses focus</td>
+          <td>FocusEvent</td>
+        </tr>
+        <tr>
+          <td align="left">canplay</td>
+          <td align="left">The event occurs when the browser can start playing the media (when it has buffered enough to begin)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">canplaythrough</td>
+          <td align="left">The event occurs when the browser can play through the media without stopping for buffering</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">change</td>
+          <td align="left">The event occurs when the content of a form element, the selection, or the checked state have changed (for <code>&#x3C;input></code>, <code>&#x3C;select></code>, and <code>&#x3C;textarea></code>)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">click</td>
+          <td align="left">The event occurs when the user clicks on an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">contextmenu</td>
+          <td align="left">The event occurs when the user right-clicks on an element to open a context menu</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">copy</td>
+          <td align="left">The event occurs when the user copies the content of an element</td>
+          <td>ClipboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">cut</td>
+          <td align="left">The event occurs when the user cuts the content of an element</td>
+          <td>ClipboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dblclick</td>
+          <td align="left">The event occurs when the user double-clicks on an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">drag</td>
+          <td align="left">The event occurs when an element is being dragged</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dragend</td>
+          <td align="left">The event occurs when the user has finished dragging an element</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dragenter</td>
+          <td align="left">The event occurs when the dragged element enters the drop target</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dragleave</td>
+          <td align="left">The event occurs when the dragged element leaves the drop target</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dragover</td>
+          <td align="left">The event occurs when the dragged element is over the drop target</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">dragstart</td>
+          <td align="left">The event occurs when the user starts to drag an element</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">drop</td>
+          <td align="left">The event occurs when the dragged element is dropped on the drop target</td>
+          <td>DragEvent</td>
+        </tr>
+        <tr>
+          <td align="left">durationchange</td>
+          <td align="left">The event occurs when the duration of the media is changed</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">ended</td>
+          <td align="left">The event occurs when the media has reach the end (useful for messages like "thanks for listening")</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">error</td>
+          <td align="left">The event occurs when an error occurs while loading an external file</td>
+          <td>ProgressEvent, UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">focus</td>
+          <td align="left">The event occurs when an element gets focus</td>
+          <td>FocusEvent</td>
+        </tr>
+        <tr>
+          <td align="left">focusin</td>
+          <td align="left">The event occurs when an element is about to get focus</td>
+          <td>FocusEvent</td>
+        </tr>
+        <tr>
+          <td align="left">focusout</td>
+          <td align="left">The event occurs when an element is about to lose focus</td>
+          <td>FocusEvent</td>
+        </tr>
+        <tr>
+          <td align="left">fullscreenchange</td>
+          <td align="left">The event occurs when an element is displayed in fullscreen mode</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">fullscreenerror</td>
+          <td align="left">The event occurs when an element can not be displayed in fullscreen mode</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">hashchange</td>
+          <td align="left">The event occurs when there has been changes to the anchor part of a URL</td>
+          <td>HashChangeEvent</td>
+        </tr>
+        <tr>
+          <td align="left">input</td>
+          <td align="left">The event occurs when an element gets user input</td>
+          <td>InputEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">invalid</td>
+          <td align="left">The event occurs when an element is invalid</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">keydown</td>
+          <td align="left">The event occurs when the user is pressing a key</td>
+          <td>KeyboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">keypress</td>
+          <td align="left">The event occurs when the user presses a key</td>
+          <td>KeyboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">keyup</td>
+          <td align="left">The event occurs when the user releases a key</td>
+          <td>KeyboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">load</td>
+          <td align="left">The event occurs when an object has loaded</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">loadeddata</td>
+          <td align="left">The event occurs when media data is loaded</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">loadedmetadata</td>
+          <td align="left">The event occurs when meta data (like dimensions and duration) are loaded</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">loadstart</td>
+          <td align="left">The event occurs when the browser starts looking for the specified media</td>
+          <td>ProgressEvent</td>
+        </tr>
+        <tr>
+          <td align="left">message</td>
+          <td align="left">The event occurs when a message is received through the event source</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">mousedown</td>
+          <td align="left">The event occurs when the user presses a mouse button over an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mouseenter</td>
+          <td align="left">The event occurs when the pointer is moved onto an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mouseleave</td>
+          <td align="left">The event occurs when the pointer is moved out of an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mousemove</td>
+          <td align="left">The event occurs when the pointer is moving while it is over an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mouseover</td>
+          <td align="left">The event occurs when the pointer is moved onto an element, or onto one of its children</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mouseout</td>
+          <td align="left">The event occurs when a user moves the mouse pointer out of an element, or out of one of its children</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mouseup</td>
+          <td align="left">The event occurs when a user releases a mouse button over an element</td>
+          <td>MouseEvent</td>
+        </tr>
+        <tr>
+          <td align="left">mousewheel</td>
+          <td align="left">Deprecated. Use the wheel event instead</td>
+          <td>WheelEvent</td>
+        </tr>
+        <tr>
+          <td align="left">offline</td>
+          <td align="left">The event occurs when the browser starts to work offline</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">online</td>
+          <td align="left">The event occurs when the browser starts to work online</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">open</td>
+          <td align="left">The event occurs when a connection with the event source is opened</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">pagehide</td>
+          <td align="left">The event occurs when the user navigates away from a webpage</td>
+          <td>PageTransitionEvent</td>
+        </tr>
+        <tr>
+          <td align="left">pageshow</td>
+          <td align="left">The event occurs when the user navigates to a webpage</td>
+          <td>PageTransitionEvent</td>
+        </tr>
+        <tr>
+          <td align="left">paste</td>
+          <td align="left">The event occurs when the user pastes some content in an element</td>
+          <td>ClipboardEvent</td>
+        </tr>
+        <tr>
+          <td align="left">pause</td>
+          <td align="left">The event occurs when the media is paused either by the user or programmatically</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">play</td>
+          <td align="left">The event occurs when the media has been started or is no longer paused</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">playing</td>
+          <td align="left">The event occurs when the media is playing after having been paused or stopped for buffering</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">popstate</td>
+          <td align="left">The event occurs when the window's history changes</td>
+          <td>PopStateEvent</td>
+        </tr>
+        <tr>
+          <td align="left">progress</td>
+          <td align="left">The event occurs when the browser is in the process of getting the media data (downloading the media)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">ratechange</td>
+          <td align="left">The event occurs when the playing speed of the media is changed</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">resize</td>
+          <td align="left">The event occurs when the document view is resized</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">reset</td>
+          <td align="left">The event occurs when a form is reset</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">scroll</td>
+          <td align="left">The event occurs when an element's scrollbar is being scrolled</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">search</td>
+          <td align="left">The event occurs when the user writes something in a search field (for <code>&#x3C;input="search"></code>)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">seeked</td>
+          <td align="left">The event occurs when the user is finished moving/skipping to a new position in the media</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">seeking</td>
+          <td align="left">The event occurs when the user starts moving/skipping to a new position in the media</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">select</td>
+          <td align="left">The event occurs after the user selects some text (for <code>&#x3C;input></code> and <code>&#x3C;textarea></code>)</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">show</td>
+          <td align="left">The event occurs when a <code>&#x3C;menu></code> element is shown as a context menu</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">stalled</td>
+          <td align="left">The event occurs when the browser is trying to get media data, but data is not available</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">storage</td>
+          <td align="left">The event occurs when a Web Storage area is updated</td>
+          <td>StorageEvent</td>
+        </tr>
+        <tr>
+          <td align="left">submit</td>
+          <td align="left">The event occurs when a form is submitted</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">suspend</td>
+          <td align="left">The event occurs when the browser is intentionally not getting media data</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">timeupdate</td>
+          <td align="left">The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">toggle</td>
+          <td align="left">The event occurs when the user opens or closes the <code>&#x3C;details></code> element</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">touchcancel</td>
+          <td align="left">The event occurs when the touch is interrupted</td>
+          <td>TouchEvent</td>
+        </tr>
+        <tr>
+          <td align="left">touchend</td>
+          <td align="left">The event occurs when a finger is removed from a touch screen</td>
+          <td>TouchEvent</td>
+        </tr>
+        <tr>
+          <td align="left">touchmove</td>
+          <td align="left">The event occurs when a finger is dragged across the screen</td>
+          <td>TouchEvent</td>
+        </tr>
+        <tr>
+          <td align="left">touchstart</td>
+          <td align="left">The event occurs when a finger is placed on a touch screen</td>
+          <td>TouchEvent</td>
+        </tr>
+        <tr>
+          <td align="left">transitionend</td>
+          <td align="left">The event occurs when a CSS transition has completed</td>
+          <td>TransitionEvent</td>
+        </tr>
+        <tr>
+          <td align="left">unload</td>
+          <td align="left">The event occurs once a page has unloaded (for <code>&#x3C;body></code>)</td>
+          <td>UiEvent, Event</td>
+        </tr>
+        <tr>
+          <td align="left">volumechange</td>
+          <td align="left">The event occurs when the volume of the media has changed (includes setting the volume to "mute")</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">waiting</td>
+          <td align="left">The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data)</td>
+          <td>Event</td>
+        </tr>
+        <tr>
+          <td align="left">wheel</td>
+          <td align="left">The event occurs when the mouse wheel rolls up or down over an element</td>
+          <td>WheelEvent</td>
+        </tr>
+      </tbody>
+    </table>
     <h2>Assignment</h2>
+    <p>Please take a little time for yourself to create listeners and events for as many examples in the table above as you can in the time between sessions. Begin by trying some of the ones you are most interested in. We don't expect you to trigger each different type of event, but you should know what is possible.</p>
     <hr>
-    <h2>Lesson ? - ???</h2>
+    <h2>Lesson 2 - Frameworks</h2>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>create an example of the state, view, update design pattern</li>
+    </ul>
     <h2>Before we start</h2>
+    <ul>
+      <li>You need an html file</li>
+    </ul>
     <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://drive.google.com/file/d/1iubYsseCr82Qlo_3pKlAVy0uKVIfMx-o/view?usp=sharing">AppRun Manual</a></li>
+    </ul>
     <h2>Lesson</h2>
+    <p>Developers use frameworks to help them organise their code. When lots of people work on a codebase having a pattern to follow makes it much easier for team members to join and add to the code. We are going to use a simple framework called AppRun. If you can use AppRun you will find learning React or Elm much easier.</p>
+    <p>Before we look at the framework lets think about the design pattern that underpins React, Elm and AppRun.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95664104-a2ab2300-0b3c-11eb-8afd-233463f0218d.png" alt="state view update pattern">
+    </p>
+    <p>Both Elm and Redux follow the same pattern. Your app has state (this is the data Model). You app renders a view of that state. The view can trigger updates to some or all of the state. That state update triggers a re-render and your view is redrawn to represent the new state. This kind of programming style is called 'event driven'. It is 'declarative' like a spreadsheet.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95664166-3f6dc080-0b3d-11eb-9885-a55e42acf475.gif" alt="example of a spreadsheet updating">
+    </p>
+    <p>You know how a spreadsheet works. Once your spreadsheet is all setup (or 'declared') if you change a value in one cell it can trigger updates to other cells that depend on that value. AppRun works like this.</p>
+    <h3>Load AppRun</h3>
+    <p>Load the AppRun library in a <code>&#x3C;script></code> tag from <code>unpkg.com</code> see below. You need an HTML element into which your app will be added. Your HTML page can be as simple as this. That is all the HTML we'll be writing in this file. Make yourself a <code>main.js</code> file for your javascript, and a stylesheet too if you want to make your app not look really offensive and brutal.</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html>
+    &#x3C;head>
+        &#x3C;link rel="stylesheet" href="style.css"/>
+        &#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0">
+        &#x3C;script src="https://unpkg.com/apprun/dist/apprun-html.js">&#x3C;/script>
+    &#x3C;/head>
+    &#x3C;body>
+        &#x3C;main id="app">&#x3C;/main>
+        &#x3C;script src="main.js">&#x3C;/script>
+    &#x3C;/body>
+&#x3C;/html>
+</code></pre>
+    <h3>State</h3>
+    <p>State in AppRun is (funnily enough) a plain javascript object. ALL the data in our app belongs here. We are going to make a quick todo list app, that will help us understand how to use AppRun. Our state is going to be a simple object which holds all our tasks.</p>
+    <pre><code class="language-javascript">const state = {
+    tasks: []
+}
+</code></pre>
+    <h3>View</h3>
+    <p>To display the tasks we need a <code>view</code> function. This function will receive the <code>state</code> object and should return a string of HTML. We are going to write HTML in our javascript file. This is like the templating we did with Handlebars, only its just javascript string interpolation. We need a list and a form (like every app you are likely to ever work on).</p>
+    <pre><code class="language-javascript">const view = state => `
+    &#x3C;section>
+        &#x3C;h2>Tasks&#x3C;/h2>
+        &#x3C;ul>
+            ${state.tasks.map(task => `&#x3C;li>${task.text}&#x3C;/li>`).join("")}
+        &#x3C;/ul>
+    &#x3C;section>
+    &#x3C;section>
+        &#x3C;form>
+            &#x3C;input name="text" placeholder="Add a task" />
+            &#x3C;button>Add&#x3C;/button>
+        &#x3C;/form>
+    &#x3C;/section>
+`
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95664952-e6edf180-0b43-11eb-9fc1-8cbda429b42d.png" alt="empty tasks">
+    </p>
+    <p>Remember the view function is just javascript so you can add branching logic, iteration, calculation and do other stunts, just end up with a string of valid HTML that will get added to your root HTML node, for us that is our <code>&#x3C;main id="app"></code> element.</p>
+    <h3>Update</h3>
+    <p>We want to be able to add a task. This requires us to capture the form submission, get the form data, create a task and add that into the state. Our update object will be the ONLY thing that interacts with the state. This is the most tricky part of AppRun to understand.</p>
+    <pre><code class="language-javascript">const update = {
+    add: (state, form) => {
+        const data = new FormData(form)
+        const task = {
+            id: window.crypto.getRandomNumber(new Uint8Array(2)).join("")
+            text: data.get('text'),
+            status: 0
+        }
+        state.tasks.push(task)
+        return state
+    }
+}
+</code></pre>
+    <p>What is going on here? We have a javascript object. The properties are the names of update functions. In the example above we have defined the 'add' update function. Every update function will receive the state as it's first argument. It is injected (like the event object). If we give our update function an argument, that will appear as the second argument. We pass in the form instance. Use <code>new FormData(form)</code> to de-serialize the form data, then create a new object that represents a task. I am generating a random id. You can play with <code>window.crypto.getRandomNumber(new Uint8Array(2))</code> in the browser console and see what it does. We then update the state, and finally as we must in each update function, we return the new version of the state.</p>
+    <p>This update will trigger a re-render of our view function.</p>
+    <h3>Event listeners</h3>
+    <p>For this to work we need to add an event listener to our view, and add the update function as the event handler.</p>
+    <pre><code class="language-html">&#x3C;section>
+    &#x3C;form onsubmit="app.run('add', this); return false;">
+        &#x3C;input name="text" placeholder="Add a task" />
+        &#x3C;button>Add&#x3C;/button>
+    &#x3C;/form>
+&#x3C;/section>
+</code></pre>
+    <p>What event are we listening for? Notice we call <code>app.run('add', this);</code> <em>this</em> is the form. We return <code>false</code> as this will prevent the default behavior of the form submission reloading the page! Will all this declared we are ready to initiate our app. Add the following to your <code>main.js</code></p>
+    <pre><code class="language-javascript">app.start('app', state, view, update)
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95664960-f66d3a80-0b43-11eb-995d-b86eaec0a4c3.png" alt="with tasks">
+    </p>
     <h2>Assignment</h2>
+    <ul>
+      <li>Implement the state -> view -> update design pattern</li>
+      <li>Can you complete the CRUD operations for each task?</li>
+      <li>Use the id property to make a status update to 1 indicating that the task has been completed.</li>
+      <li>Use the id property to delete a task, you should only be able to delete a task once it has been marked as done.</li>
+    </ul>
     <p>
       <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk#/day#.html">prev</a>|<a href="/swe/bootcamp/wk#/day#.html">next</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk3/day5.html">prev</a>|<a href="/swe/bootcamp/wk4/day2.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
   </body>
