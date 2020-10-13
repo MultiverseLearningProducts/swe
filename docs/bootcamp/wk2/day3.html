@@ -56,7 +56,12 @@ const db = new sqlite3.Database('./db.sqlite')
 </code></pre>
     <p>Once you have your query ready how do we run it? You can use the <code>run</code> function see below.</p>
     <pre><code class="language-javascript">db.run('YOUR SQL QUERY;', function (error) {
-    // this callback function runs after Node.js has run the query on sqlite3 database, and the database has emitted an event saying it's finished. In this callback function on the `this` context you can access the id of the last record you inserted. This will be useful later
+    /* this callback function runs after Node.js has 
+    run the query on sqlite3 database, and the database 
+    has emitted an event saying it's finished. In this 
+    callback function on the `this` context you can 
+    access the id of the last record you inserted. 
+    This will be useful later*/
     const id = this.lastID
 })
 </code></pre>
@@ -129,7 +134,10 @@ describe('SQLite3', () => {
     </ul>
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
-    <p>Practice what we have looked at so far. Begin by creating; a <code>restaurants.json</code> file, a <code>menus.json</code> file, a <code>items.json</code> file. Create for yourself a few restaurants, create menus for those restaurants and finally, make some items for the menus. This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
+    <p>Practice what we have looked at so far. Download some restaurant data from Github (run the following command in your project folder);</p>
+    <pre><code class="language-sh">curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
+</code></pre>
+    <p>This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
     <p><code>restaurants.json</code></p>
     <pre><code class="language-json">[
     {
@@ -157,7 +165,7 @@ describe('SQLite3', () => {
       <li>Write unit tests that verify your seed data has loaded into the in memory database ok.</li>
     </ul>
     <p>
-      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/160">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk2/day2.html">prev</a>|<a href="/swe/bootcamp/wk2/day4.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>

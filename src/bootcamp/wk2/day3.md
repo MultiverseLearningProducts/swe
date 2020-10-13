@@ -65,7 +65,12 @@ Once you have your query ready how do we run it? You can use the `run` function 
 
 ```javascript
 db.run('YOUR SQL QUERY;', function (error) {
-    // this callback function runs after Node.js has run the query on sqlite3 database, and the database has emitted an event saying it's finished. In this callback function on the `this` context you can access the id of the last record you inserted. This will be useful later
+    /* this callback function runs after Node.js has 
+    run the query on sqlite3 database, and the database 
+    has emitted an event saying it's finished. In this 
+    callback function on the `this` context you can 
+    access the id of the last record you inserted. 
+    This will be useful later*/
     const id = this.lastID
 })
 ```
@@ -158,7 +163,13 @@ describe('SQLite3', () => {
 
 ## Lesson
 
-Practice what we have looked at so far. Begin by creating; a `restaurants.json` file, a `menus.json` file, a `items.json` file. Create for yourself a few restaurants, create menus for those restaurants and finally, make some items for the menus. This is  called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.
+Practice what we have looked at so far. Download some restaurant data from Github (run the following command in your project folder);
+
+```sh
+curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
+```
+
+ This is  called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.
 
 `restaurants.json`
 ```json
@@ -189,5 +200,5 @@ Practice what we have looked at so far. Begin by creating; a `restaurants.json` 
 * Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is in the database in your Node.js script.
 * Write unit tests that verify your seed data has loaded into the in memory database ok.
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/160)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day2.html)|[next](/swe/bootcamp/wk2/day4.html)

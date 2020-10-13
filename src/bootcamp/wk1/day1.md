@@ -122,6 +122,6 @@ Once constructed you should be able to traverse from you to your grand-parents. 
 
 Commit your code into Github and share the link with your coach.
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/153)
 
 [main](/swe)|[next](/swe/bootcamp/wk1/day2.html)

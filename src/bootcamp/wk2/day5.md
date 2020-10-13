@@ -118,5 +118,5 @@ The `sequelize` library is build using promises, so we can use async await in ou
 * Configure the relationships between your models
 * Write tests that prove your relationships are all correctly connected
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/162)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day4.html)|

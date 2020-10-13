@@ -124,5 +124,5 @@ restaurant.menus[0].items[0].price // 12.50
 * Make sure you have tests that cover the functionality
 * Share your test coverage report with your coach (screen grab in Slack will be fine)
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/161)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day3.html)|[next](/swe/bootcamp/wk2/day5.html)

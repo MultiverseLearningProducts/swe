@@ -31,7 +31,7 @@ You have been asked to create a scooter hire system. Electric scooters need to b
 
 Use test driven development and create the classes and interactions that you feel capture this functionality.
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/157)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day4.html)|[next](/swe/bootcamp/wk2/day1.html)
 

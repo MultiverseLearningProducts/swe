@@ -282,7 +282,7 @@ app.post('/users', function createUser(request, response) {
 ```
 
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/156)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day3.html)|[next](/swe/bootcamp/wk1/day5.html)
 

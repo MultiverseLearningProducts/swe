@@ -216,7 +216,7 @@ Now we have passengers with bags, they are ready to board their flight! Can you:
 
 Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane. 
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/154)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day1.html)|[next](/swe/bootcamp/wk1/day3.html)
 

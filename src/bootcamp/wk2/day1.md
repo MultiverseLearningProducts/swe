@@ -109,7 +109,7 @@ Create a new project folder and use `npm init` to start a new Node.js app. Creat
 1. Create an Item and associate it with a Menu (Item should have a name and price)
 1. Sumbit your coverage report to your coach
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/158)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day5.html)|[next](/swe/bootcamp/wk2/day2.html)
 

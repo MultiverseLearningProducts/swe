@@ -145,7 +145,7 @@ Then run `npm run test:report` you are aiming for 100% test coverage. When you r
 
 This is interactive try clicking on one of the class definitions.
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/155)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)
 
