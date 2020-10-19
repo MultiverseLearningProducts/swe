@@ -196,7 +196,7 @@ Finally remove the `public/index.html` file as that will interfere with your `/`
 ## Assignment
 
 * Put all of this together and render out some dynamic content
-* Display the time of day on the `restaturants` page
+* Display the time of day on the `restaurants` page
 * Add a link to an about page
 * Create another route handler on your server `/about`
 * Create another template for your new `/about` page

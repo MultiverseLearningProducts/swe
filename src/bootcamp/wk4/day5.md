@@ -33,7 +33,7 @@ Mocha and chai are testing dependencies for cypress.
 
 ### What does cypress do?
 
-Have you been testing your app in the browser to make sure it works? Cypress can automate this for you. Encoding critical user journeys is incredibly valuable. It is much quicker than us clicking round the site.
+Have you been testing your app in the browser to make sure it works? Cypress can automate this for you. Encoding critical user journeys is incredibly valuable. It is much quicker than us clicking round the site. These journeys are then encoded and repeatable, and continuous integration tools can be set up to run these tests before each deployment.
 
 ### Getting started
 
@@ -83,4 +83,4 @@ Above we visit the page, get the `<input>` element, 'type' "New test task" into 
 * Encode these 2 journeys
 
 [attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
-[main](/swe)|[prev](/swe/bootcamp/wk#/day#.html)|[next](/swe/bootcamp/wk#/day#.html)
+[main](/swe)|[prev](/swe/bootcamp/wk4/day4.html)|[next](/swe/bootcamp/wk5/day1-5.html)
