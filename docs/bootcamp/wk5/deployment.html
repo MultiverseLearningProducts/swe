@@ -14,10 +14,10 @@
     <h2>Create a Heroku account</h2>
     <p><a href="https://id.heroku.com/login">https://heroku.com/</a></p>
     <h2>Create your Heroku app</h2>
-    <pre><code>heroku apps:create your_app_name --region eu
+    <pre><code class="language-sh">heroku apps:create your_app_name --region eu
 </code></pre>
     <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>.</p>
-    <pre><code>heroku addons:create heroku-postgresql:hobby-dev
+    <pre><code class="language-sh">heroku addons:create heroku-postgresql:hobby-dev
 </code></pre>
     <pre><code class="language-json">"engines": {
     "node": "14",
