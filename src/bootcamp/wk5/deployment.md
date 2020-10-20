@@ -1,5 +1,11 @@
 # Deploy your app
 
+## Create a Heroku account
+
+[https://heroku.com/](https://id.heroku.com/login)
+
+## Create your Heroku app
+
 ```
 heroku apps:create your_app_name --region eu
 ```
@@ -34,7 +40,7 @@ Then update your package.json to run the app in different settings with differen
 }
 ```
 Install the postgres driver
-```
+```sh
 npm install pg
 ```
 Update the sequelize config for different environments
@@ -49,6 +55,6 @@ const sequelize = process.env.NODE_ENV === 'production'
     : new Sequelize(connectionSettings[process.env.NODE_ENV])
 ```
 Commit your updates. Now you are ready to deploy your app.
-```
+```sh
 git push heroku master
 ```

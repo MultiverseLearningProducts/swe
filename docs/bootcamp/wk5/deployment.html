@@ -11,6 +11,9 @@
   </head>
   <body>
     <h1>Deploy your app</h1>
+    <h2>Create a Heroku account</h2>
+    <p><a href="https://id.heroku.com/login">https://heroku.com/</a></p>
+    <h2>Create your Heroku app</h2>
     <pre><code>heroku apps:create your_app_name --region eu
 </code></pre>
     <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>.</p>
@@ -37,7 +40,7 @@
 }
 </code></pre>
     <p>Install the postgres driver</p>
-    <pre><code>npm install pg
+    <pre><code class="language-sh">npm install pg
 </code></pre>
     <p>Update the sequelize config for different environments</p>
     <pre><code class="language-javascript">const connectionSettings = {
@@ -50,7 +53,7 @@ const sequelize = process.env.NODE_ENV === 'production'
     : new Sequelize(connectionSettings[process.env.NODE_ENV])
 </code></pre>
     <p>Commit your updates. Now you are ready to deploy your app.</p>
-    <pre><code>git push heroku master
+    <pre><code class="language-sh">git push heroku master
 </code></pre>
     <script src="/swe/prism.js"></script>
   </body>
