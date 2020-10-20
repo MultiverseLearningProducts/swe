@@ -6,11 +6,11 @@
 
 ## Create your Heroku app
 
-```
+```sh
 heroku apps:create your_app_name --region eu
 ```
 This will update your git remotes. Have a look using `git remote -v`. You have a new destination you can push code to; As well as `origin` you now have `heroku`.
-```
+```sh
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
