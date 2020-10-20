@@ -4,6 +4,10 @@
 
 [https://heroku.com/](https://id.heroku.com/login)
 
+## Install the Heroku CLI tool
+
+[https://devcenter.heroku.com/](https://devcenter.heroku.com/articles/heroku-cli)
+
 ## Create your Heroku app
 
 ```sh
