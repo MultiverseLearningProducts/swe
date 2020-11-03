@@ -5,8 +5,7 @@
 [https://heroku.com/](https://id.heroku.com/login)
 
 You will need to add your ssh key to your heroku account settings:
-
-
+Heroku is a lot like using git. Heroku expects your project to be in version control. You'll end up being able to deploy new versions of your app as easily as you can push code to git. `git push heroku master` will package your code (into a "slug"), create the environment (with any addons you might have installed), then run your app in a micro lite virtual machine (or dyno).
 
 ## Install the Heroku CLI tool
 
@@ -17,7 +16,7 @@ You will need to add your ssh key to your heroku account settings:
 ```sh
 heroku apps:create your_app_name --region eu
 ```
-This will update your git remotes. Have a look using `git remote -v`. You have a new destination you can push code to; As well as `origin` you now have `heroku`.
+This will update your git remotes. Have a look using `git remote -v`. You have a new destination you can push code to; As well as `origin` you now have `heroku`. Next add your database, it will be a postgres database that Heroku will provision and attach to your app. The address of the database is then injected into your environmental variables as DATABASE_URL.
 ```sh
 heroku addons:create heroku-postgresql:hobby-dev
 ```

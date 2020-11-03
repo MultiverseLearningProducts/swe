@@ -13,13 +13,16 @@
     <h1>Deploy your app</h1>
     <h2>Create a Heroku account</h2>
     <p><a href="https://id.heroku.com/login">https://heroku.com/</a></p>
-    <p>You will need to add your ssh key to your heroku account settings:</p>
+    <p>
+      You will need to add your ssh key to your heroku account settings:
+      Heroku is a lot like using git. Heroku expects your project to be in version control. You'll end up being able to deploy new versions of your app as easily as you can push code to git. <code>git push heroku master</code> will package your code (into a "slug"), create the environment (with any addons you might have installed), then run your app in a micro lite virtual machine (or dyno).
+    </p>
     <h2>Install the Heroku CLI tool</h2>
     <p><a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/</a></p>
     <h2>Create your Heroku app</h2>
     <pre><code class="language-sh">heroku apps:create your_app_name --region eu
 </code></pre>
-    <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>.</p>
+    <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>. Next add your database, it will be a postgres database that Heroku will provision and attach to your app. The address of the database is then injected into your environmental variables as DATABASE_URL.</p>
     <pre><code class="language-sh">heroku addons:create heroku-postgresql:hobby-dev
 </code></pre>
     <p>Add the "engines" configuration to your <code>package.json</code> so when Heroku installs your app in it's container it knows which version of node and npm to use.</p>
