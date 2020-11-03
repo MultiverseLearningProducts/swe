@@ -13,6 +13,7 @@
     <h1>Deploy your app</h1>
     <h2>Create a Heroku account</h2>
     <p><a href="https://id.heroku.com/login">https://heroku.com/</a></p>
+    <p>You will need to add your ssh key to your heroku account settings:</p>
     <h2>Install the Heroku CLI tool</h2>
     <p><a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/</a></p>
     <h2>Create your Heroku app</h2>
@@ -21,12 +22,13 @@
     <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>.</p>
     <pre><code class="language-sh">heroku addons:create heroku-postgresql:hobby-dev
 </code></pre>
+    <p>Add the "engines" configuration to your <code>package.json</code> so when Heroku installs your app in it's container it knows which version of node and npm to use.</p>
     <pre><code class="language-json">"engines": {
     "node": "14",
     "npm": "6"
 }
 </code></pre>
-    <p>Heroku is an ephemeral environment. Heroku will decide what PORT to run your app on. You must expect an environmental variable called PORT and you need to start your app on that port.</p>
+    <p>Heroku is an ephemeral environment. Heroku will decide what PORT to run your app on. You must expect an environmental variable called PORT and you need to start your server on that port. Have a look at the example below of how to read the environmental variable called PORT.</p>
     <pre><code class="language-javascript">app.listen(process.env.PORT, () => {
     sequelize.sync(() => {
         console.log('Kanban app running on port', process.env.PORT)

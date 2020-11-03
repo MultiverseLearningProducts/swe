@@ -4,6 +4,10 @@
 
 [https://heroku.com/](https://id.heroku.com/login)
 
+You will need to add your ssh key to your heroku account settings:
+
+
+
 ## Install the Heroku CLI tool
 
 [https://devcenter.heroku.com/](https://devcenter.heroku.com/articles/heroku-cli)
@@ -17,16 +21,14 @@ This will update your git remotes. Have a look using `git remote -v`. You have a
 ```sh
 heroku addons:create heroku-postgresql:hobby-dev
 ```
-
+Add the "engines" configuration to your `package.json` so when Heroku installs your app in it's container it knows which version of node and npm to use.
 ```json
 "engines": {
     "node": "14",
     "npm": "6"
 }
 ```
-
-Heroku is an ephemeral environment. Heroku will decide what PORT to run your app on. You must expect an environmental variable called PORT and you need to start your app on that port.
-
+Heroku is an ephemeral environment. Heroku will decide what PORT to run your app on. You must expect an environmental variable called PORT and you need to start your server on that port. Have a look at the example below of how to read the environmental variable called PORT.
 ```javascript
 app.listen(process.env.PORT, () => {
     sequelize.sync(() => {
