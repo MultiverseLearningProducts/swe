@@ -22,4 +22,4 @@ will use [Postman](https://www.postman.com/) to call some RESTful APIs and look 
 # Lesson 1
 
 [next](/swe/mod1/wk1/day2.html)
-[main](/swe
+[main](/swe)
