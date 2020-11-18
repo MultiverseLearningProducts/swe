@@ -1,20 +1,21 @@
 # Mod 1 > Week 2 > Day 1
 
 ## Overview of the day
-TODO - remaining topics for this week could include:
-* CORS
-* Input validation
-* Securing an API (Basic & OAuth)
-* Overview of API Gateways such as Mashery, Apigee etc
-* Etags & Hateoas?
+Today we are going to learn about how to use Basic Auth to secure our API. 
 
 ## Learning Objectives
+* Understand the difference between authentication and authorisation
+* Understand Base64 encoding
+* Understand Basic Authentication
+* Understand the 401 Unauthorized status code
+* Implement a simple login page to protect your API
 
 ## Before we start
 
 ## Materials needed
 
 # Lesson 1
+TODO - implement a login page which takes a username and password and send this Base64 encoded to your service. Validate the password is correct. Test out each others services. 
 
 [next](/swe/mod1/wk2/day2.html)
 [main](/swe)
