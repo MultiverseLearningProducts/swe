@@ -17,6 +17,7 @@ Today we are going to call some RESTful APIs using JavaScript and use the respon
 ## Materials needed
 
 # Lesson 1
+TODO - include the Accept, Content-Type headers
 TODO - get the apprentices to pair programme (one person driving) and then to present back. Would be nice to mix up the different cohorts so they get to know each other. Also need to think about ability levels.
 
 [next](/swe/mod1/wk1/day3.html)

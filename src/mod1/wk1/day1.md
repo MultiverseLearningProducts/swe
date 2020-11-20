@@ -2,8 +2,9 @@
 
 ## Overview of the day
 
-Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We 
-will use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive.
+Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We covered this topic briefly in
+the Bootcamp but over the next 2 weeks we'll be going into a lot more depth.
+Today we will use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive.
 
 ## Learning Objectives
 
@@ -15,7 +16,7 @@ will use [Postman](https://www.postman.com/) to call some RESTful APIs and look 
 
 ## Before we start
 
-* Ask apprentices to install [Postman](https://www.postman.com/)
+* Ask apprentices to install [Postman](https://www.postman.com/) 
 
 ## Materials needed
 

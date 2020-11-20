@@ -1,23 +1,21 @@
 # Mod 1 > Week 2 > Day 2
 
 ## Overview of the day
-Today we are going to learn about how to use OAuth to secure our API. 
-
-TODO - remaining topics for this week could include:
-* CORS
-* Overview of API Gateways such as Mashery, Apigee etc
-* Etags & Hateoas?
+Today we are going to learn about how to use Basic Auth to secure our API. 
 
 ## Learning Objectives
-* Understand JWT tokens
-* Understand the OAuth flow
-* Implement OAuth using Auth0 https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis and https://auth0.com/docs/flows/authorization-code-flow
+* Understand the difference between authentication and authorisation
+* Understand Base64 encoding
+* Understand Basic Authentication
+* Understand the 401 Unauthorized status code
+* Implement a simple login page to protect your API
 
 ## Before we start
 
 ## Materials needed
 
 # Lesson 1
+TODO - implement a login page which takes a username and password and send this Base64 encoded to your service. Validate the password is correct. Test out each others services. 
 
-[next](/swe/mod1/wk2/day2.html)
+[next](/swe/mod1/wk2/day3.html)
 [main](/swe)
