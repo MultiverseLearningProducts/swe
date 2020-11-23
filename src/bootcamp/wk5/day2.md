@@ -63,3 +63,6 @@ Commit your updates. Now you are ready to deploy your app.
 ```sh
 git push heroku master
 ```
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[main](/swe)|[prev](/swe/bootcamp/wk5/day1.html)|[next](/swe/bootcamp/wk5/day2.html)

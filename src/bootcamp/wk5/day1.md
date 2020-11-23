@@ -1,4 +1,4 @@
-# Bootcamp > Week 5 > Days 1 - 5
+# Bootcamp > Week 5 > Days 1
 
 ## Overview of the week
 
@@ -52,3 +52,6 @@ Spend the first few weeks learning about your team, the product you are working 
 Well Done!
 
 ----
+
+[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[main](/swe)|[prev](/swe/bootcamp/wk4/day5.html)|[next](/swe/bootcamp/wk5/day2.html)

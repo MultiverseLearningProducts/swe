@@ -41,10 +41,10 @@ Cognassist will give you a bar chart of an apprentices neuro-diversity. This is 
 
 ## Learning Objectives
 
-* Recall the names of other members of the cohort
-* List the places other members of the cohort work
-* Share a fact about another member of the cohort
-* Recall 3 key competencies from the standard
+* Demonstrate creating objects in Javascript
+* Demonstrate creating functions with the function keyword in Javascript
+* Use arrays to organise objects into groups
+* Create references to objects inside other objects
 
 ## Pre-work or Assumed knowledge
 
