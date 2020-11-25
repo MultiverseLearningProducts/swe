@@ -11,14 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "directory-tree": "^2.2.4",
+    "mdast-util-to-hast": "^10.0.1",
     "rehype-document": "^5.1.0",
     "rehype-format": "^3.1.0",
     "rehype-stringify": "^8.0.0",
+    "remark-custom-blocks": "^2.5.0",
     "remark-iframes": "^4.0.4",
     "remark-parse": "^8.0.3",
     "remark-rehype": "^7.0.0",
     "unified": "^9.2.0",
-    "vfile-reporter": "^6.0.1"
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.11.5",
