@@ -7,7 +7,7 @@ body {
 }
 
 hr {
-    border: solid 1px #1add97;
+    border: solid 1px #a7a7a7;
 }
 
 .tabbed-code-block {
@@ -16,20 +16,22 @@ hr {
     padding-left: .3em;
 }
 .tabbed-code-block a {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
     box-sizing: border-box;
     padding: 1rem 1.5rem;
-    border: solid 1px darkgray;
-    border-radius: .25rem .25rem 0 0;
-    background-color: white;
-    color: black;
+    border: solid .3em hsl(0, 0%, 33%);
+    border-radius: .5em .5em 0 0;
+    background-color: hsl(0, 0%, 66%);
+    color: hsl(0, 0%, 33%);
     text-decoration: none;
-    margin-right: .3em;
-    transform: translate(0, .2em);
-    opacity: .75;
+    margin-right: .15em;
+    transform: translate(0, .3em);
 }
 .tabbed-code-block a.active {
-    border-bottom: solid .25rem #1add97;
-    opacity: 1;
+    border-top: solid .3em #1add97;
+    background-color:black;
+    color: white;
+    box-shadow: -2px -1px 4px -1px hsl(0, 0%, 33%);
 }
 pre.selected {
     display: block;
