@@ -13,25 +13,29 @@ hr {
 .tabbed-code-block {
     display: flex;
     justify-content: flex-start;
-    padding-left: .3em;
+    padding-left: 1em;
 }
 .tabbed-code-block a {
     font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
     box-sizing: border-box;
-    padding: 1rem 1.5rem;
+    padding: .6em 1em;
     border: solid .3em hsl(0, 0%, 33%);
     border-radius: .5em .5em 0 0;
     background-color: hsl(0, 0%, 66%);
     color: hsl(0, 0%, 33%);
     text-decoration: none;
-    margin-right: .15em;
+    margin-right: -.3em;
     transform: translate(0, .3em);
 }
 .tabbed-code-block a.active {
-    border-top: solid .3em #1add97;
+    border-color:#1add97;
+    border-bottom-color: black;
     background-color:black;
     color: white;
     box-shadow: -2px -1px 4px -1px hsl(0, 0%, 33%);
+}
+.tabbed-code-block + pre {
+    margin: 0 0 .5em 0;
 }
 pre.selected {
     display: block;
