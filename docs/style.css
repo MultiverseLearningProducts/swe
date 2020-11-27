@@ -34,7 +34,7 @@ hr {
     color: white;
     box-shadow: -2px -1px 4px -1px hsl(0, 0%, 33%);
 }
-.tabbed-code-block + pre {
+pre[class*="selected"] {
     margin: 0 0 .5em 0;
 }
 pre.selected {
