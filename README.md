@@ -80,7 +80,7 @@ To create a tabbed code block use the following markdown
 
 There are 2 rules to follow:
 
-1. Create the tabs with labels using the pipe character
-1. In the code blocks that follow don't have line breaks between them make sure your different language blocks butt up to each other.
+1. Create the tabs with the pipe character your text here will become the label and the hash i.e. "Javascript" -> #javascript
+1. In the code blocks that follow don't create line breaks between them i.e make sure your different language blocks butt up to each other.
 
-The language preference is set in local storage you your choice of language will persist between page loads.
+The language preference is set in local storage so your choice of language will persist between page loads.
