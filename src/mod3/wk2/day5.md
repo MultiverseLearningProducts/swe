@@ -85,11 +85,22 @@ public class OracleJdbcTest
 }
 ```
 
-Some other stuff. And then another example:
+Some other stuff. And then another example with 4 different languages!
 
-```javascript
-const example = "example"
+|Python|Go|Java|Javascript|
+```python
+print("Hello World")
 ```
+```go
+fmt.Println("Hello World")
+```
+```java
+System.out.println("Hello World");
+```
+```javascript
+console.log('Hello World')
+```
+
 Not a tabbed block
 
 ```java
