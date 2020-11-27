@@ -4,10 +4,85 @@ Below are some experimental code blocks
 
 |Javascript|Java|
 ```javascript
-console.log("hello JS")
+const http = require('http');
+const oracledb = require('oracledb');
+let error;
+let user;
+ 
+oracledb.getConnection(
+    {
+      user: process.env.EECS_USER, 
+      password: process.env.EECS_PASSWORD,
+      connectString: 'dbaccess'
+    }, 
+    function(err, connection) {
+      if (err) {error = err; return;}
+      
+      connection.execute('select user from dual', [], function(err, result) {
+        if (err) {error = err; return;}
+ 
+        user = result.rows[0][0];
+        error = null;
+ 
+        connection.close(function(err) {
+          if (err) {console.log(err);}
+        });
+      })
+    }
+);
+ 
+http.createServer(function(request, response) {
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+ 
+  if (error === null) {
+    response.end('Connection test succeeded. You connected to Exadata Express as ' + user + '!');
+  } else if (error instanceof Error) {
+    response.write('Connection test failed. Check the settings and redeploy app!\n');
+    response.end(error.message);
+  } else {
+    response.end('Connection test pending. Refresh after a few seconds...');
+  }
+}).listen(process.env.PORT);
 ```
 ```java
-System.println("hello JAVA")
+public class OracleJdbcTest
+{
+	String driverClass = "oracle.jdbc.driver.OracleDriver";
+
+	Connection con;
+	
+	public void init(FileInputStream fs) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException
+	{
+		Properties props = new Properties();
+		props.load(fs);
+		String url = props.getProperty("db.url");
+		String userName = props.getProperty("db.user");
+		String password = props.getProperty("db.password");
+		Class.forName(driverClass);
+
+		con=DriverManager.getConnection(url, userName, password);
+	}
+	
+	public void fetch() throws SQLException, IOException
+	{
+		PreparedStatement ps = con.prepareStatement("select SYSDATE from dual");
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next())
+		{
+			// do the thing you do
+		}
+		rs.close();
+		ps.close();
+	}
+
+	public static void main(String[] args) 
+	{
+		OracleJdbcTest test = new OracleJdbcTest();
+		test.init();
+		test.fetch();
+	}
+}
 ```
 
 Some other stuff. And then another example:
