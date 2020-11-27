@@ -32,7 +32,7 @@ hr {
     border-bottom-color: black;
     background-color:black;
     color: white;
-    box-shadow: -2px -1px 4px -1px hsl(0, 0%, 33%), inset 0 1.3em 0 -1em #1add97;
+    box-shadow: -2px 0px 2px -1px hsl(0, 0%, 16%), inset 0 1.3em 0 -1em #1add97;
     z-index: 1;
 }
 pre[class*="selected"] {
