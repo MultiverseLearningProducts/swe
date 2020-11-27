@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 4 > Day 3 (Coach Notes)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 4 > Day 3 (Coach Notes)</h1>
+    <h2>Overview of the day</h2>
+    <p>Today Start the group projects. Before we begin it will be very helpful to consider the stages of the software development life cycle.</p>
+    <p>Use the session to introduce the 7 stages of the SDLC. You can draw on the materials in Mod 3. Explain the requirements:</p>
+    <ul>
+      <li>It is easy to create a user</li>
+      <li>Users must have a name and an avatar (so we can recognise them)</li>
+      <li>It is easy to create a project board</li>
+      <li>All the project boards need to be displayed somewhere in the app</li>
+      <li>A project board should have three areas; todo, doing, done</li>
+      <li>On a project board it is possible to create a task</li>
+      <li>A task should have textual description and be unassigned or assigned to a user</li>
+      <li>Tasks that are assigned to a user need to display the user's avatar on the task</li>
+      <li>Tasks start in the 'todo' state</li>
+      <li>It is possible to drag and drop tasks from one area to another. i.e. from 'todo' to 'doing'</li>
+      <li>Project data is important and so all project boards, users and tasks need to be persisted</li>
+    </ul>
+    <p>Apprentices are NOT expected to implement user accounts. That is covered in Mod 1, explain its complex and involves sessions, password hashing, JWT's etc. All they need to do is be able to assign a task to a user. There needs to be some way to create a user, and pick them from a list when they want to assign a task.</p>
+    <p>Create groups of 3 in your cohort. I have done this in the past by using the zoom breakout rooms to randomly create groups, then I have a look at the distribute the ability and make swaps to distribute the stronger ones more evenly if I need to. You could also create them yourself, or run a game that will randomly assign them.</p>
+    <p><strong>Invite the line managers to the Showcase the following Friday if you have not done so already!</strong></p>
+    <h2>Design Session</h2>
+    <p>In breakout rooms apprentices should try to list the inputs of the system, and the outputs. They should be creating:</p>
+    <ol>
+      <li>a UML diagram of their data model</li>
+      <li>wireframes for each view (at least a projects page and an individual project page)</li>
+      <li>a Github repo with each group member added as a contributor to the repo</li>
+    </ol>
+    <p>Inspect these 3 things, they may need to revise their data model. Check the wireframes to see they have thought the app through. Verbally go though some user journeys with the group with the wireframes. Make sure everyone is on the Github repo that they have all cloned the single repository and can pull and push without issue.</p>
+    <hr>
+    <h2>SCRUMBAN session</h2>
+    <p>Your role here is to facilitate each group's sprint planning. They have their design artifacts from the morning. Now they need to analysis those designs and start to break the work down into smaller atoms of work that each member can undertake. Often in the early stages of their project they might want to have a group pairing session where they all set the stack together. Once that is built then it's easier to branch off and start making pull requests.</p>
+    <p>Get them to review each others work. In the past I selected one group and got them to add me as a collaborator. I then stepped through;</p>
+    <ol>
+      <li>cloning the repo</li>
+      <li>making a branch which was named after the ticket (github issue)</li>
+      <li>marking my ticket (issue) as "in progress" on github project page</li>
+      <li>making changes/adding files etc</li>
+      <li>committing and making a pull request</li>
+      <li>other team member does a code review (get them to share their screen - talk them through it)</li>
+      <li>other team member merges pull request</li>
+      <li>move ticket to "done" on github project page</li>
+      <li>locally switch back to master and pull latest changes</li>
+      <li>select next ticket</li>
+      <li>make new branch etc...</li>
+    </ol>
+    <p>repeat until all the tickets are "done"</p>
+    <p>Add your tips for sprint planning.</p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

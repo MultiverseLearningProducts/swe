@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 4 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 4 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>Lets ramp things up and take on drag and drop. This is a purely javascript driven interaction.</p>
+    <hr>
+    <h2>Lesson 1 - Drag and Drop</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Use more event listeners such as <code>ondragstart</code>, <code>ondrop</code> and the html attribute <code>draggable</code>.</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Have your todo list handy</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://www.w3schools.com/html/html5_draganddrop.asp">Drag and Drop API</a></li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>To take on this weeks coding challenge you will need to know how to drag and drop. Lets start by making our HTML element 'draggable'. Add the 'draggable' HTML attribute to your task element. What effect has this had?</p>
+    <h3>Dragging</h3>
+    <p>When you start dragging an event is triggered. We want to intercept this event and keep track of which element is being dragged.</p>
+    <pre><code class="language-javascript">`&#x3C;li id="${task.id}" draggable="true" ondragstart="app.run('ondragstart', event)">`
+</code></pre>
+    <p>Make the <code>task.id</code> the id of the HTML element. Add the update function <code>onDragStart</code>. Notice we are going to pass in the event object.</p>
+    <pre><code class="language-javascript">    onDragStart: (state, event) => {
+        event.dataTransfer.setData('text', event.target.id)
+        return state
+    }
+</code></pre>
+    <p>When we start dragging we set the drag event up to transfer some data, the id of the task being dragged. Can you see how we read the id of the element being dragged from the <code>event</code> object and in particular the <code>event.target</code> object.</p>
+    <h3>Dropping</h3>
+    <p>Lets make it so if you drag a task from the list it will delete it. For that we need to detect the drop event, and we need to make a drop zone. Can you put another element next to your list? Get them to sit next to each other on the page.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95676057-55b66380-0bb3-11eb-97ef-be07d2948bd5.png" alt="flexbox example">
+    </p>
+    <p>The hotpink section is the drop zone. HTML elements by default are NOT droppable. To make a drop zone, we need to override the default behavior of the browser. To do this you will have to add a <code>ondragover</code> event listener to your drop zone element. You can also add the <code>ondrop</code> event listener, and add the event handler to <code>ondrop</code>.</p>
+    <pre><code class="language-html">&#x3C;div ondragover="event.preventDefault()" ondrop="app.run('onDrop', event)">&#x3C;/div>
+</code></pre>
+    <p>Here we are calling <code>event.preventDefault()</code> whenever an element is dragged over this element. By doing this we will enable dropping on that element. Then we add our <code>ondrop</code> event handler and capture the drop event. We need the <code>event</code> object from the drop to get the data values we passed from the dragging element.</p>
+    <p>Delete the item from the array in <code>state.tasks</code>.</p>
+    <pre><code class="language-javascript">onDrop: (state, event) => {
+    event.preventDefault()
+    const id = event.dataTransfer.getData('text')
+    const index = state.tasks.findIndex(task => task.id == id)
+    state.tasks.splice(index, 1)
+    return state
+}
+</code></pre>
+    <h3>stopPropagation</h3>
+    <p>What happens if we have nested drop zones? For now imagine I want to either 'highlight' a task or delete it.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95676910-ba74bc80-0bb9-11eb-9f7e-e448e3888812.png" alt="nested drop zones">
+    </p>
+    <p>I'm going to add a different update function that will add a 'highlight' class to my task. The behavior I am looking for is when I drag and drop on the highlight zone, my task should become highlighted. However! It doesn't work. My task just gets deleted. Why is that?</p>
+    <p>The drop event will cause BOTH event handlers to be triggered; <code>onDrop</code> and my <code>onHighlight</code>. The event propagates up through the DOM. This behavior is called bubbling. I don't want this. When the <code>ondrop</code> listener triggers my <code>onHighlight</code> event handler I want the event propagation to stop. I will have to call <code>event.stopPropagation()</code> to stop the event triggering other event handlers.</p>
+    <pre><code class="language-javascript">onHighlight: (state, event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const id = event.dataTransfer.getData('text')
+    const index = state.tasks.findIndex(task => task.id === id)
+    state.tasks[index].highlight = 'highlight'
+    return state
+}
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95677015-9bc2f580-0bba-11eb-8894-8657e1a852f0.png" alt="highlight task now works thanks to stop propagation">
+    </p>
+    <h3>Summary</h3>
+    <p>There are some important concepts we have looked at in this lesson. First of all we have learnt more about the event object. We have seen how it can be used to:</p>
+    <ul>
+      <li>transfer data</li>
+      <li>override default browser behaviors</li>
+      <li>stop event propagation</li>
+    </ul>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Implement drag and drop to delete a task in your todo app</li>
+    </ul>
+    <hr>
+    <h2>Lesson 2 - Ajax</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Explain what ajax means?</li>
+      <li>Understand what makes a single page app (SPA)?</li>
+      <li>Use <code>XMLHTTPRequest</code> and <code>fetch</code></li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You will need your todo app</li>
+      <li>You will need to create an express server</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://docs.google.com/presentation/d/1At1OJ_pqLOt9oW9YpfbQ5NahzM4C4Y18TbO8C4B0FRU/edit?usp=sharing">slides</a></li>
+    </ul>
+    <h2>Lesson</h2>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT4wCJjWXLsTFfoX-0JzvXu4bNZa-wDE2QfXAn5cOrYhchUekDfDw52QSR_FSfHSeAzCD7aQbokFW4t/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>The ajax pattern lead to a different kind of web site. A site that was closer to an app, one HTML page is loaded, then the following pages, and interactions are all driven by javascript. It is this pattern that we are going to implement in our group projects. To follow along we'll make a simple server that will store our tasks.</p>
+    <h3>Create our data server</h3>
+    <p>This express server will server our single HTML page, and then all Consequential requests will be for the data it needs to run. Create a <code>server.js</code> file in your project folder. Create a <code>public</code> folder and put your <code>index.html</code>, <code>style.css</code> and <code>main.js</code> in that folder. Set express up to serve static assets from the <code>public</code> folder, and deal with json requests, finally run your server on port 3000.</p>
+    <pre><code class="language-javascript">const express = require('express')
+const app = express()
+
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+const tasks = [
+    {
+        id: 1,
+        text: 'Fetch all the tasks',
+        status: 0
+    },
+    {
+        id: 2,
+        text: 'Create a new task',
+        status: 0
+    }
+]
+
+app.listen(3000, () => {
+    console.log('app server running on port', 3000)
+})
+</code></pre>
+    <p>I have added some tasks on the server. Our first job will be to fetch these once the page has loaded.</p>
+    <h3>Making ajax requests</h3>
+    <p>We are going to use the <code>fetch</code> API that comes bundled in the javascript runtime in the browser. We need an update function in our AppRun update object that is going to get all the tasks on the server.</p>
+    <pre><code class="language-javascript">    getTasks: async (state) => {
+        state.tasks = await fetch('/tasks').then(res => res.json())
+        return state
+    }
+</code></pre>
+    <p>What kind of function is getTasks? We can make a simple 'get' request using <code>fetch</code> it uses the <code>Promise</code> object. <code>fetch</code> will return an HTTP response object, we then need to transform that into usable JSON. In the example above we can expect the <code>/tasks</code> endpoint to return an Array of tasks. We assign that into state and that will trigger a re-render.</p>
+    <p>On the server we can add the <code>/tasks</code> endpoint:</p>
+    <pre><code class="language-javascript">app.get('/tasks', (req, res) => {
+    res.send(tasks)
+})
+</code></pre>
+    <p>The key take away here is - no templates. We don't do templating on the server, we just respond with the data our single page app needs. The next refactor is to create a task on the server, not just on the frontend. Update your <code>add</code> update function, don't push the new task into <code>state.tasks</code>. Instead post it to the server, and then trigger <code>app.run('getTasks')</code>.</p>
+    <pre><code class="language-javascript">    add: (state, form) => {
+        const data = new FormData(form)
+        const task = {
+            id: window.crypto.getRandomValues(new Uint8Array(2)).join(''),
+            text: data.get('text'),
+            highlight: '',
+            status: 0
+        }
+        const postRequest = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }
+        fetch('/tasks', postRequest).then(() => app.run('getTasks'))
+        return state
+    },
+</code></pre>
+    <p>Making a POST request is similar to a GET request, only now we include a javascript object with the settings for;</p>
+    <ul>
+      <li>method - "POST"</li>
+      <li>headers - we have to set the type of content we are posting in the header of the request</li>
+      <li>body - this must be a string, it is where we put our data we want to send to the server</li>
+    </ul>
+    <p>On the server we can create an endpoint to receive the <code>postRequest</code>;</p>
+    <pre><code class="language-javascript">app.post('/tasks', (req, res) => {
+    tasks.push(req.body)
+    res.send()
+})
+</code></pre>
+    <p>here we reply with <code>res.send()</code> on the frontend we are waiting for this, we can then make a request for the updated tasks by calling <code>app.run('getTasks')</code>. This is a design choice to demonstrate how one AppRun update function can call another update function, like a chain of events. You could return all the tasks from the POST request above, and then update the state with the new task list all within the 'add' update function.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Set up an app server for yourself</li>
+      <li>Make ajax GET requests using <code>fetch</code></li>
+      <li>Make ajax POST requests using <code>fetch</code></li>
+    </ul>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk4/day1.html">prev</a>|<a href="/swe/bootcamp/wk4/day3.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

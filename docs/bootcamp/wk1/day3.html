@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 3</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. During the second session we start to look at async functions, and how to test code that work asynchronously.</p>
+    <h2>Lesson 1 - Take off and landing</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Define static class functions and properties</li>
+      <li>Access static class functions and properties</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>You need to have completed the work on airports so you have a codebase with the following classes defined and tested:</p>
+    <ul>
+      <li>Bag</li>
+      <li>Passenger</li>
+      <li>Plane</li>
+      <li>Airport</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Jest</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Previously we have been created objects using classes and the <code>new</code> keyword. We have been constructing data structures in our code. For example the plane class contained passengers and each passenger had 1 or more bags. To complete our programme we really want to be able to move our planes (and the passengers they contain) from one airport to another.</p>
+    <p>To do this, we need to be able to access one airport from another airport. We can't do this using the properties and functions of an instance of an airport. For example if we created London Heathrow (LHR). Then Los Angles (LAX). How can we connect them?</p>
+    <p><code>london.addAirport(LAX)</code></p>
+    <p>You can see that is clumsy, hard to keep track of. Each new airport needs to be in sync with all the rest.</p>
+    <h3>Static properties</h3>
+    <p>You can tell we need somewhere we can keep all the airports that we create. If we use a static class property we can easily keep all the instances of the airports we create in one place. Read the code snippet below. Can you see what we are doing here?</p>
+    <pre><code class="language-javascript">class Airport {
+    static airports = []
+    
+    constructor(name) {
+        this.name = name
+        this.planes = []
+        this.constructor.airports.push(this)
+    }
+    
+    land(plane) {
+        this.planes.push(plane)
+    }
+}
+</code></pre>
+    <p>On the <code>Airport</code> class itself we are able to access each instance of an airport that is created <code>Airport.airports</code> is an array of all instance of <code>Airport</code>.</p>
+    <h2>Assignment</h2>
+    <p>Can you write the <code>takeOff</code> function on an instance of an airport that should take a plane as an argument, find that plane in the airport's planes array and remove it, then push it into the inbound airport's array of planes. This will effectively move the plane object from one airport to another.</p>
+    <p>Remember to write tests that prove all the functionality that we have talked about.</p>
+    <h2>Lesson 2 - Inheritance</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate sharing functionality through inheritance</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You should have created a Passenger class in your airports exercise</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>The final object orientated pattern we are going to look at is inheritance. This is a way to share functionality in an object orientated paradigm. The idea is very simple. You extend base classes that already exist with additional functionality. If we look at our airports system we have 2 kinds of travellers.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Passengers</th>
+          <th>Crew</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="https://user-images.githubusercontent.com/4499581/93331580-6b38a780-f818-11ea-835c-1c579dfe481d.jpg" alt="passengers">
+          </td>
+          <td>
+            <img src="https://user-images.githubusercontent.com/4499581/93331575-67a52080-f818-11ea-8308-af97a9a6d6cc.jpg" alt="crew">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Both are people, both have a name and bags when they travel.</p>
+    <h3>Base class <code>Person</code></h3>
+    <p>A base class is the base from which you might create other types of classes. Lets refactor our code to use a base class <code>Person</code>. A person will have a name and bags - basically the current Passenger class definition we have now needs to be renames to be <code>Person</code>. Now to restore our <code>Passenger</code> class we should import the base class into our <code>Passenger</code> definition and extend it like this.</p>
+    <pre><code class="language-javascript">const Person = require('./Person')
+
+class Passenger extends Person {}
+</code></pre>
+    <p>That is enough to fix all our current tests. Everything should work as it was. When we create a <code>new Passenger('bob')</code> we will be able to call <code>addBag</code> as this functionality has been inherited from the <code>Person</code> class. Our passengers might want particular functionality like <code>callAttendant</code>.</p>
+    <pre><code class="language-javascript">const Person = require('./Person')
+
+class Passenger extends Person {
+    callAttendant() {
+        console.log('Excuses me, Hay there!')
+    }
+}
+</code></pre>
+    <h3>instanceof</h3>
+    <p>Can you see where this is going? One useful operator I want to introduce at this point is <code>instanceof</code>. Now you can make classes, in your code some times you'll want to know what an object is. For example, you might want to know is this person a <code>Passenger</code> or a <code>Crew</code> member? You can use <code>instanceof</code> to help you work that out.</p>
+    <pre><code class="language-javascript">test('is an instance of a Passenger', () => {
+    const betty = new Passenger('Betty')
+    expect(betty instanceof Passenger).toBeTruthy()
+})
+</code></pre>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Can you create the <code>Crew</code> class by extending the <code>Person</code> class?</li>
+      <li>Refactor the <code>Plane</code> class to have a <code>crew</code> property</li>
+      <li>When <code>board</code> is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.</li>
+      <li><code>Crew</code> members should be able to <code>crossCheck</code> make sure you can call <code>crossCheck</code> on a crew member, it should return a boolean. If all the crew on the plane are instances of the <code>Crew</code> class <code>crossCheck</code> should return true, otherwise it should return false.</li>
+      <li>All your refactoring should have tests that cover it</li>
+    </ul>
+    <p>When you have completed these tasks can you create a coverage report using Jest. Add the following line to your package.json</p>
+    <pre><code class="language-json">{
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:report": "jest --coverage=true"
+  },
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
+</code></pre>
+    <p>Then run <code>npm run test:report</code> you are aiming for 100% test coverage. When you run this you should see that Jest generated a 'coverage' report in your project folder. If you navigate to <code>/coverage/Icov-report/index.html</code> and open it in your browser you'll see a helpful report of your test coverage.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report">
+    </p>
+    <p>This is interactive try clicking on one of the class definitions.</p>
+    <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/155">attendance log</a></p>
+    <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day2.html">prev</a>|<a href="/swe/bootcamp/wk1/day4.html">next</a></p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

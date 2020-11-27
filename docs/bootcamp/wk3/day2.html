@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 3 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 3 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <hr>
+    <h2>Lesson 1 - Iteration</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate how to combine an array of data with a template</li>
+      <li>Use iteration to repeatedly create dynamic html content</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Have the app server you created yesterday ready</li>
+      <li>Make sure you have a data model ready to use</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>N/A</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Our app has an array of restaurants that we want to display on our page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed html block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the intenet and is a good example of a <em>card</em> component.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/95015340-344df880-0644-11eb-8ce4-30609f0de5fe.jpg" alt="example of the card component">
+    </p>
+    <p>Can you recognise the template vs the dynamic content in the example above?</p>
+    <h3>Pass the data into the template</h3>
+    <p>The first step is preparing our data for the template, and the second is passing it to the template.</p>
+    <ol>
+      <li>The example below uses sequelize to fetch all the restaurants</li>
+      <li>The first argument to <code>response.render</code> is the matching string name of the template file we want to render, i.e. 'home'</li>
+      <li>The second argument to <code>response.render</code> is our data in an object.</li>
+    </ol>
+    <pre><code class="language-javascript">app.get('/', async (req, res) => {
+    const restaurants = await Restaurant.findAll({
+        include: [{model: Menu, as: 'menus'}],
+        nest: true
+    })
+    res.render('home', {restaurants})
+})
+</code></pre>
+    <p><em>to use <code>include</code> as in the code above, make sure your sequelise model has this alias added. This config sets the name of the property our associated model will be stored on; i.e. <code>restaurants.menus</code>.</em></p>
+    <pre><code class="language-javascript">Restaurant.hasMany(Menu, {as: 'menus'})
+Menu.belongsTo(Restaurant)
+Menu.hasMany(Item, {as: 'items'})
+Item.belongsTo(Menu)
+</code></pre>
+    <p>In our template there will be an objected called 'restaurants' that will be our array of data that came from <code>await Restaurant.findAll()</code>. We can write our html elements as if this was an html file, only when we want to pharse some dynamic content we can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.</p>
+    <p>To repeat a block of code for every item in an array we can use the built in template helper <code>{{#each}}</code> that comes with handlebars.</p>
+    <pre><code class="language-html">&#x3C;h1>Restaurants&#x3C;/h1>
+&#x3C;section>
+    {{#each restaurants}}
+        &#x3C;article>
+            &#x3C;header>&#x3C;/header>
+            &#x3C;main>{{this.name}}&#x3C;/main>
+            &#x3C;footer>{{this.menus.length}} menus&#x3C;/footer>
+        &#x3C;/article>
+    {{/each}}
+&#x3C;/section>
+</code></pre>
+    <p>From the code above where does the repeating block of html begin and end? Try this in your browser, when you inspect the html what do you expect to see?</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Can you render all your restaurants?</li>
+      <li>In addition to each restaurant, can you also display the title of each menu?</li>
+    </ul>
+    <hr>
+    <h2>Lesson 2 - Responsive CSS grids</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Use @media</li>
+      <li>Implement a responsive CSS grid</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You will need html content on your page to apply your grid styling to</li>
+      <li>You should know how to simulate different devices in chrome dev tools</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>style.css file served from your public folder</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>We have restaurants on the page! What we don't have is something attractive or pleasing. We need to give our html page some loving css rules to lay it out nicely. Designing for the web is quite unsual because the screen sizes for a web page are so dramatically different.</p>
+    <p>
+      <img src="https://d1xzrcop0305fv.cloudfront.net/wp-content/uploads/2016/06/zymr-adaptive-responsive-design_3.jpg" alt="different screen sizes for web pages">
+    </p>
+    <p>Where do we put things if we want our page to look good on both a mobile phone and a large 26" monitor? The anwser to this question was beautifully addressed by Ethan Marcotte back in 2010 an a blog he wrote called <a href="https://alistapart.com/article/responsive-web-design/">responsive web design</a>.</p>
+    <h3>Responsive @media</h3>
+    <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes. The css is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.</p>
+    <p>This solved the problem of having to server different html templates and css to different devices.</p>
+    <h3>Mobile first</h3>
+    <p>To make your page responsive we need to override the scaleing behaviour of many mobile browsers. Add the following line to the <code>&#x3C;head></code> element of your html <code>main.handlebars</code> file.</p>
+    <pre><code class="language-html">&#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0">
+</code></pre>
+    <p>The way to implement a responsive layout is start with the smallest screen size; the mobile. These layouts are often the most simple. As the screen size get larger you can start to make more use of the real estate that becomes available.</p>
+    <p>Lets start. Empty your <code>style.css</code> and add the following css:</p>
+    <pre><code class="language-css">* {
+    padding: 0;
+    margin: 0;
+}
+/* css for mobile goes here */
+@media screen and (min-width: 40em) {
+  /* css for mid screens goes here */
+}
+@media screen and (min-width: 60em) {
+  /* css for massive screens goes here */
+}
+</code></pre>
+    <p>This css gives us two break points. at 30em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?</p>
+    <h3>Grid</h3>
+    <p>Use the different device profiles that come with the chrome dev tools.</p>
+    <p><a href="https://developers.google.com/web/tools/chrome-devtools/device-mode"><img src="https://developers.google.com/web/tools/chrome-devtools/device-mode/imgs/landscape.png" alt="chrome dev tools"></a></p>
+    <p>Pick a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column, then our user scrolls through the restaurants. This is where we can start. We want a single resturant <em>card</em> to occupy the width of the screen. So lets just start with this:</p>
+    <pre><code class="language-css">h1 {
+    padding: 1rem;
+    border-bottom: solid 1px black;
+}
+article {
+    border: solid 1px black;
+    width: calc(100% - 2rem);
+    height: 35em;
+    margin: 1rem 1rem;
+}
+</code></pre>
+    <p>Now we have a card shape box in which we can display information about each restaurant (including it's 'thumbnail' image). They are spaced out evenly and we can scroll through them. I am also using <code>calc()</code> to calculate the width of the viewport minus the margins either side.</p>
+    <p>What happens a the first breakpoint?</p>
+    <p>Once our viewport size has broken through to be greater than <code>40em</code> the next block of css will override previous styles. We want to jump from a single column layout to a 2 column layout.</p>
+    <pre><code class="language-css">@media screen and (min-width: 40em) {
+  /* css for mid screens goes here */
+    section {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: none;
+        gap: 1rem;
+    }
+    article {
+        margin: 0;
+        width: 100%;
+    }
+}
+</code></pre>
+    <p>We now apply a grid layout to the <code>&#x3C;section></code> element. That grid is applied to the section's children elements (all the <code>&#x3C;article></code> elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the <code>&#x3C;article></code> elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy <code>gap</code> property that will deal with spacing between grid elements. Finally we can use the margin of the <code>&#x3C;section></code> to add some spacing all round the items in the grid.</p>
+    <p>The next break point we want to jump to 3 columns. Now we just need to override one property.</p>
+    <pre><code class="language-css">@media screen and (min-width: 60em) {
+  /* css for massive screens goes here */
+    section {
+        grid-template-columns: auto auto auto;
+    }
+}
+</code></pre>
+    <p>So we have covered responsive layouts using @media (media queries), and taken a quick look at the power of 'grid' in CSS.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Can you implement a responsive layout for your restaurant's app?</li>
+      <li>Use @media and CSS 'grid'</li>
+    </ul>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk3/day1.html">prev</a>|<a href="/swe/bootcamp/wk3/day3.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

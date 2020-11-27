@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <p>This week we are going to build a complete app. Like deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.</p>
+    <h2>Lesson 1 - UML</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Create UML data model diagram</li>
+      <li>Use 'has many' and 'belongs to' to correctly label relationship between classes</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>You should have completed the Airports exercise</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://planttext.com">https://planttext.com</a> for UML diagrams || install the plantuml plugin for VSCode</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>In a restaurant ordering system what are some of the objects you would expect to find?</p>
+    <ol>
+      <li>Restaurant</li>
+      <li>Menu</li>
+      <li>Item (a Dish with a price)</li>
+    </ol>
+    <p>What are the relationships between these? A Restaurant can have many menus, for example:</p>
+    <ul>
+      <li>a drinks menu</li>
+      <li>a mains menu</li>
+      <li>a desert menu</li>
+    </ul>
+    <p>A Restaurant can have 1 or more menus. A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out or represent it.</p>
+    <h3>UML</h3>
+    <p>Unified Modeling Language is a standardized way to represent abstract structures in programming, like a data model.</p>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>Example of Airports in UML</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93352652-fa52b900-f832-11ea-81a8-ebd2b8e43f97.png" alt="UML of airports">
+    </p>
+    <h2>Assignment</h2>
+    <p>Can you design a data model for the following classes:</p>
+    <ol>
+      <li>Restaurant</li>
+      <li>Menu</li>
+      <li>Item</li>
+    </ol>
+    <p>A Menu belongs to a Restaurant. A Menu has many Items. An Item belongs to a Menu. Can you figure out all of that? It confusing and quite complicated to imaging if some one is just verbally explaining it to us. We need a way to draw this out so we can clearly communicate our design.</p>
+    <p>When you think you have something save your model and share the diagram with your coach.</p>
+    <hr>
+    <h2>Lesson 2 - Implement your model</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate knowledge of unit tests</li>
+      <li>Demonstrate knowledge of classes</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Have your coach check through your UML diagram</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>UML data model diagram</li>
+      <li>Jest</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>From the design you can begin to write a set of tests that will prove your model is sound. Use the examples from the Airport exercise to implement your data model for your restaurant ordering app.</p>
+    <p>When you have completed these tasks, can you create a coverage report using Jest? A coverage report is going to run your tests and analysis the code that your tests hit or execute. This data can be compiled into a coverage report. The "coverage" metric is how much of your code is executed during your tests. Add the following line to your package.json</p>
+    <pre><code class="language-json">{
+  "scripts": {
+    "test": "jest --watchAll",
+    "test:report": "jest --coverage=true"
+  },
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
+</code></pre>
+    <p>Then run <code>npm run test:report</code> you are aiming for 100% test coverage. When you run this you should see that Jest generated a 'coverage' report in your project folder. If you navigate to <code>/coverage/Icov-report/index.html</code> and open it in your browser you'll see a helpful report of your test coverage.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/93334401-cc627a00-f81c-11ea-9c98-4825235c06a4.png" alt="test coverage report">
+    </p>
+    <p>This is interactive try clicking on one of the class definitions.</p>
+    <h2>Assignment</h2>
+    <p>Create a new project folder and use <code>npm init</code> to start a new Node.js app. Create 3 class definitions with tests. You should be able to:</p>
+    <ol>
+      <li>Create a Restaurant (with a name, image URL, and a city)</li>
+      <li>Create a Menu and associate it with a Restaurant (the Menu should have a 'title' property and an 'icon' you can use emojis for icons)</li>
+      <li>Create an Item and associate it with a Menu (Item should have a name and price)</li>
+      <li>Sumbit your coverage report to your coach</li>
+    </ol>
+    <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/158">attendance log</a></p>
+    <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day5.html">prev</a>|<a href="/swe/bootcamp/wk2/day2.html">next</a></p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

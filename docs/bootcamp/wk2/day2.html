@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>You have a data model for a restaurant ordering app. The problem is all the data is lost when your app stops. The data that makes the app persists only in memory, so when the process dies, so does the data. Today is about fixing that.</p>
+    <h2>Lesson 1 - SQLite3</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Connect to a database</li>
+      <li>Execute CRUD statements on a database</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Make sure you have SQLite3 installed <code>npm i sqlite3</code> will do it</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Sqlite3</li>
+    </ul>
+    <h2>Lesson</h2>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>The <code>WHERE</code> clause is really important when querying. Often we want one record, or a set of records only. Use the <code>WHERE</code> clause to filter out the data you need.</p>
+    <h2>Assignment</h2>
+    <ol>
+      <li>Compose the SQL queries to do the following:
+        <ul>
+          <li>Create table if not exists</li>
+          <li>Implement the restaurants table</li>
+          <li>Create an entry for a restaurant using "INSERT"</li>
+          <li>Read back your restaurant using "SELECT"</li>
+          <li>Update your restaurant using "UPDATE"</li>
+          <li>Delete your restaurant using "DELETE"</li>
+          <li>Use the WHERE clause to filter results</li>
+        </ul>
+      </li>
+    </ol>
+    <hr>
+    <h2>Lesson 2 - JOIN tables</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Execute SQL commands</li>
+      <li>Relate data using foreign keys</li>
+    </ul>
+    <h2>Before we start</h2>
+    <ul>
+      <li>Have you SQL queries for creating a table handy</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>Sqlite3</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>It is great to be able to save a restaurant in our database. However our data model requires our restaurants to also have menu's associated with them. A restaurant might have many menus; for example a main menu, a set menu, a wine menu (wine list) and best of all the dessert menu! How can we store one or more menu items on the restaurant? We could make a new field on the restaurant table called 'menu'. But what would we do if we wanted to add a 2nd menu 'menu2'? And a third 'menu3'?</p>
+    <p>No. The way this is done is by creating a separate table for the menus. When we create a row in the 'menus' table we create a special field to store the id of the restaurant we want the menu to be associated with. The convention is to call the field something like 'restaurant_id'. This is why databases that have tables like this are called 'relational databases'.</p>
+    <p>How do we use the association we just created? When we query our database we are going to use the 'JOIN' keyword in SQL. Read the query below:</p>
+    <pre><code class="language-sql">SELECT restaurants.name, menus.name 
+FROM restaurants 
+JOIN menus ON restaurants.id = menus.restaurant_id 
+WHERE restaurants.id = 1;
+</code></pre>
+    <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_namd.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Write some JOIN statements</li>
+      <li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
+      <li>[extension activity] explore the documentation for SQL the <code>SUM</code>, <code>COUNT</code> and <code>GROUP BY</code> aggregate functions</li>
+    </ul>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/159">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk2/day1.html">prev</a>|<a href="/swe/bootcamp/wk2/day3.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

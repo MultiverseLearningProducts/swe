@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Deploy your app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Deploy your app</h1>
+    <h2>Create a Heroku account</h2>
+    <p><a href="https://id.heroku.com/login">https://heroku.com/</a></p>
+    <p>
+      You will need to add your ssh key to your heroku account settings:
+      Heroku is a lot like using git. Heroku expects your project to be in version control. You'll end up being able to deploy new versions of your app as easily as you can push code to git. <code>git push heroku master</code> will package your code (into a "slug"), create the environment (with any addons you might have installed), then run your app in a micro lite virtual machine (or dyno).
+    </p>
+    <h2>Install the Heroku CLI tool</h2>
+    <p><a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/</a></p>
+    <h2>Create your Heroku app</h2>
+    <pre><code class="language-sh">heroku apps:create your_app_name --region eu
+</code></pre>
+    <p>This will update your git remotes. Have a look using <code>git remote -v</code>. You have a new destination you can push code to; As well as <code>origin</code> you now have <code>heroku</code>. Next add your database, it will be a postgres database that Heroku will provision and attach to your app. The address of the database is then injected into your environmental variables as DATABASE_URL.</p>
+    <pre><code class="language-sh">heroku addons:create heroku-postgresql:hobby-dev
+</code></pre>
+    <p>Add the "engines" configuration to your <code>package.json</code> so when Heroku installs your app in it's container it knows which version of node and npm to use.</p>
+    <pre><code class="language-json">"engines": {
+    "node": "14",
+    "npm": "6"
+}
+</code></pre>
+    <p>Heroku is an ephemeral environment. Heroku will decide what PORT to run your app on. You must expect an environmental variable called PORT and you need to start your server on that port. Have a look at the example below of how to read the environmental variable called PORT.</p>
+    <pre><code class="language-javascript">app.listen(process.env.PORT, () => {
+    sequelize.sync(() => {
+        console.log('Kanban app running on port', process.env.PORT)
+    })
+})
+</code></pre>
+    <p>Then update your package.json to run the app in different settings with different env variables:</p>
+    <pre><code class="language-json">"scripts": {
+    "start": "node server.js",
+    "watch": "NODE_ENV=dev PORT=3000 nodemon server.js",
+    "test": "PORT=3001 jest --watchAll",
+    "test:cypress": "PORT=3001 cypress open"
+}
+</code></pre>
+    <p>Install the postgres driver</p>
+    <pre><code class="language-sh">npm install pg
+</code></pre>
+    <p>Update the sequelize config for different environments</p>
+    <pre><code class="language-javascript">const connectionSettings = {
+    test: {dialect: 'sqlite', storage: 'sqlite::memory:'},
+    dev: {dialect: 'sqlite', storage: path.join(__dirname, 'data.db')},
+    production: {dialect: 'postgres', protocal: 'postgres'}
+}
+const sequelize = process.env.NODE_ENV === 'production'
+    ? new Sequelize(process.env.DATABASE_URL, connectionSettings[process.env.NODE_ENV])
+    : new Sequelize(connectionSettings[process.env.NODE_ENV])
+</code></pre>
+    <p>Commit your updates. Now you are ready to deploy your app.</p>
+    <pre><code class="language-sh">git push heroku master
+</code></pre>
+    <p>
+      <a href="https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day1.html">prev</a>|<a href="/swe/bootcamp/wk5/day2.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

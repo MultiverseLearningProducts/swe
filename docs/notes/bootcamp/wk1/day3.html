@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 3</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. During the second session we start to look at async functions, and how to test code that work asynchronously.</p>
+    <h1>Session 1 - Take off and landing</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Define static class functions and properties</li>
+      <li>Access static class functions and properties</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>Apprentices should have defined 4 classes Bag, Passenger, Plane and Airport</li>
+      <li>Array methods: splice, find, indexOf</li>
+    </ul>
+    <h2>Materials</h2>
+    <ul>
+      <li>Jest</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>This session just introduces the concept of static classes. You can mention global scope here if you think that will help. Having all the instances of airports available on the Airport class as a static property is a pattern well established by ActiveRecord in the Ruby on Rails framework. You'll have to point out the different syntax to access a static property using <code>this.constructor</code>.</p>
+    <h2>Assignment</h2>
+    <blockquote>
+      <p>Can you write the <code>takeOff</code> function on an instance of an airport that should take a plane as an argument, find that plane in the airport's planes array and remove it, then push it into the inbound airport's array of planes. This will effectively move the plane object from one airport to another.</p>
+    </blockquote>
+    <blockquote>
+      <p>Remember to write tests that prove all the functionality that we have talked about.</p>
+    </blockquote>
+    <p>The idea here is to figure out some array manipulation. Going over splice, find and indexOf might also help some. To write this function will also require accessing the static <code>Airport.airports</code> property.</p>
+    <h2>Additional Reading</h2>
+    <h1>Session 2 - Airports Async</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Explain the differences between the way synchronous and asynchronous functions work.</li>
+      <li>Demonstrate the methods to test async code in Jest</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>Should be familiar with Object.keys as a way to access the keys of an object</li>
+      <li>Should have iterated over an object in javascript before</li>
+      <li>Should recognise deconstructing assignment</li>
+    </ul>
+    <h2>Materials</h2>
+    <ul>
+      <li>You need <a href="https://github.com/mwgg/Airports/blob/master/airports.json">this file</a> saved in your airports project folder</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>This session is all about writing the 3 kinds of async functions in javascript. This often throws beginners and learning to manage async code can take some time. This is a code along session so have your project set up ready to create the <code>getInfo</code> async function. Some handy airport codes:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Code</th>
+          <th align="left">Airport</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">LAX</td>
+          <td align="left">Los Angeles International Airport</td>
+        </tr>
+        <tr>
+          <td align="left">LHR</td>
+          <td align="left">London Heathrow Airport</td>
+        </tr>
+        <tr>
+          <td align="left">CDG</td>
+          <td align="left">Charles de Gaulle International Airport</td>
+        </tr>
+        <tr>
+          <td align="left">SKL</td>
+          <td align="left">Skye Bridge Ashaig Airport</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Assignment</h2>
+    <ul>
+      <li>run some breakout rooms for some chat</li>
+      <li>they can complete the code as a solo exercise</li>
+    </ul>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>
