@@ -19,8 +19,13 @@ Use your personal and select your region as Europe and opt out of notifications.
 
 Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
 
-OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on).
+OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on). OpenID uses an additional token - the id token.
 
+Audience represents the resource identifier.
+
+Access Tokens are used in token-based authentication to allow an application to access an API. The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API.
+
+Useful doc - https://auth0.com/docs/architecture-scenarios/spa-api
 
 [next](/swe/mod1/wk2/day4.html)
 [main](/swe)
