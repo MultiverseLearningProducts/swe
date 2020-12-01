@@ -9,7 +9,7 @@ background-size: 100% auto
 ---
 class: left, top
 
-# 8 Steps to Product
+# n Steps to Product
 
 * Make clear the vision
 * Identify resources
@@ -18,7 +18,6 @@ class: left, top
 * Devise pieces of assessment
 * Devise session content
 * Coach notes
-* Review and Publish
 
 ---
 
