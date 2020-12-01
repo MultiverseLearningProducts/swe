@@ -12,19 +12,22 @@
   <body>
     <h1>Mod 1 > Week 2 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to learn about how to use Basic Auth to secure our API.</p>
+    <p>Today we are going to learn about how to use Basic Auth to secure our Contacts API.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Understand the difference between authentication and authorisation</li>
-      <li>Understand Base64 encoding</li>
-      <li>Understand Basic Authentication</li>
+      <li>Understand Base64 encoding and its limitations</li>
+      <li>Understand how credentials are cached and the security implications of this</li>
+      <li>Understand Basic Authentication and its limitations</li>
+      <li>Understand why passwords should be hashed before being stored</li>
       <li>Understand the 401 Unauthorized status code</li>
       <li>Implement a simple login page to protect your API</li>
     </ul>
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
-    <p>TODO - implement a login page which takes a username and password and send this Base64 encoded to your service. Validate the password is correct. Test out each others services.</p>
+    <p>TODO - implement a login page which takes a username and password and sends the password Base64 encoded to your service. Validate the password is correct by comparing the hashed password with the one in the database. Test out each others services.</p>
+    <p>TODO - find out where the password is stored in the browser and use Developer Tools to view the request in transit</p>
     <p>
       <a href="/swe/mod1/wk2/day3.html">next</a>
       <a href="/swe">main</a>

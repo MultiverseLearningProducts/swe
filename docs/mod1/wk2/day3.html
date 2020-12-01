@@ -17,11 +17,21 @@
     <ul>
       <li>Understand JWT tokens</li>
       <li>Understand the OAuth flow</li>
+      <li>Understanding the advantages of OAuth over Basic Auth</li>
       <li>Implement OAuth using Auth0 <a href="https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis">https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis</a> and <a href="https://auth0.com/docs/flows/authorization-code-flow">https://auth0.com/docs/flows/authorization-code-flow</a></li>
     </ul>
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
+    <p>
+      You need to sign up to Auth0, a service which implements OAuth and is used in many production systems - <a href="https://auth0.com/signup">https://auth0.com/signup</a>.
+      Use your personal and select your region as Europe and opt out of notifications. Create a PERSONAL account type.
+    </p>
+    <p>Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many <a href="https://auth0.com/docs/get-started#use-cases-for-auth0">use cases</a> for using Auth0 but we are going to focus on using it to secure our API with OAuth.</p>
+    <p>OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on). OpenID uses an additional token - the id token.</p>
+    <p>Audience represents the resource identifier.</p>
+    <p>Access Tokens are used in token-based authentication to allow an application to access an API. The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API.</p>
+    <p>Useful doc - <a href="https://auth0.com/docs/architecture-scenarios/spa-api">https://auth0.com/docs/architecture-scenarios/spa-api</a></p>
     <p>
       <a href="/swe/mod1/wk2/day4.html">next</a>
       <a href="/swe">main</a>
