@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <p>Today introduces data modeling and UML entity diagrams. Apprentices will also be practicing writing tests which gives them a chance to consolidate their learning.</p>
+    <h1>Session 1 - UML</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Create a UML data model diagram</li>
+      <li>Use 'has many' and 'belongs to' to correctly label relationship between classes</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>should have completed the Airports exercise</li>
+      <li>should have set up Jest unit tests</li>
+    </ul>
+    <h2>Materials</h2>
+    <ul>
+      <li><a href="https://planttext.com">https://planttext.com</a> for UML diagrams || install the plantuml plugin for VSCode</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>This session starts by repeating the ideas from week 1. You can get them into breakout rooms and have them jam board with sticky notes all the objects that might be in a restaurant app. Look for 'Restaurant', 'Menu' and 'Dish' or 'Item'.</p>
+    <p>Have them report back, you can identify how hard it is to communicate their data model of a restaurant verbally. It is really too complex to discribe with words, here we need a diagram or a drawing to make it easier to follow....</p>
+    <p>Which brings us to UML. Have them set this up in their editors. Its worth spending the time on it as we want them able to create diagrams now and throughout their apprenticeship, in their portfolios, and synoptic project.</p>
+    <p>As a back up you can use the site: <a href="https://planttext.com">https://planttext.com</a> which requires no install.</p>
+    <p>Easy install on OSX <code>brew install plantuml</code>. On windows there are instructions on the site, you need Java and GraphViz installed. This is also a good resource <a href="https://crashedmind.github.io/PlantUMLHitchhikersGuide/index.html">PlantUMLHitchhikersGuide</a>.</p>
+    <p>Walk everyone through an entity diagram.</p>
+    <pre><code class="language-plantuml">@startuml
+class Restaurant {
+    name STRING
+    image STRING
+}
+class Menu {
+    title STRING
+}
+class Item {
+    name STRING
+    price FLOAT
+}
+Restaurant --o Menu
+Menu --o Item
+@enduml
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/100746398-8d35d500-33d8-11eb-8742-d9fe6457655f.png" alt="a plant uml diagram showing the associate relationship">
+    </p>
+    <h2>Assignment</h2>
+    <p>Get your apprentices to send you their diagrams.</p>
+    <h2>Additional Reading</h2>
+    <ul>
+      <li><a href="https://crashedmind.github.io/PlantUMLHitchhikersGuide/index.html">PlantUMLHitchhikersGuide</a></li>
+    </ul>
+    <p>
+      <img src="https://2.bp.blogspot.com/-EjTahSiP7is/UKj8B-wIQeI/AAAAAAAAACE/seDeXyS8pKU/s1600/relationships.jpg" alt="relationship_arrows">
+    </p>
+    <h1>Session 2 - Implement your model</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Demonstrate knowledge of unit tests</li>
+      <li>Demonstrate knowledge of classes</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>To have written unit tests in Jest</li>
+    </ul>
+    <h2>Materials</h2>
+    <ul>
+      <li>UML data model diagram</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>The apprentices should have their diagram. They can now implement this data model. Expect to see them working TTD to have a data model that is fully tested. Introduce Jest's coverage tool. You might talk about creating some seed data.</p>
+    <h2>Assignment</h2>
+    <p>Make some time to review this assignment. Get the apprentices to create a repo and add their UML diagram to it. Screenshot the UML diagram or export it. Drag the image into a github issue (in their repo). They can then use the URL in their README.md file and display the diagram on the repo landing page - very professional.</p>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

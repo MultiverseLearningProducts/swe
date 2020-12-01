@@ -69,12 +69,15 @@ FROM restaurants
 JOIN menus ON restaurants.id = menus.restaurant_id 
 WHERE restaurants.id = 1;
 ```
-This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the `table_namd.field_name` i.e. `menus.name`. Use the `JOIN` keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?
+This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the `table_name.field_name` i.e. `menus.name`. Use the `JOIN` keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?
 
 ## Assignment
 
-* Write some JOIN statements
+Write some JOIN statements that do the following:
+
 * SELECT a restaurant, a menu and all the menu items using a JOIN statement
+* SELECT all the restaurants with a count of the number of menus each restaurant has
+* SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)
 * [extension activity] explore the documentation for SQL the `SUM`, `COUNT` and `GROUP BY` aggregate functions
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/159)

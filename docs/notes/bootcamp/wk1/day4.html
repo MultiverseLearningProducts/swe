@@ -12,19 +12,53 @@
   <body>
     <h1>Bootcamp > Week 1 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <h1>Session 1 - Title</h1>
+    <h1>Session 1 - Async Airports</h1>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Explain the differences between the way synchronous and asynchronous functions work.</li>
+      <li>Demonstrate the methods to test async code in Jest</li>
+    </ul>
     <h2>Pre-work or Assumed knowledge</h2>
-    <h2>Materials</h2>
+    <ul>
+      <li>need to have an Airport class</li>
+      <li>should be familiar with Object.keys as a way to access the keys of an object</li>
+      <li>should have iterated over an object in javascript before</li>
+      <li>should recognise deconstructing assignment</li>
+    </ul>
+    <h2>Materials needed</h2>
+    <ul>
+      <li>You need <a href="https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json">this file</a> saved in your airports project folder</li>
+    </ul>
     <h2>Notes</h2>
+    <p>Async is a fundamental part of the javascript language. Managing async code is a foundation upon which confidence in the language can be built. In this session progressively demonstrate the 3 types of syntax. Callbacks, promises, and async await are all built on top of each other. You can use the Airport class and load some information from disc using <code>fs.readFile</code> which gives you your async function call.</p>
+    <p>Walk though the code with your cohort and then get them to do it themselves. As an extra aside there is a promise bases <code>readFile</code> function. You need node 11+ and you can access it as follows:</p>
+    <pre><code class="language-javascript">const { readFile } = require('fs/promises')
+</code></pre>
     <h2>Assignment</h2>
+    <ul>
+      <li>In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.</li>
+      <li>Use the three different ways of forming async functions in the Airport class</li>
+      <li>write async tests for each version in Jest</li>
+    </ul>
     <h2>Additional Reading</h2>
-    <h1>Session 2 - Title</h1>
+    <h1>Session 2 - The Event Loop</h1>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Correctly represent the behaviour of a stack data structure</li>
+      <li>Correctly identify the order of execution in a piece of async code</li>
+    </ul>
     <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>You should have written an async function in the 3 different styles: callbacks, promises and async await</li>
+    </ul>
     <h2>Materials</h2>
+    <ul>
+      <li><a href="https://youtu.be/8aGhZQkoFbQ">reference video</a></li>
+    </ul>
     <h2>Notes</h2>
+    <p>This session is in 2 parts. The first is to communicate the behavior of a stack data structure. The second is to demonstrate the way 2 stack structures handle async code by working together.</p>
     <h2>Assignment</h2>
+    <p>Leave some time for yourself to go through each apprentices slideshow/animation. You'll be able to tell from this if they have got the right idea or not. Give feedback when the apprentice has made a mistake.</p>
     <h2>Additional Reading</h2>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

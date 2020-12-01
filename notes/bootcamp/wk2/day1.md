@@ -66,16 +66,27 @@ Get your apprentices to send you their diagrams.
 
 <hr/>
 
-# Session 2 - Title
+# Session 2 - Implement your model
 
 ## Learning Objectives
 
+* Demonstrate knowledge of unit tests
+* Demonstrate knowledge of classes
+
 ## Pre-work or Assumed knowledge
+
+* To have written unit tests in Jest
 
 ## Materials
 
+* UML data model diagram
+
 ## Notes
 
+The apprentices should have their diagram. They can now implement this data model. Expect to see them working TTD to have a data model that is fully tested. Introduce Jest's coverage tool. You might talk about creating some seed data.
+
 ## Assignment
+
+Make some time to review this assignment. Get the apprentices to create a repo and add their UML diagram to it. Screenshot the UML diagram or export it. Drag the image into a github issue (in their repo). They can then use the URL in their README.md file and display the diagram on the repo landing page - very professional.
 
 ## Additional Reading

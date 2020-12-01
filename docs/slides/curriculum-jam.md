@@ -9,7 +9,7 @@ background-size: 100% auto
 ---
 class: left, top
 
-# n Steps to Product
+# 8 Steps to Product
 
 * Make clear the vision
 * Identify resources

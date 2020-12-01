@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>Today your apprentices should spend all day playing with SQLite3 in the CLI version.</p>
+    <h1>Session 1 - SQLite3</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Connect to a database</li>
+      <li>Execute CRUD statements on a database</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <ul>
+      <li>Make sure you have SQLite3 installed <code>npm i sqlite3</code> will do it</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>The presentation is a space for you to get everyone thinking about databases. They are everywhere. In breakout rooms with Jam boards you can get your apprentices to think about the databases they interact with on a daily bases. There are alot:</p>
+    <ul>
+      <li>twitter / facebook / google - nearly every site on the internet</li>
+      <li>contacts in phone / most apps on phone</li>
+      <li>supermarket checkout</li>
+      <li>bank / money</li>
+      <li>Number Plate Recognition (NPR) (ULEZ/congestion charge zones)</li>
+      <li>car (On Board Diagnostics CPU)</li>
+      <li>alexa / smart home equipment</li>
+    </ul>
+    <p>Get started with <code>.tables</code> there are none so make some:</p>
+    <pre><code class="language-sql">CREATE TABLE restaurants(id INTEGER PRIMARY KEY, title TEXT);
+</code></pre>
+    <p>Mention schema's. Point out the name of the column and the type. Introduce CRUD and walk through the 4 queries. Send off the apprentices to go practice this for themselves. You can extend this by playing with the WHERE clause.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Create table if not exists</li>
+      <li>Implement the restaurants table</li>
+      <li>Create an entry for a restaurant using "INSERT"</li>
+      <li>Read back your restaurant using "SELECT"</li>
+      <li>Update your restaurant using "UPDATE"</li>
+      <li>Delete your restaurant using "DELETE"</li>
+      <li>Use the WHERE clause to filter results</li>
+    </ul>
+    <h2>Additional Reading</h2>
+    <h1>Session 2 - JOIN tables</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Execute SQL commands</li>
+      <li>Relate data using foreign keys</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>Talk about relationships between data points being just as important as the data points. Walk through joins.</p>
+    <p>Introduce aggregation by example. A good demo is to join the restaurants and menus tables, then list all the restaurants and menus, then aggregate using COUNT. You'll get a single result back, then you can introduce GROUP BY and have each restaurant with the count of the menus they each sport.</p>
+    <h2>Assignment</h2>
+    <p>You can get your apprentices to post you little screen shots of their query results in slack. Main thing is they get to compose the JOIN queries for themselves.</p>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

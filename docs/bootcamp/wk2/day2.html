@@ -68,11 +68,13 @@ FROM restaurants
 JOIN menus ON restaurants.id = menus.restaurant_id 
 WHERE restaurants.id = 1;
 </code></pre>
-    <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_namd.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
+    <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_name.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
     <h2>Assignment</h2>
+    <p>Write some JOIN statements that do the following:</p>
     <ul>
-      <li>Write some JOIN statements</li>
       <li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>
+      <li>SELECT all the restaurants with a count of the number of menus each restaurant has</li>
+      <li>SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)</li>
       <li>[extension activity] explore the documentation for SQL the <code>SUM</code>, <code>COUNT</code> and <code>GROUP BY</code> aggregate functions</li>
     </ul>
     <p>
