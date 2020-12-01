@@ -165,8 +165,8 @@ That is a lot to get your head around! Async functions are a key characteristic 
 
 ## Learning Objectives
 
-* Demonstrate a deeper understanding of async code in javascript by naming key parts of the event loop 
-* Recall the meaning of 'stack overflow'
+* Correctly represent the behaviour of a stack data structure
+* Correctly identify the order of execution in a piece of async code
 
 ## Before we start
 

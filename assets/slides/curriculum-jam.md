@@ -18,7 +18,6 @@ class: left, top
 * Devise pieces of assessment
 * Devise session content
 * Coach notes
-* Review and Publish
 
 ---
 
