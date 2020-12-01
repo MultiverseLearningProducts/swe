@@ -5,6 +5,7 @@ Today we will take a look at some advanced topics including:
 * CORS
 * Overview of API Gateways such as Mashery, Apigee etc
 * Etags & Hateoas
+* Logout
 
 ## Learning Objectives
 
