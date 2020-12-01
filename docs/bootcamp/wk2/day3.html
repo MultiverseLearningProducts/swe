@@ -61,7 +61,7 @@ const db = new sqlite3.Database('./db.sqlite')
     has emitted an event saying it's finished. In this 
     callback function on the `this` context you can 
     access the id of the last record you inserted. 
-    This will be useful later*/
+    This will be useful later */
     const id = this.lastID
 })
 </code></pre>
@@ -94,6 +94,9 @@ const db = new sqlite3.Database('./db.sqlite')
     <pre><code class="language-javascript">const load = require('./index')
 
 describe('SQLite3', () => {
+    beforeAll(done => {
+        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
+    })
     test('airports are loaded into the database', (done) => {
         load((db) => {
             db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
@@ -113,7 +116,7 @@ describe('SQLite3', () => {
       <li>write a <code>load</code> function that will take a callback and call it when all the airport data has been inserted into the database.</li>
       <li>export this load function from your file.</li>
       <li>write an <code>insert</code> function in your load.js file that will take; the airports array, the callback passed to <code>load</code>, the database instance <code>db</code>.</li>
-      <li>the first thing your <code>load</code> function needs to do is make sure the airports table has been created i.e. <code>CREATE TABLE IF NOT EXISTS airports</code></li>
+      <li>your <code>load</code> function can assume the airports table has been created i.e. <code>CREATE TABLE IF NOT EXISTS airports....</code> can be run in your test setup <code>beforeAll</code> function.</li>
       <li>once the table is ready call the <code>insert</code> function you created in your load.js file with the airports array, the callback passed to <code>load</code>, the database instance <code>db</code></li>
       <li>in your <code>insert</code> function check if the airports array is empty. If it is empty call the callback function with the <code>db</code> instance and return from the function.</li>
       <li>if the airport array is not empty, in your <code>insert</code> function call <code>.pop()</code> on the airport array to remove the last airport from the array, then insert that item into the database</li>
@@ -124,9 +127,8 @@ describe('SQLite3', () => {
     <h2>Lesson 2 - Consolidate SQLite3 in Node.js</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Use the following sqlite3 functions; <code>all</code>, <code>get</code>, <code>run</code></li>
-      <li>Create your own valid JSON</li>
-      <li>Relate data using foreign keys</li>
+      <li>Implement nested iteration</li>
+      <li>Relate data using foreign keys correctly</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
@@ -138,27 +140,6 @@ describe('SQLite3', () => {
     <pre><code class="language-sh">curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
 </code></pre>
     <p>This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
-    <p><code>restaurants.json</code></p>
-    <pre><code class="language-json">[
-    {
-        "id": 1,
-        "name": "reup princess"
-    },
-    {
-        "id": 2,
-        "name": "Coming soom"
-    }
-]
-</code></pre>
-    <p><code>menus.json</code></p>
-    <pre><code class="language-json">[
-  {
-    "id": 1,
-    "title": "set menu 1",
-    "restaurant_id": 1
-  }
-]
-</code></pre>
     <h2>Assignment</h2>
     <ul>
       <li>Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is in the database in your Node.js script.</li>

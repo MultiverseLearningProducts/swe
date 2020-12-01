@@ -70,7 +70,7 @@ db.run('YOUR SQL QUERY;', function (error) {
     has emitted an event saying it's finished. In this 
     callback function on the `this` context you can 
     access the id of the last record you inserted. 
-    This will be useful later*/
+    This will be useful later */
     const id = this.lastID
 })
 ```
@@ -118,6 +118,9 @@ When we have a queue of async tasks we want to perform a recursive pattern is a 
 const load = require('./index')
 
 describe('SQLite3', () => {
+    beforeAll(done => {
+        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
+    })
     test('airports are loaded into the database', (done) => {
         load((db) => {
             db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
@@ -138,7 +141,7 @@ describe('SQLite3', () => {
 * write a `load` function that will take a callback and call it when all the airport data has been inserted into the database.
 * export this load function from your file.
 * write an `insert` function in your load.js file that will take; the airports array, the callback passed to `load`, the database instance `db`.
-* the first thing your `load` function needs to do is make sure the airports table has been created i.e. `CREATE TABLE IF NOT EXISTS airports`
+* your `load` function can assume the airports table has been created i.e. `CREATE TABLE IF NOT EXISTS airports....` can be run in your test setup `beforeAll` function.
 * once the table is ready call the `insert` function you created in your load.js file with the airports array, the callback passed to `load`, the database instance `db`
 * in your `insert` function check if the airports array is empty. If it is empty call the callback function with the `db` instance and return from the function.
 * if the airport array is not empty, in your `insert` function call `.pop()` on the airport array to remove the last airport from the array, then insert that item into the database
@@ -151,9 +154,8 @@ describe('SQLite3', () => {
 
 ## Learning Objectives
 
-* Use the following sqlite3 functions; `all`, `get`, `run`
-* Create your own valid JSON
-* Relate data using foreign keys
+* Implement nested iteration
+* Relate data using foreign keys correctly
 
 ## Before we start
 
@@ -171,30 +173,6 @@ curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/
 
  This is  called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.
 
-`restaurants.json`
-```json
-[
-    {
-        "id": 1,
-        "name": "reup princess"
-    },
-    {
-        "id": 2,
-        "name": "Coming soom"
-    }
-]
-```
-
-`menus.json`
-```json
-[
-  {
-    "id": 1,
-    "title": "set menu 1",
-    "restaurant_id": 1
-  }
-]
-```
 ## Assignment
 
 * Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is in the database in your Node.js script.
