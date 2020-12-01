@@ -9,9 +9,8 @@ Today is just about practicing what you have learnt so far.
 ## Learning Objectives
 
 * Demonstrate the syntax for defining a class
-* Use classes in your code
 * Set up Jest tests write unit tests for your classes
-* Create a coverage report and share it with your coach via slack
+* Write Async tests
 
 ## Before we start
 
@@ -30,6 +29,8 @@ Each turn of the event loop is called a 'tick'. setTimeout and setInterval are a
 You have been asked to create a scooter hire system. Electric scooters need to be charged at scooter charging stations. Users can only hire and unplug a scooter if the battery is fully charged. Users always use up the battery charge, so when a scooter is returned to a charging station, you can expect the battery to be empty. It takes about 2000 milliseconds to charge a scooter (you have to wait, it's async).
 
 Use test driven development and create the classes and interactions that you feel capture this functionality.
+
+Create a coverage report and share it with your coach via slack
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/157)
 

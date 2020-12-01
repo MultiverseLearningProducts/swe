@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-This week we are going to build a complete app. Like deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.
+This week we are going to build a Restaurants app, like Deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.
 
 <hr/>
 
@@ -19,7 +19,7 @@ This week we are going to build a complete app. Like deliveroo or Uber Eats. On 
 
 ## Materials needed
 
-* https://planttext.com for UML diagrams || install the plantuml plugin for VSCode
+* [https://planttext.com](https://planttext.com) for UML diagrams || install the plantuml plugin for VSCode
 
 ## Lesson
 
