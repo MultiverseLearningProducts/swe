@@ -35,46 +35,68 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 ![alt text](https://images.ctfassets.net/cdy7uua7fh8z/2waLvaQdM5Fl5ZN5xUrF2F/8c5ddae68ac8dd438cdeb91fe1010fd1/auth-sequence-client-credentials.png "OAuth Client Credentials Flow")
 
 
-TODO - add more explanation and diagrams.
-
+TODO - add more explanation and diagrams, spend time explaining what a JWT is, return some better message if not authorized etc.
 
 # Lesson 2
+Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&S to secure their Web APIs.
+  * Go to https://auth0.com/signup 
+  * Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.
+
+Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
+
+Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](createApi.PNG "Create API")
+
+Now navigate to the `Test` tab of your new API. You will see that a new application has been created called ContactsAPI(Test Application) which is authorised to access the API.
+
+You will see a section called `Asking Auth0 for tokens from my application`. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
+
+Let's break the request in more detail:
+| Element | Explanation |
+| ------- | ----------- |
+| audience | represents the resource which we are trying to access |
+| grant_type | we are using `client_credentials` OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow [here](https://auth0.com/docs/flows/client-credentials-flow). If you are creating an SPA you should use the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce) instead (we will cover this later).
+| client_id | this is the id of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
+| client_secret | this is the client secret of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
+
+You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents... TODO - add more detail here.
+
+# Lesson 3
+In this lesson we are going to secure our ContactsAPI using OAuth.
+
 COACHES - clone https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js (TODO - add a template for students) and follow the steps in the REAME.md file.
 
 STUDENTS - open the Contacts API you created yesterday in Visual Code.  This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
 
-Check you can call the API ok using Postman using `GET http://localhost:3000/contacts/me` and passing an Authorization header.
+Check you can call the API ok using Postman using `GET http://localhost:3000/contacts/me` and passing an Authorization header. 
+
+Now let's modifify the code to work with OAuth instead of Basic Authentication.
 
 ## Javascript developers
 1. Install the following node package dependencies:
-`npm install cors dotenv express-jwt jwts-rsa`
+`npm install cors dotenv express-jwt jwks-rsa`
 
 2. Remove the dependency to `express-basic-auth` 
 
-3. Modify the start of your `app.js` file as follows
+3. Add the following to the start of your `app.js` file as follows
 ```javascript
-const express = require("express");
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
-const db = require('./database.js');
-const cors = require('cors'); // may not be required
+const cors = require('cors'); 
 
 require('dotenv').config('.env'); // Note: env vars should not be used in production
-
-// initialise Express
-const app = express();
-
-app.use(cors());
-
-// ...
 ```
-4. Create a `.env` file and add the following entries (substituting in your personal Auth0 domain):
+
+4. Add the following line AFTER the call to initialise Express
+```javascript
+app.use(cors());
+```
+5. Create a `.env` file and add the following entries (substituting in your personal Auth0 domain):
 
 `AUTH0_AUDIENCE=https://contacts`
 
 `AUTH0_DOMAIN=[your domain].eu.auth0.com`
 
-5. Add a function to check for a valid OAuth (JWT) token:
+6. Add a function to check for a valid OAuth (JWT) token:
 ```javascript
 // create middleware for checking the JWT
 const checkJwt = jwt({
@@ -90,7 +112,7 @@ const checkJwt = jwt({
 });
 
 ```
-6. Secure your API:
+7. Secure your API:
 ```javascript
 app.get("/contacts/me", checkJwt, (req, res) => {
 ```
@@ -99,34 +121,7 @@ That's it!
 
 Now try to call your API using Postman - you should see a 401 Unauthorized response.
 
-This is because we have not configured our API as an OAuth resource and we are not sending an OAuth token.
-
-Let's move onto Lesson 2 and try to fix this!
-
-# Lesson 3
-Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&S to secure their Web APIs.
-  * Go to https://auth0.com/signup 
-  * Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.
-
-Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
-
-Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](createApi.PNG "Create API")
-
-Now navigate to the `Test` tab of your new API. You will see that no applications are authorised to access the API hence we can't test it. Click on the `Create & Authorise Test Application` link. This should create a new `ContactsAPI(Test Application)` under the `Applications` menu.
-
-You will see a section called `Asking Auth0 for tokens from my application`. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
-
-Let's break the request in more detail:
-| Element | Explanation |
-| ------- | ----------- |
-| audience | represents the resource which we are trying to access |
-| grant_type | we are using `client_credentials` OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow [here](https://auth0.com/docs/flows/client-credentials-flow). If you are creating an SPA you should use the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce) instead (we will cover this later).
-| client_id | this is the id of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
-| client_secret | this is the client secret of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
-
-You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents...
-
-Great! Now we can try calling our API with this token, copy it and paste it as a `Bearer Token`. Hopefully you should see a 200 OK response!
+This time, try calling the API with a `Bearer Token` with the token set to the one you obtained earlier. Hopefully you should see a 200 OK response!
 
 
 TODO - create an SPA to call the API..
