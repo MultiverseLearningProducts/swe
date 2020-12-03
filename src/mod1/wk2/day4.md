@@ -1,9 +1,12 @@
 # Mod 1 > Week 2 > Day 4
 
 ## Overview of the day
-Today you will have time to complete your OAuth implementation you started yesterday.
+Today we will develop a Single Page Application which uses OpenID to authenticate (login) a user to a website.
 
 ## Learning Objectives
+  * Understand OpenId
+  * Implement login and logout functionality using Auth0
+  * Allow an authorised user to call our Contacts API
 
 ## Before we start
 

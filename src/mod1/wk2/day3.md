@@ -40,6 +40,17 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 
 TODO - add more explanation and diagrams, spend time explaining what a JWT is, return some better message if not authorized etc.
 
+# Lesson 2 
+## Let's play with JWT!
+OAuth uses Json Web Tokens (JWTs). Here is an example of one. Use https://jwt.io to see the secret message hidden inside this token! Create your own message and send it as a JWT in the chat!
+
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM`
+
+A JWT is made up of 3 parts:
+* **Header** - which specifies the algorithm used to sign the token
+* **Payload** - which contains claims
+* **Signature** - which verifies who sent the token
+
 # Lesson 2
 Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&S to secure their Web APIs.
   * Go to https://auth0.com/signup 
@@ -61,12 +72,22 @@ Let's break the request in more detail:
 | client_id | this is the id of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
 | client_secret | this is the client secret of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
 
-You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents... TODO - add more detail here.
+You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents. 
+
+Common claims held within JWTs are:
+
+  * Issuer (iss)
+  * Subject (sub)
+  * Audience (aud)
+  * Expiration time (exp)
+  * Not before (nbf)
+  * Issued at (iat)
+  * JWT ID (jti)
 
 # Lesson 3
 In this lesson we are going to secure our ContactsAPI using OAuth.
 
-COACHES - clone https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js (TODO - add a template for students) and follow the steps in the REAME.md file.
+COACHES - clone https://github.com/WhiteHatLearningProducts/swe-solutions.git (might need ssh?) (TODO - add a template for students) and follow the steps in the REAME.md file.
 
 STUDENTS - open the Contacts API you created yesterday in Visual Code.  This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
 
