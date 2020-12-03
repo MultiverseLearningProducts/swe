@@ -14,6 +14,80 @@ Today we are going to learn about how to use OAuth to secure our API.
 ## Materials needed
 
 # Lesson 1
+## What is OAuth?
+OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
+
+If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.
+
+TODO - add more explanation and diagrams.
+
+
+# Lesson 2
+COACHES - clone https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js (TODO - add a template for students) and follow the steps in the REAME.md file.
+
+STUDENTS - open the Contacts API you created yesterday in Visual Code.  This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
+
+Check you can call the API ok using Postman using `GET http://localhost:3000/contacts/me` and passing an Authorization header.
+
+## Javascript developers
+1. Install the following node package dependencies:
+`npm install cors dotenv express-jwt jwts-rsa`
+
+2. Remove the dependency to `express-basic-auth` 
+
+3. Modify the start of your `app.js` file as follows
+```javascript
+const express = require("express");
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+const db = require('./database.js');
+const cors = require('cors'); // may not be required
+
+require('dotenv').config('.env'); // Note: env vars should not be used in production
+
+// initialise Express
+const app = express();
+
+app.use(cors());
+
+// ...
+```
+4. Create a `.env` file and add the following entries (substituting in your personal Auth0 domain):
+
+`AUTH0_AUDIENCE=https://contacts`
+
+`AUTH0_DOMAIN=[your domain].eu.auth0.com`
+
+5. Add a function to check for a valid OAuth (JWT) token:
+```javascript
+// create middleware for checking the JWT
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
+  }),
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}`,
+  algorithms: ['RS256']
+});
+
+```
+6. Secure your API:
+```javascript
+app.get("/contacts/me", checkJwt, (req, res) => {
+```
+
+That's it!
+
+Now try to call your API using Postman - you should see a 401 Unauthorized response.
+
+This is because we have not configured our API as an OAuth resource and we are not sending an OAuth token.
+
+Let's move onto Lesson 2 and try to fix this!
+
+# Lesson 3
 Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&S to secure their Web APIs.
   * Go to https://auth0.com/signup 
   * Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.
@@ -34,22 +108,14 @@ Let's break the request in more detail:
 | client_id | this is the id of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
 | client_secret | this is the client secret of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
 
+You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents...
 
-OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on). OpenID uses an additional token - the id token.
+Great! Now we can try calling our API with this token, copy it and paste it as a `Bearer Token`. Hopefully you should see a 200 OK response!
 
-Audience represents the resource identifier.
 
-Access Tokens are used in token-based authentication to allow an application to access an API. The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API.
+TODO - create an SPA to call the API..
 
 Useful doc - https://auth0.com/docs/architecture-scenarios/spa-api
 
-|Javascript|Java|
-```javascript
-const a = 1;
-```
-
-```java
-int a = 1;
-```
 [next](/swe/mod1/wk2/day4.html)
 [main](/swe)
