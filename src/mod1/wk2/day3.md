@@ -10,8 +10,11 @@ Today we are going to learn about how to use OAuth to secure our API.
 * Implement OAuth using Auth0 https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis and https://auth0.com/docs/flows/authorization-code-flow
 
 ## Before we start
+  * Ensure you have the Postman application installed
 
 ## Materials needed
+  * Postman application 
+  * VS Code (for Javascript development) or IntelliJ (for Java development)
 
 # Lesson 1
 ## What's wrong with Basic Auth?
