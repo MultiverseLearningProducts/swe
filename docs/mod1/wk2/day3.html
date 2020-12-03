@@ -23,6 +23,76 @@
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
+    <h2>What is OAuth?</h2>
+    <p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
+    <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
+    <p>TODO - add more explanation and diagrams.</p>
+    <h1>Lesson 2</h1>
+    <p>COACHES - clone <a href="https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js">https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js</a> (TODO - add a template for students) and follow the steps in the REAME.md file.</p>
+    <p>STUDENTS - open the Contacts API you created yesterday in Visual Code. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.</p>
+    <p>Check you can call the API ok using Postman using <code>GET http://localhost:3000/contacts/me</code> and passing an Authorization header.</p>
+    <h2>Javascript developers</h2>
+    <ol>
+      <li>
+        <p>
+          Install the following node package dependencies:
+          <code>npm install cors dotenv express-jwt jwts-rsa</code>
+        </p>
+      </li>
+      <li>
+        <p>Remove the dependency to <code>express-basic-auth</code></p>
+      </li>
+      <li>
+        <p>Modify the start of your <code>app.js</code> file as follows</p>
+      </li>
+    </ol>
+    <pre><code class="language-javascript">const express = require("express");
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+const db = require('./database.js');
+const cors = require('cors'); // may not be required
+
+require('dotenv').config('.env'); // Note: env vars should not be used in production
+
+// initialise Express
+const app = express();
+
+app.use(cors());
+
+// ...
+</code></pre>
+    <ol start="4">
+      <li>Create a <code>.env</code> file and add the following entries (substituting in your personal Auth0 domain):</li>
+    </ol>
+    <p><code>AUTH0_AUDIENCE=https://contacts</code></p>
+    <p><code>AUTH0_DOMAIN=[your domain].eu.auth0.com</code></p>
+    <ol start="5">
+      <li>Add a function to check for a valid OAuth (JWT) token:</li>
+    </ol>
+    <pre><code class="language-javascript">// create middleware for checking the JWT
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
+  }),
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}`,
+  algorithms: ['RS256']
+});
+
+</code></pre>
+    <ol start="6">
+      <li>Secure your API:</li>
+    </ol>
+    <pre><code class="language-javascript">app.get("/contacts/me", checkJwt, (req, res) => {
+</code></pre>
+    <p>That's it!</p>
+    <p>Now try to call your API using Postman - you should see a 401 Unauthorized response.</p>
+    <p>This is because we have not configured our API as an OAuth resource and we are not sending an OAuth token.</p>
+    <p>Let's move onto Lesson 2 and try to fix this!</p>
+    <h1>Lesson 3</h1>
     <p>Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&#x26;S to secure their Web APIs.</p>
     <ul>
       <li>Go to <a href="https://auth0.com/signup">https://auth0.com/signup</a></li>
@@ -43,15 +113,10 @@
       | client_id | this is the id of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
       | client_secret | this is the client secret of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
     </p>
-    <p>OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on). OpenID uses an additional token - the id token.</p>
-    <p>Audience represents the resource identifier.</p>
-    <p>Access Tokens are used in token-based authentication to allow an application to access an API. The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API.</p>
+    <p>You should see a 200 success status and the body of the response should contain an <code>access_token</code>. Paste it into the Debugger at <a href="https://jwt.io">https://jwt.io</a> and explore the contents...</p>
+    <p>Great! Now we can try calling our API with this token, copy it and paste it as a <code>Bearer Token</code>. Hopefully you should see a 200 OK response!</p>
+    <p>TODO - create an SPA to call the API..</p>
     <p>Useful doc - <a href="https://auth0.com/docs/architecture-scenarios/spa-api">https://auth0.com/docs/architecture-scenarios/spa-api</a></p>
-    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">const a = 1;
-</code></pre>
-    <pre><code class="language-java">int a = 1;
-</code></pre>
     <p>
       <a href="/swe/mod1/wk2/day4.html">next</a>
       <a href="/swe">main</a>
