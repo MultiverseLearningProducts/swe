@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 2 > Day 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 2 > Day 4</h1>
+    <h2>Overview of the day</h2>
+    <p>Today brings together SQLite3 Node.js and creating classes in code. The idea is to implement ORM so when a class is created it is persisted in the database, and when a row from the database is fetched it is returned as a class.</p>
+    <h1>Session 1 - Object Relational Mapping</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Implement an ORM design pattern</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>Use tests to drive the development. Show your apprentices how to create a Restaurant. Once you feel you've got them started they can continue to build out the whole data model. Possible extentions might be adding static methods like <code>Restaurant.all()</code> which would return all the Restaurants from the database with a <code>SELECT * FROM restaurants;</code> query.</p>
+    <h2>Assignment</h2>
+    <p>This code should be committed into the apprentices Github repo, you can check their implementation before the next session.</p>
+    <h2>Additional Reading</h2>
+    <p>ActiveRecord - the ruby gem that comes with Rails is considered one of the most classic ORM implementations. It is a design pattern identified by <a href="https://en.wikipedia.org/wiki/Active_record_pattern">Martin Fowler</a>.</p>
+    <h1>Session 2 - hasMany &#x26; belongsTo</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Write logical code in javascript to interact with a SQL database</li>
+      <li>Write async code in javascript</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>The apprentices have a set of tested classes that persist to a database</li>
+    </ul>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>This session builds on the previous by adding relationships between the classes. Step through adding a 'menu' to a 'restaurant', and identify the work they will now have to do when a restaurant is fetch from the database - they will have to go check for menus and create them as instances of Menu if it does. You should not need to go overboard with lots of explanation just show them the next steps in implementing the pattern, then let them spend some hours working their way through the data model.</p>
+    <h2>Assignment</h2>
+    <p>There should be tests. You are looking for complete, tested implementations of the data model. Get them to send you their test coverage reports.</p>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-The aim of today is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. You know how to write data into a database. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have a instance of a menu in the menus array in our restaurant. When we get a restaurant out of the database, we want to instantiate a new instance of our Restaurant class with that data.
+The aim of today is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. You know how to write data into a database. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have an instance of a menu in the menus array in our restaurant. When we get a restaurant out of the database, we want to instantiate a new instance of our Restaurant class with that data, and fetch the menus, and fetch the items for each menu.
 
 This mapping between databases and classes is called Object Relational Mapping.
 
@@ -24,9 +24,9 @@ This mapping between databases and classes is called Object Relational Mapping.
 
 ## Lesson
 
-We are representing objects in our programme with classes, and in the database as rows. We can't store an instance of class in the row of a database. We can't really use the row of a database in our programme. The ORM pattern is about abstracting away the database layer. In our programme we just need to think about instances of Restaturant the work of adding them and getting them from the database is removed from our programme interface, and contained in the class definition.
+We are representing objects in our programme with classes, and in the database as rows. We can't store an instance of class in the row of a database. We can't really use the row of a database in our programme. The ORM pattern is about abstracting away the database layer. In our programme we just need to think about instances of Restaurant the work of adding them and getting them from the database is removed from our programme interface, and contained in the class definition.
 
-Lets start in a simple way by looking at the work of adapting our class definition for Restaturant to also create and be able to fetch Restaturants backed by a database. In both our tests and our programme we have to make sure the database is set up with the tables we need to store our restaurants in. I would suggest creating a file that initialises the database and exports it.
+Lets start in a simple way by looking at the work of adapting our class definition for Restaurant to also create and be able to fetch Restaurants backed by a database. In both our tests and our programme we have to make sure the database is set up with the tables we need to store our restaurants in. I would suggest creating a file that initialises the database and exports it.
 
 ```javascript
 // db.js
@@ -96,7 +96,7 @@ test('can create an instance of an restaurant from a row', (done) => {
 
 ## Lesson
 
-There is an important dimention missing from our implementation. Relationships. Our restaurants have menus. We want to be able to access our menus like this:
+There is an important dimension missing from our implementation. Relationships. Our restaurants have menus. We want to be able to access our menus like this:
 
 ```javascript
 restaurant.menus // [Menu, Menu]
