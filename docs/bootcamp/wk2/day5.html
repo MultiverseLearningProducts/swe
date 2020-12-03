@@ -12,7 +12,7 @@
   <body>
     <h1>Week 2 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Knowing the ORM pattern learn to use the most popular SQL ORM avaliable for Node.js - <a href="https://www.npmjs.com/package/sequelize">Sequelize</a>. This is a day to practice and consolidate what you have learnt this week.</p>
+    <p>Knowing the ORM pattern learn to use the most popular SQL ORM available for Node.js - <a href="https://www.npmjs.com/package/sequelize">Sequelize</a>. This is a day to practice and consolidate what you have learnt this week.</p>
     <hr>
     <h2>Lesson 1 - Sequelize</h2>
     <h2>Learning Objectives</h2>
@@ -61,7 +61,7 @@ module.exports = {
     sequelize
 }
 </code></pre>
-    <p>In the code above we destructure assign three constructors from the sequelize module. We create a new instance of a sequelize connector and pass in config for the database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.</p>
+    <p>In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model &#x26; DataTypes. We create a new instance of a sequelize connector and pass in config for the database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.</p>
     <p>Our class definition is very simple (seems like cheating) we get all the functionality we need from <code>sequelize</code>. Then we define out fields and their types by passing an object to the static class function <code>init</code>, the second argument is the database connection and a short name for the model.</p>
     <h2>Assignment</h2>
     <ul>

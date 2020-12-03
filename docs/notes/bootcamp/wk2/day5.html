@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week # > Day #</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week # > Day</h1>
+    <h2>Overview of the day</h2>
+    <p>Use an ORM library i.e. Sequelize</p>
+    <h1>Session 1 - Sequelize</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Implement a data model with Sequelize</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>You should have built a simple ORM from scratch with jest and sqlite3</li>
+    </ul>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>This session introduces Sequelize. You can make a new branch and blow away the previous ORM implementation. Step through adding the sequelize library, and show how to re-create the Restaurant class.</p>
+    <p>You can keep the tests, but you'll have to refactor them a bit. Use <code>test.skip()</code> to narrow down the failing tests as you alter the interfaces for the <code>Restaurant</code> entity.</p>
+    <h2>Assignment</h2>
+    <h2>Additional Reading</h2>
+    <h1>Session 2 - Sequelize relationships</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>complete your knowledge of sequelize by implementing the Restaurant model with relationships</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>should have a project with the three classes Restaurant, Menu, Item + tests</li>
+    </ul>
+    <h2>Materials</h2>
+    <p>N/A</p>
+    <h2>Notes</h2>
+    <p>There are different ways to do the same thing in sequelize. You can add a menu like this:</p>
+    <pre><code class="language-javascript">describe('Relationships', () => {
+    beforeAll(async () => {
+        await sequelize.sync()
+    })
+    
+    test('restaurants have menus', async () => {
+        const restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
+        const menu = await Menu.create({title: 'set 1'})
+        await restaurant.addMenu(menu)
+        const menus = await restaurant.getMenus()
+        expect(menus[0].title).toBe('set 1')
+    })
+})
+</code></pre>
+    <p>Or like this:</p>
+    <pre><code class="language-javascript">describe('Relationships', () => {
+    beforeAll(async () => {
+        await sequelize.sync()
+    })
+    
+    test('restaurants have menus', async () => {
+        const restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
+        restaurant.createMenu({title: 'set 1'})
+        const menus = await restaurant.getMenus()
+        expect(menus[0].title).toBe('set 1')
+    })
+})
+</code></pre>
+    <p>The docs are quite good for sequelize and there is lots on stack overflow. You can use the 'include' API to get entities with their dependents pre-populated. For example get a restaurant and its menus like this:</p>
+    <pre><code class="language-javascript">describe('Relationships', () => {
+    beforeAll(async () => {
+        await sequelize.sync()
+    })
+    
+    test('restaurants have menus', async () => {
+        const _restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
+        _restaurant.createMenu({title: 'set 1'})
+        
+        const restaurant = await Restaurant.getByPk(_restaurant.id, {
+            include: {model: 'Menu'}
+        })
+
+        expect(restaurant.Menu[0].title).toBe('set 1)
+    })
+})
+</code></pre>
+    <p>This would be good to demo.</p>
+    <h2>Assignment</h2>
+    <p>You are looking for correct usage of the sequelize library to create entities, relate them together, perform CRUD operations and fetch entities with their dependents.</p>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>
