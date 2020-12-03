@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Knowing the ORM pattern learn to use the most popular SQL ORM avaliable for Node.js - [Sequelize](https://www.npmjs.com/package/sequelize). This is a day to practice and consolidate what you have learnt this week.
+Knowing the ORM pattern learn to use the most popular SQL ORM available for Node.js - [Sequelize](https://www.npmjs.com/package/sequelize). This is a day to practice and consolidate what you have learnt this week.
 
 ----
 
@@ -62,7 +62,7 @@ module.exports = {
     sequelize
 }
 ```
-In the code above we destructure assign three constructors from the sequelize module. We create a new instance of a sequelize connector and pass in config for the database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.
+In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model & DataTypes. We create a new instance of a sequelize connector and pass in config for the database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.
 
 Our class definition is very simple (seems like cheating) we get all the functionality we need from `sequelize`. Then we define out fields and their types by passing an object to the static class function `init`, the second argument is the database connection and a short name for the model.
 
