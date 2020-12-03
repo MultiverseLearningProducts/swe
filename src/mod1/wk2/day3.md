@@ -44,7 +44,7 @@ Sign up to Auth0, a service which implements OAuth and is used by many well know
 
 Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
 
-Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](createAPI.png "Create API")
+Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](images/createAPI.png "Create API")
 
 Now navigate to the `Test` tab of your new API. You will see that a new application has been created called ContactsAPI(Test Application) which is authorised to access the API.
 
