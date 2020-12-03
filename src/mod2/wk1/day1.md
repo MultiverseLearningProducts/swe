@@ -1,6 +1,6 @@
 # Mod 2 > Week 1 > Day 1
 
-#Introduction to JavaScript
+# Introduction to JavaScript
 
 Welcome to the Introduction to JavaScript course! In this course, you will learn the basics of JavaScript. By the end of the course, you will have created a number of JavaScript applications and you'll be ready to tackle so more technical concepts. Ready? Let's begin...
 
@@ -22,17 +22,42 @@ Today, we will look at:
 
 ## Before we start
 
-We will be using JS Fiddle to run JavaScript in the browser. Using the link below, in the JavaScript box, write:
+We will be using [JSFiddle](https://jsfiddle.net/) to run JavaScript in the browser. Using the link, in the JavaScript box, write:
 
 ``console.log("Hello, world!")``
 
-Click the run button and observe the text that has been printed in the console. Congratulations! You've written your first JavaScript program! Console.log is a very useful tool output anything we like to the console.
+Click the run button and observe the text that has been printed in the console. Congratulations! You've written your first JavaScript program! Console.log is a very useful tool that can output anything we like to the console. 
 
 # Lesson 1
 
 ## Declaring and using primitive datatypes
 
+What is a primitive? I hear you say... Well, a primitive is the simplest datatype in JavaScript. The primitives we're interested in, are:
 
+* number
+* boolean
+* string
+* null
+* undefined
+
+### Task 
+
+Let's dive write in and create some primitive! Open up your JSFiddle and type or copy/paste the following:
+
+```
+console.log(
+  typeof "Daniel",
+  typeof 3.14,
+  typeof true,
+  typeof false,
+  typeof null,
+  typeof undefined
+)
+```
+
+```typeof``` is a neat little tool that tells us what type a datatype is. It's especially useful when when you don't know ahead of time what a variable's datatype will be. Note the outputs are primitive, except typeof null is returning the datatype as an object?! Alert the church elders! No, actually no need. This is just a JavaScript 'quirk'. It should be of type null but for reasons known only to a select few, it's of type object. More on objects later!
+
+number; boolean; string; null; undefined; typeof operator; type checking functions; use strict; converting between data types; formatting numbers; string operations; single quote vs double quote (nesting); initialization
 
 [next](/swe/mod2/wk1/day2.html)
 [main](/swe)

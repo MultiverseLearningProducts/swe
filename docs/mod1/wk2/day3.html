@@ -23,9 +23,26 @@
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
+    <h2>What's wrong with Basic Auth?</h2>
+    <ul>
+      <li>The password is sent over the wire in base64 encoding which can be easily decoded</li>
+      <li>The password is sent repeatedly i.e. on each request meaning there is a large attack window</li>
+      <li>The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF</li>
+      <li>The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another user on a shared machine).</li>
+    </ul>
     <h2>What is OAuth?</h2>
     <p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
     <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
+    <h3>What makes OAuth secure?</h3>
+    <ul>
+      <li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
+      <li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
+      <li>Token expire, making it very hard for them to be reused</li>
+    </ul>
+    <p>Let's look at this diagram which illustrates the OAuth flow we are going to be using today (client credentials flow):</p>
+    <p>
+      <img src="https://images.ctfassets.net/cdy7uua7fh8z/2waLvaQdM5Fl5ZN5xUrF2F/8c5ddae68ac8dd438cdeb91fe1010fd1/auth-sequence-client-credentials.png" alt="alt text" title="OAuth Client Credentials Flow">
+    </p>
     <p>TODO - add more explanation and diagrams.</p>
     <h1>Lesson 2</h1>
     <p>COACHES - clone <a href="https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js">https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js</a> (TODO - add a template for students) and follow the steps in the REAME.md file.</p>

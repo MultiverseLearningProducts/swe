@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Mod 2 > Week 1 > Day 1</h1>
-    <p>#Introduction to JavaScript</p>
+    <h1>Introduction to JavaScript</h1>
     <p>Welcome to the Introduction to JavaScript course! In this course, you will learn the basics of JavaScript. By the end of the course, you will have created a number of JavaScript applications and you'll be ready to tackle so more technical concepts. Ready? Let's begin...</p>
     <h2>Overview of the day</h2>
     <p>Today, we will look at:</p>
@@ -29,11 +29,32 @@
       <li>Understand some of the best practices when working with JavaScript</li>
     </ul>
     <h2>Before we start</h2>
-    <p>We will be using JS Fiddle to run JavaScript in the browser. Using the link below, in the JavaScript box, write:</p>
+    <p>We will be using <a href="https://jsfiddle.net/">JSFiddle</a> to run JavaScript in the browser. Using the link, in the JavaScript box, write:</p>
     <p><code>console.log("Hello, world!")</code></p>
-    <p>Click the run button and observe the text that has been printed in the console. Congratulations! You've written your first JavaScript program! Console.log is a very useful tool output anything we like to the console.</p>
+    <p>Click the run button and observe the text that has been printed in the console. Congratulations! You've written your first JavaScript program! Console.log is a very useful tool that can output anything we like to the console.</p>
     <h1>Lesson 1</h1>
     <h2>Declaring and using primitive datatypes</h2>
+    <p>What is a primitive? I hear you say... Well, a primitive is the simplest datatype in JavaScript. The primitives we're interested in, are:</p>
+    <ul>
+      <li>number</li>
+      <li>boolean</li>
+      <li>string</li>
+      <li>null</li>
+      <li>undefined</li>
+    </ul>
+    <h3>Task</h3>
+    <p>Let's dive write in and create some primitive! Open up your JSFiddle and type or copy/paste the following:</p>
+    <pre><code>console.log(
+  typeof "Daniel",
+  typeof 3.14,
+  typeof true,
+  typeof false,
+  typeof null,
+  typeof undefined
+)
+</code></pre>
+    <p><code>typeof</code> is a neat little tool that tells us what type a datatype is. It's especially useful when when you don't know ahead of time what a variable's datatype will be. Note the outputs are primitive, except typeof null is returning the datatype as an object?! Alert the church elders! No, actually no need. This is just a JavaScript 'quirk'. It should be of type null but for reasons known only to a select few, it's of type object. More on objects later!</p>
+    <p>number; boolean; string; null; undefined; typeof operator; type checking functions; use strict; converting between data types; formatting numbers; string operations; single quote vs double quote (nesting); initialization</p>
     <p>
       <a href="/swe/mod2/wk1/day2.html">next</a>
       <a href="/swe">main</a>
