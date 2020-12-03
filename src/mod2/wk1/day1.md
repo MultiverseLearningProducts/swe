@@ -17,5 +17,7 @@ JavaScript
 # Lesson 1
 
 
+
+
 [next](/swe/mod2/wk1/day2.html)
 [main](/swe)
