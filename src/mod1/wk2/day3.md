@@ -14,10 +14,26 @@ Today we are going to learn about how to use OAuth to secure our API.
 ## Materials needed
 
 # Lesson 1
+## What's wrong with Basic Auth?
+  * The password is sent over the wire in base64 encoding which can be easily decoded
+  * The password is sent repeatedly i.e. on each request meaning there is a large attack window
+  * The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF
+  * The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another user on a shared machine).
+
 ## What is OAuth?
 OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
 
 If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.
+
+### What makes OAuth secure?
+  * Token management means we can track each device that uses the API (and revoke access if we want)
+  * OAuth provides 'scopes' which allow for fine-grained authorization 
+  * Token expire, making it very hard for them to be reused
+
+Let's look at this diagram which illustrates the OAuth flow we are going to be using today (client credentials flow):
+
+![alt text](https://images.ctfassets.net/cdy7uua7fh8z/2waLvaQdM5Fl5ZN5xUrF2F/8c5ddae68ac8dd438cdeb91fe1010fd1/auth-sequence-client-credentials.png "OAuth Client Credentials Flow")
+
 
 TODO - add more explanation and diagrams.
 
