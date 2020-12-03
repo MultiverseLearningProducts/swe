@@ -42,14 +42,18 @@ TODO - add more explanation and diagrams, spend time explaining what a JWT is, r
 
 # Lesson 2 
 ## Let's play with JWT!
-OAuth uses Json Web Tokens (JWTs). Here is an example of one. Use https://jwt.io to see the secret message hidden inside this token! Create your own message and send it as a JWT in the chat!
+OAuth uses Json Web Tokens (JWTs). A JWT is easy to identify, it is three strings separated by a `.`.
+
+Here is an example:
 
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM`
 
+Use https://jwt.io to see the secret message hidden inside this token! Create your own message and send it as a JWT in the chat!
+
 A JWT is made up of 3 parts:
-* **Header** - which specifies the algorithm used to sign the token
-* **Payload** - which contains claims
-* **Signature** - which verifies who sent the token
+* **Header** - specifies the type of token and the algorithm used to sign the token
+* **Payload** - the information that we want to transmit and other information about our token
+* **Signature** - verifies who sent the token
 
 # Lesson 2
 Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&S to secure their Web APIs.
