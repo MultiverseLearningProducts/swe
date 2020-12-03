@@ -23,15 +23,35 @@
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
-    <p>
-      You need to sign up to Auth0, a service which implements OAuth and is used in many production systems - <a href="https://auth0.com/signup">https://auth0.com/signup</a>.
-      Use your personal and select your region as Europe and opt out of notifications. Create a PERSONAL account type.
-    </p>
+    <p>Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&#x26;S to secure their Web APIs.</p>
+    <ul>
+      <li>Go to <a href="https://auth0.com/signup">https://auth0.com/signup</a></li>
+      <li>Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.</li>
+    </ul>
     <p>Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many <a href="https://auth0.com/docs/get-started#use-cases-for-auth0">use cases</a> for using Auth0 but we are going to focus on using it to secure our API with OAuth.</p>
+    <p>Navigate to your Dashboard and select to <code>Create API</code> using the naming as below 
+      <img src="createApi.PNG" alt="Auth0 Create API" title="Create API">
+    </p>
+    <p>Now navigate to the <code>Test</code> tab of your new API. You will see that no applications are authorised to access the API hence we can't test it. Click on the <code>Create &#x26; Authorise Test Application</code> link. This should create a new <code>ContactsAPI(Test Application)</code> under the <code>Applications</code> menu.</p>
+    <p>You will see a section called <code>Asking Auth0 for tokens from my application</code>. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.</p>
+    <p>
+      Let's break the request in more detail:
+      | Element | Explanation |
+      | ------- | ----------- |
+      | audience | represents the resource which we are trying to access |
+      | grant_type | we are using <code>client_credentials</code> OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow <a href="https://auth0.com/docs/flows/client-credentials-flow">here</a>. If you are creating an SPA you should use the <a href="https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a> instead (we will cover this later).
+      | client_id | this is the id of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
+      | client_secret | this is the client secret of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
+    </p>
     <p>OAuth - is used for authorising access to resources. OpenID Connect sits on top of OAuth which adds login and profile information (authentication). OpenID Connect allows one login to be used across multiple applications (single sign on). OpenID uses an additional token - the id token.</p>
     <p>Audience represents the resource identifier.</p>
     <p>Access Tokens are used in token-based authentication to allow an application to access an API. The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API.</p>
     <p>Useful doc - <a href="https://auth0.com/docs/architecture-scenarios/spa-api">https://auth0.com/docs/architecture-scenarios/spa-api</a></p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript">const a = 1;
+</code></pre>
+    <pre><code class="language-java">int a = 1;
+</code></pre>
     <p>
       <a href="/swe/mod1/wk2/day4.html">next</a>
       <a href="/swe">main</a>
