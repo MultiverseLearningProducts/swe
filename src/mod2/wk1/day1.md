@@ -32,7 +32,7 @@ Click the run button and observe the text that has been printed in the console. 
 
 ## Declaring and using primitive datatypes
 
-hat is a primitive? I hear you say... Well, a primitive is the simplest datatype in JavaScript. The primitives we're interested in, are:
+What is a primitive? I hear you say... Well, a primitive is the simplest datatype in JavaScript. The primitives we're interested in, are:
 
 * number
 * boolean
