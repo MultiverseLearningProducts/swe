@@ -18,7 +18,7 @@ Today we are going to learn about how to use OAuth to secure our API.
   * The password is sent over the wire in base64 encoding which can be easily decoded
   * The password is sent repeatedly i.e. on each request meaning there is a large attack window
   * The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF
-  * The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another user on a shared machine).
+  * The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another u/ser on a shared machine).
 
 ## What is OAuth?
 OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
@@ -44,7 +44,7 @@ Sign up to Auth0, a service which implements OAuth and is used by many well know
 
 Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
 
-Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](createApi.PNG "Create API")
+Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](createAPI.png "Create API")
 
 Now navigate to the `Test` tab of your new API. You will see that a new application has been created called ContactsAPI(Test Application) which is authorised to access the API.
 
