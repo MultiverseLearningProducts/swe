@@ -7,7 +7,7 @@ Today we are going to learn about how to use OAuth to secure our API.
 * Understand JWT tokens
 * Understand the OAuth flow
 * Understanding the advantages of OAuth over Basic Auth
-* Implement OAuth using Auth0 https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis and https://auth0.com/docs/flows/authorization-code-flow
+* Implement OAuth using Auth0 
 
 ## Before we start
   * Ensure you have the Postman application installed
@@ -21,7 +21,7 @@ Today we are going to learn about how to use OAuth to secure our API.
   * The password is sent over the wire in base64 encoding which can be easily decoded
   * The password is sent repeatedly i.e. on each request meaning there is a large attack window
   * The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF
-  * The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another u/ser on a shared machine).
+  * The password may be stored permanently in the browser hence could be stolen by another user on a shared machine
 
 ## What is OAuth?
 OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
@@ -31,7 +31,7 @@ If you’ve ever signed up to a new application and agreed to let it access your
 ### What makes OAuth secure?
   * Token management means we can track each device that uses the API (and revoke access if we want)
   * OAuth provides 'scopes' which allow for fine-grained authorization 
-  * Token expire, making it very hard for them to be reused
+  * Tokens expire, making it very hard for them to be reused
 
 Let's look at this diagram which illustrates the OAuth flow we are going to be using today (client credentials flow):
 
@@ -42,7 +42,7 @@ TODO - add more explanation and diagrams, spend time explaining what a JWT is, r
 
 # Lesson 2 
 ## Let's play with JWT!
-OAuth uses Json Web Tokens (JWTs). A JWT is easy to identify, it is three strings separated by a `.`.
+OAuth uses Json Web Tokens (JWTs). A JWT is easy to identify, it is three strings separated by a `.`
 
 Here is an example:
 
@@ -62,19 +62,20 @@ Sign up to Auth0, a service which implements OAuth and is used by many well know
 
 Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many [use cases](https://auth0.com/docs/get-started#use-cases-for-auth0) for using Auth0 but we are going to focus on using it to secure our API with OAuth.
 
-Navigate to your Dashboard and select to `Create API` using the naming as below ![Auth0 Create API](images/createAPI.png "Create API")
+Navigate to your Dashboard and select to `Create API` for your ContactsAPI using the same details as below ![Auth0 Create API](images/createAPI.png "Create API") - TODO - change audience to something less confusing.
 
 Now navigate to the `Test` tab of your new API. You will see that a new application has been created called ContactsAPI(Test Application) which is authorised to access the API.
 
-You will see a section called `Asking Auth0 for tokens from my application`. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
+You will see a section called `Asking Auth0 for tokens from my application`. Let's look in more detail at the parameters passed as part of the cURL request:
 
-Let's break the request in more detail:
 | Element | Explanation |
 | ------- | ----------- |
 | audience | represents the resource which we are trying to access |
 | grant_type | we are using `client_credentials` OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow [here](https://auth0.com/docs/flows/client-credentials-flow). If you are creating an SPA you should use the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce) instead (we will cover this later).
 | client_id | this is the id of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
 | client_secret | this is the client secret of the ContactsAPI(Test Application) which is authorised to access the ContactsAPI. |
+
+Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
 
 You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents. 
 
@@ -145,16 +146,115 @@ const checkJwt = jwt({
 app.get("/contacts/me", checkJwt, (req, res) => {
 ```
 
-That's it!
+## Java developers
+1. Add the OAuth dependencies to your `pom.xml` file:
 
-Now try to call your API using Postman - you should see a 401 Unauthorized response.
+```xml
+    <properties>
+        ...
+        <spring-security.version>5.4.2</spring-security.version>
+        ...
+    </properties>
 
-This time, try calling the API with a `Bearer Token` with the token set to the one you obtained earlier. Hopefully you should see a 200 OK response!
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-resource-server</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+```
 
+2. Create a new class which checks that the JWT has the correct audience value
 
-TODO - create an SPA to call the API..
+```java
+import org.springframework.security.oauth2.core.OAuth2Error;
+import org.springframework.security.oauth2.core.OAuth2TokenValidator;
+import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
+import org.springframework.security.oauth2.jwt.Jwt;
 
-Useful doc - https://auth0.com/docs/architecture-scenarios/spa-api
+/**
+ * Validates that the JWT is intended for our API.
+ */
+public class AudienceValidator implements OAuth2TokenValidator<Jwt> {
+
+    private final String audience;
+
+    AudienceValidator(String audience) {
+        this.audience = audience;
+    }
+
+    public OAuth2TokenValidatorResult validate(Jwt jwt) {
+        OAuth2Error error = new OAuth2Error("invalid_token", "The required audience is missing", null);
+
+        if (jwt.getAudience().contains(audience)) {
+            return OAuth2TokenValidatorResult.success();
+        }
+        return OAuth2TokenValidatorResult.failure(error);
+    }
+}
+```
+3. Modifiy your SecurityConfiguration to use OAuth
+```java
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Value("${auth0.audience}")
+    private String audience;
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    private String issuer;
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
+                .mvcMatchers("/contacts/me").authenticated()
+                .and().cors()
+                .and().oauth2ResourceServer().jwt();
+    }
+
+    @Bean
+    JwtDecoder jwtDecoder() {
+        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
+                JwtDecoders.fromOidcIssuerLocation(issuer);
+
+        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
+        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
+        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
+
+        jwtDecoder.setJwtValidator(withAudience);
+
+        return jwtDecoder;
+    }
+```
+4. Add a new file `application.yml` under `src/main/resources` to specify your Auth0 domain and audience
+```xml
+auth0:your Auth
+  audience: https://contacts
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://[your Auth0 domain].eu.auth0.com/
+```
+
+TODO - add details on JUnits..
+
+## Calling your API
+1. Obtain your Auth0 token.
+
+2. Call the API with a `Bearer Token` set to this token. Hopefully you should see a 200 OK response!
+
 
 [next](/swe/mod1/wk2/day4.html)
 [main](/swe)

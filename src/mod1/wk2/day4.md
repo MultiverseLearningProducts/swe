@@ -13,6 +13,9 @@ Today we will develop a Single Page Application which uses OpenID to authenticat
 ## Materials needed
 
 # Lesson 1
+TODO - create an SPA to call the API..
+
+Useful doc - https://auth0.com/docs/architecture-scenarios/spa-ap
 
 [next](/swe/mod1/wk2/day5.html)
 [main](/swe)
