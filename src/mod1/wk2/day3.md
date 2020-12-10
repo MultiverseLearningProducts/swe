@@ -4,9 +4,9 @@
 Today we are going to learn about how to use OAuth to secure our API. 
 
 ## Learning Objectives
-* Understand JWT tokens
-* Understand the OAuth flow
-* Understanding the advantages of OAuth over Basic Auth
+* Understand the limitations of Basic Auth
+* Understand OAuth and how it is used to secure website and APIs
+* Understand the structure and purpose of JWT
 * Implement OAuth using Auth0 
 
 ## Before we start
@@ -23,6 +23,9 @@ Today we are going to learn about how to use OAuth to secure our API.
   * The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF
   * The password may be stored permanently in the browser hence could be stolen by another user on a shared machine
 
+TODO - could try to locate where the password is stored?
+TODO - https://auth0.com/docs/authorization/authentication-and-authorization review for OpenId Connect
+
 ## What is OAuth?
 OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
 
@@ -37,8 +40,9 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 
 ![alt text](https://images.ctfassets.net/cdy7uua7fh8z/2waLvaQdM5Fl5ZN5xUrF2F/8c5ddae68ac8dd438cdeb91fe1010fd1/auth-sequence-client-credentials.png "OAuth Client Credentials Flow")
 
+TODO - need to consider OpenID Connect if we are having login flows - need to modify yesterday's code to use the OAuth login page
 
-TODO - add more explanation and diagrams, spend time explaining what a JWT is, return some better message if not authorized etc.
+*Activity* - create your own sequence diagram which illustrates the OAuth flow
 
 # Lesson 2 
 ## Let's play with JWT!
@@ -48,7 +52,9 @@ Here is an example:
 
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM`
 
-Use https://jwt.io to see the secret message hidden inside this token! Create your own message and send it as a JWT in the chat!
+Use https://jwt.io to see the secret message hidden inside this token! 
+
+*Activity*: Create your own messages and send them to the Slack channel!
 
 A JWT is made up of 3 parts:
 * **Header** - specifies the type of token and the algorithm used to sign the token
@@ -90,7 +96,7 @@ Common claims held within JWTs are:
   * JWT ID (jti)
 
 # Lesson 3
-In this lesson we are going to secure our ContactsAPI using OAuth.
+In this lesson we are going to secure our UserAPI using OAuth.
 
 COACHES - clone https://github.com/WhiteHatLearningProducts/swe-solutions.git (might need ssh?) (TODO - add a template for students) and follow the steps in the REAME.md file.
 
@@ -255,6 +261,19 @@ TODO - add details on JUnits..
 
 2. Call the API with a `Bearer Token` set to this token. Hopefully you should see a 200 OK response!
 
+# Lesson 4 - Modify your Login page to use the Auth0 Login page
+Instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate the Login function to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
+
+## Add a new user to Auth0
+Using the Auth0 Dashboard, create a new user "demo" with a password of "demo1"
+![alt text](images/auth0createUser.png "diagram showing the Auth0 dashboard")
+
+Modify your Login page to use the Auth0 Universal Login Page. 
+![alt text](images/authorizeUserSeq.png "sequence diagram showing the OAuth authorization flow")
+ 
+TODO - https://auth0.com/docs/quickstart/spa/vanillajs - could provide a template solution for them as quite complex to setup especially with calling the API - I have a sample in the SPA directory but it needs tidying up/commenting. 
+
+TODO - identify id token - print "Hello Demo"
 
 [next](/swe/mod1/wk2/day4.html)
 [main](/swe)
