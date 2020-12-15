@@ -9,7 +9,7 @@ Today introduces the subject of cryptography or the art of writing or solving co
 ## Learning Objectives
 
 * Implement a hashing function
-* Recall the features of encryption using hashing functions
+* Recall the features of hashing functions
 
 ## Before we start
 
@@ -53,7 +53,7 @@ Lets try to create a simple hashing function that will hash the string "Lets mee
 
 #### Chunking
 
-The first thing to do is prepare our string by chunking it into equal sections. We might need to pad the final block if our string will not perfectly chunk (which is nearly always). Usually a hashing function will turn the string charterers into their binary representations and make sure they are padded to an equal length.
+The first thing to do is prepare our string by chunking it into equal sections. We might need to pad the final block if our string will not perfectly chunk (which is nearly always). Usually a hashing function will turn the string charterers into their numerical representations and make sure they are padded to an equal length.
 
 ![evenly chunked blocks](https://user-images.githubusercontent.com/4499581/101887615-08477a00-3b95-11eb-8a60-9f01f7be853f.png)
 
@@ -70,46 +70,15 @@ while (slice < msgAsArr.length) {
 }
 
 while (blocks[blocks.length - 1].length < 8) {
-    blocks[blocks.length - 1].push("P")
+    blocks[blocks.length - 1].push("a")
 }
 
-function charToBin (char) {
-    let bin = char.charCodeAt().toString(2)
-    while (bin.length < 8) bin += '0'
-    return bin
-}
-
-blocks = blocks.map(block => block.map(charToBin))
+blocks = blocks.map(block => block.map(char => char.charCodeAt()))
 
 console.log(blocks)
 ```
 ```java
 String msg = "Lets meet at midnight under the clock";
-```
-
-```
-[
-  [
-    '10011000',
-    '11001010',
-    '11101000',
-    '11100110',
-    '10000000',
-    '11011010',
-    '11001010',
-    '11001010'
-  ],
-  [
-    '11101000',
-    '10000000',
-    '11000010',
-    '11101000',
-    '10000000',
-    '11011010',
-    '11010010',
-    '11001000'
-  ]
-]
 ```
 
 #### Hashing
@@ -172,8 +141,9 @@ Symmetric encryption uses a key to encrypt and then decrypt a message. Once a me
 
 The enigma code machine used symmetric encryption. The operator would set up their machine at the start of each day with that day's settings. The settings came from a code book. An Enigma code book would have one page per month. The page would include all the settings for each day of the month with the first day of the month at the bottom of the page so that once used, a setting could be torn off the page.
 
-❓ These books would have been very carefully protected. Why do you think that is?
 ❓ How is symmetric encryption different from hashing?
+❓ These books would have been very carefully protected, why do you think that is?
+❓ What is one of the vulnerabilities of symmetric encryption
 
 ### Implementing a browser based coding machine
 
