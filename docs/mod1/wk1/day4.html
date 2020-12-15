@@ -171,6 +171,7 @@ const toTransfer = btoa(encryptedBufferToString + "|" + JSON.stringify(shareable
 </code></pre>
     <p>The code above creates a new array from the ciphertext then maps over each value and turns it back into a unicode character i.e. <code>112</code> -> <code>p</code> - the array is then joined into a string.</p>
     <p>The final stage is to base64 encode the joined together encryptedBufferToString (our encrypted message) and the shareable key. I have joined them using a "|" so the other side can 'split' on that character and extract the message and key.</p>
+    <p><em>use <code>btoa()</code> to encode a string to base64, use <code>atob()</code> to decode a base64 encoded string to a regular string</em></p>
     <p><code>console.log(toTransfer)</code> will give you your encrypted message ready to be passed via slack.</p>
     <h3>Decryption</h3>
     <p>What follows can be in a totally separate file. The only thing that needs to be shared in the <code>iv</code> (initialisation vector) settings. Unpack the pre-flight steps and get your ciphertext ArrayBuffer back in play.</p>

@@ -12,23 +12,118 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Today (and during next week) you will use the skills you have learnt from this week's training to create a RESTful web service to list the contacts for a specific user. You have the choice of implementing this web service in either Javascript (Node.js) or your second language e.g. Java.</p>
+    <p>Today we conclude our study of cryptography by looking at asymetrical encryption. The day will also include a quiz so you can test your knowledge in preparation for next weeks material.</p>
+    <hr>
+    <h2>Lesson 1 - Asymmetric Encryption</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Create an OpenAPI specification for the API in SwaggerHub</li>
-      <li>Implement 2 different versions of the API</li>
-      <li>Create a Mock Server for this API</li>
-      <li>Implement the API in your language of choice, ensuring all errors return the appropriate status code</li>
-      <li>Use client side Javascript to call this API, ensuring all errors are mapped to user friendly messages</li>
-      <li>Discuss the security flaws with the solution and what we'll do next week to fix these!</li>
+      <li>contrast the tradeoffs between Symmetric and Asymmetric encryption</li>
+      <li>Generate a public and private key pair</li>
+      <li>Use a public key to encrypt a message</li>
+      <li>Use a private key to decrypt a message</li>
     </ul>
     <h2>Before we start</h2>
+    <p>You should know about hashing and symmetric encryption.</p>
     <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
-    <p>TODO - encourage apprentices to check in on each other during the day, create breakout rooms containing students working in the same language and ask them to review their code/support each other.</p>
+    <h2>Lesson</h2>
     <p>
-      <a href="/swe/mod1/wk2/day1.html">next</a>
-      <a href="/swe">main</a>
+      <img src="https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-asymmetric-encryption.png" alt="a illustration of asymmetric encryption">
+    </p>
+    <p>Asymmetric encryption makes use of 2 different keys. A public key and a private key. The public key is used to encrypt a message. The difference is that public key has its own exclusive private key. They are a key pair. The public key can be out in the wild and people can encrypt messages till their hearts are content. It is only the owner of the private key who can unlock and decrypt the messages encrypted with the paired public key.</p>
+    <p>This solves the problem of key distribution which you had to deal with yesterday when you were encrypting messages with the same key. There are other differences between symmetric and asymmetric encryption.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Symmetric Encryption</th>
+          <th align="left">Asymmetric Encryption</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Uses a single key to encrypt and decrypt the data</td>
+          <td align="left">Uses two separate keys for encryption and decryption. They are known as "public key" and "private key"</td>
+        </tr>
+        <tr>
+          <td align="left">Is more straightforward and conventional</td>
+          <td align="left">Was invented to mitigate the risks of symmetric encryption and is more complicated</td>
+        </tr>
+        <tr>
+          <td align="left">Is faster when compared to asymmetric encryption</td>
+          <td align="left">Is slower and required more computational power</td>
+        </tr>
+        <tr>
+          <td align="left">Requires smaller key lengths (usually about 128-256 bit length)</td>
+          <td align="left">Keys are longer in length</td>
+        </tr>
+        <tr>
+          <td align="left">Provides confidentiality of the data</td>
+          <td align="left">Provides confidentiality, authenticity and non-repudiation (something you cant deny)</td>
+        </tr>
+        <tr>
+          <td align="left">Good for encrypting large amounts of data</td>
+          <td align="left">Good for encrypting smaller amounts of data</td>
+        </tr>
+        <tr>
+          <td align="left">Typical algorithms RC4, AES, DES, 3DES, QUAD</td>
+          <td align="left">Typical algorithms RSA, Diffie-Hellman, ECC, El Gamal, DSA</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Secret ballot</h3>
+    <p>We are going to encrypt a file and send it using asymmetric encryption. I want us to vote on the following question:</p>
+    <blockquote>
+      <p>Who in your cohort do you vote to be cohort president?</p>
+    </blockquote>
+    <p>This is a secret ballot so your submission needs to be encrypted. You need to write the name of the apprentice you'd like to be president in a file and encrypt it with my public key. I, as the returning officer, will not be voting but I will collect and decrypt your encrypted submissions using my private key.</p>
+    <h3>OpenSSL</h3>
+    <p><a href="https://www.openssl.org/">OpenSSL</a> is a general-purpose cryptography library. It comes bundled with Git so both OSX and Windows users can access this command line tool. Git makes use of SSH keys to help you securely connect to your Github repos without having to authenticate with a username and password every time you interact with them. You might recall adding your public key to your Github account? We will use a similar key pair only in the Privacy-Enhanced Mail format or PEM.</p>
+    <p>
+      <img src="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png" alt="how to open Git Bash on Windows">
+    </p>
+    <h3>Generate the key pair</h3>
+    <p>I will generate a key pair on my machine.</p>
+    <pre><code class="language-sh">openssl genrsa -out id_rsa.pem 2048
+</code></pre>
+    <p>That creates the private key on my computer in a file called <code>id_rsa.pem</code>. Now I'm going to extract the public key from that file which I'll share with you.</p>
+    <pre><code class="language-sh">openssl rsa -in id_rsa.pem -outform PEM -pubout -out id_rsa.pub.pem
+</code></pre>
+    <p>Now I have 2 files <code>id_rsa.pem</code> and <code>id_rsa.pub.pem</code> I'll sent this to you all in slack. It's totally fine to share this key. However I have to be guarded about the private key on my computer, but is fine as I don't need to move it or share it.</p>
+    <h3>Encrypt</h3>
+    <p>Can you store the public key in a folder and create another file next to it with your nomination for president. Now lets create a third file (the encrypted vote file).</p>
+    <pre><code class="language-sh">openssl rsautl -encrypt -pubin -inkey id_rsa.pub.pem -in my_vote.txt -out vote.txt
+</code></pre>
+    <p>You can check the contents of your <code>vote.txt</code> file. You should be unable to distinguish the name you put in <code>my_vote.txt</code> file. You can send this file to me via slack.</p>
+    <h3>Decrypt</h3>
+    <p>When I receive your file I am going to decrypt it with my private key and record the name in a spreadsheet.</p>
+    <pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt
+</code></pre>
+    <p>That will output the name to my terminal. If I wanted to save the decrypted message to disc I would add the file name I wanted to save it as after the <code>-out</code> flag.</p>
+    <pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt -out decrypted_vote.txt
+</code></pre>
+    <h3>Results</h3>
+    <p>The votes are in and the new cohort president is...</p>
+    <h3>Summary</h3>
+    <p>In this session we have generated an asymmetric key pair consisting of a public and private key. You have used a public key to encrypt a file and have sent that to me securely and privately. You have seen me use my private key to decrypt your file and retrieve the name you sent me. My private key has not moved from my disc and we've been able to send encrypted messages without having to share sensitive keys.</p>
+    <h2>Assignment</h2>
+    <p>We have looked at hashing, symmetric and asymmetric encryption, these are building blocks. Digitally signing a file uses the cryptographic building blocks we have looked at to verify that a file has not been tampered with in transit. Can you research how to digitally 'sign' a file using openssl. Send your file and it's signature to your partner in crypto and get them to verify your file. How can you break the verification?</p>
+    <hr>
+    <h2>Lesson 2 - Crypto Quiz</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Recall the main features of hashing</li>
+      <li>Identify what makes an encryption symmetrical/asymmetrical</li>
+      <li>Identify an advantage/disadvantage of symmetrical/asymmetrical encryption</li>
+      <li>What factors go into selecting an encrypting algorithm</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>You should have completed all our sessions and have had the chance to ask any questions.</p>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>Quiz to follow.</p>
+    <h2>Assignment</h2>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/182">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day4.html">prev</a>|<a href="/swe/mod1/wk2/day1.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
