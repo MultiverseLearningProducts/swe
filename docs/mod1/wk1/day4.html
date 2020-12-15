@@ -12,17 +12,193 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to implement our API in Javascript by generating the stub code from SwaggerHub.</p>
+    <p>Today introduces the subject of cryptography or the art of writing or solving codes. Why study this? It is this area of mathematics that really gave birth to some of the first computers. For example here in the UK at Bletchley Park Tommy Flowers created the <a href="https://www.tnmoc.org/colossus">Colossus</a> computer to break codes. Cryptography features heavily in production systems and solves the problem of passing private data through a public network. You will be familiar with your SSH keys that help you connect to Github, or sites that respond over <code>https://</code>. These secure network connections are made possible by implementing cryptographic concepts 3 of which we will study to help us secure our API servers.</p>
+    <h2>Lesson 1 - Hashing Functions</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Understand how to generate a stub node.js server from SwaggerHub</li>
+      <li>Implement a hashing function</li>
+      <li>Recall the features of hashing functions</li>
     </ul>
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
+    <h2>Lesson</h2>
+    <p>The first concept in cryptography we need to understand is hashing. A hashing algorithm takes as its input a string of any length and will return you a different string of a fixed length. That hashing algorithm will produce the same result with the same input each time. How the initial string is boiled down to a hash is often done through a mathematical formula.</p>
+    <p>Hashing is so useful. What follows are some examples of how hashing is used with computers.</p>
+    <h3>Storing passwords</h3>
+    <p>Why do you think it's not cool to store people's passwords in your database in plain text? We can hash a password. That way we store a hash that no-one can recognise. It's impossible to figure out the original password string that created it, but at the same time if we are given a string and feed it back through our hashing function - we should end up with a matching hash we know that the string that created it must be the same. We have a password match!</p>
+    <blockquote>
+      <p>Hashing only works one way</p>
+    </blockquote>
+    <h3>Verifying changes</h3>
+    <p>Hashes have a fixed length. If you hash a single character or the complete works of Shakespeare you end up with a hash that is exactly the same length.</p>
+    <p>If I have an important file that I want to transfer to you I might make a hash of the file. Then I send you the file and you can check with my hashing function do you get the same hash? If you do the file has not been tampered with and I can feel relaxed.</p>
+    <p>This is because changing just 1 single character of the input string to a hash will result is a totally different hash. This is how git works. Under the hood git is storing hashes of your file and folders. When a file is changed it hashes differently. Your commits are hashes of your whole project.</p>
+    <p>How might you go about hashing a directory structure like you have in a codebase?</p>
+    <blockquote>
+      <p>Hashes have a fixed length</p>
+    </blockquote>
+    <h3>Indexing and searching</h3>
+    <p>Hashes can be used to speed up searching. Imagine an enormous database. You want to search by full name for "Kingdom Richards". Is Kingdom even in the database? We would then have to search for all the records with full name equal to 'K'+'i'+'n'... ⏱ (come back later).</p>
+    <p>To speed this up we can index the database using a hashing function. We would create a hash table structure of key value pairs that is much smaller that the enormous database. That is called indexing. The key is a hash of "Kingdom Richards" <code>c50b35ae86c2ec095850243e007dbb1dec3e9278</code> and the value is the address of the record in the database. So now to search we can hash "Kingdom Richards" and look that key up in our hash table. If there is no key then "Kingdom Richards" is not even in our enormous database so we saved ourself some time there. If there is a "Kingdom Richards" then we retrieve the value from the hash table and go straight to that location in memory to get our record.</p>
+    <p>There is a bit more to it that that but you can see the usefulness of hashing in computer programming with just these three examples.</p>
+    <h3>Try it</h3>
+    <p>Lets try to create a simple hashing function that will hash the string "Lets meet at midnight under the clock". To do this we need to have a little idea about how hashing functions work.</p>
+    <h4>Chunking</h4>
+    <p>The first thing to do is prepare our string by chunking it into equal sections. We might need to pad the final block if our string will not perfectly chunk (which is nearly always). Usually a hashing function will turn the string charterers into their numerical representations and make sure they are padded to an equal length.</p>
     <p>
-      <a href="/swe/mod1/wk1/day5.html">next</a>
-      <a href="/swe">main</a>
+      <img src="https://user-images.githubusercontent.com/4499581/101887615-08477a00-3b95-11eb-8a60-9f01f7be853f.png" alt="evenly chunked blocks">
+    </p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript">const msg = "Lets meet at midnight under the c1ock";
+const msgAsArr = msg.split("")
+let blocks = [];
+let slice = 0;
+const blockSize = 8;
+
+while (slice &#x3C; msgAsArr.length) {
+    blocks.push(msgAsArr.slice(slice, slice += blockSize));
+}
+
+while (blocks[blocks.length - 1].length &#x3C; 8) {
+    blocks[blocks.length - 1].push("a")
+}
+
+blocks = blocks.map(block => block.map(char => char.charCodeAt()))
+
+console.log(blocks)
+</code></pre>
+    <pre><code class="language-java">String msg = "Lets meet at midnight under the clock";
+</code></pre>
+    <h4>Hashing</h4>
+    <p>Now lets consume that array of even chunks and boil it down to a hash. You can visualise an array of 5 initial values that are the internal starting state of the hashing function.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/101887628-0e3d5b00-3b95-11eb-86b6-d320b9657658.png" alt="a 1 by 5 grid of values">
+    </p>
+    <p>Next we take each of our equal chunks from our input string and use those values to update the internal state of the hashing function. In the SHA-1 (simple hashing algorithm) algorithm all kinds of math tricks go on. You can shift bytes, use XOR gates and swap the positions of values in the internal state. Below is a diagram of the SHA-1 algorithm.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/101887639-11384b80-3b95-11eb-9f0b-049c022e7719.png" alt="the SHA-1 algorithm in a diagram">
+    </p>
+    <p>We do not expect you to implement this algorithm, it is shown for inspiration. We keep cycling through these updates until we run out of chunks from our input string. The internal state we are left with at the end of all that is our output hash. This is how we always end up with the hash being the same length, and the same value.</p>
+    <pre><code>echo "Lets meet at midnight under the c1ock." | shasum
+a49dfd68bf232c685f22dbdcb8a894803cebd320
+echo "Lets meet at midnight under the clock." | shasum
+fa137e72391cfa6cb95781662fe0294bd7d000a8
+</code></pre>
+    <p>In the example above you can see I am changing the 'l' in 'clock' and passing it to a hashing function the output is quite different for each slightly different string. You might find it is this behavior that poses the most challenging. Do your best and have some fun.</p>
+    <h2>Assignment</h2>
+    <p>Can you create a hashing algorithm?</p>
+    <ol>
+      <li>Your hashing function should take a string of any length and return a string of a fixed length</li>
+      <li>The initial string and output hash should not be similar in any way</li>
+      <li>Changing the input string even by 1 letter should create a different output hash</li>
+      <li>Repeating your hashing function with the same input string should return the same output hash every time.</li>
+    </ol>
+    <p>You are not expected to implement a complete hashing algorithm in this assignment! We want you to try implementing a hashing function so you can appreciate what goes on inside them, what the rules are and why there are different varieties of hashing algorithms.</p>
+    <p>Be prepared to talk the group through your hashing function.</p>
+    <hr>
+    <h2>Lesson - Symmetric Key Encryption</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>encrypt a text message using a key</li>
+      <li>decrypt a text message using a key</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>You should have some idea about hashing algorithms</p>
+    <h2>Materials needed</h2>
+    <p>You will need a text editor and browser</p>
+    <h2>Lesson</h2>
+    <p>
+      <img src="https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-symmetric-encryption.png" alt="a diagram of symmetric encryption">
+    </p>
+    <p>Symmetric encryption uses a key to encrypt and then decrypt a message. Once a message is encrypted it can't be understood by anyone and is safe to pass around in public, or in this context send over a network. A second party with the key is the only other party who can decrypt and read your message.</p>
+    <p><a href="https://www.101computing.net/enigma-encoder/"><img src="https://www.101computing.net/enigma/images/enigma-how-to.png" alt="The enigma code machine used symmetric encryption"></a></p>
+    <p>The enigma code machine used symmetric encryption. The operator would set up their machine at the start of each day with that day's settings. The settings came from a code book. An Enigma code book would have one page per month. The page would include all the settings for each day of the month with the first day of the month at the bottom of the page so that once used, a setting could be torn off the page.</p>
+    <p>
+      ❓ How is symmetric encryption different from hashing?
+      ❓ These books would have been very carefully protected, why do you think that is?
+      ❓ What is one of the vulnerabilities of symmetric encryption
+    </p>
+    <h3>Implementing a browser based coding machine</h3>
+    <p>Your assignment is to work in pairs to send encrypted messages between you both using slack. Below is an example of a message that has been encrypted and is ready to send in our slack channel.</p>
+    <pre><code>RuY2z0rri/YnJPGlvOzze9Nj+hLGQTsvTPXcljNWj/VSSvm9PjTbo3x7ImFsZyI6IkExMjhHQ00iLCJleHQiOnRydWUsImsiOiIxSmRHS081U2pod3FTSUx4bzZSeldBIiwia2V5X29wcyI6WyJlbmNyeXB0IiwiZGVjcnlwdCJdLCJrdHkiOiJvY3QifQ==
+</code></pre>
+    <p>Only your pair will be able to encrypt an decrypt each others messages. There are a few things we need to cover before we can do this using the Web Crypto API.</p>
+    <h3>Strings to ArrayBuffers</h3>
+    <p>The encryption functions we can use in the browser require your messages to be encoded as an ArrayBuffer. We like reading text as unicode characters but computers like to deal with text in different structures. Below is an example of a string converted to an ArrayBuffer. You can try this yourself using the browser based <code>TextEncoder</code>;</p>
+    <pre><code class="language-html">new TextEncoder().encode("We like to read unicode characters")
+
+[87, 101, 32, 108, 105, 107, 101, 32, 116, 111, 32, 114, 101, 97, 100, 32, 117, 110, 105, 99, 111, 100, 101, 32, 99, 104, 97, 114, 97, 99, 116, 101, 114, 115]
+</code></pre>
+    <p>❓ Why do you think an encryption function might want you to pass it a string as an ArrayBuffer?</p>
+    <h3>Picking an algorithm</h3>
+    <p>From your hashing function I hope you have learnt that it can be quite compute intensive using algorithms to hash or encrypt data. This is one of the tradeoffs that you have to consider - security vs performance. You can have a really hard to break encryption algorithm, but it will likely take time to encrypt your data, your machine's fans might start up as the processor is having to work really hard. You can cut some corners and simplify your algorithm to get better performance, but it might then be easier to break your encryption.</p>
+    <p>For our assignment today we are going to use the <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">'AES-GCM'</a> algorithm (Advanced Encryption Standard Galois Counter Mode).</p>
+    <pre><code class="language-javascript">const algorithm = {
+    name: 'AES-GCM',
+    length: 128
+}
+</code></pre>
+    <h3>Initialisation Vector</h3>
+    <p>Just like the enigma code machine required daily settings that were shared by both encryption and decryption agents, our code machine requires settings that must be unique and shared between both parties.</p>
+    <pre><code class="language-javascript">const settings = {
+    name: 'AES-GCM',
+    iv: new Uint8Array([229, 56, 109, 253, 36, 111, 243, 241, 13, 56, 220, 129, 127, 237, 6, 73])
+}
+</code></pre>
+    <p><code>iv:</code> is short for 'initialisation vector' this is used in the algorithm that will be encrypting and decrypting your messages. You need to find a way to privately share this setting with each other. You could direct message each other on slack and share this value with each other. To generate it you can use <code>crypto.getRandomValues(new Uint8Array(16))</code>. Then share the values in the array with each other.</p>
+    <h3>Key Generation</h3>
+    <p>This is the key part. There are 2 steps we need to generate a key, and export a shareable version of it for our partner. Remember this is were symmetric encryption gets it's name, the same key on both sides of the exchange.</p>
+    <pre><code class="language-javascript">const key = await crypto.subtle.generateKey(algorithm, true, ["encrypt", "decrypt"])
+const shareableKey = await crypto.subtle.exportKey('jwk', key)
+</code></pre>
+    <p>The arguments to generateKey are the algorithm object we defined above, a boolean that decides if we can export the key or not, and an array of things we can do with the key; The shareableKey means we have a shareable version of the key that our partner can use to decrypt our messages. We can share the key with the message because without the settings you can't use it.</p>
+    <h3>Encryption</h3>
+    <p>You have everything you need to encrypt your messages (<code>encrypt</code> is async and promise based).</p>
+    <pre><code class="language-javascript">const msg = "We like to read unicode characters"
+const toEncode = new TextEncoder().encode(msg)
+/*
+  settings, key etc
+*/
+const ciphertext = await crypto.subtle.encrypt(settings, key, toEncode)
+</code></pre>
+    <p>"ciphertext" is the term given to our encrypted data. Its an ArrayBuffer, similar to the one we feed into the <code>encrypt</code> function.</p>
+    <h3>Pre-flight</h3>
+    <p>Now we have encrypted our message it is in an ArrayBuffer. We need to do a little more work to make this easier to transport. It's going to be tricky to copy and paste an ArrayBuffer and preserve its properties.</p>
+    <pre><code class="language-javascript">const encryptedBufferToString = Array
+    .from(new Uint8Array(ciphertext))
+    .map(byte => String.fromCharCode(byte)).join('')
+const toTransfer = btoa(encryptedBufferToString + "|" + JSON.stringify(shareableKey))
+</code></pre>
+    <p>The code above creates a new array from the ciphertext then maps over each value and turns it back into a unicode character i.e. <code>112</code> -> <code>p</code> - the array is then joined into a string.</p>
+    <p>The final stage is to base64 encode the joined together encryptedBufferToString (our encrypted message) and the shareable key. I have joined them using a "|" so the other side can 'split' on that character and extract the message and key.</p>
+    <p><code>console.log(toTransfer)</code> will give you your encrypted message ready to be passed via slack.</p>
+    <h3>Decryption</h3>
+    <p>What follows can be in a totally separate file. The only thing that needs to be shared in the <code>iv</code> (initialisation vector) settings. Unpack the pre-flight steps and get your ciphertext ArrayBuffer back in play.</p>
+    <pre><code class="language-javascript">const [encryptedBufferToString, shareableKey] = atob("RuY2z0rri/YnJPGlvOzze9Nj+hLGQTsvTPXcljNWj/VSSvm9PjTbo3x7ImFsZyI6IkExMjhHQ00iLCJleHQiOnRydWUsImsiOiIxSmRHS081U2pod3FTSUx4bzZSeldBIiwia2V5X29wcyI6WyJlbmNyeXB0IiwiZGVjcnlwdCJdLCJrdHkiOiJvY3QifQ==").split("|")
+const ciphertext = new Uint8Array(encryptedBufferToString.match(/[\s\S]/g).map(ch => ch.charCodeAt(0)))
+</code></pre>
+    <p>To decrypt messages you need to get the shareableKey back to a 'crypto' key.</p>
+    <pre><code class="language-javascript">const key = await crypto.subtle.importKey('jwk', JSON.parse(shareableKey), algorithm, false, ["decrypt"])
+</code></pre>
+    <p>Combine the settings, key and ciphertext to the <code>decrypt</code> function.</p>
+    <pre><code class="language-javascript">const decrypted = await crypto.subtle.decrypt(settings, key, ciphertext)
+</code></pre>
+    <p>Last step is to decode the ArrayBuffer into a human readable string:</p>
+    <pre><code class="language-javascript">const decodedMessage = new TextDecoder().decode(decrypted)
+</code></pre>
+    <p>You are now able to communicate through an encrypted channel with your partner!</p>
+    <h3>Summary</h3>
+    <p>Symmetrical encryption gets it's name from the key that is the same on both sides of the exchange. The key is used to encrypt and decrypt messages. We have also learnt that the algorithms used to encrypt and decrypt messages are maths based and require strings to be formatted in a way the algorithms can work with. Not only have we transformed string to ArrayBuffers, but we have also had to encode this structures into strings which are easier to pass around.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>In pairs privately share your iv settings</li>
+      <li>Both write the code to encrypt and decrypt each others messages</li>
+      <li>Use slack to pass your messages to each other</li>
+      <li>Try to decode other peoples messages using your code (does it work?)</li>
+    </ul>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/181">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day3.html">prev</a>|<a href="/swe/mod1/wk1/day5.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
