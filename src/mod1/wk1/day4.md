@@ -230,6 +230,8 @@ The code above creates a new array from the ciphertext then maps over each value
 
 The final stage is to base64 encode the joined together encryptedBufferToString (our encrypted message) and the shareable key. I have joined them using a "|" so the other side can 'split' on that character and extract the message and key.
 
+_use `btoa()` to encode a string to base64, use `atob()` to decode a base64 encoded string to a regular string_
+
 `console.log(toTransfer)` will give you your encrypted message ready to be passed via slack.
 
 ### Decryption
