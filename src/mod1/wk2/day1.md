@@ -60,7 +60,7 @@ Here is an example:
 > Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
 
 ### Assignment
-Using the `Authorization` header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?
+Using the `Authorization` header above, determine the user's username and password using https://www.base64decode.org/. Do you think Basic Authentication is a secure scheme?
 
 ## Lesson 3 - Hashing passwords
 ### Learning Objectives
@@ -73,7 +73,7 @@ To validate that a user's login details are correct, we need to match the userna
 
 **Question** - Imagine if we held these passwords in plaintext.. what risks do you think this could cause?
 
-**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to it's repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
+**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
 
 To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
 
@@ -95,22 +95,24 @@ Use the code above to generate hashes of some demo user passwords. Then add the 
 
 ## Lesson 4 - Creating and Securing a User API
 ### Learning Objectives
+  * Use what you have learnt in previous lessons to secure an API using Basic Auth
 
 ### Lesson
 Your API should support 4 resources:
-|HTTP Method|URL|Description|
-|-----------|---|-----------|
-|POST|/users|create a new user|
-|GET|/users|retrieve all users|
-|GET|/users/{id}|retrieve a specific user|
-|PUT|/users|update a user|
-|DELETE|/users/{id}|delete a user|
+|HTTP Method|URL|Status code|Description|
+|-----------|---|-----------|-----------|
+|POST|/users|201|create a new user|
+|GET|/users|200|retrieve all users|
+|GET|/users/{id}|200|retrieve a specific user|
+|PUT|/users|200|update a user|
+|DELETE|/users/{id}|200|delete a user|
 
 ### Assignment
   * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js
-  * Secure the Users API with a username and password (see sample code below)
+  * Secure the Users API with a hardcoded username and password (see sample code below)
   * Ensure you can call the secured API using Postman
-  * Extension - Check the incoming username and password against the list of users / hashed passwords you created earlier
+  * Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson
+  * (Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson). Enhance the form to display a list of users and allow the creation of new users, deletion and update of existing users (apart from the currently logged in user!)
 
 **Question** - is the password sent on every request or cached?
 
@@ -120,13 +122,6 @@ Protect your Create, Read, Update and Delete user resources with Basic Authentic
 ```
 ```java
 ```
-
-## Lesson 5 - Login Form
-### Learning Objectives
-  * Use HTML/CSS/JS to create a Login form
-  
-### Assignment
-Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
 
 
 [next](/swe/mod1/wk2/day2.html)
