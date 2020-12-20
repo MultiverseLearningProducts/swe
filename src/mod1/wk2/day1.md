@@ -23,9 +23,17 @@ Today we are going to use Basic Auth to secure a RESTful API.
 
  Here's an example to illustrate this: 
  
- Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is **authentication**. Once authentication is complete, you are given a key card which gives you entry to your room - this is **authorisation** as you are being granted access to a resource (in this case your room). You are not authorised to access any other rooms.
+ Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is **authentication**. 
 
- TODO - create a nice image to visual this example  
+![hotel checkin](https://user-images.githubusercontent.com/1316724/102709159-a9be8200-429f-11eb-903b-12976c1f051d.png)
+
+<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/free-icon/check-in-desk_2261372?related_item_id=2261377&term=hotel%20checking%20in" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+Once authentication is complete, you are given a key card which gives you entry to your room - this is **authorisation** as you are being granted access to a resource (in this case your room). You are not authorised to access any other rooms.
+
+![hotel keycard](https://user-images.githubusercontent.com/1316724/102709120-43d1fa80-429f-11eb-9d57-43906703fbf9.png)
+
+<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 ### Assignment
 In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:
@@ -39,27 +47,7 @@ In breakout rooms, determine which of the following are examples of authenticati
 
 TODO - would love an image created to summarise this like the one at https://www.okta.com/identity-101/authentication-vs-authorization/
 
-## Lesson 2 - User API
-### Learning Objectives
-  * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js
-
-### Lesson
-Your API should support 4 resources:
-|HTTP Method|URL|Description|
-|-----------|---|-----------|
-|POST|/users|create a new user|
-|GET|/users|retrieve all users|
-|GET|/users/{id}|retrieve a specific user|
-|PUT|/users|update a user|
-|DELETE|/users/{id}|delete a user|
-
-### Assignment
-Implement this API using either SpringBoot or Node.js. You can either create the API from scratch or use SwaggerHub to generate stub code (TODO - SwaggerHub generated code needs tweaks - I need to look into this more).
-
-Ensure you can successfully call each resource using Postman.
-
-
-## Lesson 3 - Basic Authentication encoding
+## Lesson 2 - Basic Authentication encoding
 ### Learning Objectives
   * Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
 
@@ -74,7 +62,7 @@ Here is an example:
 ### Assignment
 Using the `Authorization` header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?
 
-## Lesson 4 - Hashing passwords
+## Lesson 3 - Hashing passwords
 ### Learning Objectives
   * Understand why passwords should be hashed
   * Understand the implications of exposing sensitive data
@@ -85,18 +73,11 @@ To validate that a user's login details are correct, we need to match the userna
 
 **Question** - Imagine if we held these passwords in plaintext.. what risks do you think this could cause?
 
-**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to it's repretation - listen to this video to hear about one recent example:
+**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to it's repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
 
-<iframe width="400" height="500" frameborder="0" src="https://www.bbc.co.uk/news/av/embed/p06kjsw5/48905907"></iframe>
+To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
 
-TODO - ask Bernard about how to embed this properly - taken from https://www.bbc.co.uk/news/business-48905907
-I know the video doesn't talk about passwords but hopefully it gets the point across..
-
-To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
-
-TODO - we could do with a nice video of the concepts here!
-
-Here is some code which implements a secure hashing algorithm:
+As a reminder, here is some code which implements a secure hashing algorithm:
 
 |Javascript|Java|
 ```javascript
@@ -108,14 +89,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 String hashedPassword = passwordEncoder.encode("your password");
 ```
-### Assignment
-Use the code above to generate hashes of some demo user passwords. Then add the usernames and hashed passwords to an in-memory database as part of your web server's startup.
 
-## Lesson 5 - Securing an API with Basic Authentiation
+### Assignment
+Use the code above to generate hashes of some demo user passwords. Then add the usernames and their hashed passwords to a database.
+
+## Lesson 4 - Creating and Securing a User API
 ### Learning Objectives
-   * Secure the Users API with a username and password
+
+### Lesson
+Your API should support 4 resources:
+|HTTP Method|URL|Description|
+|-----------|---|-----------|
+|POST|/users|create a new user|
+|GET|/users|retrieve all users|
+|GET|/users/{id}|retrieve a specific user|
+|PUT|/users|update a user|
+|DELETE|/users/{id}|delete a user|
 
 ### Assignment
+  * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js
+  * Secure the Users API with a username and password (see sample code below)
+  * Ensure you can call the secured API using Postman
+  * Extension - Check the incoming username and password against the list of users / hashed passwords you created earlier
+
+**Question** - is the password sent on every request or cached?
+
 Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code (TODO):
 |Javascript|Java|
 ```javascript
@@ -123,25 +121,13 @@ Protect your Create, Read, Update and Delete user resources with Basic Authentic
 ```java
 ```
 
-Verify you can call your API using Postman.
-
-**Question** - is the password sent on every request or cached?
-
-## Lesson 6 - Login Form
+## Lesson 5 - Login Form
 ### Learning Objectives
   * Use HTML/CSS/JS to create a Login form
   
 ### Assignment
-Create a simple form which sends a username and password to your API (i.e. simulates what Postman was doing in the previous lesson).
+Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
 
-## Lesson 7 - Enhanced User Interface
-### Learning Objectives
-  * Use HTML/CSS/JS to call the User API
-
-### Assignment
-Extend the Login form to display all users once login is successful. 
-Create controls to allow the creation and deletion of users.
-  
 
 [next](/swe/mod1/wk2/day2.html)
 [main](/swe)

@@ -14,6 +14,9 @@ TODO - mention location of template starter code (if apprentice hasn't finished 
 ## Materials needed
 
 # Lesson 1
+## Learning Objectives
+  * How to model transactional operations
+  
 
 [next](/swe/mod1/wk2/day4.html)
 [main](/swe)
