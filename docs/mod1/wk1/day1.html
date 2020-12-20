@@ -13,32 +13,235 @@
     <h1>Mod 1 > Week 1 > Day 1</h1>
     <h2>Overview of the day</h2>
     <p>
-      Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We covered this topic briefly in
-      the Bootcamp but over the next 2 weeks we'll be going into a lot more depth.
+      Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We covered this topic briefly in the Bootcamp but over the next 2 weeks we'll be going into a lot more depth.
       Today we will use <a href="https://www.postman.com/">Postman</a> to call some RESTful APIs and look in detail at the requests we send and responses we receive.
     </p>
+    <hr>
+    <h2>Lesson 1 - The Anatomy of HTTP</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Understand the Hypertext Transfer Protocol (HTTP)</li>
       <li>Understand the difference between HTTP and HTTPS</li>
-      <li>Understand the different HTTP methods and which one is appropriate for modelling CRUD operations</li>
+      <li>Understand the different HTTP verbs and which one is appropriate for modelling CRUD operations</li>
       <li>Understand the most common HTTP response codes and how these indicate success or failure in RESTful operations</li>
       <li>Become familiar with using Postman to call RESTful APIs</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>Ask apprentices to install <a href="https://www.postman.com/">Postman</a></li>
+      <li>Install <a href="https://www.postman.com/">Postman</a></li>
     </ul>
     <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
+    <h2>Lesson</h2>
+    <p>HTTP stands for the 'hyper text transfer protocol'. It is a protocol or 'way of doing things' which means if you meet a standard set of requirements you can implement HTTP in any language. Lets have a look at what goes into an HTTP request:</p>
+    <h3>Method (Verb)</h3>
+    <p>The method part of HTTP helps to communicate what this request is trying to do. The most commonly used verbs are GET &#x26; POST.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Method</th>
+          <th align="left">Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">GET</td>
+          <td align="left">to retrieve data</td>
+        </tr>
+        <tr>
+          <td align="left">POST</td>
+          <td align="left">to create data</td>
+        </tr>
+        <tr>
+          <td align="left">PUT</td>
+          <td align="left">to replace data</td>
+        </tr>
+        <tr>
+          <td align="left">PATCH</td>
+          <td align="left">to update data</td>
+        </tr>
+        <tr>
+          <td align="left">DELETE</td>
+          <td align="left">to remove data</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>❓ Can you see how to select these in postman?</p>
+    <h3>Protocol</h3>
+    <p>This is the part at the very beginning of the request. <code>http://</code> this tells the browser we are making an http request. Protocols you might come across are:</p>
+    <ul>
+      <li><code>http://</code> - hyper text transfer protocol</li>
+      <li><code>https://</code> - secure hyper text transfer protocol (encrypted)</li>
+      <li><code>file://</code> - when you open a local file in your browser</li>
+      <li><code>ws://</code> - open a websocket</li>
+      <li><code>ftp://</code> - when you connect to a remote file server ftp stands for file transfer protocol</li>
+      <li><code>ipfs://</code> - the inter-planetary file system find out more about this at <a href="https://ipfs.io/">https://ipfs.io/</a></li>
+    </ul>
+    <h3>Host</h3>
+    <p>This is the address or place on the internet we are trying to reach. The host address (sometimes referred to as the domain address) of the HTTP request forms the main part of the address.</p>
+    <h3>Path</h3>
+    <p>This comes after the host address. This is the part of the address that is subject to the RESTful pattern. If we want to get all the albums from spotify then we would use the following address.</p>
+    <pre><code class="language-sh">https://api.spotify.com/v1/albums
+</code></pre>
+    <ul>
+      <li><code>/v1/albums</code> - is the path</li>
+      <li><code>api.spotify.com</code> - is the host.</li>
+    </ul>
+    <h3>Parameters</h3>
+    <p>There are often variables that contribute toward a RESTful address. These are called parameters if they are included in the path. In the example above if we include the id number at the end of the path, we will be returned the album with that id. The id can be different and will relate to the resource that we want to access. In the example below we can compose an address using the album id <code>12345</code>, but if we wanted a different album we can change this.</p>
+    <pre><code class="language-sh">https://api.spotify.com/v1/albums/12345
+</code></pre>
+    <p>❓ What is the difference between the path and parameters?</p>
+    <h3>Query parameters</h3>
+    <p>Query parameters can be added to the end of an address. Adding a <code>?</code> at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' <code>artist</code> an equals <code>=</code> and then the 'value' <code>Frank%20Zappa</code> that makes a key=value pair. Look for the ampersand <code>&#x26;</code> that separates the key value pairs. Query parameters must be encoded so there are no special characters (except '%' or) or spaces. This encoding is called URIEncoding the best API in the browser to use for this is <code>window.encodeURIComponent</code>.</p>
+    <pre><code class="language-javascript">"?artist=Frank Zappa&#x26;album=Hot Rats&#x26;track=Peaches Èn Ragalia" // not URI encoded
+window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20Ragalia
+"?artist=Frank%20Zappa&#x26;album=Hot%20Rats&#x26;track=Peaches%20%C3%88n%20Ragalia" // safe query string
+</code></pre>
+    <p>All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information</p>
     <p>
-      TODO - we need to make this interactive, perhaps use breakout rooms and allocate different APIs for each group to call. Ask them to come back &#x26; present a description of the API / share screen to send request. Challenge could be to used advanced Postman features such as scripts.
-      TODO - use Bernard's existing slides
-      TODO - fun activity could be to find the most obscure HTTP response code (my favourite is "I'm a teapot"). Could do a fun quiz where the answers are status codes!
+      ❓ What are the 2 ways we can pass data in an HTTP request?
+      ❓ What is the difference between a parameter and a query parameter?
+    </p>
+    <h3>Body</h3>
+    <p>All HTTP requests can have a body. The body can contain different flavors of encoded data. In the table below you can see the following data encoded in different flavors:</p>
+    <pre><code class="language-javascript">{
+    artist: "Frank Zappa",
+    album: "Hot Rats",
+    track: "Peaches Èn Ragalia"
+}
+</code></pre>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">flavor</th>
+          <th align="left">encoding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">form-data</td>
+          <td align="left"><code>artist=Frank+Zappa&#x26;album=Hot+Rats&#x26;track=Peaches+%C3%88n+Ragalia</code></td>
+        </tr>
+        <tr>
+          <td align="left">x-www-form-urlencoded</td>
+          <td align="left"><code>artist=Frank%20Zappa&#x26;album=Hot%20Rats&#x26;track=Peaches%20%C3%88n%20Ragalia</code></td>
+        </tr>
+        <tr>
+          <td align="left">JSON string</td>
+          <td align="left"><code>"{"artist":"Frank Zappa","album":"Hot Rats","track":"Peaches Èn Ragalia"}"</code></td>
+        </tr>
+        <tr>
+          <td align="left">XML</td>
+          <td align="left"><code>"&#x3C;?xml version="1.0" encoding="UTF-8"?>&#x3C;root>&#x3C;artist>Frank Zappa&#x3C;/artist>&#x3C;album>Hot Rats&#x3C;/album>&#x3C;track>Peaches Èn Ragalia&#x3C;/track>&#x3C;/root>"</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>There are more kinds of encoding for example binary which is for files but this is enough to be getting on with.</p>
+    <h3>Header</h3>
+    <p>The header is a very important part of the HTTP request. In the header you can pass all manor of meta information about the request. We will be putting authentication credentials in the header later on. For now we can focus on the <code>Content-Type</code>. Considering there are different ways we can encode the body content, we need to have a matching header that tells the receiver how to decode our body content. Without the body and Content-Type matching the server may error with a 406 "Not Acceptable" status code (we will look at status codes later).</p>
+    <p>Here is a list of all the different <code>Content-Type</code>s that are supported: <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/</a></p>
+    <p>
+      ❓ In postman can you see where to set a header?
+      ❓ Can you match the correct content types to the table of encodings above?
+    </p>
+    <h3>Response</h3>
+    <p>The response object is similar to the request object. The main difference is a response will have a status code property. It is the responsibility of the developers building and maintaining a service to set the correct status code for a response before sending it back to the client.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Range</th>
+          <th align="left">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">100 - 103</td>
+          <td align="left">Informational response</td>
+        </tr>
+        <tr>
+          <td align="left">200 - 226</td>
+          <td align="left">Success</td>
+        </tr>
+        <tr>
+          <td align="left">300 - 308</td>
+          <td align="left">Redirection</td>
+        </tr>
+        <tr>
+          <td align="left">400 - 451</td>
+          <td align="left">Client Errors</td>
+        </tr>
+        <tr>
+          <td align="left">500 - 598</td>
+          <td align="left">Server Errors</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Read through the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP Status codes</a> so you know how to handle HTTP responses like a boss.</p>
+    <h2>Assignment</h2>
+    <p>Below is a list of HTTP requests we want you to try and make with <a href="https://www.postman.com/">postman</a>. Collect the results that you get back from the server as each response is a puzzle piece that will form a message just for you.</p>
+    <ol>
+      <li>Make a GET request to <a href="https://http.whitehatcoaches.org.uk/start">https://http.whitehatcoaches.org.uk/start</a></li>
+      <li>Make a POST request to <a href="https://http.whitehatcoaches.org.uk/apprentices">https://http.whitehatcoaches.org.uk/apprentices</a> with your <code>name</code> in the body encoded in x-www-form-urlencoded as a key value pair where the key is <code>name</code> and the value is your name</li>
+      <li>Follow the instructions you receive from the responses</li>
+      <li>Send your coach a DM on slack with your final message completed</li>
+    </ol>
+    <hr>
+    <h2>Lesson 2 - Advances API calls with fetch</h2>
+    <p>In this session we are just going to make sure everyone is comfortable using fetch in the browser to form more advanced HTTP requests. As well as using a tool like postman, we also want you to know how to send HTTP requests in your client-side javascript code.</p>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Set headers in a HTTP request using fetch</li>
+      <li>Set GET and POST methods for a fetch HTTP request</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>Create a new .html file with a script tag, write your code in the script tag.</p>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>Postman is a great tool, very useful for working with new APIs. In this session we are going to learn to do the things we did with postman using the Promise based fetch API in the browser.</p>
+    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
+</code></pre>
+    <p>This is the most basic usage, thats a GET request (by default) to the address passed as an argument. We don't deal with the response. The response is async and is a raw response object.</p>
+    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => console.table(res))
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png" alt="the response object">
     </p>
     <p>
-      <a href="/swe/mod1/wk1/day2.html">next</a>
-      <a href="/swe">main</a>
+      ❓ Can you see the status code?
+      ❓ Are there any headers?
+    </p>
+    <p>To parse the response into a more friendly JSON object we can call <code>res.json()</code> then we can access our data in a convenient format.</p>
+    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
+  .then(res => res.json())
+  .then(res => console.log(res))
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/102642623-ebdbac80-4155-11eb-9d63-29751bbb4a51.png" alt="data from the response">
+    </p>
+    <h3>Headers</h3>
+    <p>We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.</p>
+    <pre><code class="language-javascript">const url = "https://http.whitehatcoaches.org.uk/songs"
+const payload = {
+    artist: "Frank Zappa",
+    album: "Hot Rats",
+    track: "Peaches Èn Ragalia"
+}
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+})
+.then(res => res.json())
+.then(song => {
+    console.log("newly created song", song.title)
+})
+</code></pre>
+    <h2>Assignment</h2>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/178">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day3.html">prev</a>|<a href="/swe/mod1/wk1/day2.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

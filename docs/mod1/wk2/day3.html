@@ -12,128 +12,17 @@
   <body>
     <h1>Mod 1 > Week 2 > Day 3</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to learn about how to use OAuth to secure our API.</p>
+    <p>Today we are going to extend the API to include resources to allow you to add to and debit a user's bank account balance.</p>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Understand JWT tokens</li>
-      <li>Understand the OAuth flow</li>
-      <li>Understanding the advantages of OAuth over Basic Auth</li>
-      <li>Implement OAuth using Auth0 <a href="https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis">https://auth0.com/docs/quickstart/backend/nodejs/01-authorization#configure-auth0-apis</a> and <a href="https://auth0.com/docs/flows/authorization-code-flow">https://auth0.com/docs/flows/authorization-code-flow</a></li>
+      <li>Understand how to model transactional operations as REST resources</li>
+      <li>Understand the concept of idempotent operations</li>
+      <li>Understand how to restrict access to resources to only the logged in user</li>
     </ul>
     <h2>Before we start</h2>
+    <p>TODO - mention location of template starter code (if apprentice hasn't finished yesterday's project)</p>
     <h2>Materials needed</h2>
     <h1>Lesson 1</h1>
-    <h2>What's wrong with Basic Auth?</h2>
-    <ul>
-      <li>The password is sent over the wire in base64 encoding which can be easily decoded</li>
-      <li>The password is sent repeatedly i.e. on each request meaning there is a large attack window</li>
-      <li>The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF</li>
-      <li>The password may be stored permanently in the browser, if the user requests. (Same as previous point, in addition might be stolen by another user on a shared machine).</li>
-    </ul>
-    <h2>What is OAuth?</h2>
-    <p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
-    <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
-    <h3>What makes OAuth secure?</h3>
-    <ul>
-      <li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
-      <li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
-      <li>Token expire, making it very hard for them to be reused</li>
-    </ul>
-    <p>Let's look at this diagram which illustrates the OAuth flow we are going to be using today (client credentials flow):</p>
-    <p>
-      <img src="https://images.ctfassets.net/cdy7uua7fh8z/2waLvaQdM5Fl5ZN5xUrF2F/8c5ddae68ac8dd438cdeb91fe1010fd1/auth-sequence-client-credentials.png" alt="alt text" title="OAuth Client Credentials Flow">
-    </p>
-    <p>TODO - add more explanation and diagrams.</p>
-    <h1>Lesson 2</h1>
-    <p>COACHES - clone <a href="https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js">https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/contacts-api/basicAuthSecured/js</a> (TODO - add a template for students) and follow the steps in the REAME.md file.</p>
-    <p>STUDENTS - open the Contacts API you created yesterday in Visual Code. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.</p>
-    <p>Check you can call the API ok using Postman using <code>GET http://localhost:3000/contacts/me</code> and passing an Authorization header.</p>
-    <h2>Javascript developers</h2>
-    <ol>
-      <li>
-        <p>
-          Install the following node package dependencies:
-          <code>npm install cors dotenv express-jwt jwts-rsa</code>
-        </p>
-      </li>
-      <li>
-        <p>Remove the dependency to <code>express-basic-auth</code></p>
-      </li>
-      <li>
-        <p>Modify the start of your <code>app.js</code> file as follows</p>
-      </li>
-    </ol>
-    <pre><code class="language-javascript">const express = require("express");
-const jwt = require('express-jwt');
-const jwksRsa = require('jwks-rsa');
-const db = require('./database.js');
-const cors = require('cors'); // may not be required
-
-require('dotenv').config('.env'); // Note: env vars should not be used in production
-
-// initialise Express
-const app = express();
-
-app.use(cors());
-
-// ...
-</code></pre>
-    <ol start="4">
-      <li>Create a <code>.env</code> file and add the following entries (substituting in your personal Auth0 domain):</li>
-    </ol>
-    <p><code>AUTH0_AUDIENCE=https://contacts</code></p>
-    <p><code>AUTH0_DOMAIN=[your domain].eu.auth0.com</code></p>
-    <ol start="5">
-      <li>Add a function to check for a valid OAuth (JWT) token:</li>
-    </ol>
-    <pre><code class="language-javascript">// create middleware for checking the JWT
-const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
-  }),
-  audience: process.env.AUTH0_AUDIENCE,
-  issuer: `https://${process.env.AUTH0_DOMAIN}`,
-  algorithms: ['RS256']
-});
-
-</code></pre>
-    <ol start="6">
-      <li>Secure your API:</li>
-    </ol>
-    <pre><code class="language-javascript">app.get("/contacts/me", checkJwt, (req, res) => {
-</code></pre>
-    <p>That's it!</p>
-    <p>Now try to call your API using Postman - you should see a 401 Unauthorized response.</p>
-    <p>This is because we have not configured our API as an OAuth resource and we are not sending an OAuth token.</p>
-    <p>Let's move onto Lesson 2 and try to fix this!</p>
-    <h1>Lesson 3</h1>
-    <p>Sign up to Auth0, a service which implements OAuth and is used by many well known companies including M&#x26;S to secure their Web APIs.</p>
-    <ul>
-      <li>Go to <a href="https://auth0.com/signup">https://auth0.com/signup</a></li>
-      <li>Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.</li>
-    </ul>
-    <p>Auth0 is commercial solution for adding authentication and authorization services to your applications. There are many <a href="https://auth0.com/docs/get-started#use-cases-for-auth0">use cases</a> for using Auth0 but we are going to focus on using it to secure our API with OAuth.</p>
-    <p>Navigate to your Dashboard and select to <code>Create API</code> using the naming as below 
-      <img src="createApi.PNG" alt="Auth0 Create API" title="Create API">
-    </p>
-    <p>Now navigate to the <code>Test</code> tab of your new API. You will see that no applications are authorised to access the API hence we can't test it. Click on the <code>Create &#x26; Authorise Test Application</code> link. This should create a new <code>ContactsAPI(Test Application)</code> under the <code>Applications</code> menu.</p>
-    <p>You will see a section called <code>Asking Auth0 for tokens from my application</code>. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.</p>
-    <p>
-      Let's break the request in more detail:
-      | Element | Explanation |
-      | ------- | ----------- |
-      | audience | represents the resource which we are trying to access |
-      | grant_type | we are using <code>client_credentials</code> OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow <a href="https://auth0.com/docs/flows/client-credentials-flow">here</a>. If you are creating an SPA you should use the <a href="https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a> instead (we will cover this later).
-      | client_id | this is the id of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
-      | client_secret | this is the client secret of the ContactsAPI(Test Application) we created earlier - rememeber we authorised it to be able to access the ContactsAPI. |
-    </p>
-    <p>You should see a 200 success status and the body of the response should contain an <code>access_token</code>. Paste it into the Debugger at <a href="https://jwt.io">https://jwt.io</a> and explore the contents...</p>
-    <p>Great! Now we can try calling our API with this token, copy it and paste it as a <code>Bearer Token</code>. Hopefully you should see a 200 OK response!</p>
-    <p>TODO - create an SPA to call the API..</p>
-    <p>Useful doc - <a href="https://auth0.com/docs/architecture-scenarios/spa-api">https://auth0.com/docs/architecture-scenarios/spa-api</a></p>
     <p>
       <a href="/swe/mod1/wk2/day4.html">next</a>
       <a href="/swe">main</a>

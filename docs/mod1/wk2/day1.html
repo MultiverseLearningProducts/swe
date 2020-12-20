@@ -12,18 +12,134 @@
   <body>
     <h1>Mod 1 > Week 2 > Day 1</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to review what we learnt last week and give you a chance to complete your API if you haven't already done so.</p>
-    <h2>Learning Objectives</h2>
+    <p>Today we are going to use Basic Auth to secure a RESTful API.</p>
+    <h2>Overall Learning Objectives</h2>
     <ul>
-      <li>Review the concepts from last week</li>
-      <li>Complete your API</li>
+      <li>Understand the difference between authentication and authorisation</li>
+      <li>Construct a RESTful API to Create, Read, Update and Delete (CRUD) a user</li>
+      <li>Implement a credential store using hashed passwords</li>
+      <li>Use Basic Authentication to secure the User API</li>
     </ul>
     <h2>Before we start</h2>
     <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
+    <h2>Lesson 1 - Authentication and authorisation</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Understand the difference between authentication and authorisation</li>
+    </ul>
+    <h3>Lesson</h3>
+    <blockquote>
+      <p><code>Authentication</code> is the process of verifying who a user is</p>
+    </blockquote>
+    <blockquote>
+      <p><code>Authorisation</code> is the process of verifying what they have access to</p>
+    </blockquote>
+    <p>Here's an example to illustrate this:</p>
+    <p>Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is <strong>authentication</strong>. Once authentication is complete, you are given a key card which gives you entry to your room - this is <strong>authorisation</strong> as you are being granted access to a resource (in this case your room). You are not authorised to access any other rooms.</p>
+    <p>TODO - create a nice image to visual this example</p>
+    <h3>Assignment</h3>
+    <p>In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:</p>
+    <ol>
+      <li>Showing your passport at the airport</li>
+      <li>Determining which floor in a building an employee can access</li>
+      <li>Checking a boarding pass before boarding a flight</li>
+      <li>A manager accessing payroll information</li>
+      <li>Entering a username and password</li>
+      <li>Using biometrics (such as fingerprints)</li>
+      <li>Using a key to open a door</li>
+    </ol>
+    <p>TODO - would love an image created to summarise this like the one at <a href="https://www.okta.com/identity-101/authentication-vs-authorization/">https://www.okta.com/identity-101/authentication-vs-authorization/</a></p>
+    <h2>Lesson 2 - User API</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js</li>
+    </ul>
+    <h3>Lesson</h3>
+    <nav class="tabbed-code-block"><a href="#http method">HTTP Method</a><a href="#url">URL</a><a href="#description">Description</a><a href="#
+">
+</a><a href="#-----------">-----------</a><a href="#---">---</a><a href="#-----------">-----------</a><a href="#
+">
+</a><a href="#post">POST</a><a href="#/users">/users</a><a href="#create a new user">create a new user</a><a href="#
+">
+</a><a href="#get">GET</a><a href="#/users">/users</a><a href="#retrieve all users">retrieve all users</a><a href="#
+">
+</a><a href="#get">GET</a><a href="#/users/{id}">/users/{id}</a><a href="#retrieve a specific user">retrieve a specific user</a><a href="#
+">
+</a><a href="#put">PUT</a><a href="#/users">/users</a><a href="#update a user">update a user</a><a href="#
+">
+</a><a href="#delete">DELETE</a><a href="#/users/{id}">/users/{id}</a><a href="#delete a user">delete a user</a></nav>
+    <h3>Assignment</h3>
+    <p>Implement this API using either SpringBoot or Node.js. You can either create the API from scratch or use SwaggerHub to generate stub code (TODO - SwaggerHub generated code needs tweaks - I need to look into this more).</p>
+    <p>Ensure you can successfully call each resource using Postman.</p>
+    <h2>Lesson 3 - Basic Authentication encoding</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme</li>
+    </ul>
+    <h3>Lesson</h3>
+    <p>Now we have our API we need to consider how we will secure access to the API. For this lesson we will use a username and password, commonly known as <code>Basic Authentication</code>.</p>
+    <p>Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an <code>Authorization</code> header that contains the word <code>Basic</code> followed by a space and a base64-encoded string username:password</p>
+    <p>Here is an example:</p>
+    <blockquote>
+      <p>Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk</p>
+    </blockquote>
+    <h3>Assignment</h3>
+    <p>Using the <code>Authorization</code> header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?</p>
+    <h2>Lesson 4 - Hashing passwords</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Understand why passwords should be hashed</li>
+      <li>Understand the implications of exposing sensitive data</li>
+      <li>Create a database of user names and hashed passwords</li>
+    </ul>
+    <h3>Lesson</h3>
+    <p>To validate that a user's login details are correct, we need to match the username and password passed in the <code>Authorization</code> header with data held in a database.</p>
+    <p><strong>Question</strong> - Imagine if we held these passwords in plaintext.. what risks do you think this could cause?</p>
+    <p><strong>Answer</strong> - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to it's repretation - listen to this video to hear about one recent example:</p>
     <p>
-      TODO - Kahoot quiz?
-      TODO - for those who are ahead, get them reading about Basic Auth
+      TODO - ask Bernard about how to embed this properly - taken from <a href="https://www.bbc.co.uk/news/business-48905907">https://www.bbc.co.uk/news/business-48905907</a>
+      I know the video doesn't talk about passwords but hopefully it gets the point across..
+    </p>
+    <p>To avoid storing passwords in plaintext, we <code>hash</code> them with an one-way hashing function. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.</p>
+    <p>TODO - we could do with a nice video of the concepts here!</p>
+    <p>Here is some code which implements a secure hashing algorithm:</p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript"></code></pre>
+    <pre><code class="language-java">import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+//...
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+String hashedPassword = passwordEncoder.encode("your password");
+</code></pre>
+    <h3>Assignment</h3>
+    <p>Use the code above to generate hashes of some demo user passwords. Then add the usernames and hashed passwords to an in-memory database as part of your web server's startup.</p>
+    <h2>Lesson 5 - Securing an API with Basic Authentiation</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Secure the Users API with a username and password</li>
+    </ul>
+    <h3>Assignment</h3>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript"></code></pre>
+    <pre><code class="language-java"></code></pre>
+    <p>Verify you can call your API using Postman.</p>
+    <p><strong>Question</strong> - is the password sent on every request or cached?</p>
+    <h2>Lesson 6 - Login Form</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Use HTML/CSS/JS to create a Login form</li>
+    </ul>
+    <h3>Assignment</h3>
+    <p>Create a simple form which sends a username and password to your API (i.e. simulates what Postman was doing in the previous lesson).</p>
+    <h2>Lesson 7 - Enhanced User Interface</h2>
+    <h3>Learning Objectives</h3>
+    <ul>
+      <li>Use HTML/CSS/JS to call the User API</li>
+    </ul>
+    <h3>Assignment</h3>
+    <p>
+      Extend the Login form to display all users once login is successful.
+      Create controls to allow the creation and deletion of users.
     </p>
     <p>
       <a href="/swe/mod1/wk2/day2.html">next</a>

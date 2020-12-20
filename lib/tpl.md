@@ -1,5 +1,3 @@
-Lessons
-
 # Breadcrumb
 
 ## Overview of the day
@@ -32,7 +30,7 @@ Lessons
 
 ## Assignment
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/###)
 [main](/swe)|[prev](/swe/bootcamp/wk#/day#.html)|[next](/swe/bootcamp/wk#/day#.html)
 
 Notes
