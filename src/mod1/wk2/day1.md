@@ -45,8 +45,6 @@ In breakout rooms, determine which of the following are examples of authenticati
    6. Using biometrics (such as fingerprints) 
    7. Using a key to open a door
 
-TODO - would love an image created to summarise this like the one at https://www.okta.com/identity-101/authentication-vs-authorization/
-
 ## Lesson 2 - Basic Authentication encoding
 ### Learning Objectives
   * Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
