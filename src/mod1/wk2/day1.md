@@ -81,6 +81,9 @@ As a reminder, here is some code which implements a secure hashing algorithm:
 
 |Javascript|Java|
 ```javascript
+const bcrypt = require('bcrypt')
+...
+bcrypt.hash('password101', 10)
 ```
 ```java
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -119,6 +122,23 @@ Your API should support 4 resources:
 Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code (TODO):
 |Javascript|Java|
 ```javascript
+// check for a basic auth header with correct credentials
+app.use(basicAuth({
+  authorizer: dbAuthorizer, // customer authorizer,
+  authorizeAsync: true, // we check the db which makes this async
+  challenge: true,
+  unauthorizedResponse: (req) => {
+    return `unauthorized. ip: ${req.ip}`
+  }
+}));
+
+// our custom async authorizer middleware, this is called for each request
+function dbAuthorizer(username, password, callback) {
+  const sql = "select password from users where username = ?;";
+  db.get(sql, [username], async (err, user) => {
+    err ? callback(err) : bcrypt.compare(password, user.password, callback);
+  });
+
 ```
 ```java
 ```
