@@ -8,6 +8,7 @@ Today we are going to learn about how to use OAuth to secure our API.
 * Understand OAuth and how it is used to secure website and APIs
 * Understand the structure and purpose of JWT
 * Implement OAuth using Auth0 
+* Understand the OpenID Connect protocol
 
 ## Before we start
   * Ensure you have the Postman application installed
@@ -37,7 +38,7 @@ If you’ve ever signed up to a new application and agreed to let it access your
 
 Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:
 
-![oauth flow showing how an identify provider issues a token which is used to secure a resource](https://user-images.githubusercontent.com/1316724/102816161-74ac4f80-43c5-11eb-93af-fcc1b3fa119d.png)
+![oauth flow showing how an identify provider issues a token which is used to secure a resource](https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png)
 
 **Activity** - Use [PlantUML](http://www.plantuml.com/plantuml/uml) to create your own sequence diagram which illustrates the OAuth flow.
 
@@ -90,6 +91,8 @@ In this lesson you will sign up to Auth0, a commercial implementation of OAuth, 
 
 # Lesson 3 - Securing your API with OAuth
 Open the Users API you created yesterday in Visual Code. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
+
+**Coach note** - solutions for JavaScript and Java at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/
 
 ## Javascript developers
 1. Install the following node package dependencies:
@@ -248,20 +251,28 @@ spring:
 2. Call the API with a `Bearer Token` set to this token. Hopefully you should see a 200 OK response!
 
 # Lesson 4 - Modify your Login page to use the Auth0 Login page
-Instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate the Login function to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
+OAuth deals specifically with authorisation of resources, **OpenID Connect** is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.
 
-## Add a new user to Auth0
+![sequence diagram showing the OpenID Connect authorization flow](https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png)
+
+OpenID Connect uses an additional JSON Web Token (JWT), called an ID token, to hold basic profile information about the authenticated (logged in) user e.g. their name or email address. Here is an example:
+
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWQgRmxpbnRzdG9uZSIsImVtYWlsIjoiZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51ayIsImlhdCI6MTUxNjIzOTAyMn0.DlHfHG2qZXpWszZv-X8LwoQkZUlqVgaXoRmnHXE2y_I`
+
+Use https://jwt.io to find out the name and email hidden in the JWT ID token.
+
+So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
+
+## Implementing authentication using Auth0
 Using the Auth0 Dashboard, create a new user "demo" with a password of "demo1"
 
 ![creating a new user](https://user-images.githubusercontent.com/1316724/102827170-fdcd8180-43d9-11eb-97b1-a1285778a535.PNG)
 
-Modify your Login page to use the Auth0 Universal Login Page. 
-![sequence diagram showing the OAuth authorization flow](images/authorizeUserSeq.png)
- 
-TODO - https://auth0.com/docs/quickstart/spa/vanillajs - could provide a template solution for them as quite complex to setup especially with calling the API - I have a sample in the SPA directory but it needs tidying up/commenting. 
+Modify your Login page to use the Auth0 Universal Login Page  using the instruction [here](https://auth0.com/docs/quickstart/spa/vanillajs). Please note that this is quick a complex and time consuming challenge so you are free to 'cheat' and use the sample app from the GitHub repository referenced at the top of this page.
 
-TODO - Id Connect
-TODO - identify id token - print "Hello Demo"
+**Coach note** - solution at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/js/spa
+
+ 
 
 [next](/swe/mod1/wk2/day3.html)
 [main](/swe)
