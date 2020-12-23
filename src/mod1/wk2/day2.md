@@ -214,8 +214,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .anyRequest()
                 .authenticated()
+                // ** IMPORTANT! do not use the line below in production apps!! **
+                .and().csrf().disable()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
+    }
+
+    /**
+     * Required to enable CORS - NOT suitable for production code!
+     *
+     * @return CorsConfigurationSource cors configuration
+     */
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final CorsConfiguration configuration = new CorsConfiguration();
+
+        // ** IMPORTANT! do not use the line below in production apps!! **
+        // ** Specify specific origins instead
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
     }
 
     @Bean
@@ -250,7 +274,7 @@ spring:
 
 2. Call the API with a `Bearer Token` set to this token. Hopefully you should see a 200 OK response!
 
-# Lesson 4 - Modify your Login page to use the Auth0 Login page
+# Lesson 4 (Optional as complex) - Modify your Login page to use the Auth0 Login page
 OAuth deals specifically with authorisation of resources, **OpenID Connect** is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.
 
 ![sequence diagram showing the OpenID Connect authorization flow](https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png)
@@ -264,13 +288,21 @@ Use https://jwt.io to find out the name and email hidden in the JWT ID token.
 So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
 
 ## Implementing authentication using Auth0
-Using the Auth0 Dashboard, create a new user "demo" with a password of "demo1"
+  1. Using the Auth0 Dashboard, create a new user "demo" with a password of "demo1"
 
-![creating a new user](https://user-images.githubusercontent.com/1316724/102827170-fdcd8180-43d9-11eb-97b1-a1285778a535.PNG)
+      ![creating a new user](https://user-images.githubusercontent.com/1316724/102827170-fdcd8180-43d9-11eb-97b1-a1285778a535.PNG)
 
-Modify your Login page to use the Auth0 Universal Login Page  using the instruction [here](https://auth0.com/docs/quickstart/spa/vanillajs). Please note that this is quick a complex and time consuming challenge so you are free to 'cheat' and use the sample app from the GitHub repository referenced at the top of this page.
+  2. Create a new "Single Page Web" Application in your Auth0 Dashboard. Choose JavaScript as the technology. Ignore the tutorial for now, just find your new application in your Dashboard and edit it to set:
+      * Allowed Callback URLs = http://localhost:3001, http://localhost:3000
+      * Allowed Logout URLs = http://localhost:3001, http://localhost:3000
+      * Allowed Web Origins = http://localhost:3001, http://localhost:3000
+      * Allowed Origins (CORS) = http://localhost:3001, http://localhost:3000
 
-**Coach note** - solution at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/js/spa
+      This will enable your single page web app (SPA) to work correctly - note, it assumes your SPA will run on port 3001, change this later if this is not correct.
+
+  3. Modify your Login page to use the Auth0 Universal Login Page  using the instruction [here](https://auth0.com/docs/quickstart/spa/vanillajs). Please note that this is quick a complex and time consuming challenge so you are free to 'cheat' and use the sample app from the GitHub repository referenced at the top of this web page.
+
+      **Coach note** - solution at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/js/spa
 
  
 
