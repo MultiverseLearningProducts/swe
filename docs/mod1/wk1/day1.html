@@ -12,10 +12,8 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 1</h1>
     <h2>Overview of the day</h2>
-    <p>
-      Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We covered this topic briefly in the Bootcamp but over the next 2 weeks we'll be going into a lot more depth.
-      Today we will use <a href="https://www.postman.com/">Postman</a> to call some RESTful APIs and look in detail at the requests we send and responses we receive.
-    </p>
+    <p>At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our jouney will begin today with the building block of RESTful apis - the Hyper Text Transfer Protocol (HTTP).</p>
+    <p>We are going to use <a href="https://www.postman.com/">Postman</a> to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native <code>fetch</code> api.</p>
     <hr>
     <h2>Lesson 1 - The Anatomy of HTTP</h2>
     <h2>Learning Objectives</h2>
@@ -180,10 +178,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <h2>Assignment</h2>
     <p>Below is a list of HTTP requests we want you to try and make with <a href="https://www.postman.com/">postman</a>. Collect the results that you get back from the server as each response is a puzzle piece that will form a message just for you.</p>
     <ol>
-      <li>Make a GET request to <a href="https://http.whitehatcoaches.org.uk/start">https://http.whitehatcoaches.org.uk/start</a></li>
-      <li>Make a POST request to <a href="https://http.whitehatcoaches.org.uk/apprentices">https://http.whitehatcoaches.org.uk/apprentices</a> with your <code>name</code> in the body encoded in x-www-form-urlencoded as a key value pair where the key is <code>name</code> and the value is your name</li>
-      <li>Follow the instructions you receive from the responses</li>
-      <li>Send your coach a DM on slack with your final message completed</li>
+      <li>Make a GET request to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a></li>
+      <li>Follow the instructions you receive from the response</li>
     </ol>
     <hr>
     <h2>Lesson 2 - Advances API calls with fetch</h2>
@@ -239,6 +235,7 @@ fetch(url, {
 })
 </code></pre>
     <h2>Assignment</h2>
+    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script that runs in your browser and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
     <p>
       <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/178">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day3.html">prev</a>|<a href="/swe/mod1/wk1/day2.html">next</a>

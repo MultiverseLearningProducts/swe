@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Example API
+  description: My simple api for the world
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+  - url: https://api.whitehatcoaches.org.uk
+    description: this is the production baseURL
+paths:
+  /apprentices:
+    get:
+      summary: Returns a list of all the apprentices
+      description: |
+        Here you can have a more extended description that includes markdown
+
+        * For Example
+        * Lists
+
+        you can include images if you wanted
+        ![internet cat](https://static.boredpanda.com/blog/wp-content/uploads/2014/11/most-popular-cats-lil-bub-2.jpg)
+
+        More useful might be code blocks
+
+        ```java
+        System.out.println("Hello World");
+        ```
+      responses:
+        200:
+          description: an array of JSON objects that represent each apprentice
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    ULN:
+                      type: integer
+                    OJT:
+                      type: integer
+                      minimum: 100
+                      maximum: 200
+                  example:
+                    id: 823754
+                    name: Brenda House
+                    ULN: 1287700
+                    OJT: 125
+        404:
+          description: Can't find any apprentices

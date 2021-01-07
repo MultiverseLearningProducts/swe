@@ -12,26 +12,289 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to call some RESTful APIs using JavaScript and use the responses to display information in the browser as well as handle errors. We'll also look more closely at specific HTTP headers and understand how and why we might version a REST API.</p>
+    <p>Today we are going to focus on creating and using RESTful APIs. Yesterday we looked at the anatomy of an HTTP request and response. Today we build on that protocol and look at the most popular way to organise accessing resources using HTTP.</p>
+    <hr>
+    <h2>Lesson 1 - What is RESTful</h2>
+    <p>REST is a shortened form of "REpresentative State Transfer".</p>
+    <blockquote>
+      <p>REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.</p>
+    </blockquote>
+    <p>Before REST was first proposed in a PhD paper servers implemented their own endpoints named in ways that we might name functions in our code. For example one application might have an endpoint called <code>/getUsers</code> another might call it <code>/allUsers</code> there was no agreed pattern.</p>
+    <p>REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources. Today REST is widely implemented across the internet and we are going to learn about how to read and understand RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Understand how to call RESTful APIS using (using the fetch() call)</li>
-      <li>Understand how to interpret JSON responses</li>
-      <li>Understand the meaning of key HTTP headers sent to / returned from a RESTful API call</li>
-      <li>Understand the different ways RESTful APIs can be versioned</li>
-      <li>Understand how to handle errors and the important of mapping these to user friendly messages</li>
+      <li>Connect the correct HTTP verbs to RESTful operations</li>
     </ul>
     <h2>Before we start</h2>
+    <ul>
+      <li>Create a free Spotify account so you can use their API</li>
+    </ul>
     <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
+    <h2>Lesson</h2>
+    <p>There are 2 aspects to RESTful architectures.</p>
+    <ol>
+      <li>Using the right VERBS in your request</li>
+      <li>Using the right path for your resources</li>
+    </ol>
+    <h3>VERBS/METHODS</h3>
+    <p>Built into the HTTP spec are the http 'methods' or 'verbs'. <code>GET</code> <code>POST</code> <code>PATCH</code> <code>PUT</code> <code>DELETE</code> <em>(there are more these are the main ones)</em> one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource <code>/albums</code>; to read all the albums we would make an http request and use the <code>GET</code> method. If we wanted to add a new album we would make an http request to the same address <code>/albums</code> but use the <code>POST</code> method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource; reading with <code>GET</code> or creating with <code>POST</code>. We CAN make a <code>GET</code> request with a body and create a new <code>/albums</code> resource BUT that would not be RESTful.</p>
+    <h3>Resources</h3>
+    <p>A 'resource' some thing we want to access or interact with is also a fundamental concept in REST. Usually this is our service or data. For example on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="right">URL</th>
+          <th align="center">VERB</th>
+          <th align="left">Resource</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="right"><code>/albums</code></td>
+          <td align="center">GET</td>
+          <td align="left">return all the albums (resources are always plural)</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums</code></td>
+          <td align="center">POST</td>
+          <td align="left">create a new album</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{id}</code></td>
+          <td align="center">GET</td>
+          <td align="left">return the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{id}</code></td>
+          <td align="center">PUT</td>
+          <td align="left">Replace the album with a new one, but keep the id</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{id}</code></td>
+          <td align="center">PATCH</td>
+          <td align="left">Update 1 or more of the album's properties</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{id}</code></td>
+          <td align="center">DELETE</td>
+          <td align="left">delete the album with the id specified in the URL</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Nested resources simple extend the same pattern.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="right">URL</th>
+          <th align="center">VERB</th>
+          <th align="left">Resource</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="right"><code>/albums/{id}/tracks</code></td>
+          <td align="center">GET</td>
+          <td align="left">return the tracks for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{id}/tracks</code></td>
+          <td align="center">POST</td>
+          <td align="left">create a new track for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td align="right"><code>/albums/{album_id}/tracks/{track_id}</code></td>
+          <td align="center">GET</td>
+          <td align="left">return the track with the id specified in the URL from the album with the id specified in the URL</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Can you see the pattern?</p>
     <p>
-      TODO - include the Accept, Content-Type headers
-      TODO - get the apprentices to pair programme (one person driving) and then to present back. Would be nice to mix up the different cohorts so they get to know each other. Also need to think about ability levels.
+      ❓ How might you update a track for a given album?
+      ❓ Can you match the CRUD operations to http methods?
     </p>
+    <p>You might wonder why can't I just reference a track with the URL below?</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="right">URL</th>
+          <th align="center">VERB</th>
+          <th align="left">Resource</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="right"><code>/tracks/{track_id}</code></td>
+          <td align="center">GET</td>
+          <td align="left">return the track with the id specified in the URL</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>REST is just a pattern so you can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers.</p>
+    <h3>Spotify API</h3>
+    <p>Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. Lets have a look at the <a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify API</a> and try to identify these 2 things.</p>
     <p>
-      <a href="/swe/mod1/wk1/day3.html">next</a>
-      <a href="/swe">main</a>
+      ❓ Can you identify all the different components of the http request we need to form?
+      ❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?
     </p>
+    <pre><code>3QrEk9Va9qO4uobczNUtqe,6ra4GIOgCZQZMOaUECftGN,4Qjd3K1HhL1N2ee1V22Icw
+</code></pre>
+    <h3>OpenAPI</h3>
+    <p>As well as creating your own RESTful services, you will often find yourself consuming other 3rd party services. Spotify is a good example of an easy to use API. The documentation is generated from the API code itself. This is a popular way to document your API. Have a look at the 4 examples of online API documentation below:</p>
+    <ul>
+      <li><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos">Github</a></li>
+      <li><a href="https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders">Dropbox</a></li>
+      <li><a href="https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource">Twilio</a></li>
+      <li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets">Twitter</a></li>
+    </ul>
+    <p>
+      ❓ What are the common elements you can identify in each?
+      ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
+    </p>
+    <p>How is this possible? We can use something like <a href="https://www.openapis.org/">OpenAPI</a> or <a href="https://swagger.io/">Swagger</a> to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI .yaml config file.</p>
+    <pre><code class="language-yaml">openapi: 3.0.0
+info:
+  title: Example API
+  description: My simple api for the world
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+  - url: https://api.whitehatcoaches.org.uk
+    description: this is the production baseURL
+paths:
+  /apprentices:
+    get:
+      summary: Returns a list of all the apprentices
+      description: |
+        Here you can have a more extended description that includes markdown
+
+        * For Example
+        * Lists
+
+        you can include images if you wanted
+        ![internet cat](https://static.boredpanda.com/blog/wp-content/uploads/2014/11/most-popular-cats-lil-bub-2.jpg)
+
+        More useful might be code blocks
+
+        ```java
+        System.out.println("Hello World");
+        ```
+      responses:
+        200:
+          description: an array of JSON objects that represent each apprentice
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    ULN:
+                      type: integer
+                    OJT:
+                      type: integer
+                      minimum: 100
+                      maximum: 200
+                  example:
+                    id: 823754
+                    name: Brenda House
+                    ULN: 1287700
+                    OJT: 125
+        404:
+          description: Can't find any apprentices
+</code></pre>
+    <p>You can upload this to a site like <a href="https://readme.com/">readme.com</a> and generate a page of documentation like the ones we have looked at above.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/103781816-b7f5f780-502e-11eb-8e60-c5f5e5648d85.png" alt="a page of OpenAPI markup rendered as a webpage">
+    </p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>In an OpenAPI .yaml file create a complete set of documented RESTful endpoints for a resource.</li>
+    </ul>
+    <hr>
+    <h2>Lesson ? - ???</h2>
+    <h2>Learning Objectives</h2>
+    <h2>Before we start</h2>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <h2>Assignment</h2>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/179">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>
+    </p>
+    <h2>Getting started (Java)</h2>
+    <p>Goto <a href="https://start.spring.io">https://start.spring.io</a> and generate a project with the group 'org.whitehat' and package name 'org.whitehat.swagger-api' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your <code>pom.xml</code> file (in the <code>&#x3C;dependencies></code> list).</p>
+    <pre><code class="language-xml">&#x3C;dependency>
+    &#x3C;groupId>io.springfox&#x3C;/groupId>
+    &#x3C;artifactId>springfox-boot-starter&#x3C;/artifactId>
+    &#x3C;version>3.0.0&#x3C;/version>
+&#x3C;/dependency>
+
+&#x3C;dependency>
+    &#x3C;groupId>io.springfox&#x3C;/groupId>
+    &#x3C;artifactId>springfox-swagger-ui&#x3C;/artifactId>
+    &#x3C;version>3.0.0&#x3C;/version>
+&#x3C;/dependency>
+</code></pre>
+    <p>Tell Spring Boot that you are using Swagger by adding the notation <code>@EnableSwagger2</code> after <code>@SpringBootApplication</code> in your entry file (the one with your <code>main()</code> function). Add a <code>@Bean</code> Docket to expose your endpoints to Swagger.</p>
+    <pre><code class="language-java">package org.whitehat.swaggerapi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@SpringBootApplication
+@EnableSwagger2
+public class SwaggerApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SwaggerApiApplication.class, args);
+	}
+	@Bean
+	public Docket mySwaggerApi() {
+	   return new Docket(DocumentationType.SWAGGER_2).select()
+		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.swaggerapi")).build();
+	}
+}
+</code></pre>
+    <p>Now create a new class file with some endpoints just for testing:</p>
+    <pre><code class="language-java">// org/whitehat/swagger-api/FruitsController.java
+
+package org.whitehat.swaggerapi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FruitsController {
+   @RequestMapping(value = "/fruits", method = RequestMethod.GET)
+   public List&#x3C;String> getFruits() {
+      List&#x3C;String> fruitList = new ArrayList&#x3C;>();
+      fruitList.add("Apples");
+      fruitList.add("Oranges");
+      return fruitList;
+   }
+   @RequestMapping(value = "/fruits", method = RequestMethod.POST)
+   public String createFruit() {
+      return "Fruit has been eaten successfully";
+   }
+}
+
+</code></pre>
+    <p><code>http://localhost:8080/swagger-ui/</code> ⚠️ This address will not work without the trailing slash</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

@@ -2,8 +2,9 @@
 
 ## Overview of the day
 
-Today we are going to learn about Representational state transfer (REST) and what makes an API RESTful. We covered this topic briefly in the Bootcamp but over the next 2 weeks we'll be going into a lot more depth.
-Today we will use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive.
+At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our jouney will begin today with the building block of RESTful apis - the Hyper Text Transfer Protocol (HTTP).
+
+We are going to use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native `fetch` api.
 
 ----
 
@@ -137,10 +138,8 @@ Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_
 
 Below is a list of HTTP requests we want you to try and make with [postman](https://www.postman.com/). Collect the results that you get back from the server as each response is a puzzle piece that will form a message just for you.
 
-1. Make a GET request to https://http.whitehatcoaches.org.uk/start
-1. Make a POST request to https://http.whitehatcoaches.org.uk/apprentices with your `name` in the body encoded in x-www-form-urlencoded as a key value pair where the key is `name` and the value is your name
-1. Follow the instructions you receive from the responses
-1. Send your coach a DM on slack with your final message completed
+1. Make a GET request to https://http-challenge.whitehatcoaches.org.uk/
+1. Follow the instructions you receive from the response
 
 ----
 
@@ -207,6 +206,8 @@ fetch(url, {
 ```
 
 ## Assignment
+
+Can you repeat the calls that we made earlier to https://http-challenge.whitehatcoaches.org.uk/ only this time have a script that runs in your browser and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)
