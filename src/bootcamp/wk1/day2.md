@@ -4,6 +4,10 @@
 
 Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style. 
 
+## Additional resources
+If you are struggling with any of the concepts from today, the following videos will help:
+[Using Visual Studio Code, npm and Jest](https://www.youtube.com/watch?v=EIQgVdoYb0M) (from minute 5:30 onwards). 
+
 # Lesson 1 - Your first failing test
 
 ## Learning Objectives
@@ -14,8 +18,8 @@ Today we are doing to learn about test driven development. We are going to use t
 
 ## Before we start
 
-* create a new project folder and run `npm init`
-* install jest `npm install jest`
+* create a new project folder and run `npm init`. This runs the Node Package Manager (NPM) which will generate manifest files (`package.json` & `package-lock.json`) which contain information about your project and which libaries (packages) your application needs to run.
+* install jest `npm install jest`. Your `package.json` will be updated to specify that your application requires jest.
 * create two files `person.js` and `person.test.js`
 
 ## Materials needed
@@ -211,7 +215,6 @@ Now we have passengers with bags, they are ready to board their flight! Can you:
 1. a Plane should also have a destination that is an Airport name
 1. Create an Airport class
 1. Airports should have a name
-1. instances of an Airport should have a function to `land` planes
 1. One test should assert you have an airport, with a plane, on the plane are passengers & you can read the weight of one of the bags of a passenger
 
 Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane. 
