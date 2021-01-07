@@ -6,7 +6,7 @@ Today we will develop a Single Page Application which uses OpenID to authenticat
 ## Learning Objectives
   * Understand OpenId
   * Implement login and logout functionality using Auth0
-  * Allow an authorised user to call our Contacts API
+  * Allow an authorised user to call our Users API
 
 ## Before we start
 
