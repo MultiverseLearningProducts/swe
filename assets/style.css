@@ -44,3 +44,18 @@ pre.selected {
 pre.unselected {
     display: none;
 }
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+table, th, td {
+    border: 1px solid var(--wh-gray-light);
+    border-collapse: collapse;
+}
+th, td {
+    padding: 1rem;
+    vertical-align: top;
+}
+th {
+    background-color: var(--wh-near-white);
+}

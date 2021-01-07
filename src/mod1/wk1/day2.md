@@ -94,39 +94,37 @@ As well as creating your own RESTful services, you will often find yourself cons
 ❓ What are the common elements you can identify in each?
 ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
 
-How is this possible? We can use something like [OpenAPI](https://www.openapis.org/) or [Swagger](https://swagger.io/) to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI .yaml config file.
+How is this possible? We can use something like [OpenAPI](https://www.openapis.org/)/[Swagger](https://swagger.io/) to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.
 
 ```yaml
 openapi: 3.0.0
 info:
-  title: Example API
-  description: My simple api for the world
-  version: 0.1.0
+  title: Airports API
+  description: Get all your airport data here https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json 
+  version: 1.0.0
 servers:
+  - url: http://localhost:3000
+    description: if you are using NodeJS your dev port might be 3000
   - url: http://localhost:8080
-  - url: https://api.whitehatcoaches.org.uk
+    description: if you are using Spring your dev port will be 8080
+  - url: https://airports-api.whitehatcoaches.org.uk
     description: this is the production baseURL
 paths:
-  /apprentices:
+  /airports:
     get:
-      summary: Returns a list of all the apprentices
+      summary: Returns a list of all the airports
       description: |
-        Here you can have a more extended description that includes markdown
+        blar blar 28,000 airports etc
 
-        * For Example
-        * Lists
+        * you can also use
+        * markdown in this section
 
-        you can include images if you wanted
-        ![internet cat](https://static.boredpanda.com/blog/wp-content/uploads/2014/11/most-popular-cats-lil-bub-2.jpg)
+        ![airport](https://i.pinimg.com/564x/b9/7d/20/b97d2043d0a2237ee295580f7bea9e49.jpg)
 
-        More useful might be code blocks
-
-        ```java
-        System.out.println("Hello World");
-        ```
+        Including images!
       responses:
         200:
-          description: an array of JSON objects that represent each apprentice
+          description: an array of JSON objects that represent each airport
           content:
             application/json:
               schema:
@@ -134,23 +132,37 @@ paths:
                 items:
                   type: object
                   properties:
-                    id:
-                      type: integer
+                    icao:
+                      type: string
+                    iata:
+                      type: string
                     name:
                       type: string
-                    ULN:
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    country:
+                      type: string
+                    elevation:
                       type: integer
-                    OJT:
-                      type: integer
-                      minimum: 100
-                      maximum: 200
+                    lat:
+                      type: float
+                    lon:
+                      type: float
+                    tz:
+                      type: string
                   example:
-                    id: 823754
-                    name: Brenda House
-                    ULN: 1287700
-                    OJT: 125
-        404:
-          description: Can't find any apprentices
+                    icao: "00AK"
+                    iata: ""
+                    name: "Lowell Field"
+                    city: "Anchor Point"
+                    state: "Alaska"
+                    country: "US"
+                    elevation: 450
+                    lat: 59.94919968
+                    lon: -151.695999146
+                    tz: "America/Anchorage"
 ```
 
 You can upload this to a site like [readme.com](https://readme.com/) and generate a page of documentation like the ones we have looked at above.
@@ -159,7 +171,38 @@ You can upload this to a site like [readme.com](https://readme.com/) and generat
 
 ## Assignment
 
-* In an OpenAPI .yaml file create a complete set of documented RESTful endpoints for a resource.
+In an OpenAPI `airports-config.yaml` file create a complete set of documented RESTful endpoints for the `/airports` resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for [openapi](https://swagger.io/resources/open-api/). We want routes to create, read (all airports and a single airport), update and delete;
+
+Once you have got your .yaml file completed you can have a go at generating a server from that definition. In the examples below are instructions to try using javascript and java.
+
+|Javascript|Java|
+```javascript
+// npm install -g swagger-node-codegen
+// snc airports_config.yaml -o airports-node
+```
+```java
+/*
+  download swagger-codegen-cli-3.0.24.jar from https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar
+
+  in the same folder create a config.json file with the following as its contents:
+
+  {
+    "basePackage": "org.whitehat",
+    "configPackage": "org.whitehat.app.config"
+  }
+
+  now run the command below
+
+  java -jar swagger-codegen-cli-3.0.24.jar generate \
+    -i $PWD/airports-config.yaml \
+    -l spring \
+    -o airports-java \
+    -c $PWD/config.json \
+    -DhideGenerationTimestamp=true
+*/
+```
+
+Be ready to demo your generated server and documentation.
 
 ----
 
@@ -255,29 +298,3 @@ public class FruitsController {
 ```
 
 `http://localhost:8080/swagger-ui/` ⚠️ This address will not work without the trailing slash
-
-
-<!-- # Mod 1 > Week 1 > Day 2
-
-## Overview of the day
-
-Today we are going to call some RESTful APIs using JavaScript and use the responses to display information in the browser as well as handle errors. We'll also look more closely at specific HTTP headers and understand how and why we might version a REST API.
-
-## Learning Objectives
-
-* Understand how to call RESTful APIS using (using the fetch() call)
-* Understand how to interpret JSON responses
-* Understand the meaning of key HTTP headers sent to / returned from a RESTful API call
-* Understand the different ways RESTful APIs can be versioned
-* Understand how to handle errors and the important of mapping these to user friendly messages
-
-## Before we start
-
-## Materials needed
-
-# Lesson 1
-TODO - include the Accept, Content-Type headers
-TODO - get the apprentices to pair programme (one person driving) and then to present back. Would be nice to mix up the different cohorts so they get to know each other. Also need to think about ability levels.
-
-[next](/swe/mod1/wk1/day3.html)
-[main](/swe) -->
