@@ -119,6 +119,7 @@ Your API should support 4 resources:
 **Question** - is the password sent on every request or cached?
 
 Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
+
 |Javascript|Java|
 ```javascript
 // check for a basic auth header with correct credentials

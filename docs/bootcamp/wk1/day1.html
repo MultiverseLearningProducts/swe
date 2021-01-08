@@ -11,35 +11,44 @@
   </head>
   <body>
     <h1>Bootcamp > Week 1 > Day 1</h1>
-    <h2>Overview of the day</h2>
-    <p>Day one is about the cohort getting to know each other. Being introduced to the standard and getting their computer set up. Introduce Objects and functions in Javascript</p>
-    <h1>Session 1 - Flying start</h1>
-    <p>Your apprenticeship starts today</p>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Recall the names of other members of the cohort</li>
-      <li>List the places other members of the cohort work</li>
-      <li>Share a fact about another member of the cohort</li>
-      <li>Recall 3 key competencies from the standard</li>
-    </ul>
     <h2>Before we start</h2>
+    <p>You should have familiarity with basic JavaScript concepts, specifically:</p>
     <ul>
-      <li>You will need your platform login credentials</li>
+      <li><a href="https://www.w3schools.com/js/js_syntax.asp">JavaScript Syntax</a></li>
+      <li><a href="https://www.w3schools.com/js/js_datatypes.asp">JavaScript Data Types</a></li>
+      <li><a href="https://www.w3schools.com/js/js_variables.asp">JavaScript Variables</a></li>
+      <li><a href="https://www.w3schools.com/js/js_arrays.asp">JavaScript Arrays</a></li>
+      <li><a href="https://www.w3schools.com/js/js_array_methods.asp">JavaScript Array Methods</a></li>
+      <li><a href="https://www.w3schools.com/js/js_arrow_function.asp">JavaScript Arrow Functions</a></li>
+      <li><a href="https://www.codecademy.com/articles/what-is-node">An overview of Node</a> - also watch the first 5.30 minutes of <a href="https://www.youtube.com/watch?v=EIQgVdoYb0M">An Introduction to Node in Visual Studio Code</a></li>
+      <li>There is a great article on the <a href="https://community.whitehat.org.uk/topics/16826/feed">Community Hub</a> which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!</li>
     </ul>
-    <h2>Materials needed</h2>
+    <h2>Overview of the day</h2>
+    <p>Day one enables the cohort to get their computer set up so that they can write JavaScript using Node.js. We introduce the concepts of Arrays, Objects and functions in Javascript.</p>
+    <h1>Session 1 - Setup (could also be done prior to course)</h1>
+    <p>(Note that if students are unable to install software to their computer, it is possible to use the online editor <a href="https://repl.it/">Repl.it</a> to create and run JavaScript and Node.js instead).</p>
+    <p>Please install the following:</p>
     <ul>
-      <li><a href="https://applied.whitehat.org.uk">applied</a></li>
-      <li><a href="https://cognassist.com/">cognassist</a></li>
+      <li><a href="https://code.visualstudio.com/">VSCode</a> - this is a code editor</li>
+      <li><a href="https://nodejs.org/en/">Node</a> - Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser. Check if this is already installed by typing <code>node</code> on a Command Promt. If not, then select the LTS version.</li>
+      <li>Enable <code>Auto Save</code> in VSCode via <code>File -> Auto Save</code></li>
+      <li>Install <a href="https://jsdoc.app/">JsDoc</a> (an API documentation generator for JavaScript) by typing the following command in your command prompt after you have installed Node: <code>npm install -g jsdoc</code></li>
+      <li>Ensure you have the Chrome browser installed</li>
     </ul>
-    <h2>Lesson</h2>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRpv5_qiaX5Ob2GF-NS0YgOEF8G3TwMsJBLVsLp0ok8nSmlBR_Nk85Go4_L8nBNpElT5YcKM5Mk9NaK/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <h2>Assignment</h2>
-    <ul>
-      <li>In pairs in your breakout rooms find out about each other be ready to come back to the group and introduce your partner.</li>
-      <li>Complete the Cognassist exercise.</li>
-    </ul>
+    <p>Validate your setup as follows:</p>
+    <ol>
+      <li>Create a new folder called <code>coursework</code> under the <code>Documents</code> folder in your home directory</li>
+      <li>Open VSCode and select <code>File->Open Folder</code> - select your <code>coursework</code> folder</li>
+      <li>In the <code>coursework</code> folder, create a new file (<code>File->New File</code>) called <code>script.js</code> with the following content:</li>
+    </ol>
+    <pre><code class="language-js">console.log('hello from JavaScript');
+</code></pre>
+    <ol start="4">
+      <li>Check your code has been saved by looking at the timestamp for the file in <code>File Explorer</code></li>
+      <li>Using a Command Prompt, type <code>node script.js</code>. You should see the console log output. Here we are running the JavaScript server-side, i.e. within Node.</li>
+    </ol>
     <h1>Session 2 - Objects and Functions</h1>
-    <p>Understanding objects and functions is key to reading and writing Javascript. This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now.</p>
+    <p>Understanding objects and functions is key to reading and writing Javascript.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Demonstrate creating objects in Javascript</li>
@@ -47,14 +56,8 @@
       <li>Use arrays to organise objects into groups</li>
       <li>Create references to objects inside other objects</li>
     </ul>
-    <h2>Before we start</h2>
-    <p>This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now. You will also need Node.js installed and be able to access the node REPL in a terminal programme like 'terminal', 'PowerShell' or 'iTerm'.</p>
-    <h2>Materials needed</h2>
-    <ul>
-      <li>Node.js</li>
-    </ul>
     <h2>Lesson</h2>
-    <p>Objects are the main primitive in Javascript. Lets start by looking at the three different ways we can make an object:</p>
+    <p>Objects are the main data type in Javascript. Lets start by looking at the three different ways we can make an object:</p>
     <pre><code class="language-javascript">const person1 = {}
 const person2 = new Object()
 const person3 = Object.create({})
@@ -80,16 +83,15 @@ person1['name']
       How can we assign the value of an array of parents to that property?
       Can you access the name of the two parents?
     </p>
-    <p>If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called <code>childOf</code> and it should return the names of that object's parents.</p>
-    <p>So in our function, we want to be able to access the parents array of itself. To do this we use the <code>this</code> keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this.</p>
+    <p>Lets add a function called <code>childOf</code> which returns the names of that object's parents. In our function, we want to be able to access the parents array of itself. To do this we use the <code>this</code> keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this:</p>
     <pre><code class="language-javascript">function () {
   return this.parents.map(parent => parent.name).join(' &#x26; ') || "parents unknown"
 }
 </code></pre>
     <p>In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method <code>join</code> and give it a delimiter to use as it takes all the names in our array and joins them together with an "&#x26;" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates as falsey, so we can use the <code>||</code> double pipes of the OR operator to return a default value.</p>
-    <p>Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as it's value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so it will not work the same way. We'll come back to that.</p>
+    <p>Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as its value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so it will not work the same way. We'll come back to that.</p>
     <h2>Assignment</h2>
-    <p>Can you create an object that represents 3 generations of your family tree? A person in your family tree should have the following properties:</p>
+    <p>Can you create an object that represents 3 generations of a family tree? You could use the Royal Family or a celebrity family to model the concepts! A person in the family tree should have the following properties:</p>
     <ul>
       <li>name String</li>
       <li>parents Array</li>
@@ -97,7 +99,7 @@ person1['name']
     </ul>
     <p>The name property should be a string, the parents property should be an array, and that array should contain references to that person's parents. The childOf property should return a string of the parent's names.</p>
     <p>Use a combination of objects arranged in arrays to represent different generations. Use the <code>this</code> keyword to create a childOf function that references the parents array of itself.</p>
-    <p>Once constructed you should be able to traverse from you to your grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob &#x26; Samantha" or "parents unknown".</p>
+    <p>Once constructed you should be able to traverse from an individual to their grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob &#x26; Samantha" or "unknown".</p>
     <p>Commit your code into Github and share the link with your coach.</p>
     <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/153">attendance log</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day2.html">next</a></p>

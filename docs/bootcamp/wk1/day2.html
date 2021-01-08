@@ -13,6 +13,11 @@
     <h1>Bootcamp > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
     <p>Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style.</p>
+    <h2>Additional resources</h2>
+    <p>
+      If you are struggling with any of the concepts from today, the following videos will help:
+      <a href="https://www.youtube.com/watch?v=EIQgVdoYb0M">Using Visual Studio Code, npm and Jest</a> (from minute 5:30 onwards).
+    </p>
     <h1>Lesson 1 - Your first failing test</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -22,8 +27,8 @@
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>create a new project folder and run <code>npm init</code></li>
-      <li>install jest <code>npm install jest</code></li>
+      <li>create a new project folder and run <code>npm init</code>. This runs the Node Package Manager (NPM) which will generate manifest files (<code>package.json</code> &#x26; <code>package-lock.json</code>) which contain information about your project and which libaries (packages) your application needs to run.</li>
+      <li>install jest <code>npm install jest</code>. Your <code>package.json</code> will be updated to specify that your application requires jest.</li>
       <li>create two files <code>person.js</code> and <code>person.test.js</code></li>
     </ul>
     <h2>Materials needed</h2>
@@ -174,7 +179,6 @@ module.exports = Passenger
       <li>a Plane should also have a destination that is an Airport name</li>
       <li>Create an Airport class</li>
       <li>Airports should have a name</li>
-      <li>instances of an Airport should have a function to <code>land</code> planes</li>
       <li>One test should assert you have an airport, with a plane, on the plane are passengers &#x26; you can read the weight of one of the bags of a passenger</li>
     </ol>
     <p>Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane.</p>

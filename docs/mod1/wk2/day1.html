@@ -152,6 +152,7 @@ String hashedPassword = passwordEncoder.encode("your password");
       <li>(Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson). Enhance the form to display a list of users and allow the creation of new users, deletion and update of existing users (apart from the currently logged in user!)</li>
     </ul>
     <p><strong>Question</strong> - is the password sent on every request or cached?</p>
+    <p>Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">// check for a basic auth header with correct credentials
 app.use(basicAuth({
