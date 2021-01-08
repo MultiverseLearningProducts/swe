@@ -87,8 +87,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
 ```
 All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information
 
-❓ What are the 2 ways we can pass data in an HTTP request?
-❓ What is the difference between a parameter and a query parameter?
+❓ What are the 2 ways we can pass data in an HTTP request?/n
+❓ What is the difference between a parameter and a query parameter?/n
 
 ### Body
 
@@ -117,8 +117,8 @@ The header is a very important part of the HTTP request. In the header you can p
 
 Here is a list of all the different `Content-Type`s that are supported: [https://www.iana.org/](https://www.iana.org/assignments/media-types/media-types.xhtml)
 
-❓ In postman can you see where to set a header?
-❓ Can you match the correct content types to the table of encodings above?
+❓ In postman can you see where to set a header?\n
+❓ Can you match the correct content types to the table of encodings above?\n
 
 ### Response
 
@@ -170,8 +170,8 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => con
 ```
 ![the response object](https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png)
 
-❓ Can you see the status code?
-❓ Are there any headers?
+❓ Can you see the status code?\n
+❓ Are there any headers?\n
 
 To parse the response into a more friendly JSON object we can call `res.json()` then we can access our data in a convenient format.
 ```javascript

@@ -97,8 +97,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
 </code></pre>
     <p>All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information</p>
     <p>
-      ❓ What are the 2 ways we can pass data in an HTTP request?
-      ❓ What is the difference between a parameter and a query parameter?
+      ❓ What are the 2 ways we can pass data in an HTTP request?/n
+      ❓ What is the difference between a parameter and a query parameter?/n
     </p>
     <h3>Body</h3>
     <p>All HTTP requests can have a body. The body can contain different flavors of encoded data. In the table below you can see the following data encoded in different flavors:</p>
@@ -139,8 +139,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <p>The header is a very important part of the HTTP request. In the header you can pass all manor of meta information about the request. We will be putting authentication credentials in the header later on. For now we can focus on the <code>Content-Type</code>. Considering there are different ways we can encode the body content, we need to have a matching header that tells the receiver how to decode our body content. Without the body and Content-Type matching the server may error with a 406 "Not Acceptable" status code (we will look at status codes later).</p>
     <p>Here is a list of all the different <code>Content-Type</code>s that are supported: <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/</a></p>
     <p>
-      ❓ In postman can you see where to set a header?
-      ❓ Can you match the correct content types to the table of encodings above?
+      ❓ In postman can you see where to set a header?\n
+      ❓ Can you match the correct content types to the table of encodings above?\n
     </p>
     <h3>Response</h3>
     <p>The response object is similar to the request object. The main difference is a response will have a status code property. It is the responsibility of the developers building and maintaining a service to set the correct status code for a response before sending it back to the client.</p>
@@ -203,8 +203,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
       <img src="https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png" alt="the response object">
     </p>
     <p>
-      ❓ Can you see the status code?
-      ❓ Are there any headers?
+      ❓ Can you see the status code?\n
+      ❓ Are there any headers?\n
     </p>
     <p>To parse the response into a more friendly JSON object we can call <code>res.json()</code> then we can access our data in a convenient format.</p>
     <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
