@@ -61,6 +61,7 @@ Nested resources simple extend the same pattern.
 Can you see the pattern?
 
 ❓ How might you update a track for a given album?
+
 ❓ Can you match the CRUD operations to http methods?
 
 You might wonder why can't I just reference a track with the URL below?
@@ -75,7 +76,8 @@ REST is just a pattern so you can address a single track resource. However we ar
 
 Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. Lets have a look at the [Spotify API](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums) and try to identify these 2 things.  
 
-❓ Can you identify all the different components of the http request we need to form?\n
+❓ Can you identify all the different components of the http request we need to form?
+
 ❓ There are quite a few albums on Spotify and we can't actually `GET` all of them. What is the mechanism Spotify have used to limit the albums you can request?
 
 ```
@@ -91,7 +93,8 @@ As well as creating your own RESTful services, you will often find yourself cons
 * [Twilio](https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource)
 * [Twitter](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets)
 
-❓ What are the common elements you can identify in each?\n
+❓ What are the common elements you can identify in each?
+
 ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
 
 How is this possible? We can use something like [OpenAPI](https://www.openapis.org/)/[Swagger](https://swagger.io/) to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.
@@ -468,6 +471,7 @@ We have 28,000 airport records. Thats a lot. This would be much easier to consum
 `http://localhost:3000/airports?page=2&pageSize=25`
 
 ❓ What pagination errors might you now need to handle?
+
 ❓ What different HTTP codes might an endpoint like this return?
 
 ## Assignment

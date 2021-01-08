@@ -79,7 +79,7 @@ https://api.spotify.com/v1/albums/12345
 
 ### Query parameters
 
-Query parameters can be added to the end of an address. Adding a `?` at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' `artist` an equals `=` and then the 'value' `Frank%20Zappa` that makes a key=value pair. Look for the ampersand `&` that separates the key value pairs. Query parameters must be encoded so there are no special characters (except '%' or) or spaces. This encoding is called URIEncoding the best API in the browser to use for this is `window.encodeURIComponent`.
+Query parameters can be added to the end of an address. Adding a `?` at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' `artist` an equals `=` and then the 'value' `Frank%20Zappa` that makes a key=value pair. Look for the ampersand `&` that separates the key value pairs. Query parameters must be encoded so there are no special characters or spaces. This encoding is called URIEncoding the best API in the browser to use for this is `window.encodeURIComponent`.
 ```javascript
 "?artist=Frank Zappa&album=Hot Rats&track=Peaches Èn Ragalia" // not URI encoded
 window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20Ragalia
@@ -87,7 +87,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
 ```
 All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information
 
-❓ What are the 2 ways we can pass data in an HTTP request?</br>
+❓ What are the 2 ways we can pass data in an HTTP request?
+
 ❓ What is the difference between a parameter and a query parameter?
 
 ### Body
@@ -117,7 +118,8 @@ The header is a very important part of the HTTP request. In the header you can p
 
 Here is a list of all the different `Content-Type`s that are supported: [https://www.iana.org/](https://www.iana.org/assignments/media-types/media-types.xhtml)
 
-❓ In postman can you see where to set a header?</br>
+❓ In postman can you see where to set a header?
+
 ❓ Can you match the correct content types to the table of encodings above?
 
 ### Response
@@ -170,7 +172,8 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => con
 ```
 ![the response object](https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png)
 
-❓ Can you see the status code?</br>
+❓ Can you see the status code?
+
 ❓ Are there any headers?
 
 To parse the response into a more friendly JSON object we can call `res.json()` then we can access our data in a convenient format.
@@ -207,7 +210,7 @@ fetch(url, {
 
 ## Assignment
 
-Can you repeat the calls that we made earlier to https://http-challenge.whitehatcoaches.org.uk/ only this time have a script that runs in your browser and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
+Can you repeat the calls that we made earlier to https://http-challenge.whitehatcoaches.org.uk/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)

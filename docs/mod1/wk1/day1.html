@@ -90,16 +90,14 @@
 </code></pre>
     <p>❓ What is the difference between the path and parameters?</p>
     <h3>Query parameters</h3>
-    <p>Query parameters can be added to the end of an address. Adding a <code>?</code> at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' <code>artist</code> an equals <code>=</code> and then the 'value' <code>Frank%20Zappa</code> that makes a key=value pair. Look for the ampersand <code>&#x26;</code> that separates the key value pairs. Query parameters must be encoded so there are no special characters (except '%' or) or spaces. This encoding is called URIEncoding the best API in the browser to use for this is <code>window.encodeURIComponent</code>.</p>
+    <p>Query parameters can be added to the end of an address. Adding a <code>?</code> at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' <code>artist</code> an equals <code>=</code> and then the 'value' <code>Frank%20Zappa</code> that makes a key=value pair. Look for the ampersand <code>&#x26;</code> that separates the key value pairs. Query parameters must be encoded so there are no special characters or spaces. This encoding is called URIEncoding the best API in the browser to use for this is <code>window.encodeURIComponent</code>.</p>
     <pre><code class="language-javascript">"?artist=Frank Zappa&#x26;album=Hot Rats&#x26;track=Peaches Èn Ragalia" // not URI encoded
 window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20Ragalia
 "?artist=Frank%20Zappa&#x26;album=Hot%20Rats&#x26;track=Peaches%20%C3%88n%20Ragalia" // safe query string
 </code></pre>
     <p>All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information</p>
-    <p>
-      ❓ What are the 2 ways we can pass data in an HTTP request?
-      ❓ What is the difference between a parameter and a query parameter?
-    </p>
+    <p>❓ What are the 2 ways we can pass data in an HTTP request?</p>
+    <p>❓ What is the difference between a parameter and a query parameter?</p>
     <h3>Body</h3>
     <p>All HTTP requests can have a body. The body can contain different flavors of encoded data. In the table below you can see the following data encoded in different flavors:</p>
     <pre><code class="language-javascript">{
@@ -138,10 +136,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <h3>Header</h3>
     <p>The header is a very important part of the HTTP request. In the header you can pass all manor of meta information about the request. We will be putting authentication credentials in the header later on. For now we can focus on the <code>Content-Type</code>. Considering there are different ways we can encode the body content, we need to have a matching header that tells the receiver how to decode our body content. Without the body and Content-Type matching the server may error with a 406 "Not Acceptable" status code (we will look at status codes later).</p>
     <p>Here is a list of all the different <code>Content-Type</code>s that are supported: <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/</a></p>
-    <p>
-      ❓ In postman can you see where to set a header?
-      ❓ Can you match the correct content types to the table of encodings above?
-    </p>
+    <p>❓ In postman can you see where to set a header?</p>
+    <p>❓ Can you match the correct content types to the table of encodings above?</p>
     <h3>Response</h3>
     <p>The response object is similar to the request object. The main difference is a response will have a status code property. It is the responsibility of the developers building and maintaining a service to set the correct status code for a response before sending it back to the client.</p>
     <table>
@@ -202,10 +198,8 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png" alt="the response object">
     </p>
-    <p>
-      ❓ Can you see the status code?
-      ❓ Are there any headers?
-    </p>
+    <p>❓ Can you see the status code?</p>
+    <p>❓ Are there any headers?</p>
     <p>To parse the response into a more friendly JSON object we can call <code>res.json()</code> then we can access our data in a convenient format.</p>
     <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
   .then(res => res.json())
@@ -235,7 +229,7 @@ fetch(url, {
 })
 </code></pre>
     <h2>Assignment</h2>
-    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script that runs in your browser and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
+    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
     <p>
       <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/178">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day3.html">prev</a>|<a href="/swe/mod1/wk1/day2.html">next</a>
