@@ -6,6 +6,19 @@ body {
     background-repeat: no-repeat;
 }
 
+:root {
+    --wh-navy: #16264D;
+    --wh-near-white: #f6f6f6;
+    --wh-gray: #797979;
+    --wh-gray-light: #e4e4e4;
+    --wh-purple: #7f5eff;
+    --wh-light-purple: #dcd4fc;
+    --wh-green: #25dd9c;
+    --wh-dark-green: #1a9b6d;
+    --wh-dark-red: #994949;
+    --wh-red: #E23030;
+}
+
 hr {
     border: solid 1px #a7a7a7;
 }

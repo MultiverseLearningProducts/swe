@@ -75,7 +75,7 @@ REST is just a pattern so you can address a single track resource. However we ar
 
 Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. Lets have a look at the [Spotify API](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums) and try to identify these 2 things.  
 
-❓ Can you identify all the different components of the http request we need to form?
+❓ Can you identify all the different components of the http request we need to form?\n
 ❓ There are quite a few albums on Spotify and we can't actually `GET` all of them. What is the mechanism Spotify have used to limit the albums you can request?
 
 ```
@@ -91,7 +91,7 @@ As well as creating your own RESTful services, you will often find yourself cons
 * [Twilio](https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource)
 * [Twitter](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets)
 
-❓ What are the common elements you can identify in each?
+❓ What are the common elements you can identify in each?\n
 ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
 
 How is this possible? We can use something like [OpenAPI](https://www.openapis.org/)/[Swagger](https://swagger.io/) to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.
@@ -179,6 +179,7 @@ Once you have got your .yaml file completed you can have a go at generating a se
 ```javascript
 // npm install -g swagger-node-codegen
 // snc airports_config.yaml -o airports-node
+// cd into the airports-node folder and start the server with npm start
 ```
 ```java
 /*
@@ -206,26 +207,51 @@ Be ready to demo your generated server and documentation.
 
 ----
 
-## Lesson ? - ???
+## Lesson 2 - Build your own OpenAPI
 
 ## Learning Objectives
 
+* Produce an API server with integrated documentation
+* Implement CRUD operations on a single resource using RESTful endpoints
+
 ## Before we start
+
+You will need a valid `airports-config.yaml` openAPI definition file
 
 ## Materials needed
 
 ## Lesson
 
-## Assignment
+Auto generated code is all very well, but you also need to know how to build your own RESTful services. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use [Symfony](https://symfony.com/).
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/179)
-[main](/swe)|[prev](/swe/mod1/wk1/day1.html)|[next](/swe/mod1/wk1/day3.html)
+### Dependencies
 
-## Getting started (Java)
+First of all find and install the dependencies your server is going to need to create auto generated documentation.
 
-Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.swagger-api' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `<dependencies>` list).
-
-```xml
+|Javascript|Java|
+```json
+{
+  "name": "airports",
+  "version": "1.0.0",
+  "description": "Use this package.json to start your assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "your Github username can go here",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-jsdoc": "^6.0.1",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
+  }
+}
+```
+```java
+/*
+  Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `<dependencies>` list).  
+*/
 <dependency>
     <groupId>io.springfox</groupId>
     <artifactId>springfox-boot-starter</artifactId>
@@ -239,10 +265,30 @@ Goto https://start.spring.io and generate a project with the group 'org.whitehat
 </dependency>
 ```
 
-Tell Spring Boot that you are using Swagger by adding the notation `@EnableSwagger2` after `@SpringBootApplication` in your entry file (the one with your `main()` function). Add a `@Bean` Docket to expose your endpoints to Swagger.
+### Configuration
 
+The next step is to configure your server to create API documentation from your code. Previously we used the OpenAPI yaml file to describe our routes, but that method means we would have to keep updating the config yaml file if we made changes to the endpoint. Instead now we are going to use swagger to generate docs NOT from a yaml file - but from the actual code itself. You can remove the `paths` property from your yaml file.
+
+|Javascript|Java|
+```javascript
+const express = require('express')
+const app = express()
+const swaggerUi = require('swagger-ui-express')
+const airports = require('./airports.json')
+const YAML = require('yamljs')
+const docs = YAML.load('./airports-config.yaml')
+const swaggerDocs = require('swagger-jsdoc')({
+    swaggerDefinition: docs,
+    apis: ['./server.js']
+})
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {explorer: true}))
+
+app.listen(3000, () => console.log("Airport API ready. Documents at http://localhost:3000/api-docs"))
+```
 ```java
-package org.whitehat.swaggerapi;
+// in a file named AirportsApiApplication.java
+package org.whitehat.airports;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -255,46 +301,176 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class SwaggerApiApplication {
+public class AirportsApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwaggerApiApplication.class, args);
+		SpringApplication.run(AirportsApiApplication.class, args);
 	}
 	@Bean
 	public Docket mySwaggerApi() {
-	   return new Docket(DocumentationType.SWAGGER_2).select()
-		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.swaggerapi")).build();
+	   return new Docket(DocumentationType.SWAGGER_3).select()
+		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.airports")).build();
 	}
 }
+// `http://localhost:8080/swagger-ui/` ⚠️ This address will not work without the trailing slash
 ```
-Now create a new class file with some endpoints just for testing:
+
+### Auto Document Paths
+
+Now we can start to annotate our routes to support swagger auto documenting our paths.
+
+|Javascript|Java|
+```javascript
+// server.js
+/**
+ * @swagger
+ * /airports:
+ *   get:
+ *     summary: returns an array of airports
+ *     responses:
+ *       200:
+ *         description: all the airports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 properties:
+ *                   icao:
+ *                     type: string
+ *                   iata:
+ *                     type: string
+ *                   name:
+ *                     type: string
+ *                   city:
+ *                     type: string
+ *                   state:
+ *                     type: string
+ *                   country:
+ *                     type: string
+ *                   elevation:
+ *                     type: integer
+ *                   lat:
+ *                     type: float
+ *                   lon:
+ *                     type: float
+ *                   tz:
+ *                     type: string
+ *                 example:
+ *                   icao: "00AK"
+ *                   iata: ""
+ *                   name: "Lowell Field"
+ *                   city: "Anchor Point"
+ *                   state: "Alaska"
+ *                   country: "US"
+ *                   elevation: 450
+ *                   lat: 59.94919968
+ *                   lon: -151.695999146
+ *                   tz: "America/Anchorage"                 
+ */
+app.get('/airports', (req, res) => {
+    res.send(airports)
+})
+```
 ```java
-// org/whitehat/swagger-api/FruitsController.java
-
-package org.whitehat.swaggerapi;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class FruitsController {
-   @RequestMapping(value = "/fruits", method = RequestMethod.GET)
-   public List<String> getFruits() {
-      List<String> fruitList = new ArrayList<>();
-      fruitList.add("Apples");
-      fruitList.add("Oranges");
-      return fruitList;
-   }
-   @RequestMapping(value = "/fruits", method = RequestMethod.POST)
-   public String createFruit() {
-      return "Fruit has been eaten successfully";
-   }
-}
-
 ```
 
-`http://localhost:8080/swagger-ui/` ⚠️ This address will not work without the trailing slash
+in _javascript_ You can use schemas to save yourself repeating the definition of an `Airport`. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an `Airport.js` file you can define your airport:
+
+```javascript
+/**
+ * @swagger
+ *   components:
+ *     schemas:
+ *       Airport:
+ *         type: object
+ *         properties:
+ *           icao:
+ *             type: string
+ *           iata:
+ *             type: string
+ *           name:
+ *             type: string
+ *           city:
+ *             type: string
+ *           state:
+ *             type: string
+ *           country:
+ *             type: string
+ *           elevation:
+ *             type: integer
+ *           lat:
+ *             type: float
+ *           lon:
+ *             type: float
+ *           tz:
+ *             type: string
+ *         example:
+ *           icao: "00AK"
+ *           iata: ""
+ *           name: "Lowell Field"
+ *           city: "Anchor Point"
+ *           state: "Alaska"
+ *           country: "US"
+ *           elevation: 450
+ *           lat: 59.94919968
+ *           lon: -151.695999146
+ *           tz: "America/Anchorage"
+ */
+
+module.exports = class Airport {
+    icao = ""
+    iata = ""
+    name = ""
+    city = ""
+    state = ""
+    country = ""
+    elevation = 0
+    lat = 0.0
+    lon = -0.0
+    tz = ""
+
+    constructor (data) {
+        Object.assign(this, data)
+    }
+}
+```
+
+Then this can be referenced in your route definitions like this (you also have to reference the file in the `swagger-jsdoc` config):
+
+```javascript
+const swaggerDocs = require('swagger-jsdoc')({
+    swaggerDefinition: docs,
+    apis: ['./server.js', './Airport.js'] // <- reference the file your schema is in here
+})
+/**
+ * @swagger
+ * /airports:
+ *   get:
+ *     summary: returns an array of airports
+ *     responses:
+ *       200:
+ *         description: all the airports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Airport'                 
+ */
+app.get('/airports', (req, res) => {
+    res.send(airports)
+})
+```
+
+### Pagination
+
+We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often
+
+## Assignment
+
+Based on your `airports-config.yaml` OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET `/airports` route enabling users to define a page number (required) and an optional `pageSize` query parameter.
+
+In the next session we will be writing integration tests for our endpoints.
+
+[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/179)
+[main](/swe)|[prev](/swe/mod1/wk1/day1.html)|[next](/swe/mod1/wk1/day3.html)
+

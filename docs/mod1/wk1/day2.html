@@ -134,7 +134,7 @@
     <h3>Spotify API</h3>
     <p>Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. Lets have a look at the <a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify API</a> and try to identify these 2 things.</p>
     <p>
-      ❓ Can you identify all the different components of the http request we need to form?
+      ❓ Can you identify all the different components of the http request we need to form?\n
       ❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?
     </p>
     <pre><code>3QrEk9Va9qO4uobczNUtqe,6ra4GIOgCZQZMOaUECftGN,4Qjd3K1HhL1N2ee1V22Icw
@@ -148,7 +148,7 @@
       <li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets">Twitter</a></li>
     </ul>
     <p>
-      ❓ What are the common elements you can identify in each?
+      ❓ What are the common elements you can identify in each?\n
       ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
     </p>
     <p>How is this possible? We can use something like <a href="https://www.openapis.org/">OpenAPI</a>/<a href="https://swagger.io/">Swagger</a> to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.</p>
@@ -229,6 +229,7 @@ paths:
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">// npm install -g swagger-node-codegen
 // snc airports_config.yaml -o airports-node
+// cd into the airports-node folder and start the server with npm start
 </code></pre>
     <pre><code class="language-java">/*
   download swagger-codegen-cli-3.0.24.jar from https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar
@@ -252,19 +253,42 @@ paths:
 </code></pre>
     <p>Be ready to demo your generated server and documentation.</p>
     <hr>
-    <h2>Lesson ? - ???</h2>
+    <h2>Lesson 2 - Build your own OpenAPI</h2>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Produce an API server with integrated documentation</li>
+      <li>Implement CRUD operations on a single resource using RESTful endpoints</li>
+    </ul>
     <h2>Before we start</h2>
+    <p>You will need a valid <code>airports-config.yaml</code> openAPI definition file</p>
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
-    <h2>Assignment</h2>
-    <p>
-      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/179">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>
-    </p>
-    <h2>Getting started (Java)</h2>
-    <p>Goto <a href="https://start.spring.io">https://start.spring.io</a> and generate a project with the group 'org.whitehat' and package name 'org.whitehat.swagger-api' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your <code>pom.xml</code> file (in the <code>&#x3C;dependencies></code> list).</p>
-    <pre><code class="language-xml">&#x3C;dependency>
+    <p>Auto generated code is all very well, but you also need to know how to build your own RESTful services. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>
+    <h3>Dependencies</h3>
+    <p>First of all find and install the dependencies your server is going to need to create auto generated documentation.</p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-json">{
+  "name": "airports",
+  "version": "1.0.0",
+  "description": "Use this package.json to start your assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "your Github username can go here",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-jsdoc": "^6.0.1",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
+  }
+}
+</code></pre>
+    <pre><code class="language-java">/*
+  Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `&#x3C;dependencies>` list).  
+*/
+&#x3C;dependency>
     &#x3C;groupId>io.springfox&#x3C;/groupId>
     &#x3C;artifactId>springfox-boot-starter&#x3C;/artifactId>
     &#x3C;version>3.0.0&#x3C;/version>
@@ -276,8 +300,26 @@ paths:
     &#x3C;version>3.0.0&#x3C;/version>
 &#x3C;/dependency>
 </code></pre>
-    <p>Tell Spring Boot that you are using Swagger by adding the notation <code>@EnableSwagger2</code> after <code>@SpringBootApplication</code> in your entry file (the one with your <code>main()</code> function). Add a <code>@Bean</code> Docket to expose your endpoints to Swagger.</p>
-    <pre><code class="language-java">package org.whitehat.swaggerapi;
+    <h3>Configuration</h3>
+    <p>The next step is to configure your server to create API documentation from your code. Previously we used the OpenAPI yaml file to describe our routes, but that method means we would have to keep updating the config yaml file if we made changes to the endpoint. Instead now we are going to use swagger to generate docs NOT from a yaml file - but from the actual code itself. You can remove the <code>paths</code> property from your yaml file.</p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript">const express = require('express')
+const app = express()
+const swaggerUi = require('swagger-ui-express')
+const airports = require('./airports.json')
+const YAML = require('yamljs')
+const docs = YAML.load('./airports-config.yaml')
+const swaggerDocs = require('swagger-jsdoc')({
+    swaggerDefinition: docs,
+    apis: ['./server.js']
+})
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {explorer: true}))
+
+app.listen(3000, () => console.log("Airport API ready. Documents at http://localhost:3000/api-docs"))
+</code></pre>
+    <pre><code class="language-java">// in a file named AirportsApiApplication.java
+package org.whitehat.airports;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -290,47 +332,163 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class SwaggerApiApplication {
+public class AirportsApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwaggerApiApplication.class, args);
+		SpringApplication.run(AirportsApiApplication.class, args);
 	}
 	@Bean
 	public Docket mySwaggerApi() {
-	   return new Docket(DocumentationType.SWAGGER_2).select()
-		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.swaggerapi")).build();
+	   return new Docket(DocumentationType.SWAGGER_3).select()
+		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.airports")).build();
 	}
 }
+// `http://localhost:8080/swagger-ui/` ⚠️ This address will not work without the trailing slash
 </code></pre>
-    <p>Now create a new class file with some endpoints just for testing:</p>
-    <pre><code class="language-java">// org/whitehat/swagger-api/FruitsController.java
+    <h3>Auto Document Paths</h3>
+    <p>Now we can start to annotate our routes to support swagger auto documenting our paths.</p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript">// server.js
+/**
+ * @swagger
+ * /airports:
+ *   get:
+ *     summary: returns an array of airports
+ *     responses:
+ *       200:
+ *         description: all the airports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 properties:
+ *                   icao:
+ *                     type: string
+ *                   iata:
+ *                     type: string
+ *                   name:
+ *                     type: string
+ *                   city:
+ *                     type: string
+ *                   state:
+ *                     type: string
+ *                   country:
+ *                     type: string
+ *                   elevation:
+ *                     type: integer
+ *                   lat:
+ *                     type: float
+ *                   lon:
+ *                     type: float
+ *                   tz:
+ *                     type: string
+ *                 example:
+ *                   icao: "00AK"
+ *                   iata: ""
+ *                   name: "Lowell Field"
+ *                   city: "Anchor Point"
+ *                   state: "Alaska"
+ *                   country: "US"
+ *                   elevation: 450
+ *                   lat: 59.94919968
+ *                   lon: -151.695999146
+ *                   tz: "America/Anchorage"                 
+ */
+app.get('/airports', (req, res) => {
+    res.send(airports)
+})
+</code></pre>
+    <pre><code class="language-java"></code></pre>
+    <p>in <em>javascript</em> You can use schemas to save yourself repeating the definition of an <code>Airport</code>. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an <code>Airport.js</code> file you can define your airport:</p>
+    <pre><code class="language-javascript">/**
+ * @swagger
+ *   components:
+ *     schemas:
+ *       Airport:
+ *         type: object
+ *         properties:
+ *           icao:
+ *             type: string
+ *           iata:
+ *             type: string
+ *           name:
+ *             type: string
+ *           city:
+ *             type: string
+ *           state:
+ *             type: string
+ *           country:
+ *             type: string
+ *           elevation:
+ *             type: integer
+ *           lat:
+ *             type: float
+ *           lon:
+ *             type: float
+ *           tz:
+ *             type: string
+ *         example:
+ *           icao: "00AK"
+ *           iata: ""
+ *           name: "Lowell Field"
+ *           city: "Anchor Point"
+ *           state: "Alaska"
+ *           country: "US"
+ *           elevation: 450
+ *           lat: 59.94919968
+ *           lon: -151.695999146
+ *           tz: "America/Anchorage"
+ */
 
-package org.whitehat.swaggerapi;
+module.exports = class Airport {
+    icao = ""
+    iata = ""
+    name = ""
+    city = ""
+    state = ""
+    country = ""
+    elevation = 0
+    lat = 0.0
+    lon = -0.0
+    tz = ""
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class FruitsController {
-   @RequestMapping(value = "/fruits", method = RequestMethod.GET)
-   public List&#x3C;String> getFruits() {
-      List&#x3C;String> fruitList = new ArrayList&#x3C;>();
-      fruitList.add("Apples");
-      fruitList.add("Oranges");
-      return fruitList;
-   }
-   @RequestMapping(value = "/fruits", method = RequestMethod.POST)
-   public String createFruit() {
-      return "Fruit has been eaten successfully";
-   }
+    constructor (data) {
+        Object.assign(this, data)
+    }
 }
-
 </code></pre>
-    <p><code>http://localhost:8080/swagger-ui/</code> ⚠️ This address will not work without the trailing slash</p>
+    <p>Then this can be referenced in your route definitions like this (you also have to reference the file in the <code>swagger-jsdoc</code> config):</p>
+    <pre><code class="language-javascript">const swaggerDocs = require('swagger-jsdoc')({
+    swaggerDefinition: docs,
+    apis: ['./server.js', './Airport.js'] // &#x3C;- reference the file your schema is in here
+})
+/**
+ * @swagger
+ * /airports:
+ *   get:
+ *     summary: returns an array of airports
+ *     responses:
+ *       200:
+ *         description: all the airports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Airport'                 
+ */
+app.get('/airports', (req, res) => {
+    res.send(airports)
+})
+</code></pre>
+    <h3>Pagination</h3>
+    <p>We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often</p>
+    <h2>Assignment</h2>
+    <p>Based on your <code>airports-config.yaml</code> OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter.</p>
+    <p>In the next session we will be writing integration tests for our endpoints.</p>
+    <p>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/179">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>
+    </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
