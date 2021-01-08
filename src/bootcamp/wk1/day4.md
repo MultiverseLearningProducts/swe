@@ -1,6 +1,12 @@
 # Bootcamp > Week 1 > Day 4
 
 ## Overview of the day
+Today we are going to look at creating asynchronous functions in JavaScript.
+
+## Additional resources
+If you are struggling with any of the concepts from today, the following resources will help:
+  * [Asynchronous JavaScript—How Callbacks, Promises, and Async-Await Work](https://dev.to/nas5w/asynchronous-javascript-how-callbacks-promises-and-async-await-work-1f7p)
+  * [Callbacks, promises and async/await](https://javascript.info/async)
 
 <hr/>
 

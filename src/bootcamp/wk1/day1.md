@@ -1,45 +1,43 @@
 # Bootcamp > Week 1 > Day 1
 
+## Before we start
+You should have familiarity with basic JavaScript concepts, specifically:
+  * [JavaScript Syntax](https://www.w3schools.com/js/js_syntax.asp)
+  * [JavaScript Data Types](https://www.w3schools.com/js/js_datatypes.asp)
+  * [JavaScript Variables](https://www.w3schools.com/js/js_variables.asp)
+  * [JavaScript Arrays](https://www.w3schools.com/js/js_arrays.asp)
+  * [JavaScript Array Methods](https://www.w3schools.com/js/js_array_methods.asp)
+  * [JavaScript Arrow Functions](https://www.w3schools.com/js/js_arrow_function.asp)
+  * [An overview of Node](https://www.codecademy.com/articles/what-is-node) - also watch the first 5.30 minutes of [An Introduction to Node in Visual Studio Code](https://www.youtube.com/watch?v=EIQgVdoYb0M)
+  * There is a great article on the [Community Hub](https://community.whitehat.org.uk/topics/16826/feed) which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!
+
 ## Overview of the day
 
-Day one is about the cohort getting to know each other. Being introduced to the standard and getting their computer set up. Introduce Objects and functions in Javascript
+Day one enables the cohort to get their computer set up so that they can write JavaScript using Node.js. We introduce the concepts of Arrays, Objects and functions in Javascript.
 
-<hr/>
+# Session 1 - Setup (could also be done prior to course)
+(Note that if students are unable to install software to their computer, it is possible to use the online editor [Repl.it](https://repl.it/) to create and run JavaScript and Node.js instead).
 
-# Session 1 - Flying start
+Please install the following:
+   * [VSCode](https://code.visualstudio.com/) - this is a code editor
+   * [Node](https://nodejs.org/en/) - Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that executes JavaScript code outside a web browser. Check if this is already installed by typing `node` on a Command Promt. If not, then select the LTS version. 
+   * Enable `Auto Save` in VSCode via `File -> Auto Save`
+   * Install [JsDoc](https://jsdoc.app/) (an API documentation generator for JavaScript) by typing the following command in your command prompt after you have installed Node: `npm install -g jsdoc`
+   * Ensure you have the Chrome browser installed
 
-Your apprenticeship starts today
-
-## Learning Objectives
-
-* Recall the names of other members of the cohort
-* List the places other members of the cohort work
-* Share a fact about another member of the cohort
-* Recall 3 key competencies from the standard
-
-## Before we start
-
-* You will need your platform login credentials
-
-## Materials needed
-
-* [applied](https://applied.whitehat.org.uk)
-* [cognassist](https://cognassist.com/)
-
-## Lesson
-
-!(https://docs.google.com/presentation/d/e/2PACX-1vRpv5_qiaX5Ob2GF-NS0YgOEF8G3TwMsJBLVsLp0ok8nSmlBR_Nk85Go4_L8nBNpElT5YcKM5Mk9NaK/embed)
-
-## Assignment
-
-* In pairs in your breakout rooms find out about each other be ready to come back to the group and introduce your partner.
-* Complete the Cognassist exercise.
-
-<hr/>
+Validate your setup as follows:
+  1. Create a new folder called `coursework` under the `Documents` folder in your home directory
+  2. Open VSCode and select `File->Open Folder` - select your `coursework` folder
+  3. In the `coursework` folder, create a new file (`File->New File`) called `script.js` with the following content: 
+```js
+console.log('hello from JavaScript');
+```
+  4. Check your code has been saved by looking at the timestamp for the file in `File Explorer`
+  5. Using a Command Prompt, type `node script.js`. You should see the console log output. Here we are running the JavaScript server-side, i.e. within Node.
 
 # Session 2 - Objects and Functions
 
-Understanding objects and functions is key to reading and writing Javascript. This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now.
+Understanding objects and functions is key to reading and writing Javascript. 
 
 ## Learning Objectives
 
@@ -48,17 +46,9 @@ Understanding objects and functions is key to reading and writing Javascript. Th
 * Use arrays to organise objects into groups
 * Create references to objects inside other objects
 
-## Before we start
-
-This session assumes you understand how to use Arrays, so if you are unsure about how to references items in an array you can go find out about that now. You will also need Node.js installed and be able to access the node REPL in a terminal programme like 'terminal', 'PowerShell' or 'iTerm'.
-
-## Materials needed
-
-* Node.js
-
 ## Lesson
 
-Objects are the main primitive in Javascript. Lets start by looking at the three different ways we can make an object:
+Objects are the main data type in Javascript. Lets start by looking at the three different ways we can make an object:
 
 ```javascript
 const person1 = {}
@@ -93,9 +83,7 @@ How can we create a parents property on our person?
 How can we assign the value of an array of parents to that property?
 Can you access the name of the two parents?
 
-If we ask someone "who are your parents" that person can usually tell us. Our person should have that functionality. Lets add a new property called `childOf` and it should return the names of that object's parents.
-
-So in our function, we want to be able to access the parents array of itself. To do this we use the `this` keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this.
+Lets add a function called `childOf` which returns the names of that object's parents. In our function, we want to be able to access the parents array of itself. To do this we use the `this` keyword. From within the function that is assigned as a property of the object, we can reference the parent's array like this:
 
 ```javascript
 function () {
@@ -104,21 +92,21 @@ function () {
 ```
 In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method `join` and give it a delimiter to use as it takes all the names in our array and joins them together with an "&" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates as falsey, so we can use the `||` double pipes of the OR operator to return a default value.
 
-Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our `childOf` property can have as it's value a reference to the `childOf` function. You must use the `function` keyword for this to work. Arrow functions reference the `this` of the parent's scope so it will not work the same way. We'll come back to that.
+Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our `childOf` property can have as its value a reference to the `childOf` function. You must use the `function` keyword for this to work. Arrow functions reference the `this` of the parent's scope so it will not work the same way. We'll come back to that.
 
 ## Assignment
 
-Can you create an object that represents 3 generations of your family tree? A person in your family tree should have the following properties:
+Can you create an object that represents 3 generations of a family tree? You could use the Royal Family or a celebrity family to model the concepts! A person in the family tree should have the following properties:
 
 * name String
-* parents Array
+* parents Array 
 * childOf Function
 
 The name property should be a string, the parents property should be an array, and that array should contain references to that person's parents. The childOf property should return a string of the parent's names.
 
 Use a combination of objects arranged in arrays to represent different generations. Use the `this` keyword to create a childOf function that references the parents array of itself.
 
-Once constructed you should be able to traverse from you to your grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob & Samantha" or "parents unknown".
+Once constructed you should be able to traverse from an individual to their grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob & Samantha" or "unknown".
 
 Commit your code into Github and share the link with your coach.
 
