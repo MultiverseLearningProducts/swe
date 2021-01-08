@@ -100,6 +100,7 @@ Use the code above to generate hashes of some demo user passwords. Then add the 
 
 ### Lesson
 Your API should support 4 resources:
+
 |HTTP Method|URL|Status code|Description|
 |-----------|---|-----------|-----------|
 |POST|/users|201|create a new user|
