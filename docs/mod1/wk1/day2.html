@@ -481,10 +481,14 @@ app.get('/airports', (req, res) => {
 })
 </code></pre>
     <h3>Pagination</h3>
-    <p>We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often</p>
+    <p>We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.</p>
+    <p><code>http://localhost:3000/airports?page=2&#x26;pageSize=25</code></p>
+    <p>
+      ❓ What pagination errors might you now need to handle?
+      ❓ What different HTTP codes might an endpoint like this return?
+    </p>
     <h2>Assignment</h2>
-    <p>Based on your <code>airports-config.yaml</code> OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter.</p>
-    <p>In the next session we will be writing integration tests for our endpoints.</p>
+    <p>Based on your <code>airports-config.yaml</code> OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter (this should default to 25).</p>
     <p>
       <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/179">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>

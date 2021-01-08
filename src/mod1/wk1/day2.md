@@ -463,13 +463,16 @@ app.get('/airports', (req, res) => {
 
 ### Pagination
 
-We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often
+We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.
+
+`http://localhost:3000/airports?page=2&pageSize=25`
+
+❓ What pagination errors might you now need to handle?
+❓ What different HTTP codes might an endpoint like this return?
 
 ## Assignment
 
-Based on your `airports-config.yaml` OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET `/airports` route enabling users to define a page number (required) and an optional `pageSize` query parameter.
-
-In the next session we will be writing integration tests for our endpoints.
+Based on your `airports-config.yaml` OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET `/airports` route enabling users to define a page number (required) and an optional `pageSize` query parameter (this should default to 25).
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/179)
 [main](/swe)|[prev](/swe/mod1/wk1/day1.html)|[next](/swe/mod1/wk1/day3.html)
