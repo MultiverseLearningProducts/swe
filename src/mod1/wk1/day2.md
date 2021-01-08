@@ -42,7 +42,7 @@ Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH`
 A 'resource' some thing we want to access or interact with is also a fundamental concept in REST. Usually this is our service or data. For example on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:
 
 |URL|VERB|Resource|
-|--:|:---:|:------|
+|:--|:---:|:------|
 |`/albums`|GET|return all the albums (resources are always plural)|
 |`/albums`|POST|create a new album|
 |`/albums/{id}`|GET|return the album with the id specified in the URL|
@@ -53,7 +53,7 @@ A 'resource' some thing we want to access or interact with is also a fundamental
 Nested resources simple extend the same pattern.
 
 |URL|VERB|Resource|
-|--:|:---:|:------|
+|:--|:---:|:------|
 |`/albums/{id}/tracks`|GET|return the tracks for the album with the id specified in the URL|
 |`/albums/{id}/tracks`|POST|create a new track for the album with the id specified in the URL|
 |`/albums/{album_id}/tracks/{track_id}`|GET|return the track with the id specified in the URL from the album with the id specified in the URL|
@@ -66,7 +66,7 @@ Can you see the pattern?
 You might wonder why can't I just reference a track with the URL below?
 
 |URL|VERB|Resource|
-|--:|:---:|:------|
+|:--|:---:|:------|
 |`/tracks/{track_id}`|GET|return the track with the id specified in the URL
 
 REST is just a pattern so you can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers.
