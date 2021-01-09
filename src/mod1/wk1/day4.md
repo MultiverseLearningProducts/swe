@@ -60,13 +60,13 @@ The first thing to do is prepare our string by chunking it into equal sections. 
 |Javascript|Java|
 ```javascript
 const msg = "Lets meet at midnight under the c1ock";
-const msgAsArr = msg.split("")
+const tokens = msg.split("")
 let blocks = [];
 let slice = 0;
 const blockSize = 8;
 
-while (slice < msgAsArr.length) {
-    blocks.push(msgAsArr.slice(slice, slice += blockSize));
+while (slice < tokens.length) {
+    blocks.push(tokens.slice(slice, slice += blockSize));
 }
 
 while (blocks[blocks.length - 1].length < 8) {
@@ -76,9 +76,68 @@ while (blocks[blocks.length - 1].length < 8) {
 blocks = blocks.map(block => block.map(char => char.charCodeAt()))
 
 console.log(blocks)
+/*
+    Output
+    [76, 101, 116, 115, 32, 109, 101, 101]
+    [116, 32, 117, 110, 100, 101, 114, 32]
+    [116, 104, 101, 32, 99, 108, 111, 99]
+    [107, 32, 97, 116, 32, 109, 105, 100]
+    [110, 105, 103, 104, 116, 46, 32, 82]
+    [101, 109, 101, 109, 98, 101, 114, 32]
+    [73, 32, 108, 111, 118, 101, 32, 121]
+    [111, 117, 46, 97, 97, 97, 97, 97]
+*/
 ```
 ```java
-String msg = "Lets meet at midnight under the clock";
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Code {
+  private static int[] blockAsCharCodes (String[] block) {
+    int[] charCodes = new int[block.length];
+    for(int i=0;i < block.length;i++) {
+      charCodes[i] = block[i].codePointAt(0);
+    }
+    return charCodes;
+  }
+
+  public static void main(String[] args) {
+    String msg = "Lets meet at midnight under the c1ock";
+    String[] tokens = msg.split("");
+    int slice = 0;
+    int blockSize = 8;
+    ArrayList<String[]> blocks = new ArrayList<>();
+    ArrayList<int[]> blocksOfInts = new ArrayList<>();
+    
+    while(slice < tokens.length) {
+      blocks.add(Arrays.copyOfRange(tokens, slice, slice+=blockSize));
+    }
+    
+    for(int i=0;i < blockSize;i++) {
+      String b = blocks.get(blocks.size() - 1)[i];
+      blocks.get(blocks.size() - 1)[i] = b == null ? "a" : b;
+    }
+ 
+    for(int i=0;i < blocks.size();i++){
+      blocksOfInts.add(blockAsCharCodes(blocks.get(i)));
+    }
+ 
+    for(int[] result : blocksOfInts) {
+      System.out.println(Arrays.toString(result));
+    }
+    /*
+      Output
+      [76, 101, 116, 115, 32, 109, 101, 101]
+      [116, 32, 117, 110, 100, 101, 114, 32]
+      [116, 104, 101, 32, 99, 108, 111, 99]
+      [107, 32, 97, 116, 32, 109, 105, 100]
+      [110, 105, 103, 104, 116, 46, 32, 82]
+      [101, 109, 101, 109, 98, 101, 114, 32]
+      [73, 32, 108, 111, 118, 101, 32, 121]
+      [111, 117, 46, 97, 97, 97, 97, 97]
+    */
+  }
+}
 ```
 
 #### Hashing

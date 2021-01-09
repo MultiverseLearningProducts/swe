@@ -50,13 +50,13 @@
     </p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">const msg = "Lets meet at midnight under the c1ock";
-const msgAsArr = msg.split("")
+const tokens = msg.split("")
 let blocks = [];
 let slice = 0;
 const blockSize = 8;
 
-while (slice &#x3C; msgAsArr.length) {
-    blocks.push(msgAsArr.slice(slice, slice += blockSize));
+while (slice &#x3C; tokens.length) {
+    blocks.push(tokens.slice(slice, slice += blockSize));
 }
 
 while (blocks[blocks.length - 1].length &#x3C; 8) {
@@ -66,8 +66,67 @@ while (blocks[blocks.length - 1].length &#x3C; 8) {
 blocks = blocks.map(block => block.map(char => char.charCodeAt()))
 
 console.log(blocks)
+/*
+    Output
+    [76, 101, 116, 115, 32, 109, 101, 101]
+    [116, 32, 117, 110, 100, 101, 114, 32]
+    [116, 104, 101, 32, 99, 108, 111, 99]
+    [107, 32, 97, 116, 32, 109, 105, 100]
+    [110, 105, 103, 104, 116, 46, 32, 82]
+    [101, 109, 101, 109, 98, 101, 114, 32]
+    [73, 32, 108, 111, 118, 101, 32, 121]
+    [111, 117, 46, 97, 97, 97, 97, 97]
+*/
 </code></pre>
-    <pre><code class="language-java">String msg = "Lets meet at midnight under the clock";
+    <pre><code class="language-java">import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Code {
+  private static int[] blockAsCharCodes (String[] block) {
+    int[] charCodes = new int[block.length];
+    for(int i=0;i &#x3C; block.length;i++) {
+      charCodes[i] = block[i].codePointAt(0);
+    }
+    return charCodes;
+  }
+
+  public static void main(String[] args) {
+    String msg = "Lets meet at midnight under the c1ock";
+    String[] tokens = msg.split("");
+    int slice = 0;
+    int blockSize = 8;
+    ArrayList&#x3C;String[]> blocks = new ArrayList&#x3C;>();
+    ArrayList&#x3C;int[]> blocksOfInts = new ArrayList&#x3C;>();
+    
+    while(slice &#x3C; tokens.length) {
+      blocks.add(Arrays.copyOfRange(tokens, slice, slice+=blockSize));
+    }
+    
+    for(int i=0;i &#x3C; blockSize;i++) {
+      String b = blocks.get(blocks.size() - 1)[i];
+      blocks.get(blocks.size() - 1)[i] = b == null ? "a" : b;
+    }
+ 
+    for(int i=0;i &#x3C; blocks.size();i++){
+      blocksOfInts.add(blockAsCharCodes(blocks.get(i)));
+    }
+ 
+    for(int[] result : blocksOfInts) {
+      System.out.println(Arrays.toString(result));
+    }
+    /*
+      Output
+      [76, 101, 116, 115, 32, 109, 101, 101]
+      [116, 32, 117, 110, 100, 101, 114, 32]
+      [116, 104, 101, 32, 99, 108, 111, 99]
+      [107, 32, 97, 116, 32, 109, 105, 100]
+      [110, 105, 103, 104, 116, 46, 32, 82]
+      [101, 109, 101, 109, 98, 101, 114, 32]
+      [73, 32, 108, 111, 118, 101, 32, 121]
+      [111, 117, 46, 97, 97, 97, 97, 97]
+    */
+  }
+}
 </code></pre>
     <h4>Hashing</h4>
     <p>Now lets consume that array of even chunks and boil it down to a hash. You can visualise an array of 5 initial values that are the internal starting state of the hashing function.</p>
