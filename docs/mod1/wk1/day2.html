@@ -12,24 +12,32 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to focus on creating and using RESTful APIs. Yesterday we looked at the anatomy of an HTTP request and response. Today we build on that protocol and look at the most popular way to organise accessing resources using HTTP.</p>
+    <p>Today we are going to focus on creating and using RESTful APIs. Yesterday we looked at the anatomy of an HTTP request and response. Today we will build on that knowledge and look at the most popular way to organise accessing resources using HTTP.</p>
     <hr>
     <h2>Lesson 1 - What is RESTful</h2>
     <p>REST is a shortened form of "REpresentative State Transfer".</p>
     <blockquote>
       <p>REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.</p>
     </blockquote>
-    <p>Before REST was first proposed in a PhD paper servers implemented their own endpoints named in ways that we might name functions in our code. For example one application might have an endpoint called <code>/getUsers</code> another might call it <code>/allUsers</code> there was no agreed pattern.</p>
-    <p>REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources. Today REST is widely implemented across the internet and we are going to learn about how to read and understand RESTful web services.</p>
+    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a> servers implemented their own endpoints named in ways that different development teams saw fit. For example one application might have an endpoint called <code>/getUsers</code> another might call it <code>/allUsers</code> there was no agreed path name for fetching all users from an endpoint.</p>
+    <p>REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
+    <blockquote>
+      <p>This is achieved by placing constraints on connector semantics where other styles have focused on component semantics. Roy Thomas Fielding</p>
+    </blockquote>
+    <p>Today REST is widely implemented across the internet and we are going to learn about how to read and understand RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Connect the correct HTTP verbs to RESTful operations</li>
+      <li>Implement the OpenAPI specification</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>Create a free Spotify account so you can use their API</li>
+      <li>Create a free Spotify account so you can use their API (optional)</li>
     </ul>
     <h2>Materials needed</h2>
+    <ul>
+      <li><a href="https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json">airports.json</a> (airport data)</li>
+    </ul>
     <h2>Lesson</h2>
     <p>There are 2 aspects to RESTful architectures.</p>
     <ol>
@@ -128,24 +136,20 @@
         </tr>
       </tbody>
     </table>
-    <p>REST is just a pattern so you can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers.</p>
-    <h3>Spotify API</h3>
-    <p>Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. Lets have a look at the <a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify API</a> and try to identify these 2 things.</p>
-    <p>❓ Can you identify all the different components of the http request we need to form?</p>
-    <p>❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?</p>
-    <pre><code>3QrEk9Va9qO4uobczNUtqe,6ra4GIOgCZQZMOaUECftGN,4Qjd3K1HhL1N2ee1V22Icw
-</code></pre>
+    <p>You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.</p>
     <h3>OpenAPI</h3>
-    <p>As well as creating your own RESTful services, you will often find yourself consuming other 3rd party services. Spotify is a good example of an easy to use API. The documentation is generated from the API code itself. This is a popular way to document your API. Have a look at the 4 examples of online API documentation below:</p>
+    <p>You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to intergrate with 3rd party APIs is largely down to the quality of the documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:</p>
     <ul>
       <li><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos">Github</a></li>
       <li><a href="https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders">Dropbox</a></li>
       <li><a href="https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource">Twilio</a></li>
       <li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets">Twitter</a></li>
+      <li><a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify</a></li>
     </ul>
     <p>❓ What are the common elements you can identify in each?</p>
+    <p>❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?</p>
     <p>❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?</p>
-    <p>How is this possible? We can use something like <a href="https://www.openapis.org/">OpenAPI</a>/<a href="https://swagger.io/">Swagger</a> to define our API in a standard structure, then other tools can read the information about your API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.</p>
+    <p>How is it possible to generate documentation from code? We can use something like <a href="https://www.openapis.org/">OpenAPI</a>/<a href="https://swagger.io/">Swagger</a> to define our API in a standard structure. Other tools can read the information about our API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.</p>
     <pre><code class="language-yaml">openapi: 3.0.0
 info:
   title: Airports API
@@ -221,9 +225,13 @@ paths:
     <p>In an OpenAPI <code>airports-config.yaml</code> file create a complete set of documented RESTful endpoints for the <code>/airports</code> resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for <a href="https://swagger.io/resources/open-api/">openapi</a>. We want routes to create, read (all airports and a single airport), update and delete;</p>
     <p>Once you have got your .yaml file completed you can have a go at generating a server from that definition. In the examples below are instructions to try using javascript and java.</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">// npm install -g swagger-node-codegen
-// snc airports_config.yaml -o airports-node
-// cd into the airports-node folder and start the server with npm start
+    <pre><code class="language-javascript">/**
+* npm install -g swagger-node-codegen
+* snc airports_config.yaml -o airports-node
+* cd into the airports-node folder and start the server with npm start
+*/
+
+npm start
 </code></pre>
     <pre><code class="language-java">/*
   download swagger-codegen-cli-3.0.24.jar from https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar
@@ -261,7 +269,7 @@ paths:
     <h3>Dependencies</h3>
     <p>First of all find and install the dependencies your server is going to need to create auto generated documentation.</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-json">{
+    <pre><code class="language-javascript">{
   "name": "airports",
   "version": "1.0.0",
   "description": "Use this package.json to start your assignment",
@@ -283,15 +291,9 @@ paths:
   Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `&#x3C;dependencies>` list).  
 */
 &#x3C;dependency>
-    &#x3C;groupId>io.springfox&#x3C;/groupId>
-    &#x3C;artifactId>springfox-boot-starter&#x3C;/artifactId>
-    &#x3C;version>3.0.0&#x3C;/version>
-&#x3C;/dependency>
-
-&#x3C;dependency>
-    &#x3C;groupId>io.springfox&#x3C;/groupId>
-    &#x3C;artifactId>springfox-swagger-ui&#x3C;/artifactId>
-    &#x3C;version>3.0.0&#x3C;/version>
+  &#x3C;groupId>org.springdoc&#x3C;/groupId>
+  &#x3C;artifactId>springdoc-openapi-ui&#x3C;/artifactId>
+  &#x3C;version>1.5.2&#x3C;/version>
 &#x3C;/dependency>
 </code></pre>
     <h3>Configuration</h3>
@@ -312,32 +314,46 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {explorer: tr
 
 app.listen(3000, () => console.log("Airport API ready. Documents at http://localhost:3000/api-docs"))
 </code></pre>
-    <pre><code class="language-java">// in a file named AirportsApiApplication.java
+    <pre><code class="language-java">// in a file named AirportsApplication.java
 package org.whitehat.airports;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 
 @SpringBootApplication
-@EnableSwagger2
-public class AirportsApiApplication {
+public class AirportsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AirportsApiApplication.class, args);
+		SpringApplication.run(AirportsApplication.class, args);
 	}
+
 	@Bean
-	public Docket mySwaggerApi() {
-	   return new Docket(DocumentationType.SWAGGER_3).select()
-		  .apis(RequestHandlerSelectors.basePackage("org.whitehat.airports")).build();
+	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+
+		return new OpenAPI()
+			.info(new Info()
+				.title("Airports")
+				.version(appVersion)
+				.description("28,000 airports")
+			)
+			.addServersItem(new Server().url("http://localhost:8080/"))
+			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
 	}
 }
-// `http://localhost:8080/swagger-ui/` ⚠️ This address will not work without the trailing slash
+
+/*
+in /src/main/resources/application.properties
+  springdoc.swagger-ui.path=/api-docs
+  springdoc.version=1.0.0
+*/
+
+// `http://localhost:8080/api-docs`
 </code></pre>
     <h3>Auto Document Paths</h3>
     <p>Now we can start to annotate our routes to support swagger auto documenting our paths.</p>

@@ -201,7 +201,9 @@ Symmetric encryption uses a key to encrypt and then decrypt a message. Once a me
 The enigma code machine used symmetric encryption. The operator would set up their machine at the start of each day with that day's settings. The settings came from a code book. An Enigma code book would have one page per month. The page would include all the settings for each day of the month with the first day of the month at the bottom of the page so that once used, a setting could be torn off the page.
 
 ❓ How is symmetric encryption different from hashing?
+
 ❓ These books would have been very carefully protected, why do you think that is?
+
 ❓ What is one of the vulnerabilities of symmetric encryption
 
 ### Implementing a browser based coding machine
