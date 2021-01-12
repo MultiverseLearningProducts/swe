@@ -257,11 +257,23 @@ First of all find and install the dependencies your server is going to need to c
 /*
   Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `<dependencies>` list).  
 */
-<dependency>
-  <groupId>org.springdoc</groupId>
-  <artifactId>springdoc-openapi-ui</artifactId>
-  <version>1.5.2</version>
-</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.11.1</version>
+		</dependency>
 ```
 
 ### Configuration
@@ -386,6 +398,37 @@ app.get('/airports', (req, res) => {
 })
 ```
 ```java
+package org.whitehat.airports;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
+
+@SpringBootApplication
+public class AirportsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AirportsApplication.class, args);
+	}
+
+	@Bean
+	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+
+		return new OpenAPI()
+			.info(new Info()
+				.title("Airports")
+				.version(appVersion)
+				.description("28,000 airports")
+			)
+			.addServersItem(new Server().url("http://localhost:8080/"))
+			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
+	}
+}
 ```
 
 in _javascript_ You can use schemas to save yourself repeating the definition of an `Airport`. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an `Airport.js` file you can define your airport:

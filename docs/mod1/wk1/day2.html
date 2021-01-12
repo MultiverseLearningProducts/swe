@@ -290,11 +290,23 @@ npm start
     <pre><code class="language-java">/*
   Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `&#x3C;dependencies>` list).  
 */
-&#x3C;dependency>
-  &#x3C;groupId>org.springdoc&#x3C;/groupId>
-  &#x3C;artifactId>springdoc-openapi-ui&#x3C;/artifactId>
-  &#x3C;version>1.5.2&#x3C;/version>
-&#x3C;/dependency>
+		&#x3C;dependency>
+			&#x3C;groupId>org.springdoc&#x3C;/groupId>
+			&#x3C;artifactId>springdoc-openapi-ui&#x3C;/artifactId>
+			&#x3C;version>1.5.2&#x3C;/version>
+		&#x3C;/dependency>
+
+		&#x3C;dependency>
+			&#x3C;groupId>com.googlecode.json-simple&#x3C;/groupId>
+			&#x3C;artifactId>json-simple&#x3C;/artifactId>
+			&#x3C;version>1.1.1&#x3C;/version>
+		&#x3C;/dependency>
+
+		&#x3C;dependency>
+			&#x3C;groupId>com.fasterxml.jackson.core&#x3C;/groupId>
+			&#x3C;artifactId>jackson-databind&#x3C;/artifactId>
+			&#x3C;version>2.11.1&#x3C;/version>
+		&#x3C;/dependency>
 </code></pre>
     <h3>Configuration</h3>
     <p>The next step is to configure your server to create API documentation from your code. Previously we used the OpenAPI yaml file to describe our routes, but that method means we would have to keep updating the config yaml file if we made changes to the endpoint. Instead now we are going to use swagger to generate docs NOT from a yaml file - but from the actual code itself. You can remove the <code>paths</code> property from your yaml file.</p>
@@ -409,7 +421,38 @@ app.get('/airports', (req, res) => {
     res.send(airports)
 })
 </code></pre>
-    <pre><code class="language-java"></code></pre>
+    <pre><code class="language-java">package org.whitehat.airports;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
+
+@SpringBootApplication
+public class AirportsApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AirportsApplication.class, args);
+	}
+
+	@Bean
+	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+
+		return new OpenAPI()
+			.info(new Info()
+				.title("Airports")
+				.version(appVersion)
+				.description("28,000 airports")
+			)
+			.addServersItem(new Server().url("http://localhost:8080/"))
+			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
+	}
+}
+</code></pre>
     <p>in <em>javascript</em> You can use schemas to save yourself repeating the definition of an <code>Airport</code>. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an <code>Airport.js</code> file you can define your airport:</p>
     <pre><code class="language-javascript">/**
  * @swagger
