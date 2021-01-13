@@ -189,11 +189,9 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
 We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.
 
 ```javascript
-const url = "https://http.whitehatcoaches.org.uk/songs"
+const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices"
 const payload = {
-    artist: "Frank Zappa",
-    album: "Hot Rats",
-    track: "Peaches Èn Ragalia"
+    name: "Frank Zappa"
 }
 fetch(url, {
     method: 'POST',
@@ -202,15 +200,22 @@ fetch(url, {
     },
     body: JSON.stringify(payload)
 })
-.then(res => res.json())
-.then(song => {
-    console.log("newly created song", song.title)
+.then(res => res.text())
+.then(msg => {
+    const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
+    console.log({yourId, msg})
 })
+.catch(console.error)
 ```
 
 ## Assignment
 
 Can you repeat the calls that we made earlier to https://http-challenge.whitehatcoaches.org.uk/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
+
+# 🤷🏽‍♂️ Tips
+
+To read the responses you need to call `res.text()`
+To access the response header you'll need to pluck 'Your-Id' out of the response `const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)`
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)

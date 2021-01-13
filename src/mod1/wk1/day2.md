@@ -79,9 +79,9 @@ You might wonder why can't I just reference a track with the URL below?
 
 You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.
 
-### OpenAPI
+### Documentation
 
-You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to intergrate with 3rd party APIs is largely down to the quality of the documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:
+You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:
 
 * [Github](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos)
 * [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders)
@@ -89,13 +89,18 @@ You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful 
 * [Twitter](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets)
 * [Spotify](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums)
 
-❓ What are the common elements you can identify in each?
+❓ What are the common elements you can identify in each of the API documentation sites above?
 
 ❓ There are quite a few albums on Spotify and we can't actually `GET` all of them. What is the mechanism Spotify have used to limit the albums you can request? 
 
 ❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?
 
-How is it possible to generate documentation from code? We can use something like [OpenAPI](https://www.openapis.org/)/[Swagger](https://swagger.io/) to define our API in a standard structure. Other tools can read the information about our API from that standard structure and generate web based documentation for you. Below is a starter example of an OpenAPI airports-config.yaml file.
+### OpenAPI
+
+OpenAPI was originally part of the Swagger framework. Swagger became very popular and the developer community embraced the specification, it has  become a recognised standard used across the industry. OpenAPI became a separate project in 2016, overseen by the OpenAPI Initiative, an open-source collaboration project of the Linux Foundation.
+
+Lets use [OpenAPI](https://www.openapis.org/)/[Swagger](https://swagger.io/) to define our API in a standard structure. There are lots of benefits from becoming familiar with this standard.
+You will become confident and familiar will all the things you need to consider when you design your own API endpoints. Other developers will be able to integrate with your API easily. Other tools can read the information about your API from the OpenAPI standard structure and generate web based documentation for you! Below is a starter example of an OpenAPI `airports-config.yaml` file.
 
 ```yaml
 openapi: 3.0.0
@@ -172,9 +177,9 @@ You can upload this to a site like [readme.com](https://readme.com/) and generat
 
 ## Assignment
 
-In an OpenAPI `airports-config.yaml` file create a complete set of documented RESTful endpoints for the `/airports` resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for [openapi](https://swagger.io/resources/open-api/). We want routes to create, read (all airports and a single airport), update and delete;
+In an OpenAPI `airports-config.yaml` file create a complete set of documented RESTful endpoints for the `/airports` resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for [openapi here](https://swagger.io/resources/open-api/). We want routes to create, read (all airports and a single airport), update and delete;
 
-Once you have got your .yaml file completed you can have a go at generating a server from that definition. In the examples below are instructions to try using javascript and java.
+Once you have got your `airports-config.yaml` file completed you can even have a go at generating a server from that definition. Below are instructions using javascript and java.
 
 |Javascript|Java|
 ```javascript
@@ -208,7 +213,7 @@ npm start
 */
 ```
 
-Be ready to demo your generated server and documentation.
+Be ready to demo your generated server and share your `airports-config.yaml` file with your coach.
 
 ----
 
@@ -227,7 +232,7 @@ You will need a valid `airports-config.yaml` openAPI definition file
 
 ## Lesson
 
-Auto generated code is all very well, but you also need to know how to build your own RESTful services. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use [Symfony](https://symfony.com/).
+Auto generated code is all very well, but you also need to know how to build your own RESTful service. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use [Symfony](https://symfony.com/).
 
 ### Dependencies
 
