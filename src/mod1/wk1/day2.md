@@ -126,7 +126,7 @@ paths:
         * you can also use
         * markdown in this section
 
-        ![airport](https://i.pinimg.com/564x/b9/7d/20/b97d2043d0a2237ee295580f7bea9e49.jpg)
+        ![airport](https://twistedsifter.com/wp-content/uploads/2014/11/mexico-city-international-airport-drone-video.jpg)
 
         Including images!
       responses:
