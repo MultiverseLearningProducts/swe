@@ -24,7 +24,7 @@
     <blockquote>
       <p>This is achieved by placing constraints on connector semantics where other styles have focused on component semantics. Roy Thomas Fielding</p>
     </blockquote>
-    <p>Today REST is widely implemented across the internet and we are going to learn about how to read and understand RESTful web services.</p>
+    <p>Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Connect the correct HTTP verbs to RESTful operations</li>
@@ -145,6 +145,7 @@
       <li><a href="https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource">Twilio</a></li>
       <li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets">Twitter</a></li>
       <li><a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify</a></li>
+      <li><a href="https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0">The Sneaker Database</a></li>
     </ul>
     <p>❓ What are the common elements you can identify in each of the API documentation sites above?</p>
     <p>❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?</p>
@@ -428,34 +429,44 @@ app.get('/airports', (req, res) => {
 </code></pre>
     <pre><code class="language-java">package org.whitehat.airports;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.servers.Server;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SpringBootApplication
-public class AirportsApplication {
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-	public static void main(String[] args) {
-		SpringApplication.run(AirportsApplication.class, args);
-	}
+@RestController
+@RequestMapping("/airports")
+public class AirportsController {
+    private static List&#x3C;Airport> airports;
 
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+    static {
+        // next line is using the Try-With-Resource syntax to ensure that the
+        // input stream gets closed (very important else get memory leaks!)
+        try (InputStream is = AirportsController.class.getResourceAsStream("/static/airports.json");){
+            ObjectMapper mapper = new ObjectMapper();
 
-		return new OpenAPI()
-			.info(new Info()
-				.title("Airports")
-				.version(appVersion)
-				.description("28,000 airports")
-			)
-			.addServersItem(new Server().url("http://localhost:8080/"))
-			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
-	}
+            airports = mapper.readValue(is, new TypeReference&#x3C;List&#x3C;Airport>>() {
+            });
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    @GetMapping("/")
+    public List&#x3C;Airport> getAirports() {
+        return AirportsController.airports;
+    }
+
+    // You can build out the rest of the endpoints
+    // just a heads-up http://localhost:8080/airports/ remember the trailing slash.
+    // Because Java is strongly typed swagger will to most of the work to document your endpoint - you can add extra information (go see the docs https://springdoc.org/)
 }
 </code></pre>
     <p>in <em>javascript</em> You can use schemas to save yourself repeating the definition of an <code>Airport</code>. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an <code>Airport.js</code> file you can define your airport:</p>

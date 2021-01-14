@@ -27,7 +27,7 @@ We have a server. Now we are professional software engineers we know whats missi
 
 Unit tests we wrote lots of these in our first bootcamp for our airport and scooter classes etc. A unit test is often a static test and it verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.
 
-Integration tests are different. We use these to verify the behaviour of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests. These tests don't have to be dynamic, but they often are.
+Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests. These tests don't have to be dynamic, but they often are.
 
 ### Static Dynamic
 
@@ -49,12 +49,23 @@ With our server we can test particular methods or configuration, but to check th
 
 ### Test cases
 
-We would ideally want to test each endpoint, and trigger all the different responses. For example:
+We would ideally want to test each endpoint thoroughly. That means tests for [different responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). For example:
 
-1. 200
-1. 404
+1. 200 Ok
+1. 201 Created
+1. 400 Bad request
+1. 404 Not Found
+1. 415 Unsupported media type
+
+A guide is to test the happy path, and test for likely errors like; wrong content type, malformed payloads.
+
+### Running in test mode
+
+Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run. Have a look at your server, think about how you might have to adapt your code so it's easy to start and stop the server from your tests.
 
 ## Assignment
+
+Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint, try to test for the different status codes that you listed in your original `airports-config.yaml` OpenAPI spec.
 
 ----
 
@@ -67,11 +78,19 @@ We would ideally want to test each endpoint, and trigger all the different respo
 
 ## Before we start
 
+You can read through the session notes from Day 1-3.
+
 ## Materials needed
+
+[https://applied.whitehat.org.uk/mod/quiz/](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)
 
 ## Lesson
 
+You should now be able to create a RESTful web server for a single resource, and have all your endpoints documented by integrated documentation. You can label and identify key aspects of an HTTP request and be able to form different HTTP requests in a RESTful style.
+
 ## Assignment
+
+Can you complete [this Quiz](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/180)
 [main](/swe)|[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)

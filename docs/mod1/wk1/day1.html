@@ -224,17 +224,20 @@ fetch(url, {
 .then(res => res.text())
 .then(msg => {
     const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/)
-    console.log({yourId, msg})
+    console.log(yourId, msg)
 })
 .catch(console.error)
 </code></pre>
     <h2>Assignment</h2>
     <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
     <h1>🤷🏽‍♂️ Tips</h1>
-    <p>
-      To read the responses you need to call <code>res.text()</code>
-      To access the response header you'll need to pluck 'Your-Id' out of the response <code>const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/)</code>
-    </p>
+    <ul>
+      <li>To read the responses you need to call <code>res.text()</code></li>
+      <li>You'll need to pluck 'Your-Id' out of the response (see below)</li>
+      <li>You will have to manage a series of async requests. Remember fetch is promise based an you can chain <code>.then</code> together with one <code>.catch</code>. Any errors will be caught by your final catch function.</li>
+    </ul>
+    <pre><code class="language-javascript">const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/)
+</code></pre>
     <p>
       <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/178">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day3.html">prev</a>|<a href="/swe/mod1/wk1/day2.html">next</a>

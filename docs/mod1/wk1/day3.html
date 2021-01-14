@@ -30,7 +30,7 @@
       <li>System tests</li>
     </ol>
     <p>Unit tests we wrote lots of these in our first bootcamp for our airport and scooter classes etc. A unit test is often a static test and it verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.</p>
-    <p>Integration tests are different. We use these to verify the behaviour of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests. These tests don't have to be dynamic, but they often are.</p>
+    <p>Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests. These tests don't have to be dynamic, but they often are.</p>
     <h3>Static Dynamic</h3>
     <p>What do I mean by static an dynamic? Unit tests are static and Integration tests are usually dynamic? The easiest way to understand this is to think of a car. We can test a car in the car showroom. We can check things like:</p>
     <ol>
@@ -47,12 +47,19 @@
     <p>We have to run the car to check these things, the car has to be moving or be dynamic.</p>
     <p>With our server we can test particular methods or configuration, but to check that we are getting the right responses from our endpoints it would be helpful to spin up a test version of our server, and actually call the endpoints with different values to verify that our server is behaving the way it should.</p>
     <h3>Test cases</h3>
-    <p>We would ideally want to test each endpoint, and trigger all the different responses. For example:</p>
+    <p>We would ideally want to test each endpoint thoroughly. That means tests for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">different responses</a>. For example:</p>
     <ol>
-      <li>200</li>
-      <li>404</li>
+      <li>200 Ok</li>
+      <li>201 Created</li>
+      <li>400 Bad request</li>
+      <li>404 Not Found</li>
+      <li>415 Unsupported media type</li>
     </ol>
+    <p>A guide is to test the happy path, and test for likely errors like; wrong content type, malformed payloads.</p>
+    <h3>Running in test mode</h3>
+    <p>Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run. Have a look at your server, think about how you might have to adapt your code so it's easy to start and stop the server from your tests.</p>
     <h2>Assignment</h2>
+    <p>Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint, try to test for the different status codes that you listed in your original <code>airports-config.yaml</code> OpenAPI spec.</p>
     <hr>
     <h2>Lesson 2 - REST experts</h2>
     <h2>Learning Objectives</h2>
@@ -61,9 +68,13 @@
       <li>Demonstrate your knowledge of HTTP</li>
     </ul>
     <h2>Before we start</h2>
+    <p>You can read through the session notes from Day 1-3.</p>
     <h2>Materials needed</h2>
+    <p><a href="https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737">https://applied.whitehat.org.uk/mod/quiz/</a></p>
     <h2>Lesson</h2>
+    <p>You should now be able to create a RESTful web server for a single resource, and have all your endpoints documented by integrated documentation. You can label and identify key aspects of an HTTP request and be able to form different HTTP requests in a RESTful style.</p>
     <h2>Assignment</h2>
+    <p>Can you complete <a href="https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737">this Quiz</a></p>
     <p>
       <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/180">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day2.html">prev</a>|<a href="/swe/bootcamp/wk1/day4.html">next</a>

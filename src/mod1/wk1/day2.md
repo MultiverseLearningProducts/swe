@@ -18,7 +18,7 @@ REST introduced a standard way to address resources on a server which made it mu
 
 > This is achieved by placing constraints on connector semantics where other styles have focused on component semantics. <small><i>Roy Thomas Fielding</i></small>
 
-Today REST is widely implemented across the internet and we are going to learn about how to read and understand RESTful web services.
+Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.
 
 ## Learning Objectives
 
@@ -88,6 +88,7 @@ You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful 
 * [Twilio](https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource)
 * [Twitter](https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets)
 * [Spotify](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums)
+* [The Sneaker Database](https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0)
 
 ❓ What are the common elements you can identify in each of the API documentation sites above?
 
@@ -405,34 +406,44 @@ app.get('/airports', (req, res) => {
 ```java
 package org.whitehat.airports;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.servers.Server;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SpringBootApplication
-public class AirportsApplication {
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-	public static void main(String[] args) {
-		SpringApplication.run(AirportsApplication.class, args);
-	}
+@RestController
+@RequestMapping("/airports")
+public class AirportsController {
+    private static List<Airport> airports;
 
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+    static {
+        // next line is using the Try-With-Resource syntax to ensure that the
+        // input stream gets closed (very important else get memory leaks!)
+        try (InputStream is = AirportsController.class.getResourceAsStream("/static/airports.json");){
+            ObjectMapper mapper = new ObjectMapper();
 
-		return new OpenAPI()
-			.info(new Info()
-				.title("Airports")
-				.version(appVersion)
-				.description("28,000 airports")
-			)
-			.addServersItem(new Server().url("http://localhost:8080/"))
-			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
-	}
+            airports = mapper.readValue(is, new TypeReference<List<Airport>>() {
+            });
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    @GetMapping("/")
+    public List<Airport> getAirports() {
+        return AirportsController.airports;
+    }
+
+    // You can build out the rest of the endpoints
+    // just a heads-up http://localhost:8080/airports/ remember the trailing slash.
+    // Because Java is strongly typed swagger will to most of the work to document your endpoint - you can add extra information (go see the docs https://springdoc.org/)
 }
 ```
 

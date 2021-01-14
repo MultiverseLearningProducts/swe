@@ -203,7 +203,7 @@ fetch(url, {
 .then(res => res.text())
 .then(msg => {
     const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
-    console.log({yourId, msg})
+    console.log(yourId, msg)
 })
 .catch(console.error)
 ```
@@ -214,8 +214,13 @@ Can you repeat the calls that we made earlier to https://http-challenge.whitehat
 
 # 🤷🏽‍♂️ Tips
 
-To read the responses you need to call `res.text()`
-To access the response header you'll need to pluck 'Your-Id' out of the response `const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)`
+* To read the responses you need to call `res.text()`
+* You'll need to pluck 'Your-Id' out of the response (see below)
+* You will have to manage a series of async requests. Remember fetch is promise based an you can chain `.then` together with one `.catch`. Any errors will be caught by your final catch function.
+
+```javascript
+const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
+```
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)
