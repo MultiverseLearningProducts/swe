@@ -1,33 +1,31 @@
 openapi: 3.0.0
 info:
-  title: Example API
-  description: My simple api for the world
-  version: 0.1.0
+  title: Airports API
+  description: Get all your airport data here https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json 
+  version: 1.0.0
 servers:
+  - url: http://localhost:3000
+    description: if you are using NodeJS your dev port might be 3000
   - url: http://localhost:8080
-  - url: https://api.whitehatcoaches.org.uk
+    description: if you are using Spring your dev port will be 8080
+  - url: https://airports-api.whitehatcoaches.org.uk
     description: this is the production baseURL
 paths:
-  /apprentices:
+  /airports:
     get:
-      summary: Returns a list of all the apprentices
+      summary: Returns a list of all the airports
       description: |
-        Here you can have a more extended description that includes markdown
+        blar blar 28,000 airports etc
 
-        * For Example
-        * Lists
+        * you can also use
+        * markdown in this section
 
-        you can include images if you wanted
-        ![internet cat](https://static.boredpanda.com/blog/wp-content/uploads/2014/11/most-popular-cats-lil-bub-2.jpg)
+        ![airport](https://twistedsifter.com/wp-content/uploads/2014/11/mexico-city-international-airport-drone-video.jpg)
 
-        More useful might be code blocks
-
-        ```java
-        System.out.println("Hello World");
-        ```
+        Including images!
       responses:
         200:
-          description: an array of JSON objects that represent each apprentice
+          description: an array of JSON objects that represent each airport
           content:
             application/json:
               schema:
@@ -35,20 +33,34 @@ paths:
                 items:
                   type: object
                   properties:
-                    id:
-                      type: integer
+                    icao:
+                      type: string
+                    iata:
+                      type: string
                     name:
                       type: string
-                    ULN:
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    country:
+                      type: string
+                    elevation:
                       type: integer
-                    OJT:
-                      type: integer
-                      minimum: 100
-                      maximum: 200
+                    lat:
+                      type: float
+                    lon:
+                      type: float
+                    tz:
+                      type: string
                   example:
-                    id: 823754
-                    name: Brenda House
-                    ULN: 1287700
-                    OJT: 125
-        404:
-          description: Can't find any apprentices
+                    icao: "00AK"
+                    iata: ""
+                    name: "Lowell Field"
+                    city: "Anchor Point"
+                    state: "Alaska"
+                    country: "US"
+                    elevation: 450
+                    lat: 59.94919968
+                    lon: -151.695999146
+                    tz: "America/Anchorage"
