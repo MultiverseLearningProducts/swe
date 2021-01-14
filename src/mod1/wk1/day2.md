@@ -172,9 +172,9 @@ paths:
                     tz: "America/Anchorage"
 ```
 
-You can upload this to a site like [readme.com](https://readme.com/) and generate a page of documentation like the ones we have looked at above.
+You can upload this to a site like [readme.com](https://readme.com/) (or use a [url](https://whitehatlearningproducts.github.io/swe/api-example.yaml)) and generate a page of documentation like the ones we have looked at above.
 
-![a page of OpenAPI markup rendered as a webpage](https://user-images.githubusercontent.com/4499581/103781816-b7f5f780-502e-11eb-8e60-c5f5e5648d85.png)
+![a page of OpenAPI markup rendered as a webpage](https://user-images.githubusercontent.com/4499581/104598397-712b8180-566e-11eb-97b3-05f2c0d577b5.png)
 
 ## Assignment
 
