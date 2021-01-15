@@ -48,22 +48,21 @@ Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH`
 
 A 'resource' some thing we want to access or interact with is also a fundamental concept in REST. Usually this is our service or data. For example on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:
 
-|URL|VERB|Resource|
-|:--|:---:|:------|
-|`/albums`|GET|return all the albums (resources are always plural)|
-|`/albums`|POST|create a new album|
-|`/albums/{id}`|GET|return the album with the id specified in the URL|
-|`/albums/{id}`|PUT|Replace the album with a new one, but keep the id|
-|`/albums/{id}`|PATCH|Update 1 or more of the album's properties|
-|`/albums/{id}`|DELETE|delete the album with the id specified in the URL|
+|HTTP Method|URL|Status code|Description|
+|-----------|---|-----------|-----------|
+|GET|`/albums`|200|return all the albums (resources are always plural)|
+|POST|`/albums`|201|create a new album|
+|GET|`/albums/{id}`|200|return the album with the id specified in the URL|
+|PUT|`/albums/{id}`|[200,204]|Replace the album with a new one, but keep the id|
+|PATCH|`/albums/{id}`|[200,202,204]|Update 1 or more of the album's properties|
+|DELETE|`/albums/{id}`|[200,202,204]|delete the album with the id specified in the URL|
 
 Nested resources simple extend the same pattern.
 
-|URL|VERB|Resource|
-|:--|:---:|:------|
-|`/albums/{id}/tracks`|GET|return the tracks for the album with the id specified in the URL|
-|`/albums/{id}/tracks`|POST|create a new track for the album with the id specified in the URL|
-|`/albums/{album_id}/tracks/{track_id}`|GET|return the track with the id specified in the URL from the album with the id specified in the URL|
+|HTTP Method|URL|Status code|Description|
+|GET|`/albums/{id}/tracks`|200|return the tracks for the album with the id specified in the URL|
+|POST|`/albums/{id}/tracks`|201|create a new track for the album with the id specified in the URL|
+|GET|`/albums/{album_id}/tracks/{track_id}`|200|return the track with the id specified in the URL from the album with the id specified in the URL|
 
 Can you see the pattern?
 

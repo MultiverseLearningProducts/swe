@@ -14,9 +14,12 @@ Today we are going to use Basic Auth to secure a RESTful API.
 ## Materials needed
 
 ## Lesson 1 - Authentication and authorisation
+
 ### Learning Objectives
-  *  Understand the difference between authentication and authorisation
-### Lesson  
+  
+  * Understand the difference between authentication and authorisation
+  * Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
+ 
  > `Authentication` is the process of verifying who a user is
 
  > `Authorisation` is the process of verifying what they have access to
@@ -35,7 +38,7 @@ Once authentication is complete, you are given a key card which gives you entry 
 
 <div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-### Assignment
+### 🧑🏽‍💻👩🏾‍💻 Assignment
 In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:
    1. Showing your passport at the airport
    2. Determining which floor in a building an employee can access
@@ -45,31 +48,31 @@ In breakout rooms, determine which of the following are examples of authenticati
    6. Using biometrics (such as fingerprints) 
    7. Using a key to open a door
 
-## Lesson 2 - Basic Authentication encoding
-### Learning Objectives
-  * Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
+## Basic Authentication
 
-### Lesson
-Now we have our API we need to consider how we will secure access to the API. For this lesson we will use a username and password, commonly known as `Basic Authentication`. 
+Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as `Basic Authentication`. 
 
 Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string username:password
 
 Here is an example:
 > Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
 
-### Assignment
-Using the `Authorization` header above, determine the user's username and password using https://www.base64decode.org/. Do you think Basic Authentication is a secure scheme?
+That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called `atob` and `btoa`. Try it. In your console encode the following string "Hello you".
 
-## Lesson 3 - Hashing passwords
+![an example of using b to a function and a to b function to encode and decode a string](https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png)
+
+### 👮‍♀️ Assignment
+From the string in the `Authorization` header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?
+
+## Hashing passwords
 ### Learning Objectives
   * Understand why passwords should be hashed
   * Understand the implications of exposing sensitive data
   * Create a database of user names and hashed passwords 
 
-### Lesson
-To validate that a user's login details are correct, we need to match the username and password passed in the `Authorization` header with data held in a database.
+Basic auth uses the `Authorization` header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format - _username:password_. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string, then decode it.Now the server has the username and password sent from the client we need to match it with the username and password held in our database.
 
-**Question** - Imagine if we held these passwords in plaintext.. what risks do you think this could cause?
+**Question** - Imagine if we held these passwords in plaintext. What risks do you think this could cause?
 
 **Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
 
@@ -103,11 +106,11 @@ Your API should support 4 resources:
 
 |HTTP Method|URL|Status code|Description|
 |-----------|---|-----------|-----------|
-|POST|/users|201|create a new user|
-|GET|/users|200|retrieve all users|
-|GET|/users/{id}|200|retrieve a specific user|
-|PUT|/users|200|update a user|
-|DELETE|/users/{id}|200|delete a user|
+|POST|`/users`|201|create a new user|
+|GET|`/users`|200|retrieve all users|
+|GET|`/users/{id}`|200|retrieve a specific user|
+|PUT|`/users`|200|update a user|
+|DELETE|`/users/{id}`|200|delete a user|
 
 ### Assignment
   * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js

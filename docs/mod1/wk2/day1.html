@@ -25,17 +25,21 @@
     <h2>Lesson 1 - Authentication and authorisation</h2>
     <h3>Learning Objectives</h3>
     <ul>
-      <li>Understand the difference between authentication and authorisation</li>
+      <li>
+        <p>Understand the difference between authentication and authorisation</p>
+      </li>
+      <li>
+        <p>Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme</p>
+        <blockquote>
+          <p><code>Authentication</code> is the process of verifying who a user is</p>
+        </blockquote>
+        <blockquote>
+          <p><code>Authorisation</code> is the process of verifying what they have access to</p>
+        </blockquote>
+        <p>Here's an example to illustrate this:</p>
+        <p>Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is <strong>authentication</strong>.</p>
+      </li>
     </ul>
-    <h3>Lesson</h3>
-    <blockquote>
-      <p><code>Authentication</code> is the process of verifying who a user is</p>
-    </blockquote>
-    <blockquote>
-      <p><code>Authorisation</code> is the process of verifying what they have access to</p>
-    </blockquote>
-    <p>Here's an example to illustrate this:</p>
-    <p>Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is <strong>authentication</strong>.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/102709159-a9be8200-429f-11eb-903b-12976c1f051d.png" alt="hotel checkin">
     </p>
@@ -43,7 +47,7 @@
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/102709120-43d1fa80-429f-11eb-9d57-43906703fbf9.png" alt="hotel keycard">
     </p>
-    <h3>Assignment</h3>
+    <h3>🧑🏽‍💻👩🏾‍💻 Assignment</h3>
     <p>In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:</p>
     <ol>
       <li>Showing your passport at the airport</li>
@@ -54,30 +58,28 @@
       <li>Using biometrics (such as fingerprints)</li>
       <li>Using a key to open a door</li>
     </ol>
-    <h2>Lesson 2 - Basic Authentication encoding</h2>
-    <h3>Learning Objectives</h3>
-    <ul>
-      <li>Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme</li>
-    </ul>
-    <h3>Lesson</h3>
-    <p>Now we have our API we need to consider how we will secure access to the API. For this lesson we will use a username and password, commonly known as <code>Basic Authentication</code>.</p>
+    <h2>Basic Authentication</h2>
+    <p>Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as <code>Basic Authentication</code>.</p>
     <p>Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an <code>Authorization</code> header that contains the word <code>Basic</code> followed by a space and a base64-encoded string username:password</p>
     <p>Here is an example:</p>
     <blockquote>
       <p>Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk</p>
     </blockquote>
-    <h3>Assignment</h3>
-    <p>Using the <code>Authorization</code> header above, determine the user's username and password using <a href="https://www.base64decode.org/">https://www.base64decode.org/</a>. Do you think Basic Authentication is a secure scheme?</p>
-    <h2>Lesson 3 - Hashing passwords</h2>
+    <p>That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called <code>atob</code> and <code>btoa</code>. Try it. In your console encode the following string "Hello you".</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png" alt="an example of using b to a function and a to b function to encode and decode a string">
+    </p>
+    <h3>👮‍♀️ Assignment</h3>
+    <p>From the string in the <code>Authorization</code> header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?</p>
+    <h2>Hashing passwords</h2>
     <h3>Learning Objectives</h3>
     <ul>
       <li>Understand why passwords should be hashed</li>
       <li>Understand the implications of exposing sensitive data</li>
       <li>Create a database of user names and hashed passwords</li>
     </ul>
-    <h3>Lesson</h3>
-    <p>To validate that a user's login details are correct, we need to match the username and password passed in the <code>Authorization</code> header with data held in a database.</p>
-    <p><strong>Question</strong> - Imagine if we held these passwords in plaintext.. what risks do you think this could cause?</p>
+    <p>Basic auth uses the <code>Authorization</code> header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format - <em>username:password</em>. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string, then decode it.Now the server has the username and password sent from the client we need to match it with the username and password held in our database.</p>
+    <p><strong>Question</strong> - Imagine if we held these passwords in plaintext. What risks do you think this could cause?</p>
     <p><strong>Answer</strong> - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this <a href="https://www.bbc.co.uk/news/business-48905907">video</a> to hear about one recent example.</p>
     <p>To avoid storing passwords in plaintext, we <code>hash</code> them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.</p>
     <p>As a reminder, here is some code which implements a secure hashing algorithm:</p>
@@ -113,31 +115,31 @@ String hashedPassword = passwordEncoder.encode("your password");
       <tbody>
         <tr>
           <td>POST</td>
-          <td>/users</td>
+          <td><code>/users</code></td>
           <td>201</td>
           <td>create a new user</td>
         </tr>
         <tr>
           <td>GET</td>
-          <td>/users</td>
+          <td><code>/users</code></td>
           <td>200</td>
           <td>retrieve all users</td>
         </tr>
         <tr>
           <td>GET</td>
-          <td>/users/{id}</td>
+          <td><code>/users/{id}</code></td>
           <td>200</td>
           <td>retrieve a specific user</td>
         </tr>
         <tr>
           <td>PUT</td>
-          <td>/users</td>
+          <td><code>/users</code></td>
           <td>200</td>
           <td>update a user</td>
         </tr>
         <tr>
           <td>DELETE</td>
-          <td>/users/{id}</td>
+          <td><code>/users/{id}</code></td>
           <td>200</td>
           <td>delete a user</td>
         </tr>

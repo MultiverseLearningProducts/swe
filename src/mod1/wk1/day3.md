@@ -88,9 +88,11 @@ You can read through the session notes from Day 1-3.
 
 You should now be able to create a RESTful web server for a single resource, and have all your endpoints documented by integrated documentation. You can label and identify key aspects of an HTTP request and be able to form different HTTP requests in a RESTful style.
 
+Before taking the quiz below you will have some time to read back over the session notes from the last three days.
+
 ## Assignment
 
-Can you complete [this Quiz](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)
+Can you complete [this Quiz](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)?
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/180)
 [main](/swe)|[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)

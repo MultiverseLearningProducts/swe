@@ -51,71 +51,55 @@
     <table>
       <thead>
         <tr>
-          <th align="left">URL</th>
-          <th align="center">VERB</th>
-          <th align="left">Resource</th>
+          <th>HTTP Method</th>
+          <th>URL</th>
+          <th>Status code</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td align="left"><code>/albums</code></td>
-          <td align="center">GET</td>
-          <td align="left">return all the albums (resources are always plural)</td>
+          <td>GET</td>
+          <td><code>/albums</code></td>
+          <td>200</td>
+          <td>return all the albums (resources are always plural)</td>
         </tr>
         <tr>
-          <td align="left"><code>/albums</code></td>
-          <td align="center">POST</td>
-          <td align="left">create a new album</td>
+          <td>POST</td>
+          <td><code>/albums</code></td>
+          <td>201</td>
+          <td>create a new album</td>
         </tr>
         <tr>
-          <td align="left"><code>/albums/{id}</code></td>
-          <td align="center">GET</td>
-          <td align="left">return the album with the id specified in the URL</td>
+          <td>GET</td>
+          <td><code>/albums/{id}</code></td>
+          <td>200</td>
+          <td>return the album with the id specified in the URL</td>
         </tr>
         <tr>
-          <td align="left"><code>/albums/{id}</code></td>
-          <td align="center">PUT</td>
-          <td align="left">Replace the album with a new one, but keep the id</td>
+          <td>PUT</td>
+          <td><code>/albums/{id}</code></td>
+          <td>[200,204]</td>
+          <td>Replace the album with a new one, but keep the id</td>
         </tr>
         <tr>
-          <td align="left"><code>/albums/{id}</code></td>
-          <td align="center">PATCH</td>
-          <td align="left">Update 1 or more of the album's properties</td>
+          <td>PATCH</td>
+          <td><code>/albums/{id}</code></td>
+          <td>[200,202,204]</td>
+          <td>Update 1 or more of the album's properties</td>
         </tr>
         <tr>
-          <td align="left"><code>/albums/{id}</code></td>
-          <td align="center">DELETE</td>
-          <td align="left">delete the album with the id specified in the URL</td>
+          <td>DELETE</td>
+          <td><code>/albums/{id}</code></td>
+          <td>[200,202,204]</td>
+          <td>delete the album with the id specified in the URL</td>
         </tr>
       </tbody>
     </table>
     <p>Nested resources simple extend the same pattern.</p>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">URL</th>
-          <th align="center">VERB</th>
-          <th align="left">Resource</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left"><code>/albums/{id}/tracks</code></td>
-          <td align="center">GET</td>
-          <td align="left">return the tracks for the album with the id specified in the URL</td>
-        </tr>
-        <tr>
-          <td align="left"><code>/albums/{id}/tracks</code></td>
-          <td align="center">POST</td>
-          <td align="left">create a new track for the album with the id specified in the URL</td>
-        </tr>
-        <tr>
-          <td align="left"><code>/albums/{album_id}/tracks/{track_id}</code></td>
-          <td align="center">GET</td>
-          <td align="left">return the track with the id specified in the URL from the album with the id specified in the URL</td>
-        </tr>
-      </tbody>
-    </table>
+    <nav class="tabbed-code-block"><a href="#http method">HTTP Method</a><a href="#url">URL</a><a href="#status code">Status code</a><a href="#description">Description</a><a href="#
+">
+</a><a href="#get">GET</a></nav>
     <p>Can you see the pattern?</p>
     <p>❓ How might you update a track for a given album?</p>
     <p>❓ Can you match the CRUD operations to http methods?</p>
