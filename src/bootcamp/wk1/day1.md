@@ -1,7 +1,7 @@
 # Bootcamp > Week 1 > Day 1
 
 ## Before we start
-You should have familiarity with basic JavaScript concepts, specifically:
+You must have familiarity with basic JavaScript concepts, specifically:
   * [JavaScript Syntax](https://www.w3schools.com/js/js_syntax.asp)
   * [JavaScript Data Types](https://www.w3schools.com/js/js_datatypes.asp)
   * [JavaScript Variables](https://www.w3schools.com/js/js_variables.asp)
@@ -10,6 +10,8 @@ You should have familiarity with basic JavaScript concepts, specifically:
   * [JavaScript Arrow Functions](https://www.w3schools.com/js/js_arrow_function.asp)
   * [An overview of Node](https://www.codecademy.com/articles/what-is-node) - also watch the first 5.30 minutes of [An Introduction to Node in Visual Studio Code](https://www.youtube.com/watch?v=EIQgVdoYb0M)
   * There is a great article on the [Community Hub](https://community.whitehat.org.uk/topics/16826/feed) which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!
+
+You must also be confident using Git to clone, add, commit and push to your Git repository.
 
 ## Overview of the day
 
@@ -48,7 +50,9 @@ Understanding objects and functions is key to reading and writing Javascript.
 
 ## Lesson
 
-Objects are the main data type in Javascript. Lets start by looking at the three different ways we can make an object:
+Objects are the main data type in Javascript. Think of objects as nouns (person, place or thing), something you can touch, see, smell, feel or taste.
+
+Lets start by looking at the three different ways we can make an object:
 
 ```javascript
 const person1 = {}
@@ -96,7 +100,9 @@ Finally since we want all our person objects to have this function we can declar
 
 ## Assignment
 
-Can you create an object that represents 3 generations of a family tree? You could use the Royal Family or a celebrity family to model the concepts! A person in the family tree should have the following properties:
+Create a new directory in your local Git repositoty called `familyTree`. As a general rule, do NOT use spaces or special characters in directory or filenames.
+
+Can you create an object that represents 3 generations of a family tree? You could use the [Royal Family](https://i.insider.com/5e17677224fe1248eb288e84?width=1000&format=jpeg&auto=webp) or a celebrity family to model the concepts! A person in the family tree should have the following properties:
 
 * name String
 * parents Array 

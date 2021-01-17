@@ -5,16 +5,150 @@ Today we are going to look at creating asynchronous functions in JavaScript.
 
 ## Additional resources
 If you are struggling with any of the concepts from today, the following resources will help:
+  * [Understanding the Event Loop](https://youtu.be/8aGhZQkoFbQ)
+  * [Timers in Node.js](https://nodejs.org/en/docs/guides/timers-in-node/)
   * [Asynchronous JavaScript—How Callbacks, Promises, and Async-Await Work](https://dev.to/nas5w/asynchronous-javascript-how-callbacks-promises-and-async-await-work-1f7p)
   * [Callbacks, promises and async/await](https://javascript.info/async)
 
 <hr/>
 
-## Lesson 1 - Airports Async
+## Lesson 1 - Synchronous versus asynchronous code
+
+JavaScript is a single threaded language. This means it has one call stack (where code is executed) and one memory heap (where objects are stored). JavaScript executes code in order and must finish executing a piece of code before moving onto the next. We call this **synchronous**, or blocking, execution. Other languages such as C++ and Java are multi-threaded and can execute multiple pieces of code at the same time. We refer to this as **asynchronous** or non-blocking execution.
+
+## What is the Call Stack?
+
+The call stack is a data structure in the runtime of javascript that functions to organise the running or 'execution' of your code.
+
+![an animation of a stack](https://miro.medium.com/max/1280/0*SESFJYWU5a-3XM9m.gif)
+
+Last on first off. Imagine a stick over which you can place hoops. To get to the bottom hoop, all the other hoops have to come off first.
+
+![stack of hoops](https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B000U02LXY&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=toy-ideas-20&language=en_US).
+
+When your code is executed, javascript will run it in 2 passes. The first pass optimises your code for execution. The second pass actually runs your code, and it is in this second pass that javascript uses the stack.
+
+## How does JavaScript use the Call Stack?
+
+Lets take the following code example:
+
+```javascript
+function multiply(a, b) {
+    return a * b
+}
+function square(n) {
+    return multiply(n, n)
+}
+function printSquare(n) {
+    const result = square(n)
+    console.log(result)
+}
+
+printSquare(4)
+```
+Read the code above. First of all there are 3 function definitions, then one of those functions is called. When `printSquare` is called it is put onto the stack. `printSquare` is evaluated and calls `square` which is added to the stack, `square` calls `multiply` which is added to the stack. `multiply` does not call any other function so it returns the value 16. the `return` keyword means that function pops off the stack, now inside `square` that function is evaluated to 16, and returns so `square` is then popped off the stack. Now back in `printSquare` the called to `square` is evaluated and assigned in memory to the variable `result`. Next line console.log is called with 16 and the function implicitly returns (without a value) as there is nothing more to execute. See below:
+
+![call stack](https://user-images.githubusercontent.com/4499581/93218919-af697080-f762-11ea-8a8b-f2ab1b39b4fb.gif)
+
+## Assignment 
+[Loupe](http://latentflip.com/loupe) is a little visualisation to help you understand how JavaScript's call stack/event loop/callback queue interact with each other) is a tool which helps you visualise how JavaScripts Call Stack, Event Loop and Callback Queue interact with each other.
+
+Open up this [link illustrating how synchronous code is executed](http://latentflip.com/loupe/?code=Ly8gdGhpcyBpbGx1c3RyYXRlcyBKYXZhU2NyaXB0IGNvZGUgZXhlY3V0aW5nCi8vIHN5bmNocm9ub3VzbHksIHdpdGggZWFjaCBsaW5lIGdvaW5nIG9udG8gdGhlCi8vIENhbGwgU3RhY2sgYW5kIGV4ZWN1dGluZyBpbiB0dXJuCgpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgZmlyc3QgbGluZSBvZiBjb2RlISIpOwpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgc2Vjb25kIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIHRoaXJkIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIGZvcnRoIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIGZpZnRoIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIHNpeHRoIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIHNldmVudGggbGluZSBvZiBjb2RlISIpOwpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgZWlnaHQgbGluZSBvZiBjb2RlISIpOwpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgbmludGggbGluZSBvZiBjb2RlISIpOwpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgdGVudGggbGluZSBvZiBjb2RlISIpOwo%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+
+Can you see how each line is executed one at a time? Experiment by adding in the functions code above (make sure you add a line of code which calls the `printSquare` function to kick it off!).
+
+## What is a stack trace?
+
+The stack is very help to know about. When your code errors, you often get a 'stack trace' as part of the error message. Being able to read the 'stack trace' can help us follow the executing code, and that can lead us to our piece of code that is causing the error.
+
+Try running the code below in your browser.
+```javascript
+function multiply(a, b) {
+    throw new Error(`can't multiply ${a} and ${b}`)
+}
+function square(n) {
+    return multiply(n, n)
+}
+function printSquare(n) {
+    const result = square(n)
+    console.log(result)
+}
+
+printSquare(4)
+```
+This is the error. Read the stack trace from the bottom up.
+![stack trace](https://user-images.githubusercontent.com/4499581/93219628-78e02580-f763-11ea-9948-81d558dbf65d.png)
+What do you think the numbers like (<anonymous:5:12>) refer to?
+
+## Stack overflow
+
+```javascript
+function hello() {
+    hello()
+}
+hello()
+```
+This will break.
+![stack overflow error message](https://user-images.githubusercontent.com/4499581/93220411-65818a00-f764-11ea-9a64-b5a92881ecaa.png)
+Can you explain what is going on here? What other code might cause a max call stack size exceeded (stack overflow)?
+
+### Providing asynchronous behaviour
+Now you are familiar with the Call Stack, imagine what the impact will be if a function takes a long time to execute or has to wait on something, this function will stop all the other code executing. So how can we avoid this?
+
+In the Browser (for front-end JavaScript) and Node (for back-end JavaScript), JavaScript run inside a runtime 'container'. The runtime includes additional components which are not part of JavaScript. These include:
+  * the `Web APIs` (e.g. the DOM, Timers, Fetch API)
+  * the `Callback Queue` - which holds callback functions from events which have just completed
+  * the `Event Loop` - which monitors the Callback Queue and the Call Stack and places callbacks from the Callback Queue onto the Call Stack when it is empty. There is an event loop for every browser tab.
+
+The `Event Loop` is what allows asynchronous (non-blocking) operations to occur — despite the fact that JavaScript is single-threaded.
+
+Asynchronous (async) functions such as setting times, reading files etc. are recognised by Node.js and are executed in a separate area from the Call Stack. Node polls (regularly checks) the computer for the completion of the async operation and, once the operation is complete, the callback is placed into the `Callback Queue`. The `Event Loop` waits for the Call Stack to be empty and then moves the pending callback onto the Call Stack. It wait as otherwise it would randomly interrupt the execution of whatever sequence of function calls were queued up on the stack.
+
+Below is an example.
+
+![async call stack](https://user-images.githubusercontent.com/4499581/93320644-3a04ab00-f809-11ea-9ab9-4770ec86b177.gif)
+
+This [reference video](https://youtu.be/8aGhZQkoFbQ) provides an excellent explanation of the interactions between the Call Stack, Event Loop and Callback Queue.
+
+TODO - add full picture.
+
+## Timers
+JavaScript does not have a built in timer feature. It uses the Timer API provided by the Node.js runtime to perform time-related operations. For this reason, timer operations are asynchronous.
+
+`setTimeout(callback, millis)` can be used to schedule code execution after a designated amount of milliseconds. It accepts a callback function as its first argument and the millisecond delay as the second argument.
+
+When `setTimeout` is called, the timer is started in `Web APIs` part of the Node/Browser runtime. This frees the Call Stack up to continue executing code and only when the timer is complete and the Call Stack empty, does the callback get pushed to the Call Stack for execution.
+
+## Assignment
+Click on [this link which uses Loupe to illustrates async timers](http://latentflip.com/loupe/?code=Ci8vIHRoaXMgaWxsdXN0cmF0ZXMgSmF2YVNjcmlwdCBjb2RlIGV4ZWN1dGluZwovLyBhIHRpbWVyIGFzeW5jaHJvbm91c2x5Cgpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgZmlyc3QgbGluZSBvZiBjb2RlISIpOwpjb25zb2xlLmxvZygiVGhpcyBpcyB0aGUgc2Vjb25kIGxpbmUgb2YgY29kZSEiKTsKCnNldFRpbWVvdXQoZnVuY3Rpb24gdGltZW91dCgpIHsKICAgIGNvbnNvbGUubG9nKCJUaW1lciB3YXMgY2FsbGVkISIpOwp9LCA1MDAwKTsKCmNvbnNvbGUubG9nKCJUaGlzIGlzIHRoZSB0aGlyZCBsaW5lIG9mIGNvZGUhIik7CmNvbnNvbGUubG9nKCJUaGlzIGlzIHRoZSBmb3J0aCBsaW5lIG9mIGNvZGUhIik7CmNvbnNvbGUubG9nKCJUaGlzIGlzIHRoZSBmaWZ0aCBsaW5lIG9mIGNvZGUhIik7CmNvbnNvbGUubG9nKCJUaGlzIGlzIHRoZSBzaXh0aCBsaW5lIG9mIGNvZGUhIik7CmNvbnNvbGUubG9nKCJUaGlzIGlzIHRoZSBzZXZlbnRoIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIGVpZ2h0IGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIG5pbnRoIGxpbmUgb2YgY29kZSEiKTsKY29uc29sZS5sb2coIlRoaXMgaXMgdGhlIHRlbnRoIGxpbmUgb2YgY29kZSEiKTsKCmNvbnNvbGUubG9nKCJXZWxjb21lIHRvIGxvdXBlLiIpOw%3D%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D).
+
+Does the timer callback get executed at exactly 5 second after the timer is started? If not, why not?
+
+Make an animation or slide show that illustrates the event loop for the following piece of code. `app.post` is a route handler from an 'express' server it takes a string that is a path, and a route handler function. The route handler function is called when the server receives a POST request to the `/users` route. Start your stack with a call to the `createUser` function.
+
+The route handlers in express are all on a timer, so if you don't call `response.render` or `response.send` within a time limit express will return a timeout error. Don't worry about this for now. Note that functions without a name are referred to as 'anonymous' functions. 
+
+Be ready to present your slides or animation back to the group.
+
+```javascript
+app.post('/users', function createUser(request, response) {
+    User.findOrCreate({ where: request.body })
+        .then(function (user) {
+            user.getContacts()
+                .then(contacts => {
+                    request.session.userId = user.id
+                    response.render('profile', {user, contacts})
+                })
+        })
+    logging(`/users route called with ${request.body}`)
+})
+```
+
+## Lesson 2 - Airports Async
 
 ## Learning Objectives
 
-* Explain the differences between the way synchronous and asynchronous functions work.
+* Create async functions to read airport data from a file
 * Demonstrate the methods to test async code in Jest
 
 ## Before we start
@@ -28,8 +162,8 @@ If you are struggling with any of the concepts from today, the following resourc
 
 * You need [this file](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) saved in your airports project folder
 
-## Lesson
 
+## Lesson 2
 So far our code executes synchronously. That means the code in the line above has been evaluated and any values are available for us to use on our current line. Async functions, they do not return straight away. For example if we want to read something from disc, that is an async function. It will not return immediately.
 
 There are 3 ways to write and get values from async functions and in this session we are going to look at each of them. They are:
@@ -162,130 +296,8 @@ That is a lot to get your head around! Async functions are a key characteristic 
 ## Assignment
 
 * In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.
-* Use the three different ways of forming async functions in the Airport class
-* write async tests for each version in Jest
-
-----
-
-## Lesson 2 - The Event Loop
-
-## Learning Objectives
-
-* Correctly represent the behaviour of a stack data structure
-* Correctly identify the order of execution in a piece of async code
-
-## Before we start
-
-* You should have written an async function in the 3 different styles: callbacks, promises and async await
-
-## Materials needed
-
-* [reference video](https://youtu.be/8aGhZQkoFbQ)
-
-## Lesson
-
-Javascript is a single threaded runtime. Single threaded means one thing at a time. In reality that means one stack.
-
-### What is the stack?
-
-The stack is a data structure in the runtime of javascript that functions to organise the running or 'execution' of your code.
-
-![an animation of a stack](https://miro.medium.com/max/1280/0*SESFJYWU5a-3XM9m.gif)
-
-Last on first off. Imagine a stick over which you can place hoops. To get to the bottom hoop, all the other hoops have to come off first.
-
-![stack of hoops](https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B000U02LXY&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=toy-ideas-20&language=en_US).
-
-When your code is executed, javascript will run it in 2 passes. The first pass optimises your code for execution. The second pass actually runs your code, and it is in this second pass that javascript uses the stack.
-
-### How does javascript use the stack?
-
-Lets take the following code example:
-
-```javascript
-function multiply(a, b) {
-    return a * b
-}
-function square(n) {
-    return multiply(n, n)
-}
-function printSquare(n) {
-    const result = square(n)
-    console.log(result)
-}
-
-printSquare(4)
-```
-Read the code above. First of all there are 3 function definitions, then one of those functions is called. When `printSquare` is called it is put onto the stack. `printSquare` is evaluated and calls `square` which is added to the stack, `square` calls `multiply` which is added to the stack. `multiply` does not call any other function so it returns the value 16. the `return` keyword means that function pops off the stack, now inside `square` that function is evaluated to 16, and returns so `square` is then popped off the stack. Now back in `printSquare` the called to `square` is evaluated and assigned in memory to the variable `result`. Next line console.log is called with 16 and the function implicitly returns (without a value) as there is nothing more to execute. See below:
-
-![call stack](https://user-images.githubusercontent.com/4499581/93218919-af697080-f762-11ea-8a8b-f2ab1b39b4fb.gif)
-
-### What is a stack trace?
-
-The stack is very help to know about. When your code errors, you often get a 'stack trace' as part of the error message. Being able to read the 'stack trace' can help us follow the executing code, and that can lead us to our piece of code that is causing the error.
-
-Try running the code below in your browser.
-```javascript
-function multiply(a, b) {
-    throw new Error(`can't multiply ${a} and ${b}`)
-}
-function square(n) {
-    return multiply(n, n)
-}
-function printSquare(n) {
-    const result = square(n)
-    console.log(result)
-}
-
-printSquare(4)
-```
-This is the error. Read the stack trace from the bottom up.
-![stack trace](https://user-images.githubusercontent.com/4499581/93219628-78e02580-f763-11ea-9948-81d558dbf65d.png)
-What do you think the numbers like (<anonymous:5:12>) refer to?
-
-### Stack overflow
-
-```javascript
-function hello() {
-    hello()
-}
-hello()
-```
-This will break.
-![stack overflow error message](https://user-images.githubusercontent.com/4499581/93220411-65818a00-f764-11ea-9a64-b5a92881ecaa.png)
-Can you explain what is going on here? What other code might cause a max call stack size exceeded (stack overflow)?
-
-### Async and the task que
-
-In addition to the stack lets imagine another data structure a 'pending callback' que. We have seen that async functions get called, but don't return their values straight away. So you can imagine those async functions on the stack get put on, then popped off. We saw this in the example of the async Jest test before we used the `done` callback. However these async functions are recognized by Node.js so it places the callback function into another stack structure called the 'pending callback phase' and then polls (regularly checks) the computer for the completion of the reading from disc operation.
-
-When the 'poll phase' receives an event indicating that the content of the file has been read into memory, it moves the pending callback back onto the stack the next time that the stack is emptied. It waits for the stack to be empty, because otherwise it would randomly interrupt the execution of whatever sequence of function calls were queued up on the stack.
-
-Below is an example.
-
-![async call stack](https://user-images.githubusercontent.com/4499581/93320644-3a04ab00-f809-11ea-9ab9-4770ec86b177.gif)
-
-## Assignment
-
-Make an animation or slide show that illustrates the event loop for the following piece of code. `app.post` is a route handler from an 'express' server it takes a string that is a path, and a route handler function. The route handler function is called when the server receives a POST request to the `/users` route. Start your stack with a call to the `createUser` function.
-
-The route handlers in express are all on a timer, so if you don't call `response.render` or `response.send` within a time limit express will return a timeout error. Don't worry about this for now.
-
-Your assignment code example uses promises, the behavior of the 'stack' and the 'pending callbacks' works the same way as the example above. Functions without a name are referred to as 'anonymous' functions. Be ready to present your slides or animation back to the group.
-
-```javascript
-app.post('/users', function createUser(request, response) {
-    User.findOrCreate({ where: request.body })
-        .then(function (user) {
-            user.getContacts()
-                .then(contacts => {
-                    request.session.userId = user.id
-                    response.render('profile', {user, contacts})
-                })
-        })
-    logging(`/users route called with ${request.body}`)
-})
-```
+* Use the three different ways of forming async functions to read file content in your Airport class
+* Write async tests for each of the three asyn functions using Jest
 
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/156)

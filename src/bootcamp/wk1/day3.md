@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. During the second session we start to look at async functions, and how to test code that work asynchronously.
+Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. 
 
 ## Additional resources
 If you are struggling with any of the concepts from today, the following resources will help:
