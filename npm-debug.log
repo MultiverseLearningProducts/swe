@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/usr/local/Cellar/node/15.0.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'update',
+1 verbose cli   'npm',
+1 verbose cli   '-g'
+1 verbose cli ]
+2 info using npm@3.10.10
+3 info using node@v15.0.1
+4 verbose stack TypeError: cb.apply is not a function
+4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:267:18
+4 verbose stack     at FSReqCallback.oncomplete (node:fs:184:5)
+5 verbose cwd /Users/Mandy 1/LocalDocuments/work/whitehat/swe
+6 error Darwin 18.7.0
+7 error argv "/usr/local/Cellar/node/15.0.1/bin/node" "/usr/local/bin/npm" "update" "npm" "-g"
+8 error node v15.0.1
+9 error npm  v3.10.10
+10 error cb.apply is not a function
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]
