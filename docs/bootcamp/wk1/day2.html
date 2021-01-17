@@ -60,7 +60,7 @@
     <p>Failures are when our programme "crashes" it stops running and errors in a way that cannot be recovered from.</p>
     <p>Write tests to prevent these 3 things.</p>
     <h3>Jest</h3>
-    <p>Jest is a testing framework developed at Facebook. TDD starts with a failing test. So we write a test that we know will fail.</p>
+    <p>Jest is a testing framework developed at Facebook. TDD starts with a failing test. So we write a test that we know will fail. To run all your tests use <code>npm run test</code> or use <code>npm run test -t</code> to run a single test.</p>
     <pre><code class="language-javascript">describe('person objects', () => {
     test('have a name', () => {
         expect(person.name).toEqual("test person")
@@ -108,6 +108,9 @@ module.exports = person
       <li>Plane</li>
       <li>Airport</li>
     </ol>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/104850737-c5da3100-58e8-11eb-9248-a41550978a76.png" alt="airportsBasic">
+    </p>
     <p>What does a bag have? A weight. It also has a relationship to a person a person has a bag. One of the important things to think about in OOP is which object is responsible for what properties or behaviors. Our bag should have a weight. Now in our airport system there are going to be lots and lots of bags. We can make a bag each time in our code like this:</p>
     <pre><code class="language-javascript">const bag = {weight: 16}
 </code></pre>
@@ -175,13 +178,19 @@ module.exports = Passenger
     <p>Now we have passengers with bags, they are ready to board their flight! Can you:</p>
     <ol>
       <li>Create a Plane class</li>
-      <li>instances of a Plane should have a function to <code>board</code> passengers</li>
-      <li>a Plane should also have a destination that is an Airport name</li>
+      <li>Instances of a Plane should have a function to <code>board</code> passengers</li>
+      <li>A Plane should also have a destination that is an Airport name</li>
       <li>Create an Airport class</li>
       <li>Airports should have a name</li>
       <li>One test should assert you have an airport, with a plane, on the plane are passengers &#x26; you can read the weight of one of the bags of a passenger</li>
     </ol>
     <p>Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane.</p>
+    <hr>
+    <h1>Lesson 3 - JSDoc</h1>
+    <p>Documenting code is really important, it helps others understand the purpose of class and its associated methods. In JavaScript, the standard is to use <a href="https://jsdoc.app/">JSDoc</a>. This tool defines specific comment/tags for documenting code and also provides a command line tool for generating HTML documentation.</p>
+    <p>To run JSdoc on all your classes in the current directory, run <code>jsdoc .</code></p>
+    <h2>Assignment</h2>
+    <p>Document your classes using the JSDoc comment structure and generate the HTML documentation. Commit this to your Git reposititory.</p>
     <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/154">attendance log</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day1.html">prev</a>|<a href="/swe/bootcamp/wk1/day3.html">next</a></p>
     <script src="/swe/prism.js"></script>

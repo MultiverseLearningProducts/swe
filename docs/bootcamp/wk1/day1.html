@@ -12,7 +12,7 @@
   <body>
     <h1>Bootcamp > Week 1 > Day 1</h1>
     <h2>Before we start</h2>
-    <p>You should have familiarity with basic JavaScript concepts, specifically:</p>
+    <p>You must have familiarity with basic JavaScript concepts, specifically:</p>
     <ul>
       <li><a href="https://www.w3schools.com/js/js_syntax.asp">JavaScript Syntax</a></li>
       <li><a href="https://www.w3schools.com/js/js_datatypes.asp">JavaScript Data Types</a></li>
@@ -23,6 +23,7 @@
       <li><a href="https://www.codecademy.com/articles/what-is-node">An overview of Node</a> - also watch the first 5.30 minutes of <a href="https://www.youtube.com/watch?v=EIQgVdoYb0M">An Introduction to Node in Visual Studio Code</a></li>
       <li>There is a great article on the <a href="https://community.whitehat.org.uk/topics/16826/feed">Community Hub</a> which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!</li>
     </ul>
+    <p>You must also be confident using Git to clone, add, commit and push to your Git repository.</p>
     <h2>Overview of the day</h2>
     <p>Day one enables the cohort to get their computer set up so that they can write JavaScript using Node.js. We introduce the concepts of Arrays, Objects and functions in Javascript.</p>
     <h1>Session 1 - Setup (could also be done prior to course)</h1>
@@ -57,7 +58,8 @@
       <li>Create references to objects inside other objects</li>
     </ul>
     <h2>Lesson</h2>
-    <p>Objects are the main data type in Javascript. Lets start by looking at the three different ways we can make an object:</p>
+    <p>Objects are the main data type in Javascript. Think of objects as nouns (person, place or thing), something you can touch, see, smell, feel or taste.</p>
+    <p>Lets start by looking at the three different ways we can make an object:</p>
     <pre><code class="language-javascript">const person1 = {}
 const person2 = new Object()
 const person3 = Object.create({})
@@ -91,7 +93,8 @@ person1['name']
     <p>In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method <code>join</code> and give it a delimiter to use as it takes all the names in our array and joins them together with an "&#x26;" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates as falsey, so we can use the <code>||</code> double pipes of the OR operator to return a default value.</p>
     <p>Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as its value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so it will not work the same way. We'll come back to that.</p>
     <h2>Assignment</h2>
-    <p>Can you create an object that represents 3 generations of a family tree? You could use the Royal Family or a celebrity family to model the concepts! A person in the family tree should have the following properties:</p>
+    <p>Create a new directory in your local Git repositoty called <code>familyTree</code>. As a general rule, do NOT use spaces or special characters in directory or filenames.</p>
+    <p>Can you create an object that represents 3 generations of a family tree? You could use the <a href="https://i.insider.com/5e17677224fe1248eb288e84?width=1000&#x26;format=jpeg&#x26;auto=webp">Royal Family</a> or a celebrity family to model the concepts! A person in the family tree should have the following properties:</p>
     <ul>
       <li>name String</li>
       <li>parents Array</li>

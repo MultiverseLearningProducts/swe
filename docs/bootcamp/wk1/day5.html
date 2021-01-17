@@ -12,28 +12,105 @@
   <body>
     <h1>Bootcamp > Week 1 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Today is just about practicing what you have learnt so far.</p>
+    <p>Today is just about practicing what you have learnt so far. We will also briefly discuss <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html">TypeScript</a>.</p>
+    <p><em>(Note to coaches - it is prefereable to provide a class diagram, sequence diagram and use case diagram for this Scooter Hire System so that students can focus just on implementing classes and writing tests, rather than having to do a system analysis. Alternatively, you can present the introduction to UML from Week 2 Day 1 and then allow the students to create their own class diagram, sequence diagram and use case diagram for this Scooter Hire System prior to writing their classes and tests).</em></p>
     <h2>Lesson 1 - London Scooter Hire</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Demonstrate the syntax for defining a class</li>
-      <li>Set up Jest tests write unit tests for your classes</li>
-      <li>Write Async tests</li>
+      <li>Demonstrate what you have learnt this week by writing classes</li>
+      <li>Set up Jest tests to unit test your classes</li>
+      <li>Write Async tests to test timer functions</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>Have your airports project in your github as a reference</li>
+      <li>Refer to your airports project in your github as a reference</li>
+      <li>Refer to the content of Day 4 and ensure you understand how async code works</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
       <li>N/A</li>
     </ul>
     <h2>Lesson</h2>
-    <p>Each turn of the event loop is called a 'tick'. setTimeout and setInterval are async functions that call their callback on the next tick, or when the timer expires.</p>
+    <p>In this assignment you will make use of the <code>setTimeout</code> call. If you wish to wait for charging to complete in your method, one way to write your code is as follows:</p>
+    <pre><code class="language-js">    async charge() {
+        console.log('Starting charge'); 
+
+        await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+
+        console.log('Charge complete');   // after 2 seconds this line will print
+    }
+</code></pre>
+    <p>This code uses the <code>async</code> <code>await</code> method of handling callbacks, introduced in ES6. <code>await</code> only works with Promises and makes JavaScript wait until a promise settles. In the code above, we wrap the 2 second timer in a Promise, i.e. we say 'when the timer completes either successfully or with an error, promise me you will return'. The <code>await</code> keyword pauses execution of the function (in this case <em>charge()</em>) until the promise is settled. So, in the code above, the 'Charge complete' text is only logged after 2 seconds.</p>
+    <p>Note that <code>await</code> only pauses execution of the function it is in. This means that any calling functions also need to <code>await</code> hence the Jest test for the code above will look like this:</p>
+    <pre><code class="language-js">    test('charge', async () => {
+        const scooter = new Scooter();
+        await scooter.charge(); // we need to wait for the charge!
+        console.log("Test complete");
+    })
+</code></pre>
     <h2>Assignment</h2>
     <p>You have been asked to create a scooter hire system. Electric scooters need to be charged at scooter charging stations. Users can only hire and unplug a scooter if the battery is fully charged. Users always use up the battery charge, so when a scooter is returned to a charging station, you can expect the battery to be empty. It takes about 2000 milliseconds to charge a scooter (you have to wait, it's async).</p>
-    <p>Use test driven development and create the classes and interactions that you feel capture this functionality.</p>
-    <p>Create a coverage report and share it with your coach via slack</p>
+    <p>You code should be structured into the following directories:</p>
+    <ul>
+      <li>/src</li>
+      <li>/tests</li>
+    </ul>
+    <p>You will need to commit the following to your GitHub repository:</p>
+    <ul>
+      <li>Classes with interactions (methods calls) that you feel capture this functionality</li>
+      <li>All classes must be JSDoc'd</li>
+      <li>Tests which cover all of the above</li>
+      <li>A screenshot of your coverage report (aim for 100% coverage)</li>
+      <li>JSDoc documentation generation</li>
+    </ul>
+    <h2>TypeScript - what is it?</h2>
+    <p>TypeScript can be thought of as JavaScript with additional features like strong static typing, compilation, and object oriented programming. Here is a TypeScript version of our Bag we used in the Airports assignment:</p>
+    <pre><code class="language-js">class Bag {
+ 
+    private weight:number; 
+
+    constructor(weight:number) {
+        if (!weight) {
+            throw new Error('bag must have a weight');
+        }
+        this.weight = weight;
+    }
+
+    getWeight() {
+        return this.weight;
+    }
+}
+
+export = Bag;
+</code></pre>
+    <p>Notice how we specify the keyword <code>private</code> against the weight variable. This means the weight cannot be directly accessed, instead, the accessor method <code>getWeight()</code> must used.</p>
+    <p>So, this will NOT work:</p>
+    <pre><code class="language-js">const bag = new Bag(20);
+console.log(bag.weight);
+</code></pre>
+    <p>But this will:</p>
+    <pre><code class="language-js">const bag = new Bag(20);
+console.log(bag.getWeight());
+</code></pre>
+    <p>To use TypeScript globally, run <code>npm install -g typescript</code>.</p>
+    <p>You also need to create a <code>tsconfig.json</code> file and name your Typescript files with the <code>.ts</code> extension. Here is an example, simple <code>tsconfig.json</code> file:</p>
+    <pre><code class="language-json">{
+    "compilerOptions": {
+      "outDir": "./built",
+      "module": "CommonJS",
+      "lib": ["es6", "dom"],
+      "allowJs": true,
+      "target": "es6"
+    },
+    "include": ["./src/**/*"],
+    "exclude": [
+        "node_modules"
+      ]
+  }
+</code></pre>
+    <p>You can then run <code>tsc</code> to have the Typescript compiler generate the <code>.js</code> files in a <code>/built</code> directory.</p>
+    <p>Note that the TypeScript files must use <code>export = NameOfClass;</code> rather than <code>module.exports</code>.</p>
+    <p>Jest etc can be run as normal on the generated</p>
     <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/157">attendance log</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day4.html">prev</a>|<a href="/swe/bootcamp/wk2/day1.html">next</a></p>
     <script src="/swe/prism.js"></script>
