@@ -6,7 +6,17 @@ You have a data model for a restaurant ordering app. The problem is all the data
 
 <hr/>
 
-## Lesson 1 - SQLite3
+## Lesson 1 - SQL
+
+## Learning Objectives
+
+* Understand how to execute basic SQL statements
+
+## Lesson
+Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database.
+
+
+## Lesson 2 - SQLite3
 
 ## Learning Objectives
 
@@ -15,7 +25,8 @@ You have a data model for a restaurant ordering app. The problem is all the data
 
 ## Before we start
 
-* Make sure you have SQLite3 installed `npm i sqlite3` will do it
+* Make sure you have SQLite3 installed `npm install sqlite3` will do it.
+
 
 ## Materials needed
 
