@@ -12,9 +12,10 @@ You have a data model for a restaurant ordering app. The problem is all the data
 
 * Understand how to execute basic SQL statements
 
-## Lesson
+## Assignment
 Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database.
 
+----
 
 ## Lesson 2 - SQLite3
 
@@ -51,7 +52,7 @@ The `WHERE` clause is really important when querying. Often we want one record, 
 
 ----
 
-## Lesson 2 - JOIN tables
+## Lesson 3 - JOIN tables
 
 ## Learning Objectives
 
