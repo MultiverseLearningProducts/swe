@@ -20,8 +20,6 @@
       <li>Implement a credential store using hashed passwords</li>
       <li>Use Basic Authentication to secure the User API</li>
     </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
     <h2>Lesson 1 - Authentication and authorisation</h2>
     <h3>Learning Objectives</h3>
     <ul>
@@ -70,7 +68,8 @@
       <img src="https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png" alt="an example of using b to a function and a to b function to encode and decode a string">
     </p>
     <h3>👮‍♀️ Assignment</h3>
-    <p>From the string in the <code>Authorization</code> header above, determine the user's username and password. Do you think Basic Authentication is a secure scheme?</p>
+    <p>From the string in the <code>Authorization</code> header above, determine the user's username and password.</p>
+    <p>❓ Do you think Basic Authentication is a secure scheme?</p>
     <h2>Hashing passwords</h2>
     <h3>Learning Objectives</h3>
     <ul>
@@ -78,8 +77,8 @@
       <li>Understand the implications of exposing sensitive data</li>
       <li>Create a database of user names and hashed passwords</li>
     </ul>
-    <p>Basic auth uses the <code>Authorization</code> header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format - <em>username:password</em>. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string, then decode it.Now the server has the username and password sent from the client we need to match it with the username and password held in our database.</p>
-    <p><strong>Question</strong> - Imagine if we held these passwords in plaintext. What risks do you think this could cause?</p>
+    <p>Basic auth uses the <code>Authorization</code> header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format <em>username:password</em>. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string and decode it. Now the server has the username and password sent from the client we need to match it with the username and password held in our database.</p>
+    <p>❓ Imagine if we held all our user's passwords in plaintext. What risks do you think this could cause?</p>
     <p><strong>Answer</strong> - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this <a href="https://www.bbc.co.uk/news/business-48905907">video</a> to hear about one recent example.</p>
     <p>To avoid storing passwords in plaintext, we <code>hash</code> them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.</p>
     <p>As a reminder, here is some code which implements a secure hashing algorithm:</p>
@@ -96,13 +95,15 @@ String hashedPassword = passwordEncoder.encode("your password");
 </code></pre>
     <h3>Assignment</h3>
     <p>Use the code above to generate hashes of some demo user passwords. Then add the usernames and their hashed passwords to a database.</p>
+    <hr>
     <h2>Lesson 4 - Creating and Securing a User API</h2>
     <h3>Learning Objectives</h3>
     <ul>
+      <li>Describe the middleware design pattern</li>
       <li>Use what you have learnt in previous lessons to secure an API using Basic Auth</li>
     </ul>
     <h3>Lesson</h3>
-    <p>Your API should support 4 resources:</p>
+    <p>Your API should support a `User' resource. A user will need at least a name, email and password:</p>
     <table>
       <thead>
         <tr>
@@ -145,15 +146,35 @@ String hashedPassword = passwordEncoder.encode("your password");
         </tr>
       </tbody>
     </table>
+    <p>Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.</p>
+    <p>To protect resouces we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
+    <p>Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.</p>
+    <p>
+      <img src="https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png" alt="middleware diagram">
+    </p>
+    <p>As that check happens in the middle of the request response cycle, it has been given the name of middleware. This is a generic design pattern you will see in many systems.</p>
+    <p>A whole series of things can happen in middleware not just authentication, but also authorisation. Thats why the diagram above has 2 middleware rings. There are 2 middlewares the request has to pass through before it gets to the controller. Below is a general pattern for a middleware function.</p>
+    <pre><code class="language-javascript">function (request, response, next) {
+  // check or change something in the request
+  // maybe its not ok so from here you might
+  return response.code(403) // status code 403 forbidden
+  // the controller was never reached!
+  // maybe all is well and you can contiune with the request
+  // calling next() finishes this middleware and goes onto
+  // either the next middleware or into the controller/route handler itself
+  return next()
+}
+</code></pre>
+    <p>❓ What other things might you want to do in middleware?</p>
+    <p>We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.</p>
     <h3>Assignment</h3>
     <ul>
       <li>Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js</li>
-      <li>Secure the Users API with a hardcoded username and password (see sample code below)</li>
-      <li>Ensure you can call the secured API using Postman</li>
+      <li>Ensure you can call the your API using Postman</li>
       <li>Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson</li>
-      <li>(Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson). Enhance the form to display a list of users and allow the creation of new users, deletion and update of existing users (apart from the currently logged in user!)</li>
+      <li>(Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).</li>
     </ul>
-    <p><strong>Question</strong> - is the password sent on every request or cached?</p>
+    <p>❓ is the password sent on every request or cached?</p>
     <p>Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">// check for a basic auth header with correct credentials
@@ -211,8 +232,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 </code></pre>
     <p>
-      <a href="/swe/mod1/wk2/day2.html">next</a>
-      <a href="/swe">main</a>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/183">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day5.html">prev</a>|<a href="/swe/mod1/wk2/day2.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

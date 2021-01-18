@@ -60,7 +60,7 @@ Write tests to prevent these 3 things.
 
 ### Jest
 
-Jest is a testing framework developed at Facebook. TDD starts with a failing test. So we write a test that we know will fail.
+Jest is a testing framework developed at Facebook. TDD starts with a failing test. So we write a test that we know will fail. To run all your tests use `npm run test` or use `npm run test -t` to run a single test.
 
 ```javascript
 describe('person objects', () => {
@@ -122,6 +122,8 @@ Our airport system is going to have the following objects in it:
 2. Person
 3. Plane
 4. Airport
+
+![airportsBasic](https://user-images.githubusercontent.com/1316724/104850737-c5da3100-58e8-11eb-9248-a41550978a76.png)
 
 What does a bag have? A weight. It also has a relationship to a person a person has a bag. One of the important things to think about in OOP is which object is responsible for what properties or behaviors. Our bag should have a weight. Now in our airport system there are going to be lots and lots of bags. We can make a bag each time in our code like this:
 
@@ -211,13 +213,23 @@ module.exports = Passenger
 Now we have passengers with bags, they are ready to board their flight! Can you:
 
 1. Create a Plane class
-1. instances of a Plane should have a function to `board` passengers
-1. a Plane should also have a destination that is an Airport name
+1. Instances of a Plane should have a function to `board` passengers
+1. A Plane should also have a destination that is an Airport name
 1. Create an Airport class
 1. Airports should have a name
 1. One test should assert you have an airport, with a plane, on the plane are passengers & you can read the weight of one of the bags of a passenger
 
 Write tests as you go in the test driven development style. You should be able to create any number of airports, create planes, land planes at airports, create passengers with bags, have the passengers board a plane. 
+
+----
+
+# Lesson 3 - JSDoc
+Documenting code is really important, it helps others understand the purpose of class and its associated methods. In JavaScript, the standard is to use [JSDoc](https://jsdoc.app/). This tool defines specific comment/tags for documenting code and also provides a command line tool for generating HTML documentation. 
+
+To run JSdoc on all your classes in the current directory, run `jsdoc .`
+
+## Assignment
+Document your classes using the JSDoc comment structure and generate the HTML documentation. Commit this to your Git reposititory.
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/154)
 
