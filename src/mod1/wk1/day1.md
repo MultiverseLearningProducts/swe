@@ -138,7 +138,7 @@ Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_
 
 ## Assignment
 
-Below is a list of HTTP requests we want you to try and make with [postman](https://www.postman.com/). Collect the results that you get back from the server as each response is a puzzle piece that will form a message just for you.
+Below is a URL. Can you make an HTTP request to that URL using [postman](https://www.postman.com/)? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on https://applied.whitehat.org.uk.
 
 1. Make a GET request to https://http-challenge.whitehatcoaches.org.uk/
 1. Follow the instructions you receive from the response
