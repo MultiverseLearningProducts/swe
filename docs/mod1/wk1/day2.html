@@ -97,9 +97,36 @@
       </tbody>
     </table>
     <p>Nested resources simple extend the same pattern.</p>
-    <nav class="tabbed-code-block"><a href="#http method">HTTP Method</a><a href="#url">URL</a><a href="#status code">Status code</a><a href="#description">Description</a><a href="#
-">
-</a><a href="#get">GET</a></nav>
+    <table>
+      <thead>
+        <tr>
+          <th>HTTP Method</th>
+          <th>URL</th>
+          <th>Status code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td><code>/albums/{id}/tracks</code></td>
+          <td>200</td>
+          <td>return the tracks for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td><code>/albums/{id}/tracks</code></td>
+          <td>201</td>
+          <td>create a new track for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td><code>/albums/{album_id}/tracks/{track_id}</code></td>
+          <td>200</td>
+          <td>return the track with the id specified in the URL from the album with the id specified in the URL</td>
+        </tr>
+      </tbody>
+    </table>
     <p>Can you see the pattern?</p>
     <p>❓ How might you update a track for a given album?</p>
     <p>❓ Can you match the CRUD operations to http methods?</p>
@@ -122,7 +149,7 @@
     </table>
     <p>You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.</p>
     <h3>Documentation</h3>
-    <p>You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:</p>
+    <p>You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the examples of online generated API documentation below:</p>
     <ul>
       <li><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos">Github</a></li>
       <li><a href="https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders">Dropbox</a></li>
@@ -190,9 +217,11 @@ paths:
                     elevation:
                       type: integer
                     lat:
-                      type: float
+                      type: number
+                      format: double
                     lon:
-                      type: float
+                      type: number
+                      format: double
                     tz:
                       type: string
                   example:
@@ -213,6 +242,7 @@ paths:
     </p>
     <h2>Assignment</h2>
     <p>In an OpenAPI <code>airports-config.yaml</code> file create a complete set of documented RESTful endpoints for the <code>/airports</code> resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for <a href="https://swagger.io/resources/open-api/">openapi here</a>. We want routes to create, read (all airports and a single airport), update and delete;</p>
+    <p>You might find this <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">list of HTTP status</a> codes useful when defining your endpoint's responses.</p>
     <p>Once you have got your <code>airports-config.yaml</code> file completed you can even have a go at generating a server from that definition. Below are instructions using javascript and java.</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">/**
@@ -252,7 +282,7 @@ npm start
       <li>Implement CRUD operations on a single resource using RESTful endpoints</li>
     </ul>
     <h2>Before we start</h2>
-    <p>You will need a valid <code>airports-config.yaml</code> openAPI definition file</p>
+    <p>You will need a valid <code>airports-config.yaml</code> openAPI definition file.</p>
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
     <p>Auto generated code is all very well, but you also need to know how to build your own RESTful service. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>

@@ -21,10 +21,8 @@ Today we are going to learn about how to use OAuth to secure our API.
 ## What's wrong with Basic Auth?
   * The password is sent over the wire in base64 encoding which can be easily decoded
   * The password is sent repeatedly i.e. on each request meaning there is a large attack window
-  * The password is cached by the webbrowser, therefore it could be silently reused by any other request to the server e.g. CSRF
+  * The password is cached by the web browser, therefore it could be silently reused by any other request to the server e.g. CSRF
   * The password may be stored permanently in the browser hence could be stolen by another user on a shared machine
-
-TODO - could try to locate where the password is stored?
 
 ## What is OAuth?
 OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
@@ -34,7 +32,7 @@ If you’ve ever signed up to a new application and agreed to let it access your
 ![clubber getting their hand stamped](https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&auto=webp)
 <small><i>Photo: Caitlin Ochs for The New York Times</i></small>
 
-In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club has issue. With a legitimate stamps or bracelet the door staff check it and then if its ok let you in.
+In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).
 
 ## What makes OAuth secure?
   * Token management means we can track each device that uses the API (and revoke access if we want)
@@ -48,7 +46,7 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 **Activity** - Use [PlantUML](http://www.plantuml.com/plantuml/uml) to create your own sequence diagram which illustrates the OAuth flow.
 
 # Lesson 2 - JWT 
-OAuth returns access tokens in Json Web Tokens (JWTs) format. A JWT is easy to identify, it is three strings separated by a `.`
+OAuth returns access tokens as JSON Web Tokens (JWTs) format. A JWT is easy to identify, it is three strings separated by a `.`
 
 Here is an example:
 
@@ -61,7 +59,14 @@ Use https://jwt.io to see the secret message hidden inside this token!
 A JWT is made up of 3 parts:
 * **Header** - specifies the type of token and the algorithm used to sign the token
 * **Payload** - the information that we want to transmit and other information about our token
-* **Signature** - verifies who sent the token
+* **Signature** - verifies who sent the token and that the token has not been tampered with
+
+To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
+
+```ruby
+SHA1(base64Encode(Header) + "." + base64Encode(Payload), secret)
+// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c <- that is the Signature part
+```
 
 # Lesson 3 - Auth0
 In this lesson you will sign up to Auth0, a commercial implementation of OAuth, used by many well known companies including M&S to secure their Web APIs.

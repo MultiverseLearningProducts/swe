@@ -66,3 +66,54 @@ paths:
                     lat: 59.94919968
                     lon: -151.695999146
                     tz: "America/Anchorage"
+    post:
+      summary: Create a new airport
+      description: Add to the list of airports using this route
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              properties:
+                icao:
+                  type: string
+                iata:
+                  type: string
+                name:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+                elevation:
+                  type: integer
+                lat:
+                  type: number
+                  format: double
+                lon:
+                  type: number
+                  format: double
+                tz:
+                  type: string
+              required:
+                - icao
+                - name
+                - city
+      responses:
+        201:
+          description: Resource created successfully
+          content:
+            'application/json': {}
+        415:
+          description: Unsupported Media Type
+          content:
+            'application/json': {}
+        400:
+          description: Bad request
+          content:
+            'application/json': {}
+        409:
+          description: Conflict - an airport with that icao already exists
+          content:
+            'application/json': {}

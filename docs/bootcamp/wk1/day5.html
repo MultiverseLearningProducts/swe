@@ -17,9 +17,9 @@
     <h2>Lesson 1 - London Scooter Hire</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Demonstrate what you have learnt this week by writing classes</li>
-      <li>Set up Jest tests to unit test your classes</li>
-      <li>Write Async tests to test timer functions</li>
+      <li>Demonstrate what you have learnt this week by writing classes for a new domain</li>
+      <li>Set up Jest tests to unit test these classes</li>
+      <li>Write tests to test asynchronous timer functions</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
@@ -63,11 +63,11 @@
       <li>A screenshot of your coverage report (aim for 100% coverage)</li>
       <li>JSDoc documentation generation</li>
     </ul>
-    <h2>TypeScript - what is it?</h2>
+    <h2>Lesson 2 - TypeScript</h2>
     <p>TypeScript can be thought of as JavaScript with additional features like strong static typing, compilation, and object oriented programming. Here is a TypeScript version of our Bag we used in the Airports assignment:</p>
     <pre><code class="language-js">class Bag {
  
-    private weight:number; 
+    private weight:number; // kg
 
     constructor(weight:number) {
         if (!weight) {
@@ -76,14 +76,14 @@
         this.weight = weight;
     }
 
-    getWeight() {
-        return this.weight;
+    public getWeight():number { 
+        return this.weight*1000; // return it in grams
     }
 }
 
 export = Bag;
 </code></pre>
-    <p>Notice how we specify the keyword <code>private</code> against the weight variable. This means the weight cannot be directly accessed, instead, the accessor method <code>getWeight()</code> must used.</p>
+    <p>Notice how we specify the keyword <code>private</code> against the weight variable. This means the weight cannot be directly accessed, instead, the accessor method <code>getWeight()</code> must used. This works to our advantage as we can hide the fact we are storing the weight as kilograms internally, and exopose it in grams.</p>
     <p>So, this will NOT work:</p>
     <pre><code class="language-js">const bag = new Bag(20);
 console.log(bag.weight);
@@ -110,7 +110,7 @@ console.log(bag.getWeight());
 </code></pre>
     <p>You can then run <code>tsc</code> to have the Typescript compiler generate the <code>.js</code> files in a <code>/built</code> directory.</p>
     <p>Note that the TypeScript files must use <code>export = NameOfClass;</code> rather than <code>module.exports</code>.</p>
-    <p>Jest etc can be run as normal on the generated</p>
+    <p>Jest test can be run as normal on the generated JavaScript files.</p>
     <p><a href="https://platform.whitehat.org.uk/apprentice/attendance-log/157">attendance log</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/bootcamp/wk1/day4.html">prev</a>|<a href="/swe/bootcamp/wk2/day1.html">next</a></p>
     <script src="/swe/prism.js"></script>

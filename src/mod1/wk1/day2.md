@@ -60,6 +60,7 @@ A 'resource' some thing we want to access or interact with is also a fundamental
 Nested resources simple extend the same pattern.
 
 |HTTP Method|URL|Status code|Description|
+|-----------|---|-----------|-----------|
 |GET|`/albums/{id}/tracks`|200|return the tracks for the album with the id specified in the URL|
 |POST|`/albums/{id}/tracks`|201|create a new track for the album with the id specified in the URL|
 |GET|`/albums/{album_id}/tracks/{track_id}`|200|return the track with the id specified in the URL from the album with the id specified in the URL|
@@ -80,7 +81,7 @@ You can address a single track resource. However we are not capturing the relati
 
 ### Documentation
 
-You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:
+You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the examples of online generated API documentation below:
 
 * [Github](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos)
 * [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders)
@@ -153,9 +154,11 @@ paths:
                     elevation:
                       type: integer
                     lat:
-                      type: float
+                      type: number
+                      format: double
                     lon:
-                      type: float
+                      type: number
+                      format: double
                     tz:
                       type: string
                   example:
@@ -178,6 +181,8 @@ You can upload this to a site like [readme.com](https://readme.com/) (or use a [
 ## Assignment
 
 In an OpenAPI `airports-config.yaml` file create a complete set of documented RESTful endpoints for the `/airports` resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for [openapi here](https://swagger.io/resources/open-api/). We want routes to create, read (all airports and a single airport), update and delete;
+
+You might find this [list of HTTP status](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) codes useful when defining your endpoint's responses.
 
 Once you have got your `airports-config.yaml` file completed you can even have a go at generating a server from that definition. Below are instructions using javascript and java.
 
@@ -226,7 +231,7 @@ Be ready to demo your generated server and share your `airports-config.yaml` fil
 
 ## Before we start
 
-You will need a valid `airports-config.yaml` openAPI definition file
+You will need a valid `airports-config.yaml` openAPI definition file.
 
 ## Materials needed
 

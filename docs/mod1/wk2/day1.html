@@ -85,13 +85,24 @@
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
     <pre><code class="language-javascript">const bcrypt = require('bcrypt')
 ...
-bcrypt.hash('password101', 10)
+bcrypt.hash('password101', 10).then(console.log)
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
 </code></pre>
     <pre><code class="language-java">import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //...
 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 String hashedPassword = passwordEncoder.encode("your password");
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
+</code></pre>
+    <p>Once you have your hash you can check it like this:</p>
+    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
+    <pre><code class="language-javascript">bcrypt.compare('password101', '$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK').then(console.log)
+// true
+</code></pre>
+    <pre><code class="language-java">BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK");
+// true
 </code></pre>
     <h3>Assignment</h3>
     <p>Use the code above to generate hashes of some demo user passwords. Then add the usernames and their hashed passwords to a database.</p>
@@ -115,16 +126,16 @@ String hashedPassword = passwordEncoder.encode("your password");
       </thead>
       <tbody>
         <tr>
-          <td>POST</td>
-          <td><code>/users</code></td>
-          <td>201</td>
-          <td>create a new user</td>
-        </tr>
-        <tr>
           <td>GET</td>
           <td><code>/users</code></td>
           <td>200</td>
           <td>retrieve all users</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td><code>/users</code></td>
+          <td>201</td>
+          <td>create a new user</td>
         </tr>
         <tr>
           <td>GET</td>
@@ -134,7 +145,7 @@ String hashedPassword = passwordEncoder.encode("your password");
         </tr>
         <tr>
           <td>PUT</td>
-          <td><code>/users</code></td>
+          <td><code>/users/{id}</code></td>
           <td>200</td>
           <td>update a user</td>
         </tr>
@@ -147,7 +158,7 @@ String hashedPassword = passwordEncoder.encode("your password");
       </tbody>
     </table>
     <p>Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.</p>
-    <p>To protect resouces we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
+    <p>To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
     <p>Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.</p>
     <p>
       <img src="https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png" alt="middleware diagram">
