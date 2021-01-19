@@ -82,7 +82,8 @@ As a reminder, here is some code which implements a secure hashing algorithm:
 ```javascript
 const bcrypt = require('bcrypt')
 ...
-bcrypt.hash('password101', 10)
+bcrypt.hash('password101', 10).then(console.log)
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
 ```
 ```java
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -90,6 +91,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //...
 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 String hashedPassword = passwordEncoder.encode("your password");
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
+```
+
+Once you have your hash you can check it like this:
+
+|Javascript|Java|
+```javascript
+bcrypt.compare('password101', '$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK').then(console.log)
+// true
+```
+```java
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK");
+// true
 ```
 
 ### Assignment
@@ -107,15 +122,15 @@ Your API should support a `User' resource. A user will need at least a name, ema
 
 |HTTP Method|URL|Status code|Description|
 |-----------|---|-----------|-----------|
-|POST|`/users`|201|create a new user|
 |GET|`/users`|200|retrieve all users|
+|POST|`/users`|201|create a new user|
 |GET|`/users/{id}`|200|retrieve a specific user|
-|PUT|`/users`|200|update a user|
+|PUT|`/users/{id}`|200|update a user|
 |DELETE|`/users/{id}`|200|delete a user|
 
 Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.
 
-To protect resouces we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
+To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
 
 Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.
 
@@ -209,7 +224,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 }
 ```
-
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/183)
 [main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day2.html)

@@ -81,7 +81,7 @@ You can address a single track resource. However we are not capturing the relati
 
 ### Documentation
 
-You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the 4 examples of online generated API documentation below:
+You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the examples of online generated API documentation below:
 
 * [Github](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos)
 * [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders)
@@ -154,9 +154,11 @@ paths:
                     elevation:
                       type: integer
                     lat:
-                      type: float
+                      type: number
+                      format: double
                     lon:
-                      type: float
+                      type: number
+                      format: double
                     tz:
                       type: string
                   example:
