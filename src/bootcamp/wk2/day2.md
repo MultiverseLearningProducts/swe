@@ -29,7 +29,9 @@ SQLite3 is a lightweight SQL database. It is often used in embedded devices such
 ## Before we start
 You need to install SQLite3. 
 
-Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, follow the instructions below (note these are Windows specific):
+Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, try `npm install sqlite3@5.0.0` instead. 
+
+If you still have errors, follow the instructions below (note these are Windows specific):
 
 * Right click on VSCode and 'run as Administrator'. Navigate to the directory where your `package.json` file is and run `npm install --global --production windows-build-tools@4.0.0`. 
 * Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute `npm install sqlite3` in the directory where your `package.json` lives.
