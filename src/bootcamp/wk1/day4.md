@@ -300,7 +300,7 @@ That is a lot to get your head around! Async functions are a key characteristic 
 * Write async tests for each of the three asyn functions using Jest
 
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/156)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/156)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day3.html)|[next](/swe/bootcamp/wk1/day5.html)
 

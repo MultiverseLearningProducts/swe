@@ -9,7 +9,7 @@ You must have familiarity with basic JavaScript concepts, specifically:
   * [JavaScript Array Methods](https://www.w3schools.com/js/js_array_methods.asp)
   * [JavaScript Arrow Functions](https://www.w3schools.com/js/js_arrow_function.asp)
   * [An overview of Node](https://www.codecademy.com/articles/what-is-node) - also watch the first 5.30 minutes of [An Introduction to Node in Visual Studio Code](https://www.youtube.com/watch?v=EIQgVdoYb0M)
-  * There is a great article on the [Community Hub](https://community.whitehat.org.uk/topics/16826/feed) which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!
+  * There is a great article on the [Community Hub](https://community.multiverse.io/topics/16826/feed) which compares statically typed languages (like JavaScript) and dynamically typed languages (like Java) - well worth a read!
 
 You must also be confident using Git to clone, add, commit and push to your Git repository.
 
@@ -116,6 +116,6 @@ Once constructed you should be able to traverse from an individual to their gran
 
 Commit your code into Github and share the link with your coach.
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/153)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/153)
 
 [main](/swe)|[next](/swe/bootcamp/wk1/day2.html)

@@ -177,5 +177,5 @@ dl div{
 
 ![example of a hero image](https://user-images.githubusercontent.com/4499581/95021581-adac1200-0669-11eb-84da-cfdf9befc65c.jpg)
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day2.html)|[next](/swe/bootcamp/wk3/day4.html)

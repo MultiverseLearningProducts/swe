@@ -198,5 +198,5 @@ So we have covered responsive layouts using @media (media queries), and taken a 
 * Can you implement a responsive layout for your restaurant's app?
 * Use @media and CSS 'grid'
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day1.html)|[next](/swe/bootcamp/wk3/day3.html)

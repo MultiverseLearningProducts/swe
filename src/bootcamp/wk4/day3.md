@@ -153,5 +153,5 @@ You'll be reviewing code too. When you are happy you can merge the pull request.
 * Merge each others work into master
 * Remember to `git pull origin master` when work is merged
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk4/day2.html)|[next](/swe/bootcamp/wk4/day4.html)

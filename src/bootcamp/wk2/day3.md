@@ -178,5 +178,5 @@ curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/
 * Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is in the database in your Node.js script.
 * Write unit tests that verify your seed data has loaded into the in memory database ok.
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/160)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/160)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day2.html)|[next](/swe/bootcamp/wk2/day4.html)

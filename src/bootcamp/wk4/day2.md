@@ -221,5 +221,5 @@ here we reply with `res.send()` on the frontend we are waiting for this, we can 
 * Make ajax GET requests using `fetch`
 * Make ajax POST requests using `fetch`
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk4/day1.html)|[next](/swe/bootcamp/wk4/day3.html)

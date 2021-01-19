@@ -121,5 +121,5 @@ Quiz to follow.
 
 ## Assignment
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/182)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/182)
 [main](/swe)|[prev](/swe/mod1/wk1/day4.html)|[next](/swe/mod1/wk2/day1.html)

@@ -61,5 +61,5 @@ Add a ratings system for the restaurant model
 * On a restaurant page you should be able to add a rating.
 * Ratings need to be displayed on the restaurant page, and the card.
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day3.html)|[next](/swe/bootcamp/wk3/day5.html)

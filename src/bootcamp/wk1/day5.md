@@ -125,7 +125,7 @@ Note that the TypeScript files must use `export = NameOfClass;` rather than `mod
 Jest test can be run as normal on the generated JavaScript files.
 
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/157)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/157)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day4.html)|[next](/swe/bootcamp/wk2/day1.html)
 
