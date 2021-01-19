@@ -7,6 +7,7 @@ You have a data model for a restaurant ordering app. The problem is all the data
 <hr/>
 
 ## Lesson 1 - SQL
+A Relational Database Management System (RDBMS) refers to a database that stores data using rows and columns. Structured Query Language (SQL) is used to query data in RDMSs.
 
 ## Learning Objectives
 
@@ -18,6 +19,7 @@ Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_synt
 ----
 
 ## Lesson 2 - SQLite3
+SQLite3 is a lightweight SQL database. It is often used in embedded devices such as phones and games consoles.
 
 ## Learning Objectives
 
@@ -25,9 +27,34 @@ Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_synt
 * Execute CRUD statements on a database
 
 ## Before we start
+You need to install SQLite3. 
 
-* Make sure you have SQLite3 installed `npm install sqlite3` will do it.
+Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, follow the instructions below (note these are Windows specific):
 
+* Right click on VSCode and 'run as Administrator'. Navigate to the directory where your `package.json` file is and run `npm install --global --production windows-build-tools@4.0.0`. 
+* Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute `npm install sqlite3` in the directory where your `package.json` lives.
+
+To check your install is successful, paste this code into a file named `dbconnect.js`:
+
+```js
+const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database(':memory:', (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Connected to the in-memory SQlite database.');
+  });
+  
+  // close the database connection
+  db.close((err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+  });
+```
+run the file with `node dbconnect.js`. You should see the console logs appear. You have successfully connected to the sqlite in-memory database.
 
 ## Materials needed
 
