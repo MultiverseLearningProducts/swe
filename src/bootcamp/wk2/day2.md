@@ -16,8 +16,6 @@ A Relational Database Management System (RDBMS) refers to a database that stores
 ## Assignment
 Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database.
 
-Note that the `WHERE` clause is really important when querying. Often we want one record, or a set of records only. Use the `WHERE` clause to filter out the data you need. 
-
 ----
 
 ## Lesson 2 - SQLite3 Installation
@@ -25,20 +23,15 @@ SQLite3 is a lightweight SQL database. It is often used in embedded devices such
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed)
 
-## Learning Objectives
+## Assignment
+Follow these instructions to install SQLite:
 
-* Connect to a database (in-memory)
-* Execute CRUD statements on the database
+  1. Create a new directory for this week's work
+  2. run `npm init` to create a new `package.json` file. 
+  3. Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, try `npm install sqlite3@5.0.0` instead. If you still have errors, follow the instructions below (note these are Windows specific):
 
-## Before we start
-You need to install SQLite3. 
-
-Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, try `npm install sqlite3@5.0.0` instead. 
-
-If you still have errors, follow the instructions below (note these are Windows specific):
-
-* Right click on VSCode and 'run as Administrator'. Navigate to the directory where your `package.json` file is and run `npm install --global --production windows-build-tools@4.0.0`. 
-* Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute `npm install sqlite3` in the directory where your `package.json` lives.
+    * Right click on VSCode and 'run as Administrator'. Navigate to the directory where your `package.json` file is and run `npm install --global --production windows-build-tools@4.0.0`. 
+    * Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute `npm install sqlite3` in the directory where your `package.json` lives.
 
 To check your install is successful, paste this code into a file named `dbconnect.js`:
 
@@ -64,52 +57,79 @@ run the file with `node dbconnect.js`. You should see the console logs appear. Y
 
 
 ## Lesson 3 - Using Node.js to run queries
-In this lesson you need to recreate the `Customer` table you used in the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp). To simplify things, you can use an in-memory sqllite database. 
+In this lesson you need to recreate the `Customer` table you used in the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp). You will also use a persistent database (i.e. one which lives on your file system).
 
 You may find the following links useful:
-[How to connect to a database](https://www.sqlitetutorial.net/sqlite-nodejs/connect/)
-[How to insert data into a database](https://www.sqlitetutorial.net/sqlite-nodejs/insert/)
-[How to query data from a database](https://www.sqlitetutorial.net/sqlite-nodejs/query/)
+  * [How to connect to a database](https://www.sqlitetutorial.net/sqlite-nodejs/connect/)
+  * [How to insert data into a database](https://www.sqlitetutorial.net/sqlite-nodejs/insert/)
+  * [How to query data from a database](https://www.sqlitetutorial.net/sqlite-nodejs/query/)
 
-Here is an example of how to create a table and insert some rows into the table - please note this is very simplified and you will need to expand the code to include more columns.
+Here is an example of how to create a table and insert some rows into the table - please note this is simplified and in your assignment you will need to expand the code to include more columns.
 
 ```js
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');
+
+// use a persistent database named myDb.sqlite
+const db = new sqlite3.Database('./myDb.sqlite');
 
 /**
  * Executes the SQL statements one at a time.
  * 
- * Please note that this does not have any error 
- * handling as yet.
+ * Note the use of try/finally to ensure resources get closed 
+ * whether an error occurs or not
+ * 
  */
-db.serialize(function() {
-    db.run("CREATE TABLE CUSTOMERS (name TEXT)");
+try {
+    db.serialize(function () { // serialize means execute one statement at a time
 
-    const stmt = db.prepare("INSERT INTO CUSTOMERS VALUES (?)");
+        // create the empty table with specific columns and column types
+        db.run("CREATE TABLE CUSTOMERS (CustomerName TEXT, ContactName TEXT)");
 
-    for (let i = 0; i < 10; i++) {
-        stmt.run("Customer" + i);
-    }
+        let stmt;
 
-    stmt.finalize(); // releases any any internal resources 
-                     // and deallocates any memory
+        // insert 2 rows
+        try {
+            stmt = db.prepare(`INSERT INTO CUSTOMERS VALUES 
+                        ('Fred Flintstone', 'Wilma Flintstone') , 
+                        ('Wilma Flintstone', 'Fred Flintstone')`);
+            stmt.run();
+        } finally {
+            // release resources 
+            stmt.finalize();
+        }
 
-    db.each("SELECT rowid AS id, name FROM CUSTOMERS", function(err, row) {
-        console.log(row.id + ": " + row.name);
+        // select the rows and print them out
+        db.each("SELECT * FROM CUSTOMERS",
+            function (err, rows) {  // this is a callback function
+                console.log(rows);  // rows contains the matching rows
+            }
+        );
     });
-});
-
-db.close();
-```
+} finally {
+    db.close();
+}
+```     
+This code uses a [try/finally](https://www.w3schools.com/jsref/jsref_try_catch.asp) block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.
 
 ## Assignment
-  * Recreate the Customer table from your [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) in an in-memory database
-  * Insert a number of rows into the table
+  * Use the code above to recreate the Customer table from the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) in a persistent database
+  * Insert at least 3 rows into the table
   * Query the table and print out the results
-  * Work out how to create a persistent database (i.e. one which is held on file rather than in-memory)
+  * Modify the code to query for only the rows which match a specific condition. Hint: use the `WHERE` clause to filter out the data you need. 
 
-## Lesson 4 - Restaurant tables
+## Lesson 4 - Visualising your database
+There is an `sqlite` plugin for VSCode which allows you to visualise your database.
+
+## Assignment
+Install the `sqlite` plugin for VSCode as follows:
+  * Click on the `Extensions` icon and choose `sqlite` by `alexcvzz`
+  * Select `View-Command Palette` from the menu
+  * Type `SQLite: Open Database`
+  * Your database from the previous exercise should appear, select this
+  * A `SQLITE EXPLORER` window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.
+
+
+## Lesson 5 - Restaurant tables
 Your coach will provide you with a database design for a restaurant.
 
 ## Assignment
