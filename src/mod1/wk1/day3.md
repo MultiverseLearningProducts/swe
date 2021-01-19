@@ -82,7 +82,7 @@ You can read through the session notes from Day 1-3.
 
 ## Materials needed
 
-[https://applied.whitehat.org.uk/mod/quiz/](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)
+[https://applied.multiverse.io/mod/quiz/](https://applied.multiverse.io/mod/quiz/view.php?id=8737)
 
 ## Lesson
 
@@ -92,7 +92,7 @@ Before taking the quiz below you will have some time to read back over the sessi
 
 ## Assignment
 
-Can you complete [this Quiz](https://applied.whitehat.org.uk/mod/quiz/view.php?id=8737)?
+Can you complete [this Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=8737)?
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/180)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/180)
 [main](/swe)|[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)

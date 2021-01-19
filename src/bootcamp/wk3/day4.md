@@ -181,5 +181,5 @@ app.put('/restaurants/:id/edit', async (req, res) => {
 * Add menus to a restaurant
 * Add items to a menu
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day3.html)|[next](/swe/bootcamp/wk3/day5.html)

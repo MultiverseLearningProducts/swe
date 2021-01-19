@@ -182,7 +182,7 @@ You can upload this to a site like [readme.com](https://readme.com/) (or use a [
 
 In an OpenAPI `airports-config.yaml` file create a complete set of documented RESTful endpoints for the `/airports` resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for [openapi here](https://swagger.io/resources/open-api/). We want routes to create, read (all airports and a single airport), update and delete;
 
-You might find this [list of HTTP status](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) codes useful when defining your endpoint's responses.
+You might find this [list of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) useful when defining your endpoint's responses.
 
 Once you have got your `airports-config.yaml` file completed you can even have a go at generating a server from that definition. Below are instructions using javascript and java.
 
@@ -551,6 +551,6 @@ We have 28,000 airport records. Thats a lot. This would be much easier to consum
 
 Based on your `airports-config.yaml` OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Implement pagination for the GET `/airports` route enabling users to define a page number (required) and an optional `pageSize` query parameter (this should default to 25).
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/179)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/179)
 [main](/swe)|[prev](/swe/mod1/wk1/day1.html)|[next](/swe/mod1/wk1/day3.html)
 

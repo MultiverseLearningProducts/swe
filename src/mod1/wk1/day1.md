@@ -138,7 +138,7 @@ Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_
 
 ## Assignment
 
-Below is a URL. Can you make an HTTP request to that URL using [postman](https://www.postman.com/)? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on https://applied.whitehat.org.uk.
+Below is a URL. Can you make an HTTP request to that URL using [postman](https://www.postman.com/)? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on https://applied.multiverse.io.
 
 1. Make a GET request to https://http-challenge.whitehatcoaches.org.uk/
 1. Follow the instructions you receive from the response
@@ -222,5 +222,5 @@ Can you repeat the calls that we made earlier to https://http-challenge.whitehat
 const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
 ```
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/178)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)

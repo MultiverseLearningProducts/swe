@@ -329,5 +329,5 @@ Symmetrical encryption gets it's name from the key that is the same on both side
 * Use slack to pass your messages to each other
 * Try to decode other peoples messages using your code (does it work?)
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/181)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/181)
 [main](/swe)|[prev](/swe/mod1/wk1/day3.html)|[next](/swe/mod1/wk1/day5.html)

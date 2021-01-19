@@ -316,5 +316,5 @@ So, instead of passing a user name and password to our Login page and looking th
 
  
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/184)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/184)
 [main](/swe)|[prev](/swe/mod1/wk2/day1.html)|[next](/swe/mod1/wk2/day3.html)

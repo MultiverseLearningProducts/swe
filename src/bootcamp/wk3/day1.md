@@ -202,5 +202,5 @@ Finally remove the `public/index.html` file as that will interfere with your `/`
 * Create another template for your new `/about` page
 * Display your name on the about page
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day5.html)|[next](/swe/bootcamp/wk3/day2.html)

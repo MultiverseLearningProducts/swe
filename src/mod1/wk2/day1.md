@@ -225,5 +225,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/183)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/183)
 [main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day2.html)

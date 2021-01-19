@@ -119,6 +119,6 @@ Write some JOIN statements that do the following:
 * SELECT all the menus, with the total cost of all the menu items summed, and have the list in descending order (most expensive first)
 * [extension activity] explore the documentation for SQL the `SUM`, `COUNT` and `GROUP BY` aggregate functions
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/159)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/159)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day1.html)|[next](/swe/bootcamp/wk2/day3.html)
 

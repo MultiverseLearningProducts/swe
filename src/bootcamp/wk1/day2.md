@@ -231,7 +231,7 @@ To run JSdoc on all your classes in the current directory, run `jsdoc .`
 ## Assignment
 Document your classes using the JSDoc comment structure and generate the HTML documentation. Commit this to your Git reposititory.
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/154)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/154)
 
 [main](/swe)|[prev](/swe/bootcamp/wk1/day1.html)|[next](/swe/bootcamp/wk1/day3.html)
 
