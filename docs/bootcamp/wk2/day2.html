@@ -14,6 +14,7 @@
     <h2>Overview of the day</h2>
     <p>You have a data model for a restaurant ordering app. The problem is all the data is lost when your app stops. The data that makes the app persists only in memory, so when the process dies, so does the data. Today is about fixing that.</p>
     <h2>Lesson 1 - SQL</h2>
+    <p>A Relational Database Management System (RDBMS) refers to a database that stores data using rows and columns. Structured Query Language (SQL) is used to query data in RDMSs.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Understand how to execute basic SQL statements</li>
@@ -22,15 +23,38 @@
     <p>Work through the <a href="https://www.w3schools.com/sql/sql_syntax.asp">W3Schools SQL Tutorial</a> up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database.</p>
     <hr>
     <h2>Lesson 2 - SQLite3</h2>
+    <p>SQLite3 is a lightweight SQL database. It is often used in embedded devices such as phones and games consoles.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Connect to a database</li>
       <li>Execute CRUD statements on a database</li>
     </ul>
     <h2>Before we start</h2>
+    <p>You need to install SQLite3.</p>
+    <p>Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives. If you get errors, follow the instructions below (note these are Windows specific):</p>
     <ul>
-      <li>Make sure you have SQLite3 installed <code>npm install sqlite3</code> will do it.</li>
+      <li>Right click on VSCode and 'run as Administrator'. Navigate to the directory where your <code>package.json</code> file is and run <code>npm install --global --production windows-build-tools@4.0.0</code>.</li>
+      <li>Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives.</li>
     </ul>
+    <p>To check your install is successful, paste this code into a file named <code>dbconnect.js</code>:</p>
+    <pre><code class="language-js">const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database(':memory:', (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Connected to the in-memory SQlite database.');
+  });
+  
+  // close the database connection
+  db.close((err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+  });
+</code></pre>
+    <p>run the file with <code>node dbconnect.js</code>. You should see the console logs appear. You have successfully connected to the sqlite in-memory database.</p>
     <h2>Materials needed</h2>
     <ul>
       <li>Sqlite3</li>
