@@ -16,20 +16,26 @@ A Relational Database Management System (RDBMS) refers to a database that stores
 ## Assignment
 Work through the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) up to and including the 'SQL Delete' lesson. This tutorial will enable you to understand how to create, read, update and delete (CRUD) data to / from a SQL database.
 
+Note that the `WHERE` clause is really important when querying. Often we want one record, or a set of records only. Use the `WHERE` clause to filter out the data you need. 
+
 ----
 
-## Lesson 2 - SQLite3
+## Lesson 2 - SQLite3 Installation
 SQLite3 is a lightweight SQL database. It is often used in embedded devices such as phones and games consoles.
+
+!(https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed)
 
 ## Learning Objectives
 
-* Connect to a database
-* Execute CRUD statements on a database
+* Connect to a database (in-memory)
+* Execute CRUD statements on the database
 
 ## Before we start
 You need to install SQLite3. 
 
-Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, follow the instructions below (note these are Windows specific):
+Execute `npm install sqlite3` in the directory where your `package.json` lives. If you get errors, try `npm install sqlite3@5.0.0` instead. 
+
+If you still have errors, follow the instructions below (note these are Windows specific):
 
 * Right click on VSCode and 'run as Administrator'. Navigate to the directory where your `package.json` file is and run `npm install --global --production windows-build-tools@4.0.0`. 
 * Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute `npm install sqlite3` in the directory where your `package.json` lives.
@@ -56,20 +62,60 @@ const db = new sqlite3.Database(':memory:', (err) => {
 ```
 run the file with `node dbconnect.js`. You should see the console logs appear. You have successfully connected to the sqlite in-memory database.
 
-## Materials needed
 
-* Sqlite3
+## Lesson 3 - Using Node.js to run queries
+In this lesson you need to recreate the `Customer` table you used in the [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp). To simplify things, you can use an in-memory sqllite database. 
 
-## Lesson
+You may find the following links useful:
+[How to connect to a database](https://www.sqlitetutorial.net/sqlite-nodejs/connect/)
+[How to insert data into a database](https://www.sqlitetutorial.net/sqlite-nodejs/insert/)
+[How to query data from a database](https://www.sqlitetutorial.net/sqlite-nodejs/query/)
 
-!(https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed)
+Here is an example of how to create a table and insert some rows into the table - please note this is very simplified and you will need to expand the code to include more columns.
 
-The `WHERE` clause is really important when querying. Often we want one record, or a set of records only. Use the `WHERE` clause to filter out the data you need. 
+```js
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database(':memory:');
+
+/**
+ * Executes the SQL statements one at a time.
+ * 
+ * Please note that this does not have any error 
+ * handling as yet.
+ */
+db.serialize(function() {
+    db.run("CREATE TABLE CUSTOMERS (name TEXT)");
+
+    const stmt = db.prepare("INSERT INTO CUSTOMERS VALUES (?)");
+
+    for (let i = 0; i < 10; i++) {
+        stmt.run("Customer" + i);
+    }
+
+    stmt.finalize(); // releases any any internal resources 
+                     // and deallocates any memory
+
+    db.each("SELECT rowid AS id, name FROM CUSTOMERS", function(err, row) {
+        console.log(row.id + ": " + row.name);
+    });
+});
+
+db.close();
+```
+
+## Assignment
+  * Recreate the Customer table from your [W3Schools SQL Tutorial](https://www.w3schools.com/sql/sql_syntax.asp) in an in-memory database
+  * Insert a number of rows into the table
+  * Query the table and print out the results
+  * Work out how to create a persistent database (i.e. one which is held on file rather than in-memory)
+
+## Lesson 4 - Restaurant tables
+Your coach will provide you with a database design for a restaurant.
 
 ## Assignment
 
 1. Compose the SQL queries to do the following:
-    * Create table if not exists
+    * Create a database if one does not exist
     * Implement the restaurants table
     * Create an entry for a restaurant using "INSERT"
     * Read back your restaurant using "SELECT"
