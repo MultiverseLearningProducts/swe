@@ -97,9 +97,36 @@
       </tbody>
     </table>
     <p>Nested resources simple extend the same pattern.</p>
-    <nav class="tabbed-code-block"><a href="#http method">HTTP Method</a><a href="#url">URL</a><a href="#status code">Status code</a><a href="#description">Description</a><a href="#
-">
-</a><a href="#get">GET</a></nav>
+    <table>
+      <thead>
+        <tr>
+          <th>HTTP Method</th>
+          <th>URL</th>
+          <th>Status code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td><code>/albums/{id}/tracks</code></td>
+          <td>200</td>
+          <td>return the tracks for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td><code>/albums/{id}/tracks</code></td>
+          <td>201</td>
+          <td>create a new track for the album with the id specified in the URL</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td><code>/albums/{album_id}/tracks/{track_id}</code></td>
+          <td>200</td>
+          <td>return the track with the id specified in the URL from the album with the id specified in the URL</td>
+        </tr>
+      </tbody>
+    </table>
     <p>Can you see the pattern?</p>
     <p>❓ How might you update a track for a given album?</p>
     <p>❓ Can you match the CRUD operations to http methods?</p>

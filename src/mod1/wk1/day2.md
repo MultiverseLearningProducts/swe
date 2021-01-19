@@ -60,6 +60,7 @@ A 'resource' some thing we want to access or interact with is also a fundamental
 Nested resources simple extend the same pattern.
 
 |HTTP Method|URL|Status code|Description|
+|-----------|---|-----------|-----------|
 |GET|`/albums/{id}/tracks`|200|return the tracks for the album with the id specified in the URL|
 |POST|`/albums/{id}/tracks`|201|create a new track for the album with the id specified in the URL|
 |GET|`/albums/{album_id}/tracks/{track_id}`|200|return the track with the id specified in the URL from the album with the id specified in the URL|
