@@ -10,9 +10,9 @@ Today is just about practicing what you have learnt so far. We will also briefly
 
 ## Learning Objectives
 
-* Demonstrate what you have learnt this week by writing classes
-* Set up Jest tests to unit test your classes
-* Write Async tests to test timer functions
+* Demonstrate what you have learnt this week by writing classes for a new domain
+* Set up Jest tests to unit test these classes
+* Write tests to test asynchronous timer functions
 
 ## Before we start
 
@@ -61,12 +61,12 @@ You will need to commit the following to your GitHub repository:
    * A screenshot of your coverage report (aim for 100% coverage)
    * JSDoc documentation generation
 
-## TypeScript - what is it?
+## Lesson 2 - TypeScript 
 TypeScript can be thought of as JavaScript with additional features like strong static typing, compilation, and object oriented programming. Here is a TypeScript version of our Bag we used in the Airports assignment:
 ```js
 class Bag {
  
-    private weight:number; 
+    private weight:number; // kg
 
     constructor(weight:number) {
         if (!weight) {
@@ -75,15 +75,15 @@ class Bag {
         this.weight = weight;
     }
 
-    getWeight() {
-        return this.weight;
+    public getWeight():number { 
+        return this.weight*1000; // return it in grams
     }
 }
 
 export = Bag;
 ```
 
-Notice how we specify the keyword `private` against the weight variable. This means the weight cannot be directly accessed, instead, the accessor method `getWeight()` must used.
+Notice how we specify the keyword `private` against the weight variable. This means the weight cannot be directly accessed, instead, the accessor method `getWeight()` must used. This works to our advantage as we can hide the fact we are storing the weight as kilograms internally, and exopose it in grams.
 
 So, this will NOT work:
 ```js
@@ -122,7 +122,7 @@ You can then run `tsc` to have the Typescript compiler generate the `.js` files 
 
 Note that the TypeScript files must use `export = NameOfClass;` rather than `module.exports`.
 
-Jest etc can be run as normal on the generated 
+Jest test can be run as normal on the generated JavaScript files.
 
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/157)
