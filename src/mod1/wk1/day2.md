@@ -259,7 +259,7 @@ First of all find and install the dependencies your server is going to need to c
     "express": "^4.17.1",
     "swagger-jsdoc": "^6.0.1",
     "swagger-ui-express": "^4.1.6",
-    "yamljs": "^0.3.0"
+    "js-yaml": "^4.0.0"
   }
 }
 ```
@@ -296,8 +296,9 @@ const express = require('express')
 const app = express()
 const swaggerUi = require('swagger-ui-express')
 const airports = require('./airports.json')
-const YAML = require('yamljs')
-const docs = YAML.load('./airports-config.yaml')
+const YAML = require('js-yaml')
+const fs = require('fs')
+const docs = YAML.load(fs.readFileSync('./airports-config.yaml').toString())
 const swaggerDocs = require('swagger-jsdoc')({
     swaggerDefinition: docs,
     apis: ['./server.js']
