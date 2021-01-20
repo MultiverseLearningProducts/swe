@@ -116,7 +116,7 @@ describe("My Airport server", () => {
 })  
 ```
 
-Notice how we are importing our `app` object and passing it to supertest (we called that import `request` as thats what it represents).
+Notice how we are importing our `app` object and passing it to supertest (we called that import `request` as thats what it represents). You can look at the examples on the [supertest npm page](https://www.npmjs.com/package/supertest) to get going with GET and POST.
 
 ## Assignment
 
