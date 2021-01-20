@@ -13,15 +13,128 @@
     <h1>Week 2 > Day 3</h1>
     <h2>Overview of the day</h2>
     <p>Today we are starting to use our SQL skills in our Node.js code. This is an important step where we start to connect our code to a database.</p>
-    <h2>Lesson 1 - SQLite3 in Node.js</h2>
+    <h2>Lesson 1 - SQLite3 Installation</h2>
+    <p>SQLite3 is a lightweight SQL database. It is often used in embedded devices such as phones and games consoles.</p>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQpmJ3NMHXf3v-uh4nT3O0keOjivstLweqSi7ZUbhvdFI1M6o4b2cDSFKFdz5YfakbewFyNjIdbrmBI/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <h2>Assignment</h2>
+    <p>Follow these instructions to install SQLite:</p>
+    <ol>
+      <li>
+        <p>Create a new directory for this week's work. <code>cd</code> into it.</p>
+      </li>
+      <li>
+        <p>run <code>npm init</code> to create a new <code>package.json</code> file.</p>
+      </li>
+      <li>
+        <p>Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives. If you get errors, try <code>npm install sqlite3@5.0.0</code> instead. If you still have errors, follow the instructions below (note these are Windows specific):</p>
+        <ul>
+          <li>Right click on VSCode and 'run as Administrator'. Navigate to the directory where your <code>package.json</code> file is and run <code>npm install --global --production windows-build-tools@4.0.0</code>.</li>
+          <li>Close VSCode and run it again (this time not as administrator i.e. just double click on the icon). Execute <code>npm install sqlite3</code> in the directory where your <code>package.json</code> lives.</li>
+        </ul>
+      </li>
+    </ol>
+    <p>To check your install is successful, paste this code into a file named <code>dbconnect.js</code>:</p>
+    <pre><code class="language-js">const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database(':memory:', (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Connected to the in-memory SQlite database.');
+  });
+  
+  // close the database connection
+  db.close((err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+  });
+</code></pre>
+    <p>run the file with <code>node dbconnect.js</code>. You should see the console logs appear. You have successfully connected to the sqlite in-memory database.</p>
+    <hr>
+    <h2>Lesson 2 - Using Node.js to run queries</h2>
+    <p>You may find the following links useful:</p>
+    <ul>
+      <li><a href="https://www.sqlitetutorial.net/sqlite-nodejs/connect/">How to connect to a database</a></li>
+      <li><a href="https://www.sqlitetutorial.net/sqlite-nodejs/insert/">How to insert data into a database</a></li>
+      <li><a href="https://www.sqlitetutorial.net/sqlite-nodejs/query/">How to query data from a database</a></li>
+    </ul>
+    <p>Here is simplified example of how to create a table and insert some rows into the table.</p>
+    <pre><code class="language-js">const sqlite3 = require('sqlite3').verbose();
+
+// use a persistent database named myDb.sqlite
+const db = new sqlite3.Database('./db.sqlite');
+
+/**
+ * Executes the SQL statements one at a time.
+ * 
+ * Note the use of try/finally to ensure resources get closed 
+ * whether an error occurs or not
+ * 
+ */
+try {
+    db.serialize(function () { // serialize means execute one statement at a time
+
+        // create the empty table with specific columns and column types
+        db.run("CREATE TABLE CUSTOMERS (CustomerName TEXT, ContactName TEXT)");
+
+        let stmt;
+
+        // insert 2 rows
+        try {
+            stmt = db.prepare(`INSERT INTO CUSTOMERS VALUES 
+                        ('Fred Flintstone', 'Wilma Flintstone') , 
+                        ('Wilma Flintstone', 'Fred Flintstone')`);
+            stmt.run();
+        } finally {
+            // release resources 
+            stmt.finalize();
+        }
+
+        // select the rows and print them out
+        db.each("SELECT * FROM CUSTOMERS",
+            function (err, rows) {  // this is a callback function
+                console.log(rows);  // rows contains the matching rows
+            }
+        );
+    });
+} finally {
+    db.close();
+}
+</code></pre>
+    <p>This code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
+    <pre><code class="language-javascript">const sqlite3 = require('sqlite3')
+const db = new sqlite3.Database('./db.sqlite')
+</code></pre>
+    <p>In the above lines above we import the <code>sqlite3</code> package then on the next line we access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instantiate a new instance of our database for our programme. We can pass some config to our <code>Database</code> constructor. We are passing in a relative path where the database file either already exists, or if it doesn't exist where we would like it to be created and with what name.</p>
+    <p>This file/database will be written to disc, data we store here we can access even when our programme has stopped running. We are going to interact with our database using javascript. The challenge we can use to start working with a database in our Node.js programme is to load the data from our file of airports into our database.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Use your SQL commands from the previous day to create your 3 Restaurant tables</li>
+      <li>Insert at least 2 rows into each table</li>
+      <li>Query data from the tables</li>
+      <li>Modify the code to query for only the rows which match a specific condition. Hint: use the <code>WHERE</code> clause to filter out the data you need.</li>
+      <li>Use a JOIN to query tables and print out the results</li>
+    </ul>
+    <hr>
+    <h2>Lesson 3 - Visualising your database</h2>
+    <p>There is an <code>sqlite</code> plugin for VSCode which allows you to visualise your database.</p>
+    <h2>Assignment</h2>
+    <p>Install the <code>sqlite</code> plugin for VSCode as follows:</p>
+    <ul>
+      <li>Click on the <code>Extensions</code> icon and choose <code>sqlite</code> by <code>alexcvzz</code></li>
+      <li>Select <code>View-Command Palette</code> from the menu</li>
+      <li>Type <code>SQLite: Open Database</code></li>
+      <li>Your database from the previous exercise should appear, select this</li>
+      <li>A <code>SQLITE EXPLORER</code> window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.</li>
+    </ul>
+    <hr>
+    <p><strong>PLEASE NOTE THAT THE REMAINDER OF THIS PAGE NEEDS FURTHER WORK</strong></p>
+    <h2>Lesson 4 - Loading JSON data into SQLite3 using Node.js</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Install and initiate a database in a Node.js project</li>
-      <li>Execute queries on our database in Node.js</li>
-    </ul>
-    <h2>Before we start</h2>
-    <ul>
-      <li>ensure you have <code>sqlite3</code> installed</li>
+      <li>Load a table with existing data using Node.js</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
@@ -29,14 +142,6 @@
     </ul>
     <pre><code class="language-sh">curl https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json --output airports.json
 </code></pre>
-    <h2>Lesson</h2>
-    <p>Make a new project folder and <code>cd</code> into it. <code>npm init</code> and install sqlite3 in your node project.</p>
-    <h3>Initiation and connection to the database</h3>
-    <pre><code class="language-javascript">const sqlite3 = require('sqlite3')
-const db = new sqlite3.Database('./db.sqlite')
-</code></pre>
-    <p>In the lines above we import the <code>sqlite3</code> package then on the next line we access a constructor on the <code>sqlite3</code> object and use the <code>new</code> keyword to instantiate a new instance of our database for our programme. We can pass some config to our <code>Database</code> constructor. We are passing in a relative path where the database file either already exists, or if it doesn't exist where we would like it to be created and with what name.</p>
-    <p>This file/database will be written to disc, data we store here we can access even when our programme has stopped running. We are going to interact with our database using javascript. The challenge we can use to start working with a database in our Node.js programme is to load the data from our file of airports into our database.</p>
     <p>Have a look at an example of an airport object:</p>
     <pre><code class="language-json">{
   "icao": "KPAE",
@@ -124,7 +229,7 @@ describe('SQLite3', () => {
       <li>check that your tests are passing ok</li>
     </ul>
     <hr>
-    <h2>Lesson 2 - Consolidate SQLite3 in Node.js</h2>
+    <h2>Lesson 2 - TODO Consolidate SQLite3 in Node.js</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Implement nested iteration</li>
