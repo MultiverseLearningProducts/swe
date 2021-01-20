@@ -158,7 +158,7 @@ The set of activity samples when considered together can help provide an impress
 
 In your own words can you explain the difference between the Project Sponsor and the Users?
 
-[Project Sponsor and Users Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7992&action=editsubmission)
+[Project Sponsor and Users Assignment](https://applied.multiverse.io/mod/assign/view.php?id=7992&action=editsubmission)
 
 <hr/>
 
@@ -366,8 +366,8 @@ Functional models are often a way to illustrate or explain how a system needs to
 
 In your own words can you identify a functional and non-functional component of the software you have worked on.
 
-[Functional and Non-Functional Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7993&action=editsubmission)
+[Functional and Non-Functional Assignment](https://applied.multiverse.io/mod/assign/view.php?id=7993&action=editsubmission)
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
 [prev](/swe/mod3/wk1/day1.html) | [next](/swe/mod3/wk1/day3.html)
 [main](/swe)

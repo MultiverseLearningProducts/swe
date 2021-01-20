@@ -117,6 +117,6 @@ public main void() {
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed)
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [prev](/swe/mod3/wk2/day4.html)
 [main](/swe)

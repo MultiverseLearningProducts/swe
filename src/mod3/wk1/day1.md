@@ -145,6 +145,6 @@ This output forms the input for the next phase of the software development life 
 
 _Can you identify the business need that the feature you are working on addresses?_
 
-[attendance log](https://applied.whitehat.org.uk/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/198)
 [next](/swe/mod3/wk1/day2.html)
 [main](/swe)
