@@ -33,11 +33,15 @@ Integration tests are different. We use these to verify the behavior of differen
 
 What do I mean by static an dynamic? Unit tests are static and Integration tests are usually dynamic? The easiest way to understand this is to think of a car. We can test a car in the car showroom. We can check things like:
 
+![static van](https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg)
+
 1. Do the lights work
 1. Does the steering move the wheels?
 1. Can you lock the doors
 
 The car does not have to be moving for us to test these things. These are static tests. If we wanted to test the following:
+
+![dynamic](https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&hash=193E23BD23DFD2666426DB2E5C8FFE92)
 
 1. The breaking distances
 1. Cornering
@@ -61,7 +65,58 @@ A guide is to test the happy path, and test for likely errors like; wrong conten
 
 ### Running in test mode
 
-Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run. Have a look at your server, think about how you might have to adapt your code so it's easy to start and stop the server from your tests.
+Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run.
+
+### Rethinking the server
+
+In our tests we will want to get hold of the server object (it's called `app`). At the moment we define and configure the server and start it in the same file. Lets not do that. Change your code to just export the `app` object:
+
+```javascript
+// app.listen(3000, () => console.log('server docs http://localhost:3000/api-docs'))
+module.exports = app
+```
+
+In a separate file you can add that line that actually starts the server and make that file your entry point:
+
+```javascript
+// /main.js
+const app = require('./server')
+app.listen(3000, () => console.log('server docs http://localhost:3000/api-docs'))
+```
+
+Now in your `package.json` you can call this file to start the server:
+
+```json
+{
+    "scripts": {
+        "start": "node main.js",
+        "test": "jest --runInBand --detectOpenHandles --verbose"
+    }
+}
+```
+
+### Writing integration tests
+
+We can use a library called `supertest` to help with the setup and tear down phase for each of our tests. Below is an example of a test file:
+
+```javascript
+const app = require('../server')
+const request = require('supertest')
+
+describe("My Airport server", () => {
+    test("can GET all the airports", (done) => {
+        request(app)
+            .get('/airports')
+            .expect(200)
+            .expect(response => {
+                expect(response.body.length).toBeGreaterThan(28000)
+            })
+            .end(done)
+    })
+})  
+```
+
+Notice how we are importing our `app` object and passing it to supertest (we called that import `request` as thats what it represents).
 
 ## Assignment
 
