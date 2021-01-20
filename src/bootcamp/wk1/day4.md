@@ -160,7 +160,7 @@ app.post('/users', function createUser(request, response) {
 
 ## Materials needed
 
-* You need [this file](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) saved in your airports project folder
+* You need [this file](https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json) saved in your airports project folder
 
 
 ## Lesson 2

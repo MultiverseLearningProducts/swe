@@ -139,10 +139,10 @@ Install the `sqlite` plugin for VSCode as follows:
 
 ## Materials needed
 
-* [airports.json](https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
+* [airports.json](https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
 
 ```sh
-curl https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json --output airports.json
+curl https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json --output airports.json
 ```
 
 Have a look at an example of an airport object:
@@ -274,7 +274,7 @@ describe('SQLite3', () => {
 Practice what we have looked at so far. Download some restaurant data from Github (run the following command in your project folder);
 
 ```sh
-curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
+curl https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
 ```
 
  This is  called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.
