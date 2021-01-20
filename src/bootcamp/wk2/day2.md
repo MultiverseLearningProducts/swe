@@ -54,12 +54,12 @@ In this assignment you need to use SQL to create the tables which correspond to 
   1. Sign up for a Repl account
   2. Create a new repl and select `SQLite` as the language
   3. Compose the SQL queries to do the following:
-    * Implement the Restaurants table - make the id of the restaurant the PRIMARY KEY (this has to be unique)
-    * Create an entry for a restaurant using "INSERT"
-    * Read back your restaurant using "SELECT"
-    * Update your restaurant using "UPDATE"
-    * Delete your restaurant using "DELETE"
-    * Use the WHERE clause to filter results
+     * Implement the Restaurants table - make the id of the restaurant the PRIMARY KEY (this has to be unique)
+     * Create an entry for a restaurant using "INSERT"
+     * Read back your restaurant using "SELECT"
+     * Update your restaurant using "UPDATE"
+     * Delete your restaurant using "DELETE"
+     * Use the WHERE clause to filter results
   4. Now compose the SQL queries to implement the Menu table and MenuItem tables and practise inserting and deleting rows (don't worry about the relationships for now)
   5. Share your repl with your coach on Slack
 
@@ -95,8 +95,6 @@ JOIN menus ON restaurants.id = menus.restaurant_id
 WHERE restaurants.id = 1;
 ```
 This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the `table_name.field_name` i.e. `menus.name`. Use the `JOIN` keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?
-
-## Assignment
 
 Write some JOIN statements that do the following:
 
