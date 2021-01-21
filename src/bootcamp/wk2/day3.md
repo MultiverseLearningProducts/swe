@@ -128,7 +128,7 @@ Install the `sqlite` plugin for VSCode as follows:
   * A `SQLITE EXPLORER` window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.
 
 ---
-## Lesson 5 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT
+## Lesson 4 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT
 Before we move on, let's take a minute to explore some more SQL features. 
 
 A column marked as a **PRIMARY KEY** is a column that has to be unique i.e. you cannot insert rows with the same value in this column. It is good practise to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:
@@ -158,7 +158,7 @@ CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN K
   * Now try removing a restaurant and see what error you get (if you don't get an error you have done something wrong!). 
 
 ---
-## Lesson 6 - Loading JSON data into SQLite3 using Node.js
+## Lesson 5 - Loading JSON data into SQLite3 using Node.js
 
 ## Learning Objectives
 In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.
