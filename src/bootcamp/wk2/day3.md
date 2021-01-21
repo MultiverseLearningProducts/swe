@@ -135,7 +135,7 @@ Install the `sqlite` plugin for VSCode as follows:
 In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.
 
 ## Materials needed
-If you are on a Mac you can run the `curl` command below to retrieve the restaurant file content and save it to a file. If you are on Windows, you can paste the URL into a browser and select to save it locally into your project directory.
+If you are on a Mac you can run the `curl` command below to retrieve the restaurant file content and save it to a file. If you are on Windows, you can paste the URL below into a browser and select to save it locally into your project directory.
 
 ```sh
 curl https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
@@ -179,48 +179,37 @@ To insert the data we need to iterate over our array of Restaurants, then each M
 
 This sounds daunting so let's break in down into steps. We'll only show a subset of the full code as you will need to complete it in your next assignment.
 
-### Step 1 - Write a failing test
-Here's an example of a Jest test which uses the `beforeAll` method to initialise the database with our tables if they don't already exist. Note that this uses airport tables but the concept is the same. The idea of the failing test helps you think about what you are actually trying to build.
+### Step 1 - Reading JSON data from a file using Node.js
+Reading from a file may take a long time hence it is performed asynchronously. Here is one version of a `load()` method which you can use, it makes use of `async`/`await`, you can also write this using Promises or Callbacks.
 
-```javascript
-describe('SQLite3', () => {
-    beforeAll(done => {
-        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
-    })
-    test('airports are loaded into the database', (done) => {
-        load((db) => {
-            db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
-                expect(row.length).toBe(3)
-                expect(row[0].name).toBe('Shenyang Dongta Airport')
-                db.get('SELECT COUNT(id) AS total FROM airports;', (err, count) => {
-                    expect(count.total).toBe(28868)
-                    done()
-                })
-            })
-        })
-    })
-})
+```js
+async function load() {
+    console.log('calling load');
+    const restaurantFile = path.join(__dirname, 'restaurants.json');
+    // wait for the restaurant data file to be read
+    const buffer = await fsp.readFile(restaurantFile);
+    const restaurants = (JSON.parse(String(buffer)));
+    return restaurants;
+}
 ```
 
-### Step 2 - Reading JSON data from a file using Node.js
-TODO
+### Step 1 - Load the JSON data into your tables using Node.js
+Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. You will need to create Prepared Statements to do this, for example, 
 
-### Step 3 - Load the JSON data into your tables using Node.js
-TODO
 ```SQL
-INSERT INTO airports (icao, iata, name, city, state, country, elevation, lat, lon, tz) VALUES (?,?,?,?,?,?,?,?,?,?);
+db.prepare("INSERT INTO MENU_ITEMS (menu_id, name, price) VALUES (?,?,?)");
 ```
-All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of airports. When you call `db.run` the first argument is the string above, and the second argument is an array of all the values you want to store, the values get swapped with the "?", your values have to be in the same order as the fields.
+
+All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call `db.run` the first argument is the string above, and the second argument is an array of all the values you want to store, the values get swapped with the "?", your values have to be in the same order as the fields.
 
 ## Assignment
 * Ensure you have fully completed Day 2's assignments and you have the SQL to create your 3 tables, linked together by FOREIGN KEYs
 * Create a js file (named `initialiseDB.js`) which contains the code to CREATE your tables, we want to keep this separate from the code which INSERTS the data.
 * Create a js file (named `populateDB.js`) which contains the code to load the JSON data and INSERTS the rows.
-* Write a function called `load()` which loads the JSON data from a file into a variable
-* Write code within `db.serialize` which uses a recursive function to load each Restaurant, Menu & MenuItem into the database. 
+* Write a function called `load()` which loads the JSON data as an array of arrays from a file into a variable (see above)
+* Write code within `db.serialize` which uses a recursive function to load each Restaurant, Menu & MenuItem into the database 
 * Remember to use `try/catch/finally` blocks to handle errors and close both the statements and database.
-* Write unit tests that verify your seed data has loaded into the in memory database ok.
-
+* Write a unit test that verify your seed data has loaded into the in memory database ok.
 
 
 ## IGNORE THIS LESSON FOR NOW - TO BE SORTED
@@ -302,7 +291,28 @@ Maybe this seems easy. We have an array of airports, we just iterate over the ar
 
 When we have a queue of async tasks we want to perform a recursive pattern is a better option that `Array.forEach`. 
 
-## Assignment
+### Write a failing test
+Here's an example of a Jest test which uses the `beforeAll` method to initialise the database with our tables if they don't already exist. Note that this uses airport tables but the concept is the same. The idea of the failing test helps you think about what you are actually trying to build.
+
+```javascript
+describe('SQLite3', () => {
+    beforeAll(done => {
+        db.exec('CREATE TABLE IF NOT EXISTS RESTAURANTS(...);', done)
+    })
+    
+    test('restaurants are loaded into the database', (done) => {
+        load((db) => {
+            db.get('SELECT COUNT(id) AS total FROM RESTAURANTS;', (err, row) => {
+                  expect(count.total).toBe(28868)
+                  done()
+                })
+            })
+        })
+    })
+})
+```
+
+## Assignment for Airports (optional)
 
 * write a `load` function that will take a callback and call it when all the airport data has been inserted into the database.
 * export this load function from your file.
