@@ -130,13 +130,74 @@ const db = new sqlite3.Database('./db.sqlite')
       <li>A <code>SQLITE EXPLORER</code> window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.</li>
     </ul>
     <hr>
-    <p><strong>PLEASE NOTE THAT THE REMAINDER OF THIS PAGE NEEDS FURTHER WORK</strong></p>
-    <h2>Lesson 4 - Loading JSON data into SQLite3 using Node.js</h2>
+    <h2>Lesson 5 - Loading JSON data into SQLite3 using Node.js</h2>
     <h2>Learning Objectives</h2>
-    <ul>
-      <li>Load a table with existing data using Node.js</li>
-    </ul>
+    <p>In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.</p>
     <h2>Materials needed</h2>
+    <p>If you are on a Mac you can run the <code>curl</code> command below to retrieve the restaurant file content and save it to a file. If you are on Windows, you can paste the URL below into a browser and select to save it locally into your project directory.</p>
+    <pre><code class="language-sh">curl https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
+</code></pre>
+    <p>This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
+    <h2>Lesson</h2>
+    <p>Have a look at an example of a Menu Item object in the JSON:</p>
+    <pre><code class="language-json">            {
+                "title": "Cold Mezza/Starters",
+                "items": [
+                    {
+                        "name": "Houmous",
+                        "price": 5.00
+                    },
+                    {
+                        "name": "Baba Ganoush (Moutabal) (v)",
+                        "price": 5.70
+                    },
+                    {
+                        "name": "Stuffed Vine Leaves (Warak Enab)",
+                        "price": 5.70
+                    }
+                ]
+            }
+</code></pre>
+    <p>If you are not familiar with JSON syntax work through this <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON tutorial</a>.</p>
+    <p>Key points to note are that</p>
+    <ul>
+      <li>JSON objects are surrounded by curly braces {}</li>
+      <li>JSON objects are written in key/value pairs</li>
+      <li>JSON arrays are implemented with <code>[]</code> syntax</li>
+      <li>Keys and values are separated by a colon</li>
+      <li>Each key-value pair is separated by a comma</li>
+      <li>Keys must be always be strings and values must be a valid JSON data type i.e. one of string, number, object, array, boolean or null</li>
+    </ul>
+    <p>To insert the data we need to iterate over our array of Restaurants, then each Menu in the Restaurant and then over each Menu Item in each Menu to form our SQL insert queries.</p>
+    <p>This sounds daunting so let's break in down into steps. We'll only show a subset of the full code as you will need to complete it in your next assignment.</p>
+    <h3>Step 1 - Reading JSON data from a file using Node.js</h3>
+    <p>Reading from a file may take a long time hence it is performed asynchronously. Here is one version of a <code>load()</code> method which you can use, it makes use of <code>async</code>/<code>await</code>, you can also write this using Promises or Callbacks.</p>
+    <pre><code class="language-js">async function load() {
+    console.log('calling load');
+    const restaurantFile = path.join(__dirname, 'restaurants.json');
+    // wait for the restaurant data file to be read
+    const buffer = await fsp.readFile(restaurantFile);
+    const restaurants = (JSON.parse(String(buffer)));
+    return restaurants;
+}
+</code></pre>
+    <h3>Step 1 - Load the JSON data into your tables using Node.js</h3>
+    <p>Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. You will need to create Prepared Statements to do this, for example,</p>
+    <pre><code class="language-SQL">db.prepare("INSERT INTO MENU_ITEMS (menu_id, name, price) VALUES (?,?,?)");
+</code></pre>
+    <p>All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store, the values get swapped with the "?", your values have to be in the same order as the fields.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Ensure you have fully completed Day 2's assignments and you have the SQL to create your 3 tables, linked together by FOREIGN KEYs</li>
+      <li>Create a js file (named <code>initialiseDB.js</code>) which contains the code to CREATE your tables, we want to keep this separate from the code which INSERTS the data.</li>
+      <li>Create a js file (named <code>populateDB.js</code>) which contains the code to load the JSON data and INSERTS the rows.</li>
+      <li>Write a function called <code>load()</code> which loads the JSON data as an array of arrays from a file into a variable (see above)</li>
+      <li>Write code within <code>db.serialize</code> which uses a recursive function to load each Restaurant, Menu &#x26; MenuItem into the database</li>
+      <li>Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</li>
+      <li>Write a unit test that verify your seed data has loaded into the in memory database ok.</li>
+    </ul>
+    <h2>IGNORE THIS LESSON FOR NOW - TO BE SORTED</h2>
+    <h3>Airports seed data</h3>
     <ul>
       <li><a href="https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json">airports.json</a> file from week <em>you can run the following command to download the file into your project folder</em></li>
     </ul>
@@ -170,9 +231,7 @@ const db = new sqlite3.Database('./db.sqlite')
     const id = this.lastID
 })
 </code></pre>
-    <h3>Extract &#x26; Load</h3>
-    <h4>Extract airport data from file</h4>
-    <p>Once our database is setup. We are ready to go get the data into it. Can you read the data from your .json file into an array of javascript objects? Try this and console.log your array to your terminal. (or you can just use <code>require</code> to load the file see below).</p>
+    <p>Once our database is setup we are ready to go get the data into it. Can you read the data from your .json file into an array of javascript objects? Try this and console.log your array to your terminal. (or you can just use <code>require</code> to load the file see below).</p>
     <pre><code class="language-javascript">const airports = require('./airport.json')
 </code></pre>
     <h4>Load each airport object into the database</h4>
@@ -195,28 +254,26 @@ const db = new sqlite3.Database('./db.sqlite')
     <p>All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of airports. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store, the values get swapped with the "?", your values have to be in the same order as the fields.</p>
     <h4>Async?</h4>
     <p>Maybe this seems easy. We have an array of airports, we just iterate over the array and call <code>db.run</code> on for each airport. The thing is; inserting into a database is an async function. If we just call <code>db.run</code> on every item in the array what do you think will happen to the "pending callbacks" stack? Also how do we know when all the airports have been inserted into the database?</p>
-    <p>When we have a queue of async tasks we want to perform a recursive pattern is a better option that <code>Array.forEach</code>. Let's start with a failing test:</p>
-    <pre><code class="language-javascript">const load = require('./index')
-
-describe('SQLite3', () => {
+    <p>When we have a queue of async tasks we want to perform a recursive pattern is a better option that <code>Array.forEach</code>.</p>
+    <h3>Write a failing test</h3>
+    <p>Here's an example of a Jest test which uses the <code>beforeAll</code> method to initialise the database with our tables if they don't already exist. Note that this uses airport tables but the concept is the same. The idea of the failing test helps you think about what you are actually trying to build.</p>
+    <pre><code class="language-javascript">describe('SQLite3', () => {
     beforeAll(done => {
-        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
+        db.exec('CREATE TABLE IF NOT EXISTS RESTAURANTS(...);', done)
     })
-    test('airports are loaded into the database', (done) => {
+    
+    test('restaurants are loaded into the database', (done) => {
         load((db) => {
-            db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
-                expect(row.length).toBe(3)
-                expect(row[0].name).toBe('Shenyang Dongta Airport')
-                db.get('SELECT COUNT(id) AS total FROM airports;', (err, count) => {
-                    expect(count.total).toBe(28868)
-                    done()
+            db.get('SELECT COUNT(id) AS total FROM RESTAURANTS;', (err, row) => {
+                  expect(count.total).toBe(28868)
+                  done()
                 })
             })
         })
     })
 })
 </code></pre>
-    <h2>Assignment</h2>
+    <h2>Assignment for Airports (optional)</h2>
     <ul>
       <li>write a <code>load</code> function that will take a callback and call it when all the airport data has been inserted into the database.</li>
       <li>export this load function from your file.</li>
@@ -227,28 +284,6 @@ describe('SQLite3', () => {
       <li>if the airport array is not empty, in your <code>insert</code> function call <code>.pop()</code> on the airport array to remove the last airport from the array, then insert that item into the database</li>
       <li>in the <code>db.run</code> callback call the <code>insert</code> function again with the same arguments (this is called recursion)</li>
       <li>check that your tests are passing ok</li>
-    </ul>
-    <hr>
-    <h2>Lesson 2 - TODO Consolidate SQLite3 in Node.js</h2>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Implement nested iteration</li>
-      <li>Relate data using foreign keys correctly</li>
-    </ul>
-    <h2>Before we start</h2>
-    <ul>
-      <li>Have your UML diagram for restaurants handy</li>
-    </ul>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>Practice what we have looked at so far. Download some restaurant data from Github (run the following command in your project folder);</p>
-    <pre><code class="language-sh">curl https://raw.githubusercontent.com/MultiverseLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
-</code></pre>
-    <p>This is called "seed" data. The idea is to seed our database with a data set we can use later. Remember to include ids and foreign keys to relate your menus to the right restaurants.</p>
-    <h2>Assignment</h2>
-    <ul>
-      <li>Make a Node.js script that will load these javascript files into your database. The tables will all have to be created, if they don't exist. Create a recursive function that loads each item into the database. Once all your data is in the database in your Node.js script.</li>
-      <li>Write unit tests that verify your seed data has loaded into the in memory database ok.</li>
     </ul>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/160">attendance log</a>
