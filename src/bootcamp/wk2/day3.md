@@ -128,8 +128,37 @@ Install the `sqlite` plugin for VSCode as follows:
   * A `SQLITE EXPLORER` window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.
 
 ---
- 
-## Lesson 5 - Loading JSON data into SQLite3 using Node.js
+## Lesson 5 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT
+Before we move on, let's take a minute to explore some more SQL features. 
+
+A column marked as a **PRIMARY KEY** is a column that has to be unique i.e. you cannot insert rows with the same value in this column. It is good practise to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:
+
+```sql
+CREATE TABLE RESTAURANTS (id INT PRIMARY KEY, 
+                          name TEXT, 
+                          imagelink TEXT)");
+```
+Here, we are specifying that the `id` column is the PRIMARY KEY i.e. has to have unique values.
+
+An alternative to creating your own values to populate an `id` column is to use an AUTO INCREMENTing number. SQL provides [a way to to do this](https://www.w3schools.com/sql/sql_autoincrement.asp).
+
+Finally, we can use [FOREIGN KEY](https://www.w3schools.com/sql/sql_foreignkey.asp) to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. 
+
+As an example, remember that the MENUS table (child) has a column which links it to the RESTAURANTS table (parent). If a menu is deleted we need to be alerted to this fact, we don't want incomplete data in our database. Here is an example:
+
+```sql
+CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
+```
+
+## Assignment
+  * Add a PRIMARY KEY to each table and make this AUTO INCREMENTing
+  * Check that when you insert data the `id` is auto incremented - hint, when you insert data to a table with an AUTO INCREMENTing column, you don't need to specify any value for it!
+  * Add a FOREIGN KEY to the MENUS and MENU_ITEMS tables. Ensure you have data in the child table which links to the parent table
+  * Now try removing a menu and see what error you get (if you don't get an error you have done something wrong!). 
+  * Now try removing a restaurant and see what error you get (if you don't get an error you have done something wrong!). 
+
+---
+## Lesson 6 - Loading JSON data into SQLite3 using Node.js
 
 ## Learning Objectives
 In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.
@@ -193,8 +222,10 @@ async function load() {
 }
 ```
 
-### Step 1 - Load the JSON data into your tables using Node.js
-Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. You will need to create Prepared Statements to do this, for example, 
+### Step 2 - Load the JSON data into your tables using Node.js
+Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. JavaScript supports a number of [different types of loop](https://www.w3schools.com/js/js_loop_for.asp).
+
+You will need to create Prepared Statements to do the database inserts, for example, 
 
 ```SQL
 db.prepare("INSERT INTO MENU_ITEMS (menu_id, name, price) VALUES (?,?,?)");
