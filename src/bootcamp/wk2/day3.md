@@ -212,6 +212,9 @@ This sounds daunting so let's break in down into steps. We'll only show a subset
 Reading from a file may take a long time hence it is performed asynchronously. Here is one version of a `load()` method which you can use, it makes use of `async`/`await`, you can also write this using Promises or Callbacks.
 
 ```js
+const fsp = require('fs').promises; // Node.js file system module with promises
+const path = require('path'); // Node.js directories and file paths module
+
 async function load() {
     console.log('calling load');
     const restaurantFile = path.join(__dirname, 'restaurants.json');
