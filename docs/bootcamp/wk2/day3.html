@@ -130,7 +130,29 @@ const db = new sqlite3.Database('./db.sqlite')
       <li>A <code>SQLITE EXPLORER</code> window should appear at the bottom of your VSCode Explorer view. Click on this and expand it until you see the table CUSTOMERS. Click on the play icon and voila, you should see a visual representation of your database.</li>
     </ul>
     <hr>
-    <h2>Lesson 5 - Loading JSON data into SQLite3 using Node.js</h2>
+    <h2>Lesson 5 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT</h2>
+    <p>Before we move on, let's take a minute to explore some more SQL features.</p>
+    <p>A column marked as a <strong>PRIMARY KEY</strong> is a column that has to be unique i.e. you cannot insert rows with the same value in this column. It is good practise to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
+    <pre><code class="language-sql">CREATE TABLE RESTAURANTS (id INT PRIMARY KEY, 
+                          name TEXT, 
+                          imagelink TEXT)");
+</code></pre>
+    <p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values.</p>
+    <p>An alternative to creating your own values to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
+    <p>Finally, we can use <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table.</p>
+    <p>As an example, remember that the MENUS table (child) has a column which links it to the RESTAURANTS table (parent). If a menu is deleted we need to be alerted to this fact, we don't want incomplete data in our database. Here is an example:</p>
+    <pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
+</code></pre>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Add a PRIMARY KEY to each table and make this AUTO INCREMENTing</li>
+      <li>Check that when you insert data the <code>id</code> is auto incremented - hint, when you insert data to a table with an AUTO INCREMENTing column, you don't need to specify any value for it!</li>
+      <li>Add a FOREIGN KEY to the MENUS and MENU_ITEMS tables. Ensure you have data in the child table which links to the parent table</li>
+      <li>Now try removing a menu and see what error you get (if you don't get an error you have done something wrong!).</li>
+      <li>Now try removing a restaurant and see what error you get (if you don't get an error you have done something wrong!).</li>
+    </ul>
+    <hr>
+    <h2>Lesson 6 - Loading JSON data into SQLite3 using Node.js</h2>
     <h2>Learning Objectives</h2>
     <p>In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.</p>
     <h2>Materials needed</h2>
@@ -181,8 +203,9 @@ const db = new sqlite3.Database('./db.sqlite')
     return restaurants;
 }
 </code></pre>
-    <h3>Step 1 - Load the JSON data into your tables using Node.js</h3>
-    <p>Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. You will need to create Prepared Statements to do this, for example,</p>
+    <h3>Step 2 - Load the JSON data into your tables using Node.js</h3>
+    <p>Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. JavaScript supports a number of <a href="https://www.w3schools.com/js/js_loop_for.asp">different types of loop</a>.</p>
+    <p>You will need to create Prepared Statements to do the database inserts, for example,</p>
     <pre><code class="language-SQL">db.prepare("INSERT INTO MENU_ITEMS (menu_id, name, price) VALUES (?,?,?)");
 </code></pre>
     <p>All the "?" are placeholders for the different values that we will be inserting as we iterate over our array of data. When you call <code>db.run</code> the first argument is the string above, and the second argument is an array of all the values you want to store, the values get swapped with the "?", your values have to be in the same order as the fields.</p>
