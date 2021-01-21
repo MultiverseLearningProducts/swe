@@ -58,7 +58,7 @@ Here is  simplified example of how to create a table and insert some rows into t
 const sqlite3 = require('sqlite3').verbose();
 
 // use a persistent database named myDb.sqlite
-const db = new sqlite3.Database('./db.sqlite');
+const db = new sqlite3.Database('./restaurants.sqlite');
 
 /**
  * Executes the SQL statements one at a time.
@@ -71,15 +71,15 @@ try {
     db.serialize(function () { // serialize means execute one statement at a time
 
         // create the empty table with specific columns and column types
-        db.run("CREATE TABLE CUSTOMERS (CustomerName TEXT, ContactName TEXT)");
+        db.run("CREATE TABLE Restaurant(id INTEGER PRIMARY KEY, 
+                                        name TEXT, image TEXT");
 
         let stmt;
 
         // insert 2 rows
         try {
-            stmt = db.prepare(`INSERT INTO CUSTOMERS VALUES 
-                        ('Fred Flintstone', 'Wilma Flintstone') , 
-                        ('Wilma Flintstone', 'Fred Flintstone')`);
+            stmt = db.prepare(`INSERT INTO Restaurants (id, name, link) VALUES 
+                        (1, 'Bayroot', 'https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg')`);
             stmt.run();
         } finally {
             // release resources 
@@ -87,7 +87,7 @@ try {
         }
 
         // select the rows and print them out
-        db.each("SELECT * FROM CUSTOMERS",
+        db.each("SELECT * FROM Restaurants",
             function (err, rows) {  // this is a callback function
                 console.log(rows);  // rows contains the matching rows
             }
@@ -131,16 +131,16 @@ Install the `sqlite` plugin for VSCode as follows:
 ## Lesson 4 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT
 Before we move on, let's take a minute to explore some more SQL features. 
 
-A column marked as a **PRIMARY KEY** is a column that has to be unique i.e. you cannot insert rows with the same value in this column. It is good practise to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:
+A column (or set of columns) marked as a **PRIMARY KEY** is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column/s. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:
 
 ```sql
-CREATE TABLE RESTAURANTS (id INT PRIMARY KEY, 
+CREATE TABLE RESTAURANTS (id INTEGER PRIMARY KEY, 
                           name TEXT, 
-                          imagelink TEXT)");
+                          image TEXT);
 ```
 Here, we are specifying that the `id` column is the PRIMARY KEY i.e. has to have unique values.
 
-An alternative to creating your own values to populate an `id` column is to use an AUTO INCREMENTing number. SQL provides [a way to to do this](https://www.w3schools.com/sql/sql_autoincrement.asp).
+An alternative to creating your own unique identifier to populate an `id` column is to use an AUTO INCREMENTing number. SQL provides [a way to to do this](https://www.w3schools.com/sql/sql_autoincrement.asp).
 
 Finally, we can use [FOREIGN KEY](https://www.w3schools.com/sql/sql_foreignkey.asp) to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. 
 
@@ -213,20 +213,18 @@ Reading from a file may take a long time hence it is performed asynchronously. H
 
 ```js
 const fsp = require('fs').promises; // Node.js file system module with promises
-const path = require('path'); // Node.js directories and file paths module
 
 async function load() {
     console.log('calling load');
-    const restaurantFile = path.join(__dirname, 'restaurants.json');
     // wait for the restaurant data file to be read
-    const buffer = await fsp.readFile(restaurantFile);
+    const buffer = await fsp.readFile('./restaurants.json');
     const restaurants = (JSON.parse(String(buffer)));
     return restaurants;
 }
 ```
 
 ### Step 2 - Load the JSON data into your tables using Node.js
-Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. JavaScript supports a number of [different types of loop](https://www.w3schools.com/js/js_loop_for.asp).
+Now you have the data loaded, we need to loop through the [multi-dimensional array](https://www.geeksforgeeks.org/multidimensional-array-in-javascript/) and insert it into our 3 tables. JavaScript supports a number of [different types of loop](https://www.w3schools.com/js/js_loop_for.asp).
 
 You will need to create Prepared Statements to do the database inserts, for example, 
 
@@ -246,7 +244,9 @@ All the "?" are placeholders for the different values that we will be inserting 
 * Write a unit test that verify your seed data has loaded into the in memory database ok.
 
 
-## IGNORE THIS LESSON FOR NOW - TO BE SORTED
+## OPTIONAL EXTENSION LESSON FOR STUDENTS WORKING ON THE AIRPORT PROJECTS FROM WEEK 1
+This lesson is optional and is designed solely as an extention task for those students who complete the airport coding assignments from week 1 quickly and need a further challenge. All the content above from Lesson 5 is relevant and students should refer to it. The airport specific aspects are described below.
+
 ### Airports seed data
 * [airports.json](https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
 
@@ -346,8 +346,7 @@ describe('SQLite3', () => {
 })
 ```
 
-## Assignment for Airports (optional)
-
+## Assignment for Airports 
 * write a `load` function that will take a callback and call it when all the airport data has been inserted into the database.
 * export this load function from your file.
 * write an `insert` function in your load.js file that will take; the airports array, the callback passed to `load`, the database instance `db`.
