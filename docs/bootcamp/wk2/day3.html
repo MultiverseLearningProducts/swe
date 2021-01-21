@@ -194,7 +194,10 @@ const db = new sqlite3.Database('./db.sqlite')
     <p>This sounds daunting so let's break in down into steps. We'll only show a subset of the full code as you will need to complete it in your next assignment.</p>
     <h3>Step 1 - Reading JSON data from a file using Node.js</h3>
     <p>Reading from a file may take a long time hence it is performed asynchronously. Here is one version of a <code>load()</code> method which you can use, it makes use of <code>async</code>/<code>await</code>, you can also write this using Promises or Callbacks.</p>
-    <pre><code class="language-js">async function load() {
+    <pre><code class="language-js">const fsp = require('fs').promises; // Node.js file system module with promises
+const path = require('path'); // Node.js directories and file paths module
+
+async function load() {
     console.log('calling load');
     const restaurantFile = path.join(__dirname, 'restaurants.json');
     // wait for the restaurant data file to be read
