@@ -64,7 +64,7 @@ const db = new sqlite3.Database(':memory:', (err) => {
     <pre><code class="language-js">const sqlite3 = require('sqlite3').verbose();
 
 // use a persistent database named myDb.sqlite
-const db = new sqlite3.Database('./db.sqlite');
+const db = new sqlite3.Database('./restaurants.sqlite');
 
 /**
  * Executes the SQL statements one at a time.
@@ -77,15 +77,15 @@ try {
     db.serialize(function () { // serialize means execute one statement at a time
 
         // create the empty table with specific columns and column types
-        db.run("CREATE TABLE CUSTOMERS (CustomerName TEXT, ContactName TEXT)");
+        db.run("CREATE TABLE Restaurant(id INTEGER PRIMARY KEY, 
+                                        name TEXT, image TEXT");
 
         let stmt;
 
         // insert 2 rows
         try {
-            stmt = db.prepare(`INSERT INTO CUSTOMERS VALUES 
-                        ('Fred Flintstone', 'Wilma Flintstone') , 
-                        ('Wilma Flintstone', 'Fred Flintstone')`);
+            stmt = db.prepare(`INSERT INTO Restaurants (id, name, link) VALUES 
+                        (1, 'Bayroot', 'https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/England/Brighton/brighton-restaurants-hotel-du-vin-bistro.jpg')`);
             stmt.run();
         } finally {
             // release resources 
@@ -93,7 +93,7 @@ try {
         }
 
         // select the rows and print them out
-        db.each("SELECT * FROM CUSTOMERS",
+        db.each("SELECT * FROM Restaurants",
             function (err, rows) {  // this is a callback function
                 console.log(rows);  // rows contains the matching rows
             }
@@ -132,13 +132,13 @@ const db = new sqlite3.Database('./db.sqlite')
     <hr>
     <h2>Lesson 4 - FOREIGN KEYs, PRIMARY KEYs and AUTOINCREMENT</h2>
     <p>Before we move on, let's take a minute to explore some more SQL features.</p>
-    <p>A column marked as a <strong>PRIMARY KEY</strong> is a column that has to be unique i.e. you cannot insert rows with the same value in this column. It is good practise to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
-    <pre><code class="language-sql">CREATE TABLE RESTAURANTS (id INT PRIMARY KEY, 
+    <p>A column (or set of columns) marked as a <strong>PRIMARY KEY</strong> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column/s. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
+    <pre><code class="language-sql">CREATE TABLE RESTAURANTS (id INTEGER PRIMARY KEY, 
                           name TEXT, 
-                          imagelink TEXT)");
+                          image TEXT);
 </code></pre>
     <p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values.</p>
-    <p>An alternative to creating your own values to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
+    <p>An alternative to creating your own unique identifier to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
     <p>Finally, we can use <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table.</p>
     <p>As an example, remember that the MENUS table (child) has a column which links it to the RESTAURANTS table (parent). If a menu is deleted we need to be alerted to this fact, we don't want incomplete data in our database. Here is an example:</p>
     <pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
@@ -195,19 +195,17 @@ const db = new sqlite3.Database('./db.sqlite')
     <h3>Step 1 - Reading JSON data from a file using Node.js</h3>
     <p>Reading from a file may take a long time hence it is performed asynchronously. Here is one version of a <code>load()</code> method which you can use, it makes use of <code>async</code>/<code>await</code>, you can also write this using Promises or Callbacks.</p>
     <pre><code class="language-js">const fsp = require('fs').promises; // Node.js file system module with promises
-const path = require('path'); // Node.js directories and file paths module
 
 async function load() {
     console.log('calling load');
-    const restaurantFile = path.join(__dirname, 'restaurants.json');
     // wait for the restaurant data file to be read
-    const buffer = await fsp.readFile(restaurantFile);
+    const buffer = await fsp.readFile('./restaurants.json');
     const restaurants = (JSON.parse(String(buffer)));
     return restaurants;
 }
 </code></pre>
     <h3>Step 2 - Load the JSON data into your tables using Node.js</h3>
-    <p>Now you have the data loaded, we need to loop through the array of arrays and insert it into our 3 tables. JavaScript supports a number of <a href="https://www.w3schools.com/js/js_loop_for.asp">different types of loop</a>.</p>
+    <p>Now you have the data loaded, we need to loop through the <a href="https://www.geeksforgeeks.org/multidimensional-array-in-javascript/">multi-dimensional array</a> and insert it into our 3 tables. JavaScript supports a number of <a href="https://www.w3schools.com/js/js_loop_for.asp">different types of loop</a>.</p>
     <p>You will need to create Prepared Statements to do the database inserts, for example,</p>
     <pre><code class="language-SQL">db.prepare("INSERT INTO MENU_ITEMS (menu_id, name, price) VALUES (?,?,?)");
 </code></pre>
@@ -222,7 +220,8 @@ async function load() {
       <li>Remember to use <code>try/catch/finally</code> blocks to handle errors and close both the statements and database.</li>
       <li>Write a unit test that verify your seed data has loaded into the in memory database ok.</li>
     </ul>
-    <h2>IGNORE THIS LESSON FOR NOW - TO BE SORTED</h2>
+    <h2>OPTIONAL EXTENSION LESSON FOR STUDENTS WORKING ON THE AIRPORT PROJECTS FROM WEEK 1</h2>
+    <p>This lesson is optional and is designed solely as an extension task for those students who complete the airport coding assignments from week 1 quickly and need a further challenge. All the content above from Lesson 5 is relevant and students should refer to it. The airport specific aspects are described below.</p>
     <h3>Airports seed data</h3>
     <ul>
       <li><a href="https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json">airports.json</a> file from week <em>you can run the following command to download the file into your project folder</em></li>
@@ -283,23 +282,27 @@ async function load() {
     <p>When we have a queue of async tasks we want to perform a recursive pattern is a better option that <code>Array.forEach</code>.</p>
     <h3>Write a failing test</h3>
     <p>Here's an example of a Jest test which uses the <code>beforeAll</code> method to initialise the database with our tables if they don't already exist. Note that this uses airport tables but the concept is the same. The idea of the failing test helps you think about what you are actually trying to build.</p>
-    <pre><code class="language-javascript">describe('SQLite3', () => {
+    <pre><code class="language-javascript">const load = require('./index')
+
+describe('SQLite3', () => {
     beforeAll(done => {
-        db.exec('CREATE TABLE IF NOT EXISTS RESTAURANTS(...);', done)
+        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
     })
-    
-    test('restaurants are loaded into the database', (done) => {
+    test('airports are loaded into the database', (done) => {
         load((db) => {
-            db.get('SELECT COUNT(id) AS total FROM RESTAURANTS;', (err, row) => {
-                  expect(count.total).toBe(28868)
-                  done()
+            db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
+                expect(row.length).toBe(3)
+                expect(row[0].name).toBe('Shenyang Dongta Airport')
+                db.get('SELECT COUNT(id) AS total FROM airports;', (err, count) => {
+                    expect(count.total).toBe(28868)
+                    done()
                 })
             })
         })
     })
 })
 </code></pre>
-    <h2>Assignment for Airports (optional)</h2>
+    <h2>Assignment for Airports</h2>
     <ul>
       <li>write a <code>load</code> function that will take a callback and call it when all the airport data has been inserted into the database.</li>
       <li>export this load function from your file.</li>
