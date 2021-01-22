@@ -245,7 +245,7 @@ All the "?" are placeholders for the different values that we will be inserting 
 
 
 ## OPTIONAL EXTENSION LESSON FOR STUDENTS WORKING ON THE AIRPORT PROJECTS FROM WEEK 1
-This lesson is optional and is designed solely as an extention task for those students who complete the airport coding assignments from week 1 quickly and need a further challenge. All the content above from Lesson 5 is relevant and students should refer to it. The airport specific aspects are described below.
+This lesson is optional and is designed solely as an extension task for those students who complete the airport coding assignments from week 1 quickly and need a further challenge. All the content above from Lesson 5 is relevant and students should refer to it. The airport specific aspects are described below.
 
 ### Airports seed data
 * [airports.json](https://raw.githubusercontent.com/MultiverseLearningProducts/airports/master/airportsData.json) file from week  _you can run the following command to download the file into your project folder_
@@ -329,16 +329,20 @@ When we have a queue of async tasks we want to perform a recursive pattern is a 
 Here's an example of a Jest test which uses the `beforeAll` method to initialise the database with our tables if they don't already exist. Note that this uses airport tables but the concept is the same. The idea of the failing test helps you think about what you are actually trying to build.
 
 ```javascript
+const load = require('./index')
+
 describe('SQLite3', () => {
     beforeAll(done => {
-        db.exec('CREATE TABLE IF NOT EXISTS RESTAURANTS(...);', done)
+        db.exec('CREATE TABLE IF NOT EXISTS airports(...);', done)
     })
-    
-    test('restaurants are loaded into the database', (done) => {
+    test('airports are loaded into the database', (done) => {
         load((db) => {
-            db.get('SELECT COUNT(id) AS total FROM RESTAURANTS;', (err, row) => {
-                  expect(count.total).toBe(28868)
-                  done()
+            db.all('SELECT * FROM airports LIMIT 3;', (err, row) => {
+                expect(row.length).toBe(3)
+                expect(row[0].name).toBe('Shenyang Dongta Airport')
+                db.get('SELECT COUNT(id) AS total FROM airports;', (err, count) => {
+                    expect(count.total).toBe(28868)
+                    done()
                 })
             })
         })
