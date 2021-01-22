@@ -92,6 +92,10 @@ Apprentices in pairs can generate messages in the console of their browser and p
 
 ## Assignment
 
+You should end up with your slack channel looking something like this:
+
+![encrypted messages in slack](https://user-images.githubusercontent.com/4499581/105473733-5754f480-5c95-11eb-8548-401d3ba74e47.png)
+
 If there is time they can create some UI in the browser. For example an input field to paste a message into and display the decrypted messages.
 
 ## Additional Reading

@@ -117,7 +117,7 @@ You should have completed all our sessions and have had the chance to ask any qu
 
 ## Lesson
 
-Quiz to follow.
+For the Quiz follow [https://www.kahoot.it]().
 
 ## Assignment
 
