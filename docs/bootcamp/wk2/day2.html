@@ -28,8 +28,8 @@
     <p>Once you are comfortable with this syntax, move on to look at how to <a href="https://www.w3schools.com/sql/sql_create_table.asp">create a table</a> &#x26; <a href="https://www.w3schools.com/sql/sql_drop_table.asp">drop a table</a>.</p>
     <hr>
     <h2>Lesson 2 - Creating the Restaurant Tables</h2>
-    <p>We will use a website called <a href="https://repl.it/">Repl</a> to practise our SQL syntax before we move on and incorporate the SQL into some Node.js code.</p>
-    <p>Before we do that, you should be aware of the Data Types for SQLite:</p>
+    <p>It's important to note that the syntax for creating tables and naming of data types does vary slightly from vendor to vendor.</p>
+    <p>The Data Types for SQLite are as follows:</p>
     <table>
       <thead>
         <tr>
@@ -60,46 +60,59 @@
         </tr>
       </tbody>
     </table>
+    <p>A column (or set of columns) marked as a <strong>PRIMARY KEY</strong> is a column (or set of columns) that has to be unique i.e. you cannot insert rows with the same value in this column/s and cannot be null. It is good practice to have a PRIMARY KEY on each table. The syntax for adding a PRIMARY KEY is as follows:</p>
+    <pre><code class="language-sql">CREATE TABLE RESTAURANTS (id INTEGER PRIMARY KEY, 
+                          name TEXT, 
+                          image TEXT);
+</code></pre>
+    <p>Here, we are specifying that the <code>id</code> column is the PRIMARY KEY i.e. has to have unique values.</p>
+    <p>An alternative to creating your own unique identifier to populate an <code>id</code> column is to use an AUTO INCREMENTing number. SQL provides <a href="https://www.w3schools.com/sql/sql_autoincrement.asp">a way to to do this</a>.</p>
+    <h2>Assignment</h2>
+    <p>We will use a website called <a href="https://repl.it/">Repl</a> to practise our SQL syntax before we move on and incorporate the SQL into some Node.js code.</p>
     <p>You should also be aware of 2 SQLite specific SQL statements which will help you.</p>
-    <p>The <code>PRAGMA</code> command describes a table, including its columns and primary keys.</p>
+    <p>The <code>PRAGMA</code> command describes a table by listing its columns and indicating which column is the primary key.</p>
     <pre><code class="language-sql">PRAGMA table_info(CUSTOMERS);
 </code></pre>
     <p>The following command lists all the tables in the database:</p>
     <pre><code class="language-sql">SELECT name FROM sqlite_master WHERE type='table'
 </code></pre>
-    <h2>Assignment</h2>
     <p>In this assignment you need to use SQL to create the tables which correspond to the Restaurant class diagram above.</p>
     <ol>
-      <li>Sign up for a Repl account</li>
+      <li>Sign up for a (free) Repl account</li>
       <li>Create a new repl and select <code>SQLite</code> as the language</li>
       <li>Compose the SQL queries to do the following:
         <ul>
-          <li>Implement the Restaurants table - make the id of the restaurant the PRIMARY KEY (this has to be unique)</li>
-          <li>Create an entry for a restaurant using "INSERT"</li>
-          <li>Read back your restaurant using "SELECT"</li>
-          <li>Update your restaurant using "UPDATE"</li>
-          <li>Delete your restaurant using "DELETE"</li>
+          <li>Implement the Restaurants, Menus and MenuItems tables - make the id of each a PRIMARY KEY (this has to be unique) and make this AUTO INCREMENTing</li>
+          <li>Insert rows into each table using "INSERT"</li>
+          <li>Read back your row data using "SELECT"</li>
+          <li>Update your rows using "UPDATE"</li>
+          <li>Delete your rows using "DELETE"</li>
           <li>Use the WHERE clause to filter results</li>
         </ul>
       </li>
-      <li>Now compose the SQL queries to implement the Menu table and MenuItem tables and practise inserting and deleting rows (don't worry about the relationships for now)</li>
       <li>Share your repl with your coach on Slack</li>
     </ol>
-    <h2>Lesson 3 - JOIN tables</h2>
+    <hr>
+    <h2>Lesson 3 - JOIN tables &#x26; FOREIGN KEYS</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Execute SQL commands</li>
       <li>Relate data using foreign keys</li>
     </ul>
     <h2>Lesson</h2>
-    <p>It is great to be able to save a restaurant in our database. However our data model requires our restaurants to also have menu's associated with them. A restaurant might have many menus; for example a main menu, a set menu, a wine menu (wine list) and best of all the dessert menu! How can we store one or more menu items on the restaurant? We could make a new field on the restaurant table called 'menu'. But what would we do if we wanted to add a 2nd menu 'menu2'? And a third 'menu3'?</p>
+    <p>It is great to be able to save a restaurant in our database. However our data model requires our restaurants to also have menus associated with them. A restaurant might have many menus; for example a main menu, a set menu, a wine menu (wine list) and best of all the dessert menu! How can we store one or more menu items on the restaurant? We could make a new field on the restaurant table called 'menu'. But what would we do if we wanted to add a 2nd menu 'menu2'? And a third 'menu3'?</p>
     <p>No. The way this is done is by creating a separate table for the menus. When we create a row in the 'menus' table we create a special field to store the id of the restaurant we want the menu to be associated with. The convention is to call the field something like 'restaurant_id'. This is why databases that have tables like this are called 'relational databases'.</p>
+    <p>We can use the <a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a> keyword to form a strong link between 2 tables. A FOREIGN KEY must refer to the PRIMARY KEY in another table. Take a look at the UML diagram again, you can see that there is a 1 to many relationship between the Restaurant and its Menus. In a relational database, this is implemented by multiple rows in the MENUS table pointing to a specific RESTAURANT row id.</p>
+    <p>This means that the MENUS table (child) needs a column which links it to the RESTAURANTS table (parent). If we declare this new column as a FOREIGN KEY, then if an attempt is made to delete the associated restaurant row we will get an error. Here is an example of how to add a FOREIGN KEY:</p>
+    <pre><code class="language-sql">CREATE TABLE MENUS (id INT PRIMARY KEY, title TEXT, restaurant_id INT, FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS(id))
+</code></pre>
     <h2>Assignment</h2>
     <p>Modify your tables to include these relationships:</p>
     <ul>
-      <li>add a <code>restaurant_id</code> column to the Menu table</li>
-      <li>add a <code>menu_id</code> column to the MenuItem table</li>
+      <li>add a <code>restaurant_id</code> column to the Menu table and mark it as a FOREIGN KEY</li>
+      <li>add a <code>menu_id</code> column to the MenuItem table and mark it as a FOREIGN KEY</li>
     </ul>
+    <p>Note that Repl may not accurately support the foreign key constraint (i.e. may allow you to delete linked data) - to be checked.</p>
     <p>How do we use the association we just created? When we query our database we are going to use the 'JOIN' keyword in SQL.</p>
     <p>Read about the <a href="https://www.w3schools.com/sql/sql_join.asp">SQL Join command</a> to understand its syntax.</p>
     <p>Now read the query below:</p>
@@ -109,6 +122,7 @@ JOIN menus ON restaurants.id = menus.restaurant_id
 WHERE restaurants.id = 1;
 </code></pre>
     <p>This statement selects the columns we want to retrieve from both tables; the restaurants table and the menus table. Notice now we have mixed fields coming from different tables, we have to name our columns with both the <code>table_name.field_name</code> i.e. <code>menus.name</code>. Use the <code>JOIN</code> keyword to make an association between the primary key from one table and the foreign key of another. In this example the primary key is the restaurants table id and the menus table restaurant_id. Can you explain why 'restaurant_id' is referred to as the foreign key?</p>
+    <h2>Assignment</h2>
     <p>Write some JOIN statements that do the following:</p>
     <ul>
       <li>SELECT a restaurant, a menu and all the menu items using a JOIN statement</li>

@@ -12,7 +12,12 @@
   <body>
     <h1>Week 2 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Knowing the ORM pattern learn to use the most popular SQL ORM available for Node.js - <a href="https://www.npmjs.com/package/sequelize">Sequelize</a>. This is a day to practice and consolidate what you have learnt this week.</p>
+    <p>The aim of today is to learn the ORM pattern for the most popular SQL ORM available for Node.js - <a href="https://www.npmjs.com/package/sequelize">Sequelize</a>. There are similar frameworks available for other languages, for example:</p>
+    <ul>
+      <li><a href="https://hibernate.org/">Hibernate for Java</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli">Entity Framework Core for .NET</a></li>
+    </ul>
+    <p>This is also a day to practice and consolidate what you have learnt this week.</p>
     <hr>
     <h2>Lesson 1 - Sequelize</h2>
     <h2>Learning Objectives</h2>
@@ -21,67 +26,98 @@
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>You should have built a simple ORM from scratch with jest and sqlite3</li>
+      <li>You should have completed Day 4 and have built a simple Object Relational Model (ORM) using classes and sqlite3 SQL prepared statements, tested with Jest.</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
       <li>sqlite3, jest, sequelize</li>
     </ul>
     <h2>Lesson</h2>
-    <p>You should now understand the ideas behind the "Object Relational Mapping" design pattern. You can build an ORM from scratch for each project, but this problem has already been solved, better to spend your time on problems unique to your software solution. Your app will have a much more solid foundation if it is built with this well used library. Today we are going to learn to use this library.</p>
-    <p>Start with a failing test:</p>
-    <pre><code class="language-javascript">const {Restaurant, sequelize} = require('./model')
+    <p>You should now understand the ideas behind the "Object Relational Mapping" design pattern. As you have seen, it is possible to build an ORM from scratch for each project, but it is time consuming and requires careful management of resources. There are many frameworks available which do the ORM job for you hence freeing you up to spend time on problems unique to your software solution. Your app will have a much more solid foundation if it is built with an ORM framework. Today we are going to learn to use Sequelize.</p>
+    <p>Note that you can read complete detail on to use Sequelize in the <a href="https://sequelize.org/master/">documentation</a> but we will discuss the most important aspects below.</p>
+    <h3>Installing Sequelize</h3>
+    <p>Sequelize is a promise-based Node.js ORM for multiple database including SQLite.</p>
+    <p>
+      To install Sequelize run:
+      <code>npm install sequelize</code>
+    </p>
+    <p>
+      You must also ensure you have the the driver installed for SQLite:
+      <code>npm install sqlite3</code>
+    </p>
+    <h3>Testing code written using Sequelize</h3>
+    <p>Let's start with a failing test:</p>
+    <pre><code class="language-javascript">const {Restaurant, sequelize} = require('./Restaurant')
 
 describe('Restaurant', () => {
     beforeAll(async () => {
-        await sequelize.sync()
+        await sequelize.sync({ force: true })
     })
 
     test('can create a restaurant', async () => {
-        const restautant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
-        expect(restautant.id).toBe(1)
+        const restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
+        expect(restaurant.id).toBe(1)
     })
 })
 </code></pre>
-    <p>You can read about how to use sequelize in the <a href="https://sequelize.org/master/">documentation</a> (that's all I have done). Lets go through the code above. First of all we are importing our class from a file called <code>./model.js</code> and an object called <code>sequelize</code> that represents our database connection. Before we start our tests (or later our server) we need to call and wait for <code>sequelize.sync()</code> that is going to set up all our tables ready for our models. You did this in your code.</p>
+    <p>Lets walk through the code above. First of all, we are importing our class from a file called <code>./Restaurant.js</code> and an object called <code>sequelize</code> represents our database connection. Before we start our tests (or later our server) we need to call and wait for <code>sequelize.sync()</code>. This command performs a SQL query to the database and creates tables (based on our class models) or modifies the table structure to match the class models. The <code>{ force: true }</code> parameter forces the tables to be recreated each time the test suite is run (this ensures the <code>expect</code> line passes as there will only be a single row in the database).</p>
     <p>In our test you can see the API for sequelize. To create a new instance of a Restaurant we call a static method on the class called <code>create</code>. We pass in an object with the field names, and the values we want to store. In our test which kind of async function are we using?</p>
     <h3>Defining the model</h3>
+    <p>Models are fundamental to Sequelize. A model represents a table in your database. It is represented by a class that extends <code>Model</code>.</p>
     <pre><code class="language-javascript">const { Sequelize, Model, DataTypes } = require('sequelize')
-const sequelize = new Sequelize('sqlite::memory:')
 
-class Restaurant extends Model {}
+// create a database connection
+const sequelize = new Sequelize('database', 'username', 'password', {
+    dialect: 'sqlite',
+    storage: './restaurants-seq.sqlite'
+});
 
+class Restaurant extends Model { 
+    /* your normal methods would go here */
+}
+
+/* Sequelize specific code to map the class to a DB table */
 Restaurant.init({
     name: DataTypes.STRING,
-    image: DataTypes.STRING
-}, { sequelize, modelName: 'restaurant' })
+    imagelink: DataTypes.STRING,
+}, {
+    sequelize,
+    timestamps: false,
+});
 
 module.exports = {
     Restaurant,
     sequelize
 }
 </code></pre>
-    <p>In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model &#x26; DataTypes. We create a new instance of a sequelize connector and pass in config for the database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.</p>
-    <p>Our class definition is very simple (seems like cheating) we get all the functionality we need from <code>sequelize</code>. Then we define out fields and their types by passing an object to the static class function <code>init</code>, the second argument is the database connection and a short name for the model.</p>
+    <p>In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model &#x26; DataTypes. We create a new instance of a sequelize connector and pass in config for our database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.</p>
+    <p>Our class definition just requires us to extend from the Sequelize class <code>Model</code> (note that there are alternative methods to inheritance if required), plus the addition of an <code>init</code> method which defines the table columns and their types. The <code>timestamps: false</code> setting avoids a <code>created_at</code> column appearing. There are many more customisations you can achieve if you refer to the <a href="https://sequelize.org/master/">Sequelize documentation</a>.</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Set up a project with sqlite3, jest and sequelize</li>
-      <li>Create a data model with Restaurant, Menu and Item (like we have before)</li>
+      <li>Create a project (run <code>npm init</code>) and add dependencies on sqlite3, jest and sequelize (as per the installation instructions above)</li>
+      <li>Create Restaurant, Menu and Item classes</li>
+      <li>Add the custom Sequelize code to map each class to a database table in a new database file (ignore relationship for now)</li>
+      <li>Create a test based on the code above to check that your tables are created and that you can insert data into them.</li>
     </ul>
+    <hr>
+    <p>
+      <strong>Note:</strong>
+      If you get stuck, here is the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5">sample solution</a>.
+    </p>
     <hr>
     <h2>Lesson 2 - Sequelize relationships</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>complete your knowledge of sequelize by implementing the Restaurant model with relationships</li>
+      <li>Complete your knowledge of sequelize by implementing the Restaurant model with relationships between tables</li>
     </ul>
     <h2>Before we start</h2>
-    <p>You should have a project with the three classes Restaurant, Menu, Item with tests all set up</p>
+    <p>You must have completed Lesson 1</p>
     <h2>Materials needed</h2>
     <ul>
       <li>sqlite3, jest, sequelize</li>
     </ul>
     <h2>Lesson</h2>
-    <p>Relationships. Very powerful. Lets figure out the simple way to work with relationships in <code>sequelize</code>. First of all in your model definitions need to include the relationships.</p>
+    <p>To connect tables in <code>sequelize</code> your model definitions need to specify their relationships.</p>
     <pre><code class="language-javascript">Restaurant.hasMany(Menu)
 Menu.belongsTo(Restaurant)
 </code></pre>
