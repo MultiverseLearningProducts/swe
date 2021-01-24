@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mod 1 > Week 2 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Mod 1 > Week 2 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>Sessions and the OAuth flow</p>
+    <h1>Session 1 - Sessions</h1>
+    <h2>Learning Objectives</h2>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <h3>State &#x26; Sessions</h3>
+    <ul>
+      <li>Make a class that returns a numeric value after each request i.e. 1,2,3,4,5,6</li>
+      <li>Expose this in a GET endpoint and return those values</li>
+      <li>Have the state in the route</li>
+      <li>Have the state on the server</li>
+      <li>Add sessions</li>
+      <li>Have the state in a session</li>
+    </ul>
+    <pre><code class="language-javascript">class Counter {
+    constructor() {
+        this.value = 1
+    }
+
+    inc() {
+        this.value += 1
+        return this.value.toString()
+    }
+}
+</code></pre>
+    <pre><code class="language-javascript">app.get('/counter', (req, res) => {
+    const counter = new Counter()
+    res.send(counter.inc())
+})
+</code></pre>
+    <p>
+      Remember the above will only ever return 1.
+      Next pull the counter into a server level instance:
+    </p>
+    <pre><code class="language-javascript">// top of file before routes
+const counter = new Counter()
+
+app.get('/counter', (req, res) => {
+    res.send(counter.inc())
+})
+</code></pre>
+    <p>To add sessions <code>npm i express-session</code> then use the following config:</p>
+    <pre><code class="language-javascript">const sessionSettings = {
+    secret: "best cohort ever",
+    resave: false,
+    saveUninitialized: true
+}
+</code></pre>
+    <p>Update your Counter class to keep track of every instance (use a static property).</p>
+    <pre><code class="language-javascript">class Counter {
+    static lookup = {}
+    
+    constructor(id) {
+        this.value = 1
+        Counter.lookup[id] = this
+    }
+
+    inc() {
+        this.value += 1
+        return this.value.toString()
+    }
+}
+</code></pre>
+    <p>Add a middleware function that will run on every request this makes sure new requests have an instance of the counter they can access with their session id:</p>
+    <pre><code class="language-javascript">app.use((req, res, next) => {
+    Counter.lookup[req.session.id] = Counter.lookup[req.session.id] || new Counter(req.session.id)
+    next()
+})
+</code></pre>
+    <p>finally in the route return the next value</p>
+    <pre><code class="language-javascript">app.get('/counter', (req, res) => {
+    res.send(Counter.lookup[req.session.id].inc())
+})
+</code></pre>
+    <h2>Assignment</h2>
+    <p>In the morning session get your apprentices to implement sessions so they can log in and log out.</p>
+    <h2>Additional Reading</h2>
+    <h1>Session 2 - OAuth</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Create a UML sequence diagram</li>
+      <li>Encode and Decode JWT tokens</li>
+      <li>Recall the structure of a JWT</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>This session is laying the foundations for understanding and keeping track of OAuth flow. It is also an important time to practice UML diagrams (a competency of the Level 4 standard).</p>
+    <h2>Assignment</h2>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

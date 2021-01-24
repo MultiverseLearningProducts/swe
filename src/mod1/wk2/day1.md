@@ -155,15 +155,15 @@ function (request, response, next) {
 
 ❓ What other things might you want to do in middleware?
 
+❓ is the password sent on every request or cached?
+
 We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.
 
 ### Assignment
   * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js
-  * Ensure you can call the your API using Postman
+  * Add sessions so authenticated users continue to have access to the `/users/:id` end point.
   * Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson
   * (Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
-
-❓ is the password sent on every request or cached?
 
 Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
 
@@ -185,7 +185,6 @@ function dbAuthorizer(username, password, callback) {
   db.get(sql, [username], async (err, user) => {
     err ? callback(err) : bcrypt.compare(password, user.password, callback);
   });
-
 ```
 ```java
 @Configuration

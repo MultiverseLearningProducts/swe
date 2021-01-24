@@ -14,6 +14,8 @@ Introduction to Crypto
 
 ## Notes
 
+Some of my apprentices were a bit stuck and needed a nudge to get going. Here is a link to our small breakout session: [zoom recording](https://zoom.us/rec/share/TG9GwmcTkJIlNefbZyyiy50lzjCxy0s7RwxE-iLJ_8gDTpmDqqYwWiqOcvrnj7g.YSCTzbpMsZ1LTKQK?startTime=1611228009000)
+
 ## Assignment
 
 ## Additional Reading

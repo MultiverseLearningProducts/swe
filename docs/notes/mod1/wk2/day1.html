@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mod 1 > Week 2 > Day 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Mod 1 > Week 2 > Day 1</h1>
+    <h2>Overview of the day</h2>
+    <p>To day is all about Basic Authentication</p>
+    <h1>Session 1 - Authentication and Authorization</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Distinguish the difference between authentication and authorisation</li>
+      <li>Be able</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>Take your group of apprentices through the hotel example, then send them into breakout rooms to do the list of examples. They can send you their Answers using direct messages in Slack.</p>
+    <p>Answers using direct messages in Slack.</p>
+    <p>Now you can start the basic authentication section do you want to remind your apprentices about the http://header, and how to pay 64 includes string, and how to use <code>atob</code> and <code>btoa</code> to encode and decode strings as base64.</p>
+    <p>Step through setting up a server with a User resource, make 2 endpoints a POST to create a user and a GET to get a single user.</p>
+    <p>I used:</p>
+    <ul>
+      <li>express</li>
+      <li>sequelize</li>
+      <li>sqlite3</li>
+      <li>bcrypt</li>
+    </ul>
+    <h3>Define the model</h3>
+    <pre><code class="language-javascript">const {Sequelize, Model, DataTypes} = require('sequelize')
+const sequelize = new Sequelize('sqlite:./db.sql', {logging: false})
+class User extends Model {}
+
+User.init({
+    username: DataTypes.STRING,
+    password: DataTypes.STRING
+}, {
+    sequelize
+})
+
+module.exports = {
+    User,
+    sequelize
+}
+</code></pre>
+    <p>Once you've got the model you can build the server with no authentication.</p>
+    <pre><code class="language-javascript">const express = require('express')
+const app = express()
+const {User, sequelize} = require('./models/')
+
+app.use(express.json())
+
+app.post('/users', async (req, res) => {
+    const user = await User.create(req.body)
+    res.send(user)
+})
+
+app.get('/users/:id', async (req, res) => {
+    const user = await User.findByPk(req.params.id)
+    user ? res.send(user) : res.sendStatus(404)
+})
+
+app.listen(3000, () => sequelize.sync())
+</code></pre>
+    <h3>Hashing passwords</h3>
+    <p>Now you can talk about storing passwords as plaintext and what a terrible idea that would be.</p>
+    <ul>
+      <li>play the bbc <a href="https://www.bbc.co.uk/news/business-48905907">video</a></li>
+      <li>you can mention Rainbow tables if you want to</li>
+    </ul>
+    <p>Introduce <code>bcrypt</code>. You can install this dependency and demo it in the node Repl.</p>
+    <pre><code class="language-sh">node
+</code></pre>
+    <pre><code class="language-ruby">bcrypt = require('bcrypt')
+bcrypt.hash("my_passw0rd", 10).then(console.log)
+// $2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQIIzOPxGO6ICiq
+bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQIIzOPxGO6ICiq")
+// true
+</code></pre>
+    <p>The second argument to <code>.hash</code> is the salt rounds. Its worth talking about rainbow table attacks to understand the value of adding a salt.</p>
+    <p>Now update the POST endpoint that saves a user and store the hashed password in place of the plaintext password.</p>
+    <pre><code class="language-javascript">app.post('/users', async (req, res) => {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    const user = await User.create({
+        username: req.body.username,
+        password: hashedPassword
+    })
+    res.send(user)
+})
+</code></pre>
+    <h2>Assignment</h2>
+    <p>Go build the server with REST endpoints for the User resource. Create a series of users with hashed passwords.</p>
+    <h2>Additional Reading</h2>
+    <p><a href="https://youtu.be/SOV0AeHuHaQ">What are rainbow tables?</a></p>
+    <h1>Session 2 - Middleware</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Describe the middleware design pattern</li>
+      <li>Use what you have learnt in previous lessons to secure an API using Basic Auth</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>Set HTTP headers</li>
+      <li>Use <code>.split</code> to access substrings</li>
+    </ul>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>Take everyone through setting auth headers in postman. Remember the username <strong>is</strong> case sensitive.</p>
+    <ul>
+      <li>base64 encode the <code>username:password</code></li>
+      <li>Use the keyword "Basic"</li>
+      <li>Make GET requests to try and GET a single user (this is what we want to authorize)</li>
+    </ul>
+    <p>Log out the headers on the server. Then introduce the idea of middleware. Below is middleware called for every request.</p>
+    <pre><code class="language-javascript">app.use(function (req, res, next) {"your middleware function every call"})
+</code></pre>
+    <p>to just call a middleware for some routes you can add the function name as the second argument.</p>
+    <pre><code class="language-javascript">app.get('/users/:id', protected, async (req, res) => {
+    res.locals.user ? res.send(res.locals.user) : res.sendStatus(404)
+})
+</code></pre>
+    <p>In the code above you can see there is a user on the <code>res.locals</code> object, this is how you can pass values from middleware to the next middleware or controller.</p>
+    <h3>Authentication</h3>
+    <p>We are checking the person making the request is who they say they are assuming only they know the password.</p>
+    <p>In your middleware function check the passwords match:</p>
+    <pre><code class="language-javascript">const protected = async (req, res, next) => {
+    if (!req.headers.authorization) {
+        res.sendStatus(403)
+    } else {
+        const credentials = req.headers.authorization.substring(6)
+        const password = atob(credentials).split(":")[1]
+        const user = await User.findByPk(req.params.id)
+        const passwordMatches = await bcrypt.compare(password, user.password)
+        if (passwordMatches) {
+            res.locals.user = user
+            next()
+        } else {
+            res.sendStatus(403)
+        }
+    }
+}
+</code></pre>
+    <p>That is Basic auth in a nutshell. The issue we have now is that you have to send the <code>username:password</code> on every request. Once a user has been authorized would it not make more sense for the server to keep track of them?</p>
+    <h2>Assignment</h2>
+    <h2>Additional Reading</h2>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

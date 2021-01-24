@@ -1,11 +1,7 @@
 # Mod 1 > Week 2 > Day 5
 
 ## Overview of the day
-Today we will take a look at some advanced topics including:
-* CORS
-* Overview of API Gateways such as Mashery, Apigee etc
-* Etags & Hateoas
-* Logout
+Today is time to complete your projects and prepare for the Show and tell.
 
 ## Learning Objectives
 
@@ -13,7 +9,7 @@ Today we will take a look at some advanced topics including:
 
 ## Materials needed
 
-# Lesson 1
+# Project extention
 
-[next](/swe/mod2/wk1/day1.html)
-[main](/swe)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/187)
+[main](/swe)|[prev](/swe/mod1/wk2/day4.html)|[next](/swe/mod2/wk1/day1.html)

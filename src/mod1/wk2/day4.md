@@ -12,10 +12,7 @@ Today we will develop a Single Page Application which uses OpenID to authenticat
 
 ## Materials needed
 
-# Lesson 1
-TODO - create an SPA to call the API..
+# Project brief
 
-Useful doc - https://auth0.com/docs/architecture-scenarios/spa-ap
-
-[next](/swe/mod1/wk2/day5.html)
-[main](/swe)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/186)
+[main](/swe)|[prev](/swe/mod1/wk2/day3.html)|[next](/swe/mod1/wk2/day5.html)
