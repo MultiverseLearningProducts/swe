@@ -4,6 +4,10 @@
 
 Today we are going to build a web server. In particular we want to understand the difference between static and dynamic content. We are going to set up a simple express server, and also use some templating to create dynamic content.
 
+## Additional resources
+If you are struggling with any of the concepts from today, the following resources will help:
+   * [Get started with Express Handlebars](https://www.youtube.com/watch?v=erfN7fH7A6s) 
+   * [Create default Layout - Express Handlebars](https://www.youtube.com/watch?v=Yh5qW_L5YNQ)
 ----
 
 ## Lesson 1 - Web Server
@@ -18,7 +22,7 @@ Today we are going to build a web server. In particular we want to understand th
 
 ## Before we start
 
-Have your project with the Restaurant models handy
+Have your project with the Restaurant models handy.
 
 ## Materials needed
 
@@ -28,20 +32,27 @@ Have your project with the Restaurant models handy
 
 What is a server? The simple answer is a computer that provides services to other computers. From that definition you can tell servers are often found on networks. For example an office might have a 'file server' a computer where office workers can read and write files that can be accessed by any other computer on the network.
 
-The kind of servers we are going to focus on are 'web server' and an 'app server'. A 'web server' responds to requests for .html files by sending back the .html contents of that file. Lets look at setting up a simple 'web server'.
+In this lesson we are going to focus on creating a 'web server' and an 'app server' using the [Express](https://expressjs.com/) web framework for Node.js.
 
-Install the node module 'express' and create a new file called `server.js`. Create a folder called `public` and then in your server file add the following.
+A 'web server' responds to requests for `.html` files by sending back the .html contents of that file. 
+
+Tp create a web server we firstly install the node module 'express' using `npm install express`. Next we create a file called `server.js` containing the following logic:
 ```javascript
-const express = require('express')
-const app = express()
+const express = require('express');
 
-app.use(express.static('public'))
+const app = express();
+const port = 3000;
 
-app.listen(3000, () => console.log('web server running on port 3000'))
+// serve static assets from the public/ folder
+app.use(express.static('public'));
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`)
+})
 ```
-The code above is doing the following. We import the express module. We create an instance of an server and call it `app`. Then we configure the server to serve 'static' assets from the 'public' folder. A 'static' asset is a file that is simply read off of disc and then returned to the user.
+After importing the express module we create an instance of a web server and call it `app`. Then we configure the server to serve 'static' assets from the 'public' folder. A 'static' asset is a file that is simply read off of disc and then returned to the user. 
 
-Ready to test this out? We need to add an html file in our `public` folder called `index.html`. For now it can just be a very simple "hello world" page, see below. Naming the file `index.html` makes it the default page express will respond with when requests are made to the root of the server i.e. no routes.
+We then need to add an html file in our `public` folder called `index.html`. For now it can just be a very simple "hello world" page, see below. Naming the file `index.html` makes it the default page express will respond with when requests are made to the root of the server.
 ```html
 <!DOCTYPE html>
 <html>
@@ -55,9 +66,7 @@ To start your server from the root of your project run the command `node server.
 
 Your server will serve your html page to any other computer that asks for it. The computer needs to be publicly accessible, so it will not work on your computer, unless you expose it to the wider internet, or deploy your server code online.
 
-We can serve different kinds of files from our public folder. For example a .css file or a javascript file. Lets try to add some style to our html page using a `style.css` file.
-
-Create a `style.css` file and add the following
+We can serve different kinds of files from our public folder. For example a .css file or a javascript file. Let's try to add some style to our html page using a `style.css` file.
 
 ```css
 * {
@@ -70,7 +79,7 @@ body {
     background-color: rgb(255, 228, 225);
 }
 ```
-Now we need to update our `index.html` file to also request this file from the server.
+Now we update our `index.html` file to also request this file from the server.
 ```html
 <!DOCTYPE html>
 <html>
@@ -82,28 +91,38 @@ Now we need to update our `index.html` file to also request this file from the s
     </body>
 </html>
 ```
-Notice the `"/style.css"` this is not a file path. It is a URL a universal remote locator. The browser will actually read this URL as `http://localhost:3000/style.css` and if you visit that in your browser you'll see the content of your css.
+Notice the `"/style.css"` this is not a file path. It is a URL ( Uniform Resource Locator). The browser will actually read this URL as `http://localhost:3000/style.css` and if you visit that in your browser you'll see the content of your css.
 
-So now we make a request to our server for an `index.html` page, when that loads in the browser that `index.html` page makes Further requests for more files; for example our style.css file. In the inspector of the browser you should be able to see in the network tab, the request our page makes for the `style.css` file. Once all these additional requests for assets and files has finished, then the browser `document` will emit an 'onload' event signalling your page has loaded.
+So, in summary, when a request is made to our web server for the `index.html` page, when that loads in the browser the `index.html` page makes a request for another file, our style.css file. 
 
-So 1 http request actually spawned a number of additional requests. You can see this on other pages from your favorite sites.
+Under `Developer Tools` in your Chrome browser you should be able to see in the `Network` tab, the request the index.html page makes for the `style.css` file. Once all these additional requests for assets and files have finished, the browser `document` will emit an 'onload' event signalling your page has loaded.
+
+<img width="424" alt="httpRequests" src="https://user-images.githubusercontent.com/1316724/105642249-89767a00-5e80-11eb-9deb-2e8f753e8b9b.PNG">
+
 
 ## Assignment
-
-* Can you create a mini website? Add html pages in the public folder.
-* Link between your pages using anchor tags (see below)
-* Change the style of the page
-
+* Create a new directory for this week's work
+* Run `npm init` to create a new project
+* Install Express using `npm install express`
+* Use the instructions above to create a web server running on port 3000, serving static content from the `public` directory
+* Create an `index.html` page with a linked css file
+* Validate that you see the files being loaded in the `Network` section of your browser's `Developer Tools`
+* Now try creating additional HTML pages and link them using anchor tags e.g.
 ```html
 <a href="/about.html">About me</a>
 ```
+---
+**Note:**
+If you get stuck, here is the [solution to Lesson 1](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day1/lesson1)
+
 ----
 
 ## Lesson 2 - Static vs Dynamic pages
 
 ## Learning Objectives
 
-* Explain the difference between static and dynamic content
+* Explain the difference between 'static' and 'dynamic' content
+* Create dynamic pages with the Handlebars templating framework
 
 ## Before we start
 
@@ -115,66 +134,46 @@ So 1 http request actually spawned a number of additional requests. You can see 
 
 ## Lesson
 
-What makes content static? Static content is usually read from disc, it is the same every request, it is the same for everyone. We have been working with static files so far on our web server.
+What makes content static? **Static content** is usually read from disc, it is the *same* every request, it is the same for everyone. Examples include, image files, .mp3 files, html files etc. We have been working with static files so far on our web server.
 
-Dynamic content is content that can change from request to request, and might be different for different people. For example everyone has the same basic facebook page, but each persons page is filled with content that is particular to them. What is shared between users is the page's template. The content is changeable or dynamic.
+**Dynamic content** is content that can *change* from request to request, and might be different for different people. For example everyone has the same basic Facebook page, but each person's page is filled with content that is particular to them. What is shared between users is the page's template. The content is changeable or dynamic.
 
-So where does the dynamic content come from? Dynamic content is usally stored in a database, or comes from another service, the app then responds to a request by fetching some specific content for that user/request parsing that content with a template, and then responding with the resultant html. The page is build per request "on-the-fly" and is assempled by our app.
+So where does the dynamic content come from? Dynamic content is usually stored in a database, or comes from another service. The app responds to a request by fetching some specific content for that user/request and parses that content with a template to create the resulting html. The page is built per request "on-the-fly" and is assembled by our app.
 
-If we are serving dynamic content like this our server is now an 'app server'.
+If we are serving dynamic content like this our server is now called an **app server**.
 
 ### Create a Route
 
-Our server needs to intercept the http request. It's no good just responding with the content of a static file or template. The way we intercept or 'handle' requests is by declaring a 'route' in our server.js file.
+Our server needs to intercept the HTTP request. It's no good just responding with the content of a static file or template. The way we intercept or 'handle' requests is by declaring a 'route' in our server.js file. Here is an example route which returns the current date when the user navigates to the root URL e.g. http://localhost:3000:
 
 ```javascript
 app.get('/', (request, response) => {
     const date = new Date()
-    response.send(date)
-})
+    response.send(date)})
 ```
-Add this route definition <u>after</u> setting your config with `app.use`, but <u>before</u> you call `app.listen`. Start your server, visit `http://localhost:3000` refresh your page. What happens as you continue to refresh the page?
+Route definitions appear <u>after</u> setting config with `app.use`, but <u>before</u> the call to `app.listen`. 
+
+Be sure to remove the `public/index.html` file as that will interfere with your `/` route.
 
 ### Create a Template
+Our dynamic content is going to be driven by our Restaurant data model. We will want to display our list of restaurants within a web page. For this, we are going to use a templating framework called [Handlebars](https://handlebarsjs.com/). This is a well supported template library in which you write html and have place holders for dynamic content. 
 
-Our dynamic content is going to be driven by our data model. We will want to display our particular list of restaurants. For this we are going to set up 'handlebar' templates. This is a well known and supported template library in which you write html (which is good for you an an apprentice) and have place holders for dynamic content. Follow these steps;
+A Handlebars expression is content surrounded by `{{` `}}`. When the template is executed, the expression is replaced with values from an input object. 
 
-1. `npm install handlebars express-handlebars @handlebars/allow-prototype-access`
-1. require `express-handlebars` in your server and set it up (see below)
-1. create a `views` folder
-1. create a `layouts` folder in the `views` folder
-1. create a `main.handlebars` file in the `layouts` folder
-1. create a `restaurants.handlebars` file in your `views` folder
-
+Handlebars expects a specific folder structure:
 ```sh
+
 views
-├── home.handlebars
+├── restaurants.handlebars
 └── layouts
     └── main.handlebars
+
 ```
+The `views` folder contains Handlebars templates which get rendered into `layouts`. 
 
-```javascript
-const express = require('express')
-const Handlebars = require('handlebars')
-const expressHandlebars = require('express-handlebars')
-const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-const app = express()
+A `layout` is an HTML page with a `{{{body}}}` placeholder into which views are rendered. The `layouts` folder typically holds a default `main.handlebars` layout. 
 
-const handlebars = expressHandlebars({
-    handlebars: allowInsecurePrototypeAccess(Handlebars)
-})
-
-app.use(express.static('public'))
-app.engine('handlebars', handlebars)
-app.set('view engine', 'handlebars')
-
-app.get('/', (request, response) => {
-    response.render('restaurants', {date: new Date()})
-})
-
-app.listen(3000, () => console.log('web server running on port 3000'))
-```
-Your `main.handlebars` has the scaffold for the html page. Can you see the placeholder for other templates?
+In our Restaurants app we will set the `main.handlebars` layout as follows: 
 ```html
 <!DOCTYPE html>
 <html>
@@ -186,21 +185,62 @@ Your `main.handlebars` has the scaffold for the html page. Can you see the place
     </body>
 </html>
 ```
-Your `restaurants.handlebars` will be rendered in the main layout template, and have a variable named 'date' that we can render in our template.
+The `restaurants.handlebars` file will be rendered in the `main.handlebars` layout  and for now, will simply print out the date. 
 ```html
 <h1>Restaurants</h1>
 <small>{{date}}</small>
 ```
-Finally remove the `public/index.html` file as that will interfere with your `/` route.
+
+### Handlebars installation
+To install Handlebars, run `npm install handlebars express-handlebars @handlebars/allow-prototype-access`. Once installed, the code is used as below:
+
+```javascript
+const express = require('express');
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
+const app = express();
+const port = 3000;
+
+// setup our templating engine
+const handlebars = expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+})
+app.engine('handlebars', handlebars)
+app.set('view engine', 'handlebars')
+
+// serve static assets from the public/ folder
+app.use(express.static('public'));
+
+// this route matches any GET request to the top level URL
+app.get('/', (request, response) => {
+    response.render('restaurants', {date: new Date()})
+})
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`)
+})
+```
 
 ## Assignment
 
-* Put all of this together and render out some dynamic content
-* Display the time of day on the `restaurants` page
-* Add a link to an about page
-* Create another route handler on your server `/about`
-* Create another template for your new `/about` page
-* Display your name on the about page
+  * (optional) - watch these video to reinforce your learning:
+     * [Get started with Express Handlebars](https://www.youtube.com/watch?v=erfN7fH7A6s) 
+     * [Create default Layout - Express Handlebars](https://www.youtube.com/watch?v=Yh5qW_L5YNQ)
 
-[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
+  * Modify `server.js`  to serve both static and dynamic content as per the code above. Start your server by navigating to `http://localhost:3000`. You should see the date displayed. Use `Developer Tools` to see the HTTP requests as you refresh the page
+  * Create another route handler on your server, `/about`
+  * Create another template in the `views` folder for your new `/about` page
+  * Add a link from the `restaurants` page to the `about` page
+  * Display your name on the about page
+
+---
+**Note:**
+If you get stuck, here is the [solution to Lesson 2](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day1/lesson2)
+
+---
+
+
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/163)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day5.html)|[next](/swe/bootcamp/wk3/day2.html)
