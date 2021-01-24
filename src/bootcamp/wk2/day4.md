@@ -4,7 +4,7 @@
 
 The aim of today is to integrate our classes with a persistent layer. So the state in our app will last from one running instance to the next. You know how to create a class. You know how to write data into a database. When we create a new instance of a Restaurant we also want to create a new entry in our database. When we create a new Menu we will also want to create that menu in the database, and associate it with the right restaurant, and have an instance of a menu in the menus array in our restaurant. When we get a restaurant out of the database, we want to instantiate a new instance of our Restaurant class with that data, and fetch the menus, and fetch the items for each menu.
 
-This mapping between databases and classes is called Object Relational Mapping.
+This mapping between databases and classes is called Object Relational Mapping (ORM).
 
 ----
 
