@@ -99,7 +99,9 @@ Our class definition just requires us to extend from the Sequelize class `Model`
 * Add the custom Sequelize code to map each class to a database table in a new database file (ignore relationship for now)
 * Create a test based on the code above to check that your tables are created and that you can insert data into them.
 
-If you need help, refer to the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5).
+---
+**Note:**
+If you get stuck, here is the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5).
 
 ----
 
