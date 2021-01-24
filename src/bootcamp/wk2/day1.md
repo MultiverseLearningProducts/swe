@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-This week we are going to build a Restaurants app, like Deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.
+This week we are going to build part of a Restaurants app, like Deliveroo or Uber Eats. On this first day we are going to start by designing our data model. An app's data model is like the foundations of a building. Everything is build on top of this foundation.
 
 <hr/>
 
@@ -86,7 +86,7 @@ When you have completed these tasks, can you create a coverage report using Jest
 ```json
 {
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest",
     "test:report": "jest --coverage=true"
   },
   "dependencies": {

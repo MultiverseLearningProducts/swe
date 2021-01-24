@@ -297,7 +297,7 @@ That is a lot to get your head around! Async functions are a key characteristic 
 
 * In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.
 * Use the three different ways of forming async functions to read file content in your Airport class
-* Write async tests for each of the three asyn functions using Jest
+* Write async tests for each of the three async functions using Jest
 
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/156)
