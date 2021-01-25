@@ -106,7 +106,8 @@ Under `Developer Tools` in your Chrome browser you should be able to see in the 
 * Install Express using `npm install express`
 * Use the instructions above to create a web server running on port 3000, serving static content from the `public` directory
 * Create an `index.html` page with a linked css file
-* Validate that you see the files being loaded in the `Network` section of your browser's `Developer Tools`
+* Visit `http://localhost:3000/` to see your html page
+* Validate that you see the files being loaded in the `Network` section of your browser's `Developer Tools`. Look atthe HTTP status codes, what happens to them when you refresh?
 * Now try creating additional HTML pages and link them using anchor tags e.g.
 ```html
 <a href="/about.html">About me</a>
