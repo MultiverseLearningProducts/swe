@@ -104,7 +104,7 @@ try {
 }
 </code></pre>
     <p>This code uses a <a href="https://www.w3schools.com/jsref/jsref_try_catch.asp">try/finally</a> block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.</p>
-    <p>The code also makes use of <strong>Prepared Statements</strong> which are key for ensure your database applications are not vulnerable to <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">SQL injection attacks</a>.</p>
+    <p>The code also makes use of <strong>Prepared Statements</strong> which are key for ensure your database applications are not vulnerable to <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
     <pre><code class="language-javascript">const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database('./db.sqlite')
 </code></pre>
