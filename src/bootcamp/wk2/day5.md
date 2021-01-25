@@ -37,58 +37,75 @@ To install Sequelize run:
 You must also ensure you have the the driver installed for SQLite:
 ` npm install sqlite3`
 
-### Testing code written using Sequelize
-Let's start with a failing test:
+Create a file named `sequelize_index.js` with the following content:
+```js
+const {Sequelize, DataTypes, Model} = require('sequelize');
 
-```javascript
-const {Restaurant, sequelize} = require('./Restaurant')
-
-describe('Restaurant', () => {
-    beforeAll(async () => {
-        await sequelize.sync({ force: true })
-    })
-
-    test('can create a restaurant', async () => {
-        const restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
-        expect(restaurant.id).toBe(1)
-    })
-})
-```
-Lets walk through the code above. First of all, we are importing our class from a file called `./Restaurant.js` and an object called `sequelize` represents our database connection. Before we start our tests (or later our server) we need to call and wait for `sequelize.sync()`. This command performs a SQL query to the database and creates tables (based on our class models) or modifies the table structure to match the class models. The `{ force: true }` parameter forces the tables to be recreated each time the test suite is run (this ensures the `expect` line passes as there will only be a single row in the database).
-
-In our test you can see the API for sequelize. To create a new instance of a Restaurant we call a static method on the class called `create`. We pass in an object with the field names, and the values we want to store. In our test which kind of async function are we using?
-
-### Defining the model
-Models are fundamental to Sequelize. A model represents a table in your database. It is represented by a class that extends `Model`.
-
-```javascript
-const { Sequelize, Model, DataTypes } = require('sequelize')
-
-// create a database connection
 const sequelize = new Sequelize('database', 'username', 'password', {
     dialect: 'sqlite',
     storage: './restaurants-seq.sqlite'
 });
 
-class Restaurant extends Model { 
-    /* your normal methods would go here */
-}
+ module.exports={sequelize, DataTypes, Model};
+```
+This file contains code that would otherwise be duplicated in the individual model classes. It sets up a connection to the database and imports sequelize types. You can also see that it would be very easy to specify a different type of database in the future just by changing this config.
 
-/* Sequelize specific code to map the class to a DB table */
+### Testing code written using Sequelize
+Let's start with a failing test:
+
+```javascript
+const {sequelize} = require('./sequelize_index');
+const {Restaurant} = require('./Restaurant')
+
+describe('Restaurant', () => {
+    /**
+     * Runs the code prior to all tests
+     */
+    beforeAll(async () => {
+        // the 'sync' method will create tables based on the model class
+        // by setting 'force:true' the tables are recreated each time the 
+        // test suite is run
+        await sequelize.sync({ force: true });
+    })
+
+    test('can create a restaurant', async () => {
+        await sequelize.sync({ force: true }); // recreate db
+        const restaurant = await Restaurant.create({ name: 'Ronalds', image: 'http://some.image.url' })
+        expect(restaurant.id).toBe(1)
+    })
+})
+```
+Before we start our tests (or later our application server) we need to call and wait for `sequelize.sync()`. This command performs a SQL query to the database and creates tables (based on our class models) or modifies the table structure to match the class models. The `{ force: true }` parameter forces the tables to be recreated each time the test suite is run (this ensures the `expect` line passes as there will only be a single row in the database).
+
+In our test you can see the API for sequelize. To create a new instance of a Restaurant we call a static method on the class called `create`. We pass in an object with the field names, and the values we want to store. In our test which kind of async function are we using?
+
+### Defining the model
+Models are fundamental to Sequelize. A Model represents a table in your database. It is represented by a class that extends `Model`. Here is an example for the `Restaurant` class.
+
+```javascript
+const {sequelize, DataTypes, Model} = require('./sequelize_index');
+
+/**
+ * Represents a Restaurant
+ */
+class Restaurant extends Model {
+
+    // add methods here
+
+}
 Restaurant.init({
     name: DataTypes.STRING,
-    imagelink: DataTypes.STRING,
+    image: DataTypes.STRING,
 }, {
     sequelize,
     timestamps: false,
 });
 
 module.exports = {
-    Restaurant,
-    sequelize
-}
+    Restaurant
+};
 ```
-In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model & DataTypes. We create a new instance of a sequelize connector and pass in config for our database. One benefit of using this library is we have a choice of different database we can use, and to swap them out we just change this config.
+In the code above we de-structure assign three constructors from the sequelize module: Sequelize, Model & DataTypes. 
 
 Our class definition just requires us to extend from the Sequelize class `Model` (note that there are alternative methods to inheritance if required), plus the addition of an `init` method which defines the table columns and their types. The `timestamps: false` setting avoids a `created_at` column appearing. There are many more customisations you can achieve if you refer to the [Sequelize documentation](https://sequelize.org/master/).
 
@@ -96,7 +113,7 @@ Our class definition just requires us to extend from the Sequelize class `Model`
 
 * Create a project (run `npm init`) and add dependencies on  sqlite3, jest and sequelize (as per the installation instructions above)
 * Create Restaurant, Menu and Item classes
-* Add the custom Sequelize code to map each class to a database table in a new database file (ignore relationship for now)
+* Add code to map each class to a database table in a new database file (ignore relationship for now). use the `Restaurant` class above as an example.
 * Create a test based on the code above to check that your tables are created and that you can insert data into them.
 
 ---
@@ -118,29 +135,45 @@ You must have completed Lesson 1
 * sqlite3, jest, sequelize
 
 ## Lesson
-To connect tables in `sequelize` your model definitions need to specify their relationships.
+To connect tables in `sequelize` your model definitions simply need to specify their relationships. For example, we simply add the following 2 lines to the `Restaurant` class:
 
 ```javascript
-Restaurant.hasMany(Menu)
-Menu.belongsTo(Restaurant)
+Restaurant.hasMany(Menu, { foreignKey: 'restaurant_id' });
+Menu.belongsTo(Restaurant, { as: 'owner', foreignKey: 'restaurant_id' });
 ```
-Now we can use them like this:
+
+Sequelize will do all the hard work of creating the new foreign key columns!
+
+We can test the relationships have been setup correctly using the following code:
 ```javascript
+const {sequelize} = require('./sequelize_index');
+const {Restaurant} = require('./Restaurant');
+const {Menu} = require('./Menu');
+const {MenuItem} = require('./MenuItem')
+
+
 describe('Relationships', () => {
     beforeAll(async () => {
-        await sequelize.sync()
+        await sequelize.sync({ force: true });
     })
     
     test('restaurants have menus', async () => {
         const restaurant = await Restaurant.create({name: 'Ronalds', image: 'http://some.image.url'})
-        const menu = await Menu.create({title: 'set 1'})
-        await restaurant.addMenu(menu)
-        const menus = await restaurant.getMenus()
-        expect(menus[0].title).toBe('set 1')
+        const menu = await Menu.create({title: 'set 1'});
+        await restaurant.addMenu(menu);
+        const menus = await restaurant.getMenus();
+        const menuItem = await MenuItem.create({name: 'egg', price: 2.00});
+        await menus[0].addMenuItem(menuItem);
+        const menuItems = await menus[0].getMenuItems();
+
+        expect(menuItems.length).toBe(1);
+
+        expect(menus[0].title).toBe('set 1');
     })
+
 })
 ```
-The `sequelize` library is build using promises, so we can use async await in our code.
+Note that the `sequelize` library is build using promises, so we can use async await in our code.
 
 ## Assignment
 
