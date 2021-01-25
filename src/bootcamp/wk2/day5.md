@@ -179,6 +179,12 @@ Note that the `sequelize` library is build using promises, so we can use async a
 
 * Configure the relationships between your models
 * Write tests that prove your relationships are all correctly connected
+---
+
+**Note:**
+If you get stuck, here is the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5).
+
+---
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/162)
 [main](/swe)|[prev](/swe/bootcamp/wk2/day4.html)|
