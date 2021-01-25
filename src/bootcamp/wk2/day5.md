@@ -184,6 +184,11 @@ Note that the `sequelize` library is build using promises, so we can use async a
 **Note:**
 If you get stuck, here is the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5).
 
+If you have been given the solution, you should copy it into a new directory and run `npm install` which will create all the node_module dependencies. 
+
+You will see 3 classes, Restaurant, Menu and MenuItem and some commented out code at the end of each. Try uncommenting this code and run `node Restaurant.js`. This should create a new table in a database called `restaurants-seq.sqlite` with a single row inserted. Try the same thing with the Menu and MenuItem classes and make sure the tables and rows get created ok. 
+
+Now put the commented code in each class back and then run the `Relationships.test.js` file. You should see a Restaurant, Menu and MenuItem get inserted. Play around with the test to add more data and then try to query the data. 
 ---
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/162)
