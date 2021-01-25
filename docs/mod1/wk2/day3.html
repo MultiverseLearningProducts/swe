@@ -20,16 +20,302 @@
       <li>Understand how to restrict access to resources to only the logged in user</li>
     </ul>
     <h2>Before we start</h2>
-    <p>TODO - mention location of template starter code (if apprentice hasn't finished yesterday's project)</p>
-    <h2>Materials needed</h2>
-    <h1>Lesson 1</h1>
-    <h2>Learning Objectives</h2>
     <ul>
-      <li>How to model transactional operations</li>
+      <li>Create a Auth0 account</li>
     </ul>
+    <h2>Materials needed</h2>
+    <h1>Lesson 1 - Auth0</h1>
+    <p>In this lesson you will sign up to Auth0, a commercial implementation of OAuth, used by many well known companies including M&#x26;S to secure their Web APIs.</p>
+    <ol>
+      <li>
+        <p>Go to <a href="https://auth0.com/signup">https://auth0.com/signup</a></p>
+      </li>
+      <li>
+        <p>Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.</p>
+      </li>
+      <li>
+        <p>Navigate to your Dashboard and select to <code>Create API</code> for your UsersAPI using the same details as below 
+          <img src="https://user-images.githubusercontent.com/1316724/102825938-b2b26f00-43d7-11eb-8eb5-444ba240a13b.PNG" alt="Auth0 Users API" title="Users API">
+        </p>
+      </li>
+      <li>
+        <p>Navigate to the <code>Test</code> tab of your new API. You will see that a new application has been created called UsersAPI(Test Application) which is authorised to access the API.</p>
+        <p>You will see a section called <code>Asking Auth0 for tokens from my application</code>. Let's look in more detail at the parameters passed as part of the cURL request:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Explanation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>audience</td>
+              <td>represents the resource which we are trying to access</td>
+            </tr>
+            <tr>
+              <td>grant_type</td>
+              <td>we are using <code>client_credentials</code> OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow <a href="https://auth0.com/docs/flows/client-credentials-flow">here</a>. If you are creating an SPA you should use the <a href="https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a> instead (we will cover this later).</td>
+            </tr>
+            <tr>
+              <td>client_id</td>
+              <td>this is the id of the UsersAPI(Test Application) which is authorised to access the UsersAPI.</td>
+            </tr>
+            <tr>
+              <td>client_secret</td>
+              <td>this is the client secret of the UsersAPI(Test Application) which is authorised to access the UsersAPI.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.</p>
+      </li>
+      <li>
+        <p>You should see a 200 success status and the body of the response should contain an <code>access_token</code>. Paste it into the Debugger at <a href="https://jwt.io">https://jwt.io</a> and explore the contents.</p>
+        <p>Common claims held within JWTs are:</p>
+        <ul>
+          <li>Issuer (iss)</li>
+          <li>Subject (sub)</li>
+          <li>Audience (aud)</li>
+          <li>Expiration time (exp)</li>
+          <li>Not before (nbf)</li>
+          <li>Issued at (iat)</li>
+          <li>JWT ID (jti)</li>
+        </ul>
+      </li>
+    </ol>
+    <h1>Lesson 3 - Securing your API with OAuth</h1>
+    <p>Open the Users API you created yesterday in Visual Code. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.</p>
+    <p><strong>Coach note</strong> - solutions for JavaScript and Java at <a href="https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/">https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/</a></p>
+    <h2>Javascript developers</h2>
+    <ol>
+      <li>
+        <p>
+          Install the following node package dependencies:
+          <code>npm install cors dotenv express-jwt jwks-rsa</code>
+        </p>
+      </li>
+      <li>
+        <p>Remove the dependency to <code>express-basic-auth</code></p>
+      </li>
+      <li>
+        <p>Add the following to the start of your <code>app.js</code> file as follows</p>
+      </li>
+    </ol>
+    <pre><code class="language-javascript">const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+const cors = require('cors'); 
+
+require('dotenv').config('.env'); // Note: env vars should not be used in production
+</code></pre>
+    <ol start="4">
+      <li>Add the following line AFTER the call to initialise Express</li>
+    </ol>
+    <pre><code class="language-javascript">app.use(cors());
+</code></pre>
+    <ol start="5">
+      <li>
+        <p>Create a <code>.env</code> file and add the following entries (substituting in your personal Auth0 domain):</p>
+        <p><code>AUTH0_AUDIENCE=https://users</code></p>
+        <p><code>AUTH0_DOMAIN=[your domain].eu.auth0.com</code></p>
+      </li>
+      <li>
+        <p>Add a function to check for a valid OAuth (JWT) token:</p>
+      </li>
+    </ol>
+    <pre><code class="language-javascript">// create middleware for checking the JWT
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
+  }),
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}`,
+  algorithms: ['RS256']
+});
+
+</code></pre>
+    <ol start="7">
+      <li>Secure your API:</li>
+    </ol>
+    <pre><code class="language-javascript">app.get("/users", checkJwt, (req, res) => {
+</code></pre>
+    <h2>Java developers</h2>
+    <ol>
+      <li>Add the OAuth dependencies to your <code>pom.xml</code> file:</li>
+    </ol>
+    <pre><code class="language-xml">    &#x3C;properties>
+        ...
+        &#x3C;spring-security.version>5.4.2&#x3C;/spring-security.version>
+        ...
+    &#x3C;/properties>
+
+        &#x3C;/dependency>
+        &#x3C;dependency>
+            &#x3C;groupId>org.springframework.security&#x3C;/groupId>
+            &#x3C;artifactId>spring-security-oauth2-resource-server&#x3C;/artifactId>
+            &#x3C;version>${spring-security.version}&#x3C;/version>
+        &#x3C;/dependency>
+        &#x3C;dependency>
+            &#x3C;groupId>org.springframework.security&#x3C;/groupId>
+            &#x3C;artifactId>spring-security-oauth2-jose&#x3C;/artifactId>
+            &#x3C;version>${spring-security.version}&#x3C;/version>
+        &#x3C;/dependency>
+        &#x3C;dependency>
+            &#x3C;groupId>org.springframework.security&#x3C;/groupId>
+            &#x3C;artifactId>spring-security-config&#x3C;/artifactId>
+            &#x3C;version>${spring-security.version}&#x3C;/version>
+        &#x3C;/dependency>
+</code></pre>
+    <ol start="2">
+      <li>Create a new class which checks that the JWT has the correct audience value</li>
+    </ol>
+    <pre><code class="language-java">import org.springframework.security.oauth2.core.OAuth2Error;
+import org.springframework.security.oauth2.core.OAuth2TokenValidator;
+import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
+import org.springframework.security.oauth2.jwt.Jwt;
+
+/**
+ * Validates that the JWT is intended for our API.
+ */
+public class AudienceValidator implements OAuth2TokenValidator&#x3C;Jwt> {
+
+    private final String audience;
+
+    AudienceValidator(String audience) {
+        this.audience = audience;
+    }
+
+    public OAuth2TokenValidatorResult validate(Jwt jwt) {
+        OAuth2Error error = new OAuth2Error("invalid_token", "The required audience is missing", null);
+
+        if (jwt.getAudience().contains(audience)) {
+            return OAuth2TokenValidatorResult.success();
+        }
+        return OAuth2TokenValidatorResult.failure(error);
+    }
+}
+</code></pre>
+    <ol start="3">
+      <li>Modifiy your SecurityConfiguration to use OAuth</li>
+    </ol>
+    <pre><code class="language-java">@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Value("${auth0.audience}")
+    private String audience;
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    private String issuer;
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                // ** IMPORTANT! do not use the line below in production apps!! **
+                .and().csrf().disable()
+                .and().cors()
+                .and().oauth2ResourceServer().jwt();
+    }
+
+    /**
+     * Required to enable CORS - NOT suitable for production code!
+     *
+     * @return CorsConfigurationSource cors configuration
+     */
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final CorsConfiguration configuration = new CorsConfiguration();
+
+        // ** IMPORTANT! do not use the line below in production apps!! **
+        // ** Specify specific origins instead
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+
+    @Bean
+    JwtDecoder jwtDecoder() {
+        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
+                JwtDecoders.fromOidcIssuerLocation(issuer);
+
+        OAuth2TokenValidator&#x3C;Jwt> audienceValidator = new AudienceValidator(audience);
+        OAuth2TokenValidator&#x3C;Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
+        OAuth2TokenValidator&#x3C;Jwt> withAudience = new DelegatingOAuth2TokenValidator&#x3C;>(withIssuer, audienceValidator);
+
+        jwtDecoder.setJwtValidator(withAudience);
+
+        return jwtDecoder;
+    }
+}
+</code></pre>
+    <ol start="4">
+      <li>Add a new file <code>application.yml</code> under <code>src/main/resources</code> to specify your Auth0 domain and audience</li>
+    </ol>
+    <pre><code class="language-xml">auth0:your Auth
+  audience: https://users
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://[your Auth0 domain].eu.auth0.com/
+</code></pre>
+    <h2>Calling your API</h2>
+    <ol>
+      <li>
+        <p>Obtain your Auth0 token.</p>
+      </li>
+      <li>
+        <p>Call the API with a <code>Bearer Token</code> set to this token. Hopefully you should see a 200 OK response!</p>
+      </li>
+    </ol>
+    <h1>Lesson 4 (Optional as complex) - Modify your Login page to use the Auth0 Login page</h1>
+    <p>OAuth deals specifically with authorisation of resources, <strong>OpenID Connect</strong> is a protocol which is built on top of OAuth 2.0 and focusses on user authentication. It is widely used to enable user logins on consumer websites and mobile apps.</p>
     <p>
-      <a href="/swe/mod1/wk2/day4.html">next</a>
-      <a href="/swe">main</a>
+      <img src="https://user-images.githubusercontent.com/1316724/102927348-b8b75700-448e-11eb-9d0d-3d7fa4e6e1ea.png" alt="sequence diagram showing the OpenID Connect authorization flow">
+    </p>
+    <p>OpenID Connect uses an additional JSON Web Token (JWT), called an ID token, to hold basic profile information about the authenticated (logged in) user e.g. their name or email address. Here is an example:</p>
+    <p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWQgRmxpbnRzdG9uZSIsImVtYWlsIjoiZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51ayIsImlhdCI6MTUxNjIzOTAyMn0.DlHfHG2qZXpWszZv-X8LwoQkZUlqVgaXoRmnHXE2y_I</code></p>
+    <p>Use <a href="https://jwt.io">https://jwt.io</a> to find out the name and email hidden in the JWT ID token.</p>
+    <p>So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.</p>
+    <h2>Implementing authentication using Auth0</h2>
+    <ol>
+      <li>
+        <p>Using the Auth0 Dashboard, create a new user "demo" with a password of "demo1"</p>
+        <p>
+          <img src="https://user-images.githubusercontent.com/1316724/102827170-fdcd8180-43d9-11eb-97b1-a1285778a535.PNG" alt="creating a new user">
+        </p>
+      </li>
+      <li>
+        <p>Create a new "Single Page Web" Application in your Auth0 Dashboard. Choose JavaScript as the technology. Ignore the tutorial for now, just find your new application in your Dashboard and edit it to set:</p>
+        <ul>
+          <li>Allowed Callback URLs = http://localhost:3001, http://localhost:3000</li>
+          <li>Allowed Logout URLs = http://localhost:3001, http://localhost:3000</li>
+          <li>Allowed Web Origins = http://localhost:3001, http://localhost:3000</li>
+          <li>Allowed Origins (CORS) = http://localhost:3001, http://localhost:3000</li>
+        </ul>
+        <p>This will enable your single page web app (SPA) to work correctly - note, it assumes your SPA will run on port 3001, change this later if this is not correct.</p>
+      </li>
+      <li>
+        <p>Modify your Login page to use the Auth0 Universal Login Page using the instruction <a href="https://auth0.com/docs/quickstart/spa/vanillajs">here</a>. Please note that this is quick a complex and time consuming challenge so you are free to 'cheat' and use the sample app from the GitHub repository referenced at the top of this web page.</p>
+        <p><strong>Coach note</strong> - solution at <a href="https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/js/spa">https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/js/spa</a></p>
+      </li>
+    </ol>
+    <p>
+      <a href="https://platform.multiverse.io/apprentice/attendance-log/185">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk2/day2.html">prev</a>|<a href="/swe/mod1/wk2/day4.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
