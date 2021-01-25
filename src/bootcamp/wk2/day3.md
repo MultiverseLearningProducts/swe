@@ -99,7 +99,7 @@ try {
 ```     
 This code uses a [try/finally](https://www.w3schools.com/jsref/jsref_try_catch.asp) block to ensure that the statement and database are closed regardless of whether an error occurs. This is best practice to avoid memory leaks.
 
-The code also makes use of **Prepared Statements** which are key for ensure your database applications are not vulnerable to [SQL injection attacks](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html). 
+The code also makes use of **Prepared Statements** which are key for ensure your database applications are not vulnerable to [SQL injection attacks](https://portswigger.net/web-security/sql-injection). 
 
 ```javascript
 const sqlite3 = require('sqlite3')
