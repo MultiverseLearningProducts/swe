@@ -123,9 +123,15 @@ Where do we put things if we want our page to look good on both a mobile phone a
 
 ### Responsive @media
 
-CSS comes with a `@media` API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of `@media` enables you to apply css to your page at particular screen sizes. The css is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.
+CSS comes with a `@media` API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of `@media` enables you to apply css to your page at particular screen sizes. 
 
-This solved the problem of having to server different html templates and css to different devices.
+Media queries can be used to check things like:
+  * width and height of the device
+  * orientation (landscape or portrait mode)
+
+The CSS is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.
+
+Using the `@media` API solves the problem of having to serve different html templates and css to different devices.
 
 ### Understanding the viewport
 The **viewport** is the visible area of a web page.
@@ -229,9 +235,9 @@ The next break point we want to jump to 3 columns. Now we just need to override 
 So we have covered responsive layouts using @media (media queries), and taken a quick look at the power of 'grid' in CSS.
 
 ## Assignment
-
-* Can you implement a responsive layout for your restaurant's app?
-* Use @media and CSS 'grid'
+  * Read up on [CSS @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
+  * Get your background color to change dependent on the type of device you are usuing
+  * Implement a responsive layout for your restaurant's app using  @media and CSS 'grid'
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/164)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day1.html)|[next](/swe/bootcamp/wk3/day3.html)
