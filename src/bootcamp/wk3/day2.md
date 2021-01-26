@@ -8,13 +8,14 @@
 
 ## Learning Objectives
 
-* Demonstrate how to combine an array of data with a template
+* Demonstrate how to include an array of data with a template
 * Use iteration to repeatedly create dynamic html content
 
 ## Before we start
 
-* Have the app server you created yesterday ready
-* Make sure you have a data model ready to use
+* You must have completed the assignments from yesterday. This will ensure you have an app server ready to serve dynamic content.
+* You must be familiar with Sequelize (covered in Day 5 of Week 2)
+* You must have Restaurant data in your database
 
 ## Materials needed
 
@@ -22,19 +23,18 @@
 
 ## Lesson
 
-Our app has an array of restaurants that we want to display on our page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed html block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the intenet and is a good example of a _card_ component.
+Our app has an array of restaurants that we want to display on our page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed html block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the Internet and is a good example of a _card_ component.
 
 ![example of the card component](https://user-images.githubusercontent.com/4499581/95015340-344df880-0644-11eb-8ce4-30609f0de5fe.jpg)
 
 Can you recognise the template vs the dynamic content in the example above?
 
-### Pass the data into the template
+### Passing the Restaurant data to the view template
 
-The first step is preparing our data for the template, and the second is passing it to the template.
+Our first step is to prepare the data for the view template and the second step is to pass it to the view template. The example below uses sequelize to fetch all the restaurants and passes this to the `home.handlebars` layout template.
 
-1. The example below uses sequelize to fetch all the restaurants
-1. The first argument to `response.render` is the matching string name of the template file we want to render, i.e. 'home'
-1. The second argument to `response.render` is our data in an object.
+1. The first argument to `response.render` is the matching string name of the layout file we want to render. In this example, the name 'restaurants' refers to a file named `home.handlebars`.
+1. The second argument to `response.render` is the Restaurant data returned from the sequelize query.
 
 ```javascript
 app.get('/', async (req, res) => {
@@ -45,16 +45,22 @@ app.get('/', async (req, res) => {
     res.render('home', {restaurants})
 })
 ```
-_to use `include` as in the code above, make sure your sequelise model has this alias added. This config sets the name of the property our associated model will be stored on; i.e. `restaurants.menus`._
+To use `include` as in the code above, make sure your **Restaurant** class has the following aliases added. This config sets the name of the property our associated model will be stored on i.e. `restaurants.menus`.
 
 ```javascript
-Restaurant.hasMany(Menu, {as: 'menus'})
-Menu.belongsTo(Restaurant)
-Menu.hasMany(Item, {as: 'items'})
-Item.belongsTo(Menu)
+Restaurant.hasMany(Menu, {as: 'menus', foreignKey: 'restaurant_id'})
+Menu.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
 ```
 
-In our template there will be an objected called 'restaurants' that will be our array of data that came from `await Restaurant.findAll()`. We can write our html elements as if this was an html file, only when we want to pharse some dynamic content we can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.
+Also ensure your Menu class has the correct aliases as follows:
+
+```javascript
+Menu.hasMany(MenuItem, {as: 'items', foreignKey: 'menu_id'});
+MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
+```
+You will be able to see the impact of the above in the SQL statements output when running the `server.js` file. 
+
+In our view template there will be an object called 'restaurants' that will be the array of data that came from `await Restaurant.findAll()`. We can write our html elements as if this was an html file, only when we want to parse some dynamic content do can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.
 
 To repeat a block of code for every item in an array we can use the built in template helper `{{#each}}` that comes with handlebars.
 
@@ -74,8 +80,14 @@ From the code above where does the repeating block of html begin and end? Try th
 
 ## Assignment
 
-* Can you render all your restaurants?
-* In addition to each restaurant, can you also display the title of each menu?
+* Read through the previous section and make the required changes to your `server.js` file.
+* Add the correct associations to the Menu and Restaurant classes
+* Create a new view layout called `home.restaurants` and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.
+* Challenge yourself to display the image associated with each restaurant.
+
+---
+**Note:**
+If you get stuck, here is the [solution to Lesson 1](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day2)
 
 ----
 
@@ -83,13 +95,13 @@ From the code above where does the repeating block of html begin and end? Try th
 
 ## Learning Objectives
 
-* Use @media
+* Use the CSS @media Rule
 * Implement a responsive CSS grid
 
 ## Before we start
 
-* You will need html content on your page to apply your grid styling to
-* You should know how to simulate different devices in chrome dev tools
+* You must have completed Lesson 1
+* You should know how to simulate different devices in Chrome Developer tools
 
 ## Materials needed
 
@@ -109,14 +121,25 @@ CSS comes with a `@media` API which was orignialy added to the spec so you could
 
 This solved the problem of having to server different html templates and css to different devices.
 
-### Mobile first
+### Understanding the viewport
+The **viewport** is the visible area of a web page.
 
-To make your page responsive we need to override the scaleing behaviour of many mobile browsers. Add the following line to the `<head>` element of your html `main.handlebars` file.
+The viewport varies with the device e.g. the viewport on a mobile phone is smaller than on a computer screen.
+
+To make our page responsive (i.e. to look good on all devices) we need to gives the browser instructions on how to control the page's dimensions and scaling. 
+
+Add the following line to the `<head>` element of your html `main.handlebars` file.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
+The `width=device-width` part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
 
+The `initial-scale=1.0` part sets the initial zoom level when the page is first loaded by the browser.
+
+The impact of setting the viewport can be visualised [here](https://www.w3schools.com/css/css_rwd_viewport.asp).
+
+### Mobile first
 The way to implement a responsive layout is start with the smallest screen size; the mobile. These layouts are often the most simple. As the screen size get larger you can start to make more use of the real estate that becomes available.
 
 Lets start. Empty your `style.css` and add the following css:
@@ -134,7 +157,7 @@ Lets start. Empty your `style.css` and add the following css:
   /* css for massive screens goes here */
 }
 ```
-This css gives us two break points. at 30em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?
+This css gives us two break points. at 40em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?
 
 ### Grid
 
