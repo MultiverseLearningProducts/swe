@@ -79,11 +79,11 @@ To repeat a block of code for every item in an array we can use the built in tem
 From the code above where does the repeating block of html begin and end? Try this in your browser, when you inspect the html what do you expect to see?
 
 ## Assignment
-
-* Read through the previous section and make the required changes to your `server.js` file.
-* Add the correct associations to the Menu and Restaurant classes
-* Create a new view layout called `home.restaurants` and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.
-* Challenge yourself to display the image associated with each restaurant.
+  * (Optional) - watch [this video](https://www.youtube.com/watch?v=JbrqxPcuYVc) about using the `each` Handlebars helper keyword
+  * Read through the previous section and make the required changes to your `server.js` file.
+  * Add the correct associations to the Menu and Restaurant classes
+  * Create a new view layout called `home.restaurants` and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.
+ * Challenge yourself to display the image associated with each restaurant.
 
 ---
 **Note:**
@@ -149,15 +149,21 @@ Lets start. Empty your `style.css` and add the following css:
     padding: 0;
     margin: 0;
 }
-/* css for mobile goes here */
+
+/* put css styling for  
+   mobile devices here */
+
 @media screen and (min-width: 40em) {
-  /* css for mid screens goes here */
+  /* put css styling for mid-sized screens here */
 }
+
 @media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
+  /* put css styling for massive screens here */
 }
 ```
-This css gives us two break points. at 40em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?
+Note that we are using `em` units here rather than `pixels`. This allows elements to scale if the root element changes (e.g. if a user changes their default font size, all elements on the page will scale appropriately).
+
+This css gives us two break points. at 40em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points? If you are unsure, [this tutorial](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp) may help.
 
 ### Grid
 
