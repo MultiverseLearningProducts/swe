@@ -1,6 +1,7 @@
 # Week 2 > Day 5
 
 ## Overview of the day
+*Coach notes: If students do not have time to reach this lesson then they can checkout the solution code and run it instead. Instructions are at the bottom of this page*
 
 The aim of today is to learn the ORM pattern for the most popular SQL ORM available for Node.js - [Sequelize](https://www.npmjs.com/package/sequelize). There are similar frameworks available for other languages, for example:
    * [Hibernate for Java](https://hibernate.org/)
@@ -188,7 +189,8 @@ If you have been given the solution, you should copy it into a new directory and
 
 You will see 3 classes, Restaurant, Menu and MenuItem and some commented out code at the end of each. Try uncommenting this code and run `node Restaurant.js`. This should create a new table in a database called `restaurants-seq.sqlite` with a single row inserted. Try the same thing with the Menu and MenuItem classes and make sure the tables and rows get created ok. 
 
-Now put the commented code in each class back and then run the `Relationships.test.js` file. You should see a Restaurant, Menu and MenuItem get inserted. Play around with the test to add more data and then try to query the data. 
+Now put the commented code in each class back and then run the `Relationships.test.js` file. You should see a Restaurant, Menu and MenuItem get inserted. Play around with the test to add more data and then try to query the data.
+
 ---
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/162)
