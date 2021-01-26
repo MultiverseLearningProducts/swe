@@ -16,30 +16,30 @@
     <h2>Lesson 1 - Iteration</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Demonstrate how to combine an array of data with a template</li>
+      <li>Demonstrate how to include an array of data with a template</li>
       <li>Use iteration to repeatedly create dynamic html content</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>Have the app server you created yesterday ready</li>
-      <li>Make sure you have a data model ready to use</li>
+      <li>You must have completed the assignments from yesterday. This will ensure you have an app server ready to serve dynamic content.</li>
+      <li>You must be familiar with Sequelize (covered in Day 5 of Week 2)</li>
+      <li>You must have Restaurant data in your database</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
       <li>N/A</li>
     </ul>
     <h2>Lesson</h2>
-    <p>Our app has an array of restaurants that we want to display on our page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed html block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the intenet and is a good example of a <em>card</em> component.</p>
+    <p>Our app has an array of restaurants that we want to display on our page. Handlebars enables us to iterate over an array of data and repeatedly add the same parsed html block to our final page. This is how dynamic lists of content are rendered. The example below can be seen all over the Internet and is a good example of a <em>card</em> component.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/95015340-344df880-0644-11eb-8ce4-30609f0de5fe.jpg" alt="example of the card component">
     </p>
     <p>Can you recognise the template vs the dynamic content in the example above?</p>
-    <h3>Pass the data into the template</h3>
-    <p>The first step is preparing our data for the template, and the second is passing it to the template.</p>
+    <h3>Passing the Restaurant data to the view template</h3>
+    <p>Our first step is to prepare the data for the view template and the second step is to pass it to the view template. The example below uses sequelize to fetch all the restaurants and passes this to the <code>home.handlebars</code> layout template.</p>
     <ol>
-      <li>The example below uses sequelize to fetch all the restaurants</li>
-      <li>The first argument to <code>response.render</code> is the matching string name of the template file we want to render, i.e. 'home'</li>
-      <li>The second argument to <code>response.render</code> is our data in an object.</li>
+      <li>The first argument to <code>response.render</code> is the matching string name of the layout file we want to render. In this example, the name 'restaurants' refers to a file named <code>home.handlebars</code>.</li>
+      <li>The second argument to <code>response.render</code> is the Restaurant data returned from the sequelize query.</li>
     </ol>
     <pre><code class="language-javascript">app.get('/', async (req, res) => {
     const restaurants = await Restaurant.findAll({
@@ -49,13 +49,16 @@
     res.render('home', {restaurants})
 })
 </code></pre>
-    <p><em>to use <code>include</code> as in the code above, make sure your sequelise model has this alias added. This config sets the name of the property our associated model will be stored on; i.e. <code>restaurants.menus</code>.</em></p>
-    <pre><code class="language-javascript">Restaurant.hasMany(Menu, {as: 'menus'})
-Menu.belongsTo(Restaurant)
-Menu.hasMany(Item, {as: 'items'})
-Item.belongsTo(Menu)
+    <p>To use <code>include</code> as in the code above, make sure your <strong>Restaurant</strong> class has the following aliases added. This config sets the name of the property our associated model will be stored on i.e. <code>restaurants.menus</code>.</p>
+    <pre><code class="language-javascript">Restaurant.hasMany(Menu, {as: 'menus', foreignKey: 'restaurant_id'})
+Menu.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
 </code></pre>
-    <p>In our template there will be an objected called 'restaurants' that will be our array of data that came from <code>await Restaurant.findAll()</code>. We can write our html elements as if this was an html file, only when we want to pharse some dynamic content we can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.</p>
+    <p>Also ensure your Menu class has the correct aliases as follows:</p>
+    <pre><code class="language-javascript">Menu.hasMany(MenuItem, {as: 'items', foreignKey: 'menu_id'});
+MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
+</code></pre>
+    <p>You will be able to see the impact of the above in the SQL statements output when running the <code>server.js</code> file.</p>
+    <p>In our view template there will be an object called 'restaurants' that will be the array of data that came from <code>await Restaurant.findAll()</code>. We can write our html elements as if this was an html file, only when we want to parse some dynamic content do can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.</p>
     <p>To repeat a block of code for every item in an array we can use the built in template helper <code>{{#each}}</code> that comes with handlebars.</p>
     <pre><code class="language-html">&#x3C;h1>Restaurants&#x3C;/h1>
 &#x3C;section>
@@ -71,20 +74,28 @@ Item.belongsTo(Menu)
     <p>From the code above where does the repeating block of html begin and end? Try this in your browser, when you inspect the html what do you expect to see?</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Can you render all your restaurants?</li>
-      <li>In addition to each restaurant, can you also display the title of each menu?</li>
+      <li>(Optional) - watch <a href="https://www.youtube.com/watch?v=JbrqxPcuYVc">this video</a> about using the <code>each</code> Handlebars helper keyword</li>
+      <li>Read through the previous section and make the required changes to your <code>server.js</code> file.</li>
+      <li>Add the correct associations to the Menu and Restaurant classes</li>
+      <li>Create a new view layout called <code>home.restaurants</code> and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.</li>
+      <li>Challenge yourself to display the image associated with each restaurant.</li>
     </ul>
+    <hr>
+    <p>
+      <strong>Note:</strong>
+      If you get stuck, here is the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day2">solution to Lesson 1</a>
+    </p>
     <hr>
     <h2>Lesson 2 - Responsive CSS grids</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Use @media</li>
+      <li>Use the CSS @media Rule</li>
       <li>Implement a responsive CSS grid</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>You will need html content on your page to apply your grid styling to</li>
-      <li>You should know how to simulate different devices in chrome dev tools</li>
+      <li>You must have completed Lesson 1</li>
+      <li>You should know how to simulate different devices in Chrome Developer tools</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
@@ -99,25 +110,37 @@ Item.belongsTo(Menu)
     <h3>Responsive @media</h3>
     <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes. The css is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.</p>
     <p>This solved the problem of having to server different html templates and css to different devices.</p>
-    <h3>Mobile first</h3>
-    <p>To make your page responsive we need to override the scaleing behaviour of many mobile browsers. Add the following line to the <code>&#x3C;head></code> element of your html <code>main.handlebars</code> file.</p>
+    <h3>Understanding the viewport</h3>
+    <p>The <strong>viewport</strong> is the visible area of a web page.</p>
+    <p>The viewport varies with the device e.g. the viewport on a mobile phone is smaller than on a computer screen.</p>
+    <p>To make our page responsive (i.e. to look good on all devices) we need to gives the browser instructions on how to control the page's dimensions and scaling.</p>
+    <p>Add the following line to the <code>&#x3C;head></code> element of your html <code>main.handlebars</code> file.</p>
     <pre><code class="language-html">&#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0">
 </code></pre>
+    <p>The <code>width=device-width</code> part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).</p>
+    <p>The <code>initial-scale=1.0</code> part sets the initial zoom level when the page is first loaded by the browser.</p>
+    <p>The impact of setting the viewport can be visualised <a href="https://www.w3schools.com/css/css_rwd_viewport.asp">here</a>.</p>
+    <h3>Mobile first</h3>
     <p>The way to implement a responsive layout is start with the smallest screen size; the mobile. These layouts are often the most simple. As the screen size get larger you can start to make more use of the real estate that becomes available.</p>
     <p>Lets start. Empty your <code>style.css</code> and add the following css:</p>
     <pre><code class="language-css">* {
     padding: 0;
     margin: 0;
 }
-/* css for mobile goes here */
+
+/* put css styling for  
+   mobile devices here */
+
 @media screen and (min-width: 40em) {
-  /* css for mid screens goes here */
+  /* put css styling for mid-sized screens here */
 }
+
 @media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
+  /* put css styling for massive screens here */
 }
 </code></pre>
-    <p>This css gives us two break points. at 30em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?</p>
+    <p>Note that we are using <code>em</code> units here rather than <code>pixels</code>. This allows elements to scale if the root element changes (e.g. if a user changes their default font size, all elements on the page will scale appropriately).</p>
+    <p>This css gives us two break points. at 40em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points? If you are unsure, <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">this tutorial</a> may help.</p>
     <h3>Grid</h3>
     <p>Use the different device profiles that come with the chrome dev tools.</p>
     <p><a href="https://developers.google.com/web/tools/chrome-devtools/device-mode"><img src="https://developers.google.com/web/tools/chrome-devtools/device-mode/imgs/landscape.png" alt="chrome dev tools"></a></p>
