@@ -84,11 +84,13 @@ You can only store JSON stringable values so our instance of our counter cannot 
 To add sessions `npm i express-session` then use the following config:
 
 ```javascript
+const session = require('express-session')
 const sessionSettings = {
     secret: "best cohort ever",
     resave: false,
     saveUninitialized: true
 }
+app.use(session(sessionSettings))
 ```
 
 Update your Counter class to keep track of every instance (use a static property).
