@@ -79,6 +79,7 @@ To repeat a block of code for every item in an array we can use the built in tem
 From the code above where does the repeating block of html begin and end? Try this in your browser, when you inspect the html what do you expect to see?
 
 ## Assignment
+  * Modify your code from Week 1 Day 3 (which loaded a json file and inserted data into the database) to instead, use Sequelize calls. If you are unable about how to do this refer to [this solution](https://github.com/MultiverseLearningProducts/swe-solutions/blob/main/bootcamp/wk3/day2/populateDB.js). You will need the `sync` call to ensure the database tables are dropped and re-created.
   * (Optional) - watch [this video](https://www.youtube.com/watch?v=JbrqxPcuYVc) about using the `each` Handlebars helper keyword
   * Read through the previous section and make the required changes to your `server.js` file.
   * Add the correct associations to the Menu and Restaurant classes
