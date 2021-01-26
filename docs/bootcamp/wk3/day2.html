@@ -114,8 +114,14 @@ MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
     </p>
     <p>Where do we put things if we want our page to look good on both a mobile phone and a large 26" monitor? The anwser to this question was beautifully addressed by Ethan Marcotte back in 2010 an a blog he wrote called <a href="https://alistapart.com/article/responsive-web-design/">responsive web design</a>.</p>
     <h3>Responsive @media</h3>
-    <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes. The css is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.</p>
-    <p>This solved the problem of having to server different html templates and css to different devices.</p>
+    <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes.</p>
+    <p>Media queries can be used to check things like:</p>
+    <ul>
+      <li>width and height of the device</li>
+      <li>orientation (landscape or portrait mode)</li>
+    </ul>
+    <p>The CSS is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.</p>
+    <p>Using the <code>@media</code> API solves the problem of having to serve different html templates and css to different devices.</p>
     <h3>Understanding the viewport</h3>
     <p>The <strong>viewport</strong> is the visible area of a web page.</p>
     <p>The viewport varies with the device e.g. the viewport on a mobile phone is smaller than on a computer screen.</p>
@@ -192,8 +198,9 @@ article {
     <p>So we have covered responsive layouts using @media (media queries), and taken a quick look at the power of 'grid' in CSS.</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Can you implement a responsive layout for your restaurant's app?</li>
-      <li>Use @media and CSS 'grid'</li>
+      <li>Read up on <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">CSS @media Rule</a></li>
+      <li>Get your background color to change dependent on the type of device you are usuing</li>
+      <li>Implement a responsive layout for your restaurant's app using @media and CSS 'grid'</li>
     </ul>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/164">attendance log</a>
