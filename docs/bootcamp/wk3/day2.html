@@ -43,7 +43,12 @@
     </ol>
     <pre><code class="language-javascript">app.get('/', async (req, res) => {
     const restaurants = await Restaurant.findAll({
-        include: [{model: Menu, as: 'menus'}],
+        include: [
+            {
+                model: Menu, as: 'menus',
+                include: [{model:MenuItem, as: 'items'}]
+            }
+        ],
         nest: true
     })
     res.render('home', {restaurants})
@@ -78,7 +83,7 @@ MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
       <li>(Optional) - watch <a href="https://www.youtube.com/watch?v=JbrqxPcuYVc">this video</a> about using the <code>each</code> Handlebars helper keyword</li>
       <li>Read through the previous section and make the required changes to your <code>server.js</code> file.</li>
       <li>Add the correct associations to the Menu and Restaurant classes</li>
-      <li>Create a new view layout called <code>home.restaurants</code> and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.</li>
+      <li>Create a new view layout called <code>home.restaurants</code> and include Handlebars code to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.</li>
       <li>Challenge yourself to display the image associated with each restaurant.</li>
     </ul>
     <hr>
