@@ -39,7 +39,12 @@ Our first step is to prepare the data for the view template and the second step 
 ```javascript
 app.get('/', async (req, res) => {
     const restaurants = await Restaurant.findAll({
-        include: [{model: Menu, as: 'menus'}],
+        include: [
+            {
+                model: Menu, as: 'menus',
+                include: [{model:MenuItem, as: 'items'}]
+            }
+        ],
         nest: true
     })
     res.render('home', {restaurants})
@@ -83,7 +88,7 @@ From the code above where does the repeating block of html begin and end? Try th
   * (Optional) - watch [this video](https://www.youtube.com/watch?v=JbrqxPcuYVc) about using the `each` Handlebars helper keyword
   * Read through the previous section and make the required changes to your `server.js` file.
   * Add the correct associations to the Menu and Restaurant classes
-  * Create a new view layout called `home.restaurants` and include HTML to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.
+  * Create a new view layout called `home.restaurants` and include Handlebars code to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant. 
  * Challenge yourself to display the image associated with each restaurant.
 
 ---
