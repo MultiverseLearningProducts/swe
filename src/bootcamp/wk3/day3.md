@@ -160,7 +160,9 @@ Tomorrow & Day 5 you will be creating and updating restaurants. Therefore you wi
   * Follow [the Postman tutorial (only the first 1:53)](https://www.freecodecamp.org/news/how-to-test-and-play-with-web-apis-the-easy-way-with-postman/) to learn how to use the tool. Instead of the Pokemon URL your Request URL will be `http://localhost:3000`. 
   * Call your restaurant website using Postman and look at the response you get back (these will be raw HTML)
   * Create a Postman `Collection` and add 2 requests - one to access your home page and one to access your restaurant page. Hint: if you get stuck on how to create a Collection, watch from time point 1:54 - 3:06 of the video above.
-  * (Optional) - it's possible to write scripts in Postman which can check for specific content in a response to see if the response is what we expect - see if you can find out how to do this
+  * We can also use Postman as a testing tool. Navigate to the `Test` tab and use the snippets on the right hand side to compose JavaScript to test the following conditions:
+     * Status code is 200
+     * Response body contains "Bayroot"
 
 
 ## TODO - move this content someone else
