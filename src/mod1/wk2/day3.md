@@ -303,6 +303,9 @@ Use https://jwt.io to find out the name and email hidden in the JWT ID token.
 So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
 
 ## Implementing authentication using Auth0
+
+![Regular Web App Option on Auth0](https://user-images.githubusercontent.com/4499581/105988981-5d354600-6098-11eb-9b9c-909fb38cacf4.png)
+
 1. Using the Auth0 Dashboard, create a new application and choose 'Regular Web Applications'
 1. Create a totally new express server locally on your machine
 1. Follow the wizard and select
@@ -318,10 +321,12 @@ This [library](https://npmjs.com/express-openid-connect) creates 3 routes for yo
 
 |route|purpose|
 |:----|:------|
-|`/login`|visit this route to authenticate and create new users|
+|`/login`|visit this route to authenticate and create new users (see below)|
 |`/logout`|invalidate the logged in users token which will effectively end their 'session'|
 |`/callback`|This is the redirect back to your app after successful authentication|
 |`/`|This is the "home" route. Logged in users arrive here after being redirected from `/callback`|
+
+![the login page from Auth0](https://user-images.githubusercontent.com/4499581/105988966-59092880-6098-11eb-87d4-d1c59af032d0.png)
 
 You also have a couple of middleware functions from the library to help protect all and individual routes. The library adds a [RequestContext](https://auth0.github.io/express-openid-connect/interfaces/requestcontext.html) object onto the `req` object in express. You can access the logged in user like this `req.oidc.user`. You can view their token like this `req.oidc.accessToken`. Below are two of the main functions in the library to get you going.
 
@@ -348,7 +353,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
 */
 ```
 
-That last property the `sub` is a unique id number for that user.
+That last property the `sub` is a unique id number for that user. That might be useful...
 
 ## Summary
 
@@ -372,6 +377,10 @@ const openIDconfig = {
 app.use(express.json())
 app.use(auth(openIDconfig))
 
+// app.get('/login') this is created by express-openid-connect and displays a login widget
+// app.get('/callback') this is created by express-openid-connect and fetches an authenticated user their token
+// app.get('/logout') this is created by express-openid-connect and will end a users token based session
+
 app.get('/', (req, res) => {
     res.send(req.oidc.user || "No user logged in")
 })
@@ -382,8 +391,10 @@ app.listen(3000, () => {
 ```
 
 * You will need to set up sequelize and your data models
-* You will need to have a public folder to server assets out of
+* You will need to have a public folder to server assets out of i.e. `style.css`
 * You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)
+
+You can look back a previous projects to remind yourself of how to do this.
 
 ## Assignment
 
@@ -403,6 +414,7 @@ In groups come up with a design pitch for this app.
 * How will the link in the email work?
 * How can you transfer funds from one user to another?
 * How can a user add funds?
+* What UI do you need to build?
 
 You will have 2 days to complete this challenge. You can work in groups of 3. You will need to deploy to heroku so your email link will work.
 

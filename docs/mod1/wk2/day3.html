@@ -334,6 +334,9 @@ res.send(access_token)
     <p>Use <a href="https://jwt.io">https://jwt.io</a> to find out the name and email hidden in the JWT ID token.</p>
     <p>So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.</p>
     <h2>Implementing authentication using Auth0</h2>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/105988981-5d354600-6098-11eb-9b9c-909fb38cacf4.png" alt="Regular Web App Option on Auth0">
+    </p>
     <ol>
       <li>Using the Auth0 Dashboard, create a new application and choose 'Regular Web Applications'</li>
       <li>Create a totally new express server locally on your machine</li>
@@ -359,7 +362,7 @@ res.send(access_token)
       <tbody>
         <tr>
           <td align="left"><code>/login</code></td>
-          <td align="left">visit this route to authenticate and create new users</td>
+          <td align="left">visit this route to authenticate and create new users (see below)</td>
         </tr>
         <tr>
           <td align="left"><code>/logout</code></td>
@@ -375,6 +378,9 @@ res.send(access_token)
         </tr>
       </tbody>
     </table>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/105988966-59092880-6098-11eb-87d4-d1c59af032d0.png" alt="the login page from Auth0">
+    </p>
     <p>You also have a couple of middleware functions from the library to help protect all and individual routes. The library adds a <a href="https://auth0.github.io/express-openid-connect/interfaces/requestcontext.html">RequestContext</a> object onto the <code>req</code> object in express. You can access the logged in user like this <code>req.oidc.user</code>. You can view their token like this <code>req.oidc.accessToken</code>. Below are two of the main functions in the library to get you going.</p>
     <table>
       <thead>
@@ -410,7 +416,7 @@ res.send(access_token)
 }
 */
 </code></pre>
-    <p>That last property the <code>sub</code> is a unique id number for that user.</p>
+    <p>That last property the <code>sub</code> is a unique id number for that user. That might be useful...</p>
     <h2>Summary</h2>
     <p>Below is the code to bootstrap a server that will use Auth0 to create, authenticate and manage authorization of users.</p>
     <pre><code class="language-javascript">const express = require('express')
@@ -430,6 +436,10 @@ const openIDconfig = {
 app.use(express.json())
 app.use(auth(openIDconfig))
 
+// app.get('/login') this is created by express-openid-connect and displays a login widget
+// app.get('/callback') this is created by express-openid-connect and fetches an authenticated user their token
+// app.get('/logout') this is created by express-openid-connect and will end a users token based session
+
 app.get('/', (req, res) => {
     res.send(req.oidc.user || "No user logged in")
 })
@@ -440,9 +450,10 @@ app.listen(3000, () => {
 </code></pre>
     <ul>
       <li>You will need to set up sequelize and your data models</li>
-      <li>You will need to have a public folder to server assets out of</li>
+      <li>You will need to have a public folder to server assets out of i.e. <code>style.css</code></li>
       <li>You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)</li>
     </ul>
+    <p>You can look back a previous projects to remind yourself of how to do this.</p>
     <h2>Assignment</h2>
     <p>Below is a spec for a banking app.</p>
     <ol>
@@ -460,6 +471,7 @@ app.listen(3000, () => {
       <li>How will the link in the email work?</li>
       <li>How can you transfer funds from one user to another?</li>
       <li>How can a user add funds?</li>
+      <li>What UI do you need to build?</li>
     </ul>
     <p>You will have 2 days to complete this challenge. You can work in groups of 3. You will need to deploy to heroku so your email link will work.</p>
     <p>
