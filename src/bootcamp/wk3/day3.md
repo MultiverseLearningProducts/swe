@@ -27,7 +27,7 @@ Update your card to display the background image of your restaurant. Adapt the e
     {{/each}}
 </section>
 ```
-In our CSS `styles.css` file, let's target the `<header>` element inside the `<article>` and set some background properties.
+To display the image correctly, you need to modify the `styles.css` file and target the `<header>` element inside the `<article>` to set some background properties including the image height.
 ```css
 article header {
     height: 24rem;
