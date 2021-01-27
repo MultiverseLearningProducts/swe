@@ -13,6 +13,7 @@
     <h1>Bootcamp > Week 3 > Day 3</h1>
     <h2>Overview of the day</h2>
     <p>Today we will display the image of each restaurant and add an additional page to our restaurant website to display information about the restaurant's menus.</p>
+    <p>We will also install <a href="https://www.postman.com/downloads/">Postman</a> - a tool for</p>
     <hr>
     <h2>Lesson 1 - Adding an image</h2>
     <h2>Lesson</h2>
@@ -83,7 +84,7 @@
     <pre><code class="language-javascript">app.get('/restaurants/:id', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     const menus = await restaurant.getMenus({
-        include: [{model: Item, as: 'items'}],
+        include: [{model: MenuItem, as: 'items'}],
         nest: true
     })
     res.render('restaurant', {restaurant, menus})
