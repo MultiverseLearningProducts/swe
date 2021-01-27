@@ -80,8 +80,6 @@ As you hover over each card can you see the URL it links to in the bottom left-h
 Cannot GET /restaurants/2
 ```
 
-!(https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed)
-
 ### New Route
 
 To deal with this new request we need to add a new route on our server. Not just any route, the last part of our route is going to be different depending on which restaurant we are clicking on. We need a route that also has a route parameter. Add the new route below to your server.
@@ -152,6 +150,9 @@ dl div{
 * Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page like below.
 
 ## TODO - move this content someone else
+
+!(https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed)
+
 The Box Model
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed)
