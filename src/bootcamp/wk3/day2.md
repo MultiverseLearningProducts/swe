@@ -6,10 +6,13 @@ Today we are going to retrieve all the restaurants from the restaurant database 
 ## Additional resources
 If you are struggling with any of the concepts from today, the following video resources will help:
    * [HTML basics for beginners (15 mins)](https://www.freecodecamp.org/news/html-basics-for-beginners/)
+   * [CSS Box Model (4 mins)](https://www.youtube.com/watch?v=WH-86nJPVNk)
+   * [Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)](https://www.youtube.com/watch?v=br-0i3U1VCA)
+   * [Learn CSS Media Query In 7 Minutes](https://www.youtube.com/watch?v=yU7jJ3NbPdA) 
    * [Passing Variables To Node Webpages With Handlebars (3 minutes)](https://www.youtube.com/watch?v=TV7T_vKMid4)
    * [using the `each` Handlebars helper keyword (13 mins)](https://www.youtube.com/watch?v=JbrqxPcuYVc)  
-   * [Learn CSS Media Query In 7 Minutes](https://www.youtube.com/watch?v=yU7jJ3NbPdA) 
-   * [Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)](https://www.youtube.com/watch?v=br-0i3U1VCA)
+
+
 
 ----
 
@@ -24,6 +27,7 @@ If you are struggling with any of the concepts from today, the following video r
 
 * You must have completed the assignments from yesterday. This will ensure you have an app server ready to serve dynamic content.
 * You must have completed Week 2 Lesson 5 which uses Sequelize to insert and retrieve Restaurant data
+* You need to be familiar with the [CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp) 
 
 ## Materials needed
 
