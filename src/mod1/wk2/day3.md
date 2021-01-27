@@ -278,8 +278,6 @@ Implement token based authorization using Auth0 as a token provider.
 
 ----
 
-
-
 # Lesson 2 - Offload user Authorization and Authentication to Auth0
 
 ## Learning Objectives
@@ -304,7 +302,7 @@ So, instead of passing a user name and password to our Login page and looking th
 
 ## Implementing authentication using Auth0
 
-![Regular Web App Option on Auth0](https://user-images.githubusercontent.com/4499581/105988981-5d354600-6098-11eb-9b9c-909fb38cacf4.png)
+![Regular Web App Option on Auth0](https://user-images.githubusercontent.com/4499581/105991041-39273400-609b-11eb-9078-6975f7a5e2bc.png)
 
 1. Using the Auth0 Dashboard, create a new application and choose 'Regular Web Applications'
 1. Create a totally new express server locally on your machine
