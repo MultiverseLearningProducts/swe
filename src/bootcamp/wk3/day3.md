@@ -3,7 +3,7 @@
 ## Overview of the day
 Today we will display the image of each restaurant and add an additional page to our restaurant website to display information about the restaurant's menus.
 
-We will also install [Postman](https://www.postman.com/downloads/) - a tool for 
+We will also install [Postman](https://www.postman.com/downloads/) - a tool for that makes it easy to create, share and test APIs. 
 
 ----
 
@@ -145,10 +145,23 @@ dl div{
 
 ## Assignment
 
-* Create the route and template to view a single restaurant.
-* Include a "back" or "main menu" button on your page.
-* Render the menus, and the menu items in a grid on the page.
-* Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page like below.
+  * Create the route and template to view a single restaurant.
+  * Include a "back" or "main menu" button on your page.
+  * Render the menus, and the menu items in a grid on the page.
+  * Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page like below.
+
+---
+
+## Lesson 3 - Postman
+Tomorrow & Day 5 you will be creating and updating restaurants. Therefore you will need a tool for sending your routes (APIs) form or JSON content. One of the most popular tools for this is [Postman](https://www.postman.com/downloads/).
+
+## Assignment
+  * Install [Postman](https://www.postman.com/downloads/) 
+  * Follow [the Postman tutorial (only the first 1:53)](https://www.freecodecamp.org/news/how-to-test-and-play-with-web-apis-the-easy-way-with-postman/) to learn how to use the tool. Instead of the Pokemon URL your Request URL will be `http://localhost:3000`. 
+  * Call your restaurant website using Postman and look at the response you get back (these will be raw HTML)
+  * Create a Postman `Collection` and add 2 requests - one to access your home page and one to access your restaurant page. Hint: if you get stuck on how to create a Collection, watch from time point 1:54 - 3:06 of the video above.
+  * (Optional) - it's possible to write scripts in Postman which can check for specific content in a response to see if the response is what we expect - see if you can find out how to do this
+
 
 ## TODO - move this content someone else
 
