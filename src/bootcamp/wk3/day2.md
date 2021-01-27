@@ -1,14 +1,15 @@
 # Bootcamp > Week 3 > Day 2
 
 ## Overview of the day
-Today we are going to retrieve all the restaurants from the restaurant database and use them to populate a web page. We will use CSS @media to create a responsive design.
+Today we are going to retrieve all the restaurants from the restaurant database and use them to populate a web page. We will use CSS @media along with CSS Grid to create a web page which is 'responsive' i.e. which adapts to the screen size of the user's device.
 
 ## Additional resources
 If you are struggling with any of the concepts from today, the following video resources will help:
    * [HTML basics for beginners (15 mins)](https://www.freecodecamp.org/news/html-basics-for-beginners/)
    * [Passing Variables To Node Webpages With Handlebars (3 minutes)](https://www.youtube.com/watch?v=TV7T_vKMid4)
-   * [using the `each` Handlebars helper keyword (13 minutes)](https://www.youtube.com/watch?v=JbrqxPcuYVc)  
+   * [using the `each` Handlebars helper keyword (13 mins)](https://www.youtube.com/watch?v=JbrqxPcuYVc)  
    * [Learn CSS Media Query In 7 Minutes](https://www.youtube.com/watch?v=yU7jJ3NbPdA) 
+   * [Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)](https://www.youtube.com/watch?v=br-0i3U1VCA)
 
 ----
 
@@ -92,10 +93,9 @@ From the code above where does the repeating block of html begin and end? Load t
 
 ## Assignment
   * If you did not complete Week 2 Day 5's assignment to implement Sequelize, please download [this solution code](https://github.com/MultiverseLearningProducts/swe-solutions/blob/main/bootcamp/wk3/day2/populateDB.js). Run `node populateDB.js` to load the restaurant json file and insert matching rows into the Restaurant, Menu and MenuItems tables.
-  * Create a new view layout called `home.handlebars` and include Handlebars code to loop through the array of Restaurants and display its name and number of menus. Don't worry about the Menu or MenuItems at this stage, we will add this in tomorrow.
+  * Create a new view layout called `home.handlebars` and include Handlebars code to loop through the array of restaurants and display the restaurant name and number of menus. Don't worry about the Menu or MenuItems at this stage, we will add this in tomorrow.
   * Modify your `server.js` file to perform `Restaurant.findAll` and pass the resulting data into `home`
   * Add the correct associations to the Menu and Restaurant classes as described earlier in this page)
-  * Display the image associated with each restaurant.
 
 ---
 **Note:**
@@ -128,7 +128,7 @@ Where do we put things if we want our page to look good on both a mobile phone a
 
 ### Responsive @media
 
-CSS comes with a `@media` API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of `@media` enables you to apply css to your page at particular screen sizes. 
+CSS comes with a `@media` API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of `@media` enables you to apply css to your page at particular screen sizes. You can find a video which explains `@media` in more depth under the `Additional Resources` section of at the start of this web page.
 
 Media queries can be used to check things like:
   * width and height of the device
@@ -184,67 +184,76 @@ Note that we are using `em` units here rather than `pixels`. This allows element
 
 This css gives us two break points, one at 40em and the other at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points? 
 
-### Grid
+### CSS Grid
 
-Use the different device profiles that come with the Chrome Developer tools.
+[CSS Grid Layout](https://www.w3schools.com/css/css_grid.asp) presents a layout system with rows and columns.
+
+You can find a video which explains `CSS Grid` in more depth under the `Additional Resources` section of at the start of this web page.
+
+Let's consider the different types of devices that we will display our restaurant web app on. Open up Chrome Developer tools and select the 'Device Toobar`.
 
 [![chrome dev tools](https://developers.google.com/web/tools/chrome-devtools/device-mode/imgs/landscape.png)](https://developers.google.com/web/tools/chrome-devtools/device-mode)
 
-Pick a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column, then our user scrolls through the restaurants. This is where we can start. We want a single resturant _card_ to occupy the width of the screen. So lets just start with this:
+Select a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column to allow the user to scroll through the restaurants. We want a single resturant _card_ to occupy the width of the screen. So let's replace our existing `styles.css` file to have the following:
 
 ```css
-h1 {       /* Styling for the h1 in the home.handlebars HTML */
+* {                 /* applies to all elements */
+    padding: 0;
+    margin: 0;
+}
+
+/* css defaults for mobile devices */
+h1 {
     padding: 1rem;
     border-bottom: solid 1px black;
 }
-article {  /* Styling for the article in the home.handlebars HTML */
-    border: solid 1px black;
+article {
+    border: solid 1px black;   /* adds a border around the box */
     width: calc(100% - 2rem);
     height: 35em;
     margin: 1rem 1rem;
 }
 ```
-Now we have a card shape box in which we can display information about each restaurant (including its 'thumbnail' image). They are spaced out evenly and we can scroll through them. We are using `calc()` to calculate the width of the viewport minus the margins either side.
+Now we have a card shape box in which we can display information about each restaurant (including its 'thumbnail' image). Each box will be spaced out evenly and we can scroll through them. We are using `calc()` to calculate the width of the viewport minus the margins either side.
 
-What happens at the first breakpoint?
-
-Once our viewport size has broken through to be greater than `40em` the next block of css will **override** previous styles. We want to jump from a single column layout to a 2 column layout.
+Once our viewport size has broken through to be greater than `40em` we want to **override** the previous styles to jump from a single column layout to a 2 column layout. Add the code below to your `styles.css` file:
 
 ```css
-@media screen and (min-width: 40em) {
-    /* css for mid screens goes here */
-    section {
-      margin: 1rem;
-      display: grid;                    /* use grid layout */
-      grid-template-columns: auto auto; /* use 2 columns */
-      grid-template-rows: none;         /* create rows as needed */
-      gap: 1rem;
-    }
-    article {
-      margin: 0;
-      width: 100%;
-    }
-}
-```
-We now apply a grid layout (more about this tomorrow) to the `<section>` element. That grid is applied to the section's children elements (all the `<article>` elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the `<article>` elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy `gap` property that will deal with spacing between grid elements. Finally we can use the margin of the `<section>` to add some spacing all round the items in the grid.
 
-The next break point we want to jump to 3 columns. Now we just need to override one property.
+@media screen and (min-width: 40em) {
+    /* css overrides for mid-sized screens goes here */
+      section {
+          margin: 1rem;
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: none;
+          gap: 1rem;
+      }
+      article {
+          margin: 0;
+          width: 100%;
+      }
+  }
+```
+We now apply a grid layout to the `<section>` element. That grid is applied to the section's children elements (all the `<article>` elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the `<article>` elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy `gap` property that will deal with spacing between grid elements. Finally we can use the margin of the `<section>` to add some spacing all round the items in the grid.
+
+For larger devices, we want to jump to 3 columns. To do this, we just need to override one property by adding the following code to our `styles.css` file:
 
 ```css
 @media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
+    /* css overrides for large screens goes here */
     section {
         grid-template-columns: auto auto auto;
     }
 }
 ```
 
-So we have covered responsive layouts using @media (media queries) and taken a quick look at the power of 'grid' in CSS.
+We have now covered responsive layouts using CSS `@media` (media queries) and taken a quick look at the power of 'grid' in CSS.
 
 ## Assignment
   * If you are new to HTML and CSS, please watch the video links under 'Additional resources' at the beginning of this web page
   * Get your background color to change dependent on the type of device you are using. Hint: this [CSS @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp) tutorial will help
-  * Implement a responsive layout for your restaurant app using  @media and CSS 'grid' 
+  * Implement a responsive layout for your restaurant app using  @media and CSS 'grid' using the CSS styling described in the previous section
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/164)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day1.html)|[next](/swe/bootcamp/wk3/day3.html)
