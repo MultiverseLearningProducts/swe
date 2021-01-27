@@ -20,7 +20,7 @@ Update your card to display the background image of your restaurant. Adapt the e
 <section>
     {{#each restaurants}}
         <article>
-            <header style="background-image: url({{this.image}})">
+            <header style="background-image: url({{this.image}})"></header>
             <main>{{this.name}}</main>
             <footer>{{this.menus.length}} menus</footer>
         </article>
