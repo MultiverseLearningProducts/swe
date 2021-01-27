@@ -38,11 +38,10 @@ article header {
 ```
 You can read more about what these properties do [in this tutorial](https://www.w3schools.com/cssref/pr_background-repeat.asp).
 
-[Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) is really powerful when styling smaller components. Once a parent element is `display:flex` its behaviour changes. Now items line up in a row. You can change this flex-direction to column. The beauty of flex is being able to have elements fill (or flex) arbitrary space. We can also position elements along the flex axis.
 
 ## Assignment
 
-* Style your restaurant card so it displays the restaurant image, the title of the restaurant and the menus.
+* Style your restaurant card so it displays the restaurant image, the title of the restaurant and the number of menus.
 
 ----
 
@@ -150,6 +149,8 @@ dl div{
 * Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page like below.
 
 ## TODO - move this content someone else
+
+[Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) is really powerful when styling smaller components. Once a parent element is `display:flex` its behaviour changes. Now items line up in a row. You can change this flex-direction to column. The beauty of flex is being able to have elements fill (or flex) arbitrary space. We can also position elements along the flex axis.
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed)
 
