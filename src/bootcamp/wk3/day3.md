@@ -3,6 +3,8 @@
 ## Overview of the day
 Today we will display the image of each restaurant and add an additional page to our restaurant website to display information about the restaurant's menus.
 
+We will also install [Postman](https://www.postman.com/downloads/) - a tool for 
+
 ----
 
 ## Lesson 1 - Adding an image
@@ -101,7 +103,7 @@ Now we can focus on getting our data for this view.
 app.get('/restaurants/:id', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     const menus = await restaurant.getMenus({
-        include: [{model: Item, as: 'items'}],
+        include: [{model: MenuItem, as: 'items'}],
         nest: true
     })
     res.render('restaurant', {restaurant, menus})
