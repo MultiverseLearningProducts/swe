@@ -12,6 +12,16 @@
   <body>
     <h1>Bootcamp > Week 3 > Day 2</h1>
     <h2>Overview of the day</h2>
+    <p>Today we are going to retrieve all the restaurants from the restaurant database and use them to populate a web page. We will use CSS @media along with CSS Grid to create a web page which is 'responsive' i.e. which adapts to the screen size of the user's device.</p>
+    <h2>Additional resources</h2>
+    <p>If you are struggling with any of the concepts from today, the following video resources will help:</p>
+    <ul>
+      <li><a href="https://www.freecodecamp.org/news/html-basics-for-beginners/">HTML basics for beginners (15 mins)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=TV7T_vKMid4">Passing Variables To Node Webpages With Handlebars (3 minutes)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=JbrqxPcuYVc">using the <code>each</code> Handlebars helper keyword (13 mins)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=yU7jJ3NbPdA">Learn CSS Media Query In 7 Minutes</a></li>
+      <li><a href="https://www.youtube.com/watch?v=br-0i3U1VCA">Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)</a></li>
+    </ul>
     <hr>
     <h2>Lesson 1 - Iteration</h2>
     <h2>Learning Objectives</h2>
@@ -22,8 +32,7 @@
     <h2>Before we start</h2>
     <ul>
       <li>You must have completed the assignments from yesterday. This will ensure you have an app server ready to serve dynamic content.</li>
-      <li>You must be familiar with Sequelize (covered in Day 5 of Week 2)</li>
-      <li>You must have Restaurant data in your database</li>
+      <li>You must have completed Week 2 Lesson 5 which uses Sequelize to insert and retrieve Restaurant data</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
@@ -63,8 +72,8 @@ Menu.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
 MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
 </code></pre>
     <p>You will be able to see the impact of the above in the SQL statements output when running the <code>server.js</code> file.</p>
-    <p>In our view template there will be an object called 'restaurants' that will be the array of data that came from <code>await Restaurant.findAll()</code>. We can write our html elements as if this was an html file, only when we want to parse some dynamic content do can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.</p>
-    <p>To repeat a block of code for every item in an array we can use the built in template helper <code>{{#each}}</code> that comes with handlebars.</p>
+    <p>In our view template there will be an object called 'restaurants' that will be the array of data that came from <code>await Restaurant.findAll()</code>. We can write our html elements as if this was an html file and when we want to parse some dynamic content we can use handlebars to create placeholders. This is very much like 'mail merge' in word or other pieces of software you might have come across.</p>
+    <p>To repeat a block of code for every item in an array we can use the built in template helper <code>{{#each}}</code> that comes with handlebars. For this lesson, let's just retrieve the restaurant data and display the name and number of menus in each restaurant. In tomorrow's lesson we will look at using nested loops in Handlebars to display the menu and menu items on another page.</p>
     <pre><code class="language-html">&#x3C;h1>Restaurants&#x3C;/h1>
 &#x3C;section>
     {{#each restaurants}}
@@ -76,15 +85,13 @@ MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
     {{/each}}
 &#x3C;/section>
 </code></pre>
-    <p>From the code above where does the repeating block of html begin and end? Try this in your browser, when you inspect the html what do you expect to see?</p>
+    <p>From the code above where does the repeating block of html begin and end? Load the page in your browser, when you inspect the html in the <code>Layouts</code> section of Developer Tools, what do you expect to see?</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Modify your code from Week 1 Day 3 (which loaded a json file and inserted data into the database) to instead, use Sequelize calls. If you are unable about how to do this refer to <a href="https://github.com/MultiverseLearningProducts/swe-solutions/blob/main/bootcamp/wk3/day2/populateDB.js">this solution</a>. You will need the <code>sync</code> call to ensure the database tables are dropped and re-created.</li>
-      <li>(Optional) - watch <a href="https://www.youtube.com/watch?v=JbrqxPcuYVc">this video</a> about using the <code>each</code> Handlebars helper keyword</li>
-      <li>Read through the previous section and make the required changes to your <code>server.js</code> file.</li>
-      <li>Add the correct associations to the Menu and Restaurant classes</li>
-      <li>Create a new view layout called <code>home.restaurants</code> and include Handlebars code to loop through the array of Restaurants. The code should display as a minimum, the title of each restaurant.</li>
-      <li>Challenge yourself to display the image associated with each restaurant.</li>
+      <li>If you did not complete Week 2 Day 5's assignment to implement Sequelize, please download <a href="https://github.com/MultiverseLearningProducts/swe-solutions/blob/main/bootcamp/wk3/day2/populateDB.js">this solution code</a>. Run <code>node populateDB.js</code> to load the restaurant json file and insert matching rows into the Restaurant, Menu and MenuItems tables.</li>
+      <li>Create a new view layout called <code>home.handlebars</code> and include Handlebars code to loop through the array of restaurants and display the restaurant name and number of menus. Don't worry about the Menu or MenuItems at this stage, we will add this in tomorrow.</li>
+      <li>Modify your <code>server.js</code> file to perform <code>Restaurant.findAll</code> and pass the resulting data into <code>home</code></li>
+      <li>Add the correct associations to the Menu and Restaurant classes as described earlier in this page)</li>
     </ul>
     <hr>
     <p>
@@ -101,26 +108,25 @@ MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
     <h2>Before we start</h2>
     <ul>
       <li>You must have completed Lesson 1</li>
-      <li>You should know how to simulate different devices in Chrome Developer tools</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
-      <li>style.css file served from your public folder</li>
+      <li><code>style.css</code> file served from your public folder</li>
     </ul>
     <h2>Lesson</h2>
-    <p>We have restaurants on the page! What we don't have is something attractive or pleasing. We need to give our html page some loving css rules to lay it out nicely. Designing for the web is quite unsual because the screen sizes for a web page are so dramatically different.</p>
+    <p>We have restaurants on the page! What we don't have is something attractive or pleasing. We need to give our html page some loving CSS rules to lay it out nicely. Designing for the web is quite tricky because the screen sizes for a web page on different devices are so dramatically different.</p>
     <p>
       <img src="https://d1xzrcop0305fv.cloudfront.net/wp-content/uploads/2016/06/zymr-adaptive-responsive-design_3.jpg" alt="different screen sizes for web pages">
     </p>
     <p>Where do we put things if we want our page to look good on both a mobile phone and a large 26" monitor? The anwser to this question was beautifully addressed by Ethan Marcotte back in 2010 an a blog he wrote called <a href="https://alistapart.com/article/responsive-web-design/">responsive web design</a>.</p>
     <h3>Responsive @media</h3>
-    <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes.</p>
+    <p>CSS comes with a <code>@media</code> API which was orignialy added to the spec so you could style a printer friendly version of your page. The basic API of <code>@media</code> enables you to apply css to your page at particular screen sizes. You can find a video which explains <code>@media</code> in more depth under the <code>Additional Resources</code> section of at the start of this web page.</p>
     <p>Media queries can be used to check things like:</p>
     <ul>
       <li>width and height of the device</li>
       <li>orientation (landscape or portrait mode)</li>
     </ul>
-    <p>The CSS is immediately applied so your page does not require a refresh for the new css rules to be visible once your screen size changes.</p>
+    <p>The CSS is immediately applied so your page does not require a refresh for the new CSS rules to be visible once your screen size changes.</p>
     <p>Using the <code>@media</code> API solves the problem of having to serve different html templates and css to different devices.</p>
     <h3>Understanding the viewport</h3>
     <p>The <strong>viewport</strong> is the visible area of a web page.</p>
@@ -151,56 +157,65 @@ MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
   /* put css styling for massive screens here */
 }
 </code></pre>
+    <p><code>screen</code> refers to any device with a screen.</p>
     <p>Note that we are using <code>em</code> units here rather than <code>pixels</code>. This allows elements to scale if the root element changes (e.g. if a user changes their default font size, all elements on the page will scale appropriately).</p>
-    <p>This css gives us two break points. at 40em and then at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points? If you are unsure, <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">this tutorial</a> may help.</p>
-    <h3>Grid</h3>
-    <p>Use the different device profiles that come with the chrome dev tools.</p>
+    <p>This css gives us two break points, one at 40em and the other at 60em. We remove any browser default padding or margin. Can you get your background color to change at the different break points?</p>
+    <h3>CSS Grid</h3>
+    <p><a href="https://www.w3schools.com/css/css_grid.asp">CSS Grid Layout</a> presents a layout system with rows and columns.</p>
+    <p>You can find a video which explains <code>CSS Grid</code> in more depth under the <code>Additional Resources</code> section of at the start of this web page.</p>
+    <p>Let's consider the different types of devices that we will display our restaurant web app on. Open up Chrome Developer tools and select the 'Device Toobar`.</p>
     <p><a href="https://developers.google.com/web/tools/chrome-devtools/device-mode"><img src="https://developers.google.com/web/tools/chrome-devtools/device-mode/imgs/landscape.png" alt="chrome dev tools"></a></p>
-    <p>Pick a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column, then our user scrolls through the restaurants. This is where we can start. We want a single resturant <em>card</em> to occupy the width of the screen. So lets just start with this:</p>
-    <pre><code class="language-css">h1 {
+    <p>Select a mobile phone. Set the orientation to portrait. For small screens our content can just be in a single column to allow the user to scroll through the restaurants. We want a single resturant <em>card</em> to occupy the width of the screen. So let's replace our existing <code>styles.css</code> file to have the following:</p>
+    <pre><code class="language-css">* {                 /* applies to all elements */
+    padding: 0;
+    margin: 0;
+}
+
+/* css defaults for mobile devices */
+h1 {
     padding: 1rem;
     border-bottom: solid 1px black;
 }
 article {
-    border: solid 1px black;
+    border: solid 1px black;   /* adds a border around the box */
     width: calc(100% - 2rem);
     height: 35em;
     margin: 1rem 1rem;
 }
 </code></pre>
-    <p>Now we have a card shape box in which we can display information about each restaurant (including it's 'thumbnail' image). They are spaced out evenly and we can scroll through them. I am also using <code>calc()</code> to calculate the width of the viewport minus the margins either side.</p>
-    <p>What happens a the first breakpoint?</p>
-    <p>Once our viewport size has broken through to be greater than <code>40em</code> the next block of css will override previous styles. We want to jump from a single column layout to a 2 column layout.</p>
-    <pre><code class="language-css">@media screen and (min-width: 40em) {
-  /* css for mid screens goes here */
-    section {
-        margin: 1rem;
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: none;
-        gap: 1rem;
-    }
-    article {
-        margin: 0;
-        width: 100%;
-    }
-}
+    <p>Now we have a card shape box in which we can display information about each restaurant (including its 'thumbnail' image). Each box will be spaced out evenly and we can scroll through them. We are using <code>calc()</code> to calculate the width of the viewport minus the margins either side.</p>
+    <p>Once our viewport size has broken through to be greater than <code>40em</code> we want to <strong>override</strong> the previous styles to jump from a single column layout to a 2 column layout. Add the code below to your <code>styles.css</code> file:</p>
+    <pre><code class="language-css">
+@media screen and (min-width: 40em) {
+    /* css overrides for mid-sized screens goes here */
+      section {
+          margin: 1rem;
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: none;
+          gap: 1rem;
+      }
+      article {
+          margin: 0;
+          width: 100%;
+      }
+  }
 </code></pre>
     <p>We now apply a grid layout to the <code>&#x3C;section></code> element. That grid is applied to the section's children elements (all the <code>&#x3C;article></code> elements). We don't know how many restaurants we'll have so we are not defining the rows in this case. We also adjust the width of the <code>&#x3C;article></code> elements and remove the margins, we pass this responsibility now to the parent 'grid' element. CSS 'grid' has a very handy <code>gap</code> property that will deal with spacing between grid elements. Finally we can use the margin of the <code>&#x3C;section></code> to add some spacing all round the items in the grid.</p>
-    <p>The next break point we want to jump to 3 columns. Now we just need to override one property.</p>
+    <p>For larger devices, we want to jump to 3 columns. To do this, we just need to override one property by adding the following code to our <code>styles.css</code> file:</p>
     <pre><code class="language-css">@media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
+    /* css overrides for large screens goes here */
     section {
         grid-template-columns: auto auto auto;
     }
 }
 </code></pre>
-    <p>So we have covered responsive layouts using @media (media queries), and taken a quick look at the power of 'grid' in CSS.</p>
+    <p>We have now covered responsive layouts using CSS <code>@media</code> (media queries) and taken a quick look at the power of 'grid' in CSS.</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Read up on <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">CSS @media Rule</a></li>
-      <li>Get your background color to change dependent on the type of device you are usuing</li>
-      <li>Implement a responsive layout for your restaurant's app using @media and CSS 'grid'</li>
+      <li>If you are new to HTML and CSS, please watch the video links under 'Additional resources' at the beginning of this web page</li>
+      <li>Get your background color to change dependent on the type of device you are using. Hint: this <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">CSS @media Rule</a> tutorial will help</li>
+      <li>Implement a responsive layout for your restaurant app using @media and CSS 'grid' using the CSS styling described in the previous section</li>
     </ul>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/164">attendance log</a>
