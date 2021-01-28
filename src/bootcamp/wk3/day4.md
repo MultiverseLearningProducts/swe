@@ -150,10 +150,10 @@ Our edit form looks similar to the create form, but we post to a different route
 
 Add an edit link to your restaurant page (next to or near the delete button). Now you can use that link to open your edit page.
 
-Finally add the route that will handle the update, notice the 'put' https verb. If we were just posting one value to update what http verb might we use then?
+Finally add the route that will handle the update:
 
 ```javascript
-app.put('/restaurants/:id/edit', async (req, res) => {
+app.post('/restaurants/:id/edit', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     await restaurant.update(req.body)
     res.redirect(`/restaurants/${restaurant.id}`)
@@ -164,8 +164,6 @@ app.put('/restaurants/:id/edit', async (req, res) => {
 
 * Add functionality to delete a restaurant
 * Add functionality to edit a restaurant
-* Add functionality to add menus to a restaurant
-* Add functionality to add items to a menu
 * Test the new routes using Postman
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/166)
