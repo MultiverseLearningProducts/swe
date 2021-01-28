@@ -31,8 +31,8 @@
         - [Day 4](/swe/bootcamp/wk4/day4.html)
         - [Day 5](/swe/bootcamp/wk4/day5.htm)
     + Week 5
-        - [Day 1 - 5](/swe/bootcamp/wk5/day1.html)
-        - [Deployment](/swe/bootcamp/wk5/deployment.html)
+        - [Day 1](/swe/bootcamp/wk5/day1.html)
+        - [Day 2](/swe/bootcamp/wk5/day2.html)
 
 ----
 
