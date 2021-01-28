@@ -35,7 +35,7 @@
 
 Notes
 
-# Bootcamp > Week # > Day #
+# ??? > ??? ? > ??? ?
 
 ## Overview of the day
 
@@ -53,7 +53,7 @@ Notes
 
 ## Additional Reading
 
-<hr/>
+----
 
 # Session 2 - Title
 

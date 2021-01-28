@@ -15,21 +15,28 @@
     <p>Sessions and the OAuth flow</p>
     <h1>Session 1 - Sessions</h1>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Implement sessions in express</li>
+      <li>Demonstrate session based user auth</li>
+    </ul>
     <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>A basic express app has been built with a <code>User</code> model</li>
+    </ul>
     <h2>Materials</h2>
     <h2>Notes</h2>
     <h3>State &#x26; Sessions</h3>
     <ul>
       <li>Make a class that returns a numeric value after each request i.e. 1,2,3,4,5,6</li>
       <li>Expose this in a GET endpoint and return those values</li>
-      <li>Have the state in the route</li>
-      <li>Have the state on the server</li>
+      <li>Have the state in the route - always returns 1</li>
+      <li>Have the state on the server - increments, but out of sequence</li>
       <li>Add sessions</li>
-      <li>Have the state in a session</li>
+      <li>Have the counter in a session - perfect individual client based incrementalism</li>
     </ul>
     <pre><code class="language-javascript">class Counter {
     constructor() {
-        this.value = 1
+        this.value = 0
     }
 
     inc() {
@@ -56,7 +63,7 @@ app.get('/counter', (req, res) => {
 </code></pre>
     <p>To add sessions <code>npm i express-session</code> then use the following config:</p>
     <pre><code class="language-javascript">const sessionSettings = {
-    secret: "best cohort ever",
+    secret: "best cohort ever or some other secret phrase",
     resave: false,
     saveUninitialized: true
 }
@@ -87,10 +94,21 @@ app.get('/counter', (req, res) => {
     res.send(Counter.lookup[req.session.id].inc())
 })
 </code></pre>
+    <p>You'll have to use the session id. If you try to add the instance of a Counter to <code>req.session.counter = new Counter()</code> it will get stringified and stop working. So thats why you are having to use the session id to lookup the instance of a clients counter.</p>
     <h2>Assignment</h2>
     <p>In the morning session get your apprentices to implement sessions so they can log in and log out.</p>
+    <p>They need to change there code and add.</p>
+    <ol>
+      <li><code>/login</code></li>
+      <li><code>/logout</code></li>
+    </ol>
+    <p>In the login controller they should auth the client as before, if they are a valid client (the passwords match) then add the user id to the session <code>req.session.userId = user.id</code>. To log out all they need to do is <code>req.session.userId = null</code>.</p>
+    <p>To protect a route like <code>/users/:id</code> use a middle ware that checks for <code>req.session.userId</code> and finds the user. Remember you can add that user to <code>res.locals.user = user</code> and call <code>next()</code>.</p>
+    <p>Now that is session based auth. We are just passing the <em>username:password</em> once.</p>
     <h2>Additional Reading</h2>
-    <h1>Session 2 - OAuth</h1>
+    <p><a href="https://zoom.us/rec/share/_2sh4nCLpZmFLF0qCorjgROpxf8JsFGgKmrXpPraJDk1I6U9bdMq4CjyBhWaJhik.6Z7PNWM0o9PTk3c7">Session Recording</a> <em>Start Time : Jan 26, 2021 10:17 AM</em></p>
+    <hr>
+    <h1>Session 2 - The OAuth Dance</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Create a UML sequence diagram</li>
@@ -100,9 +118,24 @@ app.get('/counter', (req, res) => {
     <h2>Pre-work or Assumed knowledge</h2>
     <h2>Materials</h2>
     <h2>Notes</h2>
-    <p>This session is laying the foundations for understanding and keeping track of OAuth flow. It is also an important time to practice UML diagrams (a competency of the Level 4 standard).</p>
+    <p>This session is laying the foundations for understanding and keeping track of OAuth flow. It is also an important time to practice UML diagrams (a competency of the Level 4 standard). Explain the OAuth sequence. Make a UML diagram:</p>
     <h2>Assignment</h2>
+    <pre><code class="language-plantuml">@startuml
+Client -> OurApp: Sends credentials with request for a protected resource
+OurApp -> OurApp: Authenticate the user
+OurApp -> Auth0: Request an access token
+Auth0 -> OurApp: Access Token
+OurApp -> Client: Access Token
+Client -> Resource: Access Token
+Resource -> Resource: Valid token?
+Resource -> Client: Request for resource with access_token
+@enduml
+</code></pre>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/106126980-f8d8bc00-6155-11eb-8428-88bb330e6e37.png" alt="sequence diagram">
+    </p>
     <h2>Additional Reading</h2>
+    <p><a href="https://zoom.us/rec/share/Ul8R1t2y_7mjvvyn5nHvuWu5fevLANO2BKM4Aq3DRrDhWuDZssiOlHGetVsnq5Zf.PGHLvdyBBzk5QyxT?startTime=1611669639000">Session Recording</a> <em>First minute is waiting music skip to 1:04</em></p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
