@@ -43,6 +43,13 @@ Let's create a Form within a new page called `new.handlebars` and give it the fo
 
 This form has 2 inputs, both of type 'text. The input type of 'submit' creates a button which posts the form data to the URL specified in the form 'action'. 
 
+Create a new route for this page:
+```javascript
+app.get('/new', async (req, res) => {
+    res.render('new')
+})
+```
+
 Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation - you can also listen to the short [Form Validation video](https://www.youtube.com/watch?v=MppB5jaKyZ4).
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/embed)
