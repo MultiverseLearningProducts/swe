@@ -12,82 +12,81 @@
   <body>
     <h1>Bootcamp > Week 3 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <p>We have rendered data from our data model in a browser. Today we start to look at adding to our data model through the browser.</p>
+    <p>We have rendered restaurant data from our data model in a browser. Today we will look at adding to our data model through the browser.</p>
+    <h2>Additional resources</h2>
+    <p>If you are struggling with any of the concepts from today, the following video resources will help:</p>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=fNcJuPIZ2WE">Learn HTML Forms In 25 Minutes</a></li>
+      <li><a href="https://www.youtube.com/watch?v=MppB5jaKyZ4">Form Validation (1min 36)</a></li>
+    </ul>
     <hr>
     <h2>Lesson 1 - Forms</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Name the different attributes of a form.</li>
-      <li>Use simple form validation</li>
+      <li>Understand the different attributes of HTML forms</li>
+      <li>Use simple form validation to ensure valid input</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>You will need to have a restaurant's page that displays all the restaurant's in your data model.</li>
-      <li>Have a simple form ready to try different input fields</li>
+      <li>You will need to have your restaurants' page that displays all the restaurants in your data model.</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
       <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/">html form slides</a></li>
     </ul>
     <h2>Lesson</h2>
-    <p>Before we start lets add a form to our page of restaurants. I'm going to add it as the last item in the list. Hay! to get this to work and not blow out my grid I did have to update my css grid (see below).</p>
-    <pre><code class="language-html">&#x3C;h1>Restaurants&#x3C;/h1>
-&#x3C;section>
-    {{#each restaurants}}
-        &#x3C;a href="/restaurants/{{this.id}}">
-            &#x3C;article>
-                &#x3C;header style="background-image: url({{this.image}});">&#x3C;/header>
-                &#x3C;main>{{this.name}}&#x3C;/main>
-                &#x3C;footer>{{this.menus.length}} menus&#x3C;/footer>
-            &#x3C;/article>
-        &#x3C;/a>
-    {{/each}}
-    &#x3C;article>
-        &#x3C;form>
-            &#x3C;div>
-                &#x3C;label>Restaurant name&#x3C;/label>
-                &#x3C;input name="name" />
-            &#x3C;/div>
-            &#x3C;div>
-                &#x3C;label>Restaurant image&#x3C;/label>
-                &#x3C;input name="image" />
-            &#x3C;/div>
-            &#x3C;button>Add Restaurant&#x3C;/button>
-        &#x3C;/form>
-    &#x3C;/article>
-&#x3C;/section>
+    <p>To collect input from our user we need to use an <a href="https://www.w3schools.com/html/html_forms.asp">HTML Form</a>. A Form may have different types of input such as textboxes and radio buttons.</p>
+    <p>Let's create a Form within a new page called <code>new.handlebars</code> and give it the following content:</p>
+    <pre><code class="language-html">&#x3C;h2>Add Restaurant&#x3C;/h2>
+
+&#x3C;form action="/restaurants" method="POST">
+    &#x3C;label>Name:&#x3C;/label>&#x3C;br>
+    &#x3C;input type="text" name="name">&#x3C;br>
+
+    &#x3C;label>Image:&#x3C;/label>&#x3C;br>
+    &#x3C;input type="url" name="image">&#x3C;br>&#x3C;br>
+
+    &#x3C;input type="submit" value="Submit">
+&#x3C;/form>
 </code></pre>
-    <pre><code class="language-css">@media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
-    section {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-</code></pre>
-    <p>With a form we can collect data from our users and send it or 'post' it to our server.</p>
+    <p>This form has 2 inputs, both of type 'text. The input type of 'submit' creates a button which posts the form data to the URL specified in the form 'action'.</p>
+    <p>Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation.</p>
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>What data do we need to collect?. Considering the slide deck, what validation should we add to our form?</p>
-    <p>Once our form is set up we need a special route on our server to handle the form data. Add the following html attributes to your form;</p>
-    <pre><code class="language-html">&#x3C;form action="/restaurants" method="POST">
+    <p>Once our Form is set up, we need to add a matching route to our server to receive and process the form data. In our example form above, we specify the the Form data will be 'posted' to the <code>/restaurants</code> route hence we need to create a new route matching this URL path.</p>
+    <pre><code class="language-javascript">app.post('/restaurants', async (req, res) => {
+    console.log(req.body); // this is the JSON body
+
+    // TODO - add code to insert data into the database!
+
+    res.redirect('/')
+})
 </code></pre>
-    <p>Now on our server we need to update our config and create a new route that will process this data. For now we are just going to console.log out the data we are receiving, but you can create a Restaurant with this data.</p>
-    <p>To read the form data as if it were JSON from the request object we need to add the following config to express.</p>
+    <p>In addition to the route, to read the Form data as if it were JSON from the request object we need to add the following config to express.</p>
     <pre><code class="language-javascript">app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 </code></pre>
-    <p>Can you define a post route like this and log out the request body? In the example below we are redirecting to the restaurants route, that will have the effect of reloading our page when we submit the form.</p>
-    <pre><code class="language-javascript">app.post('/restaurants', async (req, res) => {
-    console.log(req.body) // {name: "Pandas Lunchbox Garden", image: "https://pandas.org/pack-shot.jpg"}
-    res.redirect('/restaurants')
-})
-</code></pre>
     <h2>Assignment</h2>
     <ul>
-      <li>Use your CSS skills to style the add a restaurant form</li>
-      <li>Add validation to the form, both fields must have a value</li>
-      <li>The image field must be a url</li>
-      <li>You have the data to create a new Restaurant in your route handler, why not do that too?</li>
+      <li>(Optional) - watch the videos in the 'Additional resources' section at the start of this web page</li>
+      <li>Add a new page with an HTML form to support the creation of new restaurants</li>
+      <li>Add validation to the Form, both input fields must:
+        <ul>
+          <li>be mandatory</li>
+          <li>have 'placeholder' data</li>
+          <li>highlight to the user if input data is missing or incorrect</li>
+          <li>the image field must be a url</li>
+          <li>the name must only contain the letters a-z</li>
+        </ul>
+      </li>
+      <li>Add a link from the <code>home</code> page to this new page to allow users to add a new restaurant</li>
+      <li>Add a route to retrieve the data (see example above)</li>
+      <li>Insert the data into the database</li>
     </ul>
+    <hr>
+    <p>
+      <strong>Note:</strong>
+      If you get stuck, here is the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day4">solution to Lesson 1</a>
+    </p>
     <hr>
     <h2>Lesson 2 - Create Read Update Destroy</h2>
     <h2>Learning Objectives</h2>
