@@ -2,7 +2,12 @@
 
 ## Overview of the day
 
-We have rendered data from our data model in a browser. Today we start to look at adding to our data model through the browser.
+We have rendered restaurant data from our data model in a browser. Today we will look at adding to our data model through the browser.
+
+## Additional resources
+If you are struggling with any of the concepts from today, the following video resources will help:
+  * [Learn HTML Forms In 25 Minutes](https://www.youtube.com/watch?v=fNcJuPIZ2WE)
+  * [Form Validation (1min 36)](https://www.youtube.com/watch?v=MppB5jaKyZ4)
 
 ----
 
@@ -10,92 +15,77 @@ We have rendered data from our data model in a browser. Today we start to look a
 
 ## Learning Objectives
 
-* Name the different attributes of a form.
-* Use simple form validation
+* Understand the different attributes of HTML forms
+* Use simple form validation to ensure valid input
 
 ## Before we start
-
-* You will need to have a restaurant's page that displays all the restaurant's in your data model.
-* Have a simple form ready to try different input fields
+* You will need to have your restaurants' page that displays all the restaurants in your data model.
 
 ## Materials needed
-
 * [html form slides](https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/)
 
 ## Lesson
 
-Before we start lets add a form to our page of restaurants. I'm going to add it as the last item in the list. Hay! to get this to work and not blow out my grid I did have to update my css grid (see below).
+To collect input from our user we need to use an [HTML Form](https://www.w3schools.com/html/html_forms.asp). A Form may have different types of input such as textboxes and radio buttons. 
+
+Let's create a Form within a new page called `new.handlebars` and give it the following content:
 
 ```html
-<h1>Restaurants</h1>
-<section>
-    {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}">
-            <article>
-                <header style="background-image: url({{this.image}});"></header>
-                <main>{{this.name}}</main>
-                <footer>{{this.menus.length}} menus</footer>
-            </article>
-        </a>
-    {{/each}}
-    <article>
-        <form>
-            <div>
-                <label>Restaurant name</label>
-                <input name="name" />
-            </div>
-            <div>
-                <label>Restaurant image</label>
-                <input name="image" />
-            </div>
-            <button>Add Restaurant</button>
-        </form>
-    </article>
-</section>
+<h2>Add Restaurant</h2>
+
+<form action="/restaurants" method="POST">
+    <label>Name:</label><br>
+    <input type="text" name="name"><br>
+
+    <label>Image:</label><br>
+    <input type="url" name="image"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
 ```
-```css
-@media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
-    section {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-```
-With a form we can collect data from our users and send it or 'post' it to our server. 
+
+This form has 2 inputs, both of type 'text. The input type of 'submit' creates a button which posts the form data to the URL specified in the form 'action'. 
+
+Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation. 
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/embed)
 
-What data do we need to collect?. Considering the slide deck, what validation should we add to our form?
+Once our Form is set up, we need to add a matching route to our server to receive and process the form data. In our example form above, we specify the the Form data will be 'posted' to the `/restaurants` route hence we need to create a new route matching this URL path.
 
-Once our form is set up we need a special route on our server to handle the form data. Add the following html attributes to your form;
+```javascript
+app.post('/restaurants', async (req, res) => {
+    console.log(req.body); // this is the JSON body
 
-```html
-<form action="/restaurants" method="POST">
+    // TODO - add code to insert data into the database!
+
+    res.redirect('/')
+})
 ```
 
-Now on our server we need to update our config and create a new route that will process this data. For now we are just going to console.log out the data we are receiving, but you can create a Restaurant with this data.
-
-To read the form data as if it were JSON from the request object we need to add the following config to express.
+In addition to the route, to read the Form data as if it were JSON from the request object we need to add the following config to express.
 
 ```javascript
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 ```
-Can you define a post route like this and log out the request body? In the example below we are redirecting to the restaurants route, that will have the effect of reloading our page when we submit the form.
-
-```javascript
-app.post('/restaurants', async (req, res) => {
-    console.log(req.body) // {name: "Pandas Lunchbox Garden", image: "https://pandas.org/pack-shot.jpg"}
-    res.redirect('/restaurants')
-})
-```
 
 ## Assignment
 
-* Use your CSS skills to style the add a restaurant form
-* Add validation to the form, both fields must have a value
-* The image field must be a url
-* You have the data to create a new Restaurant in your route handler, why not do that too?
+* (Optional) - watch the videos in the 'Additional resources' section at the start of this web page
+* Add a new page with an HTML form to support the creation of new restaurants
+* Add validation to the Form, both input fields must:
+     * be mandatory 
+     * have 'placeholder' data
+     * highlight to the user if input data is missing or incorrect
+     * the image field must be a url
+     * the name must only contain the letters a-z
+* Add a link from the `home` page to this new page to allow users to add a new restaurant
+* Add a route to retrieve the data (see example above)
+* Insert the data into the database
+
+---
+**Note:**
+If you get stuck, here is the [solution to Lesson 1](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day4)
 
 ----
 

@@ -148,7 +148,9 @@ dl div{
   * Create the route and template to view a single restaurant.
   * Include a "back" or "main menu" button on your page.
   * Render the menus, and the menu items in a grid on the page.
-  * Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page like below.
+  * Create a [hero image](https://www.w3schools.com/howto/howto_css_hero_image.asp) for the page
+  ![example of a hero image](https://user-images.githubusercontent.com/4499581/95021581-adac1200-0669-11eb-84da-cfdf9befc65c.jpg)
+
 
 ---
 
@@ -175,7 +177,7 @@ The Box Model
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed)
 
-![example of a hero image](https://user-images.githubusercontent.com/4499581/95021581-adac1200-0669-11eb-84da-cfdf9befc65c.jpg)
+
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/165)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day2.html)|[next](/swe/bootcamp/wk3/day4.html)
