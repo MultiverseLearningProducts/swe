@@ -30,12 +30,8 @@
     <ul>
       <li>You will need to have your restaurants' page that displays all the restaurants in your data model.</li>
     </ul>
-    <h2>Materials needed</h2>
-    <ul>
-      <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/">html form slides</a></li>
-    </ul>
     <h2>Lesson</h2>
-    <p>To collect input from our user we need to use an <a href="https://www.w3schools.com/html/html_forms.asp">HTML Form</a>. A Form may have different types of input such as textboxes and radio buttons.</p>
+    <p>To collect input from our user we need to use an <a href="https://www.w3schools.com/html/html_forms.asp">HTML Form</a>.</p>
     <p>Let's create a Form within a new page called <code>new.handlebars</code> and give it the following content:</p>
     <pre><code class="language-html">&#x3C;h2>Add Restaurant&#x3C;/h2>
 
@@ -50,7 +46,7 @@
 &#x3C;/form>
 </code></pre>
     <p>This form has 2 inputs, both of type 'text. The input type of 'submit' creates a button which posts the form data to the URL specified in the form 'action'.</p>
-    <p>Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation.</p>
+    <p>Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation - you can also listen to the short <a href="https://www.youtube.com/watch?v=MppB5jaKyZ4">Form Validation video</a>.</p>
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>Once our Form is set up, we need to add a matching route to our server to receive and process the form data. In our example form above, we specify the the Form data will be 'posted' to the <code>/restaurants</code> route hence we need to create a new route matching this URL path.</p>
     <pre><code class="language-javascript">app.post('/restaurants', async (req, res) => {
@@ -61,7 +57,7 @@
     res.redirect('/')
 })
 </code></pre>
-    <p>In addition to the route, to read the Form data as if it were JSON from the request object we need to add the following config to express.</p>
+    <p><strong>Important!</strong> In addition to the route, to read the Form data as if it were JSON from the request object we need to add the following config to express.</p>
     <pre><code class="language-javascript">app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 </code></pre>
@@ -80,6 +76,7 @@ app.use(express.json())
       </li>
       <li>Add a link from the <code>home</code> page to this new page to allow users to add a new restaurant</li>
       <li>Add a route to retrieve the data (see example above)</li>
+      <li>Test the route using Postman</li>
       <li>Insert the data into the database</li>
     </ul>
     <hr>
@@ -88,27 +85,18 @@ app.use(express.json())
       If you get stuck, here is the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day4">solution to Lesson 1</a>
     </p>
     <hr>
-    <h2>Lesson 2 - Create Read Update Destroy</h2>
+    <h2>Lesson 2 - Create Read Update Destroy (CRUD)</h2>
     <h2>Learning Objectives</h2>
     <p>Using the patterns we have learnt so far enable users to perform create, read, update and destroy operations.</p>
     <h2>Before we start</h2>
-    <p>You need to be successfully posting restaurant data to your server and creating restaurants.</p>
-    <h2>Materials needed</h2>
-    <ul>
-      <li>some image urls for restaurants</li>
-    </ul>
+    <p>You must have completed Lesson 1</p>
     <h2>Lesson</h2>
-    <p>In our route handler we have all the information we need to create a new restaurant. If you have not done so already lets add a line to our handler to do just that.</p>
-    <pre><code class="language-javascript">app.post('/restaurants', async (req, res) => {
-    await Restaurant.create(req.body)
-    res.redirect('/')
-})
-</code></pre>
-    <p>WOW. Yes now it's that easy. Shall we delete a restaurant? We can update our template to have a delete button on the restaurant page. We can set the href of that link to an address on our server where we can delete that restaurant. For example:</p>
+    <p>In our route handler we have all the information we need to create a new restaurant.</p>
+    <p>Now let's add functionality to delete a restaurant. We will need to update our template to have a delete button on the restaurant page. For example:</p>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/95022824-5dd14900-0671-11eb-9cb3-2d9caa3cbb30.jpg" alt="example of a dynamic href">
     </p>
-    <p>On our server we can define a route perameter (like before) and use that to perform the delete operation.</p>
+    <p>On our server we define a new route and use that to perform the delete operation.</p>
     <pre><code class="language-javascript">app.get('/restaurants/:id/delete', (req, res) => {
     Restaurant.findByPk(req.params.id)
         .then(restaurant => {
@@ -117,8 +105,8 @@ app.use(express.json())
         })
 })
 </code></pre>
-    <p>Powerful! Finally what if we make a typo and want to update our restaurant? Now this is more involved. We need to provide the user with the form they used to create the restaurant, populated with the current values. We then need a new update route to post the new values too.</p>
-    <p>Lets create a new route that will serve an edit template to the user. Some thing like this.</p>
+    <p>Powerful! But what if we make a typo and want to update our restaurant? This is more involved. We need to provide the user with the form they used to create the restaurant, populated with the current values. We then need a new update route to post the new values too.</p>
+    <p>Lets create a new route that will serve an edit template to the user:</p>
     <pre><code class="language-javascript">app.get('/restaurants/:id/edit', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     res.render('edit', {restaurant})
@@ -147,9 +135,11 @@ app.use(express.json())
 </code></pre>
     <h2>Assignment</h2>
     <ul>
-      <li>Edit restaurants</li>
-      <li>Add menus to a restaurant</li>
-      <li>Add items to a menu</li>
+      <li>Add functionality to delete a restaurant</li>
+      <li>Add functionality to edit a restaurant</li>
+      <li>Add functionality to add menus to a restaurant</li>
+      <li>Add functionality to add items to a menu</li>
+      <li>Test the new routes using Postman</li>
     </ul>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/166">attendance log</a>
