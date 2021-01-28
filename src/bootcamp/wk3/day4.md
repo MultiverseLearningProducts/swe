@@ -78,6 +78,7 @@ app.use(express.json())
      * the name must only contain the letters a-z
 * Add a link from the `home` page to this new page to allow users to add a new restaurant
 * Add a route to retrieve the data (see example above)
+* Test the route using Postman
 * Insert the data into the database
 
 ---
@@ -158,6 +159,7 @@ app.put('/restaurants/:id/edit', async (req, res) => {
 * Add functionality to edit a restaurant
 * Add functionality to add menus to a restaurant
 * Add functionality to add items to a menu
+* Test the new routes using Postman
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/166)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day3.html)|[next](/swe/bootcamp/wk3/day5.html)
