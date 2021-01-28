@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mod 1 > Week 2 > Day 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Mod 1 > Week 2 > Day 3</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we summit and implement token based auth.</p>
+    <h1>Session 1 - OAuth with Auth0</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>secure a resource using a token</li>
+      <li>access a 3rd party token</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>The video below is worth watching:</p>
+    <ul>
+      <li>Disadvantages of session based auth</li>
+      <li>Nightclub analogy</li>
+      <li>How to read a sequence diagram</li>
+    </ul>
+    <h2>Assignment</h2>
+    <h2>Additional Reading</h2>
+    <p><a href="https://zoom.us/rec/share/85OByUPEzt3V1bS16mbXsbqwemmXNEM6flqsQqai7-Z7spu4C_zXRsUXYVfMxP5v.tJ7FUT6ZRycM0ssx">Session Recording</a> <em>Start Time : Jan 27, 2021 09:30 AM</em></p>
+    <hr>
+    <h1>Session 2 - Universal login Auth0</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Engage in the design phase of software development</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>OAuth</li>
+    </ul>
+    <h2>Materials</h2>
+    <h2>Notes</h2>
+    <p>The video below has a walk through of bootstrapping an express server with the Auth0 universal login.</p>
+    <h2>Assignment</h2>
+    <p>The assignment gets the apprentices using Auth0 universal login. One thing to check and emphasis is they should expect to make a data model that spans 2 databases, the users are stored on Auth0, Accounts stored in their app. How will they relate data to a user? (the <code>sub</code> property from the user object that comes from Auth0).</p>
+    <p>I am assuming the groups all deploy to Heroku (<a href="https://multiverselearningproducts.github.io/swe/bootcamp/wk5/day2.html">instructions from bootcamp here</a>).</p>
+    <ol>
+      <li>bootstrap the project with Auth0</li>
+      <li>get emails working (google API)</li>
+      <li>send links in emails that call their own app (on heroku) and capture the email of the referer (put info into a token, add the token as a query parameter?)</li>
+      <li>Collect the email and URL (of the app on heroku) of a friend</li>
+      <li>send money using a commonly agreed endpoint (my group decided on POST <code>/pay</code> {from: STRING, to: STRING, amount: INTEGER})</li>
+    </ol>
+    <p>Important thing to encourage and support here is the design phase and problem solving. The basic trick of this app working is being able to send links with data embed in them via email, then receive data via endpoints.</p>
+    <h2>Additional Reading</h2>
+    <p><a href="https://zoom.us/rec/share/k4S4x4Z9dBFvjpmw78x4XDXxKT3W-rkATuYfRvUsCpBddEuo0H0-SxUxvaojRhJJ.8LvOBErKue3SU6gY?startTime=1611756240000">Session Recording</a> <em>Jan 27, 2021 02:01 PM London</em></p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

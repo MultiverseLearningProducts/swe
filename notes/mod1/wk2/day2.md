@@ -8,7 +8,12 @@ Sessions and the OAuth flow
 
 ## Learning Objectives
 
+* Implement sessions in express
+* Demonstrate session based user auth
+
 ## Pre-work or Assumed knowledge
+
+* A basic express app has been built with a `User` model
 
 ## Materials
 
@@ -18,15 +23,15 @@ Sessions and the OAuth flow
 
 * Make a class that returns a numeric value after each request i.e. 1,2,3,4,5,6
 * Expose this in a GET endpoint and return those values
-* Have the state in the route
-* Have the state on the server
-* Add sessions
-* Have the state in a session
+* Have the state in the route - always returns 1
+* Have the state on the server - increments, but out of sequence
+* Add sessions 
+* Have the counter in a session - perfect individual client based incrementalism
 
 ```javascript
 class Counter {
     constructor() {
-        this.value = 1
+        this.value = 0
     }
 
     inc() {
@@ -59,7 +64,7 @@ To add sessions `npm i express-session` then use the following config:
 
 ```javascript
 const sessionSettings = {
-    secret: "best cohort ever",
+    secret: "best cohort ever or some other secret phrase",
     resave: false,
     saveUninitialized: true
 }
@@ -100,15 +105,30 @@ app.get('/counter', (req, res) => {
 })
 ```
 
+You'll have to use the session id. If you try to add the instance of a Counter to `req.session.counter = new Counter()` it will get stringified and stop working. So thats why you are having to use the session id to lookup the instance of a clients counter.
+
 ## Assignment
 
 In the morning session get your apprentices to implement sessions so they can log in and log out.
 
+They need to change there code and add.
+
+1. `/login`
+2. `/logout`
+
+In the login controller they should auth the client as before, if they are a valid client (the passwords match) then add the user id to the session `req.session.userId = user.id`. To log out all they need to do is `req.session.userId = null`.
+
+To protect a route like `/users/:id` use a middle ware that checks for `req.session.userId` and finds the user. Remember you can add that user to `res.locals.user = user` and call `next()`.
+
+Now that is session based auth. We are just passing the _username:password_ once.
+
 ## Additional Reading
 
-<hr/>
+[Session Recording](https://zoom.us/rec/share/_2sh4nCLpZmFLF0qCorjgROpxf8JsFGgKmrXpPraJDk1I6U9bdMq4CjyBhWaJhik.6Z7PNWM0o9PTk3c7) _Start Time : Jan 26, 2021 10:17 AM_
 
-# Session 2 - OAuth
+----
+
+# Session 2 - The OAuth Dance
 
 ## Learning Objectives
 
@@ -122,8 +142,25 @@ In the morning session get your apprentices to implement sessions so they can lo
 
 ## Notes
 
-This session is laying the foundations for understanding and keeping track of OAuth flow. It is also an important time to practice UML diagrams (a competency of the Level 4 standard).
+This session is laying the foundations for understanding and keeping track of OAuth flow. It is also an important time to practice UML diagrams (a competency of the Level 4 standard). Explain the OAuth sequence. Make a UML diagram:
 
 ## Assignment
 
+```plantuml
+@startuml
+Client -> OurApp: Sends credentials with request for a protected resource
+OurApp -> OurApp: Authenticate the user
+OurApp -> Auth0: Request an access token
+Auth0 -> OurApp: Access Token
+OurApp -> Client: Access Token
+Client -> Resource: Access Token
+Resource -> Resource: Valid token?
+Resource -> Client: Request for resource with access_token
+@enduml
+```
+
+![sequence diagram](https://user-images.githubusercontent.com/4499581/106126980-f8d8bc00-6155-11eb-8428-88bb330e6e37.png)
+
 ## Additional Reading
+
+[Session Recording](https://zoom.us/rec/share/Ul8R1t2y_7mjvvyn5nHvuWu5fevLANO2BKM4Aq3DRrDhWuDZssiOlHGetVsnq5Zf.PGHLvdyBBzk5QyxT?startTime=1611669639000) _First minute is waiting music skip to 1:04_

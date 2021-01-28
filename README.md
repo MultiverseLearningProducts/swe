@@ -1,53 +1,10 @@
 
-![SWE at WhiteHat Welcome](https://user-images.githubusercontent.com/4499581/92381014-fec7f500-f101-11ea-8fcd-506232e5de87.png)
+![SWE at Multiverse Welcome](https://user-images.githubusercontent.com/4499581/106140314-83c1b280-6166-11eb-9c99-7f0f7180cb57.png)
 
 ## Overview
 
-This is a repository of apprentice facing lessons, and coach notes. Published on Github pages.
+This is a repository of apprentice facing lessons and coach notes. Published on Github pages [https://multiverselearningproducts.github.io/swe](https://multiverselearningproducts.github.io/swe).
 
-```
-├── bootcamp
-│   └── wk1
-│       ├── day1.html
-│       └── day2.html
-├── index.html
-├── mod1
-│   └── wk1
-│       └── day1.html
-├── mod3
-│   ├── wk1
-│   │   ├── day1.html
-│   │   ├── day2.html
-│   │   ├── day3.html
-│   │   ├── day4.html
-│   │   └── day5.html
-│   └── wk2
-│       ├── day1.html
-│       ├── day2.html
-│       ├── day3.html
-│       ├── day4.html
-│       └── day5.html
-├── modest.css
-├── notes
-│   ├── bootcamp
-│   │   └── wk1
-│   │       ├── day1.html
-│   │       └── day2.html
-│   └── mod3
-│       ├── wk1
-│       │   ├── day1.html
-│       │   ├── day2.html
-│       │   ├── day3.html
-│       │   ├── day4.html
-│       │   └── day5.html
-│       └── wk2
-│           ├── day1.html
-│           ├── day2.html
-│           ├── day3.html
-│           ├── day4.html
-│           └── day5.html
-└── style.css
-```
 ## Usage
 
 Clone the repo. Make sure you have push permissions to this repo. To publish your changes run;
@@ -56,7 +13,7 @@ Clone the repo. Make sure you have push permissions to this repo. To publish you
 npm run publish
 ```
 
-That will build the markdown pages into html pages and then push to github. See the site here [https://whitehatlearningproducts.github.io/swe/](https://whitehatlearningproducts.github.io/swe/)
+That will build the markdown pages into html pages and then push to github. See the site here [https://multiverselearningproducts.github.io/swe](https://multiverselearningproducts.github.io/swe)
 
 ## Special Markdowns
 

@@ -17,15 +17,19 @@
     <h2>Learning Objectives</h2>
     <ul>
       <li>Distinguish the difference between authentication and authorisation</li>
-      <li>Be able</li>
+      <li>Demonstrate the knowledge for setting up an express app with an ORM (sequelise)</li>
     </ul>
     <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>Express</li>
+      <li>Sequelize (from the first bootcamp)</li>
+    </ul>
     <h2>Materials</h2>
     <h2>Notes</h2>
     <p>Take your group of apprentices through the hotel example, then send them into breakout rooms to do the list of examples. They can send you their Answers using direct messages in Slack.</p>
     <p>Answers using direct messages in Slack.</p>
-    <p>Now you can start the basic authentication section do you want to remind your apprentices about the http://header, and how to pay 64 includes string, and how to use <code>atob</code> and <code>btoa</code> to encode and decode strings as base64.</p>
-    <p>Step through setting up a server with a User resource, make 2 endpoints a POST to create a user and a GET to get a single user.</p>
+    <p>Now you can start the basic authentication section do you want to remind your apprentices about the http header, and how to an 'Authorize' header, and how to use <code>atob</code> and <code>btoa</code> to encode and decode strings as base64.</p>
+    <p>Step through setting up a server with a single <code>User</code> resource, make 2 endpoints a POST to create a user and a GET to get a single user.</p>
     <p>I used:</p>
     <ul>
       <li>express</li>
@@ -78,13 +82,14 @@ app.listen(3000, () => sequelize.sync())
     <p>Introduce <code>bcrypt</code>. You can install this dependency and demo it in the node Repl.</p>
     <pre><code class="language-sh">node
 </code></pre>
+    <p>then in the node repl</p>
     <pre><code class="language-ruby">bcrypt = require('bcrypt')
 bcrypt.hash("my_passw0rd", 10).then(console.log)
 // $2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQIIzOPxGO6ICiq
 bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQIIzOPxGO6ICiq")
 // true
 </code></pre>
-    <p>The second argument to <code>.hash</code> is the salt rounds. Its worth talking about rainbow table attacks to understand the value of adding a salt.</p>
+    <p>The second argument to <code>.hash</code> is the salt rounds. Its worth talking about rainbow table attacks to understand the value of adding a salt, but this is upto you.</p>
     <p>Now update the POST endpoint that saves a user and store the hashed password in place of the plaintext password.</p>
     <pre><code class="language-javascript">app.post('/users', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -98,7 +103,10 @@ bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQII
     <h2>Assignment</h2>
     <p>Go build the server with REST endpoints for the User resource. Create a series of users with hashed passwords.</p>
     <h2>Additional Reading</h2>
-    <p><a href="https://youtu.be/SOV0AeHuHaQ">What are rainbow tables?</a></p>
+    <p>
+      <a href="https://youtu.be/SOV0AeHuHaQ">What are rainbow tables?</a>
+      <a href="https://zoom.us/rec/share/2nyDmJ6UJ_n56zfS9frhRQFJ_LdmHNmiRqqa40DVdYh9a9jDh3kiD3mrR1Xc39NM.5XXAxz_-Tm9AhCM7">Session Recording</a> <em>Start Time : Jan 25, 2021 09:30 AM</em>
+    </p>
     <h1>Session 2 - Middleware</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -121,12 +129,12 @@ bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQII
     <p>Log out the headers on the server. Then introduce the idea of middleware. Below is middleware called for every request.</p>
     <pre><code class="language-javascript">app.use(function (req, res, next) {"your middleware function every call"})
 </code></pre>
-    <p>to just call a middleware for some routes you can add the function name as the second argument.</p>
+    <p>to just call a middleware for some routes you can add the function name as the second argument - but don't call it.</p>
     <pre><code class="language-javascript">app.get('/users/:id', protected, async (req, res) => {
     res.locals.user ? res.send(res.locals.user) : res.sendStatus(404)
 })
 </code></pre>
-    <p>In the code above you can see there is a user on the <code>res.locals</code> object, this is how you can pass values from middleware to the next middleware or controller.</p>
+    <p>In the code above you can see there is a user on the <code>res.locals</code> object, this is how you can pass values from middleware to the next middleware or controller, but adding the object to <code>res.locals</code>.</p>
     <h3>Authentication</h3>
     <p>We are checking the person making the request is who they say they are assuming only they know the password.</p>
     <p>In your middleware function check the passwords match:</p>
@@ -150,6 +158,7 @@ bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQII
     <p>That is Basic auth in a nutshell. The issue we have now is that you have to send the <code>username:password</code> on every request. Once a user has been authorized would it not make more sense for the server to keep track of them?</p>
     <h2>Assignment</h2>
     <h2>Additional Reading</h2>
+    <p><a href="https://zoom.us/rec/share/BEL4_AkkOd0fG6Bc3ABzcxl6NSpIT1RItE7QZa2AzksD0H0hEX3Pfx9Me_2vZsLG.6z--1wcAY3BIDpsd">Session Recording</a> <em>Start Time : Jan 25, 2021 01:59 PM</em></p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

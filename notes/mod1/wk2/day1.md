@@ -9,9 +9,12 @@ To day is all about Basic Authentication
 ## Learning Objectives
 
 * Distinguish the difference between authentication and authorisation
-* Be able
+* Demonstrate the knowledge for setting up an express app with an ORM (sequelise)
 
 ## Pre-work or Assumed knowledge
+
+* Express
+* Sequelize (from the first bootcamp)
 
 ## Materials
 
@@ -21,9 +24,9 @@ Take your group of apprentices through the hotel example, then send them into br
 
 Answers using direct messages in Slack.
 
-Now you can start the basic authentication section do you want to remind your apprentices about the http://header, and how to pay 64 includes string, and how to use `atob` and `btoa` to encode and decode strings as base64.
+Now you can start the basic authentication section do you want to remind your apprentices about the http header, and how to an 'Authorize' header, and how to use `atob` and `btoa` to encode and decode strings as base64.
 
-Step through setting up a server with a User resource, make 2 endpoints a POST to create a user and a GET to get a single user.
+Step through setting up a server with a single `User` resource, make 2 endpoints a POST to create a user and a GET to get a single user.
 
 I used:
 
@@ -86,7 +89,7 @@ Introduce `bcrypt`. You can install this dependency and demo it in the node Repl
 ```sh
 node
 ```
-
+then in the node repl
 ```ruby
 bcrypt = require('bcrypt')
 bcrypt.hash("my_passw0rd", 10).then(console.log)
@@ -95,7 +98,7 @@ bcrypt.compare("my_passw0rd", "$2b$10$78EZuPQyIealvQR45YgWTe1o0LgfbpGpLITudCaQII
 // true
 ```
 
-The second argument to `.hash` is the salt rounds. Its worth talking about rainbow table attacks to understand the value of adding a salt.
+The second argument to `.hash` is the salt rounds. Its worth talking about rainbow table attacks to understand the value of adding a salt, but this is upto you.
 
 Now update the POST endpoint that saves a user and store the hashed password in place of the plaintext password.
 
@@ -117,6 +120,8 @@ Go build the server with REST endpoints for the User resource. Create a series o
 ## Additional Reading
 
 [What are rainbow tables?](https://youtu.be/SOV0AeHuHaQ)
+[Session Recording](https://zoom.us/rec/share/2nyDmJ6UJ_n56zfS9frhRQFJ_LdmHNmiRqqa40DVdYh9a9jDh3kiD3mrR1Xc39NM.5XXAxz_-Tm9AhCM7) _Start Time : Jan 25, 2021 09:30 AM_
+
 
 <hr/>
 
@@ -148,7 +153,7 @@ Log out the headers on the server. Then introduce the idea of middleware. Below 
 app.use(function (req, res, next) {"your middleware function every call"})
 ```
 
-to just call a middleware for some routes you can add the function name as the second argument.
+to just call a middleware for some routes you can add the function name as the second argument - but don't call it.
 
 ```javascript
 app.get('/users/:id', protected, async (req, res) => {
@@ -156,7 +161,7 @@ app.get('/users/:id', protected, async (req, res) => {
 })
 ```
 
-In the code above you can see there is a user on the `res.locals` object, this is how you can pass values from middleware to the next middleware or controller.
+In the code above you can see there is a user on the `res.locals` object, this is how you can pass values from middleware to the next middleware or controller, but adding the object to `res.locals`.
 
 ### Authentication
 
@@ -189,3 +194,6 @@ That is Basic auth in a nutshell. The issue we have now is that you have to send
 
 
 ## Additional Reading
+
+[Session Recording](https://zoom.us/rec/share/BEL4_AkkOd0fG6Bc3ABzcxl6NSpIT1RItE7QZa2AzksD0H0hEX3Pfx9Me_2vZsLG.6z--1wcAY3BIDpsd) _Start Time : Jan 25, 2021 01:59 PM_
+
