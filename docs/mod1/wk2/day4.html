@@ -15,13 +15,35 @@
     <p>Today we will develop a Single Page Application which uses OpenID to authenticate (login) a user to a website.</p>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Understand OpenId</li>
-      <li>Implement login and logout functionality using Auth0</li>
-      <li>Allow an authorised user to call our Users API</li>
+      <li>Send emails programmatically</li>
+      <li>Use environmental variables</li>
+      <li>Deploy to a production environment (heroku)</li>
     </ul>
     <h2>Before we start</h2>
+    <p>Please keep secrets out of version control (don't commit secrets like <code>client_secret</code> to github). Use environmental variables.</p>
+    <ul>
+      <li>There are instructions to deploy an express app to heroku <a href="https://multiverselearningproducts.github.io/swe/bootcamp/wk5/day2.html">here</a></li>
+      <li>To use environmental variables locally we recommend using <code>dotenv</code>. Below is an example of how to initialise your local developer environmental vars:</li>
+    </ul>
+    <pre><code class="language-javascript">if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+</code></pre>
+    <p>If the <code>process.env.NODE_ENV</code> is 'production' then you are in the heroku environment an you set your heroku environmental variables on your app settings page. Locally you can create a <code>.env</code> file and inside that you declare your environmental variables as key value pairs.</p>
+    <pre><code class="language-sh">AUTH_SECRET=2398ypo123ywhj0notreal0kpo83yoef8
+AUTH_CLIENT_ID=gk8jR4A999FAKE999K9HaHJzL6iSCJXkltKC8
+AUTH_BASE_URL=https://dev-7954fake3.eu.auth0.com
+</code></pre>
     <h2>Materials needed</h2>
     <h1>Project brief</h1>
+    <ol>
+      <li>Try to get your app to send emails</li>
+      <li>Deploy your app to heroku</li>
+      <li>Test the URLs you send in your emails work ok</li>
+    </ol>
+    <p>Remember you can create your own JWTs.</p>
+    <pre><code class="language-javascript">const token = jwt.sign({data: whatever_you_like_in_here}, secret, {expiresIn: 120})
+</code></pre>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/186">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk2/day3.html">prev</a>|<a href="/swe/mod1/wk2/day5.html">next</a>
