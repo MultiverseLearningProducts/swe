@@ -46,6 +46,11 @@
 &#x3C;/form>
 </code></pre>
     <p>This form has 2 inputs, both of type 'text. The input type of 'submit' creates a button which posts the form data to the URL specified in the form 'action'.</p>
+    <p>Create a new route for this page:</p>
+    <pre><code class="language-javascript">app.get('/new', async (req, res) => {
+    res.render('new')
+})
+</code></pre>
     <p>Before we create a new route to handle our new page, let's think about the type of client-side validation we might want perform before sending the data to the server.The slide deck below details some of the main types of form validation - you can also listen to the short <a href="https://www.youtube.com/watch?v=MppB5jaKyZ4">Form Validation video</a>.</p>
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPDtqqUC5Yluyx6bNjYS4F7QkY8dPW3mq1PBQJ7QZ-iz5p3S7ofGAiBIXzovbZpMhkNtjvxb-mlIu9/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>Once our Form is set up, we need to add a matching route to our server to receive and process the form data. In our example form above, we specify the the Form data will be 'posted' to the <code>/restaurants</code> route hence we need to create a new route matching this URL path.</p>
@@ -126,8 +131,8 @@ app.use(express.json())
 </code></pre>
     <p>Our edit form looks similar to the create form, but we post to a different route. We set the values of the field using the current restaurant values.</p>
     <p>Add an edit link to your restaurant page (next to or near the delete button). Now you can use that link to open your edit page.</p>
-    <p>Finally add the route that will handle the update, notice the 'put' https verb. If we were just posting one value to update what http verb might we use then?</p>
-    <pre><code class="language-javascript">app.put('/restaurants/:id/edit', async (req, res) => {
+    <p>Finally add the route that will handle the update:</p>
+    <pre><code class="language-javascript">app.post('/restaurants/:id/edit', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     await restaurant.update(req.body)
     res.redirect(`/restaurants/${restaurant.id}`)
@@ -137,8 +142,6 @@ app.use(express.json())
     <ul>
       <li>Add functionality to delete a restaurant</li>
       <li>Add functionality to edit a restaurant</li>
-      <li>Add functionality to add menus to a restaurant</li>
-      <li>Add functionality to add items to a menu</li>
       <li>Test the new routes using Postman</li>
     </ul>
     <p>
