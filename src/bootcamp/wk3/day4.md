@@ -116,7 +116,7 @@ On our server we define a new route and use that to perform the delete operation
 
 ```javascript
 app.get('/restaurants/:id/delete', (req, res) => {
-    Restaurant.findByPk(req.params.id)
+    await Restaurant.findByPk(req.params.id)
         .then(restaurant => {
             restaurant.destroy()
             res.redirect('/')
