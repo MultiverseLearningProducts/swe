@@ -50,6 +50,36 @@ Add a ratings system for the restaurant model.
 * On a restaurant page you should be able to add a rating.
 * Ratings need to be displayed on the restaurant page, and the card.
 
+## Lesson 2 - Server side validation
+In previous lessons we have added client side validation to check for the user entering a valid restaurant name and url. However, client side validation can be subverted either by disabling JavaScript in the browser, or, my using a tool such as Postman to call the API directly, bypassing the form.
+
+Listen to this [short video (3mins)](https://www.youtube.com/watch?v=vVJ2ukke34s) which explains why this can be a problem. Also think back to last week when we discussed [SQL injection attacks](https://portswigger.net/web-security/sql-injection). 
+
+In this lesson you are going to use [express validator](https://express-validator.github.io/docs/) to add some server side validation to ensure the user's review cannot be used by a malicious user to enter content such as html or sql or even to enter a huge amount of text which could break the backend. 
+
+To install `express validator` run:
+
+`npm install express-validator`
+
+Require this in your `server.js` file
+```js
+const { check, validationResult } = require('express-validator');
+```
+
+You can now add validation to your route to ensure the star rating is a number and `sanitise` the review:
+
+```js
+app.post('/restaurants/:id/ratings', [
+    check('stars').isNumeric(),
+    check('review').not().isEmpty().trim().escape()
+    ], async (req, res) => {
+```
+
+## Assignment
+
+Add server-side validation for all routes which accept form data. Use the [express validator](https://express-validator.github.io/docs/index.html) website for more validation options.
+
+
 ### TODO - relocate this content - please ignore for now
 You will find yourself thinking "what shall I name this route". This morning I want to introduce you to the RESTful pattern.
 
