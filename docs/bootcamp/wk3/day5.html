@@ -12,53 +12,45 @@
   <body>
     <h1>Bootcamp > Week 3 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Today is about consolidating all the new things we have learnt in the week.</p>
+    <p>Today is about consolidating everything you have learnt this week.</p>
+    <p>You will extend your restaurant app to create a review ratings service.</p>
+    <p>If you complete this, you can then add further functionality to allow menus and menu items to be created, read, updated and deleted.</p>
     <hr>
-    <h2>Lesson 1 - Full CRUD</h2>
+    <h2>Lesson 1 - Ratings</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Demonstrate the 4 operations of create, read, update and destroy</li>
-    </ul>
-    <h2>Before we start</h2>
-    <ul>
-      <li>N/A</li>
+      <li>Extend your data model to include a star rating for each restaurant. Get ideas from sites like <a href="https://www.tripadvisor.co.uk/">Trip Advisor</a> or <a href="https://uk.trustpilot.com/">Trust Pilot</a></li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
-      <li>N/A</li>
+      <li>Sequelize</li>
+      <li>Star icons ☆ ★</li>
     </ul>
     <h2>Lesson</h2>
-    <p>Today we are going to complete our app giving the user the ability to perform CRUD operations on all three resources, restaurants, menus and items.</p>
-    <p>You will find yourself thinking "what shall I name this route". This morning I want to introduce you to the RESTful pattern.</p>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>Customers of each restaurant are able to rate their visit to a restaurant.</p>
+    <p>This means we need to extend our data model to include a <code>Rating</code> class/table which is associated to the <code>Restaurant</code> table as follows:</p>
+    <pre><code class="language-js">Restaurant.hasMany(Rating, {as: 'ratings', foreignKey: 'restaurant_id'})
+Rating.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
+</code></pre>
+    <p>A Rating will consist of a 'number of stars', from 0-5.</p>
+    <blockquote>
+      <p>☆ ☆ ☆ ☆ ☆</p>
+    </blockquote>
+    <blockquote>
+      <p>★ ★ ★ ★ ★</p>
+    </blockquote>
+    <p>To display the overall rating you will need to <code>findAll</code> the ratings associated to a restaurant and then calculate the average, displaying this as a star (or other) icon on the screen.</p>
+    <p>Extend the rating functionality even further by allowing review comments to be added alongside the star rating.</p>
     <h2>Assignment</h2>
-    <ul>
-      <li>Give the user the ability to perform CRUD operations on all three resources; restaurants, menus and items.</li>
-    </ul>
-    <hr>
-    <h2>Lesson 2 - Ratings (extension assignment)</h2>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Extend a data model</li>
-    </ul>
-    <h2>Before we start</h2>
-    <ul>
-      <li>You should have completed the work to enable users to perform CRUD operations on each model (Restaurant, Menu, Item).</li>
-    </ul>
-    <h2>Materials needed</h2>
-    <ul>
-      <li>sequelize</li>
-      <li>star icons ☆ ★</li>
-    </ul>
-    <h2>Lesson</h2>
-    <p>Using unicode charactures.</p>
-    <h2>Assignment</h2>
-    <p>Add a ratings system for the restaurant model</p>
+    <p>Add a ratings system for the restaurant model.</p>
     <ul>
       <li>The restaurant should display the average rating out of 5 stars, from all the ratings that have been awarded to it.</li>
       <li>On a restaurant page you should be able to add a rating.</li>
       <li>Ratings need to be displayed on the restaurant page, and the card.</li>
     </ul>
+    <h3>TODO - relocate this content - please ignore for now</h3>
+    <p>You will find yourself thinking "what shall I name this route". This morning I want to introduce you to the RESTful pattern.</p>
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQS_RdDgrFiEHaD2Nxm0aNLw6ICCpntv638tO0ITZjZdHXRVSMMJ7bXEZE4x0tmpHdNwOQpEBOwCvOg/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/167">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk3/day3.html">prev</a>|<a href="/swe/bootcamp/wk3/day5.html">next</a>

@@ -134,8 +134,8 @@ module.exports = {
     </ul>
     <h2>Lesson</h2>
     <p>To connect tables in <code>sequelize</code> your model definitions simply need to specify their relationships. For example, we simply add the following 2 lines to the <code>Restaurant</code> class:</p>
-    <pre><code class="language-javascript">Restaurant.hasMany(Menu, { foreignKey: 'restaurant_id' });
-Menu.belongsTo(Restaurant, { as: 'owner', foreignKey: 'restaurant_id' });
+    <pre><code class="language-javascript">Restaurant.hasMany(Menu, {as: 'menus', foreignKey: 'restaurant_id'})
+Menu.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
 </code></pre>
     <p>Sequelize will do all the hard work of creating the new foreign key columns!</p>
     <p>We can test the relationships have been setup correctly using the following code:</p>
