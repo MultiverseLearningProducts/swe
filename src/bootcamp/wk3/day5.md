@@ -73,6 +73,10 @@ app.post('/restaurants/:id/ratings', [
     check('stars').isNumeric(),
     check('review').not().isEmpty().trim().escape()
     ], async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
 ```
 
 ## Assignment
