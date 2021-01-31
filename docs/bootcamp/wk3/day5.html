@@ -62,6 +62,10 @@ Rating.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
     check('stars').isNumeric(),
     check('review').not().isEmpty().trim().escape()
     ], async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
 </code></pre>
     <h2>Assignment</h2>
     <p>Add server-side validation for all routes which accept form data. Use the <a href="https://express-validator.github.io/docs/index.html">express validator</a> website for more validation options.</p>
