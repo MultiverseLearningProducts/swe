@@ -15,9 +15,9 @@ The Web is an essential part of every day life. Web Accessibility means that peo
 
 The [standards for Web Accessibility](https://www.w3.org/WAI/standards-guidelines/wcag/) are governed by the World Wide Web Consortium (W3C) and are internationally recognised.
 
-The [UN Convention on the Rights of Persons with Disabilities](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/convention-on-the-rights-of-persons-with-disabilities-2.html) defines access to content on the Web as a basic human right. The UK [Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018](https://www.legislation.gov.uk/uksi/2018/952/made) came into force for public sector bodies on 23 September 2018. Public Sector websites are required by law to meet accessibility standrds.
+The [UN Convention on the Rights of Persons with Disabilities](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/convention-on-the-rights-of-persons-with-disabilities-2.html) defines access to content on the Web as a basic human right. The UK [Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018](https://www.legislation.gov.uk/uksi/2018/952/made) came into force for public sector bodies on 23 September 2018. Public Sector websites are required by law to meet accessibility standards.
 
-Listen to this [introduction to Web Accessibility](https://www.w3.org/WAI/videos/standards-and-benefits/) to understand why Web Accessibility is so important. Enable Closed Captions using the CC option in You Tube if you require it.
+Listen to this video introduction to Web Accessibility from the [W3C Wweb Accesssibility Initiative](https://www.w3.org/WAI/videos/standards-and-benefits/) to understand why Web Accessibility is so important. Enable Closed Captions using the CC option in You Tube if you require it.
 
 !(https://www.youtube.com/watch?v=20SHvU2PKsM&feature=youtu.be)
 
@@ -107,7 +107,7 @@ Try out the different ways of using JavaScript in front-end code by completing t
         <span id="Counter"></span>
     </div>
 ```
-```js
+```javascript
     <script>
         var n = localStorage.getItem('on_load_counter');
 
