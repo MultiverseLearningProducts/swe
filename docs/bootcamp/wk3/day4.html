@@ -102,7 +102,7 @@ app.use(express.json())
       <img src="https://user-images.githubusercontent.com/4499581/95022824-5dd14900-0671-11eb-9cb3-2d9caa3cbb30.jpg" alt="example of a dynamic href">
     </p>
     <p>On our server we define a new route and use that to perform the delete operation.</p>
-    <pre><code class="language-javascript">app.get('/restaurants/:id/delete', (req, res) => {
+    <pre><code class="language-javascript">app.get('/restaurants/:id/delete', async (req, res) => {
     await Restaurant.findByPk(req.params.id)
         .then(restaurant => {
             restaurant.destroy()
@@ -144,6 +144,12 @@ app.use(express.json())
       <li>Add functionality to edit a restaurant</li>
       <li>Test the new routes using Postman</li>
     </ul>
+    <hr>
+    <p>
+      <strong>Note:</strong>
+      If you get stuck, here is the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day4">solution to today's lessons</a>
+    </p>
+    <hr>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/166">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk3/day3.html">prev</a>|<a href="/swe/bootcamp/wk3/day5.html">next</a>
