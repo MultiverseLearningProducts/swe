@@ -2,72 +2,191 @@
 
 ## Overview of the day
 
-Today we are turning our attention to the Browser. Modern web applications are powered by javascript. There are lots of popular javascript frameworks like; React, Angular, Vue and others that help to organise and support building applications in a browser.
+Today we turn our attention to the Browser. We look firstly at Web Accessibility, a critical part of website development, ensuring that people with disabilities can use the web equally. 
 
-We are going to look at a micro-framework call [AppRun](https://apprun.js.org/). I have selected this framework because of the design pattern it implements. It mimics the design of React, Elm and to some degree Vue and Angular. Learn this pattern of event driven programming and you'll feel at home as you pick up React or Elm.
+We then discuss the HTML Document Object Model (DOM), HTML DOM Events and how to write JavaScript in the browser.
+
+Modern web applications are powered by JavaScript. There are lots of popular JavaScript frameworks like React, Angular, Vue that help to organise and support building applications in a browser. We focus on a micro-framework called [AppRun](https://apprun.js.org/) which mimics the design of React, Elm and to some degree Vue and Angular. 
 
 ----
 
-## Lesson 1 - The Event Object
+## Lesson 1 - Web Accessibility
+The Web is an essential part of every day life. Web Accessibility means that people with disabilities can use the web equally. At least 1 in 5 people in the UK have a long term illness, impairment or disability; many more have a temporary disability.
 
-## Learning Objectives
+The [standards for Web Accessibility](https://www.w3.org/WAI/standards-guidelines/wcag/) are governed by the World Wide Web Consortium (W3C) and are internationally recognised.
 
-* understand how the `event` object is 'injected' into event handlers
-* add event listeners to HTML elements
-* create event handlers in javascript and attach them to event listeners
+The [UN Convention on the Rights of Persons with Disabilities](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/convention-on-the-rights-of-persons-with-disabilities-2.html) defines access to content on the Web as a basic human right. The UK [Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018(https://www.legislation.gov.uk/uksi/2018/952/made) came into force for public sector bodies on 23 September 2018. Public Sector websites are required by law to meet accessibility standrds.
 
-## Before we start
+Listen to this [introduction to Web Accessibility](https://www.w3.org/WAI/videos/standards-and-benefits/) to understand why Web Accessibility is so important. Enable Closed Captions using the CC option in You Tube if you require it.
 
-* You will need a new empty project
-* Create a index.html, style.css and main.js
+!(https://www.youtube.com/watch?v=20SHvU2PKsM&feature=youtu.be)
 
-## Materials needed
+The WCAG is built around four principle guidelines;
+  1. **Perceivable** - information and user interface components must be presentable to users in ways they can perceive
+  2. **Operable** - users must be able to navigate the content
+  3. **Understanding** - content should be presented in clear and simple language
+  4. **Robust** - content must be able to be interpreted by a variety of different assistive technologies
 
-* You just need your html file and a browser
+Web Accessibility is essential for many but useful for everyone.
 
-## Lesson
+## Assignment
+  1. Use the `Lighthouse` tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant app.
+    How many issues does Lighthouse find?
+    Why could these issues cause issues for users with disabilities?
+    Now edit your HTML to fix these issues
+  2. Select to `Emulate vision deficiencies` in the `Rendering` section of Lighthouse. Select each vision deficiency and see whether the user is still able to navigate the site / view content ok
+  3. Install the [SiteImprove](https://chrome.google.com/webstore/detail/siteimprove-accessibility/efcfolpjihicnikpmhnmphjhhpiclljc) plugin to Chrome and run a report on each of  the pages in your restaurant app.
+    How many issues does SiteImprove find?
+    Why could these issues cause issues for users with disabilities?
+    Now edit your HTML to fix these issues
+  4. Install [Screen Reader](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn) and tab through your website. If you were vision impaired, would you understand which restaurant you were viewing or deleting? If not, what could you do to improve site navigation for those using a screen reader.
 
-First of all how can you run javascript in the browser? There are 2 main ways:
+----
 
-### Inline javascript
+## Lesson 2 - Using JavaScript in the browser
 
-You can write javascript in an HTML file. You enclose your javascript in a `<script>` tag. As the page loads in the browser the HTML file is read from top to bottom, and any javascript in a `<script>` tag is executed when the page loads.
+How can you run JavaScript in the browser? There are 2 main ways:
 
-Often times there is javascript included like this, for example the Google analytics function is often included inline in an HTML file.
+### Inline JavaScript
 
-### Loaded from a source
+You can write JavaScript inline, within an HTML file by enclosing your JavaScript in a `<script>` tag. As the page loads in the browser the HTML file is read from top to bottom, and any JavaScript in a `<script>` tag is executed when the page loads.
 
-You can load javascript from one or more files. When your javascript file has been loaded by the page, it will be executed. The way to include javascript that is loaded from an external file is to use the `<script>` tag and include the `src` HTML attribute with a URL as it's value. For example:
+As an example, [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs) scripts (which measure how users interact with your website) are added within the <head> tag: 
+
+```js
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+```
+### Loading JavaScript from a source file
+
+You can also load JavaScript from a file by using the `<script>` tag and including the `src` HTML attribute to reference the file: 
 
 ```html
 <script src="/main.js"></script>
 ```
-The line above will load and execute our `main.js` file. The final consideration for now is where and when our javascript is loaded.
+
+When the JavaScript file (in this case `main.js`) has been loaded by the page, it will be executed. 
 
 #### 🐘 Remember HTML files are read from the top down
 
-If we have libraries, modules or 3rd party javascript that we want to load these usually go in the `<head>` tag of the HTML page. Javascript that targets HTML elements (usually our app code) should be the final thing on the page to be included. In practice that means your app code should be included in a `<script>` tag just before the closing `</body>` tag. Often app code will target an HTML element, and if that element has not been loaded our javascript will Error and Fail 😟.
+If we have libraries, modules or 3rd party JavaScript that we want to load (e.g. Google Analytics), these should go in the `<head>` tag of the HTML page. 
 
-#### module.exports and require
+JavaScript that targets HTML elements (usually our own application code) should be the final thing on the page to be included. In practice that means your application code should be included in a `<script>` tag just before the closing `</body>` tag. This is because application code will often target an HTML element and if that element has not been loaded, our JavaScript will Error and Fail 😟.
 
-You can't use the file system in the browser. Things like `module.exports` and `require` are part of Node.js. We can load multiple `.js` files on our page, that is one way to breakup our code and make it easier to work with. However, you must be aware that each separate file is a separate round trip to the server, and you can't guarantee the order the files will be returned to you. You should be aware that each file that loads shared the Global scope of the window object; for example a class defined in one file, will be available for another file to access once they are both loaded on the page.
+### Organising JavaScript files
 
-#### Browserify
+Within the Browser, it's very important to understand that each JavaScript file that is loaded, shares the 'global scope' of the open browser `window` object. For example, a class defined in one file, will be available for another file to access once they are both loaded on the page. Any script can freely define/delete/change/call anything in the global scope. This is not the case in `Node.js` where the global scope of a module is the module itself.
 
-You can use `module.exports` and `require` if you add a 'build step' to your frontend javascript. There are a few 'bundlers'; Webpack, rollup, parcel and browserify are the main ones. These bundlers will take javascript you have written in multiple files and 'bundle' them (with any dependencies) into one single file that you can server to the client. There is other set up that works best with these build steps (like nodemon) you need to re-pack or re-bundle your javascript after each file change you make. Tools like watchify can help with this, rollup has this built into it. Its called 'hot reloading'.
+You can't use the file system in the browser. In `Node.js` we made use of `module.exports` and `require` to load multiple `.js` files on our page. This allowed us to separate our code into distinct units which made it easier to understand. However, it should be noted that loading of each separate JavaScript file specified by `require` involves a separate round trip to the server and, in addition, there is no guarantee of the order the files will be returned. 
 
-### The Event Object
+Browsers don't have the `require` method defined, however you can use tools such as [browserify](http://browserify.org/) to allow you to use `module.exports` and `require` within your frontend code, in the same way that you would use it in Node.
 
-Javascript's main primitive is the `Object`. Lets start to learn about javascript in the browser by understanding the Event object. We can target parts of the HTML DOM (Document Object Model) using javascript HTML attributes. For example lets create a simple HTML button that triggers a javascript `Event` object.
+You can also use'bundlers', for example, [webpack](https://webpack.js.org/), [rollup](https://rollupjs.org/guide/en/), [parcel](https://parceljs.org/) and [browserify](http://browserify.org/)  to take JavaScript you have written in multiple files and 'bundle' them (with any dependencies) into one single file that you can serve to the client. 
+
+Tools such as [nodemon](https://www.npmjs.com/package/nodemon) and [watchify](https://www.npmjs.com/package/watchify) can also help you develop JavaScript applications 're-bundling' the code when file changes are detected('hot reloading').
+
+## Assignment
+Try out the different ways of using JavaScript in front-end code by completing the following 2 assignments:
+
+  1. Modify your restaurant code to include [Facebook 'like' and 'share' icons](https://developers.facebook.com/docs/plugins/like-button/) when you click on a restaurant.
+
+     Notice how you are including a Facebook script. Once this script is included, you are able to use the Facebook 'like' CSS class.
+
+   2. Now use inline JavaScript to add a simple counter which increments each time the page is loaded:
+```html
+    <div>Number of page loads:
+        <span id="Counter"></span>
+    </div>
+```
+```js
+    <script>
+        var n = localStorage.getItem('on_load_counter');
+
+        if (n === null) {
+            n = 0;
+        }
+        n++;
+
+        localStorage.setItem("on_load_counter", n);
+
+        nums = n.toString().split('').map(Number);
+        document.getElementById('CounterVisitor').innerHTML = '';
+        for (var i of nums) {
+            document.getElementById('CounterVisitor').innerHTML += '<span class="counter-item">' + i + '</span>';
+        }
+
+    </script>
+```
+---
+## Lesson 3 - The HTML Document Object Model (DOM)
+When a web page is loaded, the browser creates an Object Model of the web page. To illustrate this, let's create a DOM representation of this JavaScript:
+
+```js
+<html>
+    <head>
+        <link rel="stylesheet" href="/style.css"/>
+    </head>
+    <body>
+        <section>
+            <p id="intro">Introduction</p>
+```
+
+![simpleDom](https://user-images.githubusercontent.com/1316724/106388095-cc7ea300-63d4-11eb-94c5-bf25553a8968.png)
+
+To access an element in an HTML page, you always go via the `document` object.
+
+The most common way to access HTML elements with JavaScript is via their id, e.g.
+
+```js
+<script>
+    const myElement = document.getElementById("intro");
+</script>
+```
+
+The most common way to retrieve/change the content of an element is by using the `innerHTML` property, i.e.
+
+```js
+<script>
+    document.getElementById("intro").innerHTML = "Background";
+</script>
+```
+
+You can also change the value of an attribute using:
+
+```js
+<script>
+    document.getElementById("intro").setAttribute("href", "/style2.css");
+</script>
+``` 
+---
+## Lesson 4 - The HTML DOM Events
+
+## Learning Objectives
+
+* Understand how the `event` object is 'injected' into event handlers
+* Add event listeners to HTML elements
+* Create event handlers in JavaScript and attach them to event listeners
+
+## Lesson
+
+JavaScript's main primitive is the `Object`. Let's create a simple HTML button that triggers a JavaScript `event` object.
 
 ```html
-<button onclick="console.log(event)">Click me</button>
+<button id="my-button" onclick="console.log(event)">Click me</button>
 ```
-What kind of `Event` is triggered? What else can you learn about the event that just happened? Where on earth does the `event` that we are console.logging come from anyway?
 
-The `event` object (and it must be named 'event' not 'evt', 'e' or anything else) is injected by the browser. The event object is injected into every event handler. We are using the HTML attribute `onclick` and the value is a string that is the javascript to run upon that event.
+What kind of `event` is triggered? What else can you learn about the event that just happened? Where on earth does the `event` that we are console.logging come from anyway?
 
-We can also have a named function defined in our `main.js` file, and include that in the string of javascript that is run when the event is triggered.
+The `event` object (and it must be named 'event' not 'evt', 'e' or anything else) is injected by the browser into every event handler. In this example, we are using the HTML attribute `onclick`with a string value of the JavaScript we wish to run when the event is triggered. We can also have a named function defined in our `main.js` file and include that in the string of JavaScript that is run when the event is triggered.
 
 ```javascript
 function myButtonHasBeenClicked(event) {
@@ -80,20 +199,25 @@ function myButtonHasBeenClicked(event) {
 
 ### Event Listeners & Event Handlers
 
-`onclick` is an 'event listener'. It listens for clicks. An event listener will have a companion called an 'event handler'. `myButtonHasBeenClicked` is an 'event handler'. There are other ways to attach event listeners to elements in the DOM. For example the code below is another way to do the same thing we are doing above, but just using javascript.
+`onclick` is an **event listener**. It listens for clicks. An event listener will have a companion called an **event handler**. `myButtonHasBeenClicked` is an 'event handler'. 
+
+There are other ways to attach event listeners to elements in the DOM. For example, the code below is another way to do the same thing we are doing above, but just using JavaScript.
 
 ```javascript
-const button = document.getElementById('my-button')
-button.addEventListener('click', myButtonHasBeenClicked)
-```
-The button has an id of 'my-button' that enables me to target the HTML element. Then instead of adding the event listener inline, we add it to the instance of the element in javascript. I am calling `addEventListener` with 2 arguments, a string that is the name of the type of listener, and the second argument is the function to call (with the event object) to handle the event.
+const button = document.getElementById('my-button');
 
-You can remove an event listener:
+button.addEventListener('click', myButtonHasBeenClicked);
+```
+
+Here, we use the DOM to navigate to the button via its id. Instead of adding the event listener inline, we add it to the instance of the element in JavaScript. We call `addEventListener` with 2 arguments, a string that is the name of the type of listener and the function to call (with the event object) to handle the event.
+
+You can remove an event listener as follows:
 ```javascript
 button.removeEventListener('click', myButtonHasBeenClicked)
 ```
 
 ### Types of listeners
+There are many different types of listener including:
 
 |type|description|Belongs To|
 |:---|:----------|----------|
@@ -184,20 +308,27 @@ waiting|The event occurs when the media has paused but is expected to resume (li
 wheel|The event occurs when the mouse wheel rolls up or down over an element|WheelEvent
 
 ## Assignment
+To experience events in JavaScript you are going to create your own adventure game.
 
-Please take a little time for yourself to create listeners and events for as many examples in the table above as you can in the time between sessions. Begin by trying some of the ones you are most interested in. We don't expect you to trigger each different type of event, but you should know what is possible.
+**Step 1** is to make use of a fun website called [Creepy Events](https://codepen.io/prosetech/pen/oRxMmZ) written by [Matthew MacDonald](https://medium.com/young-coder/playing-with-javascript-events-be12f922736f). Your objective is to wire up the JavaScript functions to the buttons and input boxes to complete the story.
+
+**Step 2** is to create your own adventure game based on the code from Step 1 and making use of as many HTML DOM events as possible. As a minimum you should include:
+  * onclick()
+  * onmouseover()
+  * input()
+  * focus()
+  * keydown()
+  * keyup()
+  * mouseenter()
+  * resize()
 
 ----
 
-## Lesson 2 - Frameworks
+## Lesson 5 - Frameworks
 
 ## Learning Objectives
 
-* create an example of the state, view, update design pattern
-
-## Before we start
-
-* You need an html file
+* Create a simple "To Do" list using the state, view, update design pattern in AppRun
 
 ## Materials needed
 
@@ -211,15 +342,16 @@ Before we look at the framework lets think about the design pattern that underpi
 
 ![state view update pattern](https://user-images.githubusercontent.com/4499581/95664104-a2ab2300-0b3c-11eb-8afd-233463f0218d.png)
 
-Both Elm and Redux follow the same pattern. Your app has state (this is the data Model). You app renders a view of that state. The view can trigger updates to some or all of the state. That state update triggers a re-render and your view is redrawn to represent the new state. This kind of programming style is called 'event driven'. It is 'declarative' like a spreadsheet.
+Both Elm and Redux follow the same pattern. Your app has **state** (this is the data Model). You app renders a **view** of that state. The view can **trigger updates** to some or all of the state. That state update triggers a re-render and your view is redrawn to represent the new state. This kind of programming style is called 'event driven'. It is 'declarative' like a spreadsheet.
 
 ![example of a spreadsheet updating](https://user-images.githubusercontent.com/4499581/95664166-3f6dc080-0b3d-11eb-9885-a55e42acf475.gif)
 
-You know how a spreadsheet works. Once your spreadsheet is all setup (or 'declared') if you change a value in one cell it can trigger updates to other cells that depend on that value. AppRun works like this.
+You know how a spreadsheet works. Once your spreadsheet is all setup (or 'declared'), if you change a value in one cell it can trigger updates to other cells that depend on that value. AppRun works like this.
 
 ### Load AppRun
 
-Load the AppRun library in a `<script>` tag from `unpkg.com` see below. You need an HTML element into which your app will be added. Your HTML page can be as simple as this. That is all the HTML we'll be writing in this file. Make yourself a `main.js` file for your javascript, and a stylesheet too if you want to make your app not look really offensive and brutal.
+To load AppRun, we simply create an HTML page with the content below. This loads the AppRun library in a `<script>` tag from `unpkg.com`. 
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -236,8 +368,9 @@ Load the AppRun library in a `<script>` tag from `unpkg.com` see below. You need
 ```
 
 ### State
+State in AppRun is simply a plain JavaScript object. <u>ALL</u> the data in our app belongs here. Our 'TODO list' will be a simple array which holds all our tasks.
 
-State in AppRun is (funnily enough) a plain javascript object. <u>ALL</u> the data in our app belongs here. We are going to make a quick todo list app, that will help us understand how to use AppRun. Our state is going to be a simple object which holds all our tasks.
+We'll create a `main.js` file to hold the state:
 
 ```javascript
 const state = {
@@ -247,7 +380,7 @@ const state = {
 
 ### View
 
-To display the tasks we need a `view` function. This function will receive the `state` object and should return a string of HTML. We are going to write HTML in our javascript file. This is like the templating we did with Handlebars, only its just javascript string interpolation. We need a list and a form (like every app you are likely to ever work on).
+To display the tasks we need a `view` function. This function will receive the `state` object (i.e. list of tasks) and will return a string of HTML. This is like the templating we did with Handlebars, but AppRun's template syntax employs the full power of JavaScript expressions, while Handlebars’ syntax is quite limited in comparison.
 
 ```javascript
 const view = state => `
@@ -267,7 +400,7 @@ const view = state => `
 ```
 ![empty tasks](https://user-images.githubusercontent.com/4499581/95664952-e6edf180-0b43-11eb-9fc1-8cbda429b42d.png)
 
-Remember the view function is just javascript so you can add branching logic, iteration, calculation and do other stunts, just end up with a string of valid HTML that will get added to your root HTML node, for us that is our `<main id="app">` element.
+Remember the `view` function is just JavaScript, so you can add branching logic, iteration, calculation and do other stunts, we will end up with a string of valid HTML that will get added to the root HTML node (the `<main id="app">` element).
 
 ### Update
 
@@ -278,7 +411,7 @@ const update = {
     add: (state, form) => {
         const data = new FormData(form)
         const task = {
-            id: window.crypto.getRandomNumber(new Uint8Array(2)).join("")
+            id: window.crypto.getRandomValues(new Uint32Array(2)).join(""),
             text: data.get('text'),
             status: 0
         }
@@ -287,7 +420,7 @@ const update = {
     }
 }
 ```
-What is going on here? We have a javascript object. The properties are the names of update functions. In the example above we have defined the 'add' update function. Every update function will receive the state as it's first argument. It is injected (like the event object). If we give our update function an argument, that will appear as the second argument. We pass in the form instance. Use `new FormData(form)` to de-serialize the form data, then create a new object that represents a task. I am generating a random id. You can play with `window.crypto.getRandomNumber(new Uint8Array(2))` in the browser console and see what it does. We then update the state, and finally as we must in each update function, we return the new version of the state.
+What is going on here? We have a JavaScript object. The properties are the names of update functions. In the example above we have defined the 'add' update function. Every update function will receive the state as its first argument. It is injected (like the event object). If we give our update function an argument, that will appear as the second argument. We pass in the form instance. Use `new FormData(form)` to de-serialize the form data, then create a new object that represents a task. I am generating a random id. You can play with `window.crypto.getRandomValues(new Uint8Array(2))` in the browser console and see what it does. We then update the state, and finally as we must in each update function, we return the new version of the state.
 
 This update will trigger a re-render of our view function.
 
@@ -317,5 +450,5 @@ app.start('app', state, view, update)
 * Use the id property to make a status update to 1 indicating that the task has been completed.
 * Use the id property to delete a task, you should only be able to delete a task once it has been marked as done.
 
-[attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/168)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day5.html)|[next](/swe/bootcamp/wk4/day2.html)
