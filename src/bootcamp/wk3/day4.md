@@ -115,7 +115,7 @@ Now let's add functionality to delete a restaurant. We will need to update our t
 On our server we define a new route and use that to perform the delete operation.
 
 ```javascript
-app.get('/restaurants/:id/delete', (req, res) => {
+app.get('/restaurants/:id/delete', async (req, res) => {
     await Restaurant.findByPk(req.params.id)
         .then(restaurant => {
             restaurant.destroy()
@@ -165,6 +165,11 @@ app.post('/restaurants/:id/edit', async (req, res) => {
 * Add functionality to delete a restaurant
 * Add functionality to edit a restaurant
 * Test the new routes using Postman
+---
+**Note:**
+If you get stuck, here is the [solution to today's lessons](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk3/day4)
+
+----
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/166)
 [main](/swe)|[prev](/swe/bootcamp/wk3/day3.html)|[next](/swe/bootcamp/wk3/day5.html)
