@@ -4,7 +4,7 @@
 
 Today is about consolidating everything you have learnt this week. 
 
-You will extend your restaurant app to create a review ratings service. 
+You will extend your restaurant app to create a review ratings service and implement server-side validation.
 
 If you complete this, you can then add further functionality to allow menus and menu items to be created, read, updated and deleted. 
 
