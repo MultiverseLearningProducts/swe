@@ -17,7 +17,7 @@ The [standards for Web Accessibility](https://www.w3.org/WAI/standards-guideline
 
 The [UN Convention on the Rights of Persons with Disabilities](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/convention-on-the-rights-of-persons-with-disabilities-2.html) defines access to content on the Web as a basic human right. The UK [Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018](https://www.legislation.gov.uk/uksi/2018/952/made) came into force for public sector bodies on 23 September 2018. Public Sector websites are required by law to meet accessibility standards.
 
-Listen to this video introduction to Web Accessibility from the [W3C Wweb Accesssibility Initiative](https://www.w3.org/WAI/videos/standards-and-benefits/) to understand why Web Accessibility is so important. Enable Closed Captions using the CC option in You Tube if you require it.
+Listen to this video introduction to Web Accessibility from the [W3C Web Accesssibility Initiative](https://www.w3.org/WAI/videos/standards-and-benefits/) to understand why Web Accessibility is so important. Enable Closed Captions using the CC option in You Tube if you require it.
 
 !(https://www.youtube.com/watch?v=20SHvU2PKsM&feature=youtu.be)
 
@@ -31,10 +31,15 @@ Web Accessibility is essential for many but useful for everyone.
 
 ## Assignment
   1. Use the `Lighthouse` tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant app.
-    How many issues does Lighthouse find?
-    Why could these issues cause issues for users with disabilities?
-    Now edit your HTML to fix these issues
+     * How many issues does Lighthouse find?
+     * Why could these issues cause issues for users with disabilities?
+     * Now edit your HTML to fix these issues
+
+     <img width="322" alt="how to access lighthouse accessibility report" src="https://user-images.githubusercontent.com/1316724/106430584-eddaa000-6463-11eb-829e-5292749f16d2.PNG">
+ 
   2. Select to `Emulate vision deficiencies` in the `Rendering` section of Lighthouse. Select each vision deficiency and see whether the user is still able to navigate the site / view content ok
+
+     <img width="323" alt="visionEmulation" src="https://user-images.githubusercontent.com/1316724/106431075-a86aa280-6464-11eb-90c9-50d071ec101f.PNG">
   3. Install the [SiteImprove](https://chrome.google.com/webstore/detail/siteimprove-accessibility/efcfolpjihicnikpmhnmphjhhpiclljc) plugin to Chrome and run a report on each of  the pages in your restaurant app.
     How many issues does SiteImprove find?
     Why could these issues cause issues for users with disabilities?
