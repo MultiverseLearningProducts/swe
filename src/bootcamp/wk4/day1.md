@@ -30,7 +30,7 @@ The WCAG is built around four principle guidelines;
 Web Accessibility is essential for many but useful for everyone.
 
 ## Assignment
-  1. Use the `Lighthouse` tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant app.
+  1. Use the `Lighthouse` tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant application.
      * How many issues does Lighthouse find?
      * Why could these issues cause issues for users with disabilities?
      * Now edit your HTML to fix these issues
