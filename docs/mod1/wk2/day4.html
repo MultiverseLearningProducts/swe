@@ -29,16 +29,60 @@
   require('dotenv').config()
 }
 </code></pre>
-    <p>If the <code>process.env.NODE_ENV</code> is 'production' then you are in the heroku environment an you set your heroku environmental variables on your app settings page. Locally you can create a <code>.env</code> file and inside that you declare your environmental variables as key value pairs.</p>
+    <p>If the <code>process.env.NODE_ENV</code> is 'production' then you are in the heroku environment an you set your heroku environmental variables on your app settings page. Locally you can create a <code>.env</code> file and inside that you declare your environmental variables as key value pairs (see below).</p>
     <pre><code class="language-sh">AUTH_SECRET=2398ypo123ywhj0notreal0kpo83yoef8
 AUTH_CLIENT_ID=gk8jR4A999FAKE999K9HaHJzL6iSCJXkltKC8
 AUTH_BASE_URL=https://dev-7954fake3.eu.auth0.com
+BASE_URL=http://localhost:3000
 </code></pre>
+    <p>
+      In your heroku settings page make sure you have your environmental variables named <em>exactly</em> like the ones in your <code>.env</code> file. Some settings might be different in this different environment.
+      
+      <img src="https://user-images.githubusercontent.com/4499581/106442408-26ce4100-6473-11eb-8122-c1e31c6119c9.png" alt="settings on heroku">
+    </p>
     <h2>Materials needed</h2>
+    <p>You'll need to send emails from your project. Below is an example set up to send emails from your server.</p>
+    <h3>Dependencies</h3>
+    <p>Add <code>nodemailer</code> to your project.</p>
+    <pre><code class="language-sh">npm install nodemailer
+</code></pre>
+    <p>Create an app password.</p>
+    <ol>
+      <li>Goto your Google account page</li>
+      <li>Click on 'Security'</li>
+      <li>Inside the 'Signing into Google' panel click on 'App passwords'</li>
+      <li>For the following 'Select the app and device for which you want to generate the app password.' choose 'Mail' and 'Other'</li>
+      <li>Copy the app password that is generated into your <code>.env</code> file with a key like <code>GMAIL_PASSWORD=2yor38y2o3yro9q3r</code> and do the same in your Heroku settings. You only get to see that password once so be careful. Do <strong>not</strong> commit this into version control - make sure your <code>.env</code> file is ignored in your <code>.gitignore</code>.</li>
+    </ol>
+    <h3>Send an email</h3>
+    <p>Below is a code snippet you can use to send an email. Adapt this for your emails.</p>
+    <pre><code class="language-javascript">const nodemailer = require('nodemailer')
+const transport = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'your_username@gmail.com',
+        pass: process.env.GMAIL_PASSWORD
+    }
+})
+
+const email = {
+    from: 'from@email.com',
+    to: 'to@email.com',
+    subject: "Friend request",
+    html: `Hi there,&#x3C;br/>&#x3C;br/>I would like to invite you to be my friend&#x3C;br/>&#x3C;br/>&#x3C;a style="text-decoration:none;padding:15px;background-color:green;color:white;border-radius:3px;" href="${process.env.BASE_URL}/friends/request?from=${encodeURIComponent('from@email.com')}&#x26;to=${encodeURIComponent('to@email.com')}">Accept Request&#x3C;/a>`,
+    replyto: 'no-reply@banking-app.com'
+}
+
+transport.sendMail(email, (err, result) => {
+    console.log(err || result)
+})
+</code></pre>
+    <p>Notice that you can write HTML in the email. In the example above we parse a query string. You might want to experiment with JWT tokens, base64 encoded objects or other means to pass data back to your app via a GET request (which is what you make when you click on a link).</p>
+    <iframe src="https://www.youtube.com/embed/dhoW2_pME4A" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <h1>Project brief</h1>
     <ol>
-      <li>Try to get your app to send emails</li>
-      <li>Deploy your app to heroku</li>
+      <li>Get your app to send emails</li>
+      <li>Deploy your app to Heroku</li>
       <li>Test the URLs you send in your emails work ok</li>
     </ol>
     <p>Remember you can create your own JWTs.</p>
