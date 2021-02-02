@@ -12,16 +12,17 @@
   <body>
     <h1>Bootcamp > Week 4 > Day 5</h1>
     <h2>Overview of the day</h2>
+    <p>Today we will look at front-end system testing using a tool called <a href="https://www.cypress.io/">Cypress</a>.</p>
     <hr>
-    <h2>Lesson 1 - Tests in the browser</h2>
+    <h2>Lesson 1 - Executing system tests in the browser</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Recall the purpose of system tests</li>
-      <li>Set up cypress testing in your project</li>
+      <li>Set up Cypress testing in your project</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>You need your app in a state where you have some UI elements on the page</li>
+      <li>You need your To Do app in a state where you have some UI elements on the page, alternatively you can learn about Cypress using your Restaurant app</li>
       <li>Your app needs to run in a test mode</li>
     </ul>
     <h2>Materials needed</h2>
@@ -29,15 +30,33 @@
       <li><a href="https://www.cypress.io/">Cypress</a></li>
     </ul>
     <h2>Lesson</h2>
-    <p>Your app will need to run in 3 different environments: Your laptop, the deployment server and when we are running tests. Before adding cypress system (or end-to-end) tests make sure your app can run in a test mode.</p>
-    <p>Then in your project folder run</p>
-    <pre><code class="language-sh">npm install --save-dev cypress mocha chai
+    <p>Your app will need to run in 3 different environments: Your laptop, the deployment server and when we are running tests. Before adding Cypress system (or end-to-end) tests make sure your app can run in a test mode.</p>
+    <p>Then in your project folder run:</p>
+    <pre><code class="language-sh">npm install cypress --save-dev
 </code></pre>
-    <p>Mocha and chai are testing dependencies for cypress.</p>
+    <p>This may take a while as there are a large number of dependencies!</p>
+    <p><em>Note:</em> there should be no need to install Mocha (test syntax) and Chai (assertions) are these are bundled with Cypress.</p>
+    <p>This will seed your project with a number of folders and sample tests.</p>
     <h3>What does cypress do?</h3>
     <p>Have you been testing your app in the browser to make sure it works? Cypress can automate this for you. Encoding critical user journeys is incredibly valuable. It is much quicker than us clicking round the site. These journeys are then encoded and repeatable, and continuous integration tools can be set up to run these tests before each deployment.</p>
     <h3>Getting started</h3>
-    <p>Writing cypress tests is similar to the tests we have been writing with jest. The first thing we will need to do is have our app running in test mode. Then lets write a first test. In the <code>/cypress/integration</code> folder create a test spec file for example <code>homepage.spec.js</code>. Then create a simple test like the one below.</p>
+    <p>Writing Cypress tests is similar to the tests we have been writing with Jest. The first thing we will need to do is have our app running in test mode. Then let's write a first test. In the <code>/cypress/integration</code> folder create a test spec file for example <code>homepage.spec.js</code>. Then create a simple test like the one below.</p>
+    <p>If you are testing your 'Restaurant' app:</p>
+    <pre><code class="language-javascript">describe('Restaurant tests', () => {
+    it('finds the restaurant website', () => {
+      cy.visit('http://localhost:3000');
+    })
+
+    it('opens the Add Restaurant page', () => {
+        cy.visit('http://localhost:3000');
+
+        // search for the DOM element by content 
+        // and then call 'click'
+        cy.contains('Add').click();
+      })
+  })
+</code></pre>
+    <p>If you are testing your 'To do' app:</p>
     <pre><code class="language-javascript">describe('/', () => {
     it('the home page loads 2 seed tasks', () => {
         cy.visit('http://localhost:3001/')
@@ -54,7 +73,7 @@
     <pre><code class="language-json">"test:cypress": "cypress open"
 </code></pre>
     <p>What is new here is the <code>cy</code> object this object is our API for driving the browser. You can see we start by visiting a web address (our app must be running). We assert that the page <code>contains</code> the text 'Tasks' (thats my <code>&#x3C;h1></code> title). Then I get an element (you can select elements using .css selectors), find the <code>&#x3C;li></code> children (my tasks), finally I make an assertion that there should be 2 tasks.</p>
-    <p>You can peek inside the example folder for the syntax to do all kinds of things you do in your browser. One obvious test to try next would be to add a task.</p>
+    <p>You can peek inside the example folder for the syntax to do all kinds of things you do in your browser. If you are testing your 'To do'app, one obvious test to try next would be to add a task.</p>
     <pre><code class="language-javascript">it('adds a new task to the list', () => {
     cy.visit('http://localhost:3000/')
     cy.get('input').type('New test task')
@@ -69,12 +88,26 @@
 </code></pre>
     <p>Above we visit the page, get the <code>&#x3C;input></code> element, 'type' "New test task" into the input, then target and "click" the Add button, finally we make the assertion that there is a new task in the list. Awesome.</p>
     <h2>Assignment</h2>
+    <p>Use the instruction above to help you install Cypress and write a test or else refer to this <a href="https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file">Introduction to Cypress</a> video.</p>
     <ul>
-      <li>In your team decide on 2 critical user journeys</li>
-      <li>Encode these 2 journeys</li>
+      <li>
+        <p>If you are doing this lesson prior to working on your team project then create tests to cover the following use cases in your Restaurant website:</p>
+        <ul>
+          <li>(after initialising the database) test your home page has x number of restaurants</li>
+          <li>add a new restaurant and assert it has been added</li>
+          <li>delete a restaurant and assert it has been removed</li>
+        </ul>
+      </li>
+      <li>
+        <p>If you are working on this lesson and have developed a 'To do' application then:</p>
+        <ul>
+          <li>In your team decide on 2 critical user journeys</li>
+          <li>Encode these 2 journeys</li>
+        </ul>
+      </li>
     </ul>
     <p>
-      <a href="https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702">attendance log</a>
+      <a href="https://platform.whitehat.org.uk/apprentice/attendance-log/172">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk4/day4.html">prev</a>|<a href="/swe/bootcamp/wk5/day1.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
