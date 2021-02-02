@@ -2,9 +2,7 @@
 
 ## Overview of the day
 
-Today we start our group projects. Before we begin it will be very helpful to consider a little the stages of the software development life cycle.
-
-There are 7 stages:
+Today you start our group projects. Before we begin, let's discuss the 7 stages of the software development life cycle.
 
 1. Business needs
 1. Requirements engineering
@@ -14,19 +12,26 @@ There are 7 stages:
 1. Deployment
 1. Maintenance
 
-I am going to frame the first 2 for you. You will begin at the design phase. The business needs we have identified are to have a tool to keep track of tasks in a team, and see what the status of different tasks are at any one time. The requirements are as follows:
+The business needs we have identified are to have a tool to keep track of tasks in a team, and see what the status of different tasks are at any one time. The requirements are as follows:
 
-* It is easy to create a user
-* Users must have a name and an avatar (so we can recognise them)
-* It is easy to create a project board
-* All the project boards need to be displayed somewhere in the app
-* A project board should have three areas; todo, doing, done
-* On a project board it is possible to create a task
-* A task should have textual description and be unassigned or assigned to a user
-* Tasks that are assigned to a user need to display the user's avatar on the task
+### Functional requirements
+* A project board should have three areas - todo, in progress, done
+* On a project board it must be possible to create a task
+* A task should have textual description and be unassigned or assigned to a single user
 * Tasks start in the 'todo' state
-* It is possible to drag and drop tasks from one area to another. i.e. from 'todo' to 'doing'
+* It must be possible to drag and drop tasks from one area to another. i.e. from 'todo' to 'in progress'
+* It must be easy to create a user
+* Users must have a name and an avatar (so we can recognise them)
+* Tasks that are assigned to a user need to display the user's avatar on the task
+* It must be easy to create a new project board
+* All the project boards need to be displayed somewhere in the app
 * Project data is important and so all project boards, users and tasks need to be persisted
+
+### Non-functional requirements
+* The application must be conform to the WCAG accessibility standards (evidence must be provided)
+* The application must have client & server-side validation in place
+* The application must have evidence of unit testing
+* The application code must be documented in a manner that it would be easy for a new developer to understand
 
 ----
 

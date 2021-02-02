@@ -31,9 +31,11 @@ Web Accessibility is essential for many but useful for everyone.
 
 ## Assignment
   1. Use the `Lighthouse` tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant application.
+     * Add your "before" report to a new folder `/accessibility` in the GitHub repo which has your restaurant code
      * How many issues does Lighthouse find?
      * Why could these issues cause issues for users with disabilities?
      * Now edit your HTML to fix these issues
+     * Add your "after" report to the `/accessibility` folder
 
      <img width="322" alt="how to access lighthouse accessibility report" src="https://user-images.githubusercontent.com/1316724/106430584-eddaa000-6463-11eb-829e-5292749f16d2.PNG">
  
@@ -45,6 +47,7 @@ Web Accessibility is essential for many but useful for everyone.
     Why could these issues cause issues for users with disabilities?
     Now edit your HTML to fix these issues
   4. Install [Screen Reader](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn) and tab through your website. If you were vision impaired, would you understand which restaurant you were viewing or deleting? If not, what could you do to improve site navigation for those using a screen reader.
+  5. If you finish early, try checking out the accessibility of other websites too. Try the [ATG Ticket Website](https://atg.nliven.co/tickets/series/wicked?_ga=2.37698784.1776477192.1605217929-908196991.1605217929) with a Vision Deficiency of 'Achromatopsia' - how does it look?
 
 ----
 
@@ -102,34 +105,26 @@ Tools such as [nodemon](https://www.npmjs.com/package/nodemon) and [watchify](ht
 ## Assignment
 Try out the different ways of using JavaScript in front-end code by completing the following 2 assignments:
 
-  1. Modify your restaurant code to include [Facebook 'like' and 'share' icons](https://developers.facebook.com/docs/plugins/like-button/) when you click on a restaurant.
+  1. Modify your restaurant code to include [Facebook 'like' and 'share' icons](https://developers.facebook.com/docs/plugins/like-button/) when you click on a restaurant. If you get problems seeing the icons, please disable 'Ad Blockers' in your browser.
 
      Notice how you are including a Facebook script. Once this script is included, you are able to use the Facebook 'like' CSS class.
 
-   2. Now use inline JavaScript to add a simple counter which increments each time the page is loaded:
+   2. Now use inline JavaScript in your HTML to add a simple counter which increments each time the page is loaded:
 ```html
     <div>Number of page loads:
         <span id="Counter"></span>
     </div>
 ```
 ```javascript
-    <script>
-        var n = localStorage.getItem('on_load_counter');
-
-        if (n === null) {
-            n = 0;
-        }
-        n++;
-
-        localStorage.setItem("on_load_counter", n);
-
-        nums = n.toString().split('').map(Number);
-        document.getElementById('CounterVisitor').innerHTML = '';
-        for (var i of nums) {
-            document.getElementById('CounterVisitor').innerHTML += '<span class="counter-item">' + i + '</span>';
-        }
-
-    </script>
+<script>
+    var n = localStorage.getItem('on_load_counter');
+    if (n === null) {
+        n = 0;
+    }
+    n++;
+    localStorage.setItem("on_load_counter", n);
+    document.querySelector('#counter').innerText = `Visits to this page: ${localStorage.getItem('on_load_counter')}`
+</script>
 ```
 ---
 ## Lesson 3 - The HTML Document Object Model (DOM)
@@ -329,7 +324,7 @@ To experience events in JavaScript you are going to create your own adventure ga
 
 ----
 
-## Lesson 5 - Frameworks
+## Lesson 5 - Frameworks (Optional)
 
 ## Learning Objectives
 

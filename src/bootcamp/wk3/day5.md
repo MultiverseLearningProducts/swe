@@ -49,6 +49,7 @@ Add a ratings system for the restaurant model.
 * The restaurant should display the average rating out of 5 stars, from all the ratings that have been awarded to it.
 * On a restaurant page you should be able to add a rating.
 * Ratings need to be displayed on the restaurant page, and the card.
+* If you want to include the names of random users in your reviews then checkout [Mockaroo](https://www.mockaroo.com/) for mock data.
 
 ## Lesson 2 - Server side validation
 In previous lessons we have added client side validation to check for the user entering a valid restaurant name and url. However, client side validation can be subverted either by disabling JavaScript in the browser, or, my using a tool such as Postman to call the API directly, bypassing the form.
