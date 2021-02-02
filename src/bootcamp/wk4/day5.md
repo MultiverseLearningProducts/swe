@@ -23,9 +23,9 @@ Today we will look at front-end system testing using a tool called [Cypress](htt
 
 ## Lesson
 
-Your app will need to run in 3 different environments: Your laptop, the deployment server and when we are running tests. Before adding Cypress system (or end-to-end) tests make sure your app can run in a test mode.
+Your app will need to run in 3 different environments: Your laptop, the deployment server and when we are running tests. Before adding Cypress system (or end-to-end) tests make sure your app can run in a test mode (e.g. using a test or in-memory database with fixed 'seed' data).
 
-Then in your project folder run:
+To install Cypress in your project folder run:
 
 ```sh
 npm install cypress --save-dev
@@ -35,7 +35,7 @@ This may take a while as there are a large number of dependencies!
 
 *Note:* there should be no need to install Mocha (test syntax) and Chai (assertions) are these are bundled with Cypress.
 
-This will seed your project with a number of folders and sample tests. 
+Run `./node_modules/.bin/cypress open` - this will add a number of folders and sample tests to your project directory. If you prefer you can delete these examples to save any confusion but do keep the `cypress/integration` and `cypress/fixures` folders.
 
 ### What does cypress do?
 
@@ -78,7 +78,8 @@ describe('/', () => {
     })
 })
 ```
-Run the test by adding the script below to your `package.json` and triggering it with `npm run test:cypress`
+
+Run your tests by adding the script below to your `package.json` and triggering it with `npm run test:cypress`
 
 ```json
 "test:cypress": "cypress open"
