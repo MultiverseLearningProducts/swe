@@ -37,7 +37,7 @@ This may take a while as there are a large number of dependencies!
 
 Run `./node_modules/.bin/cypress open` - this will add a number of folders and sample tests to your project directory. If you prefer you can delete these examples to save any confusion but do keep the `cypress/integration` and `cypress/fixures` folders.
 
-### What does cypress do?
+### What does Cypress do?
 
 Have you been testing your app in the browser to make sure it works? Cypress can automate this for you. Encoding critical user journeys is incredibly valuable. It is much quicker than us clicking round the site. These journeys are then encoded and repeatable, and continuous integration tools can be set up to run these tests before each deployment.
 
@@ -104,6 +104,11 @@ it('adds a new task to the list', () => {
 ```
 Above we visit the page, get the `<input>` element, 'type' "New test task" into the input, then target and "click" the Add button, finally we make the assertion that there is a new task in the list. Awesome.
 
+**Note**
+  1. if your application uses cookies, please note that Cypress will, by default, clear cookies between each test
+  2. If there are any errors on your page, Cypress will fail the test. Using Developer Tools, fix the error and rerun the test.
+
+
 ## Assignment
 Use the instruction above to help you install Cypress and write a test or else refer to this [Introduction to Cypress](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file) video.
 
@@ -115,6 +120,8 @@ Use the instruction above to help you install Cypress and write a test or else r
 * If you are working on this lesson and have developed a 'To do' application then:
      * In your team decide on 2 critical user journeys
      * Encode these 2 journeys
+
+
 
 [attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/172)
 [main](/swe)|[prev](/swe/bootcamp/wk4/day4.html)|[next](/swe/bootcamp/wk5/day1.html)

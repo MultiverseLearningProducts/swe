@@ -60,11 +60,12 @@ By using Chrome's Developer Tools (Elements) we can see how the drag and drop ha
 
 ![after dragging an image](https://user-images.githubusercontent.com/1316724/106565519-d9131080-6526-11eb-84de-7d96afc05719.PNG)
 
+Note that there are a number of Drag and Drop libraries for JavaScript for example [SortableJS](https://github.com/SortableJS/Sortable).
 
 ## Assignment
   1. Run through the [W3Schools Tutorial on Drag & Drop](https://www.w3schools.com/html/html5_draganddrop.asp). This is a very short lesson but explains the basic of drag & drop. 
   2. Follow the [How To Build Sortable Drag & Drop With Vanilla Javascript](https://www.youtube.com/watch?v=jfYWwQrtzzY) You Tube video (22 mins) which walks you through a more complex example of using drag and drop. If you want a copy of the final code, please refer to `index.html` in the [Day 2 solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk4/day2).
-  3. Armed with this knowledge, try to create a To Do list which looks similar to the image at the top of this page, enabling the functionality to move tasks between boards.
+  3. Armed with this knowledge, or, if you prefer, using the [SortableJS library](https://github.com/SortableJS/Sortable), try to create a To Do list which looks similar to the image at the top of this page, enabling the functionality to move tasks between boards.
 
 
 ## TODO - ignore the following content for now as we are not covering AppRun
