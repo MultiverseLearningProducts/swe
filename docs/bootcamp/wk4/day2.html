@@ -12,12 +12,65 @@
   <body>
     <h1>Bootcamp > Week 4 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Lets ramp things up and take on drag and drop. This is a purely javascript driven interaction.</p>
+    <p>Your group project will be to create a 'Task List' application similar to this (note you are free to design the UI however you like!):</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/106533527-42286300-64ea-11eb-9cb3-049171f4b772.PNG" alt="to do list">
+    </p>
+    <p>You may therefore want to use <code>drag and drop</code> to move tasks from one list (e.g. To Do) to another (e.g. In Progress) hence today we will discover how to implement this using JavaScript.</p>
     <hr>
     <h2>Lesson 1 - Drag and Drop</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Use more event listeners such as <code>ondragstart</code>, <code>ondrop</code> and the html attribute <code>draggable</code>.</li>
+      <li>Understand the event listeners which support drag and drop, for example, <code>ondragstart</code>, <code>ondragover</code>, <code>ondrop</code> and the HTML attribute <code>draggable</code>.</li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>To make an element 'draggable', you simply set the <code>draggable</code> attribute to true. For example:</p>
+    <pre><code class="language-js">&#x3C;img id="myImageElement" src="image.png" draggable="true">
+</code></pre>
+    <p>When you start dragging, an <code>dragstart</code> event is triggered. We want to intercept this event and keep track of which element is being dragged.</p>
+    <pre><code class="language-js">&#x3C;img id="myImageElement" src="image.png" draggable="true"> ondragstart="drag(event)">
+
+function drag(event) {
+  &#x3C;!-- record which element is being dragged -->
+  event.dataTransfer.setData("text", event.target.id);
+}
+</code></pre>
+    <p>To allow an element to be dragged into a second element, we need to disable the default behaviour of the second element on <code>dragover</code> to allow this:</p>
+    <pre><code class="language-js">&#x3C;div id="myTargetElement" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)">
+&#x3C;/div>
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+</code></pre>
+    <p>On <code>drop</code> we retrieve the data from the dragged element and add it as a child element of the target:</p>
+    <pre><code class="language-js">function drop(event) {
+    &#x3C;!-- determine the element which was dragged -->
+    const data = event.dataTransfer.getData("text");
+    &#x3C;!-- add it to our HTML -->
+    event.target.appendChild(document.getElementById(data));
+}
+</code></pre>
+    <p>By using Chrome's Developer Tools (Elements) we can see how the drag and drop has affected the HTML:</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/106565337-94877500-6526-11eb-8365-93ed999c27ef.PNG" alt="prior to dragging an image">
+    </p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/106565519-d9131080-6526-11eb-84de-7d96afc05719.PNG" alt="after dragging an image">
+    </p>
+    <h2>Assignment</h2>
+    <ol>
+      <li>Run through the <a href="https://www.w3schools.com/html/html5_draganddrop.asp">W3Schools Tutorial on Drag &#x26; Drop</a>. This is a very short lesson but explains the basic of drag &#x26; drop.</li>
+      <li>Follow the <a href="https://www.youtube.com/watch?v=jfYWwQrtzzY">How To Build Sortable Drag &#x26; Drop With Vanilla Javascript</a> You Tube video (22 mins) which walks you through a more complex example of using drag and drop. If you want a copy of the final code, please refer to <code>index.html</code> in the <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk4/day2">Day 2 solution</a>.</li>
+      <li>Armed with this knowledge, try to create a To Do list which looks similar to the image at the top of this page, enabling the functionality to move tasks between boards.</li>
+    </ol>
+    <h2>TODO - ignore the following content for now as we are not covering AppRun</h2>
+    <h2>Lesson 1 - Drag and Drop</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand the event listeners which support drag and drop, for example, <code>ondragstart</code>, <code>ondrop</code> and the html attribute <code>draggable</code>.</li>
     </ul>
     <h2>Before we start</h2>
     <ul>

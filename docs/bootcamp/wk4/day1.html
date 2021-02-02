@@ -35,9 +35,11 @@
       <li>
         <p>Use the <code>Lighthouse</code> tool in Chrome Developer Tools to generate a Web Accessibility report for all the pages in your restaurant application.</p>
         <ul>
+          <li>Add your "before" report to a new folder <code>/accessibility</code> in the GitHub repo which has your restaurant code</li>
           <li>How many issues does Lighthouse find?</li>
           <li>Why could these issues cause issues for users with disabilities?</li>
           <li>Now edit your HTML to fix these issues</li>
+          <li>Add your "after" report to the <code>/accessibility</code> folder</li>
         </ul>
       </li>
       <li>
@@ -53,6 +55,9 @@
       </li>
       <li>
         <p>Install <a href="https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn">Screen Reader</a> and tab through your website. If you were vision impaired, would you understand which restaurant you were viewing or deleting? If not, what could you do to improve site navigation for those using a screen reader.</p>
+      </li>
+      <li>
+        <p>If you finish early, try checking out the accessibility of other websites too. Try the <a href="https://atg.nliven.co/tickets/series/wicked?_ga=2.37698784.1776477192.1605217929-908196991.1605217929">ATG Ticket Website</a> with a Vision Deficiency of 'Achromatopsia' - how does it look?</p>
       </li>
     </ol>
     <hr>
@@ -91,34 +96,26 @@
     <p>Try out the different ways of using JavaScript in front-end code by completing the following 2 assignments:</p>
     <ol>
       <li>
-        <p>Modify your restaurant code to include <a href="https://developers.facebook.com/docs/plugins/like-button/">Facebook 'like' and 'share' icons</a> when you click on a restaurant.</p>
+        <p>Modify your restaurant code to include <a href="https://developers.facebook.com/docs/plugins/like-button/">Facebook 'like' and 'share' icons</a> when you click on a restaurant. If you get problems seeing the icons, please disable 'Ad Blockers' in your browser.</p>
         <p>Notice how you are including a Facebook script. Once this script is included, you are able to use the Facebook 'like' CSS class.</p>
       </li>
       <li>
-        <p>Now use inline JavaScript to add a simple counter which increments each time the page is loaded:</p>
+        <p>Now use inline JavaScript in your HTML to add a simple counter which increments each time the page is loaded:</p>
       </li>
     </ol>
     <pre><code class="language-html">    &#x3C;div>Number of page loads:
         &#x3C;span id="Counter">&#x3C;/span>
     &#x3C;/div>
 </code></pre>
-    <pre><code class="language-javascript">    &#x3C;script>
-        var n = localStorage.getItem('on_load_counter');
-
-        if (n === null) {
-            n = 0;
-        }
-        n++;
-
-        localStorage.setItem("on_load_counter", n);
-
-        nums = n.toString().split('').map(Number);
-        document.getElementById('CounterVisitor').innerHTML = '';
-        for (var i of nums) {
-            document.getElementById('CounterVisitor').innerHTML += '&#x3C;span class="counter-item">' + i + '&#x3C;/span>';
-        }
-
-    &#x3C;/script>
+    <pre><code class="language-javascript">&#x3C;script>
+    var n = localStorage.getItem('on_load_counter');
+    if (n === null) {
+        n = 0;
+    }
+    n++;
+    localStorage.setItem("on_load_counter", n);
+    document.querySelector('#counter').innerText = `Visits to this page: ${localStorage.getItem('on_load_counter')}`
+&#x3C;/script>
 </code></pre>
     <hr>
     <h2>Lesson 3 - The HTML Document Object Model (DOM)</h2>
@@ -634,7 +631,7 @@ button.addEventListener('click', myButtonHasBeenClicked);
       <li>resize()</li>
     </ul>
     <hr>
-    <h2>Lesson 5 - Frameworks</h2>
+    <h2>Lesson 5 - Frameworks (Optional)</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Create a simple "To Do" list using the state, view, update design pattern in AppRun</li>
