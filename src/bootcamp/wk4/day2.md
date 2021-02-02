@@ -2,15 +2,78 @@
 
 ## Overview of the day
 
-Lets ramp things up and take on drag and drop. This is a purely javascript driven interaction.
+Your group project will be to create a 'Task List' application similar to this (note you are free to design the UI however you like!):
+
+![to do list](https://user-images.githubusercontent.com/1316724/106533527-42286300-64ea-11eb-9cb3-049171f4b772.PNG) 
+
+You may therefore want to use `drag and drop` to move tasks from one list (e.g. To Do) to another (e.g. In Progress) hence today we will discover how to implement this using JavaScript.
 
 ----
+## Lesson 1 - Drag and Drop
+## Learning Objectives
+
+* Understand the event listeners which support drag and drop, for example, `ondragstart`, `ondragover`, `ondrop` and the HTML attribute `draggable`.
+
+## Lesson
+To make an element 'draggable', you simply set the `draggable` attribute to true. For example:
+
+```js
+<img id="myImageElement" src="image.png" draggable="true">
+```
+When you start dragging, an `dragstart` event is triggered. We want to intercept this event and keep track of which element is being dragged.
+
+```js
+<img id="myImageElement" src="image.png" draggable="true"> ondragstart="drag(event)">
+
+function drag(event) {
+  <!-- record which element is being dragged -->
+  event.dataTransfer.setData("text", event.target.id);
+}
+```
+
+To allow an element to be dragged into a second element, we need to disable the default behaviour of the second element on `dragover` to allow this:
+
+```js
+<div id="myTargetElement" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)">
+</div>
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+```
+
+On `drop` we retrieve the data from the dragged element and add it as a child element of the target:
+
+```js
+function drop(event) {
+    <!-- determine the element which was dragged -->
+    const data = event.dataTransfer.getData("text");
+    <!-- add it to our HTML -->
+    event.target.appendChild(document.getElementById(data));
+}
+```
+By using Chrome's Developer Tools (Elements) we can see how the drag and drop has affected the HTML:
+
+![prior to dragging an image](https://user-images.githubusercontent.com/1316724/106565337-94877500-6526-11eb-8365-93ed999c27ef.PNG)
+
+![after dragging an image](https://user-images.githubusercontent.com/1316724/106565519-d9131080-6526-11eb-84de-7d96afc05719.PNG)
+
+
+## Assignment
+  1. Run through the [W3Schools Tutorial on Drag & Drop](https://www.w3schools.com/html/html5_draganddrop.asp). This is a very short lesson but explains the basic of drag & drop. 
+  2. Follow the [How To Build Sortable Drag & Drop With Vanilla Javascript](https://www.youtube.com/watch?v=jfYWwQrtzzY) You Tube video (22 mins) which walks you through a more complex example of using drag and drop. If you want a copy of the final code, please refer to `index.html` in the [Day 2 solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk4/day2).
+  3. Armed with this knowledge, try to create a To Do list which looks similar to the image at the top of this page, enabling the functionality to move tasks between boards.
+
+
+## TODO - ignore the following content for now as we are not covering AppRun
 
 ## Lesson 1 - Drag and Drop
 
 ## Learning Objectives
 
-* Use more event listeners such as `ondragstart`, `ondrop` and the html attribute `draggable`.
+* Understand the event listeners which support drag and drop, for example, `ondragstart`, `ondrop` and the html attribute `draggable`.
 
 ## Before we start
 
