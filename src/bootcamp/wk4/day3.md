@@ -47,7 +47,16 @@ The requirements are as follows:
 |NF4|MUST|The application must have evidence of automated system testing|
 |NF5|MUST|The application code must be documented in a manner that it would be easy for a new developer to understand|
 |NF6|MUST|The application code must be stored in a GitHub repository|
-|NF7|MUST|There must be documentation which describes:<ul><li>how to run the application</li><li>features of the application</li><li>design decisions</li><li>team roles & responsibilities</li><li>links to UI wireframes</li><li>links to UML use case, class and sequence diagrams</li><li>links to unit test coverage report</li><li>links to system test coverage report</li><li>links to JSDoc|
+|NF7|MUST|There must be documentation which describes:|
+  * how to run the application
+  * features of the application
+  * design decisions
+  * team roles & responsibilities
+  * links to UI wireframes
+  * links to UML use case, class and sequence diagrams
+  * links to unit test coverage report
+  * links to system test coverage report
+  * links to JSDoc
 
 ----
 
