@@ -128,28 +128,44 @@ If you are asked to be a reviewer you should review the code carefully, check th
 
 ----
 
-## Lesson 3 - Sprint Planning
-In this lesson we will discuss the different ways of working that are: SCRUM, KANBAN & SCRUMBAN. Now you have detailed plans you are ready to all start coding together BUT in a coordinated way. To start this process off you need some sprint planning.
+## Lesson 3 - Agile development
+In this lesson we will discuss Agile development using SCRUM, KANBAN & SCRUMBAN. 
 
+**Agile** is a set of principles you can read more about in the [principles behind the Agile Manifesto](https://agilemanifesto.org/principles.html). Some of the core principles include:
+  * Satisfy the customer through early and continuous delivery of valuable software
+  * Welcome changing requirements
+  * Deliver working software frequently
+  * Build projects around motivated individuals
+  * Continuous attention to technical excellence
+  * Business people and developers must work together daily throughout the project
 
 ### SCRUM
 
-SCRUM is an agile pattern that software developer teams use to organise and coordinate their work. SCRUM starts with sprint planning. A sprint is a fixed period of time for development work. For us our sprint will last 3-4 days. In sprint planning we break up the work into tasks. Often the tasks are scored by complexity or challenge factor. Low scoring tasks are of low complexity and easy to complete, high scoring tasks are harder, or might require reading of documentation etc. 
+SCRUM is an agile framework that software development teams use to organise and coordinate their work. A SCRUM master faciliates all the development process and helps to remove any impediments the team may face.
+
+SCRUM starts with sprint planning. A **sprint** is a fixed period of time for development work (typically 2 weeks). For us our sprint will last 3-4 days. In sprint planning the team breaks up the work into tasks. Often the tasks are scored by complexity or challenge factor. Low scoring tasks are of low complexity and easy to complete, high scoring tasks are harder, or might require reading of documentation etc. 
 
 Each task should be assigned to a developer. It is their responsibility to deliver that task. The amount and rate at which tasks are complete is the 'burn rate'. For SCRUM masters the burn rate gives them a good measure for the capacity of their team.
 
+SCRUM also recommends 15 minute daily standups (think of a rugby scrum!) where each member of the team answers 3 questions:
+  * Q. What did I do yesterday?
+  * Q. What am I doing today?
+  * Q. What blockers do I have which are stopping me working effectively?
+
 ### KANBAN
 
-KANBAN is not bound by sprints. Instead tasks are added to a backlog. Tasks are then picked from the backlog and placed in different columns depending upon that tasks current status. The benefit of this system is the visibility it gives the team as to where every task is at anyone time. This originated in Japanese car manufacturing, and has been used by developers for many years now.
+KANBAN is another agile framework. Tasks are represented visually on a 'kanban' board, allowing team members to see the state of every piece of work at any time. 
 
-### 2020 SCRUMBAN
+Kanban is not bound by sprints. Instead tasks are added to a backlog. Tasks are then picked from the backlog and placed in different columns depending upon that tasks current status. The benefit of this system is the visibility it gives the team as to where every task is at anyone time. This originated in Japanese car manufacturing, and has been used by developers for many years now.
 
-Combine the 2 methods and you get SCRUMBAN. Sprints with a KANBAN board.
+### SCRUMBAN
+
+Combine the 2 methods above and you get SCRUMBAN. Sprints with a KANBAN board. This is the approach you are most likely to see in your workplace, people often refer to the approach as SCRUM even though it's offically a combination of 2 frameworks.
 
 ## Assignment
 
-* Create Issues in your GitHub Project for all the tasks the team needs to complete based on the functional and non-functional requirements and your planning. 
-* Move the Issues relating to design (UML diagrams & wireframes) into the 'In Progress' column as you will be working on them next!
+* Create Issues in your GitHub Project for all the tasks the team needs to complete based on the functional and non-functional requirements and your planning. Place them onto your 'Kanban' board (i.e. your GitHub Project board).
+* Plan a daily SCRUM standup for the next few days - work out a time which suits you are (as early as possible is best) and where you will each answer the 3 questions listed above
 
 ----
 
