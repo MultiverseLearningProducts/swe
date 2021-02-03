@@ -164,7 +164,7 @@ Combine the 2 methods above and you get SCRUMBAN. Sprints with a KANBAN board. T
 
 ## Assignment
 
-* Start your Sprint planning but creating Issues in your GitHub Project for all the tasks the team needs to complete based on the functional and non-functional requirements and your planning. Place them onto your 'Kanban' board (i.e. your GitHub Project board). Ask your Product Owner (your coach) if you have any questions.
+* Start your Sprint planning by creating Issues in your GitHub Project for all the tasks the team needs to complete based on the functional and non-functional requirements and your planning. Place them onto your 'Kanban' board (i.e. your GitHub Project board). Ask your Product Owner (your coach) if you have any questions.
 * Plan a daily SCRUM standup for the next few days - work out a time which suits you are (as early as possible is best) and where you will each answer the 3 questions listed above.
 
 ----
