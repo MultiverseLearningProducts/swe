@@ -120,7 +120,7 @@ If you are asked to be a reviewer you should review the code carefully, check th
   1. Use the GitHub UI to create a branch for each of the team members
   2. Clone the repository if you haven't already
   3. On the command line (within the directory where you cloned the repository), run `git checkout nameOfYourBranch`
-  4. Run `git status` and ensure you see a * next to your branch name
+  4. Run `git branch` and ensure you see a * next to your branch name
   5. Add a new file (can contain anything), commit it and push it - try to view the changes in the GitHub UI
   6. Create a Pull Request and assign it to another team member to review (make sure everyone gets a turn at being a reviewer)
   7. As a reviewer, use the GitHub UI to see what changes have been done, when you are happy, 'Merge' the Pull Request and delete the branch. If you are not happy, add comments stating why to the Pull Request and assign the Issue back to 'In Progress'.
