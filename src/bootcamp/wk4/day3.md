@@ -2,12 +2,6 @@
 
 ## Overview of the day
 
-- mock client meeting in groups
-- setup git repo, branches & PRs
-- agile daily standups
-- rules for support 
-
-
 Today you start your group projects. Before we begin, let's discuss the 7 stages of the software development life cycle.
 
 1. Business needs
@@ -117,6 +111,7 @@ If you are asked to be a reviewer you should review the code carefully, check th
   5. Add a new file (can contain anything), commit it and push it - try to view the changes in the GitHub UI
   6. Create a Pull Request and assign it to another team member to review (make sure everyone gets a turn at being a reviewer)
   7. As a reviewer, use the GitHub UI to see what changes have been done, when you are happy, 'Merge' the Pull Request and delete the branch. If you are not happy, add comments stating why to the Pull Request and assign the Issue back to 'In Progress'.
+  8. When your code is merged, switch back to the 'master' branch using `git checkout master` and run `git pull` to get the latest changes. 
 
 ## Lesson 3 - The Design Phase
 
