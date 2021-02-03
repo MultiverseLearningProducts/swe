@@ -194,7 +194,7 @@
     </ol>
     <hr>
     <h2>Lesson 2 - GitHub git branches &#x26; Pull Requests</h2>
-    <p>Up until now you have worked on a single (default) git branch, 'master'. This was fine when you were working independently, but now we are working as a team we need to isolate our development work until we consider it 'ready for review', so as not to affect other team members using the repository.</p>
+    <p>Up until now you have worked on a single (default) git branch, 'main'. This was fine when you were working independently, but now we are working as a team we need to isolate our development work until we consider it 'ready for review', so as not to affect other team members using the repository.</p>
     <p>Each repository has one default branch and can have multiple other branches. You can <code>merge</code> a branch into another branch using a <code>Pull Request</code>.</p>
     <p>Best practice is to create a new branch for each Issue you work on. You should include the issue number in the name of the branch as well as a short descriptive name, for example '<strong>3</strong>-data-model'.</p>
     <p>New branches can be created either via the GitHub UI (recommended) or via the command line using the <code>git checkout -b</code> command.</p>
@@ -208,7 +208,7 @@
     <p>You can now safely commit &#x26; push to your branch without affecting anyone else in your repository. Do ensure you push regularly just in case your local machine crashes!</p>
     <p>If you execute <code>git push</code> without any arguments, it will push the changes to the currently checked out branch (which is typically what you want).</p>
     <p>When you have finished working on your branch, make a 'Pull Request' and assign it to a reviewer (someone else from your team must look through your code before it is merged). Move the associated 'Issue' card into the 'In review' column. You can now start work on another Issue.</p>
-    <p>If you are asked to be a reviewer you should review the code carefully, check that it is well documented and has unit tests. Ask if you have any questions. When you are happy you can 'merge' the Pull Request and select to 'delete' the branch - merging will apply the code changes to the 'master' branch. <strong>No-one should ever merge their own code into master</strong>.</p>
+    <p>If you are asked to be a reviewer you should review the code carefully, check that it is well documented and has unit tests. Ask if you have any questions. When you are happy you can 'merge' the Pull Request and select to 'delete' the branch - merging will apply the code changes to the 'main' branch. <strong>No-one should ever merge their own code into main</strong>.</p>
     <h3>Assignment</h3>
     <ol>
       <li>Use the GitHub UI to create a branch for each of the team members</li>
@@ -218,7 +218,7 @@
       <li>Add a new file (can contain anything), commit it and push it - try to view the changes in the GitHub UI</li>
       <li>Create a Pull Request and assign it to another team member to review (make sure everyone gets a turn at being a reviewer)</li>
       <li>As a reviewer, use the GitHub UI to see what changes have been done, when you are happy, 'Merge' the Pull Request and delete the branch. If you are not happy, add comments stating why to the Pull Request and assign the Issue back to 'In Progress'.</li>
-      <li>When your code is merged, switch back to the 'master' branch using <code>git checkout master</code> and run <code>git pull</code> to get the latest changes.</li>
+      <li>When your code is merged, switch back to the 'main' branch using <code>git checkout main</code> and run <code>git pull</code> to get the latest changes.</li>
     </ol>
     <hr>
     <h2>Lesson 3 - Sprint Planning</h2>
