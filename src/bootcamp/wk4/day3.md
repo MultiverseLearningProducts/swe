@@ -37,6 +37,7 @@ The requirements are as follows:
 |F12|MUST|It must be possible to create a new project board|
 |F13|MUST|It must be possible to view all the project boards|
 |F14|MUST|The state of a project board must persist even when the application is closed|
+|F15|MUST|:new: **The application must work well on a mobile as well as a desktop**|
 
 ### Non-functional requirements (the constraints on the system)
 |Id|Priority|Description|
@@ -75,7 +76,8 @@ You can use Github's 'Projects' page to create and manage your team's work. On y
 
 ![github create a new project](https://user-images.githubusercontent.com/4499581/95681986-cde44f80-0bda-11eb-8aa9-4e229c580c0d.png)
 
-You can then create 'Issues' and assign them to this project and to members of your team. Issues can be moved from one column to another.
+You can then create 'Issues' and assign them to this project and to members of your team. Issues can be moved from one column to another. Refer to this [GitHub Project Management Tutorial](https://www.youtube.com/watch?v=ff5cBkPg-bQ) video.
+
 
 ### Assignment
   1. Ask one of your team members to create a new **public** GitHub repository (with a README.md) and [add the other team members as 'Collaborators'](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository). 
