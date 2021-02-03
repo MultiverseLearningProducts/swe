@@ -147,10 +147,14 @@ SCRUM starts with sprint planning. A **sprint** is a fixed period of time for de
 
 Each task should be assigned to a developer. It is their responsibility to deliver that task. The amount and rate at which tasks are complete is the 'burn rate'. For SCRUM masters the burn rate gives them a good measure for the capacity of their team.
 
+!(https://www.youtube.com/watch?v=2A9rkiIcnVI)
+
 SCRUM also recommends 15 minute daily standups (think of a rugby scrum!) where each member of the team answers 3 questions:
   * Q. What did I do yesterday?
   * Q. What am I doing today?
   * Q. What blockers do I have which are stopping me working effectively?
+
+!(https://www.youtube.com/watch?v=xcC0LmkzG9g)
 
 ### KANBAN
 
