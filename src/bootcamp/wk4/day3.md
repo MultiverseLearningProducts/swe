@@ -47,7 +47,9 @@ The requirements are as follows:
 |NF4|MUST|The application must have evidence of automated system testing|
 |NF5|MUST|The application code must be documented in a manner that it would be easy for a new developer to understand|
 |NF6|MUST|The application code must be stored in a GitHub repository|
-|NF7|MUST|There must be documentation which describes:<ul><li>how to run the application</li><li>features of the application</li><li>design decisions</li><li>team roles & responsibilities</li><li>links to the UI wireframes</li><li>links to UML use case, class and sequence diagrams</li><li>links to unit test coverage</li><li>links to system test coverage/report|
+|NF7|MUST|There must be documentation which describes:<ul><li>how to run the application</li><li>features of the application</li><li>design decisions</li><li>team roles & responsibilities</li><li>links to UI wireframes</li><li>links to UML use case, class and sequence diagrams</li><li>links to unit test coverage report</li><li>links to system test coverage report</li><li>links to JSDoc|
+
+----
 
 ## Lesson 1 - Tools which will help you
 ### Slack
@@ -73,6 +75,8 @@ You can then create 'Issues' and assign them to this project and to members of y
   4. Create a new 'Project' as described above, choosing 'Automated Kanban with reviews' as a template
   5. Create a dummy 'Issue' and [assign it to the Project](https://docs.github.com/en/github/managing-your-work-on-github/adding-issues-and-pull-requests-to-a-project-board) and to one team member
   6. Share your repository link with your coach (via Slack)
+
+----
 
 ## Lesson 2 - GitHub git branches & Pull Requests
 Up until now you have worked on a single (default) git branch, 'master'. This was fine when you were working independently, but now we are working as a team we need to isolate our development work until we consider it 'ready for review', so as not to affect other team members using the repository. 
@@ -113,20 +117,38 @@ If you are asked to be a reviewer you should review the code carefully, check th
   7. As a reviewer, use the GitHub UI to see what changes have been done, when you are happy, 'Merge' the Pull Request and delete the branch. If you are not happy, add comments stating why to the Pull Request and assign the Issue back to 'In Progress'.
   8. When your code is merged, switch back to the 'master' branch using `git checkout master` and run `git pull` to get the latest changes. 
 
-## Lesson 3 - The Design Phase
+----
 
-## Learning Objectives
+## Lesson 3 - Sprint Planning
+In this lesson we will discuss the different ways of working that are: SCRUM, KANBAN & SCRUMBAN. Now you have detailed plans you are ready to all start coding together BUT in a coordinated way. To start this process off you need some sprint planning.
 
-* Recall the 3 phases of the Design phase
+
+### SCRUM
+
+SCRUM is an agile pattern that software developer teams use to organise and coordinate their work. SCRUM starts with sprint planning. A sprint is a fixed period of time for development work. For us our sprint will last 3-4 days. In sprint planning we break up the work into tasks. Often the tasks are scored by complexity or challenge factor. Low scoring tasks are of low complexity and easy to complete, high scoring tasks are harder, or might require reading of documentation etc. 
+
+Each task should be assigned to a developer. It is their responsibility to deliver that task. The amount and rate at which tasks are complete is the 'burn rate'. For SCRUM masters the burn rate gives them a good measure for the capacity of their team.
+
+### KANBAN
+
+KANBAN is not bound by sprints. Instead tasks are added to a backlog. Tasks are then picked from the backlog and placed in different columns depending upon that tasks current status. The benefit of this system is the visibility it gives the team as to where every task is at anyone time. This originated in Japanese car manufacturing, and has been used by developers for many years now.
+
+### 2020 SCRUMBAN
+
+Combine the 2 methods and you get SCRUMBAN. Sprints with a KANBAN board.
+
+## Assignment
+
+* Create Issues in your GitHub Project for all the tasks the team needs to complete based on the functional and non-functional requirements and your planning. 
+* Move the Issues relating to design (UML diagrams & wireframes) into the 'In Progress' column as you will be working on them next!
+
+----
+
+## Lesson 4 - The Design Phase
 
 ## Before we start
 
-* Read through the functional and non-functional requirements above
-* Know who your team members are
-
-## Materials needed
-
-* N/A
+* Read through the functional and non-functional requirements above, ask your Customer (coach) if anything is not clear
 
 ## Lesson
 
@@ -136,9 +158,7 @@ Design is not just visual design. It includes designing the user interactions, t
 
 Think back to the Scooter Hire project, we produced UML diagrams to illustrate the user interactions, the class responsibilities and the interactions between classes in the system.
 
-TODO - insert them
-
-There are 3 questions you should all agree on as a group and document somewhere (on your GitHub repo).
+There are a number of design areas you should discuss as a group and document using UML models:
 
 ### Input
 
@@ -152,76 +172,31 @@ The inputs you need to collect. How will you store that data? Will the inputs ne
 
 What are the outputs of your software? This might be views of data that you need to display. Thinking about the outputs can also help define what your inputs need to be and how you need to process or store the data your output will need.
 
-Work as a group. Make yourself a [JamBoard](https://jamboard.google.com/) if you think it will help your design discussions.
-
-Once you have decided on a data model, some team members should create a UML diagram of the data model and upload it to the wiki section of the shared repo for the project.
-
-Other team members can create the wireframes for each view. FULL DETAIL, every view, every form, every form field, every button. For mobile and desktop.
-
-#### Wireframes
+### Wireframes
 
 ![wireframes](https://balsamiq.com/assets/learn/articles/mobile-web.png)
 
 Wireframes are low resolution, often grayscale documents that layout the components of a page. You can create wireframes in a Google slide, PowerPoint or use an open source programme like [draw.io](https://app.diagrams.net/).
 
 ## Assignment
+Work as a group. Make yourself a [JamBoard](https://jamboard.google.com/) if you think it will help your design discussions.
 
 In your team, discuss the requirements and come up with a set of designs. Document the design in the following artifacts and commit them to GitHub BEFORE you write any code!
 
 * A UML Use Case diagram illustrating the key interactions between the User and the system
 * A UML Class diagram illustrating the key domain classes
 * A UML Sequence diagram for each of the key Use Cases
-* Detailed wireframes of all your views
-* Create a Git repository on one team members' GitHub and invite the other team members to be collaborators
-* Add all the above design artifacts to the repo's wiki pages
+* Detailed wireframes covering every view, every form, every form field, every button. Create them for mobile and desktop too.
+* Add all the above design artifacts to you repository's wiki pages
 
 This will take some time, be patient, this is part of planning. With your wireframes, class/data model and interactions planned and documented you will find it much easier to break the work into smaller tasks and divide the tasks up amongst yourselves.
 
 ----
 
-## Lesson 4 - SCRUMBAN
-
-## Learning Objectives
-
-* Explain the different ways of working that are; SCRUM, KANBAN & SCRUMBAN
-
-## Before we start
-
-* Have your UML diagrams and wireframes uploaded on your team's repo
-
-## Materials needed
 
 * [Github projects](https://www.youtube.com/watch?v=ff5cBkPg-bQ)
 
-## Lesson
 
-Now you have detailed plans you are ready to all start coding together BUT in a coordinated way. To start this process off you need some sprint planning.
-
-### Sprint planning SCRUM
-
-SCRUM is an agile pattern that software developer teams use to organise and coordinate their work. SCRUM starts with sprint planning. A sprint is a fixed period of time for development work. For us our sprint will last 3 days. In sprint planning we break up the work into tasks. Often the tasks are scored by complexity or challenge factor. Low scoring tasks are of low complexity and easy to complete, high scoring tasks are harder, or might require reading of documentation etc. 
-
-Each task should be assigned to a developer. It is their responsibility to deliver that task. The amount and rate at which tasks are complete is the 'burn rate'. For SCRUM masters the burn rate gives them a good measure for the capacity of their team.
-
-### Visibility of KANBAN
-
-KANBAN is not bound by sprints. Instead tasks are added to a backlog. Tasks are then picked from the backlog and placed in different columns depending upon that tasks current status. The benefit of this system is the visibility it gives the team as to where every task is at anyone time. This originated in Japanese car manufacturing, and has been used by developers for many years now.
-
-### 2020 SCRUMBAN
-
-Yes, combine the 2 methods and you get SCRUMBAN. Sprints with a KANBAN board.
-
-### Github projects
-
-
-## Assignment
-
-* Create issues for the tasks the team needs to complete based on your planning
-* Initialise the project board and use it to track your issues
-* Create branches for your work
-* Use pull requests to initiate peer reviews
-* Merge each others work into master
-* Remember to `git pull origin master` when work is merged
 
 [attendance log](https://applied.multiverse.io/mod/questionnaire/complete.php?id=6702)
 [main](/swe)|[prev](/swe/bootcamp/wk4/day2.html)|[next](/swe/bootcamp/wk4/day4.html)
