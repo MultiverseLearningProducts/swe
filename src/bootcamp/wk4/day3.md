@@ -88,7 +88,7 @@ You can then create 'Issues' and assign them to this project and to members of y
 ----
 
 ## Lesson 2 - GitHub git branches & Pull Requests
-Up until now you have worked on a single (default) git branch, 'master'. This was fine when you were working independently, but now we are working as a team we need to isolate our development work until we consider it 'ready for review', so as not to affect other team members using the repository. 
+Up until now you have worked on a single (default) git branch, 'main'. This was fine when you were working independently, but now we are working as a team we need to isolate our development work until we consider it 'ready for review', so as not to affect other team members using the repository. 
 
 Each repository has one default branch and can have multiple other branches. You can `merge` a branch into another branch using a `Pull Request`.
 
@@ -114,7 +114,7 @@ If you execute `git push` without any arguments, it will push the changes to the
 
 When you have finished working on your branch, make a 'Pull Request' and assign it to a reviewer (someone else from your team must look through your code before it is merged). Move the associated 'Issue' card into the 'In review' column. You can now start work on another Issue.
 
-If you are asked to be a reviewer you should review the code carefully, check that it is well documented and has unit tests. Ask if you have any questions. When you are happy you can 'merge' the Pull Request and select to 'delete' the branch - merging will apply the code changes to the 'master' branch. **No-one should ever merge their own code into master**.
+If you are asked to be a reviewer you should review the code carefully, check that it is well documented and has unit tests. Ask if you have any questions. When you are happy you can 'merge' the Pull Request and select to 'delete' the branch - merging will apply the code changes to the 'main' branch. **No-one should ever merge their own code into main**.
 
 ### Assignment
   1. Use the GitHub UI to create a branch for each of the team members
@@ -124,7 +124,7 @@ If you are asked to be a reviewer you should review the code carefully, check th
   5. Add a new file (can contain anything), commit it and push it - try to view the changes in the GitHub UI
   6. Create a Pull Request and assign it to another team member to review (make sure everyone gets a turn at being a reviewer)
   7. As a reviewer, use the GitHub UI to see what changes have been done, when you are happy, 'Merge' the Pull Request and delete the branch. If you are not happy, add comments stating why to the Pull Request and assign the Issue back to 'In Progress'.
-  8. When your code is merged, switch back to the 'master' branch using `git checkout master` and run `git pull` to get the latest changes. 
+  8. When your code is merged, switch back to the 'main' branch using `git checkout main` and run `git pull` to get the latest changes. 
 
 ----
 
