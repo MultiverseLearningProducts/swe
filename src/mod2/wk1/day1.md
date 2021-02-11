@@ -9,8 +9,9 @@ Mock exams can be found [here](https://drive.google.com/drive/folders/1s__-ZrkKz
 Some notes:
 
 - Some apprentices found the validation practical on day 1 a challenge. Consider moving to later in the week
-- The apprenties really enjoyed the bug fixing exercise on day 2
+- The apprentices really enjoyed the bug fixing exercise on day 2
 - Consider bringing DOM content earlier in the week (apprentice feedback)
+- They seemed to enjoy sketching the DOM
 - The GET vs POST must cover things like caching, max query param length, when to use GET/POST
 - Offloading the best practice research to the apprenties in groups seemed to work well
 - Apprentices reported that our mock questions are "very relevant" to the actual exam
