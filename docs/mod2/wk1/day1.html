@@ -11,24 +11,173 @@
   </head>
   <body>
     <h1>Mod 2 > Week 1 > Day 1</h1>
-    <p>Coaches: structure for module, including code samples, etc: <a href="https://docs.google.com/document/d/1yEXM0tg1xQJzzhAWPbw4rYeg3bF2ixs57pAh2_kE4q4/edit?usp=sharing">link</a>.</p>
-    <p>In the fullness of time, the stucture above needs to be turned into a JavaScript course we can enroll students on.</p>
-    <p>Mock exams can be found <a href="https://drive.google.com/drive/folders/1s__-ZrkKz3oLw9P26aUe787wCritSIQE?usp=sharing">here</a>.</p>
-    <p>Some notes:</p>
-    <ul>
-      <li>Some apprentices found the validation practical on day 1 a challenge. Consider moving to later in the week</li>
-      <li>The apprentices really enjoyed the bug fixing exercise on day 2</li>
-      <li>Consider bringing DOM content earlier in the week (apprentice feedback)</li>
-      <li>They seemed to enjoy sketching the DOM</li>
-      <li>The GET vs POST must cover things like caching, max query param length, when to use GET/POST</li>
-      <li>Offloading the best practice research to the apprenties in groups seemed to work well</li>
-      <li>Apprentices reported that our mock questions are "very relevant" to the actual exam</li>
-      <li>They really enjoyed doing the Spotify clone app (ask Dan for more info)</li>
-      <li>Revision time with ad-hoc mock exams seemed to work well in week 2</li>
-    </ul>
     <p>
-      <a href="/swe/mod2/wk1/day2.html">next</a>
-      <a href="/swe">main</a>
+      <img src="https://di3xp7dfi3cq.cloudfront.net/pub/media/magefan_blog/w/h/what-jobs-can-you-get-with-mta-cetification.jpg" alt="microsoft certificate">
+    </p>
+    <h2>You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.</h2>
+    <p>We are going to build a frontend application that will use or touch upon all the knowledge required to pass the Microsoft Technical Associate Exam (MTA 70-480 Programming in HTML5 with JavaScript and CSS3). It is a peer to peer audio composition app where you can create tracks, play them back, share them with the network of other composers, and play their compositions in your player.</p>
+    <p>Along the way you’ll come across; italic bullet points, these are the MTA learning objectives, slide shows these usually require a little commentary from your coach, but often contain useful coding examples, links and mini quizzes that test your knowledge. At the end of the module you’ll have lots of practice questions to test your understanding and get used to the style of exam questions.</p>
+    <h1>HTML</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li><em>1.1 Create the document structure by using HTML Structure the UI by using semantic markup, including for search engines and screen readers (Section, Article, Nav, Header, Footer, and Aside); create a layout container in HTML</em></li>
+    </ul>
+    <h2>Lesson</h2>
+    <p>Lets start with a good basis for our application by creating the HTML structure and style it using a responsive flexible css grid layout.</p>
+    <p>We are going to use semantic HTML elements. Semantics is the study of the meanings of words and phrases in a language. Semantic elements are elements with a meaning.</p>
+    <p>Look at the examples below.</p>
+    <pre><code class="language-html">    &#x3C;body>
+        &#x3C;div>
+            &#x3C;div>
+                &#x3C;a href="/">Home&#x3C;/a>
+                &#x3C;a href="/about">About&#x3C;/a>
+                &#x3C;a href="/shop">Shop&#x3C;/a>
+            &#x3C;/div>
+        &#x3C;/div>
+        &#x3C;div>
+            &#x3C;div>
+                &#x3C;div>
+                    &#x3C;img src="/images/slipper-01.jpg" alt="slipper 01" />
+                    &#x3C;div>£29.99&#x3C;/div>
+                    &#x3C;button>Add to Cart&#x3C;/button>
+                &#x3C;/div>
+                &#x3C;div>
+                    &#x3C;img src="/images/slipper-02.jpg" alt="slipper 02" />
+                    &#x3C;div>£29.99&#x3C;/div>
+                    &#x3C;button>Add to Cart&#x3C;/button>
+                &#x3C;/div>
+                &#x3C;div>
+                    &#x3C;img src="/images/slipper-03.jpg" alt="slipper 03" />
+                    &#x3C;div>£29.99&#x3C;/div>
+                    &#x3C;button>Add to Cart&#x3C;/button>
+                &#x3C;/div>
+            &#x3C;/div>
+        &#x3C;/div>
+        &#x3C;div>
+            &#x3C;span>my slipper company&#x3C;/span>
+        &#x3C;/div>
+    &#x3C;/body>
+</code></pre>
+    <p>Whilst this is valid HTML it does not have much meaning. By using the semantic elements we can layout our page structure in the same way, but also communicate to other programs that read our HTML how to treat the different areas. Those other programs might be, a search engine indexing our page, a screen reader, different browsers rendering out page. For example google uses the <code>&#x3C;article></code> elements to determine the subject of a page.</p>
+    <p>Let us have a look at the same layout but use semantic elements.</p>
+    <pre><code class="language-html">    &#x3C;body>
+        &#x3C;header>
+            &#x3C;nav>
+                &#x3C;a href="/">Home&#x3C;/a>
+                &#x3C;a href="/about">About&#x3C;/a>
+                &#x3C;a href="/shop">Shop&#x3C;/a>
+            &#x3C;/nav>
+        &#x3C;/header>
+        &#x3C;main>
+            &#x3C;section>
+                &#x3C;article>
+                    &#x3C;hgroup>
+                        &#x3C;h1>Slipper&#x3C;/h1>
+                        &#x3C;h2>Our most comfortable&#x3C;/h2>
+                    &#x3C;/hgroup>
+                    &#x3C;figure>
+                        &#x3C;img src="/images/slipper-01.jpg" alt="slipper 01" />
+                        &#x3C;figcaption>£29.99&#x3C;/figcaption>
+                    &#x3C;/figure>
+                    &#x3C;button>Add to Cart&#x3C;/button>
+                &#x3C;/article>
+            &#x3C;/section>
+        &#x3C;/main>
+        &#x3C;footer>
+            &#x3C;span>my slipper company&#x3C;/span>
+        &#x3C;/footer>
+    &#x3C;/body>
+</code></pre>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">HTML elements</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left"><code>&#x3C;header></code></td>
+          <td align="left">Defines the top of a section or page</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;main></code></td>
+          <td align="left">Represents the dominant content of the of a document or component</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;footer></code></td>
+          <td align="left">Defines the bottom of a section or page or component</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;article></code></td>
+          <td align="left">Defines self-contained areas on a page</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;nav></code></td>
+          <td align="left">Defines navigation to other pages in the site</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;hgroup></code></td>
+          <td align="left">Defines a group of headings (H1–H6 elements) *this is now depreciated</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;figure></code></td>
+          <td align="left">Defines content that contains a figure, such as an image, chart, or picture</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;figcaption></code></td>
+          <td align="left">Defines the caption of a figure element</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>In addition to the elements above you should also know about and try to use the following:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">HTML elements</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left"><code>&#x3C;aside></code></td>
+          <td align="left">Defines smaller content areas outside the flow of a webpage</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;mark></code></td>
+          <td align="left">Defines text that should be highlighted</td>
+        </tr>
+        <tr>
+          <td align="left"><code>&#x3C;progress></code></td>
+          <td align="left">Defines the progress of the task</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Using the <code>&#x3C;hgroup></code> element</h2>
+    <p>The <code>&#x3C;hgroup></code> element is a semantic method that organises headers and sub-headers. This element typically contains the standard and familiar <code>&#x3C;h1></code> to <code>&#x3C;h6></code> elements. The <code>&#x3C;hgroup></code> element groups related headers in sequence.</p>
+    <h2>Using the <code>&#x3C;progress></code> element</h2>
+    <p>The <code>&#x3C;progress></code> element represents the progress of an objective or task. The two supported types of progress tasks are <strong>determinate</strong> and <strong>indeterminate</strong>.</p>
+    <p>Use a <strong>determinate</strong> progress task when you know in advance the amount of work to be completed; in other words, you know the starting and ending values. Sample scenarios for this case include downloading a file for which you know the exact size or displaying the progress of a fundraising effort. In both situations, you know the exact status of the task at any particular time, and you also know what the end goal is—either the number of bytes for the file download or the number of dollars for the fundraiser. In these determinate cases, you can specify HTML5 markup such as this:</p>
+    <pre><code class="language-html">    &#x3C;p>Our goal is to have 1000 users:&#x3C;/p>
+    &#x3C;span>0&#x3C;/span>
+    &#x3C;progress value="50" max="1000">&#x3C;/progress>
+    &#x3C;span>1000&#x3C;/span>
+</code></pre>
+    <p></p>
+    <p>As shown in the preceding code, the <code>&#x3C;progress></code> element has two attributes you need to know: value and max. The value attribute lets you specify the current value or position of the <code>&#x3C;progress></code> element at a specific point in time. The max attribute tells the browser what the maximum possible value is for the element. The browser uses these two values to determine how much of the element should be coloured in. So if I change the value to 750 the progress bar displays the new value like this:</p>
+    <p></p>
+    <p>You use <strong>indeterminate</strong> tasks when you don’t know how long a task will take to complete but still want to show users that some work is occurring and that they should wait. When you don’t specify the value attribute, the browser can infer that the <code>&#x3C;progress></code> element represents an indeterminate task.</p>
+    <p></p>
+    <p>Downloading...</p>
+    <p>Can you see the bar is subtly pulsing?</p>
+    <h2>Using the <code>&#x3C;mark></code> element</h2>
+    <pre><code>Use the `&#x3C;mark>` element to &#x3C;mark>highlight&#x3C;/mark> text
+</code></pre>
+    <p>Use the <code>&#x3C;mark></code> element to highlight text.</p>
+    <p>You have now been introduced to the HTML elements you’ll need to know about for the exam. We can use these to layout our app’s page.</p>
+    <p>
+      <a href="https://platform.multiverse.io/apprentice/attendance-log/188">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod1/wk2/day5.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
