@@ -4,7 +4,7 @@
 
 # Setup and Prep for Bootcamp 
 
-## Overview 
+## Summary  
 
 Day one is about getting to know your cohort and setting up their computers so they are prepared to start prorgamming. 
 
