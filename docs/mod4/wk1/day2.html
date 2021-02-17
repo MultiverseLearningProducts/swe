@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Breadcrumb</title>
+    <title>Mod 4 > Week 1 > Day 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
     <link rel="stylesheet" href="/swe/modest.css">
@@ -10,25 +10,81 @@
     <link rel="stylesheet" href="/swe/style.css">
   </head>
   <body>
-    <h1>Breadcrumb</h1>
+    <h1>Mod 4 > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
+    <p>Todays focus is on the backend part of your application. You will be expected to produce UML diagrams for a data model that you have designed. You should also be able to implement your design, and seed it with data.</p>
     <hr>
-    <h2>Lesson ? - ???</h2>
     <h2>Learning Objectives</h2>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
+    <ul>
+      <li>Create UML diagrams for a data model</li>
+      <li>link to a range of database types and embed data queries within code</li>
+      <li>make a connection to a database;</li>
+      <li>execute CRUD statements on the database;</li>
+      <li>use one-off queries and stored procedures;</li>
+      <li>transform returned data into format the application requires.</li>
+    </ul>
     <h2>Lesson</h2>
-    <h2>Assignment</h2>
-    <hr>
-    <h2>Lesson ? - ???</h2>
-    <h2>Learning Objectives</h2>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <h2>Assignment</h2>
+    <p>Data is fundamental to every application. The whole purpose of the interface layer is to enable users to interact with the data.</p>
+    <p>Get this right everything should slot into place nicely. Get this wrong you can end up with an app that fights itself and is a pain to work with.</p>
+    <p>From module 3 you will be thinking to yourself about the design phase. Can you remember the following:</p>
+    <ul>
+      <li>How will we collect inputs?</li>
+      <li>How will we store/process inputs?</li>
+      <li>How will we output the stored/processed inputs?</li>
+    </ul>
+    <p>In a database that uses schemas the data points you want to store are defined in a schema. If you try to store data that does not match the schema - you'll be in trouble. Below is an example of a schema definition.</p>
+    <pre><code class="language-javascript">CommunityEvent.init({
+  title: DataTypes.STRING,
+  desc: DataTypes.STRING,
+  datetime: DataTypes.DATE,
+  spaces: DataTypes.INTEGER
+}, { sequelize, modelName: 'event' })
+</code></pre>
+    <p>Our schema defines what a community event's properties are. How many different 'types' (i.e. STRING, DATE) are we able to store?</p>
+    <pre><code class="language-javascript">{
+  title: "10 pin bowling",
+  desc: "Come and join us for 3 frames Friday at the Elephant",
+  datetime: "2020-10-31T20:30:00.000Z",
+  spaces: 16,
+  rsvp: 9
+}
+</code></pre>
+    <p>❓ Can we store the event above?</p>
+    <h2>Relationships in a relational database</h2>
+    <p>Data design is thinking about what you are going to store. Storing simple data points is straight forward. What is more interesting is storing the way simple data points are related to each other.</p>
+    <p>The types of relationships between entities in our data model can be <strong>HasMany</strong> or <strong>BelongsTo</strong>. For example an event <strong>Has Many</strong> bookings. A booking <strong>Belongs To</strong> an event.</p>
+    <p>The way to relate data together in schema based datasets is to use the primary id of one record in another record. The name for the field you use to store another record's primary id is the <strong>foreign key</strong>. Referencing the primary key and foreign key in a query joins the two records together.</p>
+    <p>For example:</p>
     <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/###">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/###/wk#/day#.html">prev</a>|<a href="/swe/###/wk#/day#.html">next</a>
+      <img src="https://user-images.githubusercontent.com/4499581/88304701-826b8500-cd00-11ea-80fc-632ab10ab384.jpg" alt="relation join example">
+    </p>
+    <p>Here the <code>id</code> of an event row is stored in a bookings row under the <code>event_id</code> field. With this kind of data design we can query for an event and count all it's related bookings:</p>
+    <pre><code class="language-sql">SELECT events.title, COUNT(bookings.id) as bookings 
+FROM events 
+JOIN bookings ON event.id = bookings.event_id 
+WHERE events.date > GETDATE();
+</code></pre>
+    <h2>Relationships in a document store</h2>
+    <p>Schemaless datastores like MongoDB give you an alternative way to store the relationships between your data points. In a document store in place of tables there are schemaless "collections". Each item in a collection is considered a "document" and they can have nested data points.</p>
+    <p>For example we could have an events collection, and store our events as documents. Each event could have a <code>bookings</code> field that stored an array of <code>booking</code> objects.</p>
+    <p>This looks much easier to deal with, and it is until we want to count all the bookings across all the events. Then we have to query all the events, and sum all the bookings properties across those events.</p>
+    <h2>Document store vs Relational database</h2>
+    <p>Both ways of storing the relationships are effective. Depending on they way you'll need to retrieve your data you might choose one over the other. You can represent BOTH kinds of data using UML entity diagrams. So our document store version of events and bookings might look like this:</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/88308488-fb6cdb80-cd04-11ea-9fa7-317e395ae88e.jpg" alt="document store uml">
+    </p>
+    <h2>Creating a data model</h2>
+    <p>Most frameworks will have a way for you to auto generate entities and the relationships between them. Some libraries require you to declare your models and the relationships between them.</p>
+    <p>This is a really good candidate for some tests. You want to use tests to ensure you have set up the data model correctly that that all the relationships are correct.</p>
+    <h2>Today's Assignment</h2>
+    <p>Can you create a data design for your chosen synoptic project? Read the brief carefully and think about what needs to be captured from the use, what needs to be stored and how you will persist the relationships between different data points.</p>
+    <ul>
+      <li>Create a UML diagram of your data design</li>
+      <li>Implement your data design</li>
+    </ul>
+    <p>
+      <a href="https://platform.multiverse.io/apprentice/attendance-log/209">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod4/wk1/day1.html">prev</a>|<a href="/swe/mod4/wk1/day3.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

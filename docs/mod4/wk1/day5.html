@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Breadcrumb</title>
+    <title>Mod 4 > Week 1 > Day 5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
     <link rel="stylesheet" href="/swe/modest.css">
@@ -10,25 +10,82 @@
     <link rel="stylesheet" href="/swe/style.css">
   </head>
   <body>
-    <h1>Breadcrumb</h1>
+    <h1>Mod 4 > Week 1 > Day 5</h1>
     <h2>Overview of the day</h2>
+    <p>Code review day. Today you should finish off your app as best you can. You coach will give you a 1:1 code review during the day so you can talk through your plan for the synoptic project with them.</p>
     <hr>
-    <h2>Lesson ? - ???</h2>
     <h2>Learning Objectives</h2>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
+    <ul>
+      <li>Demonstrate skills and knowledge to build a full stack application</li>
+    </ul>
     <h2>Lesson</h2>
-    <h2>Assignment</h2>
-    <hr>
-    <h2>Lesson ? - ???</h2>
-    <h2>Learning Objectives</h2>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <h2>Assignment</h2>
+    <p>5 days is the maximum time you have to spend on your synoptic project. You need to learn to cut your cloth accordingly. You should pick your tools, services and products before you start. You should practice building things with your stack before you start.</p>
+    <p>You are less likely to get stuck if you have prepared and feel familiar with your chosen tools, services or products. What follows is just some pieces of advice to have in your mind when you are working.</p>
+    <ul>
+      <li>Working software 90% of the time</li>
+      <li>The Data model is your app</li>
+      <li>Use REST where you can</li>
+      <li>Plan time for styling</li>
+    </ul>
+    <h2>Working software 90% of the time</h2>
+    <p>Try to have working software 90% of the time. Build to a waypoint, then stop and commit working code. Plan a small step of what you will do next (what you can do in 45 minutes). Now execute your plan.</p>
+    <p>If you complete your step before 45mins. Well done! Commit and plan the next step.</p>
+    <p>If your app remains broken for more than an hour you should check:</p>
+    <ul>
+      <li>Are you starting to veer off from your original plan? Why?</li>
+      <li>Have you made an assumption about how something works that is wrong?</li>
+      <li>Do you have bugs/faults occurring but don't know why?</li>
+    </ul>
+    <h3>STOP ☕️ tea break</h3>
     <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/###">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/###/wk#/day#.html">prev</a>|<a href="/swe/###/wk#/day#.html">next</a>
+      <img src="https://media.giphy.com/media/3o7btLQZrOU4ssEew8/giphy.gif" alt="lady drinking tea">
+    </p>
+    <p>Stop and have a tea break. You should be able to roll back to your last working version. You need to re-think what you are doing:</p>
+    <ul>
+      <li>Don't be cleaver - go for simple solutions that work</li>
+      <li>Don't guess how things work - read software docs carefully</li>
+      <li>Go sideways - if you can't progress forward go sideways</li>
+    </ul>
+    <p>Get your app back to a working state. Try again but plan a smaller step. I have found that having your app working about 90% of the time increases the pace of your development, and helps you avoid the rabbit holes of your app falling into an indeterminate state (being broken) for many hours.</p>
+    <h2>The Data model is your app</h2>
+    <p>The quality of everything I have built and worked on has come down to the thought and care that has gone into the data model. Bad data structures cause you to write extra code, that introduces the chance of more bugs. You can end up fighting yourself if you don't think carefully about how and what data you store.</p>
+    <ul>
+      <li>Don't store data that can be derived</li>
+      <li>Store one copy of each data point (one source of truth)</li>
+      <li>Store the very latest value for each data item</li>
+      <li>Relationships are as important as data points</li>
+    </ul>
+    <p>Once you have figured your data model the rest of the app is much easier to build because that structure will help you make other design decisions. For example what RESTful endpoints you need, what controllers you should create or what collections your'll need on which pages.</p>
+    <h2>Use REST where you can</h2>
+    <p>Single page apps can be fast and snappy, but they are complex and harder to build. For a 5 day project you'll find building a RESTful app much quicker and your app will be less prone to bugs. If you plan to take on a single page app then the complexity is usually in the state management.</p>
+    <h3>REST</h3>
+    <p>REST is a proven easy to follow design pattern. Your data model should have identifiable "resources" for example a quiz might have these endpoints:</p>
+    <pre><code class="language-java">GET /quizzes //get all the quizzes
+GET /quizzes/1 //get all the quiz with id 1
+POST /quizzes //create a new quiz
+PUT /quizzes/1 //update the quiz with id 1
+DELETE /quizzes/1 //delete the quiz with id 1
+</code></pre>
+    <p>The design pattern saves you time and your app's structure will be robust and easy to extend. One of the current BCS synoptic projects explicitly asks you to build a RESTful app.</p>
+    <h3>SPAs</h3>
+    <p>With single page apps your data model needs to be loaded into the browser, and not necessarily all at once. You need a backend that will give you your data in the right shape for your page or component. You'll end up implementing a data model on the backend, and frontend.</p>
+    <p>The classic pattern is to load an HTML page that executes your React app. That React app makes calls to the backend server to get data as and when the user navigates around the app. You'll need spinners indicating that data is loading...</p>
+    <p>
+      <img src="https://i2.wp.com/media.boingboing.net/wp-content/uploads/2015/10/tumblr_nlohpxGdBi1tlivlxo1_12801.gif" alt="pink head spinner">
+    </p>
+    <p>Just be aware of the extra work and practice before you start. You should also find a good routing library to help you structure your frontend code. This is a warning for apprentices planing to build in React, a frontend framework made for single page apps (SPAs). Know what you are doing before you start.</p>
+    <h2>Plan time for styling</h2>
+    <p>Users equate quality with good looking frontends. If your app looks great users believe that is is of good quality. 5 days is such a short amount of time you'll be really pushed to create CSS from scratch that looks good. Use a design system and leverage the components and styling that it gives you.</p>
+    <p>You'll still need to spend time making your app look consistent. Plan for that time. Make that time. Be mindful of spacing. Inconsistent spacing is the one thing that makes your UI look amateurish.</p>
+    <p>This is most effective toward the end of your build when all the views, pages and components are in place and wired up. Make a pass to ensure consistent spacing around form elements, buttons, lists, menu items etc.</p>
+    <p>
+      <img src="https://css-tricks.com/wp-content/uploads/2019/04/carbon.png" alt="carbon example">
+    </p>
+    <h2>Assignment</h2>
+    <p>Arrange a code review slot with your coach</p>
+    <p>
+      <a href="https://platform.multiverse.io/apprentice/attendance-log/212">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod4/wk1/day4.html">prev</a>|<a href="/swe/mod4/wk2/day1.html">next</a>
     </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
