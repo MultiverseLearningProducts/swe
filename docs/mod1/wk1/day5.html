@@ -101,6 +101,8 @@
     <pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt -out decrypted_vote.txt
 </code></pre>
     <h3>Results</h3>
+    <p>To decrypt, we will use a bash command to batch decrypt all of your votes in one go:</p>
+    <p><code>for i in ./vote*.txt;do echo "`openssl rsautl -decrypt -inkey id_rsa.pem -in "$i"`" >> output.txt;done</code></p>
     <p>The votes are in and the new cohort president is...</p>
     <h3>Summary</h3>
     <p>In this session we have generated an asymmetric key pair consisting of a public and private key. You have used a public key to encrypt a file and have sent that to me securely and privately. You have seen me use my private key to decrypt your file and retrieve the name you sent me. My private key has not moved from my disc and we've been able to send encrypted messages without having to share sensitive keys.</p>
