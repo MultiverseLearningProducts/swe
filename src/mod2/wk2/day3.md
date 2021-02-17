@@ -8,8 +8,8 @@
 
 ## Learning Objectives
 
-* Read geolocation data using the GeoLocation API
-* Use XMLHttpRequest
+* _1.4 Implement HTML5 APIs Geolocation API_ 
+* _2.4 implement a callback by using anonymous functions; handle the “this” pointer_
 
 ## Before we start
 
@@ -102,7 +102,7 @@ Display country flags next to tracks in your app
 
 ## Learning Objectives
 
-* Use jQuery to make ajax requests
+* _2.4 Use jQuery to make ajax requests_
 
 ## Before we start
 

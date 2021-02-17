@@ -8,7 +8,7 @@
 
 ## Learning Objectives
 
-* Load javascript on the page using different methods
+* _ 1.2 Write code that interacts with UI controls Programmatically add and modify HTML elements._
 
 ## Before we start
 
@@ -61,7 +61,7 @@ You can wait for the page to load before calling your javascript. Using jQuery t
 
 ```javascript
 $(function () {
-    // you code goes in here
+    // your code goes in here
 })
 ```
 

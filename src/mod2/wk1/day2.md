@@ -27,7 +27,8 @@ Choose a [font](https://fonts.google.com/) for your application and use **@font-
 
 ## Learning Objectives
 
-*   _4.2 Style HTML box properties Apply styles to alter appearance attributes (size, border and rounding border corners, outline, padding, margin); apply styles to alter graphic effects (transparency, opacity, background image, gradients, shadow, clipping); apply styles to establish and change an element’s position (static, relative, absolute, fixed)_
+* _4.2 Style HTML box properties Apply styles to alter appearance attributes (size, border and rounding border corners, outline, padding, margin); apply styles to alter graphic effects (transparency, opacity, background image, gradients, shadow, clipping); apply styles to establish and change an element’s position (static, relative, absolute, fixed)_
+* _4.3 Create a flexible content layout Implement a layout using a flexible box model; implement a layout using multi-column; implement a layout using position floating and exclusions; implement a layout using grid alignment; implement a layout using regions, grouping, and nesting_
 
 ## Before we start
 

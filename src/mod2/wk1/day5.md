@@ -224,8 +224,7 @@ Can you figure out a regex to do that? You can use an online regex playground li
 
 ## Learning Objectives
 
-* Use `localstorage` API
-* 
+* _3.4 Serialize, deserialize, and transmit data Binary data; text data (JSON, XML);_
 
 ## Before we start
 

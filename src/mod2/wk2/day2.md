@@ -10,6 +10,9 @@ Today is all about the `<canvas>` element.
 
 ## Learning Objectives
 
+* _1.2 implement HTML5 canvas_
+* _2.1 Implement program flow Iterate across collections and array items;_
+
 ## Before we start
 
 ## Materials needed
@@ -82,8 +85,8 @@ Can you spot the canvas context interface? We call `getContext('2d')` to access 
 
 ## Learning Objectives
 
-* Use inheritance
-* Draw on the canvas element
+* _1.6 Create and implement objects and methods Implement native objects; create custom objects and custom properties for native objects using prototypes and functions; inherit from an object; implement native methods and create custom methods_
+* _1.2 implement HTML5 canvas_
 
 ## Before we start
 

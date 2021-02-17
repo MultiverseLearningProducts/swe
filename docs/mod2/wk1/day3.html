@@ -16,7 +16,7 @@
     <h2>Lesson 1 - Javascript</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Load javascript on the page using different methods</li>
+      <li><em>1.2 Write code that interacts with UI controls Programmatically add and modify HTML elements.</em></li>
     </ul>
     <h2>Before we start</h2>
     <p>You should now have created the layout of your audio app using semantic HTML elements. Now we want to start introducing some interactivity and that is going to require some javascript.</p>
@@ -48,7 +48,7 @@ grid.appendChild(newThing)
     <p>Javascript files are loaded in order on the page. So you MUST load jQuery first -> then the DOM -> then your javascript. If you load your javascript before jQuery or the DOM if you target elements before they have loaded your code might fail or error.</p>
     <p>You can wait for the page to load before calling your javascript. Using jQuery this is easy todo by ensuring all your code is called in side the following wrapper around the onload event that the DOM fires when everything has arrived over the wire.</p>
     <pre><code class="language-javascript">$(function () {
-    // you code goes in here
+    // your code goes in here
 })
 </code></pre>
     <h2>Using jQuery</h2>
