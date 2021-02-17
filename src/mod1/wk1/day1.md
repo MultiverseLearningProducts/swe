@@ -24,6 +24,8 @@ We are going to use [Postman](https://www.postman.com/) to call some RESTful API
 
 ## Materials needed
 
+[HTTP slides](https://docs.google.com/presentation/d/1OFtwlhE-3qTp7qid4m7wlV2iKMvHQF_SYf2rbD_caKA/edit?usp=sharing)
+
 ## Lesson
 
 HTTP stands for the 'hyper text transfer protocol'. It is a protocol or 'way of doing things' which means if you meet a standard set of requirements you can implement HTTP in any language. Lets have a look at what goes into an HTTP request:

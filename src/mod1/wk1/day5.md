@@ -88,6 +88,10 @@ openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt -out decrypted_vote.txt
 
 ### Results
 
+To decrypt, we will use a bash command to batch decrypt all of your votes in one go:
+
+```for i in ./vote*.txt;do echo "`openssl rsautl -decrypt -inkey id_rsa.pem -in "$i"`" >> output.txt;done```
+
 The votes are in and the new cohort president is...
 
 ### Summary

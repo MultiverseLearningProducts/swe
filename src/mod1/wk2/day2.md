@@ -5,10 +5,9 @@ Today we are going to learn about how to use OAuth to secure our API.
 
 ## Learning Objectives
 * Understand the limitations of Basic Auth
-* Know why and how to use sessions on a server 
+* Know why and how to use Sessions on a server 
 * Understand the structure and purpose of JWT
 * Create a UML diagram to communicate the sequence of the OAuth flow 
-
 * Understand OAuth and how it is used to secure website and APIs
 * Implement OAuth using Auth0
 * Understand the OpenID Connect protocol
@@ -138,8 +137,8 @@ This is now a more familiar concept to you. Getting a session assigned to you is
 * Add `/login` and `/logout` routes
 * The `/login` route should be the only route that accepts Basic auth request
 * Once a user is authenticated with Basic auth add them to a session
-* Update `/users/:id` to only return the user info if the user is in a session
-* If a user is in a session and visit the `/logout` route this should end their session and they will no longer be able to access `/users/:id`
+* Update `/airports` and your other endpoints to only return the airport info if the user is in a session
+* If a user is in a session and visit the `/logout` route this should end their session and they will no longer be able to access `/airports`
 * Put your solution on Github and share it with your coach
 
 ----
@@ -157,6 +156,8 @@ This is now a more familiar concept to you. Getting a session assigned to you is
 * Make sure you have installed plant UML
 
 ## Materials needed
+
+[OAuth Slides](https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing)
 
 ## The problem with sessions
 

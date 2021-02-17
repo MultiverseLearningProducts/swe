@@ -150,4 +150,4 @@ Before taking the quiz below you will have some time to read back over the sessi
 Can you complete [this Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=8737)?
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/180)
-[main](/swe)|[prev](/swe/bootcamp/wk1/day2.html)|[next](/swe/bootcamp/wk1/day4.html)
+[main](/swe)|[prev](/swe/mod1/wk1/day2.html)|[next](/swe/mod1/wk1/day4.html)
