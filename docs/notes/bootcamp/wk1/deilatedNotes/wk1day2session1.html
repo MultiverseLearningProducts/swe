@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 2</h1>
+    <p><a href="https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day2.html">Bootcamp > Week 1 > Day 2</a></p>
+    <h2>Overview of the day</h2>
+    <p>Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style.</p>
+    <h1>Lesson 1 - Your first failing test</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Write a unit test</li>
+      <li>Describe the purpose of a unit test</li>
+      <li>Implement the TDD cycle of red, green, refactor</li>
+    </ul>
+    <h2>Pre-work or Assumed knowledge</h2>
+    <ul>
+      <li>family tree assignment</li>
+    </ul>
+    <h2>Materials</h2>
+    <ul>
+      <li>code editor</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>This introduces TDD. Use this session to support apprentices in getting Jest set up and running. Apprentices will be organising their code using <code>module.exports</code> and <code>require</code>. In our next session they can practice setting this up again themselves. You might want to expand on more of the <a href="https://jestjs.io/docs/en/expect">Jest expect</a> API. Those who need stretch objectives should try to use a few different expects i.e. objectContaining, not.objectContaining, toHaveProperty</p>
+    <h2>Assessment Criterua</h2>
+    <p>They can practice the family tree again if they finish this early</p>
+    <h2>Additional Reading</h2>
+    <ul>
+      <li><a href="https://jestjs.io/docs/en/expect">Jest expect API</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">7 errors in Javascript</a></li>
+    </ul>
+    <h2>Overview</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Overview</th>
+          <th>Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#Welcome">Welcome</a></td>
+          <td>10 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#Tests">Tests</a></td>
+          <td>20 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#TDD-Cycle">TDD Cycle</a></td>
+          <td>15 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#Jest">Jest</a></td>
+          <td>10 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#Assignment">Assignment</a></td>
+          <td>5 min overview</td>
+        </tr>
+        <tr>
+          <td><strong>Overall</strong></td>
+          <td><strong>1 hr 5 mins</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Detailed Notes: Lesson 1 - Your first failing test</h2>
+    <h3>Welcome</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>10 minutes</h4>
+    <p>Welcome apprentices to their next day of bootcamp and do a quick wellness check. It is important at the start of each session to assess how apprentices are feeling and ask if they have questions to create an open environment.</p>
+    <p>Before moving on to the session, go over yesterday’s final assignment. Provide any comments you may have after reviewing their GitHub code the night before.</p>
+    <p>Things you should always do/ask:</p>
+    <ul>
+      <li>In summary, what did we talk about yesterday</li>
+      <li>How did you feel about the last assignment</li>
+      <li>Do you have any questions or did you get stuck and need clarity</li>
+    </ul>
+    <p>To facilitate these questions you can have apprentices openly talk to the whole group or break out in pairs/breakout rooms to discuss themselves and share their code/give feedback on their code, then come back adn share</p>
+    <h3>Tests</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>20 minutes</h4>
+    <p>What are tests? Code does things on computers for us. How do we know that our code is working the way we think it is? Usually we would run the code and see if it is working. Are we not just testing the code?</p>
+    <p>
+      As the programmes we write code that gets larger and more complex, and it is not always possible to test our code by just running it. For example we may be unable to force a particular kind of error that we want to make sure we are handling correctly.
+      This is why we write tests. They ensure that our software is working as we have designed. We are trying to prevent 3 things with our tests:
+    </p>
+    <ul>
+      <li>Errors</li>
+      <li>Defects (bugs)</li>
+      <li>Failures</li>
+    </ul>
+    <p>Errors can be further divided into 7 types:</p>
+    <ul>
+      <li>EvalError</li>
+      <li>InternalError</li>
+      <li>RangeError</li>
+      <li>ReferenceError</li>
+      <li>SyntaxError</li>
+      <li>TypeError</li>
+      <li>URIError</li>
+    </ul>
+    <p>Some of these errors can be caught and handled safely in our programme. You are likely as beginners to experience many SyntaxErrors. SyntaxErrors will cause your programme to fail.</p>
+    <p>You can read more about these in the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">mozilla documentation.</a></p>
+    <p>With defects our code works, but not as we intended. These are often called "bugs". They are called bugs because when computers originally were more analogy with valves instead of Electronic circuits, sometimes programs would malfunction because actual insects would get into the physical valves of the computer and prevent the programme from running correctly. Hence bugs!</p>
+    <p>Failures are when our programme "crashes" it stops running and errors in a way that cannot be recovered from.</p>
+    <h4>Ask the apprentice</h4>
+    <p>What are some SyntaxErrors you’ve had in the past? What about bugs? How long did it take you to solve the problem? How did you solve it?</p>
+    <p>Place apprentices in breakout rooms to share their experiences with SyntaxErrors and bugs. As they talk about how they solved problems, ask them to share with the coach the list of resources they used to solve SyntaxErrors. The coach at the end of the day will share the list with the whote cohort to use as a reference.</p>
+    <h3>TDD Cycle</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>15 minutes</h4>
+    <p>So tests are a great thing to help us make sure our code works , but as said earlier we don’t want to run a huge chunk of code and get a crazy amount of errors. Instead, we want to have smaller and more frequent tests on our code.</p>
+    <p>This process is known as “Test-driven development” (TDD) and refers to a style of programming in which three activities are tightly interwoven: coding, testing (in the form of writing unit tests) and design (in the form of refactoring).</p>
+    <p>
+      <img src="https://miro.medium.com/max/700/1*pP8Ks6tlt718jJg3fqrtvw.jpeg" alt="TDD Cycle">
+    </p>
+    <p>There are 3 cycles behind Test Driven Development: Red, Green and Refactor just like there are 3 lights for traffic control. These cycles mean:</p>
+    <ul>
+      <li>Red: write a test and it fail</li>
+      <li>Green: write a test for a functionality and make sure it pass the test</li>
+      <li>Refactor: Optimizing the previous passed test and make sure all test cases pass.</li>
+    </ul>
+    <p>Let's try it out!</p>
+    <h3>Jest</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>15 minutes</h4>
+    <p>For testing we will use Jest, a testing framework developed at Facebook. You should have installed Jest before this session. If you haven’t, do that now.</p>
+    <h4><em>Coach Note</em></h4>
+    <p><em>Give time for apprentices to install Jest. You may need to go over Jest a little more in depth to show some of the functions if they have never used it before. Take the time to do this and then move on to the activity. TDD starts with a failing test. So we write a test that we know will fail.</em></p>
+    <p>
+      <code>describe('person objects', () => { </code><code>test('have a name', () => { </code><code>expect(person.name).toEqual("test person") </code><code>})</code>
+      <code>})</code>
+    </p>
+    <p><code>person</code> is not defined. Lets create a person in our <code>person.js</code> file and export it, then import them into our test file.</p>
+    <p>
+      <code>const person = { </code><code>name: "test person"</code>
+      <code>}module.exports = person</code>
+    </p>
+    <p>then import it into the test file by adding this line to the top of the file.</p>
+    <p><code>const person = require('./person')</code></p>
+    <p>Now our tests pass!This TDD process has us write the test first. It should fail. Then we write the code that makes the test pass. To pass the test (move from red to green) we only need to write the minimal amount of code to pass. You don’t need to be fancy! Then go back and write the next test etc.</p>
+    <p>This may not be how we usually think of testing things. Sometimes we build something and test at the end to make sure it works. Using TDD we know something will fail because we write the test to show it will, and as we code, we create the environment for passing.</p>
+    <h3>Assignment</h3>
+    <p><a href="#Overview">back</a></p>
+    <p>Can you use TDD to recreate the family tree that you previously constructed? Only now there should be a set of tests that you can run to prove your family tree is constructed correctly.</p>
+    <p>When you are done, share your code via GitHub with your coach.</p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>
