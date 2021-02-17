@@ -2,9 +2,15 @@
 
 ## Overview of the day
 
+Today we focus on the requirements analysis stage of the SDLC.
+
+----
+
 ## Lesson 1 - Requirements Analysis
 
 ## Learning Objectives
+
+At the end of this section you should be able to:
 
 *   Distinguish the role of the customer and the user in defining requirements.
 *   Describe how user research can facilitate understanding of the customer and enduser; who they are; the problem they are faced with; and how they are currently dealing with the problem, including questionnaires; user interviews; contextual enquiry; focus groups; personas; customer journey mapping.
@@ -22,12 +28,6 @@
 *   Recognise common ways in which software requirements can be expressed.
 *   Describe the qualities of good requirements and the impact of poor requirements.
 *   Explain how a data dictionary / glossary of terms can be used.
-
-## Before we start
-
-## Materials needed
-
-* [slides](https://docs.google.com/presentation/d/1hmRdZZZ6KMa5i9hFEJTnAUYi5XwEBOMHzR8Uc2JLptU/edit?usp=sharing)
 
 ## Lesson
 
@@ -117,7 +117,15 @@ There are a number of roles in this stage that we should be familiar with.
 
 Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the **Project Sponsor** as a customer. They will ultimately receive the final product, but they may not use the product themselves, the team or their workers may end up using the product.
 
-### Elicitation
+## Assignment 🤔
+
+In your own words can you explain the difference between the Project Sponsor and the Users?
+
+[Project Sponsor and Users Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7992&action=editsubmission)
+
+----
+
+## Lesson 2 - Elicitation
 
 > Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron.
 
@@ -154,27 +162,19 @@ To perform **“Activity sampling”** you do the following: At different times 
 
 The set of activity samples when considered together can help provide an impression of what members of the organisation are doing during working hours.
 
-## Assignment
+### Functional vs Non-Functional
 
-In your own words can you explain the difference between the Project Sponsor and the Users?
+!(https://www.youtube.com/embed)
 
-[Project Sponsor and Users Assignment](https://applied.multiverse.io/mod/assign/view.php?id=7992&action=editsubmission)
+Business analysis elicit both functional and non-functional requirements.
 
-<hr/>
+## Thinking time 🤔
 
-## Lesson 2 - Function vs Non-Functional
+In your own words can you identify a functional and non-functional component of the software you have worked on.
 
-## Learning Objectives
+[Functional and Non-Functional Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7993&action=editsubmission)
 
-## Before we start
-
-## Materials needed
-
-## Lesson
-
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/zCX-N1H8Vps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-### The Output
+# The Output
 
 The output of this stage is a requirements document. There are various forms this document might take. Below is a break down of the main 4.
 
@@ -230,7 +230,7 @@ The output of this stage is a requirements document. There are various forms thi
 
 </table>
 
-### What makes a “Good” requirement
+## What makes a “Good” requirement
 
 There is quite an art to form a good requirement. Below are the main qualities your requirement must have:
 
@@ -364,10 +364,7 @@ Functional models are often a way to illustrate or explain how a system needs to
 
 ## Assignment
 
-In your own words can you identify a functional and non-functional component of the software you have worked on.
-
-[Functional and Non-Functional Assignment](https://applied.multiverse.io/mod/assign/view.php?id=7993&action=editsubmission)
+Explore the [Center of Missing People](https://sites.google.com/site/centerofmissingpeople) site and identify the qualities of a good requirement. Submit your comments to your coach for review.
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
-[prev](/swe/mod3/wk1/day1.html) | [next](/swe/mod3/wk1/day3.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/mod3/wk1/day1.html)|[next](/swe/mod3/wk1/day3.html)

@@ -1,34 +1,38 @@
 # Mod 3 > Week 1 > Day 1
 
-## Overview of the day
-
-Give the apprentices an overview of the 7 stages of the Software Developement Life Cycle (SDLC).
-
-## Learning Objectives
-
-* Recognise that there are several ways to represent the terminology and stages of the SDLC.
-* Describe the role of the SDLC in the context of developing of IT systems and services, and operational software end-products.
-* Explain the purpose of the SDLC as a means to facilitate the creation of effective software.
-
-## Before we start
-
-* Make sure apprentices have started their portfolio's and they are able to access them and edit their documents (try to have them set up in [https://papper.whitehatcoaches.org.uk](https://papper.whitehatcoaches.org.uk))
-
-## Materials needed
-
-* [slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/pub?start=false&loop=false&delayms=3000)
-
-# Lesson 1 - Introduction to the SDLC
-
 ![BCS Software Methodologies](https://user-images.githubusercontent.com/4499581/74535594-076e9900-4f2e-11ea-990c-1dda13f0e278.png)
 
-The function of the SDLC is to translate business requirements through a structured set of processes to operational IT systems.
+# Software Development Life Cycle (SDLC)
 
-The role of the SDLC is to remove the unpredictable “human element” and replace it with structured and managed processes. This makes possible the construction of larger more complex IT systems.
+The _function_ of the SDLC is to translate business requirements through a structured set of processes to operational IT systems.
+
+The _role_ of the SDLC is to remove the unpredictable “human element” and replace it with structured and managed processes. This makes possible the construction of larger more complex IT systems.
 
 It is important to appreciate that the essence of this module is internalising the formula and systems for creating mission impact with software. It’s going to make you a professional software engineer with savvy business awareness.
 
 Whilst we learn about these abstract ideas and concepts it is essential that you make them come to life by applying them back to your own experiences and business environment.
+
+What follows is a brief overview of the different inputs and outputs for each stage of the SDLC. At the end of this module you should be able to:
+
+*   Recognise that there are several ways to represent the terminology and stages of the SDLC.
+*   Describe the role of the SDLC in the context of developing of IT systems and services, and operational software end-products.
+*   Explain the purpose of the SDLC as a means to facilitate the creation of effective software.
+
+----
+
+## Lesson 1 - SDLC
+
+## Learning Objectives
+
+* What is the software development lifecycle (SDLC)
+* What are the seven generic stages and their high-level deliverables from each stage
+* What are the main activities in each stage
+
+## Before we start
+
+## Materials needed
+
+## Lesson
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
@@ -54,9 +58,13 @@ Like a recipe is only a representation of a dish that you could make, a framewor
 
 Memorise these 7 stages of the SDLC. You will see variations of these on-line and in literature. These are the 7 terms that BCS use so we are going to use them.
 
-# Lesson 2 - Feasibility Study
+----
+
+## Lesson 2 - Feasibility Study
 
 ## Learning Objectives
+
+The inputs for the feasibility study are business needs. At the end of this section you should be able to:
 
 *   Explain how software development is initiated when a need or an opportunity is identified.
 *   Describe the purpose and main activities of a feasibility study, including:
@@ -76,19 +84,9 @@ Memorise these 7 stages of the SDLC. You will see variations of these on-line an
     *   increased income
 *   Demonstrate a simple cost benefit analysis for a given case.
 
-> Management is doing things right, leadership is doing the right things.
-
-## Before we start
-
-* You should be able to recall the 7 stages of the SDLC
-
-## Materials needed
-
-* [slides](https://docs.google.com/presentation/d/e/2PACX-1vTT3P1ioBFXXr7u0hNMmx03XYMMydTxmYJ7GUS0IK6lxySP9O-3fobzpAjV8cjY2uNm2KlzVJkrye-I/pub?start=false&loop=false&delayms=3000)
-
 ## Lesson
 
-The inputs for the feasibility study are business needs.
+> Management is doing things right, leadership is doing the right things.
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTT3P1ioBFXXr7u0hNMmx03XYMMydTxmYJ7GUS0IK6lxySP9O-3fobzpAjV8cjY2uNm2KlzVJkrye-I/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
@@ -123,6 +121,10 @@ To become more familiar with this concept can you work your way through these tw
 > 6.  £3.5million for displacement of households
 > 7.  £11million in time-savings calculated from wages
 
+❓ What is the cost benefit ratio is (rounded to 2 decimal places)
+
+❓ Given the cost benefit ratio of the above should you go ahead with the 4th lane?
+
 > **Example 2.** A financial technology startup is expanding and adding two new programmers. The CEO of the company decides to run a cost benefit analysis to determine whether the decision will be beneficial to the company - and to what degree.  
 >   
 > The company is analysing a time horizon of one year, and estimates that revenue would increase some 50% if the two programmers were hired.  
@@ -133,6 +135,10 @@ To become more familiar with this concept can you work your way through these tw
 >   
 > When calculating benefits, the CEO would examine the benefit of additional revenue within a 12 month period, estimated around £100,000\. Additionally, the increase in product quality resulting from the new programmers (and therefore presumed customer satisfaction) would increase by 10%, adding an estimated £10,000 in value to the company, within a 12 month period.
 
+❓ Should the CEO hire 2 new programmers?
+
+❓ What is the cost benefit ratio (rounded to 2 decimal places)?
+
 For the resources and investment will the organisation see a benefit that out weights this cost? This is what this phase of the SDLC is concerned with and will distill all this thinking into an output.
 
 ## Output
@@ -141,10 +147,10 @@ The output of this phase is a feasibility study for the executives running the o
 
 This output forms the input for the next phase of the software development life cycle.
 
-## Assignment 🤔
+## Assignment
 
 _Can you identify the business need that the feature you are working on addresses?_
+[Business Needs Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7991&action=editsubmission)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/198)
-[next](/swe/mod3/wk1/day2.html)
-[main](/swe)
+[main](/swe)|[prev](/swe/mod2/wk2/day5.html)|[next](/swe/mod3/wk1/day2.html)
