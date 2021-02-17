@@ -543,11 +543,19 @@ app.get('/airports', (req, res) => {
 
 Based on your `airports-config.yaml` OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Your server should have the ability to serve requests to Create, Read, Update and Delete airports.
 
+|HTTP Method|URL|Status code|Description|	
+|-----------|---|-----------|-----------|	
+|GET|`/airports`|200|retrieve all airports|	
+|POST|`/airports`|201|create a new user|	
+|GET|`/airports/{id}`|200|retrieve a specific user|	
+|PUT|`/airports/{id}`|200|update a user|	
+|DELETE|`/airports/{id}`|200|delete a user|
+
 Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.
 
 ### Part 2
 
-We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.
+We have 28,000 airport records. That's a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.
 
 `http://localhost:3000/airports?page=2&pageSize=25`
 

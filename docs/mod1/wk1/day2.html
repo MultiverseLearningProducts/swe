@@ -567,9 +567,51 @@ app.get('/airports', (req, res) => {
     <h2>Assignment</h2>
     <h3>Part 1</h3>
     <p>Based on your <code>airports-config.yaml</code> OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Your server should have the ability to serve requests to Create, Read, Update and Delete airports.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>HTTP Method</th>
+          <th>URL</th>
+          <th>Status code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td><code>/airports</code></td>
+          <td>200</td>
+          <td>retrieve all airports</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td><code>/airports</code></td>
+          <td>201</td>
+          <td>create a new user</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td><code>/airports/{id}</code></td>
+          <td>200</td>
+          <td>retrieve a specific user</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td><code>/airports/{id}</code></td>
+          <td>200</td>
+          <td>update a user</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td><code>/airports/{id}</code></td>
+          <td>200</td>
+          <td>delete a user</td>
+        </tr>
+      </tbody>
+    </table>
     <p>Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.</p>
     <h3>Part 2</h3>
-    <p>We have 28,000 airport records. Thats a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.</p>
+    <p>We have 28,000 airport records. That's a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.</p>
     <p><code>http://localhost:3000/airports?page=2&#x26;pageSize=25</code></p>
     <p>Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter (this should default to 25).</p>
     <p>❓ What pagination errors might you now need to handle?</p>
