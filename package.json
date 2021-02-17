@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./lib/main.js",
+    "build-win": "docker run -it -v $PWD:/app -w '/app' node:15-alpine npm i && npm run build",
     "publish": "node ./lib/main.js && git add -A && git commit -m 'rebuild pages' --allow-empty && git push origin master"
   },
   "author": "",

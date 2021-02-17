@@ -30,8 +30,8 @@
 
 ## Assignment
 
-[attendance log](https://platform.whitehat.org.uk/apprentice/attendance-log/###)
-[main](/swe)|[prev](/swe/bootcamp/wk#/day#.html)|[next](/swe/bootcamp/wk#/day#.html)
+[attendance log](https://platform.multiverse.io/apprentice/attendance-log/###)
+[main](/swe)|[prev](/swe/###/wk#/day#.html)|[next](/swe/###/wk#/day#.html)
 
 Notes
 
