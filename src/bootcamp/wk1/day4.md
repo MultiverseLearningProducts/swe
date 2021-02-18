@@ -13,7 +13,12 @@ If you are struggling with any of the concepts from today, the following resourc
 <hr/>
 
 ## Lesson 1 - Synchronous versus asynchronous code
+## Learning Objectives
+* Understand the JavaScript call stack
+* Understand stack traces
+* Understand how timers work
 
+## Lesson
 JavaScript is a single threaded language. This means it has one call stack (where code is executed) and one memory heap (where objects are stored). JavaScript executes code in order and must finish executing a piece of code before moving onto the next. We call this **synchronous**, or blocking, execution. Other languages such as C++ and Java are multi-threaded and can execute multiple pieces of code at the same time. We refer to this as **asynchronous** or non-blocking execution.
 
 ## What is the Call Stack?

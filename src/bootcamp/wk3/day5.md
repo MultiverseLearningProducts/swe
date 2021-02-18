@@ -52,6 +52,10 @@ Add a ratings system for the restaurant model.
 * If you want to include the names of random users in your reviews then checkout [Mockaroo](https://www.mockaroo.com/) for mock data.
 
 ## Lesson 2 - Server side validation
+## Learning Objective
+* Understand the importance of validation to protect against attacks
+
+## Lesson
 In previous lessons we have added client side validation to check for the user entering a valid restaurant name and url. However, client side validation can be subverted either by disabling JavaScript in the browser, or, my using a tool such as Postman to call the API directly, bypassing the form.
 
 Listen to this [short video (3mins)](https://www.youtube.com/watch?v=vVJ2ukke34s) which explains why this can be a problem. Also think back to last week when we discussed [SQL injection attacks](https://portswigger.net/web-security/sql-injection). 

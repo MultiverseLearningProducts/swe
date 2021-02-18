@@ -46,7 +46,11 @@ run the file with `node dbconnect.js`. You should see the console logs appear. Y
 ----
   
 ## Lesson 2 - Using Node.js to run queries
+## Learning Objectives
+* How to integrate SQL into Node.js code
+* Awareness of SQL injection
 
+## Lesson
 You may find the following links useful:
   * [How to connect to a database](https://www.sqlitetutorial.net/sqlite-nodejs/connect/)
   * [How to insert data into a database](https://www.sqlitetutorial.net/sqlite-nodejs/insert/)
@@ -119,6 +123,10 @@ This file/database will be written to disc, data we store here we can access eve
 ---
 
 ## Lesson 3 - Visualising your database
+## Learning Objectives
+* Use a VSCode plugin to view tables
+
+## Lesson
 There is an `sqlite` plugin for VSCode which allows you to visualise your database.
 
 ## Assignment

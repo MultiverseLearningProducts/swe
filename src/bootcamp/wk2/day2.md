@@ -24,6 +24,11 @@ Once you are comfortable with this syntax, move on to look at how to [create a t
 
 ----
 ## Lesson 2 - Creating the Restaurant Tables
+## Learning Objectives
+* Understand how to create tables using SQL
+
+## Lesson
+
 It's important to note that the syntax for creating tables and naming of data types does vary slightly from vendor to vendor.
 
 The Data Types for SQLite are as follows:

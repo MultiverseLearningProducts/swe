@@ -1,16 +1,41 @@
 # Bootcamp > Week 2 > Day 3
 
 ## Overview of the day
+Today we are starting to use our SQL skills in our Node.js code. This is an important step where we start to connect our code to a database.
 
-More SQLite3 only now via Node.js.
-
-# Session 1 - SQLite3 in Node.js
+## Lesson 1 - SQLite3 installation
 
 ## Learning Objectives
+* Install SQLite3 
 
-* Install and initiate a database in a Node.js project
-* Execute queries on our database in Node.js
-* Implement a recursive function
+## Assignment
+There is no differentiation in this assignment, all students require sqlite installed. Where necessary, use breakout rooms to allow apprentices to help each other.
+
+---
+## Lesson 2 - Using Node.js to run queries
+## Learning Objectives
+* How to integrate SQL into Node.js code
+* Awareness of SQL injection
+
+## Assignment
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to find media references to instances of SQL injection attacks on companies|
+
+---
+## Lesson 3 - Visualising your database
+## Learning Objectives
+* Use a VSCode plugin to view tables
+
+## Assignment
+There is no differentiation in this assignment, all students require sqlite installed. Where necessary, use breakout rooms to allow apprentices to help each other.
+
+---
+## Lesson 4 - Loading JSON data into SQLite3 using Node.js
+## Learning Objectives
+In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.
 
 ## Pre-work or Assumed knowledge
 
@@ -32,46 +57,9 @@ In this session we have a really nice dual layer of complexity; we are programmi
 
 Tricky challenge. Make sure you are clear about whats being asked here.
 
-## Additional Reading
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3
 
-<hr/>
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to read about memory leaks resulting from not closing database connections|
 
-# Session 2 - Consolidate SQLite3 in Node.js
-
-## Learning Objectives
-
-* Implement nested iteration
-* Relate data using foreign keys correctly
-
-## Pre-work or Assumed knowledge
-
-* Loaded an array of data into a database
-
-## Materials
-
-```sh
-curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
-```
-
-## Notes
-
-Building on the mornings activity. Now things get more complex as we have a nested array. You might need to remind apprentices of this piece of SQLite3 API:
-
-```javascript
-db.run('YOUR SQL QUERY;', function (error) {
-    /* this callback function runs after Node.js has 
-    run the query on sqlite3 database, and the database 
-    has emitted an event saying it's finished. In this 
-    callback function on the `this` context you can 
-    access the id of the last record you inserted. 
-    This will be useful later */
-    const id = this.lastID
-})
-```
-You can imagine here they will be inserting a restaurant, need to capture the `restaurant_id` value and use that when they iterate over the menus, and then capture the `menu_id` to insert the items correctly.
-
-## Assignment
-
-Look for a set of tests that crawl over the model.
-
-## Additional Reading

@@ -1,41 +1,32 @@
 # Bootcamp > Week 1 > Day 1 (Coach Notes)
 
-[Bootcamp > Week 1 > Day 1](https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day1.html)
+[Bootcamp > Week 1 > Day 1](https://multiverselearningproducts.github.io/swe/bootcamp/wk1/day1.html)
 
 ## Overview of the day
 
-Day one is about the cohort getting to know each other. Being introduced to the standard and getting their computer set up. Introduce Objects and functions in Javascript.
+Day one enables the cohort to get their computer set up so that they can write JavaScript using Node.js. We introduce the concepts of Arrays, Objects and functions in Javascript.
+
+__Invite the line managers and CSMs to the end of Bootcamp preentation (3-5pm on the last Friday) if you have not done so already!__
 
 <hr/>
-
-# Session 1 - Flying start
-
-Your apprenticeship starts today
-
-## Learning Objectives
-
-* Recall the names of other members of the cohort
-* List the places other members of the cohort work
-* Share a fact about another member of the cohort
-* Recall 3 key competencies from the standard
 
 ## Pre-work or Assumed knowledge
 
-* accounts created apprentices should be able to log in with their platform credentials.
-
-## Materials
-
-* [slide deck](https://docs.google.com/presentation/d/1ec5SgzTACT3lrgcRwKoDiOHqJEDCDoQOiWgArq_j_jA/edit?usp=sharing)
-
-## Notes
-
-Cognassist can take a while to complete (45mins).
-
-## Assignment
-
-Cognassist will give you a bar chart of an apprentices neuro-diversity. This is very interesting in itself. You at this point need to encourage those that lit up the system that they will have useful side projects each month to complete with you their coach from Cognassist. See [here](https://sites.google.com/whitehat.org.uk/delivery-wiki-wip/apprentice-support/at-risk-and-interventions#h.q1mngyqvwqsj) for more information about additional learning needs.
+Installation of the tools specified in 'Setup' section of the course notes will mean the day will run much more smoothly and that Session 1 can be omitted.
 
 <hr/>
+
+# Session 1 - Setup
+## Learning Objectives
+* Install the software required for the apprenticeship 
+
+## Notes
+If the apprentices have not yet setup the tools described in the 'Setup' section of the course notes then set aside 1.5hrs for this to be completed.
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|If a TA is available, take the student(s) into a breakout room to support|Ask the student to pair with someone who is struggling and help them, remind them that coaching / pair programming is a key skill of a software engineer!|
+
 
 # Session 2 - Objects and functions
 
@@ -52,8 +43,6 @@ Cognassist will give you a bar chart of an apprentices neuro-diversity. This is 
 * using JSON.stringify to console.log a nested object in their shell
 
 ## Materials
-
-* [lesson](https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day1.html)
 * [assignment code example](https://gist.github.com/bmordan/72cc6820141fa976a7b8e443df65a206)
 
 ## Notes
@@ -64,9 +53,10 @@ One really important thing to start doing is introducing the terminology of an o
 
 Talk about `this` when you create the `childOf` function. It's the `this` of the object to which it belongs.
 
+
 ## Assignment
 
-A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable.
+Be conscious that not all students have a stable family environment hence we suggest they model the Royal Family. Start with the current generation, group the generation together in an array. Have them assign that grouping to a variable.
 
 Then do the same with the next generation but write the definition above the `firstGen` variable (because you will not be able to reference some thing that has not been defined yet), and the third generation above the second.
 
@@ -75,3 +65,7 @@ Then you can start to relate them together. Use a `parents` property on the pers
 Finally add a `childOf` function that uses this to reference the parents array of itself. You can also return a cheeky default using the `||` or operator.
 
 Check out a finished [example](https://gist.github.com/bmordan/72cc6820141fa976a7b8e443df65a206)
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Allow them to look at the finished example and create their own version of this|Challenge the student to enhance the solution to return a JSON object containing the family tree|
