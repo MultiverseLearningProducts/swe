@@ -4,7 +4,9 @@
 
 Today introduces data modeling and UML entity diagrams. Apprentices will also be practicing writing tests which gives them a chance to consolidate their learning.
 
-# Session 1 - UML
+*(Note to coaches - if you choose to present UML as part of Week 1 Day 5 then it is prefereable to provide a class diagram, sequence diagram and use case diagram for the Restaurant application so that all students work from the same base)*
+
+# Lesson 1 - UML
 
 ## Learning Objectives
 
@@ -58,6 +60,10 @@ Menu --o Item
 
 Get your apprentices to send you their diagrams.
 
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Consider breakout rooms and get the student to brainstorm ideas as a group |Challenge the student to add inheritance, composition and aggregation relationships|
+
 ## Additional Reading
 
 * [PlantUMLHitchhikersGuide](https://crashedmind.github.io/PlantUMLHitchhikersGuide/index.html)
@@ -89,4 +95,7 @@ The apprentices should have their diagram. They can now implement this data mode
 
 Make some time to review this assignment. Get the apprentices to create a repo and add their UML diagram to it. Screenshot the UML diagram or export it. Drag the image into a github issue (in their repo). They can then use the URL in their README.md file and display the diagram on the repo landing page - very professional.
 
-## Additional Reading
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Provide the students with a sample solution to work from|Challenge the student to add the diagrams to their git hub wiki|
+

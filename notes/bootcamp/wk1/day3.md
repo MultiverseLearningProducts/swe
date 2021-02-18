@@ -2,9 +2,9 @@
 
 ## Overview of the day
 
-Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. During the second session we start to look at async functions, and how to test code that work asynchronously.
+Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. We then look at inheritance, a core concept of object oriented programming (OOP).
 
-# Session 1 - Take off and landing
+# Lesson 1 - Take off and landing
 
 ## Learning Objectives
 
@@ -22,7 +22,7 @@ Today we take flight! The first session introduces static class functions. These
 
 ## Notes
 
-This session just introduces the concept of static classes. You can mention global scope here if you think that will help. Having all the instances of airports available on the Airport class as a static property is a pattern well established by ActiveRecord in the Ruby on Rails framework. You'll have to point out the different syntax to access a static property using `this.constructor`.
+This session just introduces the concept of static classes. You can mention global scope here if you think that will help. Having all the instances of airports available on the Airport class as a static property is a pattern well established by ActiveRecord in the Ruby on Rails framework. You'll have to point out the different syntax to access a static property using `this.constructor`. 
 
 ## Assignment
 
@@ -32,41 +32,26 @@ This session just introduces the concept of static classes. You can mention glob
 
 The idea here is to figure out some array manipulation. Going over splice, find and indexOf might also help some. To write this function will also require accessing the static `Airport.airports` property.
 
-## Additional Reading
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day3
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the additional resources section. If necessary, allow them to look at the sample solution and create their own version of this|Challenge the student to enhance the solution to include exception handling e.g. max number of takeoffs reached |
+
 
 <hr/>
 
-# Session 2 - Airports Async
+# Lesson 2 - Inheritance
 
 ## Learning Objectives
-
-* Explain the differences between the way synchronous and asynchronous functions work.
-* Demonstrate the methods to test async code in Jest
-
-## Pre-work or Assumed knowledge
-
-* Should be familiar with Object.keys as a way to access the keys of an object
-* Should have iterated over an object in javascript before
-* Should recognise deconstructing assignment
-
-## Materials
-
-* You need [this file](https://github.com/mwgg/Airports/blob/master/airports.json) saved in your airports project folder
+Demonstrate sharing functionality through inheritance
 
 ## Notes
-
-This session is all about writing the 3 kinds of async functions in javascript. This often throws beginners and learning to manage async code can take some time. This is a code along session so have your project set up ready to create the `getInfo` async function. Some handy airport codes:
-
-|Code|Airport|
-|:---|:------|
-LAX|Los Angeles International Airport
-LHR|London Heathrow Airport
-CDG|Charles de Gaulle International Airport
-SKL|Skye Bridge Ashaig Airport
+Explain that inheritance is a core OO concept. We often say it is a 'type of' relationship. Give them a real-life example, e.g. an electric car is a type of car. Ask them to tell you what kind of features the electric car might inherit. Explain that in languages like Java you can only inherit from a single class so inheritance is not always the best option. Use UML to illustrate an inheritance relationship.
 
 ## Assignment
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day3
 
-* run some breakout rooms for some chat
-* they can complete the code as a solo exercise
-
-## Additional Reading
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the additional resources section. If necessary, allow them to look at the sample solution and create their own version of this|Challenge the student to look at other types of association e.g. composition and aggregation and see how they differ from inheritance|

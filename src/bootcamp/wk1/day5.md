@@ -6,7 +6,7 @@ Today is just about practicing what you have learnt so far. We will also briefly
 
 *(Note to coaches - it is prefereable to provide a class diagram, sequence diagram and use case diagram for this Scooter Hire System so that students can focus just on implementing classes and writing tests, rather than having to do a system analysis. Alternatively, you can present the introduction to UML from Week 2 Day 1 and then allow the students to create their own class diagram, sequence diagram and use case diagram for this Scooter Hire System prior to writing their classes and tests).*
 
-## Lesson 1 - London Scooter Hire
+# Lesson 1 - London Scooter Hire
 
 ## Learning Objectives
 
@@ -61,7 +61,12 @@ You will need to commit the following to your GitHub repository:
    * A screenshot of your coverage report (aim for 100% coverage)
    * JSDoc documentation generation
 
-## Lesson 2 - TypeScript 
+---
+
+# Lesson 2 - TypeScript 
+## Learning Objectives
+* Understand that Typescript is a typed version of JavaScript which shows concepts such as encapsulation well and is much more akin to other languages
+
 TypeScript can be thought of as JavaScript with additional features like strong static typing, compilation, and object oriented programming. Here is a TypeScript version of our Bag we used in the Airports assignment:
 ```js
 class Bag {

@@ -1,10 +1,10 @@
 # Bootcamp > Week 1 > Day 2
 
-[Bootcamp > Week 1 > Day 2](https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day2.html)
+[Bootcamp > Week 1 > Day 2](https://multiverselearningproducts.github.io/swe/bootcamp/wk1/day2.html)
 
 ## Overview of the day
 
-Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style. 
+Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style. We will also look at how to document classes using JSDoc.
 
 # Lesson 1 - Your first failing test
 
@@ -24,11 +24,14 @@ Today we are doing to learn about test driven development. We are going to use t
 
 ## Notes
 
-This introduces TDD. Use this session to support apprentices in getting Jest set up and running. Apprentices will be organising their code using `module.exports` and `require`. In our next session they can practice setting this up again themselves. You might want to expand on more of the [Jest expect](https://jestjs.io/docs/en/expect) API. Those who need stretch objectives should try to use a few different expects i.e. objectContaining, not.objectContaining, toHaveProperty
+This introduces TDD. Use this session to support apprentices in getting Jest set up and running. Apprentices will be organising their code using `module.exports` and `require`. In our next session they can practice setting this up again themselves. You might want to expand on more of the [Jest expect](https://jestjs.io/docs/en/expect) API. 
 
 ## Assignment
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day2
 
-They can practice the family tree again.
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Allow them to look at the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day2) and create their own version of this. Also refer them to the 'Additional Resources' video.|Challenge the student to use a few different expects i.e. objectContaining, not.objectContaining, toHaveProperty|
 
 ## Additional Reading
 
@@ -37,7 +40,7 @@ They can practice the family tree again.
 
 <hr/>
 
-# Session 2 - Airports
+# Lesson 2 - Airports
 
 ## Learning Objectives
 
@@ -64,4 +67,21 @@ This idea of creating structures in code is important.
 
 You showed them Bag and Passenger classes, now get them to make the Plane and Airport classes. Similar pattern.
 
-## Additional Reading
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Get them to focus just on creating one class & unit testing just that class. If still struggling, allow them to look at the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day2) and create their own version of this. Also refer them to the 'Additional Resources' video.|Higher ability students are encouraged to add additional functionality such as handling error conditions and testing for these.|
+
+---
+# Lesson 3 - JSDoc
+
+## Learning Objectives
+
+* Learn how to add documentation to classes
+* Learn how to generate this documentation in HTML
+
+## Assignment
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day2
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Suggest the student focusses solely on documenting one class and use the tags from the [JSDoc getting started page](https://jsdoc.app/about-getting-started.html). If needed, allow them to look at the [sample solution](https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day2) and create their own version of this|Challenge the student look at the JSDoc documentation in detail and use a variety of tag types|

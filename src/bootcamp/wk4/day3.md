@@ -78,6 +78,8 @@ You can use Github's 'Projects' page to create and manage your team's work. On y
 
 You can then create 'Issues' and assign them to this project and to members of your team. Issues can be moved from one column to another. Refer to this [GitHub Project Management Tutorial](https://www.youtube.com/watch?v=ff5cBkPg-bQ) video.
 
+### MockLab
+[MockLab](http://get.mocklab.io/) allows you to simulate APIs without writing any code. It's a great tool for allowing the front end to continue development whilst the backend is in development.
 
 ### Assignment
   1. Ask one of your team members to create a new **public** GitHub repository (with a README.md) and [add the other team members as 'Collaborators'](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository). 

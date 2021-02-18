@@ -4,7 +4,7 @@
 
 Use an ORM library i.e. Sequelize
 
-# Session 1 - Sequelize
+# Lesson 1 - Sequelize
 
 ## Learning Objectives
 
@@ -23,6 +23,11 @@ This session introduces Sequelize. You can make a new branch and blow away the p
 You can keep the tests, but you'll have to refactor them a bit. Use `test.skip()` to narrow down the failing tests as you alter the interfaces for the `Restaurant` entity.
 
 ## Assignment
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to read the sequelize documentation|
 
 ## Additional Reading
 
@@ -105,5 +110,11 @@ This would be good to demo.
 ## Assignment
 
 You are looking for correct usage of the sequelize library to create entities, relate them together, perform CRUD operations and fetch entities with their dependents.
+
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day5
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to write tests for exception scenarios|
 
 ## Additional Reading

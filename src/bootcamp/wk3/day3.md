@@ -8,6 +8,8 @@ We will also install [Postman](https://www.postman.com/downloads/) - a tool for 
 ----
 
 ## Lesson 1 - Adding an image
+## Learning Objectives
+* Learn how to add a background image
 
 ## Lesson
 
@@ -155,6 +157,10 @@ dl div{
 ---
 
 ## Lesson 3 - Postman
+## Learning Objectives
+* Understand how to install and use Postman to call APIs
+
+## Lesson
 Tomorrow & Day 5 you will be creating and updating restaurants. Therefore you will need a tool for sending your routes (APIs) form or JSON content. One of the most popular tools for this is [Postman](https://www.postman.com/downloads/).
 
 ## Assignment

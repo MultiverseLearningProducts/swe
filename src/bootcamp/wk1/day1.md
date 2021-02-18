@@ -100,7 +100,7 @@ Finally since we want all our person objects to have this function we can declar
 
 ## Assignment
 
-Create a new directory in your local Git repositoty called `familyTree`. As a general rule, do NOT use spaces or special characters in directory or filenames.
+Create a new directory in your local Git repository called `familyTree`. As a general rule, do NOT use spaces or special characters in directory or filenames.
 
 Can you create an object that represents 3 generations of a family tree? You could use the [Royal Family](https://i.insider.com/5e17677224fe1248eb288e84?width=1000&format=jpeg&auto=webp) or a celebrity family to model the concepts! A person in the family tree should have the following properties:
 

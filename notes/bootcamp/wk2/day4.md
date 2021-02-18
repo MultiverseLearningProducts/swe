@@ -4,7 +4,7 @@
 
 Today brings together SQLite3 Node.js and creating classes in code. The idea is to implement ORM so when a class is created it is persisted in the database, and when a row from the database is fetched it is returned as a class.
 
-# Session 1 - Object Relational Mapping
+# Lesson 1 - Object Relational Mapping
 
 ## Learning Objectives
 
@@ -22,13 +22,20 @@ Use tests to drive the development. Show your apprentices how to create a Restau
 
 This code should be committed into the apprentices Github repo, you can check their implementation before the next session.
 
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day4
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to consider exception testing|
+
+
 ## Additional Reading
 
 ActiveRecord - the ruby gem that comes with Rails is considered one of the most classic ORM implementations. It is a design pattern identified by [Martin Fowler](https://en.wikipedia.org/wiki/Active_record_pattern).
 
 <hr/>
 
-# Session 2 - hasMany & belongsTo
+# Lesson 2 - hasMany & belongsTo
 
 ## Learning Objectives
 
@@ -48,5 +55,11 @@ This session builds on the previous by adding relationships between the classes.
 ## Assignment
 
 There should be tests. You are looking for complete, tested implementations of the data model. Get them to send you their test coverage reports.
+
+Sample solution - https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day4
+
+|**Lower ability**|**Higher ability**|
+|-----------------|------------------|
+|Refer the student to the sample solution|Challenge the student to get 100% test coverage|
 
 ## Additional Reading

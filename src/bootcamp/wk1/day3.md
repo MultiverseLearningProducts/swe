@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. 
+Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. We then look at inheritance, a core concept of object oriented programming (OOP).
 
 ## Additional resources
 If you are struggling with any of the concepts from today, the following resources will help:
@@ -126,10 +126,9 @@ test('is an instance of a Passenger', () => {
 
 ## Assignment
 
-* Can you create the `Crew` class by extending the `Person` class?
+* Can you create the `Crew` class by extending the `Person` class? Think about the properties a crew member may have.
 * Refactor the `Plane` class to have a `crew` property
 * When `board` is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.
-* `Crew` members should be able to `crossCheck` make sure you can call `crossCheck` on a crew member, it should return a boolean. If all the crew on the plane are instances of the `Crew` class `crossCheck` should return true, otherwise it should return false.
 * All your refactoring should have tests that cover it
 
 When you have completed these tasks can you create a coverage report using Jest. Add the following line to your package.json

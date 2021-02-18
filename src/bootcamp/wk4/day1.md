@@ -11,6 +11,10 @@ Modern web applications are powered by JavaScript. There are lots of popular Jav
 ----
 
 ## Lesson 1 - Web Accessibility
+## Learning Objective
+* Understand why accessibility is crucial to enabling everyone to access web content
+
+## Lesson
 The Web is an essential part of every day life. Web Accessibility means that people with disabilities can use the web equally. At least 1 in 5 people in the UK have a long term illness, impairment or disability; many more have a temporary disability.
 
 The [standards for Web Accessibility](https://www.w3.org/WAI/standards-guidelines/wcag/) are governed by the World Wide Web Consortium (W3C) and are internationally recognised.
@@ -46,13 +50,16 @@ Web Accessibility is essential for many but useful for everyone.
     How many issues does SiteImprove find?
     Why could these issues cause issues for users with disabilities?
     Now edit your HTML to fix these issues
-  4. Install [Screen Reader](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn) and tab through your website. If you were vision impaired, would you understand which restaurant you were viewing or deleting? If not, what could you do to improve site navigation for those using a screen reader.
+  4. Install [Screen Reader](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn) (or use Windows Narrator) and tab through your website. If you were vision impaired, would you understand which restaurant you were viewing or deleting? If not, what could you do to improve site navigation for those using a screen reader.
   5. If you finish early, try checking out the accessibility of other websites too. Try the [ATG Ticket Website](https://atg.nliven.co/tickets/series/wicked?_ga=2.37698784.1776477192.1605217929-908196991.1605217929) with a Vision Deficiency of 'Achromatopsia' - how does it look?
 
 ----
 
 ## Lesson 2 - Using JavaScript in the browser
+## Learning Objective
+* Understand the 2 ways to run JavaScript in the browser and when each should be used
 
+## Lesson
 How can you run JavaScript in the browser? There are 2 main ways:
 
 ### Inline JavaScript
@@ -110,11 +117,13 @@ Try out the different ways of using JavaScript in front-end code by completing t
      Notice how you are including a Facebook script. Once this script is included, you are able to use the Facebook 'like' CSS class.
 
    2. Now use inline JavaScript in your HTML to add a simple counter which increments each time the page is loaded:
+
 ```html
     <div>Number of page loads:
         <span id="Counter"></span>
     </div>
 ```
+
 ```javascript
 <script>
     var n = localStorage.getItem('on_load_counter');
@@ -127,7 +136,11 @@ Try out the different ways of using JavaScript in front-end code by completing t
 </script>
 ```
 ---
-## Lesson 3 - The HTML Document Object Model (DOM)
+## Lesson 3 - The HTML Document Object Model (DOM) 
+## Learning Objective
+* Understand what the DOM is
+
+## Lesson
 When a web page is loaded, the browser creates an Object Model of the web page. To illustrate this, let's create a DOM representation of this JavaScript:
 
 ```js

@@ -8,6 +8,8 @@ Today we are doing to learn about test driven development. We are going to use t
 If you are struggling with any of the concepts from today, the following videos will help:
 [Using Visual Studio Code, npm and Jest](https://www.youtube.com/watch?v=EIQgVdoYb0M) (from minute 5:30 onwards). 
 
+---
+
 # Lesson 1 - Your first failing test
 
 ## Learning Objectives
