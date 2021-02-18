@@ -4,150 +4,140 @@
 
 ## You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
 
-We are going to build a frontend application that will use or touch upon all the knowledge required to pass the Microsoft Technical Associate Exam (MTA 70-480 Programming in HTML5 with JavaScript and CSS3). It is a peer to peer audio composition app where you can create tracks, play them back, share them with the network of other composers, and play their compositions in your player.
-
-Along the way you’ll come across; italic bullet points, these are the MTA learning objectives, slide shows these usually require a little commentary from your coach, but often contain useful coding examples, links and mini quizzes that test your knowledge. At the end of the module you’ll have lots of practice questions to test your understanding and get used to the style of exam questions.
-
-# HTML
+# Primitives, conditionals, functions and scoping
 
 ## Learning Objectives
 
-*   _1.1 Create the document structure by using HTML Structure the UI by using semantic markup, including for search engines and screen readers (Section, Article, Nav, Header, Footer, and Aside); create a layout container in HTML_
+- Learn about primitives, conditionals, functions and scoping
+- Write your first app!
+- Review the operators in JavaScript
 
-## Lesson
+## Lesson 1
 
-Lets start with a good basis for our application by creating the HTML structure and style it using a responsive flexible css grid layout.
+### Primitives
 
-We are going to use semantic HTML elements. Semantics is the study of the meanings of words and phrases in a language. Semantic elements are elements with a meaning.
+Primitives are variables at the lowest level of the language and are the simplest datatypes. There are 7 primitive data types, but we'll focus on the main 5 for now:
 
-Look at the examples below.
+- string `const myString = "Hi, Daniel"`
+- number `const myNumber = 3.6`
+- boolean `const myBoolean = true`
+- undefined `const myUndefined` (no assignment = undefined)
+- null `const myNull = null`
 
-```html
-    <body>
-        <div>
-            <div>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/shop">Shop</a>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div>
-                    <img src="/images/slipper-01.jpg" alt="slipper 01" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-                <div>
-                    <img src="/images/slipper-02.jpg" alt="slipper 02" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-                <div>
-                    <img src="/images/slipper-03.jpg" alt="slipper 03" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div>
-            <span>my slipper company</span>
-        </div>
-    </body>
+The important point about primitives is that they cannot be modified after they have been created. Any modification will create a new variable. Let's illustrate this point:
+
+```javascript
+const myString = "Hi, Daniel";
+
+console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 ```
 
-Whilst this is valid HTML it does not have much meaning. By using the semantic elements we can layout our page structure in the same way, but also communicate to other programs that read our HTML how to treat the different areas. Those other programs might be, a search engine indexing our page, a screen reader, different browsers rendering out page. For example google uses the `<article>` elements to determine the subject of a page.
+Note that even though we've transformed the string to uppercase, the original variable has not been changed.
 
-Let us have a look at the same layout but use semantic elements.
+### Conditionals
 
-```html
-    <body>
-        <header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/shop">Shop</a>
-            </nav>
-        </header>
-        <main>
-            <section>
-                <article>
-                    <hgroup>
-                        <h1>Slipper</h1>
-                        <h2>Our most comfortable</h2>
-                    </hgroup>
-                    <figure>
-                        <img src="/images/slipper-01.jpg" alt="slipper 01" />
-                        <figcaption>£29.99</figcaption>
-                    </figure>
-                    <button>Add to Cart</button>
-                </article>
-            </section>
-        </main>
-        <footer>
-            <span>my slipper company</span>
-        </footer>
-    </body>
+At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
+This is at the heart of conditions. If something is there, it's true, if not, it's false. We can write this in code:
+
+```javascript
+if (myString === "Hi, Daniel") {
+  alert("Hey, it's Dan!"); // true
+} else if (myString === "Hi, Bob") {
+  alert("Hey, it's Bob!"); // true
+} else {
+  alert("Hey, new person!"); // false
+}
 ```
 
-|HTML elements|Description|
-|:---|:---|
-`<header>`|Defines the top of a section or page
-`<main>`|Represents the dominant content of the of a document or component
-`<footer>`|Defines the bottom of a section or page or component
-`<article>`|Defines self-contained areas on a page
-`<nav>`|Defines navigation to other pages in the site
-`<hgroup>`|Defines a group of headings (H1–H6 elements) *this is now depreciated
-`<figure>`|Defines content that contains a figure, such as an image, chart, or picture
-`<figcaption>`|Defines the caption of a figure element
+Here we've used the "strict" conditional (===). This checks that the datatype AND the check in question match. We'll cover operators in more detail later.
 
+We can daisy-chain if conditionals like our example above as much as we want however, after a while they can become hard to read. The Switch statement solves this by providing more concise
+syntax.
 
-In addition to the elements above you should also know about and try to use the following:
-
-|HTML elements|Description|
-|:---|:---|
-`<aside>`|Defines smaller content areas outside the flow of a webpage
-`<mark>`|Defines text that should be highlighted
-`<progress>`|Defines the progress of the task
-
-## Using the `<hgroup>` element
-
-The `<hgroup>` element is a semantic method that organises headers and sub-headers. This element typically contains the standard and familiar `<h1>` to `<h6>` elements. The `<hgroup>` element groups related headers in sequence.
-
-## Using the `<progress>` element
-
-The `<progress>` element represents the progress of an objective or task. The two supported types of progress tasks are **determinate** and **indeterminate**.
-
-Use a **determinate** progress task when you know in advance the amount of work to be completed; in other words, you know the starting and ending values. Sample scenarios for this case include downloading a file for which you know the exact size or displaying the progress of a fundraising effort. In both situations, you know the exact status of the task at any particular time, and you also know what the end goal is—either the number of bytes for the file download or the number of dollars for the fundraiser. In these determinate cases, you can specify HTML5 markup such as this:
-
-```html
-    <p>Our goal is to have 1000 users:</p>
-    <span>0</span>
-    <progress value="50" max="1000"></progress>
-    <span>1000</span>
+```javascript
+switch (myString) {
+  case "Hi, Daniel":
+    alert("Hey, it's Dan!"); // true
+    break;
+  case "Hi, Bob":
+    alert("Hey, it's Bob!"); // true
+    break;
+  default:
+    alert("Hey, new person!"); // false
+}
 ```
 
-<progress value="50" max="1000"></progress>
+Switch statement key points for the exam:
 
-As shown in the preceding code, the `<progress>` element has two attributes you need to know: value and max. The value attribute lets you specify the current value or position of the `<progress>` element at a specific point in time. The max attribute tells the browser what the maximum possible value is for the element. The browser uses these two values to determine how much of the element should be coloured in. So if I change the value to 750 the progress bar displays the new value like this:
+- The break keyword "breaks out" of the whole code block
+- The break keyword isn't required in the default block
 
-<progress value="750" max="1000"></progress>
+### Functions
 
-You use **indeterminate** tasks when you don’t know how long a task will take to complete but still want to show users that some work is occurring and that they should wait. When you don’t specify the value attribute, the browser can infer that the `<progress>` element represents an indeterminate task.
+There is not one, not two, but THREE ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+Let's look at the syntax:
 
-<progress></progress>
+```javascript
+// older way
+function addition(value1, value2) {
+  return value1 + value2;
+}
 
-Downloading...
+// assigning a function to a variable using older way
+const multiply = function (value1, value2) {
+  return value1 * value2;
+};
 
-Can you see the bar is subtly pulsing?
+// newer "arrow" function form
+const subtract = (value1, value2) => {
+  return value1 - value2;
+};
 
-## Using the `<mark>` element
+console.log(addition(29, 2) // 31
+console.log(subtract(29, 2) // 27
+console.log(multiply(29, 2)); // 58
+```
 
-    Use the `<mark>` element to <mark>highlight</mark> text
+What do you think the "return" statement does? Also, the functions accept what we call "arguments" or "parameters". What are these?
 
-Use the `<mark>` element to <mark>highlight</mark> text.
+Assignment: you now have all you need to write a simple application. Fire up [JSFiddle](http://jsfiddle.net) and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.
 
-You have now been introduced to the HTML elements you’ll need to know about for the exam. We can use these to layout our app’s page.
+### Scoping
 
-[attendance log](https://platform.multiverse.io/apprentice/attendance-log/188)
-[main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day3.html)
+Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
+
+```javascript
+const globalConstVariable = "Global scope";
+
+function myFunction() {
+  var localVarVariable = "Var local scope";
+
+  try {
+    let localLetVariable = "Let local scope";
+    console.log(globalConstVariable, localVarVariable, localLetVariable); // "Global scope", "Var local scope", "Let local scope"
+  } catch (err) {
+    console.log(err.message);
+  }
+
+  console.log(localVarVariable); // "Var local scope"
+  console.log(localLetVariable); // Uncaught ReferenceError: localLetVariable is not defined
+}
+
+myFunction();
+```
+
+Key points:
+
+- A globally scoped variable can be accessed anywhere in your code
+- A "var" variable can be accessed anywhere in the function where it's defined
+- A "let" variable can only be access in the block where it's defined
+
+Don't worry too much about the try/catch block above. This is an error handling strategy and we'll cover this later.
+
+# Lesson 2
+
+## Operators
+
+There are lots of operators in JavaScript. Let's start with the common one then branch out from there:
+
+[main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
