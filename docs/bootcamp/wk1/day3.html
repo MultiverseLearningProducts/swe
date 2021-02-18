@@ -12,7 +12,7 @@
   <body>
     <h1>Bootcamp > Week 1 > Day 3</h1>
     <h2>Overview of the day</h2>
-    <p>Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise.</p>
+    <p>Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. We then look at inheritance, a core concept of object oriented programming (OOP).</p>
     <h2>Additional resources</h2>
     <p>If you are struggling with any of the concepts from today, the following resources will help:</p>
     <ul>
@@ -118,10 +118,9 @@ class Passenger extends Person {
 </code></pre>
     <h2>Assignment</h2>
     <ul>
-      <li>Can you create the <code>Crew</code> class by extending the <code>Person</code> class?</li>
+      <li>Can you create the <code>Crew</code> class by extending the <code>Person</code> class? Think about the properties a crew member may have.</li>
       <li>Refactor the <code>Plane</code> class to have a <code>crew</code> property</li>
       <li>When <code>board</code> is called on an instance of a plane, you should iterate over the array and put crew and passengers in the correct property in the plane instance.</li>
-      <li><code>Crew</code> members should be able to <code>crossCheck</code> make sure you can call <code>crossCheck</code> on a crew member, it should return a boolean. If all the crew on the plane are instances of the <code>Crew</code> class <code>crossCheck</code> should return true, otherwise it should return false.</li>
       <li>All your refactoring should have tests that cover it</li>
     </ul>
     <p>When you have completed these tasks can you create a coverage report using Jest. Add the following line to your package.json</p>

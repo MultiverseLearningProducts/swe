@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootcamp > Week 1 > Day 1 > Session 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Bootcamp > Week 1 > Day 1 > Session 2</h1>
+    <p><a href="https://whitehatlearningproducts.github.io/swe/bootcamp/wk1/day1.html">Bootcamp > Week 1 > Day 1</a></p>
+    <h1>Objects and Functions</h1>
+    <h2>Summary</h2>
+    <p>Day one is about getting to know your cohort and setting up their computers so they are prepared to start prorgamming.</p>
+    <h2>Objectives</h2>
+    <ul>
+      <li>Demonstrate creating objects in Javascript</li>
+      <li>Demonstrate creating functions with the function keyword in Javascript</li>
+      <li>Use arrays to organise objects into groups</li>
+      <li>Create references to objects inside other objects</li>
+    </ul>
+    <h2>Notes</h2>
+    <p>Walk them through creation of objects in 3 ways. The third way is more advanced. Basically if you create an object like this <code>Object.create(null)</code> it does not inherit any thing from the prototypal chain, but if you give it another object it will. We visit this again in Mod 2 when talking about prototypal inheritance. Plant the seed now, then move on.</p>
+    <p>One really important thing to start doing is introducing the terminology of an object, for example a property, what a key is, what a value is. How to access properties, how to call functions on an object and how you can create structures using objects and arrays.</p>
+    <p>Talk about <code>this</code> when you create the <code>childOf</code> function. It's the <code>this</code> of the object to which it belongs.</p>
+    <h2>Assignment</h2>
+    <p>A family tree. Start with their current generation, group the generation together in an array. Have them assign that grouping to a variable.</p>
+    <p>Then do the same with the next generation but write the definition above the <code>firstGen</code> variable (because you will not be able to reference some thing that has not been defined yet), and the third generation above the second.</p>
+    <p>Then you can start to relate them together. Use a <code>parents</code> property on the person object and in an array make references to the parents in the correct generation array.</p>
+    <p>Finally add a <code>childOf</code> function that uses this to reference the parents array of itself. You can also return a cheeky default using the <code>||</code> or operator.</p>
+    <p>Check out a finished <a href="https://gist.github.com/bmordan/72cc6820141fa976a7b8e443df65a206">example</a></p>
+    <h2>Overview</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Overview</th>
+          <th>Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#Welcome">Welcome</a></td>
+          <td>5 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#Creating-Objects">Creating Objects</a></td>
+          <td>20 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#Referencing-Other-Objects">Referencing Other Objects</a></td>
+          <td>30 mins</td>
+        </tr>
+        <tr>
+          <td><a href="#On-Your-Own">On Your Own</a></td>
+          <td>5 mins</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>1 hour</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Welcome</h3>
+    <p><a href="#Welcome">back</a></p>
+    <h4>5 minutes</h4>
+    <p>Welcome to the first official day of code school! We are going to go over a few fundamental aspects of JavaScript and build upon each session every day.</p>
+    <p>Before we start, we talked about how you will be assessed for the apprenticeship. Can you share all the ways you will be assessed?</p>
+    <p>Everything we do from here on is to help you be prepared for your end point assessment and be ready to be developers in your workplace.</p>
+    <p>Let’s start building our JavaScript knowledge now! Understanding objects and functions is key to reading and writing Javascript. Today we will learn how to:</p>
+    <ul>
+      <li>Create objects in Javascript</li>
+      <li>Create functions with the function keyword in Javascript</li>
+      <li>Use arrays to organise objects into groups</li>
+      <li>Create references to objects inside other objects</li>
+    </ul>
+    <p>This session will reference the Github content heavily, so feel free to follow along.</p>
+    <p><em>Notes to Coaches: After this point you should be sharing your screen as you code to provide examples and narrate over them.</em></p>
+    <h3>Creating Objects</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>20 minutes</h4>
+    <p>After you share your screen, do some basic understanding of programming. Take time to explain the terminal, how node.js works, and where they will type their code. Most apprentices should know this but it's good to be clear!</p>
+    <p>Now we want to discuss the fundamentals of Javascript. There are some primitives you have seen before, String, Number, Function, Booleans. These are the things the language is made from. Objects are the main primitive in Javascript. Let's start by looking at the three different ways we can make an object:</p>
+    <p><em>Coach Note: At this point you can follow along via the GitHub lesson. After each coding example give apprentices time to catch up and ask questions. After apprentices create an object with a full name, check for understanding. Ask them to react with the thumbs-up emoji on Zoom on how confident they fell about the information. If in person, call on 2 - 3 people to share</em></p>
+    <h3>Referencing Other Objects</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>30 minutes</h4>
+    <p>Continue following along on the GitHub page with coding examples. Again, give apprentices time to type their own code and ask questions.</p>
+    <h4>Check for understanding:</h4>
+    <p>Give apprentices 10 minutes and ask them to turn work in pairs (go into a breakout room if on Zoom) to create a <code>childOf</code> function to identify their parents. Each apprentice should have their own family tree they are working on, their partner is there to help code, answer any questions. When they are done, they should commit their code into Github and share the link with the coach. This is a short activity and they should be able to accomplish this quickly. It is more of a chance for apprentices to practice communicating together and sharing idea. Note, if apprentices finish early, you can direct them to the assignment for the day and they can work with their partner to code it.</p>
+    <h3>On Your Own</h3>
+    <p><a href="#Overview">back</a></p>
+    <h4>5 minutes</h4>
+    <p>Now that we understand objects and how to create them, let's expand our family tree. You’ve already done half the work with your partner, so expand it a little more tonight! Can you create an object that represents 3 generations of your family tree? A person in your family tree should have the following properties:</p>
+    <ul>
+      <li>
+        <p>name String</p>
+      </li>
+      <li>
+        <p>parents Array</p>
+      </li>
+      <li>
+        <p>childOf Function</p>
+      </li>
+    </ul>
+    <p>The name property should be a string, the parents property should be an array, and that array should contain references to that person's parents. The childOf property should return a string of the parent's names.</p>
+    <p>Use a combination of objects arranged in arrays to represent different generations. Use the this keyword to create a childOf function that references the parents array of itself.</p>
+    <p>Once constructed you should be able to traverse from you to your grand-parents. You should be able to call childOf on any person and that function should return a string i.e. "Bob &#x26; Samantha" or "parents unknown".</p>
+    <p>Commit your code into Github and share the link with your coach.</p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

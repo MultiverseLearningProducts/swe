@@ -12,14 +12,49 @@
   <body>
     <h1>Bootcamp > Week 2 > Day 3</h1>
     <h2>Overview of the day</h2>
-    <p>More SQLite3 only now via Node.js.</p>
-    <h1>Session 1 - SQLite3 in Node.js</h1>
+    <p>Today we are starting to use our SQL skills in our Node.js code. This is an important step where we start to connect our code to a database.</p>
+    <h2>Lesson 1 - SQLite3 installation</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Install and initiate a database in a Node.js project</li>
-      <li>Execute queries on our database in Node.js</li>
-      <li>Implement a recursive function</li>
+      <li>Install SQLite3</li>
     </ul>
+    <h2>Assignment</h2>
+    <p>There is no differentiation in this assignment, all students require sqlite installed. Where necessary, use breakout rooms to allow apprentices to help each other.</p>
+    <hr>
+    <h2>Lesson 2 - Using Node.js to run queries</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>How to integrate SQL into Node.js code</li>
+      <li>Awareness of SQL injection</li>
+    </ul>
+    <h2>Assignment</h2>
+    <p>Sample solution - <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3">https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Lower ability</strong></th>
+          <th><strong>Higher ability</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Refer the student to the sample solution</td>
+          <td>Challenge the student to find media references to instances of SQL injection attacks on companies</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <h2>Lesson 3 - Visualising your database</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Use a VSCode plugin to view tables</li>
+    </ul>
+    <h2>Assignment</h2>
+    <p>There is no differentiation in this assignment, all students require sqlite installed. Where necessary, use breakout rooms to allow apprentices to help each other.</p>
+    <hr>
+    <h2>Lesson 4 - Loading JSON data into SQLite3 using Node.js</h2>
+    <h2>Learning Objectives</h2>
+    <p>In this lesson you will learn how to load your restaurant tables with data from file using Node.js. You will use nested iteration to loop through the data and relate data using foreign keys.</p>
     <h2>Pre-work or Assumed knowledge</h2>
     <h2>Materials</h2>
     <ul>
@@ -32,36 +67,21 @@
     <p>In this session we have a really nice dual layer of complexity; we are programming in javascript and executing SQL statements on a database.</p>
     <h2>Assignment</h2>
     <p>Tricky challenge. Make sure you are clear about whats being asked here.</p>
-    <h2>Additional Reading</h2>
-    <h1>Session 2 - Consolidate SQLite3 in Node.js</h1>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Implement nested iteration</li>
-      <li>Relate data using foreign keys correctly</li>
-    </ul>
-    <h2>Pre-work or Assumed knowledge</h2>
-    <ul>
-      <li>Loaded an array of data into a database</li>
-    </ul>
-    <h2>Materials</h2>
-    <pre><code class="language-sh">curl https://raw.githubusercontent.com/WhiteHatLearningProducts/restaurant-data/master/restaurants.json --output restaurants.json
-</code></pre>
-    <h2>Notes</h2>
-    <p>Building on the mornings activity. Now things get more complex as we have a nested array. You might need to remind apprentices of this piece of SQLite3 API:</p>
-    <pre><code class="language-javascript">db.run('YOUR SQL QUERY;', function (error) {
-    /* this callback function runs after Node.js has 
-    run the query on sqlite3 database, and the database 
-    has emitted an event saying it's finished. In this 
-    callback function on the `this` context you can 
-    access the id of the last record you inserted. 
-    This will be useful later */
-    const id = this.lastID
-})
-</code></pre>
-    <p>You can imagine here they will be inserting a restaurant, need to capture the <code>restaurant_id</code> value and use that when they iterate over the menus, and then capture the <code>menu_id</code> to insert the items correctly.</p>
-    <h2>Assignment</h2>
-    <p>Look for a set of tests that crawl over the model.</p>
-    <h2>Additional Reading</h2>
+    <p>Sample solution - <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3">https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk2/day3</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Lower ability</strong></th>
+          <th><strong>Higher ability</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Refer the student to the sample solution</td>
+          <td>Challenge the student to read about memory leaks resulting from not closing database connections</td>
+        </tr>
+      </tbody>
+    </table>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

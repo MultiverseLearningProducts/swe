@@ -50,6 +50,11 @@ Rating.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
       <li>If you want to include the names of random users in your reviews then checkout <a href="https://www.mockaroo.com/">Mockaroo</a> for mock data.</li>
     </ul>
     <h2>Lesson 2 - Server side validation</h2>
+    <h2>Learning Objective</h2>
+    <ul>
+      <li>Understand the importance of validation to protect against attacks</li>
+    </ul>
+    <h2>Lesson</h2>
     <p>In previous lessons we have added client side validation to check for the user entering a valid restaurant name and url. However, client side validation can be subverted either by disabling JavaScript in the browser, or, my using a tool such as Postman to call the API directly, bypassing the form.</p>
     <p>Listen to this <a href="https://www.youtube.com/watch?v=vVJ2ukke34s">short video (3mins)</a> which explains why this can be a problem. Also think back to last week when we discussed <a href="https://portswigger.net/web-security/sql-injection">SQL injection attacks</a>.</p>
     <p>In this lesson you are going to use <a href="https://express-validator.github.io/docs/">express validator</a> to add some server side validation to ensure the user's review cannot be used by a malicious user to enter content such as html or sql or even to enter a huge amount of text which could break the backend.</p>

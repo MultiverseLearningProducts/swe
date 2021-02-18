@@ -93,7 +93,7 @@ person1['name']
     <p>In the function above we map over the array and just pick out the name properties from the parents objects, at that point we have an array of names, then we chain the array method <code>join</code> and give it a delimiter to use as it takes all the names in our array and joins them together with an "&#x26;" in between them and returns a string. If the array is empty, join will return an empty string, which evaluates as falsey, so we can use the <code>||</code> double pipes of the OR operator to return a default value.</p>
     <p>Finally since we want all our person objects to have this function we can declare the function once by assigning it to a variable. Now our <code>childOf</code> property can have as its value a reference to the <code>childOf</code> function. You must use the <code>function</code> keyword for this to work. Arrow functions reference the <code>this</code> of the parent's scope so it will not work the same way. We'll come back to that.</p>
     <h2>Assignment</h2>
-    <p>Create a new directory in your local Git repositoty called <code>familyTree</code>. As a general rule, do NOT use spaces or special characters in directory or filenames.</p>
+    <p>Create a new directory in your local Git repository called <code>familyTree</code>. As a general rule, do NOT use spaces or special characters in directory or filenames.</p>
     <p>Can you create an object that represents 3 generations of a family tree? You could use the <a href="https://i.insider.com/5e17677224fe1248eb288e84?width=1000&#x26;format=jpeg&#x26;auto=webp">Royal Family</a> or a celebrity family to model the concepts! A person in the family tree should have the following properties:</p>
     <ul>
       <li>name String</li>

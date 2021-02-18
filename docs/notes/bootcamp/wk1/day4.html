@@ -12,11 +12,57 @@
   <body>
     <h1>Bootcamp > Week 1 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <h1>Session 1 - Async Airports</h1>
+    <p><em>Note that if you feel your apprentice group is not ready to delve into the complexity of asynchronous functions, you can choose to deliver this lesson in the following week or, just teach lesson 1 and deliver lesson 2 next week as timers are the only async concept required for Day 5 assignments</em></p>
+    <p>Today we are going to look at creating asynchronous functions in JavaScript.</p>
+    <h1>Lesson 1 - Synchronous versus asynchronous code</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Explain the differences between the way synchronous and asynchronous functions work.</li>
-      <li>Demonstrate the methods to test async code in Jest</li>
+      <li>Understand the JavaScript call stack &#x26; event loop</li>
+      <li>Understand stack traces</li>
+      <li>Understand how timers work</li>
+    </ul>
+    <h2>Assignment 1</h2>
+    <p>This assignment does not have a solution, it is more for the apprentices to use a visualisation tool to understand the call stack.</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Lower ability</strong></th>
+          <th><strong>Higher ability</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Suggest the student does not watch the video but just executes Loupe as described. You may want to buddy up apprentices in breakout rooms and get them to explain the call stack to each other</td>
+          <td>Challenge the student to add in extra function calls of their own and to watch the Loupe video</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Assignment 2</h2>
+    <p>This assignment is a little more complex.</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Lower ability</strong></th>
+          <th><strong>Higher ability</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Suggest the student does not watch the video but just executes Loupe as described. You may want to buddy up apprentices in breakout rooms and get them to explain timers to each other</td>
+          <td>Challenge the student to complete the full assignment by making a slide show</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Leave some time for yourself to go through each apprentices slideshow/animation. You'll be able to tell from this if they have got the right idea or not. Give feedback when the apprentice has made a mistake.</p>
+    <h1>Lesson 2 - Airports Async</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>
+        <p>Create async functions to read airport data from a file</p>
+      </li>
+      <li>
+        <p>Demonstrate the methods to test async code in Jest</p>
+      </li>
     </ul>
     <h2>Pre-work or Assumed knowledge</h2>
     <ul>
@@ -34,32 +80,53 @@
     <p>Walk though the code with your cohort and then get them to do it themselves. As an extra aside there is a promise bases <code>readFile</code> function. You need node 11+ and you can access it as follows:</p>
     <pre><code class="language-javascript">const { readFile } = require('fs/promises')
 </code></pre>
-    <h2>Assignment</h2>
-    <ul>
-      <li>In pairs can you explain to each other the differences between synchronous and asynchronous functions, and how you can tell the difference in your code.</li>
-      <li>Use the three different ways of forming async functions in the Airport class</li>
-      <li>write async tests for each version in Jest</li>
-    </ul>
-    <h2>Additional Reading</h2>
-    <h1>Session 2 - The Event Loop</h1>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Correctly represent the behaviour of a stack data structure</li>
-      <li>Correctly identify the order of execution in a piece of async code</li>
-    </ul>
-    <h2>Pre-work or Assumed knowledge</h2>
-    <ul>
-      <li>You should have written an async function in the 3 different styles: callbacks, promises and async await</li>
-    </ul>
+    <p>Some handy airport codes:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Code</th>
+          <th align="left">Airport</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">LAX</td>
+          <td align="left">Los Angeles International Airport</td>
+        </tr>
+        <tr>
+          <td align="left">LHR</td>
+          <td align="left">London Heathrow Airport</td>
+        </tr>
+        <tr>
+          <td align="left">CDG</td>
+          <td align="left">Charles de Gaulle International Airport</td>
+        </tr>
+        <tr>
+          <td align="left">SKL</td>
+          <td align="left">Skye Bridge Ashaig Airport</td>
+        </tr>
+      </tbody>
+    </table>
     <h2>Materials</h2>
     <ul>
-      <li><a href="https://youtu.be/8aGhZQkoFbQ">reference video</a></li>
+      <li><a href="https://youtu.be/8aGhZQkoFbQ">Loupe reference video</a></li>
     </ul>
-    <h2>Notes</h2>
-    <p>This session is in 2 parts. The first is to communicate the behavior of a stack data structure. The second is to demonstrate the way 2 stack structures handle async code by working together.</p>
     <h2>Assignment</h2>
-    <p>Leave some time for yourself to go through each apprentices slideshow/animation. You'll be able to tell from this if they have got the right idea or not. Give feedback when the apprentice has made a mistake.</p>
-    <h2>Additional Reading</h2>
+    <p>Sample solution - <a href="https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day4">https://github.com/MultiverseLearningProducts/swe-solutions/tree/main/bootcamp/wk1/day4</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Lower ability</strong></th>
+          <th><strong>Higher ability</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>This is a tough assignment! If necessary drop this assignment and ask the student to focus solely on timers</td>
+          <td>Challenge the student to look at how to mock timers in Jest and test async code</td>
+        </tr>
+      </tbody>
+    </table>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
