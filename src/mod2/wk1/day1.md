@@ -132,12 +132,29 @@ Key points:
 - A "var" variable can be accessed anywhere in the function where it's defined
 - A "let" variable can only be access in the block where it's defined
 
-Don't worry too much about the try/catch block above. This is an error handling strategy and we'll cover this later.
+Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
 # Lesson 2
 
 ## Operators
 
-There are lots of operators in JavaScript. Let's start with the common one then branch out from there:
+We can categorise the operators as follows:
+
+- Assignment operatoes
+- Arithmetic operators
+- Comparison operators
+- Logical operators
+
+### Arithmetic operators
+
+| Operator | Purpose               | Example    |
+| :------- | :-------------------- | :--------- |
+| +        | Addition              | x = 2 + 2  |
+| -        | Subtraction           | x = 2 - 2  |
+| \*       | Multiplication        | x = 2 \* 2 |
+| /        | Division              | x = 2 / 2  |
+| %        | Remainder of division | x = 2 + 2  |
+| ++       | Increment             | x++        |
+| --       | Decrement             | x--        |
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
