@@ -69,7 +69,7 @@ First, we initialise a variable and assign it zero
 let i = 0;
 ```
 
-The next part of the loop effectively says "while the variable i is less than the length of myArray, continue looping"
+The next part of the loop effectively says "while the variable `i` is less than the length of myArray, continue looping"
 
 ```javascript
 i < myArray1.length;
@@ -111,8 +111,7 @@ Notice how we now have arrays in an array.
 
 ### Acessing multi-dimensional arrays
 
-Accessing multi-dimensional arrays is somewhat similar to how we'd access single-dimensional array, except this time, we need tell JavaScript which nested array we want and which element in thata
-array we also want. For example:
+Accessing multi-dimensional arrays is somewhat similar to how we'd access a single-dimensional array, except this time, we need tell JavaScript which nested array to target, and which element in the target array we want to extract. For example:
 
 ```javascript
 let myMdArray = [
@@ -196,6 +195,6 @@ to the array will change its values directly.
 
 ## Assignment
 
-Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it now contain?
+Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it contain now?
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

@@ -122,7 +122,8 @@ function myFunction() {
 
   try {
     let localLetVariable = "Let local scope";
-    console.log(globalConstVariable, localVarVariable, localLetVariable); // "Global scope", "Var local scope", "Let local scope"
+    console.log(globalConstVariable, localVarVariable, localLetVariable);
+    // Output: "Global scope", "Var local scope", "Let local scope"
   } catch (err) {
     console.log(err.message);
   }
@@ -155,7 +156,7 @@ We can categorise the operators as follows:
 
 | Operator | Purpose             | Example | Same as   |
 | :------- | :------------------ | :------ | --------- |
-| =        | Assignment          | x = 2   |
+| =        | Assignment          | x = 2   | n/a       |
 | +=       | Addition assignment | x += 2  | x = x + 2 |
 | -=       | Subtract assignment | x -= 2  | x = x - 2 |
 | \*=      | Muliply assignment  | x \*= 2 | x = x - 2 |
@@ -167,10 +168,12 @@ Operators such as `+=` are referred to as compound operators. This is because tw
 ```javascript
 let x = 2;
 
-x -= 2; // this line in plain English would be: "take x (2), subtract 2, then assign the result back to x"
+x -= 2;
 
 console.log(x); // 0
 ```
+
+The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assign the result back to x"
 
 #### Arithmetic operators
 
