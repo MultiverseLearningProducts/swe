@@ -11,174 +11,366 @@
   </head>
   <body>
     <h1>Mod 2 > Week 1 > Day 1</h1>
-    <p>
-      <img src="https://di3xp7dfi3cq.cloudfront.net/pub/media/magefan_blog/w/h/what-jobs-can-you-get-with-mta-cetification.jpg" alt="microsoft certificate">
-    </p>
-    <h2>You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.</h2>
-    <p>We are going to build a frontend application that will use or touch upon all the knowledge required to pass the Microsoft Technical Associate Exam (MTA 70-480 Programming in HTML5 with JavaScript and CSS3). It is a peer to peer audio composition app where you can create tracks, play them back, share them with the network of other composers, and play their compositions in your player.</p>
-    <p>Along the way you’ll come across; italic bullet points, these are the MTA learning objectives, slide shows these usually require a little commentary from your coach, but often contain useful coding examples, links and mini quizzes that test your knowledge. At the end of the module you’ll have lots of practice questions to test your understanding and get used to the style of exam questions.</p>
-    <h1>HTML</h1>
+    <h1>Overview of the day</h1>
+    <p>You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec <a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb">here</a>.</p>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li><em>1.1 Create the document structure by using HTML Structure the UI by using semantic markup, including for search engines and screen readers (Section, Article, Nav, Header, Footer, and Aside); create a layout container in HTML</em></li>
+      <li>Learn about primitives, conditionals, functions and scoping</li>
+      <li>Write your first app</li>
     </ul>
-    <h2>Lesson</h2>
-    <p>Lets start with a good basis for our application by creating the HTML structure and style it using a responsive flexible css grid layout.</p>
-    <p>We are going to use semantic HTML elements. Semantics is the study of the meanings of words and phrases in a language. Semantic elements are elements with a meaning.</p>
-    <p>Look at the examples below.</p>
-    <pre><code class="language-html">    &#x3C;body>
-        &#x3C;div>
-            &#x3C;div>
-                &#x3C;a href="/">Home&#x3C;/a>
-                &#x3C;a href="/about">About&#x3C;/a>
-                &#x3C;a href="/shop">Shop&#x3C;/a>
-            &#x3C;/div>
-        &#x3C;/div>
-        &#x3C;div>
-            &#x3C;div>
-                &#x3C;div>
-                    &#x3C;img src="/images/slipper-01.jpg" alt="slipper 01" />
-                    &#x3C;div>£29.99&#x3C;/div>
-                    &#x3C;button>Add to Cart&#x3C;/button>
-                &#x3C;/div>
-                &#x3C;div>
-                    &#x3C;img src="/images/slipper-02.jpg" alt="slipper 02" />
-                    &#x3C;div>£29.99&#x3C;/div>
-                    &#x3C;button>Add to Cart&#x3C;/button>
-                &#x3C;/div>
-                &#x3C;div>
-                    &#x3C;img src="/images/slipper-03.jpg" alt="slipper 03" />
-                    &#x3C;div>£29.99&#x3C;/div>
-                    &#x3C;button>Add to Cart&#x3C;/button>
-                &#x3C;/div>
-            &#x3C;/div>
-        &#x3C;/div>
-        &#x3C;div>
-            &#x3C;span>my slipper company&#x3C;/span>
-        &#x3C;/div>
-    &#x3C;/body>
-</code></pre>
-    <p>Whilst this is valid HTML it does not have much meaning. By using the semantic elements we can layout our page structure in the same way, but also communicate to other programs that read our HTML how to treat the different areas. Those other programs might be, a search engine indexing our page, a screen reader, different browsers rendering out page. For example google uses the <code>&#x3C;article></code> elements to determine the subject of a page.</p>
-    <p>Let us have a look at the same layout but use semantic elements.</p>
-    <pre><code class="language-html">    &#x3C;body>
-        &#x3C;header>
-            &#x3C;nav>
-                &#x3C;a href="/">Home&#x3C;/a>
-                &#x3C;a href="/about">About&#x3C;/a>
-                &#x3C;a href="/shop">Shop&#x3C;/a>
-            &#x3C;/nav>
-        &#x3C;/header>
-        &#x3C;main>
-            &#x3C;section>
-                &#x3C;article>
-                    &#x3C;hgroup>
-                        &#x3C;h1>Slipper&#x3C;/h1>
-                        &#x3C;h2>Our most comfortable&#x3C;/h2>
-                    &#x3C;/hgroup>
-                    &#x3C;figure>
-                        &#x3C;img src="/images/slipper-01.jpg" alt="slipper 01" />
-                        &#x3C;figcaption>£29.99&#x3C;/figcaption>
-                    &#x3C;/figure>
-                    &#x3C;button>Add to Cart&#x3C;/button>
-                &#x3C;/article>
-            &#x3C;/section>
-        &#x3C;/main>
-        &#x3C;footer>
-            &#x3C;span>my slipper company&#x3C;/span>
-        &#x3C;/footer>
-    &#x3C;/body>
-</code></pre>
+    <h3>Primitives</h3>
+    <p>Primitives are the simplest datatypes and are "built-in" to the JavaScript language. There are 7 primitive data types, but we'll focus on the main 5 for now:</p>
     <table>
       <thead>
         <tr>
-          <th align="left">HTML elements</th>
-          <th align="left">Description</th>
+          <th align="left">Primitive</th>
+          <th align="left">Example</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td align="left"><code>&#x3C;header></code></td>
-          <td align="left">Defines the top of a section or page</td>
+          <td align="left">string</td>
+          <td align="left"><code>const myString = "Hi, Daniel"</code></td>
         </tr>
         <tr>
-          <td align="left"><code>&#x3C;main></code></td>
-          <td align="left">Represents the dominant content of the of a document or component</td>
+          <td align="left">number</td>
+          <td align="left"><code>const myNumber = 3.6</code></td>
         </tr>
         <tr>
-          <td align="left"><code>&#x3C;footer></code></td>
-          <td align="left">Defines the bottom of a section or page or component</td>
+          <td align="left">boolean</td>
+          <td align="left"><code>const myBoolean = true</code></td>
         </tr>
         <tr>
-          <td align="left"><code>&#x3C;article></code></td>
-          <td align="left">Defines self-contained areas on a page</td>
+          <td align="left">undefined</td>
+          <td align="left"><code>const myUndefined</code></td>
         </tr>
         <tr>
-          <td align="left"><code>&#x3C;nav></code></td>
-          <td align="left">Defines navigation to other pages in the site</td>
-        </tr>
-        <tr>
-          <td align="left"><code>&#x3C;hgroup></code></td>
-          <td align="left">Defines a group of headings (H1–H6 elements) *this is now depreciated</td>
-        </tr>
-        <tr>
-          <td align="left"><code>&#x3C;figure></code></td>
-          <td align="left">Defines content that contains a figure, such as an image, chart, or picture</td>
-        </tr>
-        <tr>
-          <td align="left"><code>&#x3C;figcaption></code></td>
-          <td align="left">Defines the caption of a figure element</td>
+          <td align="left">null</td>
+          <td align="left"><code>const myNull = null</code></td>
         </tr>
       </tbody>
     </table>
-    <p>In addition to the elements above you should also know about and try to use the following:</p>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">HTML elements</th>
-          <th align="left">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left"><code>&#x3C;aside></code></td>
-          <td align="left">Defines smaller content areas outside the flow of a webpage</td>
-        </tr>
-        <tr>
-          <td align="left"><code>&#x3C;mark></code></td>
-          <td align="left">Defines text that should be highlighted</td>
-        </tr>
-        <tr>
-          <td align="left"><code>&#x3C;progress></code></td>
-          <td align="left">Defines the progress of the task</td>
-        </tr>
-      </tbody>
-    </table>
-    <h2>Using the <code>&#x3C;hgroup></code> element</h2>
-    <p>The <code>&#x3C;hgroup></code> element is a semantic method that organises headers and sub-headers. This element typically contains the standard and familiar <code>&#x3C;h1></code> to <code>&#x3C;h6></code> elements. The <code>&#x3C;hgroup></code> element groups related headers in sequence.</p>
-    <h2>Using the <code>&#x3C;progress></code> element</h2>
-    <p>The <code>&#x3C;progress></code> element represents the progress of an objective or task. The two supported types of progress tasks are <strong>determinate</strong> and <strong>indeterminate</strong>.</p>
-    <p>Use a <strong>determinate</strong> progress task when you know in advance the amount of work to be completed; in other words, you know the starting and ending values. Sample scenarios for this case include downloading a file for which you know the exact size or displaying the progress of a fundraising effort. In both situations, you know the exact status of the task at any particular time, and you also know what the end goal is—either the number of bytes for the file download or the number of dollars for the fundraiser. In these determinate cases, you can specify HTML5 markup such as this:</p>
-    <pre><code class="language-html">    &#x3C;p>Our goal is to have 1000 users:&#x3C;/p>
-    &#x3C;span>0&#x3C;/span>
-    &#x3C;progress value="50" max="1000">&#x3C;/progress>
-    &#x3C;span>1000&#x3C;/span>
+    <p>The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:</p>
+    <pre><code class="language-javascript">const myString = "Hi, Daniel";
+
+console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 </code></pre>
-    <p></p>
-    <p>As shown in the preceding code, the <code>&#x3C;progress></code> element has two attributes you need to know: value and max. The value attribute lets you specify the current value or position of the <code>&#x3C;progress></code> element at a specific point in time. The max attribute tells the browser what the maximum possible value is for the element. The browser uses these two values to determine how much of the element should be coloured in. So if I change the value to 750 the progress bar displays the new value like this:</p>
-    <p></p>
-    <p>You use <strong>indeterminate</strong> tasks when you don’t know how long a task will take to complete but still want to show users that some work is occurring and that they should wait. When you don’t specify the value attribute, the browser can infer that the <code>&#x3C;progress></code> element represents an indeterminate task.</p>
-    <p></p>
-    <p>Downloading...</p>
-    <p>Can you see the bar is subtly pulsing?</p>
-    <h2>Using the <code>&#x3C;mark></code> element</h2>
-    <pre><code>Use the `&#x3C;mark>` element to &#x3C;mark>highlight&#x3C;/mark> text
-</code></pre>
-    <p>Use the <code>&#x3C;mark></code> element to highlight text.</p>
-    <p>You have now been introduced to the HTML elements you’ll need to know about for the exam. We can use these to layout our app’s page.</p>
+    <p>Note that even though we've transformed the string to uppercase, the original variable has not been changed.</p>
+    <h3>Conditionals</h3>
     <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/188">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod1/wk2/day5.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>
+      At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
+      This is at the heart of conditions. If something is there, it's true, if not, it's false. We can write this in code:
     </p>
+    <pre><code class="language-javascript">if (myString === "Hi, Daniel") {
+  alert("Hey, it's Dan!"); // true
+} else if (myString === "Hi, Bob") {
+  alert("Hey, it's Bob!"); // true
+} else {
+  alert("Hey, new person!"); // false
+}
+</code></pre>
+    <p>Here we've used the "strict" conditional (===). This checks that the datatype AND the check in question match. We'll cover operators in more detail later.</p>
+    <p>
+      We can daisy-chain if conditionals like our example above as much as we want however, after a while they can become hard to read. The Switch statement solves this by providing more concise
+      syntax.
+    </p>
+    <pre><code class="language-javascript">switch (myString) {
+  case "Hi, Daniel":
+    alert("Hey, it's Dan!"); // true
+    break;
+  case "Hi, Bob":
+    alert("Hey, it's Bob!"); // true
+    break;
+  default:
+    alert("Hey, new person!"); // false
+}
+</code></pre>
+    <p>Switch statement key points for the exam:</p>
+    <ul>
+      <li>The break keyword "breaks out" of the whole code block</li>
+      <li>The break keyword isn't required in the default block</li>
+    </ul>
+    <h3>Functions</h3>
+    <p>
+      There is not one, not two, but THREE ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+      Let's look at the syntax:
+    </p>
+    <pre><code class="language-javascript">// older way
+function addition(value1, value2) {
+  return value1 + value2;
+}
+
+// assigning a function to a variable using older way
+const multiply = function (value1, value2) {
+  return value1 * value2;
+};
+
+// newer "arrow" function form
+const subtract = (value1, value2) => {
+  return value1 - value2;
+};
+
+console.log(addition(29, 2) // 31
+console.log(subtract(29, 2) // 27
+console.log(multiply(29, 2)); // 58
+</code></pre>
+    <p>What do you think the "return" statement does? Also, the functions accept what we call "arguments" or "parameters". What are these?</p>
+    <h2>Assignment</h2>
+    <p>You now have all you need to write a simple application. Fire up <a href="http://jsfiddle.net">JSFiddle</a> and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.</p>
+    <h1>Lesson 2</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Learn the different types of operators</li>
+      <li>Write a tax app</li>
+    </ul>
+    <h3>Scoping</h3>
+    <p>Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:</p>
+    <pre><code class="language-javascript">const globalConstVariable = "Global scope";
+
+function myFunction() {
+  var localVarVariable = "Var local scope";
+
+  try {
+    let localLetVariable = "Let local scope";
+    console.log(globalConstVariable, localVarVariable, localLetVariable); // "Global scope", "Var local scope", "Let local scope"
+  } catch (err) {
+    console.log(err.message);
+  }
+
+  console.log(localVarVariable); // "Var local scope"
+  console.log(localLetVariable); // Uncaught ReferenceError: localLetVariable is not defined
+}
+
+myFunction();
+</code></pre>
+    <p>Key points:</p>
+    <ul>
+      <li>A globally scoped variable can be accessed anywhere in your code</li>
+      <li>A "var" variable can be accessed anywhere in the function where it's defined</li>
+      <li>A "let" variable can only be access in the block where it's defined</li>
+    </ul>
+    <p>Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.</p>
+    <h3>Operators</h3>
+    <p>We can categorise the operators as follows:</p>
+    <ul>
+      <li>Assignment operators</li>
+      <li>Arithmetic operators</li>
+      <li>Comparison operators</li>
+      <li>Logical operators</li>
+    </ul>
+    <h4>Assignment operators</h4>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Operator</th>
+          <th align="left">Purpose</th>
+          <th align="left">Example</th>
+          <th>Same as</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">=</td>
+          <td align="left">Assignment</td>
+          <td align="left">x = 2</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="left">+=</td>
+          <td align="left">Addition assignment</td>
+          <td align="left">x += 2</td>
+          <td>x = x + 2</td>
+        </tr>
+        <tr>
+          <td align="left">-=</td>
+          <td align="left">Subtract assignment</td>
+          <td align="left">x -= 2</td>
+          <td>x = x - 2</td>
+        </tr>
+        <tr>
+          <td align="left">*=</td>
+          <td align="left">Muliply assignment</td>
+          <td align="left">x *= 2</td>
+          <td>x = x - 2</td>
+        </tr>
+        <tr>
+          <td align="left">/=</td>
+          <td align="left">Divide assignment</td>
+          <td align="left">x /= 2</td>
+          <td>x = x / 2</td>
+        </tr>
+        <tr>
+          <td align="left">%=</td>
+          <td align="left">Modulus assignment</td>
+          <td align="left">x %= 2</td>
+          <td>x = x % 2</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Operators such as <code>+=</code> are referred to as compound operators. This is because two things are happening.</p>
+    <pre><code class="language-javascript">let x = 2;
+
+x -= 2; // this line in plain English would be: "take x (2), subtract 2, then assign the result back to x"
+
+console.log(x); // 0
+</code></pre>
+    <h4>Arithmetic operators</h4>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Operator</th>
+          <th align="left">Purpose</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">+</td>
+          <td align="left">Addition</td>
+          <td align="left">x = 2 + 2</td>
+        </tr>
+        <tr>
+          <td align="left">-</td>
+          <td align="left">Subtraction</td>
+          <td align="left">x = 2 - 2</td>
+        </tr>
+        <tr>
+          <td align="left">*</td>
+          <td align="left">Multiplication</td>
+          <td align="left">x = 2 * 2</td>
+        </tr>
+        <tr>
+          <td align="left">/</td>
+          <td align="left">Division</td>
+          <td align="left">x = 2 / 2</td>
+        </tr>
+        <tr>
+          <td align="left">%</td>
+          <td align="left">Remainder of division</td>
+          <td align="left">x = 2 % 2</td>
+        </tr>
+        <tr>
+          <td align="left">++</td>
+          <td align="left">Increment by one</td>
+          <td align="left">x++</td>
+        </tr>
+        <tr>
+          <td align="left">--</td>
+          <td align="left">Decrement by one</td>
+          <td align="left">x--</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.</p>
+    <pre><code class="language-javascript">let x = 3;
+
+x %= 2;
+
+console.log(x); // 1
+</code></pre>
+    <h4>Comparison operators</h4>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Operator</th>
+          <th align="left">Purpose</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">==</td>
+          <td align="left">Equal to value</td>
+          <td align="left">x = 2 == 2</td>
+        </tr>
+        <tr>
+          <td align="left">===</td>
+          <td align="left">Equal to value and type</td>
+          <td align="left">x = 2 === "2"</td>
+        </tr>
+        <tr>
+          <td align="left">!=</td>
+          <td align="left">Not equal to value</td>
+          <td align="left">x = 2 != 2</td>
+        </tr>
+        <tr>
+          <td align="left">!==</td>
+          <td align="left">Not equal to value and type</td>
+          <td align="left">x = 2 !== "2"</td>
+        </tr>
+        <tr>
+          <td align="left">></td>
+          <td align="left">Greater than</td>
+          <td align="left">x = 2 > 2</td>
+        </tr>
+        <tr>
+          <td align="left">&#x3C;</td>
+          <td align="left">Less than</td>
+          <td align="left">x = 2 &#x3C; 2</td>
+        </tr>
+        <tr>
+          <td align="left">&#x3C;=</td>
+          <td align="left">Less than or equal to</td>
+          <td align="left">x = 2 &#x3C;= 2</td>
+        </tr>
+        <tr>
+          <td align="left">>=</td>
+          <td align="left">Greater than or equal to</td>
+          <td align="left">x = 2 >= 2</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?</p>
+    <h4>Logical operators</h4>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Operator</th>
+          <th align="left">Purpose</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">&#x26;&#x26;</td>
+          <td align="left">Check if statement1 AND statement2 are true</td>
+          <td align="left">if ( age > 17 &#x26;&#x26; age &#x3C; 65 )</td>
+        </tr>
+        <tr>
+          <td align="left">||</td>
+          <td align="left">Check if statement1 OR statement2 is true</td>
+          <td align="left">if (age &#x3C;=5 || age >= 65)</td>
+        </tr>
+        <tr>
+          <td align="left">!</td>
+          <td align="left">Check if a statment is NOT true</td>
+          <td align="left">if (!age)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Perhaps the NOT operator here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.</p>
+    <pre><code class="language-javascript">let x = false;
+let y = true;
+
+if (!x) {
+  console.log(x); // false
+}
+
+if (!y) {
+  console.log(y); // no output
+}
+</code></pre>
+    <h2>Assignment</h2>
+    <p>Write an application that can calculate a person's tax.</p>
+    <ul>
+      <li>Your app should be able to accept the gross amount a person has earned</li>
+      <li>Your app should be able to calculate income tax and national insurance</li>
+      <li>Your app should be able to show the student loan repayment amount, if applicable</li>
+      <li>Your app should be able to tell the person their tax code, depending on how much they earn</li>
+      <li>Finally, your app should tell the person their net pay for the month</li>
+    </ul>
+    <p><a href="/swe">main</a>|<a href="/swe/mod1/wk2/day5.html">prev</a>|<a href="/swe/mod2/wk1/day2.html">next</a></p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
