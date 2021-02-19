@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we're going to looks at arrays.
+Today we're going to look at all things Array!
 
 # Lesson 1
 
@@ -17,7 +17,7 @@ Today we're going to looks at arrays.
 An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:
 
 ```javascript
-let myArray1 = ["Hi!", 1, 2, 3.3];
+let myArray1 = ["Hi!", 1, 2, 3.3]; // preferred method
 let myArray2 = new Array(1, "two", true);
 
 console.log(myArray1, myArray2); // ["Hi!", 1, 2, 3.3], [1, "two", true]
@@ -63,14 +63,21 @@ for (let i = 0; i < myArray1.length; i++) {
 
 Let's break this loop down:
 
+First, we initialise a variable and assign it zero
+
 ```javascript
-// this initialises a variable and assigns it zero
 let i = 0;
+```
 
-// this effectively says "while the variable i is less than the length of myArray, continue looping"
+The next part of the loop effectively says "while the variable i is less than the length of myArray, continue looping"
+
+```javascript
 i < myArray1.length;
+```
 
-// this is a compound operator we saw yesterday and adds one to i on each iteration of the loop
+Last is a compound operator that adds one to i on each iteration of the loop
+
+```javascript
 i++;
 ```
 
@@ -168,5 +175,27 @@ Congratulations! You've written your first algorithm in JavaScript! :-)
 ## Assignment
 
 Create a multi-dimensional array filled with your favourite foods. Loop through your favourites and output them to the console.
+
+# Lesson 3
+
+## Learning Objectives
+
+- Learn the various array methods
+
+### Array methods
+
+When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make
+to the array will change its values directly.
+
+| Method  | Example               | Effect                              |
+| :------ | :-------------------- | ----------------------------------- |
+| Push    | `myArray1.push(1)`    | Adds item to the end of array       |
+| Pop     | `myArray1.pop()`      | Removes the last item in the array  |
+| Shift   | `myArray1.shift()`    | Removes the first item in the array |
+| Unshift | `myArray1.unshift(1)` | Adds item to beginning of array     |
+
+## Assignment
+
+Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it now contain?
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

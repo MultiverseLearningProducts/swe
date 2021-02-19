@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
+You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
 # Lesson 1
 
@@ -23,7 +23,7 @@ Primitives are the simplest datatypes and are "built-in" to the JavaScript langu
 | undefined | `const myUndefined`             |
 | null      | `const myNull = null`           |
 
-The important point about primitives is that they cannot be modified after they have been created. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
+The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
 ```javascript
 const myString = "Hi, Daniel";
