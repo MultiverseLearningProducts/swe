@@ -1,16 +1,15 @@
 # Mod 2 > Week 1 > Day 1
 
-![microsoft certificate](https://di3xp7dfi3cq.cloudfront.net/pub/media/magefan_blog/w/h/what-jobs-can-you-get-with-mta-cetification.jpg)
-
-## You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
+You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
 
 # Primitives, conditionals, functions and scoping
 
 ## Learning Objectives
 
 - Learn about primitives, conditionals, functions and scoping
-- Write your first app!
-- Review the operators in JavaScript
+- Learn the different types of operators
+- Write your first app
+- Write a tax app
 
 ## Lesson 1
 
@@ -18,13 +17,15 @@
 
 Primitives are variables at the lowest level of the language and are the simplest datatypes. There are 7 primitive data types, but we'll focus on the main 5 for now:
 
-- string `const myString = "Hi, Daniel"`
-- number `const myNumber = 3.6`
-- boolean `const myBoolean = true`
-- undefined `const myUndefined` (no assignment = undefined)
-- null `const myNull = null`
+| Primitive | Example                         |
+| :-------- | :------------------------------ |
+| string    | `const myString = "Hi, Daniel"` |
+| number    | `const myNumber = 3.6`          |
+| boolean   | `const myBoolean = true`        |
+| undefined | `const myUndefined`             |
+| null      | `const myNull = null`           |
 
-The important point about primitives is that they cannot be modified after they have been created. Any modification will create a new variable. Let's illustrate this point:
+The important point about primitives is that they cannot be modified after they have been created. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
 ```javascript
 const myString = "Hi, Daniel";
@@ -140,10 +141,31 @@ Don't worry too much about the try/catch block above. This is an error handling 
 
 We can categorise the operators as follows:
 
-- Assignment operatoes
+- Assignment operators
 - Arithmetic operators
 - Comparison operators
 - Logical operators
+
+### Assignment operators
+
+| Operator | Purpose             | Example | Same as   |
+| :------- | :------------------ | :------ | --------- |
+| =        | Assignment          | x = 2   |
+| +=       | Addition assignment | x += 2  | x = x + 2 |
+| -=       | Subtract assignment | x -= 2  | x = x - 2 |
+| \*=      | Muliply assignment  | x \*= 2 | x = x - 2 |
+| /=       | Divide assignment   | x /= 2  | x = x / 2 |
+| %=       | Modulus assignment  | x %= 2  | x = x % 2 |
+
+Operators such as `+=` are referred to as compound operators. This is because two things are happening.
+
+```javascript
+let x = 2;
+
+x -= 2; // this line in plain English would be: "take x (2), subtract 2, then assign the result back to x"
+
+console.log(x); // 0
+```
 
 ### Arithmetic operators
 
@@ -153,8 +175,64 @@ We can categorise the operators as follows:
 | -        | Subtraction           | x = 2 - 2  |
 | \*       | Multiplication        | x = 2 \* 2 |
 | /        | Division              | x = 2 / 2  |
-| %        | Remainder of division | x = 2 + 2  |
-| ++       | Increment             | x++        |
-| --       | Decrement             | x--        |
+| %        | Remainder of division | x = 2 % 2  |
+| ++       | Increment by one      | x++        |
+| --       | Decrement by one      | x--        |
+
+The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
+
+```javascript
+let x = 3;
+
+x %= 2;
+
+console.log(x); // 1
+```
+
+### Comparison operators
+
+| Operator | Purpose                     | Example       |
+| :------- | :-------------------------- | :------------ |
+| ==       | Equal to value              | x = 2 == 2    |
+| ===      | Equal to value and type     | x = 2 === "2" |
+| !=       | Not equal to value          | x = 2 != 2    |
+| !==      | Not equal to value and type | x = 2 !== "2" |
+| >        | Greater than                | x = 2 > 2     |
+| <        | Less than                   | x = 2 < 2     |
+| <=       | Less than or equal to       | x = 2 <= 2    |
+| >=       | Greater than or equal to    | x = 2 >= 2    |
+
+Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?
+
+### Logical operators
+
+| Operator | Purpose                                     | Example                     |
+| :------- | :------------------------------------------ | :-------------------------- |
+| &&       | Check if statement1 AND statement2 are true | if ( age > 17 && age < 65 ) |
+| \|\|     | Check if statement1 OR statement2 is true   | if (age <=5 \|\| age >= 65) |
+| !        | Check if a statment is NOT true             | if (!age)                   |
+
+Perhaps the NOT operator here could do with some more explanation:
+
+```javascript
+let x = false;
+let y = true;
+
+if (!x) {
+  console.log(x); // false
+}
+
+if (!y) {
+  console.log(y); // no output
+}
+```
+
+Assignment: write an application that can calculate a person's tax.
+
+- Your app should be able to accept the gross amount a person has earned
+- Your app should be able to calculate income tax and national insurance
+- Your app should be able to show the student loan repayment amount, if applicable
+- Your app should be able to tell the person their tax code, depending on how much they earn
+- Finally, your app should tell the person there net pay for the month
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
