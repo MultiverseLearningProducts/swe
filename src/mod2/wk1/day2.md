@@ -1,99 +1,172 @@
 # Mod 2 > Week 1 > Day 2
 
-## Overview of the day
+# Overview of the day
 
-----
+Today we're going to looks at arrays.
 
-## Lesson 1 - Typography
-
-## Learning Objectives
-
-* _4.1 Style HTML text properties Apply styles to text appearance (color, bold, italics); apply styles to text font (WOFF and @font-face, size); apply styles to text alignment, spacing, and indentation; apply styles to text hyphenation; apply styles for a text drop shadow_
-
-## Before we start
-
-## Materials needed
-
-## Lesson
-
-!(https://docs.google.com/presentation/d/e/2PACX-1vQcGnwBPI463TQAmkOAyVjGNwNZVPwZKtDN0plA4C8Tgicad6fYLZ33qhWy3sxnmNyNXwoQJGKpJemc/embed)
-
-## Assignment
-
-Choose a [font](https://fonts.google.com/) for your application and use **@font-face** to load it.
-----
-
-## Lesson 2 - The Box Model
+# Lesson 1
 
 ## Learning Objectives
 
-* _4.2 Style HTML box properties Apply styles to alter appearance attributes (size, border and rounding border corners, outline, padding, margin); apply styles to alter graphic effects (transparency, opacity, background image, gradients, shadow, clipping); apply styles to establish and change an element’s position (static, relative, absolute, fixed)_
-* _4.3 Create a flexible content layout Implement a layout using a flexible box model; implement a layout using multi-column; implement a layout using position floating and exclusions; implement a layout using grid alignment; implement a layout using regions, grouping, and nesting_
+- Defining an array
+- Accessing an array
+- Looping over an array
 
-## Before we start
+### Defining an array
 
-## Materials needed
+An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:
 
-## Lesson
+```javascript
+let myArray1 = ["Hi!", 1, 2, 3.3];
+let myArray2 = new Array(1, "two", true);
 
-!(https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed)
+console.log(myArray1, myArray2); // ["Hi!", 1, 2, 3.3], [1, "two", true]
+```
 
-Every HTML element has box properties. These are the properties that control how the element is spaced on the page and control the position of the box contents. In addition, the graphic effects can be applied to the box of an element.
+Notice that we can mix in strings, numbers, booleans and just about any datatype.
 
-The border element supports many variants in its ability to set properties in a single line. Take some time to experiment with all the possible combinations so you will be able to read them and identify them easily on the exam.
+### Accessing an array
 
-CSS3 allows you to style box properties in the following ways:
+To access an array we can use the square bracket notation with an index number:
 
-*   Every HTML element is a box and has the properties of a box such as height and width.
-*   CSS3 allows you to change the size of a box by specifying a new height and width.
-*   The border-style property allows you to specify a solid or dashed line for the border.
-*   The border-color property allows you to specify the color of the border.
-*   The border-spacing property allows you to specify the amount of space between adjacent elements
-*   The border-width property allows you to specify a thickness for the border.
-*   Each side of the box can by styled differently.
-*   CSS3 provides a way to define the padding and margin that a box should have relative to adjacent elements. This can be configured differently for each side of the box.
-*   An element can be made transparent or partially transparent by setting the opacity property.
-*   An element can contain a background image by setting its background-image property.
-*   CSS3 provides the ability to create shadow effects by specifying the box-shadow property.
-*   CSS3 provides the ability to clip images using the clip property to show only a portion of an image.
-*   CSS3 can be used to establish an element’s position as either fixed, absolute, or relative.
-*   The left and top CSS properties can be used to alter an element’s position.
+```javascript
+console.log(myArray1[0], myArray2[2]); // "Hi!", true
+```
 
-# Responsive Layouts
+Notice that to access the first element in the array, we need to use a zero. This because arrays in JavaScript are zero-based, which is to say that the index starts
+at zero. This is common across many programming languages.
 
-!(https://docs.google.com/presentation/d/e/2PACX-1vRUJJDlTFSLduiExxM64ScDeuOxSNQz12qkqPJy0MIBTyhv-dI74jnG7mbuumI9eHXrUI3DZ2wPz3QV/embed)
+### Looping over an array
 
-# CSS selectors
+You will often find that you need to loop over an array to check or output the values. If you're not familiar with loops, they are used in programming to make repetitive
+tasks more efficient. One of the most common loops is the For loop.
 
-Before we go much further lets take a good look at CSS selectors.
+```javascript
+let myArray1 = ["Hi!", 1, 2, 3.3];
 
-!(https://docs.google.com/presentation/d/e/2PACX-1vQnSLd9aR-oTZ2rBFNX_tPXh5gAdcn3s3qRjciRxuzGisT6caCl-7IOt3jLBtF3l9VF8xLT52mwewmv/embed)
+// inefficient - multiple console.log lines
 
-Our audio app is going to need the following sections:
+console.log(myArray[0] // 1
+console.log(myArray[1] // 2
+console.log(myArray[2] // 3.3
+```
 
-*   a header area to brand our app
-*   a place for the interactive grid
-*   a nav area for the control buttons; play and stop
-*   a place to list tracks
-*   an area for our audio visualisations
-*   a footer for credits
+```javascript
+let myArray1 = ["Hi!", 1, 2, 3.3];
 
-## Assignment
+// more efficient - one console.log line
 
-Create a responsive layout that has a place for all of these sections. Use your knowledge of HTML semantic elements and the box model. Start with a mobile layout by copying the css styles below, then adjust the style for different break points. As your screen grows in scale and crosses a break point, different css rules will be applied.
-
-```css
-/* css for mobile goes here */
-@media screen and (min-width: 30em) {
-  /* css for small screens goes here */
-}
-@media screen and (min-width: 30em) and (max-width: 60em) {
-  /* css for mid screens goes here */
-}
-@media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
+for (let i = 0; i < myArray1.length; i++) {
+  console.log(myArray[i]); // 1, 2, 3.3
 }
 ```
 
-[attendance log](https://platform.multiverse.io/apprentice/attendance-log/189)
-[main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html)
+Let's break this loop down:
+
+```javascript
+// this initialises a variable and assigns it zero
+let i = 0;
+
+// this effectively says "while the variable i is less than the length of myArray, continue looping"
+i < myArray1.length;
+
+// this is a compound operator we saw yesterday and adds one to i on each iteration of the loop
+i++;
+```
+
+## Assignment
+
+Write a function that takes an array as an argument, loops over the array, manipulates the elements in some way (addition, subtraction, etc), then logs the array to the console.
+
+# Lesson 2
+
+## Learning Objectives
+
+- Multi-dimensional arrays
+- Accessing multi-dimensional arrays
+- Looping over multi-dimensional arrays
+
+### Multi-dimensional arrays
+
+A multi-dimensional array is an array that's held in another array. Let's see how we can declare a multi-dimensional array:
+
+```javascript
+let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+console.log(myMdArray); // [[1, 2, 3], [2, 3, 4], [5, 6, 7]]
+```
+
+Notice how we now have arrays in an array.
+
+### Acessing multi-dimensional arrays
+
+Accessing multi-dimensional arrays is somewhat similar to how we'd access single-dimensional array, except this time, we need tell JavaScript which nested array we want and which element in thata
+array we also want. For example:
+
+```javascript
+let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+console.log(myMdArray[0][2]); // 3
+```
+
+In the code example above, we're accessing the first nested array, then the third element in that nested array.
+
+### Looping over multi-dimensional arrays
+
+To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop:
+
+```javascript
+let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+for (let i = 0; i < myMdArray.length; i++) {
+  let nestedArrayLength = myMdArray[i].length;
+
+  for (let j = 0; j < nestedArrayLength; j++) {
+    console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
+  }
+}
+```
+
+Eeeeek! Looks scary, doesn't it? Let's break it down:
+
+1. The First loop loops over the contents of the first array:
+
+```javascript
+for (let i = 0; i < myMdArray.length; i++) {
+  console.log(myMdArray[i]); // [1, 2, 3], [2, 3, 4], [5, 6, 7]
+}
+```
+
+2. The second loop gets the length if the nested array, e.g. for the array [1, 2, 3], the length is three.
+
+```javascript
+let nestedArrayLength = myMdArray[i].length;
+```
+
+3. We then construct a second loop to loop through the second array, and use the square bracket notation to extract the elements
+
+```javascript
+for (let j = 0; j < nestedArrayLength; j++) {
+  console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
+}
+```
+
+Congratulations! You've written your first algorithm in JavaScript! :-)
+
+## Assignment
+
+Create a multi-dimensional array filled with your favourite foods. Loop through your favourites and output them to the console.
+
+[main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

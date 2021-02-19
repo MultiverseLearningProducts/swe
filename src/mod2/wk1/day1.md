@@ -1,21 +1,19 @@
 # Mod 2 > Week 1 > Day 1
 
+# Overview of the day
+
 You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
 
-# Primitives, conditionals, functions and scoping
+# Lesson 1
 
 ## Learning Objectives
 
 - Learn about primitives, conditionals, functions and scoping
-- Learn the different types of operators
 - Write your first app
-- Write a tax app
-
-## Lesson 1
 
 ### Primitives
 
-Primitives are variables at the lowest level of the language and are the simplest datatypes. There are 7 primitive data types, but we'll focus on the main 5 for now:
+Primitives are the simplest datatypes and are "built-in" to the JavaScript language. There are 7 primitive data types, but we'll focus on the main 5 for now:
 
 | Primitive | Example                         |
 | :-------- | :------------------------------ |
@@ -101,7 +99,16 @@ console.log(multiply(29, 2)); // 58
 
 What do you think the "return" statement does? Also, the functions accept what we call "arguments" or "parameters". What are these?
 
-Assignment: you now have all you need to write a simple application. Fire up [JSFiddle](http://jsfiddle.net) and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.
+## Assignment
+
+You now have all you need to write a simple application. Fire up [JSFiddle](http://jsfiddle.net) and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.
+
+# Lesson 2
+
+## Learning Objectives
+
+- Learn the different types of operators
+- Write a tax app
 
 ### Scoping
 
@@ -135,9 +142,7 @@ Key points:
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
-# Lesson 2
-
-## Operators
+### Operators
 
 We can categorise the operators as follows:
 
@@ -146,7 +151,7 @@ We can categorise the operators as follows:
 - Comparison operators
 - Logical operators
 
-### Assignment operators
+#### Assignment operators
 
 | Operator | Purpose             | Example | Same as   |
 | :------- | :------------------ | :------ | --------- |
@@ -167,7 +172,7 @@ x -= 2; // this line in plain English would be: "take x (2), subtract 2, then as
 console.log(x); // 0
 ```
 
-### Arithmetic operators
+#### Arithmetic operators
 
 | Operator | Purpose               | Example    |
 | :------- | :-------------------- | :--------- |
@@ -189,7 +194,7 @@ x %= 2;
 console.log(x); // 1
 ```
 
-### Comparison operators
+#### Comparison operators
 
 | Operator | Purpose                     | Example       |
 | :------- | :-------------------------- | :------------ |
@@ -204,7 +209,7 @@ console.log(x); // 1
 
 Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?
 
-### Logical operators
+#### Logical operators
 
 | Operator | Purpose                                     | Example                     |
 | :------- | :------------------------------------------ | :-------------------------- |
@@ -212,7 +217,7 @@ Challenge: in breakout rooms, look at the examples above, in each case, what wou
 | \|\|     | Check if statement1 OR statement2 is true   | if (age <=5 \|\| age >= 65) |
 | !        | Check if a statment is NOT true             | if (!age)                   |
 
-Perhaps the NOT operator here could do with some more explanation:
+Perhaps the NOT operator here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
 
 ```javascript
 let x = false;
@@ -227,12 +232,14 @@ if (!y) {
 }
 ```
 
-Assignment: write an application that can calculate a person's tax.
+## Assignment
+
+Write an application that can calculate a person's tax.
 
 - Your app should be able to accept the gross amount a person has earned
 - Your app should be able to calculate income tax and national insurance
 - Your app should be able to show the student loan repayment amount, if applicable
 - Your app should be able to tell the person their tax code, depending on how much they earn
-- Finally, your app should tell the person there net pay for the month
+- Finally, your app should tell the person their net pay for the month
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
