@@ -87,7 +87,7 @@ Create a function that takes a bunch of arguements that will then assign to an o
 
 ### Part 2
 
-Can you also loop through the array in your object and log the values to the console?
+Can you also loop through the array in your object and log the values to the console? Will a for..in loop work here? Other than the standard for loop i.e `for (let i = 0; i < something.length; i++)`, what other for loop could you use?
 
 # Lesson 2
 
