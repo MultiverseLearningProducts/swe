@@ -87,13 +87,40 @@ Create a function that takes a bunch of arguements that will then assign to an o
 
 ### Part 2
 
-Can you also loop through the array in your object and log the values to the console? Will a for..in loop work here? Other than the standard for loop i.e `for (let i = 0; i < something.length; i++)`, what other for loop could you use?
+Can you also loop through the array in your object and log the values to the console? Will a `for..in` loop work here? Other than the standard for loop i.e `for (let i = 0; i < something.length; i++)`, what other for loop could you use?
 
 # Lesson 2
 
 ## Learning Objectives
 
-- Understand the difference between value and reference
+- What is meant by value vs reference
+- Become a more effective programmer
+
+### Value vs reference
+
+To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the change function?
+
+```javascript
+let sampleStudent = "HTML Student";
+
+let sampleCourse = {
+  name: "HTML",
+  grade: 90,
+};
+
+function change(student, course) {
+  student = "JavaScript Student";
+  course.name = "JavaScript";
+  course.grade = 100;
+}
+
+change(sampleStudent, sampleCourse);
+
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // <--- what will be logged?
+```
+
+The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after
+they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
 
 ## Assignment
 
