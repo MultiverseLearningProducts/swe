@@ -183,7 +183,7 @@ In the example above, if the callback returns either 1 or a -1, we know that the
 
 ### Part 1
 
-Below are five arrays, in each instance, set-up search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
+Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
 
 ### Part 2
 
@@ -194,7 +194,7 @@ Using the arrays below, create a sort function that can take an array, sort the 
 [1678, 2, 3, -78, 9, 10001];
 [32466, 2, 3, "dinosourraahh", 9, 10.6];
 ["SHARK!", 2, -1, 78, -9, 100.5];
-[000, 2, 3, "78", 9, 1.1.1];
+[000, 2, 3, "78", 9, 1.13435];
 ```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);
