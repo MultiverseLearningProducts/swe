@@ -83,7 +83,7 @@ for (let key in person) {
 
 ### Part 1
 
-Create a function that takes a bunch of arguements that will then assign to an object (include at least one array). Once done, loop through this object and console log the values.
+Create a function that takes a bunch of arguements that are then assigned to an object (include at least one array). Once done, loop through this object and console log the values.
 
 ### Part 2
 
@@ -122,6 +122,23 @@ console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // <--- what 
 The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after
 they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
 
-## Assignment
+For this rule to hold, we _should_ be able to modify the object, but we _shouldn't_ be able to modify the string
+
+```javascript
+function change(student, course) {
+  // this creates a new variable and does not modify sampleStudent
+  student = "JavaScript Student";
+
+  // this references sampleCourse and modifies it directly
+  course.name = "JavaScript";
+  course.grade = 100;
+}
+```
+
+Sure enough, if we log the result, we get:
+
+```javascript
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // "HTML Student", "JavaScript", 100
+```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
