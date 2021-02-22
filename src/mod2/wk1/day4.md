@@ -83,7 +83,7 @@ for (let key in person) {
 
 ### Part 1
 
-Create a function that takes a bunch of arguements that are then assigned to an object (include at least one array). Once done, loop through this object and console log the values.
+Create a function that takes a bunch of arguements and assigns them an object (include at least one array). Once done, loop through this object and console log the values.
 
 ### Part 2
 

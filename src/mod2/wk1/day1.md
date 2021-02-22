@@ -26,6 +26,7 @@ Primitives are the simplest datatypes and are "built-in" to the JavaScript langu
 The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
 ```javascript
+// string primitive
 const myString = "Hi, Daniel";
 
 console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
@@ -180,6 +181,12 @@ console.log(x); // 0
 ```
 
 The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assign the result back to x"
+
+#### Math operators
+
+| Operator    | Purpose                                  | Example                            |
+| :---------- | :--------------------------------------- | :--------------------------------- |
+| Math.random | Generate a random number between 0 and 1 | `let randomNumber = Math.random()` |
 
 #### Arithmetic operators
 
