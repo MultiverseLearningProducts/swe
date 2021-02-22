@@ -33,12 +33,11 @@ The first ten numbers, for example, would look like this:
 "Fizz"
 ```
 
-# Lesson 2
+# Lesson 1
 
 ## Learning Objectives
 
 - How to search an array
-- How to sort an array
 
 ### Searching an array
 
@@ -134,9 +133,15 @@ The find method has a return statement and the filter does not. This is one of t
 
 If this sounds confusing, make sure you ask your coach to explain what's going on!
 
+# Lesson 2
+
+## Learning Objectives
+
+- How to sort an array
+
 ### Sorting an array
 
-### Sorting strings
+#### Sorting strings
 
 From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:
 
@@ -149,7 +154,7 @@ console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 
 Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?
 
-### Sorting numbers
+#### Sorting numbers
 
 Things start to full apart a bit when we try and sort numbers:
 
