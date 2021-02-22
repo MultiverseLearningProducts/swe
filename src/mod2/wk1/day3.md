@@ -113,6 +113,8 @@ In the above example, `el` is each element that is passed into the callback func
 
 Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.
 
+Further reading: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
+
 #### Search using array.filter
 
 The last strategy we will look at is array.filter:
@@ -197,4 +199,4 @@ Using the arrays below, create a sort function that can take an array, sort the 
 [000, 2, 3, "78", 9, 1.13435];
 ```
 
-[main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);
+[main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);
