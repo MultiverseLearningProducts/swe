@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
+You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
 # Lesson 1
 
@@ -110,7 +110,7 @@ You now have all you need to write a simple application. Fire up [JSFiddle](http
 - Learn the different types of operators
 - Write a tax app
 
-### Scoping
+### Variables and scoping
 
 Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
 
@@ -134,6 +134,12 @@ function myFunction() {
 
 myFunction();
 ```
+
+| Variable | Example                         | Usage                                                                    |
+| :------- | :------------------------------ | ------------------------------------------------------------------------ |
+| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change - useful for global variables    |
+| var      | `var myNumber = 3.6`            | Use sparingly as var can be redeclared and doesn't support block scoping |
+| let      | `let myBoolean = true`          | Use as needed in function/block scoping                                  |
 
 Key points:
 
@@ -218,20 +224,20 @@ Challenge: in breakout rooms, look at the examples above, in each case, what wou
 | :------- | :------------------------------------------ | :-------------------------- |
 | &&       | Check if statement1 AND statement2 are true | if ( age > 17 && age < 65 ) |
 | \|\|     | Check if statement1 OR statement2 is true   | if (age <=5 \|\| age >= 65) |
-| !        | Check if a statment is NOT true             | if (!age)                   |
+| !        | Check if a statement is NOT true            | if (!age)                   |
 
-Perhaps the NOT operator here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
+Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
 
 ```javascript
 let x = false;
 let y = true;
 
 if (!x) {
-  console.log(x); // false
+  console.log(x); // this line prints out because x = false, therefore the check returns true
 }
 
 if (!y) {
-  console.log(y); // no output
+  console.log(y); // this line is never reached
 }
 ```
 

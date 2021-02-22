@@ -186,6 +186,8 @@ Create a multi-dimensional array filled with your favourite foods. Loop through 
 When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make
 to the array will change its values directly.
 
+Arrays have a number of built-in methods you can use to manipulate them in some way. Here are some examples:
+
 | Method  | Example               | Effect                              |
 | :------ | :-------------------- | ----------------------------------- |
 | Push    | `myArray1.push(1)`    | Adds item to the end of array       |
