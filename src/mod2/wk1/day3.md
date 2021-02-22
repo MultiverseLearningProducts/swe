@@ -42,7 +42,7 @@ The first ten numbers, for example, would look like this:
 
 ### Searching an array
 
-Searching an array is a common requirement, and there are a number of ways to achieve it in JavaScript.
+You will often need to search an array in your programs, and there are a number of ways to achieve it in JavaScript.
 
 #### Search using indexOf
 
@@ -80,10 +80,18 @@ Note the use of of the "bang" operator to allow the if statement to return true 
 
 Another useful method to search our array is the find method. This method employs a callback method to return the first value that satisfies the condition.
 
+NB: knowledge of callbacks, filter and find is not required for the MTA exam.
+
 ```javascript
 let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
 
+// arrow function
 let result = arr1.find((el) => {
+  return el.toString().length < 5;
+});
+
+// older style function
+let result = arr1.find(function (el) {
   return el.toString().length < 5;
 });
 
@@ -102,7 +110,7 @@ it can perform the the check on them. The check on them happens in an "anonymous
 };
 ```
 
-In the above example, `el` is each element that is passed into the callback function, so 1, 2, "holy smokes", and so on.
+In the above example, `el` is each element that is passed into the callback function, so `1, 2, "holy smokes"`, and so on.
 
 Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.
 
@@ -128,10 +136,60 @@ If this sounds confusing, make sure you ask your coach to explain what's going o
 
 ### Sorting an array
 
-```javascript
+### Sorting strings
 
+From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:
+
+```javascript
+let numbersAsStrings = ["1424242", "13220", "1000"];
+
+numbersAsStrings.sort();
+console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 ```
 
+Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?
+
+### Sorting numbers
+
+Things start to full apart a bit when we try and sort numbers:
+
+```javascript
+var numbers = [1678, 2, 3, 78, 9, 10001];
+
+numbers.sort();
+console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
+```
+
+Question: how is JavaScript trying to sort the numbers above?
+
+We can fix this by using a callback to examine the numbers in more detail:
+
+```javascript
+numbers.sort(function (a, b) {
+  if (a > b) return 1; // switch numbers
+  if (a < b) return -1; // switch numbers
+  return 0; // numbers are the same
+});
+```
+
+In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same so no switch is required. The function will keep checking and switching the values until the array is sorted.
+
 ## Assignment
+
+### Part 1
+
+Below are five arrays, in each instance, set-up search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
+
+### Part 2
+
+Using the arrays below, create a sort function that can take an array, sort the contents, then return the sorted array.
+
+```javascript
+[1678, 2, 3, "Hihihi", 9, "435454"];
+[1678, 2, 3, -78, 9, 10001];
+[32466, 2, 3, "dinosourraahh", 9, 10.6];
+["SHARK!", 2, -1, 78, -9, 100.5];
+[000, 2, 3, "78", 9, 1.1.1];
+```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);
