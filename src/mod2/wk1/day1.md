@@ -154,21 +154,43 @@ Don't worry too much about the try/catch block above. This is an error handling 
 
 We can categorise the operators as follows:
 
-- Assignment operators
 - Arithmetic operators
+- Assignment operators
 - Comparison operators
 - Logical operators
 
+#### Arithmetic operators
+
+| Operator | Purpose               | Example      |
+| :------- | :-------------------- | :----------- |
+| +        | Addition              | `x = 2 + 2`  |
+| -        | Subtraction           | `x = 2 - 2`  |
+| \*       | Multiplication        | `x = 2 \* 2` |
+| /        | Division              | `x = 2 / 2`  |
+| %        | Remainder of division | `x = 2 % 2`  |
+| ++       | Increment by one      | `x++`        |
+| --       | Decrement by one      | `x--`        |
+
+The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
+
+```javascript
+let x = 3;
+
+x %= 2;
+
+console.log(x); // 1
+```
+
 #### Assignment operators
 
-| Operator | Purpose             | Example | Same as   |
-| :------- | :------------------ | :------ | --------- |
-| =        | Assignment          | x = 2   | n/a       |
-| +=       | Addition assignment | x += 2  | x = x + 2 |
-| -=       | Subtract assignment | x -= 2  | x = x - 2 |
-| \*=      | Muliply assignment  | x \*= 2 | x = x - 2 |
-| /=       | Divide assignment   | x /= 2  | x = x / 2 |
-| %=       | Modulus assignment  | x %= 2  | x = x % 2 |
+| Operator | Purpose             | Example   | Same as     |
+| :------- | :------------------ | :-------- | ----------- |
+| =        | Assignment          | `x = 2`   | n/a         |
+| +=       | Addition assignment | `x += 2`  | `x = x + 2` |
+| -=       | Subtract assignment | `x -= 2`  | `x = x - 2` |
+| \*=      | Muliply assignment  | `x \*= 2` | `x = x - 2` |
+| /=       | Divide assignment   | `x /= 2`  | `x = x / 2` |
+| %=       | Modulus assignment  | `x %= 2`  | `x = x % 2` |
 
 Operators such as `+=` are referred to as compound operators. This is because two things are happening.
 
@@ -184,54 +206,41 @@ The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assi
 
 #### Math operators
 
-| Operator    | Purpose                                  | Example                            |
-| :---------- | :--------------------------------------- | :--------------------------------- |
-| Math.random | Generate a random number between 0 and 1 | `let randomNumber = Math.random()` |
+JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. The rest are included for your reference.
 
-#### Arithmetic operators
-
-| Operator | Purpose               | Example    |
-| :------- | :-------------------- | :--------- |
-| +        | Addition              | x = 2 + 2  |
-| -        | Subtraction           | x = 2 - 2  |
-| \*       | Multiplication        | x = 2 \* 2 |
-| /        | Division              | x = 2 / 2  |
-| %        | Remainder of division | x = 2 % 2  |
-| ++       | Increment by one      | x++        |
-| --       | Decrement by one      | x--        |
-
-The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
-
-```javascript
-let x = 3;
-
-x %= 2;
-
-console.log(x); // 1
-```
+| Operator      | Purpose                                                | Example                                   |
+| :------------ | :----------------------------------------------------- | :---------------------------------------- |
+| Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`        |
+| Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`          |
+| Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)`       |
+| Math.pow()    | Returns the power of a number                          | `let mathPower = Math.pow(8, 2)`          |
+| Math.sqrt()   | Returns the square route of a number                   | `let sqRt = Math.sqrt(64)`                |
+| Math.abs()    | Returns the positive value of a number                 | `let mathAbs = Math.abs(-1.1)`            |
+| Math.min()    | Returns the lowest value                               | `let mathMin = Math.min(1, 45, 1920)`     |
+| Math.max()    | Returns the highest value                              | `let mathMax = Math.max(34, 567, 102034)` |
 
 #### Comparison operators
 
-| Operator | Purpose                     | Example       |
-| :------- | :-------------------------- | :------------ |
-| ==       | Equal to value              | x = 2 == 2    |
-| ===      | Equal to value and type     | x = 2 === "2" |
-| !=       | Not equal to value          | x = 2 != 2    |
-| !==      | Not equal to value and type | x = 2 !== "2" |
-| >        | Greater than                | x = 2 > 2     |
-| <        | Less than                   | x = 2 < 2     |
-| <=       | Less than or equal to       | x = 2 <= 2    |
-| >=       | Greater than or equal to    | x = 2 >= 2    |
+| Operator | Purpose                     | Example         |
+| :------- | :-------------------------- | :-------------- |
+| ==       | Equal to value              | `x = 2 == 2 `   |
+| ===      | Equal to value and type     | `x = 2 === "2"` |
+| !=       | Not equal to value          | `x = 2 != 2`    |
+| !==      | Not equal to value and type | `x = 2 !== "2"` |
+| >        | Greater than                | `x = 2 > 2`     |
+| <        | Less than                   | `x = 2 < 2`     |
+| <=       | Less than or equal to       | `x = 2 <= 2`    |
+| >=       | Greater than or equal to    | `x = 2 >= 2`    |
 
 Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?
 
 #### Logical operators
 
-| Operator | Purpose                                     | Example                     |
-| :------- | :------------------------------------------ | :-------------------------- |
-| &&       | Check if statement1 AND statement2 are true | if ( age > 17 && age < 65 ) |
-| \|\|     | Check if statement1 OR statement2 is true   | if (age <=5 \|\| age >= 65) |
-| !        | Check if a statement is NOT true            | if (!age)                   |
+| Operator | Purpose                                     | Example                       |
+| :------- | :------------------------------------------ | :---------------------------- |
+| &&       | Check if statement1 AND statement2 are true | `if ( age > 17 && age < 65 )` |
+| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 \|\| age >= 65)` |
+| !        | Check if a statement is NOT true            | `if (!age)`                   |
 
 Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
 
