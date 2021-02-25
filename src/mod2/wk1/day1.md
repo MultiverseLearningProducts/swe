@@ -147,11 +147,11 @@ function myFunction() {
 myFunction();
 ```
 
-| Variable | Example                         | Usage                                                                    |
-| :------- | :------------------------------ | ------------------------------------------------------------------------ |
-| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change - useful for global variables    |
-| var      | `var myNumber = 3.6`            | Use sparingly as var can be redeclared and doesn't support block scoping |
-| let      | `let myBoolean = true`          | Use as needed in function/block scoping                                  |
+| Variable | Example                         | Usage                                                              |
+| :------- | :------------------------------ | ------------------------------------------------------------------ |
+| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change                            |
+| var      | `var myNumber = 3.6`            | Use sparingly. Can be redeclared and doesn't support block scoping |
+| let      | `let myBoolean = true`          | Use as needed in function/block scoping                            |
 
 Key points:
 

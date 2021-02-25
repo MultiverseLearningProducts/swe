@@ -2,9 +2,21 @@
 
 # Overview of the day
 
-Today we will take a look at dates.
+Today we will take a look at a number of string methods available befor looking at the date object and the various methods we can call on it.
 
 # Lesson 1
+
+## Learning Objectives
+
+- Learn and apply string methods
+
+### Common string methods
+
+JavaScript comes with a number of convenient, built-in string methods that can help us find and change strings.
+
+## Assignment
+
+# Lesson 2
 
 ## Learning Objectives
 
@@ -44,29 +56,56 @@ The above format is more readable, but what if we wanted complete control over t
 
 What if we wanted: `The date is: Thursday, January 25th, 2021`?
 
-For this, we can utilise the date object's methods: `getFullYear(), getMonth(), getDay(), getDate()`
+For this, we can utilise the date object's methods: `getFullYear(), getMonth(), getDay(), getDate()`. These methods however, return integers. We then have to do the work of transforming them into a formatted date like the one above.
 
 ```javascript
-let myDate = new Date(2021, 0, 25);
+let myDate = new Date(2021, 1, 25);
 
-console.log(myDate.getDay(), myDate.getMonth(), myDate.getFullYear()); // 1, 0, 2021
-console.log(myDate.toDateString()); // "Mon Jan 25 2021"
+// get the integers
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 25, 1, 2021
+console.log(myDate.getDay()); // 4
+
+// do the work here to get the text based string
 ```
 
-You may have spotted a strange quirk here; adding 0 to the date constructor `new Date(2021, 0, 25)` actually gives us January! Also, `getDay()` returns the day of the week, where 0 is Monday and 6 is Sunday!
+There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.
 
-This is one of a few quirks that you'll need to get used to when working with dates in JavaScript, and goes some way to explaining why many developers use date libraries in their applications to format dates for them. Anyhow!
+In addition, `getDay()` is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.
 
 ## Assignment
 
-Keeping working with the date code above to create a string that reads:
+Keep working with the date code and the information above to create a string that reads:
 
 `The date is: Thursday, January 25th, 2021`
 
-# Lesson 2
+# Lesson 3
 
 ## Learning Objectives
 
 - Learn how to add and subtract dates
+
+### Setting, adding and subtracting dates
+
+Along with the various `get` methods available to us, we also have a number of `set` methods. These methods can set the day, month, year and so on. We can combine these methods with an arithmetic operator to add and subtract dates:
+
+```javascript
+let myDate = new Date(2021, 0, 25);
+
+myDate.setDate(myDate.getDate() - 2);
+
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 23, 0, 2021
+```
+
+Can you think of a use for adding and subtracting dates in an application?
+
+## Assignment
+
+### Part 1
+
+Create a function that can create and return a new date. Your function should except the date, month and year as parameters.
+
+### Part 2
+
+Create another function that can modify and return the date created above. The function should accept a negative value to indicate you want to subtract the passed value from the date, or a positive value meaning you want to add the value to the date.
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
