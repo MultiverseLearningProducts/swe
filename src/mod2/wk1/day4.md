@@ -119,8 +119,7 @@ change(sampleStudent, sampleCourse);
 console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // <--- what will be logged?
 ```
 
-The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after
-they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
+The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
 
 For this rule to hold, we _should_ be able to modify the object, but we _shouldn't_ be able to modify the string
 

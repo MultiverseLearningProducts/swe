@@ -4,11 +4,22 @@
 
 You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
+This course also serves as an good introduction to the JavaScript language, irrespective of whether you're taking an exam.
+
+# Course stucture
+
+Week 1 - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
+
+Week 2 - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.
+
 # Lesson 1
 
 ## Learning Objectives
 
-- Learn about primitives, conditionals, functions and scoping
+- Learn about primitives
+- Learning and applying conditionals
+- Learnin and applying functions
+- Learning about scoping
 - Write your first app
 
 ### Primitives
@@ -98,7 +109,7 @@ console.log(subtract(29, 2) // 27
 console.log(multiply(29, 2)); // 58
 ```
 
-What do you think the "return" statement does? Also, the functions accept what we call "arguments" or "parameters". What are these?
+What do you think the "return" statement does? Also, the functions accept what we call "arguements" or "parameters". What are these?
 
 ## Assignment
 
