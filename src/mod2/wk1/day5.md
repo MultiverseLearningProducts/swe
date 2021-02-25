@@ -53,9 +53,9 @@ console.log(myDate.getDay(), myDate.getMonth(), myDate.getFullYear()); // 1, 0, 
 console.log(myDate.toDateString()); // "Mon Jan 25 2021"
 ```
 
-You may have spotted a strange quirk here; adding 0 to the date constructor (`new Date(2021, 0, 25)`) actually gives us January! Also, `getDay()` returns the day of the week, where 0 is Monday and 6 is Sunday.
+You may have spotted a strange quirk here; adding 0 to the date constructor `new Date(2021, 0, 25)` actually gives us January! Also, `getDay()` returns the day of the week, where 0 is Monday and 6 is Sunday!
 
-This is one of a few quirks that you'll need to get used to when working with dates in JavaScript and goes some way to explaining why some develops use date librairies in their applications to take care of the formatting for them. Anyhow!
+This is one of a few quirks that you'll need to get used to when working with dates in JavaScript, and goes some way to explaining why many developers use date libraries in their applications to format dates for them. Anyhow!
 
 ## Assignment
 
@@ -66,5 +66,7 @@ Keeping working with the date code above to create a string that reads:
 # Lesson 2
 
 ## Learning Objectives
+
+- Learn how to add and subtract dates
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
