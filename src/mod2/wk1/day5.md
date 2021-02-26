@@ -32,7 +32,12 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 
 - For example: `01803 312 698` would become `+44 1803 312 698`
 
-- Test cases: `020 208 8000`, `07985 427 937`, `01626 455 000` (+44 in all cases)
+Test cases (+44 in all cases): 
+
+`020 208 8000`
+`07985 427 937`
+`01626 455 000` 
+
 
 # Lesson 2
 
@@ -47,10 +52,13 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 There are four ways to initialise a date object:
 
 ```javascript
-const date1 = new Date(); // now
+const date1 = new Date(); // date now
+
 // year, month, day, hours, minutes, seconds, milliseconds
 const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); 
+
 const date3 = new Date(10000000000); // milliseconds
+
 const date4 = new Date("October 13, 2014 11:13:00"); // date string
 
 console.log(
@@ -80,13 +88,12 @@ For this, we can utilise the date object's methods: `getFullYear(), getMonth(), 
 ```javascript
 let myDate = new Date(2021, 1, 25);
 
-// get the integers
 console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
 // 25, 1, 2021
 
 console.log(myDate.getDay()); // 4
 
-// do the work here to get the text based string
+// Do the work here to get the text based string
 ```
 
 There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.
@@ -129,18 +136,18 @@ Can you think of a use for adding and subtracting dates in an application?
 
 Input/Output Examples
 
-centuryFromYear(1705)  returns (18)
-centuryFromYear(1900)  returns (19)
-centuryFromYear(1601)  returns (17)
-centuryFromYear(2000)  returns (20)
+- centuryFromYear(1705), returns (18)
+- centuryFromYear(1900), returns (19)
+- centuryFromYear(1601), returns (17)
+- centuryFromYear(2000), returns (20)
 
 ### Part 2
 
 Here are some famous events:
 
-London Olympics, 27 July 2012 to 12 August 2012
-Wedding of Prince William and Catherine Middleton, 29 April 2011
-Apollo 13, April 11, 1970 to April 17, 1970
+- London Olympics, 27 July 2012 to 12 August 2012
+- Wedding of Prince William and Catherine Middleton, 29 April 2011
+- Apollo 13, April 11, 1970 to April 17, 1970
 
 - For each famous event, create a date object that represents the date the event started and the date it ended
 

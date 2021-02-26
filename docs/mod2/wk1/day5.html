@@ -68,10 +68,13 @@
       <li>
         <p>For example: <code>01803 312 698</code> would become <code>+44 1803 312 698</code></p>
       </li>
-      <li>
-        <p>Test cases: <code>020 208 8000</code>, <code>07985 427 937</code>, <code>01626 455 000</code> (+44 in all cases)</p>
-      </li>
     </ul>
+    <p>Test cases (+44 in all cases):</p>
+    <p>
+      <code>020 208 8000</code>
+      <code>07985 427 937</code>
+      <code>01626 455 000</code>
+    </p>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -81,10 +84,13 @@
     </ul>
     <h3>Initialize a date object</h3>
     <p>There are four ways to initialise a date object:</p>
-    <pre><code class="language-javascript">const date1 = new Date(); // now
+    <pre><code class="language-javascript">const date1 = new Date(); // date now
+
 // year, month, day, hours, minutes, seconds, milliseconds
 const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); 
+
 const date3 = new Date(10000000000); // milliseconds
+
 const date4 = new Date("October 13, 2014 11:13:00"); // date string
 
 console.log(
@@ -104,13 +110,12 @@ console.log(
     <p>For this, we can utilise the date object's methods: <code>getFullYear(), getMonth(), getDay(), getDate()</code>. These methods however, return integers. This means we have to do the work of transforming them into a formatted date like the one above.</p>
     <pre><code class="language-javascript">let myDate = new Date(2021, 1, 25);
 
-// get the integers
 console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
 // 25, 1, 2021
 
 console.log(myDate.getDay()); // 4
 
-// do the work here to get the text based string
+// Do the work here to get the text based string
 </code></pre>
     <p>There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.</p>
     <p>In addition, <code>getDay()</code> is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.</p>
@@ -139,20 +144,24 @@ console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
       <li>Given a year, the function should return the century it is in</li>
     </ul>
     <p>Input/Output Examples</p>
-    <p>
-      centuryFromYear(1705) returns (18)
-      centuryFromYear(1900) returns (19)
-      centuryFromYear(1601) returns (17)
-      centuryFromYear(2000) returns (20)
-    </p>
+    <ul>
+      <li>centuryFromYear(1705), returns (18)</li>
+      <li>centuryFromYear(1900), returns (19)</li>
+      <li>centuryFromYear(1601), returns (17)</li>
+      <li>centuryFromYear(2000), returns (20)</li>
+    </ul>
     <h3>Part 2</h3>
     <p>Here are some famous events:</p>
-    <p>
-      London Olympics, 27 July 2012 to 12 August 2012
-      Wedding of Prince William and Catherine Middleton, 29 April 2011
-      Apollo 13, April 11, 1970 to April 17, 1970
-    </p>
     <ul>
+      <li>
+        <p>London Olympics, 27 July 2012 to 12 August 2012</p>
+      </li>
+      <li>
+        <p>Wedding of Prince William and Catherine Middleton, 29 April 2011</p>
+      </li>
+      <li>
+        <p>Apollo 13, April 11, 1970 to April 17, 1970</p>
+      </li>
       <li>
         <p>For each famous event, create a date object that represents the date the event started and the date it ended</p>
       </li>
