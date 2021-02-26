@@ -34,7 +34,7 @@ Primitives are the simplest datatypes and are "built-in" to the JavaScript langu
 | undefined | `const myUndefined`             |
 | null      | `const myNull = null`           |
 
-The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
+The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the primitive. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
 ```javascript
 // string primitive
@@ -85,7 +85,7 @@ Switch statement key points for the exam:
 
 ### Functions
 
-There is not one, not two, but THREE ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
 Let's look at the syntax:
 
 ```javascript
@@ -147,17 +147,17 @@ function myFunction() {
 myFunction();
 ```
 
-| Variable | Example                         | Usage                                                              |
-| :------- | :------------------------------ | ------------------------------------------------------------------ |
-| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change                            |
-| var      | `var myNumber = 3.6`            | Use sparingly. Can be redeclared and doesn't support block scoping |
-| let      | `let myBoolean = true`          | Use as needed in function/block scoping                            |
-
 Key points:
 
 - A globally scoped variable can be accessed anywhere in your code
 - A "var" variable can be accessed anywhere in the function where it's defined
 - A "let" variable can only be access in the block where it's defined
+
+| Variable | Example                         | Usage                                                              |
+| :------- | :------------------------------ | ------------------------------------------------------------------ |
+| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change                            |
+| var      | `var myNumber = 3.6`            | Use `let` instead. Can be redeclared and doesn't support block scoping |
+| let      | `let myBoolean = true`          | Use as needed in function/block scoping                            |
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
@@ -167,6 +167,7 @@ We can categorise the operators as follows:
 
 - Arithmetic operators
 - Assignment operators
+- Math methods (not quite operators but very useful!)
 - Comparison operators
 - Logical operators
 
@@ -215,20 +216,15 @@ console.log(x); // 0
 
 The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assign the result back to x"
 
-#### Math operators
+#### Math methods
 
-JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. The rest are included for your reference.
+JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. Other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp)
 
 | Operator      | Purpose                                                | Example                                   |
 | :------------ | :----------------------------------------------------- | :---------------------------------------- |
 | Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`        |
 | Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`          |
 | Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)`       |
-| Math.pow()    | Returns the power of a number                          | `let mathPower = Math.pow(8, 2)`          |
-| Math.sqrt()   | Returns the square route of a number                   | `let sqRt = Math.sqrt(64)`                |
-| Math.abs()    | Returns the positive value of a number                 | `let mathAbs = Math.abs(-1.1)`            |
-| Math.min()    | Returns the lowest value                               | `let mathMin = Math.min(1, 45, 1920)`     |
-| Math.max()    | Returns the highest value                              | `let mathMax = Math.max(34, 567, 102034)` |
 
 #### Comparison operators
 
@@ -243,7 +239,7 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | <=       | Less than or equal to       | `x = 2 <= 2`    |
 | >=       | Greater than or equal to    | `x = 2 >= 2`    |
 
-Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?
+**Challenge:** in breakout rooms, look at the examples above, in each case, what would `x` be equal to after the comparison has been done? Hint: it will be either `true` or `false`.
 
 #### Logical operators
 
@@ -273,9 +269,13 @@ if (!y) {
 Write an application that can calculate a person's tax.
 
 - Your app should be able to accept the gross amount a person has earned
-- Your app should be able to calculate income tax and national insurance
-- Your app should be able to show the student loan repayment amount, if applicable
-- Your app should be able to tell the person their tax code, depending on how much they earn
+- Your app should be able to calculate income tax
 - Finally, your app should tell the person their net pay for the month
+
+Tax rules:
+
+- Up to £37,500 is taxed at the basic rate of 20%
+- Between £37,500 and £150,000 is taxed at the higher rate of 40%.
+- Over £150,000 is taxed at the additional rate of 45%.
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)

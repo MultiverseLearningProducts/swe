@@ -58,7 +58,7 @@
         </tr>
       </tbody>
     </table>
-    <p>The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:</p>
+    <p>The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the primitive. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:</p>
     <pre><code class="language-javascript">// string primitive
 const myString = "Hi, Daniel";
 
@@ -101,7 +101,7 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
     </ul>
     <h3>Functions</h3>
     <p>
-      There is not one, not two, but THREE ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+      There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
       Let's look at the syntax:
     </p>
     <pre><code class="language-javascript">// older way
@@ -153,6 +153,12 @@ function myFunction() {
 
 myFunction();
 </code></pre>
+    <p>Key points:</p>
+    <ul>
+      <li>A globally scoped variable can be accessed anywhere in your code</li>
+      <li>A "var" variable can be accessed anywhere in the function where it's defined</li>
+      <li>A "let" variable can only be access in the block where it's defined</li>
+    </ul>
     <table>
       <thead>
         <tr>
@@ -170,7 +176,7 @@ myFunction();
         <tr>
           <td align="left">var</td>
           <td align="left"><code>var myNumber = 3.6</code></td>
-          <td>Use sparingly. Can be redeclared and doesn't support block scoping</td>
+          <td>Use <code>let</code> instead. Can be redeclared and doesn't support block scoping</td>
         </tr>
         <tr>
           <td align="left">let</td>
@@ -179,18 +185,13 @@ myFunction();
         </tr>
       </tbody>
     </table>
-    <p>Key points:</p>
-    <ul>
-      <li>A globally scoped variable can be accessed anywhere in your code</li>
-      <li>A "var" variable can be accessed anywhere in the function where it's defined</li>
-      <li>A "let" variable can only be access in the block where it's defined</li>
-    </ul>
     <p>Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.</p>
     <h3>Operators</h3>
     <p>We can categorise the operators as follows:</p>
     <ul>
       <li>Arithmetic operators</li>
       <li>Assignment operators</li>
+      <li>Math methods (not quite operators but very useful!)</li>
       <li>Comparison operators</li>
       <li>Logical operators</li>
     </ul>
@@ -305,8 +306,8 @@ x -= 2;
 console.log(x); // 0
 </code></pre>
     <p>The line <code>x -= 2;</code> in plain English would be: "Take x (2), subtract 2, then assign the result back to x"</p>
-    <h4>Math operators</h4>
-    <p>JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. The rest are included for your reference.</p>
+    <h4>Math methods</h4>
+    <p>JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. Other Math operators can be found <a href="https://www.w3schools.com/js/js_math.asp">here</a></p>
     <table>
       <thead>
         <tr>
@@ -330,31 +331,6 @@ console.log(x); // 0
           <td align="left">Math.floor()</td>
           <td align="left">Returns the value rounded down to nearest whole number</td>
           <td align="left"><code>let roundedDown = Math.floor(4.4)</code></td>
-        </tr>
-        <tr>
-          <td align="left">Math.pow()</td>
-          <td align="left">Returns the power of a number</td>
-          <td align="left"><code>let mathPower = Math.pow(8, 2)</code></td>
-        </tr>
-        <tr>
-          <td align="left">Math.sqrt()</td>
-          <td align="left">Returns the square route of a number</td>
-          <td align="left"><code>let sqRt = Math.sqrt(64)</code></td>
-        </tr>
-        <tr>
-          <td align="left">Math.abs()</td>
-          <td align="left">Returns the positive value of a number</td>
-          <td align="left"><code>let mathAbs = Math.abs(-1.1)</code></td>
-        </tr>
-        <tr>
-          <td align="left">Math.min()</td>
-          <td align="left">Returns the lowest value</td>
-          <td align="left"><code>let mathMin = Math.min(1, 45, 1920)</code></td>
-        </tr>
-        <tr>
-          <td align="left">Math.max()</td>
-          <td align="left">Returns the highest value</td>
-          <td align="left"><code>let mathMax = Math.max(34, 567, 102034)</code></td>
         </tr>
       </tbody>
     </table>
@@ -410,7 +386,7 @@ console.log(x); // 0
         </tr>
       </tbody>
     </table>
-    <p>Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?</p>
+    <p><strong>Challenge:</strong> in breakout rooms, look at the examples above, in each case, what would <code>x</code> be equal to after the comparison has been done? Hint: it will be either <code>true</code> or <code>false</code>.</p>
     <h4>Logical operators</h4>
     <table>
       <thead>
@@ -454,10 +430,14 @@ if (!y) {
     <p>Write an application that can calculate a person's tax.</p>
     <ul>
       <li>Your app should be able to accept the gross amount a person has earned</li>
-      <li>Your app should be able to calculate income tax and national insurance</li>
-      <li>Your app should be able to show the student loan repayment amount, if applicable</li>
-      <li>Your app should be able to tell the person their tax code, depending on how much they earn</li>
+      <li>Your app should be able to calculate income tax</li>
       <li>Finally, your app should tell the person their net pay for the month</li>
+    </ul>
+    <p>Tax rules:</p>
+    <ul>
+      <li>Up to £37,500 is taxed at the basic rate of 20%</li>
+      <li>Between £37,500 and £150,000 is taxed at the higher rate of 40%.</li>
+      <li>Over £150,000 is taxed at the additional rate of 45%.</li>
     </ul>
     <p><a href="/swe">main</a>|<a href="/swe/mod1/wk2/day5.html">prev</a>|<a href="/swe/mod2/wk1/day2.html">next</a></p>
     <script src="/swe/prism.js"></script>

@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we will take a look at a number of string methods available befor looking at the date object and the various methods we can call on it.
+Today we will take a look at a number of string methods available before looking at the date object and the various methods we can call on it.
 
 # Lesson 1
 
@@ -27,8 +27,11 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 ## Assignment
 
 - Create a function that can take a phone number, e.g `01803 312 698` and a country code to apply to the number
+
 - Your function should remove the `0` and add the country code to the beginning of the string, then return the result
-- For example: `01803 312 698`, would become `+44 1803 312 698`
+
+- For example: `01803 312 698` would become `+44 1803 312 698`
+
 - Test cases: `020 208 8000`, `07985 427 937`, `01626 455 000` (+44 in all cases)
 
 # Lesson 2
@@ -71,13 +74,15 @@ The above format is more readable, but what if we wanted complete control over t
 
 What if we wanted: `The date is: Thursday, January 25th, 2021`?
 
-For this, we can utilise the date object's methods: `getFullYear(), getMonth(), getDay(), getDate()`. These methods however, return integers. We then have to do the work of transforming them into a formatted date like the one above.
+For this, we can utilise the date object's methods: `getFullYear(), getMonth(), getDay(), getDate()`. These methods however, return integers. This means we have to do the work of transforming them into a formatted date like the one above.
 
 ```javascript
 let myDate = new Date(2021, 1, 25);
 
 // get the integers
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 25, 1, 2021
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+// 25, 1, 2021
+
 console.log(myDate.getDay()); // 4
 
 // do the work here to get the text based string
@@ -108,7 +113,8 @@ let myDate = new Date(2021, 0, 25);
 
 myDate.setDate(myDate.getDate() - 2);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 23, 0, 2021
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+// 23, 0, 2021
 ```
 
 Can you think of a use for adding and subtracting dates in an application?
@@ -117,10 +123,29 @@ Can you think of a use for adding and subtracting dates in an application?
 
 ### Part 1
 
-Create a function that can create and return a new date. Your function should except the date, month and year as parameters.
+- Create a function called `centuryFromYear`
+- Given a year, the function should return the century it is in
+
+Input/Output Examples
+
+centuryFromYear(1705)  returns (18)
+centuryFromYear(1900)  returns (19)
+centuryFromYear(1601)  returns (17)
+centuryFromYear(2000)  returns (20)
 
 ### Part 2
 
-Create another function that can modify and return the date created above. The function should accept a negative value to indicate you want to subtract the passed value from the date, or a positive value meaning you want to add the value to the date.
+Here are some famous events:
+
+London Olympics, 27 July 2012 to 12 August 2012
+Wedding of Prince William and Catherine Middleton, 29 April 2011
+Apollo 13, April 11, 1970 to April 17, 1970
+
+- For each famous event, create a date object that represents the date the event started and the date it ended
+
+- Create a function that returns how many days the event lasted. If it lasted for one day, simply return `1 day`
+
+- Create another function that returns how long ago the event was from today's date
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
