@@ -11,128 +11,143 @@
   </head>
   <body>
     <h1>Mod 2 > Week 1 > Day 3</h1>
-    <h2>Overview of the day</h2>
-    <hr>
-    <h2>Lesson 1 - Javascript</h2>
+    <h1>Overview of the day</h1>
+    <p>Today we're going to start with a little test, then we'll go on to look at sorting and searching arrays.</p>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li><em>1.2 Write code that interacts with UI controls Programmatically add and modify HTML elements.</em></li>
+      <li>Complete the FizzBuzz challenge</li>
     </ul>
-    <h2>Before we start</h2>
-    <p>You should now have created the layout of your audio app using semantic HTML elements. Now we want to start introducing some interactivity and that is going to require some javascript.</p>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>The browser has a set of web apis that we can use with Javascript to manipulate the DOM (document object model). For example we can use the keyword <code>document</code> in Javascript to access the DOM and that <code>document</code> object provides methods we can call to select and change elements on the page.</p>
-    <p>For example if we have a DOM element with an id attribute of "grid", we can access that DOM element using:</p>
-    <pre><code class="language-javascript">const grid = document.getElementById("grid")
+    <h2>Assignment - FizzBuzz</h2>
+    <p>We now have enough knowledge under our belts to attempt a typical JavaScript interview question known as FizzBuzz.</p>
+    <ul>
+      <li>Write a program that prints the numbers from 1 to 100.</li>
+      <li>For multiples of three print "Fizz" instead of the number</li>
+      <li>For the multiples of five print "Buzz"</li>
+      <li>For numbers which are multiples of both three and five print "FizzBuzz"</li>
+    </ul>
+    <p>The first ten numbers, for example, would look like this:</p>
+    <pre><code>1
+2
+"Fizz"
+4
+"Buzz"
+"Fizz"
+7
+8
+"Fizz"
 </code></pre>
-    <p>Now we have got hold of that element we can alter it...</p>
-    <pre><code class="language-javascript">grid.classList.add("playing")
-</code></pre>
-    <p>We can even add to it...</p>
-    <pre><code class="language-javascript">const newThing = document.createElement("div")
-grid.appendChild(newThing)
-</code></pre>
-    <p>With plain javascript this api can be quite verbose and awkward to use. It is for this reason that the <a href="https://jquery.com/">jQuery</a> became really popular. We are going to use the jQuery library to build our music app.</p>
-    <h2>Including jQuery on the page</h2>
-    <pre><code class="language-html">&#x3C;html>
-    &#x3C;head>
-        &#x3C;script
-            src="http://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-            crossorigin="anonymous">
-        &#x3C;/script>
-    &#x3C;/head>
-&#x3C;/html>
-</code></pre>
-    <p>Javascript files are loaded in order on the page. So you MUST load jQuery first -> then the DOM -> then your javascript. If you load your javascript before jQuery or the DOM if you target elements before they have loaded your code might fail or error.</p>
-    <p>You can wait for the page to load before calling your javascript. Using jQuery this is easy todo by ensuring all your code is called in side the following wrapper around the onload event that the DOM fires when everything has arrived over the wire.</p>
-    <pre><code class="language-javascript">$(function () {
-    // your code goes in here
-})
-</code></pre>
-    <h2>Using jQuery</h2>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTh5GmIGakI6Fo7RrT7bZs-h3Qr6GgiJfOKQLY03z230s__zsaRuGwTssYJaVGWu4Es2PvwGPKJJXbo/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <h2>Assignment</h2>
-    <p>Add jQuery to your project</p>
-    <hr>
-    <h2>Lesson 2 - Creating Notes</h2>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Use css grid</li>
-      <li>Write a class in JS</li>
+      <li>How to search an array</li>
     </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <h2>Making a note</h2>
-    <p>The first thing we want to do is create one of the building blocks of the app; an interactive note. We can arrange these notes into an 8 x 4 grid, and offer the user a UI to compose tracks.</p>
-    <p>A note will be stateful, it can be selected and unselected. It should light up when it is in a bar that is being played. It needs to be clickable, toggling on and off, and it needs to emit a tone.</p>
-    <p>To me it makes sense to conceptually tie all this state and functionality together into an object in our programme.</p>
-    <pre><code class="language-javascript">class Note {
-	constructor(freq) {
-		this.freq = freq
-		this.selected = false
-		this.el = $("&#x3C;samp>&#x3C;/samp>")
-		this.el.on('click', this.toggle.bind(this))
-		this.renderSelected()
-	}
-	toggle (evt) {
-		this.selected = !this.selected
-		this.renderSelected()
-	}
-	renderSelected () {
-		this.el.removeClass(["selected", "unselected"])
-		this.el.addClass(this.selected ? "selected" : "unselected")
-	}
+    <h3>Searching an array</h3>
+    <p>You will often need to search an array in your programs, and there are a number of ways to achieve it in JavaScript.</p>
+    <h4>Search using indexOf</h4>
+    <p>The indexOf array method returns the index location of the item in question. Check it out:</p>
+    <pre><code class="language-javascript">let arr1 = [1, "holy smokes", "007", "The name's Bond"];
+
+const myIndex = arr1.indexOf("007");
+
+console.log(arr1[myIndex]); // 007
+</code></pre>
+    <p>Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return <code>-1</code>. You might think that this has no use, but in fact, it does. By checking if the method returned a <code>-1</code> we can provide the user some nice feedback:</p>
+    <pre><code class="language-javascript">if (arr1.indexOf("jimbobz") === -1) {
+  console.log("Tell the user that the item doesn't exist...");
 }
 </code></pre>
-    <p>This is a class definition, a blueprint for notes. It is a constructor function that can be called with the <code>new</code> keyword. Instantiating a new instance of a note using the <code>new </code>keyword will cause the constructor function to run.</p>
-    <pre><code class="language-javascript">new Note(740)
-</code></pre>
-    <p>The class above has a property called selected that starts its life being false. The <code>this.el</code> is short for this.element and is an DOM fragment that the constructor function adds a click event listener and handler too, then adds variable classes (renderSelected).</p>
-    <h2>Display the note</h2>
-    <p>Make sure you have an empty element on the page with an id of <code>grid</code> as the code below will want to append itself to that parent element.</p>
-    <pre><code class="language-javascript">const note = new Note(740)
-$("#grid").append(note.el)
-</code></pre>
-    <p>create an instance of a note with a frequency of 740, then add it to the DOM. You should check that the note has been added to the HTML.</p>
-    <pre><code class="language-html">&#x3C;samp class="unselected">&#x3C;/samp>
-</code></pre>
-    <p>You should be able to toggle the classes.</p>
-    <h2><code>this</code> Context</h2>
-    <p>You'll notice that the following line uses the <code>bind</code> property.</p>
-    <pre><code class="language-javascript">this.el.on('click', this.toggle.bind(this))
-</code></pre>
-    <p><code>this.el</code> is a DOM fragment wrapped by jQuery, so we can add event listeners using <code>.on</code>. We give it two arguments.</p>
-    <ol>
-      <li>name of the event as a string 'click'</li>
-      <li>the function to call when the element is clicked</li>
-    </ol>
-    <p>In our class <code>this</code> has meaning. It means the context of the instance of the Note class. But there are other contexts to consider too. The DOM element <code>$("&#x3C;samp>&#x3C;/samp>")</code> also has a <code>this</code> context.</p>
-    <p>We want the click handler <code>this.toggle</code> to have as it's context the instance of the Note class. NOT the context of the DOM element on the page. So we <code>bind</code> the classes meaning of <code>this</code> to the toggle function, so when it is called as a result of a DOM element being clicked, then it can correctly reference <code>this.selected</code> and <code>this.renderSelected</code>.</p>
-    <p>Try this code for yourself. What happens if you don't use bind? How would you add a few notes?</p>
-    <h2>Assignment</h2>
-    <p>Can you organise the notes into an 8 x 4 grid?</p>
-    <p>You will need some css to style the note:</p>
-    <pre><code class="language-css">samp {
-  display: inline-block;
-  width: 3rem;
-  height: 3rem;
-  margin: .25rem;
-}
-.selected {
-  background-color: hotpink;
-}
-.unselected {
-  background-color: orchid;
+    <h4>Search using array.includes</h4>
+    <p>The includes method is a very convenient method that returns a "truthy" result. By that, we mean the method will return true or false.</p>
+    <pre><code class="language-javascript">if (!arr1.includes("abcdefg")) {
+  console.log("Tell the user that the item doesn't exist...");
 }
 </code></pre>
-    <p>What css could you use to set up an 8 x 4 grid?</p>
+    <p>Note the use of of the "bang" operator to allow the if statement to return true if in fact the method can't find <code>abcdefg</code> (so a false actually becomes true).</p>
+    <h4>Search using array.find</h4>
+    <p>Another useful method to search our array is the find method. This method employs a callback method to return the first value that satisfies the condition.</p>
+    <p>NB: knowledge of callbacks, filter and find is not required for the MTA exam.</p>
+    <pre><code class="language-javascript">let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+
+// arrow function
+let result = arr1.find((el) => {
+  return el.toString().length &#x3C; 5;
+});
+
+// older style function
+let result = arr1.find(function (el) {
+  return el.toString().length &#x3C; 5;
+});
+
+console.log(result); // 1
+</code></pre>
+    <h5>What is a callback?</h5>
     <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/190">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod2/wk1/day2.html">prev</a>|<a href="/swe/mod2/wk1/day4.html">next</a>
+      A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then
+      it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
     </p>
+    <pre><code class="language-javascript">// anonymous callback function with no name
+(el) => {
+  return el.toString().length &#x3C; 5;
+};
+</code></pre>
+    <p>In the above example, <code>el</code> is each element that is passed into the callback function, so <code>1, 2, "holy smokes"</code>, and so on.</p>
+    <p>Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.</p>
+    <p>Further reading: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!</p>
+    <h4>Search using array.filter</h4>
+    <p>The last strategy we will look at is array.filter:</p>
+    <pre><code class="language-javascript">let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+
+let result = arr1.filter((el) => el.toString().length > 2);
+
+console.log(result); //  ["holy smokes", "007", "The name's Bond"]
+</code></pre>
+    <p>Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.</p>
+    <p>Can you spot the difference between the find method and the filter method?</p>
+    <p>The find method has a return statement and the filter does not. This is one of the advantages of using the arrow functions that we introduced on day one. If you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.</p>
+    <p>If this sounds confusing, make sure you ask your coach to explain what's going on!</p>
+    <h1>Lesson 2</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>How to sort an array</li>
+    </ul>
+    <h3>Sorting an array</h3>
+    <h4>Sorting strings</h4>
+    <p>From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:</p>
+    <pre><code class="language-javascript">let numbersAsStrings = ["1424242", "13220", "1000"];
+
+numbersAsStrings.sort();
+console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
+</code></pre>
+    <p>Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?</p>
+    <h4>Sorting numbers</h4>
+    <p>Things start to full apart a bit when we try and sort numbers:</p>
+    <pre><code class="language-javascript">var numbers = [1678, 2, 3, 78, 9, 10001];
+
+numbers.sort();
+console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
+</code></pre>
+    <p>Question: how is JavaScript trying to sort the numbers above?</p>
+    <p>We can fix this by using a callback to examine the numbers in more detail:</p>
+    <pre><code class="language-javascript">numbers.sort(function (a, b) {
+  if (a > b) return 1; // switch numbers
+  if (a &#x3C; b) return -1; // switch numbers
+  return 0; // numbers are the same
+});
+</code></pre>
+    <p>In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same so no switch is required. The function will keep checking and switching the values until the array is sorted.</p>
+    <h2>Assignment</h2>
+    <h3>Part 1</h3>
+    <p>Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.</p>
+    <h3>Part 2</h3>
+    <p>Using the arrays below, create a sort function that can take an array, sort the contents, then return the sorted array.</p>
+    <pre><code class="language-javascript">[1678, 2, 3, "Hihihi", 9, "435454"];
+[1678, 2, 3, -78, 9, 10001];
+[32466, 2, 3, "dinosourraahh", 9, 10.6];
+["SHARK!", 2, -1, 78, -9, 100.5];
+[000, 2, 3, "78", 9, 1.13435];
+</code></pre>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day2.html">prev</a>|<a href="/swe/mod2/wk1/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

@@ -11,96 +11,17 @@
   </head>
   <body>
     <h1>Mod 2 > Week 2 > Day 1</h1>
-    <h2>Overview of the day</h2>
-    <hr>
-    <h2>Lesson 1 - WebSockets</h2>
+    <h1>Overview of the day</h1>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
-    <ul>
-      <li><em>2.4 Implement a callback Receive messages from the HTML5 WebSocket API</em></li>
-    </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <h1>Sharing tracks over WebSockets</h1>
-    <p>You have tracks saved in localStorage. Let's make them available so everyone else can enjoy them. We are going to use WebSockets to connect to a relay server that we can send our tracks to and have them broadcasted to everyone connected.</p>
-    <p>You should connect to this web socket endpoint when your app loads:</p>
-    <pre><code class="language-javascript">    const ws = new WebSocket('ws://fathomless-reaches-81353.herokuapp.com/socket')
-</code></pre>
-    <p>You can visit <a href="http://fathomless-reaches-81353.herokuapp.com/">http://fathomless-reaches-81353.herokuapp.com/</a> for instructions about how to use this relay service. It basically works something like this.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/71779386-1fa5dc80-2fae-11ea-8c0c-aa179892c729.png" alt="illustration of the web socket relay server">
-    </p>
-    <p>Once you have a websocket instance you can add event listeners to it like this:</p>
-    <pre><code class="language-javascript">    ws.onmessage = function (msg) {
-        msg.data // payload from the server
-    }
-    ws.onclose = function () {
-        // do something when the socket connection closes
-    }
-</code></pre>
-    <p>Each peer stores their tracks in localStorage.</p>
-    <pre><code class="language-javascript">_save(track) {
-    let tracks = JSON.parse(localStorage.getItem("tracks") || "[]")
-    localStorage.setItem("tracks", JSON.stringify([...tracks, track]))
-}
-</code></pre>
-    <p>When you save tracks you have to read them out of localStorage, deserialise them, then append your new track. Then do the reverse and serialise the tracks and re-writing the updated data in localStorage.</p>
-    <p>Upon connection peers receive a <code>msg.data</code> that equals “collect”, you should then send your tracks from localStorage to the socket server. The socket server then broadcasts those tracks to all the connected peers (including you). Anything that is not a “collect” msg is going to be an array of serialised tracks.</p>
-    <p>No tracks are stored on a central server, the socket server is “stateless”, tracks are distributed among the connected peers. Update your code to render tracks from the incoming messages from your WebSocket NOT from localStorage!</p>
-    <p>You can use the spread operator to append items to an array. It’s similar to the way the spread operator works with objects:</p>
-    <pre><code class="language-javascript">    const a = [1,2,3]
-    const b = [4,5,6]
-    const c = [...a, ...b]
-    c // [1,2,3,4,5,6]
-</code></pre>
-    <p>There is enough going on here to warrant an object in our programme that deals with tracks.</p>
     <h2>Assignment</h2>
-    <p>Let us add a <code>Tracks</code> class that will encapsulate the logic and state of all our tracks.</p>
-    <hr>
-    <h2>Lesson 2 - Tracks</h2>
+    <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
-    <ul>
-      <li>Interpret a UML diagram</li>
-      <li>Use data serialisation</li>
-    </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/89508534-f3617100-d7c5-11ea-9301-316ed45acd3b.png" alt="example of tracks rendered in the DOM">
-    </p>
-    <p>Above is an example of the tracks rendered in an <code>&#x3C;aside></code> element next to the composing grid interface.</p>
-    <h2>onclick</h2>
-    <p>In the next section we are going to build out the <code>Player</code> component. In preparation for this we should have our track call the following function when it is clicked:</p>
-    <pre><code class="language-html">&#x3C;button onclick="player.load('${btoa(JSON.stringify(track))}')">${track.trackname}
-&#x3C;/button>
-</code></pre>
-    <p>Earlier we looked at serialising data. Here we are using a a function called <code>btoa()</code> which is part of the browser's javascript API. It will base64 encode our track. We have to do this as just stringifying our track and including it inline as an argument to a javascript function, is not enough to escape all the quotes and other punctuation.</p>
-    <p>We are going to turn this:</p>
-    <p>{"trackname":"rain down","data":[[1047,523.3,261.6,130.8],[1175,587.3,293.7,146.8],[1319,659.3,329.6,164.8],[1397,698.5,349.2,174.6],[1480,740,370,185],[1568,784,392,196],[1760,880,440,220],[1976,987.8,493.9,246.9],[1047,523.3,261.6,130.8],[1175,587.3,293.7,146.8],[1319,659.3,329.6,164.8],[1397,698.5,349.2,174.6],[1480,740,370,185],[1568,784,392,196],[1760,880,440,220],[1976,987.8,493.9,246.9],[1047,523.3,261.6,130.8],[1175,587.3,293.7,146.8],[1319,659.3,329.6,164.8],[1397,698.5,349.2,174.6],[1480,740,370,185],[1568,784,392,196],[1760,880,440,220],[1976,987.8,493.9,246.9],[1047,523.3,261.6,130.8],[1175,587.3,293.7,146.8],[1319,659.3,329.6,164.8],[1397,698.5,349.2,174.6],[1480,740,370,185],[1568,784,392,196],[1760,880,440,220],[1976,987.8,493.9,246.9],[1047,523.3,261.6,130.8],[1175,587.3,293.7,146.8],[1319,659.3,329.6,164.8]],"city":"","countryCode":""}</p>
-    <p>Into this:</p>
-    <p>Our <code>load(track)</code> function in our <code>Player</code> will be passed this encoded string which it will then decode and load into the player.</p>
     <h2>Assignment</h2>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Spec</th>
-          <th align="left">UML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left">Create a <code>Tracks</code> class by following the UML diagram on the right.Assign a web socket connection to <code>ws</code> property. <code>tracks</code> is going to be your local state of tracks received via the web socket. Remember to register an <code>onmessage</code> handler in the constructor function that listens for "collect" or an updated list of tracks. <code>save(track)</code> should take a track instance and save it to <code>localStorage</code>. <code>_send()</code> can be called on "collect" to send all the tracks from your <code>localStorage</code>, and when a new track is saved you can call <code>_send()</code> so everyone sees your new track. <code>_render()</code> this should empty your parent HTML element that will hold the list of tracks, and then create the HTML for each track (including an onclick event to load the track into a <code>Player</code>) then add it into the DOM</td>
-          <td align="left">
-            <img src="https://user-images.githubusercontent.com/4499581/87775782-90139d00-c81e-11ea-93e2-169f23427e9b.png" alt="UML Track class">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/193">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod2/wk1/day5.html">prev</a>|<a href="/swe/mod2/wk2/day2.html">next</a>
-    </p>
+    <h1>Lesson 3</h1>
+    <h2>Learning Objectives</h2>
+    <h2>Assignment</h2>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day5.html">prev</a>|<a href="/swe/mod2/wk2/day1.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
