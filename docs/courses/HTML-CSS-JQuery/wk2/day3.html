@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mod 2 > Week 2 > Day 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Mod 2 > Week 2 > Day 3</h1>
+    <h2>Overview of the day</h2>
+    <hr>
+    <h2>Lesson 1 - Geolocation</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li><em>1.4 Implement HTML5 APIs Geolocation API</em></li>
+      <li><em>2.4 implement a callback by using anonymous functions; handle the “this” pointer</em></li>
+    </ul>
+    <h2>Before we start</h2>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <h1>Geolocation</h1>
+    <p>Our Audio app is so amazing we need to think about it being used in lots of different countries. When users create tracks it would be so cool to know which country they created the track in.</p>
+    <pre><code class="language-javascript">if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(position => {
+        const {latitude, longitude} = position.coords
+        console.log({latitude, longitude})
+    }
+}
+</code></pre>
+    <p>Useful, but latitude and longitude don't mean much to us humans. What we'll have to do is turn these coords into a human readable place name.</p>
+    <p>For this we can turn to an API. Our Audio app can make a call out to the internet with those coords and get back in return a data object that will tell us which country the track was created in.</p>
+    <h2>XMLHttpRequest</h2>
+    <p>The browser has this capability built into it. You'll find on the <code>window</code> object a constructor named <code>XMLHttpRequest</code>. Can you find it? Lets go through the steps to form an http request using this API.</p>
+    <ol>
+      <li>Create an instance of a request</li>
+      <li>Add the function that will handle the response</li>
+      <li>Open the URL</li>
+      <li>Initiate the request</li>
+    </ol>
+    <pre><code class="language-javascript">const request = new XMLHttpRequest()
+</code></pre>
+    <p>Now you can write the function to handle the response. What is somewhat unusual about XMLHttpRequest is the response data is accessible through the <code>this</code> context of the response handler.</p>
+    <pre><code class="language-javascript">const onGeoRequest = function () {
+    const [addressparts] = this.responseXML.getElementsByTagName('addressparts')
+    const countryCode = addressparts.getElementsByTagName('country_code')[0].innerHTML
+    console.log('countryCode', countryCode)
+}
+</code></pre>
+    <p>Can you see us accessing our data through <code>this</code> - the function does not receive an argument. Let us add our handler to the request.</p>
+    <pre><code class="language-javascript">request.addEventListener('load', onGeoRequest)
+</code></pre>
+    <p>Then we keep adding to the <code>request</code> instance we created by adding the URL we want to open. Then actually executing it.</p>
+    <pre><code class="language-javascript">request.open("GET",'https://eu1.locationiq.com/v1/reverse.php?key=YOUR_API_KEY&#x26;lat=YOUR_LATITUDE&#x26;lon=YOUR_LONGITUDE&#x26;format=xml')
+request.send()
+</code></pre>
+    <p>Now our request URL needs some explanation. We are using an on-line service <a href="https://eu1.locationiq.com/">Locationiq</a> to reverse Geo-lookup. That means we start with lat and lng and end with a place name. The reverse of starting with a place name and ending up with a lat and lng.</p>
+    <p>You'll need to register and get yourself a free API key to make requests. The url is formed with 4 query parameters:</p>
+    <ol>
+      <li>key="pk.22b24860e80eaf7b4fe6e1c481d89b97"</li>
+      <li>lat=51.4850816</li>
+      <li>lon=-0.1015808</li>
+      <li>format=xml</li>
+    </ol>
+    <p>These are separated by the "&#x26;" character. Can you put all this together so you end up with a <code>countryCode</code> for example <strong>GB</strong> or <strong>FR</strong>.</p>
+    <p>With this country code you can have a little fun displaying a flag next to the track. Check out <a href="https://www.countryflags.io/">Country Flags API</a> and get yourself a little flag like this:</p>
+    <pre><code class="language-html">&#x3C;img src="https://www.countryflags.io/:country_code/:style/:size.png">
+&#x3C;img src="https://www.countryflags.io/fr/flat/32.png">
+</code></pre>
+    <p>
+      Voilà
+      
+      <img src="https://www.countryflags.io/fr/flat/32.png" alt="French Flag">
+    </p>
+    <h2>Assignment</h2>
+    <p>Display country flags next to tracks in your app</p>
+    <hr>
+    <h2>Lesson 2 - AJAX with jQuery</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li><em>2.4 Use jQuery to make ajax requests</em></li>
+    </ul>
+    <h2>Before we start</h2>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>Your app is now feature complete. However there is some refactoring to do.</p>
+    <p>The AJAX call has a few important parameters that you can set. Look at the AJAX call below.</p>
+    <pre><code class="language-javascript">$.ajax({
+  url: searchPath,
+  cache: false,
+  dataType: "xml",
+  success: function (data) {
+    $(data).find("fruit").each(function () {
+      $('#searchResults').append($(this).text())
+      $('#searchResults').append("&#x3C;BR/>")
+    })
+  }
+})
+</code></pre>
+    <p>The first parameter being set is the url that the AJAX call will be requesting. For security reasons, to prevent cross site scripting, this URL must be within the same domain as the web-page itself.</p>
+    <p>The next parameter, cache, is optional and indicates whether the call can use a cached copy.</p>
+    <p>The third parameter, datatype, indicates the expected data type, which could be XML or JavaScript Object Notation (JSON), for example.</p>
+    <p>The next parameter set in this example is the success property. This parameter takes a function that the results of the AJAX calls should be passed into for the webpage to do some work with. In this example, the results are parsed and added to the DOM so that users can see the results.</p>
+    <p>The final property is set on our AJAX call, as good practice, is the error property so that any error conditions can be handled gracefully.</p>
+    <p>
+      The jQuery AJAX toolkit supports not only getting data, but also posting data to the server. The default request type is GET. To change a call to a post, you change the value of the
+      property to 'POST'.
+    </p>
+    <h2>Assignment</h2>
+    <p>You can refactor the some what clunky XMLHttpRequest and use jQuery and json in it’s place. Have a look at the <a href="https://api.jquery.com/jquery.ajax/">documentation</a> and refactor your code.</p>
+    <p>
+      <a href="https://platform.multiverse.io/apprentice/attendance-log/195">attendance log</a>
+      <a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>
+    </p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

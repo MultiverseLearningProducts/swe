@@ -11,79 +11,184 @@
   </head>
   <body>
     <h1>Mod 2 > Week 1 > Day 2</h1>
-    <h2>Overview of the day</h2>
-    <hr>
-    <h2>Lesson 1 - Typography</h2>
+    <h1>Overview of the day</h1>
+    <p>Today we're going to look at all things Array!</p>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li><em>4.1 Style HTML text properties Apply styles to text appearance (color, bold, italics); apply styles to text font (WOFF and @font-face, size); apply styles to text alignment, spacing, and indentation; apply styles to text hyphenation; apply styles for a text drop shadow</em></li>
+      <li>Defining an array</li>
+      <li>Accessing an array</li>
+      <li>Looping over an array</li>
     </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQcGnwBPI463TQAmkOAyVjGNwNZVPwZKtDN0plA4C8Tgicad6fYLZ33qhWy3sxnmNyNXwoQJGKpJemc/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <h2>Assignment</h2>
-    <h2>Choose a <a href="https://fonts.google.com/">font</a> for your application and use <strong>@font-face</strong> to load it.</h2>
-    <h2>Lesson 2 - The Box Model</h2>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li><em>4.2 Style HTML box properties Apply styles to alter appearance attributes (size, border and rounding border corners, outline, padding, margin); apply styles to alter graphic effects (transparency, opacity, background image, gradients, shadow, clipping); apply styles to establish and change an element’s position (static, relative, absolute, fixed)</em></li>
-      <li><em>4.3 Create a flexible content layout Implement a layout using a flexible box model; implement a layout using multi-column; implement a layout using position floating and exclusions; implement a layout using grid alignment; implement a layout using regions, grouping, and nesting</em></li>
-    </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9fXGQK-iEBE2zaLeilLJlAM0_90xheU8S1VTGyvT08hmVuKDK-sPlL34MeXf3bv-Pl8zBw9caaHti/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>Every HTML element has box properties. These are the properties that control how the element is spaced on the page and control the position of the box contents. In addition, the graphic effects can be applied to the box of an element.</p>
-    <p>The border element supports many variants in its ability to set properties in a single line. Take some time to experiment with all the possible combinations so you will be able to read them and identify them easily on the exam.</p>
-    <p>CSS3 allows you to style box properties in the following ways:</p>
-    <ul>
-      <li>Every HTML element is a box and has the properties of a box such as height and width.</li>
-      <li>CSS3 allows you to change the size of a box by specifying a new height and width.</li>
-      <li>The border-style property allows you to specify a solid or dashed line for the border.</li>
-      <li>The border-color property allows you to specify the color of the border.</li>
-      <li>The border-spacing property allows you to specify the amount of space between adjacent elements</li>
-      <li>The border-width property allows you to specify a thickness for the border.</li>
-      <li>Each side of the box can by styled differently.</li>
-      <li>CSS3 provides a way to define the padding and margin that a box should have relative to adjacent elements. This can be configured differently for each side of the box.</li>
-      <li>An element can be made transparent or partially transparent by setting the opacity property.</li>
-      <li>An element can contain a background image by setting its background-image property.</li>
-      <li>CSS3 provides the ability to create shadow effects by specifying the box-shadow property.</li>
-      <li>CSS3 provides the ability to clip images using the clip property to show only a portion of an image.</li>
-      <li>CSS3 can be used to establish an element’s position as either fixed, absolute, or relative.</li>
-      <li>The left and top CSS properties can be used to alter an element’s position.</li>
-    </ul>
-    <h1>Responsive Layouts</h1>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRUJJDlTFSLduiExxM64ScDeuOxSNQz12qkqPJy0MIBTyhv-dI74jnG7mbuumI9eHXrUI3DZ2wPz3QV/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <h1>CSS selectors</h1>
-    <p>Before we go much further lets take a good look at CSS selectors.</p>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQnSLd9aR-oTZ2rBFNX_tPXh5gAdcn3s3qRjciRxuzGisT6caCl-7IOt3jLBtF3l9VF8xLT52mwewmv/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>Our audio app is going to need the following sections:</p>
-    <ul>
-      <li>a header area to brand our app</li>
-      <li>a place for the interactive grid</li>
-      <li>a nav area for the control buttons; play and stop</li>
-      <li>a place to list tracks</li>
-      <li>an area for our audio visualisations</li>
-      <li>a footer for credits</li>
-    </ul>
-    <h2>Assignment</h2>
-    <p>Create a responsive layout that has a place for all of these sections. Use your knowledge of HTML semantic elements and the box model. Start with a mobile layout by copying the css styles below, then adjust the style for different break points. As your screen grows in scale and crosses a break point, different css rules will be applied.</p>
-    <pre><code class="language-css">/* css for mobile goes here */
-@media screen and (min-width: 30em) {
-  /* css for small screens goes here */
-}
-@media screen and (min-width: 30em) and (max-width: 60em) {
-  /* css for mid screens goes here */
-}
-@media screen and (min-width: 60em) {
-  /* css for massive screens goes here */
-}
+    <h3>Defining an array</h3>
+    <p>An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:</p>
+    <pre><code class="language-javascript">let myArray1 = ["Hi!", 1, 2, 3.3]; // preferred method
+let myArray2 = new Array(1, "two", true);
+
+console.log(myArray1, myArray2); // ["Hi!", 1, 2, 3.3], [1, "two", true]
+</code></pre>
+    <p>Notice that we can mix in strings, numbers, booleans and just about any datatype.</p>
+    <h3>Accessing an array</h3>
+    <p>To access an array we can use the square bracket notation with an index number:</p>
+    <pre><code class="language-javascript">console.log(myArray1[0], myArray2[2]); // "Hi!", true
 </code></pre>
     <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/189">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod2/wk1/day1.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>
+      Notice that to access the first element in the array, we need to use a zero. This because arrays in JavaScript are zero-based, which is to say that the index starts
+      at zero. This is common across many programming languages.
     </p>
+    <h3>Looping over an array</h3>
+    <p>
+      You will often find that you need to loop over an array to check or output the values. If you're not familiar with loops, they are used in programming to make repetitive
+      tasks more efficient. One of the most common loops is the For loop.
+    </p>
+    <pre><code class="language-javascript">let myArray1 = ["Hi!", 1, 2, 3.3];
+
+// inefficient - multiple console.log lines
+
+console.log(myArray[0] // 1
+console.log(myArray[1] // 2
+console.log(myArray[2] // 3.3
+</code></pre>
+    <pre><code class="language-javascript">let myArray1 = ["Hi!", 1, 2, 3.3];
+
+// more efficient - one console.log line
+
+for (let i = 0; i &#x3C; myArray1.length; i++) {
+  console.log(myArray[i]); // 1, 2, 3.3
+}
+</code></pre>
+    <p>Let's break this loop down:</p>
+    <p>First, we initialise a variable and assign it zero</p>
+    <pre><code class="language-javascript">let i = 0;
+</code></pre>
+    <p>The next part of the loop effectively says "while the variable <code>i</code> is less than the length of myArray, continue looping"</p>
+    <pre><code class="language-javascript">i &#x3C; myArray1.length;
+</code></pre>
+    <p>Last is a compound operator that adds one to i on each iteration of the loop</p>
+    <pre><code class="language-javascript">i++;
+</code></pre>
+    <h2>Assignment</h2>
+    <p>Given an array of integers, return a new array with each value doubled.</p>
+    <p>For example:</p>
+    <p><code>[1, 2, 3] --> [2, 4, 6]</code></p>
+    <h1>Lesson 2</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Multi-dimensional arrays</li>
+      <li>Accessing multi-dimensional arrays</li>
+      <li>Looping over multi-dimensional arrays</li>
+    </ul>
+    <h3>Multi-dimensional arrays</h3>
+    <p>A multi-dimensional array is an array that's held in another array. Let's see how we can declare a multi-dimensional array:</p>
+    <pre><code class="language-javascript">let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+console.log(myMdArray); // [[1, 2, 3], [2, 3, 4], [5, 6, 7]]
+</code></pre>
+    <p>Notice how we now have arrays in an array.</p>
+    <h3>Acessing multi-dimensional arrays</h3>
+    <p>Accessing multi-dimensional arrays is somewhat similar to how we'd access a single-dimensional array, except this time, we need tell JavaScript which nested array to target, and which element in the target array we want to extract. For example:</p>
+    <pre><code class="language-javascript">let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+console.log(myMdArray[0][2]); // 3
+</code></pre>
+    <p>In the code example above, we're accessing the first nested array, then the third element in that nested array.</p>
+    <h3>Looping over multi-dimensional arrays</h3>
+    <p>To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop:</p>
+    <pre><code class="language-javascript">let myMdArray = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [5, 6, 7],
+];
+
+for (let i = 0; i &#x3C; myMdArray.length; i++) {
+  let nestedArrayLength = myMdArray[i].length;
+
+  for (let j = 0; j &#x3C; nestedArrayLength; j++) {
+    console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
+  }
+}
+</code></pre>
+    <p>Eeeeek! Looks scary, doesn't it? Let's break it down:</p>
+    <ol>
+      <li>The First loop loops over the contents of the first array:</li>
+    </ol>
+    <pre><code class="language-javascript">for (let i = 0; i &#x3C; myMdArray.length; i++) {
+  console.log(myMdArray[i]); // [1, 2, 3], [2, 3, 4], [5, 6, 7]
+}
+</code></pre>
+    <ol start="2">
+      <li>The second loop gets the length if the nested array, e.g. for the array [1, 2, 3], the length is three.</li>
+    </ol>
+    <pre><code class="language-javascript">let nestedArrayLength = myMdArray[i].length;
+</code></pre>
+    <ol start="3">
+      <li>We then construct a second loop to loop through the second array, and use the square bracket notation to extract the elements</li>
+    </ol>
+    <pre><code class="language-javascript">for (let j = 0; j &#x3C; nestedArrayLength; j++) {
+  console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
+}
+</code></pre>
+    <p>Congratulations! You've written your first algorithm in JavaScript! :-)</p>
+    <h2>Assignment</h2>
+    <p>The assignment is the same as the one above, except this time you're looping over you nested array, doubling the values, and returning the result.</p>
+    <h1>Lesson 3</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Learn the various array methods</li>
+    </ul>
+    <h3>Array methods</h3>
+    <p>
+      When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make
+      to the array will change its values directly.
+    </p>
+    <p>Arrays have a number of built-in methods you can use to manipulate them in some way. Here are some examples:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Method</th>
+          <th align="left">Example</th>
+          <th>Effect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Push</td>
+          <td align="left"><code>myArray1.push(1)</code></td>
+          <td>Adds item to the end of array</td>
+        </tr>
+        <tr>
+          <td align="left">Pop</td>
+          <td align="left"><code>myArray1.pop()</code></td>
+          <td>Removes the last item in the array</td>
+        </tr>
+        <tr>
+          <td align="left">Shift</td>
+          <td align="left"><code>myArray1.shift()</code></td>
+          <td>Removes the first item in the array</td>
+        </tr>
+        <tr>
+          <td align="left">Unshift</td>
+          <td align="left"><code>myArray1.unshift(1)</code></td>
+          <td>Adds item to beginning of array</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Assignment</h2>
+    <ul>
+      <li>Create a function that takes an array that contains a single element, e.g. <code>[121]</code></li>
+      <li>Minus this value by the same value, and plus the value by the same value, then add the results before and after the element in the array</li>
+      <li>Continue subtracting and adding the first and last values until you have an array that is nine elements in length</li>
+      <li>You should end up with function that returns an array like this: `[-968, -484, -242, -121, 0, 121, 242, 484, 968]</li>
+    </ul>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day1.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

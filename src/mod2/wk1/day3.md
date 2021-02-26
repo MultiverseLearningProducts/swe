@@ -1,184 +1,202 @@
 # Mod 2 > Week 1 > Day 3
 
-## Overview of the day
+# Overview of the day
 
-----
+Today we're going to start with a little test, then we'll go on to look at sorting and searching arrays.
 
-## Lesson 1 - Javascript
-
-## Learning Objectives
-
-* _ 1.2 Write code that interacts with UI controls Programmatically add and modify HTML elements._
-
-## Before we start
-
-You should now have created the layout of your audio app using semantic HTML elements. Now we want to start introducing some interactivity and that is going to require some javascript.
-
-## Materials needed
-
-## Lesson
-
-The browser has a set of web apis that we can use with Javascript to manipulate the DOM (document object model). For example we can use the keyword `document` in Javascript to access the DOM and that `document` object provides methods we can call to select and change elements on the page.
-
-For example if we have a DOM element with an id attribute of "grid", we can access that DOM element using:
-
-```javascript
-const grid = document.getElementById("grid")
-```
-
-Now we have got hold of that element we can alter it...
-
-```javascript
-grid.classList.add("playing")
-```
-
-We can even add to it...
-
-```javascript
-const newThing = document.createElement("div")
-grid.appendChild(newThing)
-```
-
-With plain javascript this api can be quite verbose and awkward to use. It is for this reason that the [jQuery](https://jquery.com/) became really popular. We are going to use the jQuery library to build our music app.
-
-## Including jQuery on the page
-
-```html
-<html>
-    <head>
-        <script
-            src="http://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-            crossorigin="anonymous">
-        </script>
-    </head>
-</html>
-```
-
-Javascript files are loaded in order on the page. So you MUST load jQuery first -> then the DOM -> then your javascript. If you load your javascript before jQuery or the DOM if you target elements before they have loaded your code might fail or error.
-
-You can wait for the page to load before calling your javascript. Using jQuery this is easy todo by ensuring all your code is called in side the following wrapper around the onload event that the DOM fires when everything has arrived over the wire.
-
-```javascript
-$(function () {
-    // your code goes in here
-})
-```
-
-## Using jQuery
-
-!(https://docs.google.com/presentation/d/e/2PACX-1vTh5GmIGakI6Fo7RrT7bZs-h3Qr6GgiJfOKQLY03z230s__zsaRuGwTssYJaVGWu4Es2PvwGPKJJXbo/embed)
-
-## Assignment
-
-Add jQuery to your project
-
-----
-
-## Lesson 2 - Creating Notes
+# Lesson 1
 
 ## Learning Objectives
 
-* Use css grid
-* Write a class in JS
+- Complete the FizzBuzz challenge
 
-## Before we start
+## Assignment - FizzBuzz
 
-## Materials needed
+We now have enough knowledge under our belts to attempt a typical JavaScript interview question known as FizzBuzz.
 
-## Lesson
+- Write a program that prints the numbers from 1 to 100.
+- For multiples of three print "Fizz" instead of the number
+- For the multiples of five print "Buzz"
+- For numbers which are multiples of both three and five print "FizzBuzz"
 
-## Making a note
+The first ten numbers, for example, would look like this:
 
-The first thing we want to do is create one of the building blocks of the app; an interactive note. We can arrange these notes into an 8 x 4 grid, and offer the user a UI to compose tracks.
+```
+1
+2
+"Fizz"
+4
+"Buzz"
+"Fizz"
+7
+8
+"Fizz"
+```
 
-A note will be stateful, it can be selected and unselected. It should light up when it is in a bar that is being played. It needs to be clickable, toggling on and off, and it needs to emit a tone.
+# Lesson 1
 
-To me it makes sense to conceptually tie all this state and functionality together into an object in our programme.
+## Learning Objectives
 
+- How to search an array
+
+### Searching an array
+
+You will often need to search an array in your programs, and there are a number of ways to achieve it in JavaScript.
+
+#### Search using indexOf
+
+The indexOf array method returns the index location of the item in question. Check it out:
 
 ```javascript
-class Note {
-	constructor(freq) {
-		this.freq = freq
-		this.selected = false
-		this.el = $("<samp></samp>")
-		this.el.on('click', this.toggle.bind(this))
-		this.renderSelected()
-	}
-	toggle (evt) {
-		this.selected = !this.selected
-		this.renderSelected()
-	}
-	renderSelected () {
-		this.el.removeClass(["selected", "unselected"])
-		this.el.addClass(this.selected ? "selected" : "unselected")
-	}
+let arr1 = [1, "holy smokes", "007", "The name's Bond"];
+
+const myIndex = arr1.indexOf("007");
+
+console.log(arr1[myIndex]); // 007
+```
+
+Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return `-1`. You might think that this has no use, but in fact, it does. By checking if the method returned a `-1` we can provide the user some nice feedback:
+
+```javascript
+if (arr1.indexOf("jimbobz") === -1) {
+  console.log("Tell the user that the item doesn't exist...");
 }
 ```
-This is a class definition, a blueprint for notes. It is a constructor function that can be called with the `new` keyword. Instantiating a new instance of a note using the `new `keyword will cause the constructor function to run.
+
+#### Search using array.includes
+
+The includes method is a very convenient method that returns a "truthy" result. By that, we mean the method will return true or false.
 
 ```javascript
-new Note(740)
+if (!arr1.includes("abcdefg")) {
+  console.log("Tell the user that the item doesn't exist...");
+}
 ```
 
-The class above has a property called selected that starts its life being false. The `this.el` is short for this.element and is an DOM fragment that the constructor function adds a click event listener and handler too, then adds variable classes (renderSelected).
+Note the use of of the "bang" operator to allow the if statement to return true if in fact the method can't find `abcdefg` (so a false actually becomes true).
 
-## Display the note
+#### Search using array.find
 
-Make sure you have an empty element on the page with an id of `grid` as the code below will want to append itself to that parent element.
+Another useful method to search our array is the find method. This method employs a callback method to return the first value that satisfies the condition.
+
+NB: knowledge of callbacks, filter and find is not required for the MTA exam.
 
 ```javascript
-const note = new Note(740)
-$("#grid").append(note.el)
+let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+
+// arrow function
+let result = arr1.find((el) => {
+  return el.toString().length < 5;
+});
+
+// older style function
+let result = arr1.find(function (el) {
+  return el.toString().length < 5;
+});
+
+console.log(result); // 1
 ```
-create an instance of a note with a frequency of 740, then add it to the DOM. You should check that the note has been added to the HTML.
 
-```html
-<samp class="unselected"></samp>
-```
-You should be able to toggle the classes.
+##### What is a callback?
 
-## `this` Context
-
-You'll notice that the following line uses the `bind` property.
+A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then
+it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
 
 ```javascript
-this.el.on('click', this.toggle.bind(this))
+// anonymous callback function with no name
+(el) => {
+  return el.toString().length < 5;
+};
 ```
-`this.el` is a DOM fragment wrapped by jQuery, so we can add event listeners using `.on`. We give it two arguments.
 
-1. name of the event as a string 'click'
-2. the function to call when the element is clicked
+In the above example, `el` is each element that is passed into the callback function, so `1, 2, "holy smokes"`, and so on.
 
-In our class `this` has meaning. It means the context of the instance of the Note class. But there are other contexts to consider too. The DOM element `$("<samp></samp>")` also has a `this` context.
+Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.
 
-We want the click handler `this.toggle` to have as it's context the instance of the Note class. NOT the context of the DOM element on the page. So we `bind` the classes meaning of `this` to the toggle function, so when it is called as a result of a DOM element being clicked, then it can correctly reference `this.selected` and `this.renderSelected`.
+Further reading: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
 
-Try this code for yourself. What happens if you don't use bind? How would you add a few notes? 
+#### Search using array.filter
+
+The last strategy we will look at is array.filter:
+
+```javascript
+let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+
+let result = arr1.filter((el) => el.toString().length > 2);
+
+console.log(result); //  ["holy smokes", "007", "The name's Bond"]
+```
+
+Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.
+
+Can you spot the difference between the find method and the filter method?
+
+The find method has a return statement and the filter does not. This is one of the advantages of using the arrow functions that we introduced on day one. If you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.
+
+If this sounds confusing, make sure you ask your coach to explain what's going on!
+
+# Lesson 2
+
+## Learning Objectives
+
+- How to sort an array
+
+### Sorting an array
+
+#### Sorting strings
+
+From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:
+
+```javascript
+let numbersAsStrings = ["1424242", "13220", "1000"];
+
+numbersAsStrings.sort();
+console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
+```
+
+Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?
+
+#### Sorting numbers
+
+Things start to full apart a bit when we try and sort numbers:
+
+```javascript
+var numbers = [1678, 2, 3, 78, 9, 10001];
+
+numbers.sort();
+console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
+```
+
+Question: how is JavaScript trying to sort the numbers above?
+
+We can fix this by using a callback to examine the numbers in more detail:
+
+```javascript
+numbers.sort(function (a, b) {
+  if (a > b) return 1; // switch numbers
+  if (a < b) return -1; // switch numbers
+  return 0; // numbers are the same
+});
+```
+
+In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same so no switch is required. The function will keep checking and switching the values until the array is sorted.
 
 ## Assignment
 
-Can you organise the notes into an 8 x 4 grid?
+### Part 1
 
-You will need some css to style the note:
+Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
 
-```css
-samp {
-  display: inline-block;
-  width: 3rem;
-  height: 3rem;
-  margin: .25rem;
-}
-.selected {
-  background-color: hotpink;
-}
-.unselected {
-  background-color: orchid;
-}
+### Part 2
+
+Using the arrays below, create a sort function that can take an array, sort the contents, then return the sorted array.
+
+```javascript
+[1678, 2, 3, "Hihihi", 9, "435454"];
+[1678, 2, 3, -78, 9, 10001];
+[32466, 2, 3, "dinosourraahh", 9, 10.6];
+["SHARK!", 2, -1, 78, -9, 100.5];
+[000, 2, 3, "78", 9, 1.13435];
 ```
 
-What css could you use to set up an 8 x 4 grid?
-
-[attendance log](https://platform.multiverse.io/apprentice/attendance-log/190)
-[main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html)
+[main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);

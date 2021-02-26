@@ -1,153 +1,281 @@
 # Mod 2 > Week 1 > Day 1
 
-![microsoft certificate](https://di3xp7dfi3cq.cloudfront.net/pub/media/magefan_blog/w/h/what-jobs-can-you-get-with-mta-cetification.jpg)
+# Overview of the day
 
-## You are going to be come a Microsoft Technical Associate by gaining an industry recognised qualification.
+You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
-We are going to build a frontend application that will use or touch upon all the knowledge required to pass the Microsoft Technical Associate Exam (MTA 70-480 Programming in HTML5 with JavaScript and CSS3). It is a peer to peer audio composition app where you can create tracks, play them back, share them with the network of other composers, and play their compositions in your player.
+This course also serves as an good introduction to the JavaScript language, irrespective of whether you're taking an exam.
 
-Along the way you’ll come across; italic bullet points, these are the MTA learning objectives, slide shows these usually require a little commentary from your coach, but often contain useful coding examples, links and mini quizzes that test your knowledge. At the end of the module you’ll have lots of practice questions to test your understanding and get used to the style of exam questions.
+# Course stucture
 
-# HTML
+Week 1 - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
+
+Week 2 - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.
+
+# Lesson 1
 
 ## Learning Objectives
 
-*   _1.1 Create the document structure by using HTML Structure the UI by using semantic markup, including for search engines and screen readers (Section, Article, Nav, Header, Footer, and Aside); create a layout container in HTML_
+- Learn about primitives
+- Learning and applying conditionals
+- Learnin and applying functions
+- Learning about scoping
+- Write your first app
 
-## Lesson
+### Primitives
 
-Lets start with a good basis for our application by creating the HTML structure and style it using a responsive flexible css grid layout.
+Primitives are the simplest datatypes and are "built-in" to the JavaScript language. There are 7 primitive data types, but we'll focus on the main 5 for now:
 
-We are going to use semantic HTML elements. Semantics is the study of the meanings of words and phrases in a language. Semantic elements are elements with a meaning.
+| Primitive | Example                         |
+| :-------- | :------------------------------ |
+| string    | `const myString = "Hi, Daniel"` |
+| number    | `const myNumber = 3.6`          |
+| boolean   | `const myBoolean = true`        |
+| undefined | `const myUndefined`             |
+| null      | `const myNull = null`           |
 
-Look at the examples below.
+The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
-```html
-    <body>
-        <div>
-            <div>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/shop">Shop</a>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div>
-                    <img src="/images/slipper-01.jpg" alt="slipper 01" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-                <div>
-                    <img src="/images/slipper-02.jpg" alt="slipper 02" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-                <div>
-                    <img src="/images/slipper-03.jpg" alt="slipper 03" />
-                    <div>£29.99</div>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div>
-            <span>my slipper company</span>
-        </div>
-    </body>
+```javascript
+// string primitive
+const myString = "Hi, Daniel";
+
+console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 ```
 
-Whilst this is valid HTML it does not have much meaning. By using the semantic elements we can layout our page structure in the same way, but also communicate to other programs that read our HTML how to treat the different areas. Those other programs might be, a search engine indexing our page, a screen reader, different browsers rendering out page. For example google uses the `<article>` elements to determine the subject of a page.
+Note that even though we've transformed the string to uppercase, the original variable has not been changed.
 
-Let us have a look at the same layout but use semantic elements.
+### Conditionals
 
-```html
-    <body>
-        <header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/shop">Shop</a>
-            </nav>
-        </header>
-        <main>
-            <section>
-                <article>
-                    <hgroup>
-                        <h1>Slipper</h1>
-                        <h2>Our most comfortable</h2>
-                    </hgroup>
-                    <figure>
-                        <img src="/images/slipper-01.jpg" alt="slipper 01" />
-                        <figcaption>£29.99</figcaption>
-                    </figure>
-                    <button>Add to Cart</button>
-                </article>
-            </section>
-        </main>
-        <footer>
-            <span>my slipper company</span>
-        </footer>
-    </body>
+At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
+This is at the heart of conditions. If something is there, it's true, if not, it's false. We can write this in code:
+
+```javascript
+if (myString === "Hi, Daniel") {
+  alert("Hey, it's Dan!"); // true
+} else if (myString === "Hi, Bob") {
+  alert("Hey, it's Bob!"); // true
+} else {
+  alert("Hey, new person!"); // false
+}
 ```
 
-|HTML elements|Description|
-|:---|:---|
-`<header>`|Defines the top of a section or page
-`<main>`|Represents the dominant content of the of a document or component
-`<footer>`|Defines the bottom of a section or page or component
-`<article>`|Defines self-contained areas on a page
-`<nav>`|Defines navigation to other pages in the site
-`<hgroup>`|Defines a group of headings (H1–H6 elements) *this is now depreciated
-`<figure>`|Defines content that contains a figure, such as an image, chart, or picture
-`<figcaption>`|Defines the caption of a figure element
+Here we've used the "strict" conditional (===). This checks that the datatype AND the check in question match. We'll cover operators in more detail later.
 
+We can daisy-chain if conditionals like our example above as much as we want however, after a while they can become hard to read. The Switch statement solves this by providing more concise
+syntax.
 
-In addition to the elements above you should also know about and try to use the following:
-
-|HTML elements|Description|
-|:---|:---|
-`<aside>`|Defines smaller content areas outside the flow of a webpage
-`<mark>`|Defines text that should be highlighted
-`<progress>`|Defines the progress of the task
-
-## Using the `<hgroup>` element
-
-The `<hgroup>` element is a semantic method that organises headers and sub-headers. This element typically contains the standard and familiar `<h1>` to `<h6>` elements. The `<hgroup>` element groups related headers in sequence.
-
-## Using the `<progress>` element
-
-The `<progress>` element represents the progress of an objective or task. The two supported types of progress tasks are **determinate** and **indeterminate**.
-
-Use a **determinate** progress task when you know in advance the amount of work to be completed; in other words, you know the starting and ending values. Sample scenarios for this case include downloading a file for which you know the exact size or displaying the progress of a fundraising effort. In both situations, you know the exact status of the task at any particular time, and you also know what the end goal is—either the number of bytes for the file download or the number of dollars for the fundraiser. In these determinate cases, you can specify HTML5 markup such as this:
-
-```html
-    <p>Our goal is to have 1000 users:</p>
-    <span>0</span>
-    <progress value="50" max="1000"></progress>
-    <span>1000</span>
+```javascript
+switch (myString) {
+  case "Hi, Daniel":
+    alert("Hey, it's Dan!"); // true
+    break;
+  case "Hi, Bob":
+    alert("Hey, it's Bob!"); // true
+    break;
+  default:
+    alert("Hey, new person!"); // false
+}
 ```
 
-<progress value="50" max="1000"></progress>
+Switch statement key points for the exam:
 
-As shown in the preceding code, the `<progress>` element has two attributes you need to know: value and max. The value attribute lets you specify the current value or position of the `<progress>` element at a specific point in time. The max attribute tells the browser what the maximum possible value is for the element. The browser uses these two values to determine how much of the element should be coloured in. So if I change the value to 750 the progress bar displays the new value like this:
+- The break keyword "breaks out" of the whole code block
+- The break keyword isn't required in the default block
 
-<progress value="750" max="1000"></progress>
+### Functions
 
-You use **indeterminate** tasks when you don’t know how long a task will take to complete but still want to show users that some work is occurring and that they should wait. When you don’t specify the value attribute, the browser can infer that the `<progress>` element represents an indeterminate task.
+There is not one, not two, but THREE ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+Let's look at the syntax:
 
-<progress></progress>
+```javascript
+// older way
+function addition(value1, value2) {
+  return value1 + value2;
+}
 
-Downloading...
+// assigning a function to a variable using older way
+const multiply = function (value1, value2) {
+  return value1 * value2;
+};
 
-Can you see the bar is subtly pulsing?
+// newer "arrow" function form
+const subtract = (value1, value2) => {
+  return value1 - value2;
+};
 
-## Using the `<mark>` element
+console.log(addition(29, 2) // 31
+console.log(subtract(29, 2) // 27
+console.log(multiply(29, 2)); // 58
+```
 
-    Use the `<mark>` element to <mark>highlight</mark> text
+What do you think the "return" statement does? Also, the functions accept what we call "arguements" or "parameters". What are these?
 
-Use the `<mark>` element to <mark>highlight</mark> text.
+## Assignment
 
-You have now been introduced to the HTML elements you’ll need to know about for the exam. We can use these to layout our app’s page.
+You now have all you need to write a simple application. Fire up [JSFiddle](http://jsfiddle.net) and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.
 
-[attendance log](https://platform.multiverse.io/apprentice/attendance-log/188)
-[main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day3.html)
+# Lesson 2
+
+## Learning Objectives
+
+- Learn the different types of operators
+- Write a tax app
+
+### Variables and scoping
+
+Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
+
+```javascript
+const globalConstVariable = "Global scope";
+
+function myFunction() {
+  var localVarVariable = "Var local scope";
+
+  try {
+    let localLetVariable = "Let local scope";
+    console.log(globalConstVariable, localVarVariable, localLetVariable);
+    // Output: "Global scope", "Var local scope", "Let local scope"
+  } catch (err) {
+    console.log(err.message);
+  }
+
+  console.log(localVarVariable); // "Var local scope"
+  console.log(localLetVariable); // Uncaught ReferenceError: localLetVariable is not defined
+}
+
+myFunction();
+```
+
+| Variable | Example                         | Usage                                                              |
+| :------- | :------------------------------ | ------------------------------------------------------------------ |
+| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change                            |
+| var      | `var myNumber = 3.6`            | Use sparingly. Can be redeclared and doesn't support block scoping |
+| let      | `let myBoolean = true`          | Use as needed in function/block scoping                            |
+
+Key points:
+
+- A globally scoped variable can be accessed anywhere in your code
+- A "var" variable can be accessed anywhere in the function where it's defined
+- A "let" variable can only be access in the block where it's defined
+
+Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
+
+### Operators
+
+We can categorise the operators as follows:
+
+- Arithmetic operators
+- Assignment operators
+- Comparison operators
+- Logical operators
+
+#### Arithmetic operators
+
+| Operator | Purpose               | Example      |
+| :------- | :-------------------- | :----------- |
+| +        | Addition              | `x = 2 + 2`  |
+| -        | Subtraction           | `x = 2 - 2`  |
+| \*       | Multiplication        | `x = 2 \* 2` |
+| /        | Division              | `x = 2 / 2`  |
+| %        | Remainder of division | `x = 2 % 2`  |
+| ++       | Increment by one      | `x++`        |
+| --       | Decrement by one      | `x--`        |
+
+The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
+
+```javascript
+let x = 3;
+
+x %= 2;
+
+console.log(x); // 1
+```
+
+#### Assignment operators
+
+| Operator | Purpose             | Example   | Same as     |
+| :------- | :------------------ | :-------- | ----------- |
+| =        | Assignment          | `x = 2`   | n/a         |
+| +=       | Addition assignment | `x += 2`  | `x = x + 2` |
+| -=       | Subtract assignment | `x -= 2`  | `x = x - 2` |
+| \*=      | Muliply assignment  | `x \*= 2` | `x = x - 2` |
+| /=       | Divide assignment   | `x /= 2`  | `x = x / 2` |
+| %=       | Modulus assignment  | `x %= 2`  | `x = x % 2` |
+
+Operators such as `+=` are referred to as compound operators. This is because two things are happening.
+
+```javascript
+let x = 2;
+
+x -= 2;
+
+console.log(x); // 0
+```
+
+The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assign the result back to x"
+
+#### Math operators
+
+JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. The rest are included for your reference.
+
+| Operator      | Purpose                                                | Example                                   |
+| :------------ | :----------------------------------------------------- | :---------------------------------------- |
+| Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`        |
+| Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`          |
+| Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)`       |
+| Math.pow()    | Returns the power of a number                          | `let mathPower = Math.pow(8, 2)`          |
+| Math.sqrt()   | Returns the square route of a number                   | `let sqRt = Math.sqrt(64)`                |
+| Math.abs()    | Returns the positive value of a number                 | `let mathAbs = Math.abs(-1.1)`            |
+| Math.min()    | Returns the lowest value                               | `let mathMin = Math.min(1, 45, 1920)`     |
+| Math.max()    | Returns the highest value                              | `let mathMax = Math.max(34, 567, 102034)` |
+
+#### Comparison operators
+
+| Operator | Purpose                     | Example         |
+| :------- | :-------------------------- | :-------------- |
+| ==       | Equal to value              | `x = 2 == 2 `   |
+| ===      | Equal to value and type     | `x = 2 === "2"` |
+| !=       | Not equal to value          | `x = 2 != 2`    |
+| !==      | Not equal to value and type | `x = 2 !== "2"` |
+| >        | Greater than                | `x = 2 > 2`     |
+| <        | Less than                   | `x = 2 < 2`     |
+| <=       | Less than or equal to       | `x = 2 <= 2`    |
+| >=       | Greater than or equal to    | `x = 2 >= 2`    |
+
+Challenge: in breakout rooms, look at the examples above, in each case, what would x be equal to after the comparison has been done?
+
+#### Logical operators
+
+| Operator | Purpose                                     | Example                       |
+| :------- | :------------------------------------------ | :---------------------------- |
+| &&       | Check if statement1 AND statement2 are true | `if ( age > 17 && age < 65 )` |
+| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 \|\| age >= 65)` |
+| !        | Check if a statement is NOT true            | `if (!age)`                   |
+
+Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
+
+```javascript
+let x = false;
+let y = true;
+
+if (!x) {
+  console.log(x); // this line prints out because x = false, therefore the check returns true
+}
+
+if (!y) {
+  console.log(y); // this line is never reached
+}
+```
+
+## Assignment
+
+Write an application that can calculate a person's tax.
+
+- Your app should be able to accept the gross amount a person has earned
+- Your app should be able to calculate income tax and national insurance
+- Your app should be able to show the student loan repayment amount, if applicable
+- Your app should be able to tell the person their tax code, depending on how much they earn
+- Finally, your app should tell the person their net pay for the month
+
+[main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
