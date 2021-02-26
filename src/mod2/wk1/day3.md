@@ -99,8 +99,7 @@ console.log(result); // 1
 
 ##### What is a callback?
 
-A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then
-it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
+A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
 
 ```javascript
 // anonymous callback function with no name
@@ -113,7 +112,7 @@ In the above example, `el` is each element that is passed into the callback func
 
 Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.
 
-Further reading: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
+**Further reading**: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
 
 #### Search using array.filter
 
@@ -129,9 +128,9 @@ console.log(result); //  ["holy smokes", "007", "The name's Bond"]
 
 Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.
 
-Can you spot the difference between the find method and the filter method?
+Can you spot the difference between the find method earlier and the filter method above?
 
-The find method has a return statement and the filter does not. This is one of the advantages of using the arrow functions that we introduced on day one. If you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.
+One of the advantages of using the arrow functions that we introduced on day one is if you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.
 
 If this sounds confusing, make sure you ask your coach to explain what's going on!
 
@@ -141,9 +140,7 @@ If this sounds confusing, make sure you ask your coach to explain what's going o
 
 - How to sort an array
 
-### Sorting an array
-
-#### Sorting strings
+### Sorting an array of strings
 
 From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:
 
@@ -156,7 +153,7 @@ console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 
 Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?
 
-#### Sorting numbers
+### Sorting an array of numbers
 
 Things start to full apart a bit when we try and sort numbers:
 
@@ -167,7 +164,7 @@ numbers.sort();
 console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
 ```
 
-Question: how is JavaScript trying to sort the numbers above?
+How is JavaScript trying to sort the numbers above?
 
 We can fix this by using a callback to examine the numbers in more detail:
 
@@ -179,7 +176,7 @@ numbers.sort(function (a, b) {
 });
 ```
 
-In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same so no switch is required. The function will keep checking and switching the values until the array is sorted.
+In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same, so no switch is required. The function will keep checking and switching the values until the array is sorted.
 
 ## Assignment
 

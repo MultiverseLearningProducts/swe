@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we'll look at objects before we looking at value vs reference.
+Today we'll look at objects before looking at value vs reference.
 
 # Lesson 1
 
@@ -15,15 +15,14 @@ Today we'll look at objects before we looking at value vs reference.
 
 ### What is an object?
 
-We looked at arrays on day two. Arrays are great for storing independent values, but don't scale well when we want to describe the subject in more detail.
+We looked at arrays on day two. Arrays are great for storing independent values, but don't scale well when we want to describe a subject in more detail.
 
 ```javascript
 // not ideal!
 ["name: Dan", "age: 35", "shoeSize: 9"];
 ```
 
-The example above would be very tricky to manage and wouldn't be an efficient approach. This is where objects come to the rescue. An object is a collection of information
-about, well, an object!
+The example above would be very tricky to manage and wouldn't be an efficient approach. This is where objects come to the rescue. An object is a collection of information about, well, an object!
 
 ```javascript
 let person = {
@@ -75,19 +74,31 @@ To loop through an object, we can utilise a variation on the for loop called the
 
 ```javascript
 for (let key in person) {
-  console.log(person[key]); // "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
+  console.log(person[key]); 
 }
+
+// "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 ```
 
 ## Assignment
 
-### Part 1
+Can you find the killer?
 
-Create a function that takes a bunch of arguements and assigns them an object (include at least one array). Once done, loop through this object and console log the values.
+The deceased: 
 
-### Part 2
+```javascript
+['Lucas', 'Bill']
+```
 
-Can you also loop through the array in your object and log the values to the console? Will a `for..in` loop work here? Other than the standard for loop i.e `for (let i = 0; i < something.length; i++)`, what other for loop could you use?
+You have managed to narrow the suspects down to just a few. Luckily, you know every person who the suspects have seen on the day of the murders.
+
+```javascript
+{'James': ['Jacob', 'Bill', 'Lucas'],
+ 'Johnny': ['David', 'Kyle', 'Lucas'],
+ 'Peter': ['Lucy', 'Kyle']}
+ ```
+
+Write a function that can return the name of the killer!
 
 # Lesson 2
 
@@ -116,7 +127,8 @@ function change(student, course) {
 
 change(sampleStudent, sampleCourse);
 
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // <--- what will be logged?
+// What will be logged?
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
 ```
 
 The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
@@ -137,7 +149,9 @@ function change(student, course) {
 Sure enough, if we log the result, we get:
 
 ```javascript
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); // "HTML Student", "JavaScript", 100
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
+
+// "HTML Student", "JavaScript", 100
 ```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);

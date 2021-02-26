@@ -82,10 +82,7 @@ let result = arr1.find(function (el) {
 console.log(result); // 1
 </code></pre>
     <h5>What is a callback?</h5>
-    <p>
-      A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then
-      it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
-    </p>
+    <p>A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:</p>
     <pre><code class="language-javascript">// anonymous callback function with no name
 (el) => {
   return el.toString().length &#x3C; 5;
@@ -93,7 +90,7 @@ console.log(result); // 1
 </code></pre>
     <p>In the above example, <code>el</code> is each element that is passed into the callback function, so <code>1, 2, "holy smokes"</code>, and so on.</p>
     <p>Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.</p>
-    <p>Further reading: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!</p>
+    <p><strong>Further reading</strong>: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!</p>
     <h4>Search using array.filter</h4>
     <p>The last strategy we will look at is array.filter:</p>
     <pre><code class="language-javascript">let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
@@ -103,16 +100,15 @@ let result = arr1.filter((el) => el.toString().length > 2);
 console.log(result); //  ["holy smokes", "007", "The name's Bond"]
 </code></pre>
     <p>Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.</p>
-    <p>Can you spot the difference between the find method and the filter method?</p>
-    <p>The find method has a return statement and the filter does not. This is one of the advantages of using the arrow functions that we introduced on day one. If you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.</p>
+    <p>Can you spot the difference between the find method earlier and the filter method above?</p>
+    <p>One of the advantages of using the arrow functions that we introduced on day one is if you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.</p>
     <p>If this sounds confusing, make sure you ask your coach to explain what's going on!</p>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>How to sort an array</li>
     </ul>
-    <h3>Sorting an array</h3>
-    <h4>Sorting strings</h4>
+    <h3>Sorting an array of strings</h3>
     <p>From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:</p>
     <pre><code class="language-javascript">let numbersAsStrings = ["1424242", "13220", "1000"];
 
@@ -120,14 +116,14 @@ numbersAsStrings.sort();
 console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 </code></pre>
     <p>Question: thinking back to our conversation about primitives, why has the sort method changed the array directly?</p>
-    <h4>Sorting numbers</h4>
+    <h3>Sorting an array of numbers</h3>
     <p>Things start to full apart a bit when we try and sort numbers:</p>
     <pre><code class="language-javascript">var numbers = [1678, 2, 3, 78, 9, 10001];
 
 numbers.sort();
 console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
 </code></pre>
-    <p>Question: how is JavaScript trying to sort the numbers above?</p>
+    <p>How is JavaScript trying to sort the numbers above?</p>
     <p>We can fix this by using a callback to examine the numbers in more detail:</p>
     <pre><code class="language-javascript">numbers.sort(function (a, b) {
   if (a > b) return 1; // switch numbers
@@ -135,7 +131,7 @@ console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
   return 0; // numbers are the same
 });
 </code></pre>
-    <p>In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same so no switch is required. The function will keep checking and switching the values until the array is sorted.</p>
+    <p>In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same, so no switch is required. The function will keep checking and switching the values until the array is sorted.</p>
     <h2>Assignment</h2>
     <h3>Part 1</h3>
     <p>Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.</p>

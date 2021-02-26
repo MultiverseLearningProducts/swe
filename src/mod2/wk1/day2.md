@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we're going to look at all things Array!
+Today we're going to look at arrays and loops.
 
 # Lesson 1
 
@@ -33,13 +33,11 @@ To access an array we can use the square bracket notation with an index number:
 console.log(myArray1[0], myArray2[2]); // "Hi!", true
 ```
 
-Notice that to access the first element in the array, we need to use a zero. This because arrays in JavaScript are zero-based, which is to say that the index starts
-at zero. This is common across many programming languages.
+Notice that to access the first element in the array, we need to use a zero. This because arrays in JavaScript are zero-based, which is to say that the index starts at zero. This is common across many programming languages.
 
 ### Looping over an array
 
-You will often find that you need to loop over an array to check or output the values. If you're not familiar with loops, they are used in programming to make repetitive
-tasks more efficient. One of the most common loops is the For loop.
+You will often find that you need to loop over an array to check or output the values. If you're not familiar with loops, they are used in programming to make repetitive tasks more efficient. One of the most common loops is the For loop.
 
 ```javascript
 let myArray1 = ["Hi!", 1, 2, 3.3];
@@ -83,7 +81,7 @@ i++;
 
 ## Assignment
 
-Given an array of integers, return a new array with each value doubled.
+Given an array of integers, create a function that can return a new array with each value doubled.
 
 For example:
 
@@ -113,7 +111,7 @@ console.log(myMdArray); // [[1, 2, 3], [2, 3, 4], [5, 6, 7]]
 
 Notice how we now have arrays in an array.
 
-### Acessing multi-dimensional arrays
+### Accessing multi-dimensional arrays
 
 Accessing multi-dimensional arrays is somewhat similar to how we'd access a single-dimensional array, except this time, we need tell JavaScript which nested array to target, and which element in the target array we want to extract. For example:
 
@@ -151,7 +149,7 @@ for (let i = 0; i < myMdArray.length; i++) {
 
 Eeeeek! Looks scary, doesn't it? Let's break it down:
 
-1. The First loop loops over the contents of the first array:
+1. The first loop loops over the contents of the first array:
 
 ```javascript
 for (let i = 0; i < myMdArray.length; i++) {
@@ -159,7 +157,7 @@ for (let i = 0; i < myMdArray.length; i++) {
 }
 ```
 
-2. The second loop gets the length if the nested array, e.g. for the array [1, 2, 3], the length is three.
+2. The second loop gets the length if the nested array, e.g. for the array `[1, 2, 3]`, the length is three.
 
 ```javascript
 let nestedArrayLength = myMdArray[i].length;
@@ -187,8 +185,7 @@ The assignment is the same as the one above, except this time you're looping ove
 
 ### Array methods
 
-When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make
-to the array will change its values directly.
+When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make to the array will change its values directly.
 
 Arrays have a number of built-in methods you can use to manipulate them in some way. Here are some examples:
 
@@ -202,8 +199,11 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 ## Assignment
 
 - Create a function that takes an array that contains a single element, e.g. `[121]`
-- Minus this value by the same value, and plus the value by the same value, then add the results before and after the element in the array
+
+- Minus this value by itself, and add the value to itself, then add the results before and after the element in the array
+
 - Continue subtracting and adding the first and last values until you have an array that is nine elements in length
+
 - You should end up with function that returns an array like this: `[-968, -484, -242, -121, 0, 121, 242, 484, 968]
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

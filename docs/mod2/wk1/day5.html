@@ -12,7 +12,7 @@
   <body>
     <h1>Mod 2 > Week 1 > Day 5</h1>
     <h1>Overview of the day</h1>
-    <p>Today we will take a look at a number of string methods available befor looking at the date object and the various methods we can call on it.</p>
+    <p>Today we will take a look at a number of string methods available before looking at the date object and the various methods we can call on it.</p>
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -59,10 +59,18 @@
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
     <h2>Assignment</h2>
     <ul>
-      <li>Create a function that can take a phone number, e.g <code>01803 312 698</code> and a country code to apply to the number</li>
-      <li>Your function should remove the <code>0</code> and add the country code to the beginning of the string, then return the result</li>
-      <li>For example: <code>01803 312 698</code>, would become <code>+44 1803 312 698</code></li>
-      <li>Test cases: <code>020 208 8000</code>, <code>07985 427 937</code>, <code>01626 455 000</code> (+44 in all cases)</li>
+      <li>
+        <p>Create a function that can take a phone number, e.g <code>01803 312 698</code> and a country code to apply to the number</p>
+      </li>
+      <li>
+        <p>Your function should remove the <code>0</code> and add the country code to the beginning of the string, then return the result</p>
+      </li>
+      <li>
+        <p>For example: <code>01803 312 698</code> would become <code>+44 1803 312 698</code></p>
+      </li>
+      <li>
+        <p>Test cases: <code>020 208 8000</code>, <code>07985 427 937</code>, <code>01626 455 000</code> (+44 in all cases)</p>
+      </li>
     </ul>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
@@ -92,11 +100,13 @@ console.log(
     <h3>Get the date, month, and year</h3>
     <p>The above format is more readable, but what if we wanted complete control over the format?</p>
     <p>What if we wanted: <code>The date is: Thursday, January 25th, 2021</code>?</p>
-    <p>For this, we can utilise the date object's methods: <code>getFullYear(), getMonth(), getDay(), getDate()</code>. These methods however, return integers. We then have to do the work of transforming them into a formatted date like the one above.</p>
+    <p>For this, we can utilise the date object's methods: <code>getFullYear(), getMonth(), getDay(), getDate()</code>. These methods however, return integers. This means we have to do the work of transforming them into a formatted date like the one above.</p>
     <pre><code class="language-javascript">let myDate = new Date(2021, 1, 25);
 
 // get the integers
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 25, 1, 2021
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+// 25, 1, 2021
+
 console.log(myDate.getDay()); // 4
 
 // do the work here to get the text based string
@@ -117,14 +127,41 @@ console.log(myDate.getDay()); // 4
 
 myDate.setDate(myDate.getDate() - 2);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); // 23, 0, 2021
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+// 23, 0, 2021
 </code></pre>
     <p>Can you think of a use for adding and subtracting dates in an application?</p>
     <h2>Assignment</h2>
     <h3>Part 1</h3>
-    <p>Create a function that can create and return a new date. Your function should except the date, month and year as parameters.</p>
+    <ul>
+      <li>Create a function called <code>centuryFromYear</code></li>
+      <li>Given a year, the function should return the century it is in</li>
+    </ul>
+    <p>Input/Output Examples</p>
+    <p>
+      centuryFromYear(1705) returns (18)
+      centuryFromYear(1900) returns (19)
+      centuryFromYear(1601) returns (17)
+      centuryFromYear(2000) returns (20)
+    </p>
     <h3>Part 2</h3>
-    <p>Create another function that can modify and return the date created above. The function should accept a negative value to indicate you want to subtract the passed value from the date, or a positive value meaning you want to add the value to the date.</p>
+    <p>Here are some famous events:</p>
+    <p>
+      London Olympics, 27 July 2012 to 12 August 2012
+      Wedding of Prince William and Catherine Middleton, 29 April 2011
+      Apollo 13, April 11, 1970 to April 17, 1970
+    </p>
+    <ul>
+      <li>
+        <p>For each famous event, create a date object that represents the date the event started and the date it ended</p>
+      </li>
+      <li>
+        <p>Create a function that returns how many days the event lasted. If it lasted for one day, simply return <code>1 day</code></p>
+      </li>
+      <li>
+        <p>Create another function that returns how long ago the event was from today's date</p>
+      </li>
+    </ul>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day3.html">prev</a>|<a href="/swe/mod2/wk1/day5.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
