@@ -179,7 +179,7 @@ We can categorise the operators as follows:
 | :------- | :-------------------- | :----------- |
 | +        | Addition              | `x = 2 + 2`  |
 | -        | Subtraction           | `x = 2 - 2`  |
-| \*       | Multiplication        | `x = 2 \* 2` |
+| \*       | Multiplication        | `x = 2 * 2` |
 | /        | Division              | `x = 2 / 2`  |
 | %        | Remainder of division | `x = 2 % 2`  |
 | ++       | Increment by one      | `x++`        |
@@ -202,7 +202,7 @@ console.log(x); // 1
 | =        | Assignment          | `x = 2`   | n/a         |
 | +=       | Addition assignment | `x += 2`  | `x = x + 2` |
 | -=       | Subtract assignment | `x -= 2`  | `x = x - 2` |
-| \*=      | Muliply assignment  | `x \*= 2` | `x = x - 2` |
+| \*=      | Muliply assignment  | `x *= 2` | `x = x - 2` |
 | /=       | Divide assignment   | `x /= 2`  | `x = x / 2` |
 | %=       | Modulus assignment  | `x %= 2`  | `x = x % 2` |
 
@@ -248,7 +248,7 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | Operator | Purpose                                     | Example                       |
 | :------- | :------------------------------------------ | :---------------------------- |
 | &&       | Check if statement1 AND statement2 are true | `if ( age > 17 && age < 65 )` |
-| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 \|\| age >= 65)` |
+| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 || age >= 65)` |
 | !        | Check if a statement is NOT true            | `if (!age)`                   |
 
 Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
@@ -258,8 +258,8 @@ let x = false;
 let y = true;
 
 if (!x) {
-  console.log(x); 
   // this line prints because x === false, therefore the check returns true
+  console.log(x); 
 }
 
 if (!y) {
