@@ -23,7 +23,6 @@
       <li>Learn about primitives</li>
       <li>Learn and apply conditionals</li>
       <li>Learn and apply functions</li>
-      <li>Learn about scoping</li>
       <li>Write your first app</li>
     </ul>
     <h3>Primitives</h3>
@@ -129,6 +128,7 @@ console.log(multiply(29, 2)); // 58
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
+      <li>Learn about variables and scoping</li>
       <li>Learn and apply operators</li>
       <li>Write a tax app</li>
     </ul>
@@ -164,7 +164,7 @@ myFunction();
         <p>A "var" variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable). Use sparingly if at all, as a var can be redeclared and doesn't support block scoping</p>
       </li>
       <li>
-        <p>A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable). W</p>
+        <p>A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable).</p>
       </li>
     </ul>
     <table>
@@ -177,19 +177,19 @@ myFunction();
       </thead>
       <tbody>
         <tr>
-          <td align="left">const</td>
+          <td align="left"><code>const</code></td>
           <td align="left"><code>const myString = "Hi, Daniel"</code></td>
           <td>When you know the variable won't change as it cannot be reassigned</td>
         </tr>
         <tr>
-          <td align="left">var</td>
+          <td align="left"><code>var</code></td>
           <td align="left"><code>var myNumber = 3.6</code></td>
           <td>Use <code>let</code> instead</td>
         </tr>
         <tr>
-          <td align="left">let</td>
+          <td align="left"><code>let</code></td>
           <td align="left"><code>let myBoolean = true</code></td>
-          <td>Use as needed functions and code blocks coping if the variable will change</td>
+          <td>Use as needed functions and code blocks if the variable will not change</td>
         </tr>
       </tbody>
     </table>

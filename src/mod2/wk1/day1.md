@@ -19,7 +19,6 @@ This course also serves as an good introduction to the JavaScript language, irre
 - Learn about primitives
 - Learn and apply conditionals
 - Learn and apply functions
-- Learn about scoping
 - Write your first app
 
 ### Primitives
@@ -119,6 +118,7 @@ You now have all you need to write a simple application. Fire up [JSFiddle](http
 
 ## Learning Objectives
 
+- Learn about variables and scoping
 - Learn and apply operators
 - Write a tax app
 
@@ -155,13 +155,13 @@ Key points:
 
 - A "var" variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable). Use sparingly if at all, as a var can be redeclared and doesn't support block scoping
 
-- A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable). W
+- A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable).
 
 | Variable | Example                         | Usage                                                              |
 | :------- | :------------------------------ | ------------------------------------------------------------------ |
-| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned                          |
-| var      | `var myNumber = 3.6`            | Use `let` instead |
-| let      | `let myBoolean = true`          | Use as needed functions and code blocks coping if the variable will change        |
+| `const`    | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned                          |
+| `var`     | `var myNumber = 3.6`            | Use `let` instead |
+| `let`      | `let myBoolean = true`          | Use as needed functions and code blocks if the variable will not change        |
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
@@ -248,7 +248,7 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 #### Logical operators
 
 | Operator | Purpose                                     | Example                       |
-| :------- | :------------------------------------------ | :---------------------------- |
+| :------- | :-------------------------------------| :---------------------------- |
 | &&       | Check if statement1 AND statement2 are true | `if ( age > 17 && age < 65 )` |
 | \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 \|\| age >= 65)` |
 | !        | Check if a statement is NOT true            | `if (!age)`                   |
