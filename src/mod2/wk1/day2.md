@@ -207,4 +207,5 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 - You should end up with function that returns an array like this: 
 `[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
 
+
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

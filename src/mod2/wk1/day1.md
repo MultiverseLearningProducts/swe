@@ -281,4 +281,5 @@ Tax rules:
 - Between £37,500 and £150,000 is taxed at the higher rate of 40%.
 - Over £150,000 is taxed at the additional rate of 45%.
 
+
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)

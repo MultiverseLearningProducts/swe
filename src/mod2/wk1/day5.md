@@ -48,7 +48,8 @@ There are four ways to initialise a date object:
 
 ```javascript
 const date1 = new Date(); // now
-const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); // year, month, day, hours, minutes, seconds, milliseconds
+// year, month, day, hours, minutes, seconds, milliseconds
+const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); 
 const date3 = new Date(10000000000); // milliseconds
 const date4 = new Date("October 13, 2014 11:13:00"); // date string
 
