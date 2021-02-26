@@ -61,7 +61,7 @@ for (let i = 0; i &#x3C; myArray1.length; i++) {
     <p>First, we initialise a variable and assign it zero</p>
     <pre><code class="language-javascript">let i = 0;
 </code></pre>
-    <p>The next part of the loop effectively says "while the variable i is less than the length of myArray, continue looping"</p>
+    <p>The next part of the loop effectively says "while the variable <code>i</code> is less than the length of myArray, continue looping"</p>
     <pre><code class="language-javascript">i &#x3C; myArray1.length;
 </code></pre>
     <p>Last is a compound operator that adds one to i on each iteration of the loop</p>
@@ -88,10 +88,7 @@ console.log(myMdArray); // [[1, 2, 3], [2, 3, 4], [5, 6, 7]]
 </code></pre>
     <p>Notice how we now have arrays in an array.</p>
     <h3>Acessing multi-dimensional arrays</h3>
-    <p>
-      Accessing multi-dimensional arrays is somewhat similar to how we'd access single-dimensional array, except this time, we need tell JavaScript which nested array we want and which element in thata
-      array we also want. For example:
-    </p>
+    <p>Accessing multi-dimensional arrays is somewhat similar to how we'd access a single-dimensional array, except this time, we need tell JavaScript which nested array to target, and which element in the target array we want to extract. For example:</p>
     <pre><code class="language-javascript">let myMdArray = [
   [1, 2, 3],
   [2, 3, 4],
@@ -150,6 +147,7 @@ for (let i = 0; i &#x3C; myMdArray.length; i++) {
       When we looked at primitives, we identified that they are immutable, meaning that we can't change the existing value. Arrays on the other hand, are mutable, meaning any change we make
       to the array will change its values directly.
     </p>
+    <p>Arrays have a number of built-in methods you can use to manipulate them in some way. Here are some examples:</p>
     <table>
       <thead>
         <tr>
@@ -182,7 +180,7 @@ for (let i = 0; i &#x3C; myMdArray.length; i++) {
       </tbody>
     </table>
     <h2>Assignment</h2>
-    <p>Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it now contain?</p>
+    <p>Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it contain now?</p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day1.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

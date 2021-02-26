@@ -11,145 +11,17 @@
   </head>
   <body>
     <h1>Mod 2 > Week 2 > Day 2</h1>
-    <h2>Overview of the day</h2>
-    <p>Today is all about the <code>&#x3C;canvas></code> element.</p>
-    <hr>
-    <h2>Lesson 1 - The Player</h2>
+    <h1>Overview of the day</h1>
+    <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
-    <ul>
-      <li><em>1.2 implement HTML5 canvas</em></li>
-      <li><em>2.1 Implement program flow Iterate across collections and array items;</em></li>
-    </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>We are going to make a player to play and visualise our tracks. For times when we want to render graphics or draw to the DOM there is the <code>&#x3C;canvas></code> element. This is going to be at the heart of our <code>Player</code> component.</p>
-    <h2><code>atob()</code></h2>
-    <p>Previously we constructed our tracks so when they were are clicked they will call:</p>
-    <pre><code class="language-javascript">onclick="player.load('${btoa(JSON.stringify(track))}')"
-</code></pre>
-    <p>To decode the string that <code>load(track)</code> will receive we need to call the decode version of <code>btoa()</code> which is <code>atob()</code> that will take a base64 encoded string and return you a JSON stringified track. You can then hide the grid, show the player, add the <code>JSON.parse</code> version of the track into the <code>Player</code>'s track property and then call <code>_render()</code>.</p>
-    <h1>👩🏾‍💻🧑🏽‍💻👨🏻‍💻</h1>
-    <p>Create a <code>Player</code> class using the UML diagram above as a guide. When a user clicks on a track it should hide the grid and display the player. The player should have the track that was clicked loaded into the <code>track</code> property.</p>
-    <h2><code>play()</code></h2>
-    <p>The track is in the <code>Player</code> can you play it? Use the worker to get a 'tick'. Then play the bars in the loaded track.</p>
-    <h1>Visualising the Track</h1>
-    <p>We will be able to hook into the audio data by inserting an "Analyser" node into our audio graph. That will give us a stream of audio data that we can use to draw on the canvas element.</p>
-    <p>Before we look at that let first of all try to draw some simple lines and shapes on the canvas.</p>
-    <h2>Assignment 👩🏾‍💻🧑🏽‍💻👨🏻‍💻</h2>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Description</th>
-          <th align="left">UML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left">The <code>Player</code> class should have an instance of the <code>Worker</code> like the <code>Grid</code> does, because the <code>Player</code> will need to play a track so we will want a <code>_tick()</code> function to consume and play the bars of the track.We want somewhere to store the track that the player is going to play. Then add functions to <code>load(track)</code>, <code>play()</code>, &#x26; <code>stop()</code> a track.The <code>_render()</code> function should return the HTML that will make up our player interface.</td>
-          <td align="left">
-            <img src="https://user-images.githubusercontent.com/4499581/89511951-71277b80-d7ca-11ea-9abb-cb58c683548c.png" alt="UML Player class">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <pre><code class="language-javascript">_render() {
-    const playerElement = `
-        &#x3C;article style="position:relative;">
-            &#x3C;h2>${this.track.trackname}&#x3C;/h2>
-            &#x3C;canvas>&#x3C;/canvas>
-            &#x3C;nav style="position:absolute:bottom:0;">
-                &#x3C;button onclick="player.play()">Play&#x3C;/button>
-                &#x3C;button onclick="player.stop()">Stop&#x3C;/button>
-            &#x3C;/nav>
-        &#x3C;/article>
-    `
-    $("#player").append(playerElement)
-    $('canvas').get(0).setAttribute('width', $("#player").width())
-    $('canvas').get(0).setAttribute('height', $("#player").height() - 130)
-    this.canvas = {
-        ctx: $('canvas').get(0).getContext('2d'),
-        w: $('canvas').width(),
-        h: $('canvas').height()
-    }
-    this.canvas.ctx.fillStyle = "burlywood"
-}
-</code></pre>
-    <p>Can you spot the canvas context interface? We call <code>getContext('2d')</code> to access an instance of the canvas context. It is calling commands on this interface that enable us to draw on our canvas. Given the <code>_render()</code> function above. Can you draw a series of bars on your canvas?</p>
-    <hr>
-    <h2>Lesson 2 - Request Animation Frame</h2>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li><em>1.6 Create and implement objects and methods Implement native objects; create custom objects and custom properties for native objects using prototypes and functions; inherit from an object; implement native methods and create custom methods</em></li>
-      <li><em>1.2 implement HTML5 canvas</em></li>
-    </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/90388072-2be33380-e07f-11ea-98f5-1001f1c5182a.gif" alt="track being visualised">
-    </p>
-    <p>Above is the kind of thing we are aiming for. We need to extend 2 of our classes. We are going to add an analyser node to our audio graph when we play tracks using the MyAppAudio base class. We also need to add some code to animate the bars in the Player class.</p>
     <h2>Assignment</h2>
-    <h2>Extend the MyAppAudio class</h2>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">instructions</th>
-          <th align="left">UML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left">Can you extend this class by adding two new static properties; analyser and audioData. All of these will be set when you call <code>MyAppAudio.setContext()</code> as the analyser is created from the AudioContext instance.</td>
-          <td align="left">
-            <img src="https://user-images.githubusercontent.com/4499581/90389291-2f77ba00-e081-11ea-8e0a-7b912a62eb38.png" alt="MyAppAudio UML diagram">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Adding an analyser node means when we connect our source (an oscillator) through this node, we will be able to access some of the audio data. That snapshot of data we are going to place in an Uint8Array - thats an array with a fixed size, which we can iterate over, and use those values to set the height of our bars as the audio plays.</p>
-    <pre><code class="language-javascript">class MyAppAudio {
-    static context = undefined
-    static analyser = undefined
-    static audioData = undefined
-    static setContext = () => {
-        this.context = new AudioContext()
-        this.analyser = this.context.createAnalyser()
-        this.audioData = new Uint8Array(this.analyser.frequencyBinCount)
-    }
-}
-</code></pre>
-    <p>Instances of the Note class need to know if they should pass through the analyser node or not. Can you think of a way to refactor the <code>Note.play()</code> method to conditionally pass through the analyser node if it is being played back by the Player?</p>
-    <h2>Extend the Player class</h2>
-    <p>
-      How too animate? Think about a flick book.
-      
-      <img src="https://images.squarespace-cdn.com/content/v1/5b1e8e5e12b13fe583922460/1528835374841-5QV6TRZ76LEK6GAU8DQQ/ke17ZwdGBToddI8pDm48kDwcMOkWjB-dh5UJuaCAkzJZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpx7gYYqsE3-d3T-rAujCsKB6Ebg7BE-3tI4Wg3H92DuXshSGXJoxzxQyr_LXYiHo9c/Meteor-anim-gif+2.gif?format=1500w" alt="flick book">
-      To get the impression of movement you need to flick the pages pretty quickly. We need to do something similar. We can wipe our canvas clean and draw on it. If we do this fast enough, it will look like things are moving. How about 60 times a second?
-    </p>
-    <p>The browser API has a function we can call called <code>requestAnimationFrame</code>. If we call <code>requestAnimationFrame(this._draw.bind(this))</code> with a function, it will cause that function to be called with every paint of the browser (about 60 times a second). If you don't call the function the animating will stop. We will have to use <code>.bind</code> to preserve our executing context. Below is a suggested <code>_draw()</code> function.</p>
-    <pre><code class="language-javascript">_draw() {
-    if (!MyAppAudio.context) MyAppAudio.setContext()
-    if (this.isPlaying) requestAnimationFrame(this._draw.bind(this))
-    MyAppAudio.analyser.getByteFrequencyData(MyAppAudio.audioData)
-    this.canvas.ctx.clearRect(0, 0, this.canvas.w, this.canvas.h)
-    const barWidth = 32
-    
-    MyAppAudio.audioData.reduce((x, barHeight) => {
-        const y = barHeight / 2
-        this.canvas.ctx.fillRect(x, this.canvas.h - y, barWidth, y)
-        return x + barWidth + 1
-    }, 0)
-}
-</code></pre>
-    <p><code>MyAppAudio.analyser.getByteFrequencyData(MyAppAudio.audioData)</code> this fills the <code>MyAppAudio.audioData</code> array with values. We then wipe the canvas clean and then draw a series of bars across the canvas.</p>
-    <p>❓ How does the <code>x</code> value increase?</p>
-    <p>❓ What happens when you alter the <code>barWidth</code> variable?</p>
-    <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/194">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod2/wk2/day1.html">prev</a>|<a href="/swe/mod2/wk2/day3.html">next</a>
-    </p>
+    <h1>Lesson 2</h1>
+    <h2>Learning Objectives</h2>
+    <h2>Assignment</h2>
+    <h1>Lesson 3</h1>
+    <h2>Learning Objectives</h2>
+    <h2>Assignment</h2>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day1.html">prev</a>|<a href="/swe/mod2/wk2/day3html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
