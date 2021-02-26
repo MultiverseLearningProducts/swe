@@ -8,9 +8,9 @@ This course also serves as an good introduction to the JavaScript language, irre
 
 # Course stucture
 
-Week 1 - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
+**Week 1** - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
 
-Week 2 - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.
+**Week 2** - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.
 
 # Lesson 1
 
@@ -18,7 +18,7 @@ Week 2 - we look at the history of JavaScript before looking at the Document Obj
 
 - Learn about primitives
 - Learning and applying conditionals
-- Learnin and applying functions
+- Learning and applying functions
 - Learning about scoping
 - Write your first app
 
@@ -141,7 +141,9 @@ function myFunction() {
   }
 
   console.log(localVarVariable); // "Var local scope"
-  console.log(localLetVariable); // Uncaught ReferenceError: localLetVariable is not defined
+
+  console.log(localLetVariable); 
+  // Uncaught ReferenceError: localLetVariable is not defined
 }
 
 myFunction();
@@ -256,7 +258,8 @@ let x = false;
 let y = true;
 
 if (!x) {
-  console.log(x); // this line prints out because x = false, therefore the check returns true
+  console.log(x); 
+  // this line prints because x === false, therefore the check returns true
 }
 
 if (!y) {

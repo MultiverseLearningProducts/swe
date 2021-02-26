@@ -15,14 +15,14 @@
     <p>You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec <a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb">here</a>.</p>
     <p>This course also serves as an good introduction to the JavaScript language, irrespective of whether you're taking an exam.</p>
     <h1>Course stucture</h1>
-    <p>Week 1 - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.</p>
-    <p>Week 2 - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.</p>
+    <p><strong>Week 1</strong> - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.</p>
+    <p><strong>Week 2</strong> - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.</p>
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Learn about primitives</li>
       <li>Learning and applying conditionals</li>
-      <li>Learnin and applying functions</li>
+      <li>Learning and applying functions</li>
       <li>Learning about scoping</li>
       <li>Write your first app</li>
     </ul>
@@ -148,7 +148,9 @@ function myFunction() {
   }
 
   console.log(localVarVariable); // "Var local scope"
-  console.log(localLetVariable); // Uncaught ReferenceError: localLetVariable is not defined
+
+  console.log(localLetVariable); 
+  // Uncaught ReferenceError: localLetVariable is not defined
 }
 
 myFunction();
@@ -419,7 +421,8 @@ console.log(x); // 0
 let y = true;
 
 if (!x) {
-  console.log(x); // this line prints out because x = false, therefore the check returns true
+  console.log(x); 
+  // this line prints because x === false, therefore the check returns true
 }
 
 if (!y) {
