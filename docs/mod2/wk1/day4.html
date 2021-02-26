@@ -57,7 +57,7 @@ console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "footba
     <h3>Looping through an object</h3>
     <p>To loop through an object, we can utilise a variation on the for loop called the <code>for..in</code> loop.</p>
     <pre><code class="language-javascript">for (let key in person) {
-  console.log(person[key]); 
+  console.log(person[key]);
 }
 
 // "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
@@ -65,12 +65,14 @@ console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "footba
     <h2>Assignment</h2>
     <p>Can you find the killer?</p>
     <p>The deceased:</p>
-    <pre><code class="language-javascript">['Lucas', 'Bill']
+    <pre><code class="language-javascript">["Lucas", "Bill"];
 </code></pre>
     <p>You have managed to narrow the suspects down to just a few. Luckily, you know every person who the suspects have seen on the day of the murders.</p>
-    <pre><code class="language-javascript">{'James': ['Jacob', 'Bill', 'Lucas'],
- 'Johnny': ['David', 'Kyle', 'Lucas'],
- 'Peter': ['Lucy', 'Kyle']}
+    <pre><code class="language-javascript">let killers = {
+  'James': ['Jacob', 'Bill', 'Lucas'],
+  'Johnny': ['David', 'Kyle', 'Lucas'],
+  'Peter': ['Lucy', 'Kyle'] 
+}
 </code></pre>
     <p>Write a function that can return the name of the killer!</p>
     <h1>Lesson 2</h1>
@@ -97,7 +99,7 @@ function change(student, course) {
 change(sampleStudent, sampleCourse);
 
 // What will be logged?
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 </code></pre>
     <p>The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are <code>immutable</code>; arrays and objects are <code>mutable</code>.</p>
     <p>For this rule to hold, we <em>should</em> be able to modify the object, but we <em>shouldn't</em> be able to modify the string</p>
@@ -111,7 +113,7 @@ console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 }
 </code></pre>
     <p>Sure enough, if we log the result, we get:</p>
-    <pre><code class="language-javascript">console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
+    <pre><code class="language-javascript">console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 
 // "HTML Student", "JavaScript", 100
 </code></pre>

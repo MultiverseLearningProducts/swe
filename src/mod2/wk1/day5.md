@@ -34,9 +34,9 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 
 Test cases (+44 in all cases): 
 
-`020 208 8000`
-`07985 427 937`
-`01626 455 000` 
+- `020 208 8000`
+- `07985 427 937`
+- `01626 455 000` 
 
 
 # Lesson 2
@@ -145,9 +145,11 @@ Input/Output Examples
 
 Here are some famous events:
 
-- London Olympics, 27 July 2012 to 12 August 2012
-- Wedding of Prince William and Catherine Middleton, 29 April 2011
-- Apollo 13, April 11, 1970 to April 17, 1970
+London Olympics, 27 July 2012 to 12 August 2012
+
+Wedding of Prince William and Catherine Middleton, 29 April 2011
+
+Apollo 13, April 11, 1970 to April 17, 1970
 
 - For each famous event, create a date object that represents the date the event started and the date it ended
 

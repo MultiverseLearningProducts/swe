@@ -110,9 +110,7 @@ A callback is a strategy used when a piece of code has to wait to do something f
 
 In the above example, `el` is each element that is passed into the callback function, so `1, 2, "holy smokes"`, and so on.
 
-Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax.
-
-**Further reading**: when you have time, read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
+**Further reading**: Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax. Also try and read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!
 
 #### Search using array.filter
 

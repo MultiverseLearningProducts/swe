@@ -74,7 +74,7 @@ To loop through an object, we can utilise a variation on the for loop called the
 
 ```javascript
 for (let key in person) {
-  console.log(person[key]); 
+  console.log(person[key]);
 }
 
 // "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
@@ -84,19 +84,21 @@ for (let key in person) {
 
 Can you find the killer?
 
-The deceased: 
+The deceased:
 
 ```javascript
-['Lucas', 'Bill']
+["Lucas", "Bill"];
 ```
 
 You have managed to narrow the suspects down to just a few. Luckily, you know every person who the suspects have seen on the day of the murders.
 
 ```javascript
-{'James': ['Jacob', 'Bill', 'Lucas'],
- 'Johnny': ['David', 'Kyle', 'Lucas'],
- 'Peter': ['Lucy', 'Kyle']}
- ```
+let killers = {
+  'James': ['Jacob', 'Bill', 'Lucas'],
+  'Johnny': ['David', 'Kyle', 'Lucas'],
+  'Peter': ['Lucy', 'Kyle'] 
+}
+```
 
 Write a function that can return the name of the killer!
 
@@ -128,7 +130,7 @@ function change(student, course) {
 change(sampleStudent, sampleCourse);
 
 // What will be logged?
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 ```
 
 The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
@@ -149,7 +151,7 @@ function change(student, course) {
 Sure enough, if we log the result, we get:
 
 ```javascript
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade); 
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 
 // "HTML Student", "JavaScript", 100
 ```

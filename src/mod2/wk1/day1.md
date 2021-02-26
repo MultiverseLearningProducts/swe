@@ -17,9 +17,9 @@ This course also serves as an good introduction to the JavaScript language, irre
 ## Learning Objectives
 
 - Learn about primitives
-- Learning and applying conditionals
-- Learning and applying functions
-- Learning about scoping
+- Learn and apply conditionals
+- Learn and apply functions
+- Learn about scoping
 - Write your first app
 
 ### Primitives
@@ -34,7 +34,7 @@ Primitives are the simplest datatypes and are "built-in" to the JavaScript langu
 | undefined | `const myUndefined`             |
 | null      | `const myNull = null`           |
 
-The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the primitive. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
+The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the primitive variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:
 
 ```javascript
 // string primitive
@@ -119,7 +119,7 @@ You now have all you need to write a simple application. Fire up [JSFiddle](http
 
 ## Learning Objectives
 
-- Learn the different types of operators
+- Learn and apply operators
 - Write a tax app
 
 ### Variables and scoping
@@ -152,14 +152,16 @@ myFunction();
 Key points:
 
 - A globally scoped variable can be accessed anywhere in your code
-- A "var" variable can be accessed anywhere in the function where it's defined
-- A "let" variable can only be access in the block where it's defined
+
+- A "var" variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable). Use sparingly if at all, as a var can be redeclared and doesn't support block scoping
+
+- A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable). W
 
 | Variable | Example                         | Usage                                                              |
 | :------- | :------------------------------ | ------------------------------------------------------------------ |
-| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change                            |
-| var      | `var myNumber = 3.6`            | Use `let` instead. Can be redeclared and doesn't support block scoping |
-| let      | `let myBoolean = true`          | Use as needed in function/block scoping                            |
+| const    | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned                          |
+| var      | `var myNumber = 3.6`            | Use `let` instead |
+| let      | `let myBoolean = true`          | Use as needed functions and code blocks coping if the variable will change        |
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
@@ -248,7 +250,7 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | Operator | Purpose                                     | Example                       |
 | :------- | :------------------------------------------ | :---------------------------- |
 | &&       | Check if statement1 AND statement2 are true | `if ( age > 17 && age < 65 )` |
-| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 || age >= 65)` |
+| \|\|     | Check if statement1 OR statement2 is true   | `if (age <=5 \|\| age >= 65)` |
 | !        | Check if a statement is NOT true            | `if (!age)`                   |
 
 Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.

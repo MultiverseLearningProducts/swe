@@ -83,9 +83,7 @@ i++;
 
 Given an array of integers, create a function that can return a new array with each value doubled.
 
-For example:
-
-`[1, 2, 3] --> [2, 4, 6]`
+For example: `[1, 2, 3] --> [2, 4, 6]`
 
 # Lesson 2
 
