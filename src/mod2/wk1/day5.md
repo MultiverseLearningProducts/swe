@@ -12,9 +12,24 @@ Today we will take a look at a number of string methods available befor looking 
 
 ### Common string methods
 
-JavaScript comes with a number of convenient, built-in string methods that can help us find and change strings.
+JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings. We've already seen `toString()`, `length` and `indexOf`. Here are some common ones you will come across:
+
+| Method       | Purpose                                                             | Example                       |
+| :----------- | :------------------------------------------------------------------ | :---------------------------- |
+| `.length`    | Returns the length of a string                                      | `"abc".length`                |
+| `toString()` | Converts a variable to a string                                     | `x = y.toString()`            |
+| `indexOf`    | Returns the starting index of the first occurence of a string       | `"abc".indexOf('abc')`        |
+| `slice`      | Extracts a part of a string, starting and ending at defined indexes | `"abcdefg".slice(0, 3)`       |
+| `replace`    | Replaces an occurence of a string                                   | `"abc".replace('abc', 'xyz')` |
+
+Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
 ## Assignment
+
+- Create a function that can take a phone number, e.g `01803 312 698` and a country code to apply to the number
+- Your function should remove the `0` and add the country code to the beginning of the string, then return the result
+- For example: `01803 312 698`, would become `+44 1803 312 698`
+- Test cases: `020 208 8000`, `07985 427 937`, `01626 455 000` (+44 in all cases)
 
 # Lesson 2
 
