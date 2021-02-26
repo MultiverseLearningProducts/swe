@@ -83,7 +83,11 @@ i++;
 
 ## Assignment
 
-Write a function that takes an array as an argument, loops over the array, manipulates the elements in some way (addition, subtraction, etc), then logs the array to the console.
+Given an array of integers, return a new array with each value doubled.
+
+For example:
+
+`[1, 2, 3] --> [2, 4, 6]`
 
 # Lesson 2
 
@@ -173,7 +177,7 @@ Congratulations! You've written your first algorithm in JavaScript! :-)
 
 ## Assignment
 
-Create a multi-dimensional array filled with your favourite foods. Loop through your favourites and output them to the console.
+The assignment is the same as the one above, except this time you're looping over you nested array, doubling the values, and returning the result.
 
 # Lesson 3
 
@@ -197,6 +201,9 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 ## Assignment
 
-Create some arrays and use all of the array methods to change the array. What did the array contain at the start and what does it contain now?
+- Create a function that takes an array that contains a single element, e.g. `[121]`
+- Minus this value by the same value, and plus the value by the same value, then add the results before and after the element in the array
+- Continue subtracting and adding the first and last values until you have an array that is nine elements in length
+- You should end up with function that returns an array like this: `[-968, -484, -242, -121, 0, 121, 242, 484, 968]
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);
