@@ -74,19 +74,21 @@ To create an event, we first need to get the element we want to assign the event
 | querySelector()          | Returns the first element that matches a specified CSS selector(s) in the document                         |
 | querySelectorAll()       | Returns a static NodeList containing all elements that matches a specified CSS selector(s) in the document |
 
-As you can see, some of the DOM methods return an array of elements, whereas some return just one. For this reason, it's important to use the right one
-for your application.
+You will need to know `getElementById` for the exam.
+
+As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is an important
+skill when working with UI as we don't want to get all the elements if we don't need to.
 
 Consider the following scenarios. Which selector would you use?
 
 - You want to get all the forms that exist on a page
 - You want to get a form that has an ID of "myForm"
-- You want to get a single button element that has a class name. You don't know if more buttons exist on the page
+- You want to get a specific button element that has a class name. You don't know if other buttons exist on the page
 - You want to get the `footer` element of a web page. It doesn't have a name, ID or class name. There is only ever one footer on a page
 
 ### How to write an event handler
 
-A common event handler you might come across, is a form submit handler. For this example, let's assume we have the follow form markup:
+A common event handler you might come across is a form submit handler. For this example, let's assume we have the follow form markup:
 
 ```html
 <form name="todoCreateForm">
@@ -103,11 +105,13 @@ A common event handler you might come across, is a form submit handler. For this
 </form>
 ```
 
+Here's how we'd write an event handler that also responds to the event:
+
 ```javascript
 // get form and add listener using DOM path strategy
 const targetForm = document.forms.todoCreateForm;
 
-// apply event listener
+// apply "submit" event handler
 targetForm.addEventListener("submit", (e) => {
   // prevent the form from submitting
   e.preventDefault();
