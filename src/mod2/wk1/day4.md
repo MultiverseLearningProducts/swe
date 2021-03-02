@@ -82,25 +82,25 @@ for (let key in person) {
 
 ## Assignment
 
-Can you find the killer?
+Can you find the missing pets?!
 
 The deceased:
 
 ```javascript
-["Lucas", "Bill"];
+["Tiddles", "Poppy"];
 ```
 
-You have managed to narrow the suspects down to just a few. Luckily, you know every person who the suspects have seen on the day of the murders.
+Luckily, you have a list of people who have seen the missing pets. Perhaps they can help you track the pet down!
 
 ```javascript
-let killers = {
-  'James': ['Jacob', 'Bill', 'Lucas'],
-  'Johnny': ['David', 'Kyle', 'Lucas'],
-  'Peter': ['Lucy', 'Kyle'] 
-}
+let people = {
+  James: ["Tiddles", "Poppy", "Leo"],
+  Johnny: ["Leo", "Tim", "Patch"],
+  Peter: ["Tim", "Kelly"],
+};
 ```
 
-Write a function that can return the name of the killer!
+Write a function that can return the name of the person that has seen both of the pets.
 
 # Lesson 2
 

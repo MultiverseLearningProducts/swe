@@ -196,14 +196,15 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 ## Assignment
 
-- Create a function that takes an array that contains a single element, e.g. `[121]`
+- Create a function that takes a single element as a parameter, e.g. `121`
 
-- Minus this value by itself, and add the value to itself, then add the results before and after the element in the array
+- Your function should firstly subtract the value by itself, so `121 - 121`. Assign this value to the first position in an array. What method do you need for this?
+
+- Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here?
 
 - Continue subtracting and adding the first and last values until you have an array that is nine elements in length
 
-- You should end up with function that returns an array like this: 
-`[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
-
+- You should end up with function that returns an array like this:
+  `[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

@@ -156,7 +156,7 @@ console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 Things start to full apart a bit when we try and sort numbers:
 
 ```javascript
-var numbers = [1678, 2, 3, 78, 9, 10001];
+let numbers = [1678, 2, 3, 78, 9, 10001];
 
 numbers.sort();
 console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
