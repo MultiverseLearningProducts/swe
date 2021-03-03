@@ -105,7 +105,7 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 // true
 </code></pre>
     <h3>Assignment</h3>
-    <p>Use the code above to generate hashes of some demo user passwords. Then add the usernames and their hashed passwords to a database.</p>
+    <p>Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). When saving this user to your database, you need to hash the password before saving it so we're not storing passwords in plaintext. Later, we will secure our API so only registered users can access it.</p>
     <hr>
     <h2>Lesson 4 - Creating and Securing a User API</h2>
     <h3>Learning Objectives</h3>
@@ -114,50 +114,7 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
       <li>Use what you have learnt in previous lessons to secure an API using Basic Auth</li>
     </ul>
     <h3>Lesson</h3>
-    <p>Your API should support a `User' resource. A user will need at least a name, email and password:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>HTTP Method</th>
-          <th>URL</th>
-          <th>Status code</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GET</td>
-          <td><code>/users</code></td>
-          <td>200</td>
-          <td>retrieve all users</td>
-        </tr>
-        <tr>
-          <td>POST</td>
-          <td><code>/users</code></td>
-          <td>201</td>
-          <td>create a new user</td>
-        </tr>
-        <tr>
-          <td>GET</td>
-          <td><code>/users/{id}</code></td>
-          <td>200</td>
-          <td>retrieve a specific user</td>
-        </tr>
-        <tr>
-          <td>PUT</td>
-          <td><code>/users/{id}</code></td>
-          <td>200</td>
-          <td>update a user</td>
-        </tr>
-        <tr>
-          <td>DELETE</td>
-          <td><code>/users/{id}</code></td>
-          <td>200</td>
-          <td>delete a user</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.</p>
+    <p>Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.</p>
     <p>To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
     <p>Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.</p>
     <p>
@@ -181,10 +138,8 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
     <p>We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.</p>
     <h3>Assignment</h3>
     <ul>
-      <li>Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js</li>
-      <li>Add sessions so authenticated users continue to have access to the <code>/users/:id</code> end point.</li>
-      <li>Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson</li>
-      <li>(Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).</li>
+      <li>Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson using Basic Auth</li>
+      <li>(Extension) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).</li>
     </ul>
     <p>Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:</p>
     <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>

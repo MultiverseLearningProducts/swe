@@ -1,7 +1,7 @@
 # Mod 1 > Week 2 > Day 3
 
 ## Overview of the day
-Today we are going to implement the Auth0 flow. We are then going to outsource our User accounts and authentication to Auth0. This is the day when we also start to plan for the final Module project.
+Today we are going to implement the Auth0 client-credentials flow. We are then going to outsource our User accounts and authentication to Auth0. This is the day when we also start to plan for the final Module project.
 
 ## Learning Objectives
   * Use token based authorization to protect resources
@@ -44,8 +44,8 @@ In this lesson you will sign up to Auth0, a commercial implementation of OAuth, 
         * Issued at (iat)
         * JWT ID (jti)
 
-# Lesson 3 - Securing your API with OAuth
-Open the Users API you created yesterday in Visual Code. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
+# Lesson 2 - Securing your API with OAuth
+Make a copy of the Airports API you have created. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
 
 **Coach note** - solutions for JavaScript and Java at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/
 
@@ -92,7 +92,7 @@ const checkJwt = jwt({
 ```
 7. Secure your API:
 ```javascript
-app.get("/users/:id", checkJwt, (req, res) => {
+app.get("/airports/:id", checkJwt, (req, res) => {
 ```
 
 ## Java developers
@@ -226,7 +226,7 @@ spring:
 
 ## Secured
 
-Now test your middleware. You should not be able to access `/users/:id`. You will get a status code of 401 and a message about 'UnauthorizedError: No authorization token was found'.
+Now test your middleware. You should not be able to access `/airports/:id`. You will get a status code of 401 and a message about 'UnauthorizedError: No authorization token was found'.
 
 Now we need to get our token. At the moment we are authenticating our users in the `/login` route and adding their id to `req.session.userId`. Instead of adding an authenticated user to a session we are going to call out to Auth0.com and request a token. We'll then send this token back to the user.
 
@@ -353,14 +353,20 @@ app.get('/profile', requiresAuth(), (req, res) => {
 
 That last property the `sub` is a unique id number for that user. That might be useful...
 
-## Summary
+## Assignment
 
-Below is the code to bootstrap a server that will use Auth0 to create, authenticate and manage authorization of users.
+Take a copy of your Airports API. Now we're going to offload the authentication and authorisation to OIDC. Some things to bear in mind:
+
+* You will need to have a public folder to server assets out of i.e. `style.css`
+* You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)
+
+You can look back a previous projects to remind yourself of how to do this. 
+
+Here's an example of how to integrate OIDC in JavaScript:
 
 ```javascript
 const express = require('express')
 const app = express()
-const { sequelize } = require('./models')
 const { auth } = require('express-openid-connect')
 
 const openIDconfig = {
@@ -384,35 +390,35 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3000, () => {
-    sequelize.sync().then(() => console.log("All ready for banking"))
+    console.log("All ready for banking"))
 })
 ```
-
-* You will need to set up sequelize and your data models
-* You will need to have a public folder to server assets out of i.e. `style.css`
-* You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)
-
-You can look back a previous projects to remind yourself of how to do this.
 
 ## Assignment
 
 Below is a spec for a banking app.
 
-1. Users can log into your app
-1. Users can see a balance on their account (due to little time target mobile first)
-1. Your app will need to be deployed (heroku)
-1. A user should be able to invite a friend via a link in an email (you can integrate with gmail for this)
+1. Users should be able log into your app
+1. Users should be able to see a balance on their account
+1. Your app will need to be deployed (we suggest Heroku)
+1. A user should be able to invite a friend via a link in an email (you can integrate with Gmail for this)
 1. A user should see all their friends listed when they are logged in
 1. A user should be able to transfer balance to their friends
 
-In groups come up with a design pitch for this app.
+In groups, take 20 minutes to come up with a design pitch for this app.
 
-* What will your data model look like?
+* What will your data model look like? 
 * How will you trigger an email?
 * How will the link in the email work?
-* How can you transfer funds from one user to another?
 * How can a user add funds?
+* How can you transfer funds from one user to another?
 * What UI do you need to build?
+* How will you deploy your app?
+* How will you divide the work?
+* How will you collaborate?
+
+Also think about the skills your team need to have to be successful? E.G. good communication.
+
 
 You will have 2 days to complete this challenge. You can work in groups of 3. You will need to deploy to heroku so your email link will work.
 

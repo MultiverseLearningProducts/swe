@@ -108,7 +108,7 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 ```
 
 ### Assignment
-Use the code above to generate hashes of some demo user passwords. Then add the usernames and their hashed passwords to a database.
+Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). When saving this user to your database, you need to hash the password before saving it so we're not storing passwords in plaintext. Later, we will secure our API so only registered users can access it.
 
 ----
 
@@ -118,17 +118,7 @@ Use the code above to generate hashes of some demo user passwords. Then add the 
 * Use what you have learnt in previous lessons to secure an API using Basic Auth
 
 ### Lesson
-Your API should support a `User' resource. A user will need at least a name, email and password:
-
-|HTTP Method|URL|Status code|Description|
-|-----------|---|-----------|-----------|
-|GET|`/users`|200|retrieve all users|
-|POST|`/users`|201|create a new user|
-|GET|`/users/{id}`|200|retrieve a specific user|
-|PUT|`/users/{id}`|200|update a user|
-|DELETE|`/users/{id}`|200|delete a user|
-
-Our User resource in an unsecured state is just like any other resource like airports, training shoes or albums. However we are going to treat it differently.
+Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.
 
 To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
 
@@ -160,10 +150,8 @@ function (request, response, next) {
 We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.
 
 ### Assignment
-  * Create an API which allows Create, Read, Update and Delete of a User using either SpringBoot or Node.js
-  * Add sessions so authenticated users continue to have access to the `/users/:id` end point.
-  * Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson
-  * (Optional) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
+  * Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson using Basic Auth
+  * (Extension) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
 
 Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
 
