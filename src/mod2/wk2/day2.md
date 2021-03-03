@@ -16,6 +16,8 @@ As we covered before, one of the primary uses of JavaScript in the early days wa
 
 All that being said, a little validation project is a useful way to flex our new event driven skills.
 
+> Basic validation skills are required for the exam: `case; string comparisons; Not-A-Number (NaN)`
+
 ## Assignment
 
 Using the JSFiddle link from yesterday:
@@ -26,6 +28,15 @@ Using the JSFiddle link from yesterday:
 - Errors should tell the user _exactly_ what the problem is. Generic messages are a UX no-no
 
 ## Show and tell
+
+Can you show the cohort your finished validation assignment?
+
+Key points to cover:
+
+- Can you describe your software design approach? E.g procedural, modular, object oriented
+- What are you validating and how?
+- What UX considerations did you make?
+- How are your error messages displayed?
 
 # Lesson 2
 

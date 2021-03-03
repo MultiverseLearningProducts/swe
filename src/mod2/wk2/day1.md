@@ -91,7 +91,7 @@ To create an event, we first need to get the element we want to assign the event
 | querySelector()          | Returns the first element that matches a specified CSS selector(s) in the document                         |
 | querySelectorAll()       | Returns a static NodeList containing all elements that matches a specified CSS selector(s) in the document |
 
-> You will need to know `getElementById` for the exam.
+> You will need to know `getElementByld; getElementsByTagName; getElementsByClassName` for the exam.
 
 As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is important
 when working with UI as we don't want to get all the elements if we don't need to.
@@ -105,7 +105,7 @@ Consider the following scenarios. Which selector would you use?
 
 ### How to write an event handler
 
-A common event handler you might come across is a form submit handler. For this example, let's assume we have the follow form markup:
+A common event handler you might come across is a form submit handler. For this example, let's work with the following form markup:
 
 (structural HTML ommitted)
 
@@ -144,7 +144,9 @@ targetForm.addEventListener("submit", (e) => {
 
 If you run the code above (see JSFiddle below), you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!
 
-Notice that we've used the `DOM path` strategy to find the form by its name. What other ways could we get the form?
+Notice that we've used the `DOM path` strategy to find the form by its name: `document.forms.todoCreateForm;`. What other ways could we get the form?
+
+> You'll need to know the following events for the exam: `onchange; onmouseover; onload; onclick; onmouseout; onkeydown`
 
 ## Assignment
 
