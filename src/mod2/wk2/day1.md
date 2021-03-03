@@ -23,7 +23,15 @@ You can read more about the history of JavaScript [here](https://www.springboard
 
 ## Assignment
 
-Have a read of the article above. What other facts and figures can you find about JavaScript? Has JavaScript been standardised? What is the standard called? JavaScript started life as a client-side language, but what can it also be used for now?
+Have a read of the article above.
+
+- What other facts and figures can you find about JavaScript?
+
+- Has JavaScript been standardised?
+
+- What is the standard called?
+
+- JavaScript started life as a client-side language, but what can it also be used for now?
 
 # Lesson 2
 
@@ -61,6 +69,15 @@ Find a simple web page and sketch out (yep, pencil and all!) the DOM. Don't forg
 
 ### Working with DOM events
 
+Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers. Here are some examples that we will dig into later:
+
+- You can get any element on a page in order to modifying it or add dynamic behaviour
+- You can add classes and attributes to elements programatically
+- You can add events that respond to user input
+- You can control the submission of forms
+- You can leverage the `onload` event to know when an asset or the entire page has loaded
+- You can write text to the document using `document.write`
+
 One of the primary uses of DOM methods is to create an event handler that can respond to a user event. What would some typical user events be?
 
 To create an event, we first need to get the element we want to assign the event to. There are a number of ways to accomplish this task:
@@ -74,10 +91,10 @@ To create an event, we first need to get the element we want to assign the event
 | querySelector()          | Returns the first element that matches a specified CSS selector(s) in the document                         |
 | querySelectorAll()       | Returns a static NodeList containing all elements that matches a specified CSS selector(s) in the document |
 
-You will need to know `getElementById` for the exam.
+> You will need to know `getElementById` for the exam.
 
-As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is an important
-skill when working with UI as we don't want to get all the elements if we don't need to.
+As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is important
+when working with UI as we don't want to get all the elements if we don't need to.
 
 Consider the following scenarios. Which selector would you use?
 
@@ -89,6 +106,8 @@ Consider the following scenarios. Which selector would you use?
 ### How to write an event handler
 
 A common event handler you might come across is a form submit handler. For this example, let's assume we have the follow form markup:
+
+(structural HTML ommitted)
 
 ```html
 <form name="todoCreateForm">
@@ -105,7 +124,7 @@ A common event handler you might come across is a form submit handler. For this 
 </form>
 ```
 
-Here's how we'd write an event handler that also responds to the event:
+Here's how we'd write an event handler that also responds to the event by logging the value of the name field to the console:
 
 ```javascript
 // get form and add listener using DOM path strategy
@@ -121,13 +140,15 @@ targetForm.addEventListener("submit", (e) => {
 });
 ```
 
-If you run the code above, you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!
+> `e.preventDefault();` is a useful method to stop the form submission process. Very useful for testing! `e` is the event itself.
+
+If you run the code above (see JSFiddle below), you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!
 
 Notice that we've used the `DOM path` strategy to find the form by its name. What other ways could we get the form?
 
 ## Assignment
 
-Use [this](https://jsfiddle.net/95eaytjf/12/) JSFiddle.
+Use [this](https://jsfiddle.net/s1wk7p94/4/) JSFiddle.
 
 - Experiment with the other ways we can get a handle on the form. Will all of them work? If not, can we make them all work by adding something to the form?
 

@@ -42,6 +42,8 @@ const myString = "Hi, Daniel";
 console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 ```
 
+> `console.log` is a very useful method to log out text, variables or just anything to the console (e.g. Chrome Dev Tools)
+
 Note that even though we've transformed the string to uppercase, the original variable has not been changed.
 
 ### Conditionals
@@ -142,7 +144,7 @@ function myFunction() {
 
   console.log(localVarVariable); // "Var local scope"
 
-  console.log(localLetVariable); 
+  console.log(localLetVariable);
   // Uncaught ReferenceError: localLetVariable is not defined
 }
 
@@ -157,11 +159,11 @@ Key points:
 
 - A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable).
 
-| Variable | Example                         | Usage                                                              |
-| :------- | :------------------------------ | ------------------------------------------------------------------ |
-| `const`    | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned                          |
-| `var`     | `var myNumber = 3.6`            | Use `let` instead |
-| `let`      | `let myBoolean = true`          | Use as needed functions and code blocks if the variable will not change        |
+| Variable | Example                         | Usage                                                                   |
+| :------- | :------------------------------ | ----------------------------------------------------------------------- |
+| `const`  | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned      |
+| `var`    | `var myNumber = 3.6`            | Use `let` instead                                                       |
+| `let`    | `let myBoolean = true`          | Use as needed functions and code blocks if the variable will not change |
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
 
@@ -177,15 +179,15 @@ We can categorise the operators as follows:
 
 #### Arithmetic operators
 
-| Operator | Purpose               | Example      |
-| :------- | :-------------------- | :----------- |
-| +        | Addition              | `x = 2 + 2`  |
-| -        | Subtraction           | `x = 2 - 2`  |
+| Operator | Purpose               | Example     |
+| :------- | :-------------------- | :---------- |
+| +        | Addition              | `x = 2 + 2` |
+| -        | Subtraction           | `x = 2 - 2` |
 | \*       | Multiplication        | `x = 2 * 2` |
-| /        | Division              | `x = 2 / 2`  |
-| %        | Remainder of division | `x = 2 % 2`  |
-| ++       | Increment by one      | `x++`        |
-| --       | Decrement by one      | `x--`        |
+| /        | Division              | `x = 2 / 2` |
+| %        | Remainder of division | `x = 2 % 2` |
+| ++       | Increment by one      | `x++`       |
+| --       | Decrement by one      | `x--`       |
 
 The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
 
@@ -199,14 +201,14 @@ console.log(x); // 1
 
 #### Assignment operators
 
-| Operator | Purpose             | Example   | Same as     |
-| :------- | :------------------ | :-------- | ----------- |
-| =        | Assignment          | `x = 2`   | n/a         |
-| +=       | Addition assignment | `x += 2`  | `x = x + 2` |
-| -=       | Subtract assignment | `x -= 2`  | `x = x - 2` |
+| Operator | Purpose             | Example  | Same as     |
+| :------- | :------------------ | :------- | ----------- |
+| =        | Assignment          | `x = 2`  | n/a         |
+| +=       | Addition assignment | `x += 2` | `x = x + 2` |
+| -=       | Subtract assignment | `x -= 2` | `x = x - 2` |
 | \*=      | Muliply assignment  | `x *= 2` | `x = x - 2` |
-| /=       | Divide assignment   | `x /= 2`  | `x = x / 2` |
-| %=       | Modulus assignment  | `x %= 2`  | `x = x % 2` |
+| /=       | Divide assignment   | `x /= 2` | `x = x / 2` |
+| %=       | Modulus assignment  | `x %= 2` | `x = x % 2` |
 
 Operators such as `+=` are referred to as compound operators. This is because two things are happening.
 
@@ -224,11 +226,11 @@ The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assi
 
 JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. Other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp)
 
-| Operator      | Purpose                                                | Example                                   |
-| :------------ | :----------------------------------------------------- | :---------------------------------------- |
-| Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`        |
-| Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`          |
-| Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)`       |
+| Operator      | Purpose                                                | Example                             |
+| :------------ | :----------------------------------------------------- | :---------------------------------- |
+| Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`  |
+| Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`    |
+| Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)` |
 
 #### Comparison operators
 
@@ -247,11 +249,11 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 
 #### Logical operators
 
-| Operator | Purpose                                     | Example                       |
-| :------- | :-------------------------------------| :---------------------------- |
-| &&       | Check if statement1 AND statement2 are true | if ( age > 17 && age < 65 ) |
+| Operator | Purpose                                     | Example                             |
+| :------- | :------------------------------------------ | :---------------------------------- |
+| &&       | Check if statement1 AND statement2 are true | if ( age > 17 && age < 65 )         |
 | \|\|     | Check if statement1 OR statement2 is true   | if (age <=5 &#124;&#124; age >= 65) |
-| !        | Check if a statement is NOT true            | if (!age)                  |
+| !        | Check if a statement is NOT true            | if (!age)                           |
 
 Perhaps the NOT operator (also referred to as a "bang") here could do with some more explanation. The NOT operator returns true if the value is false or false if the value is true.
 
@@ -261,7 +263,7 @@ let y = true;
 
 if (!x) {
   // this line prints because x === false, therefore the check returns true
-  console.log(x); 
+  console.log(x);
 }
 
 if (!y) {
@@ -282,6 +284,5 @@ Tax rules:
 - Up to £37,500 is taxed at the basic rate of 20%
 - Between £37,500 and £150,000 is taxed at the higher rate of 40%.
 - Over £150,000 is taxed at the additional rate of 45%.
-
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
