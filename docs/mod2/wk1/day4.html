@@ -63,18 +63,18 @@ console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "footba
 // "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 </code></pre>
     <h2>Assignment</h2>
-    <p>Can you find the killer?</p>
+    <p>Can you find the missing pets?!</p>
     <p>The deceased:</p>
-    <pre><code class="language-javascript">["Lucas", "Bill"];
+    <pre><code class="language-javascript">["Tiddles", "Poppy"];
 </code></pre>
-    <p>You have managed to narrow the suspects down to just a few. Luckily, you know every person who the suspects have seen on the day of the murders.</p>
-    <pre><code class="language-javascript">let killers = {
-  'James': ['Jacob', 'Bill', 'Lucas'],
-  'Johnny': ['David', 'Kyle', 'Lucas'],
-  'Peter': ['Lucy', 'Kyle'] 
-}
+    <p>Luckily, you have a list of people who have seen the missing pets. Perhaps they can help you track the pet down!</p>
+    <pre><code class="language-javascript">let people = {
+  James: ["Tiddles", "Poppy", "Leo"],
+  Johnny: ["Leo", "Tim", "Patch"],
+  Peter: ["Tim", "Kelly"],
+};
 </code></pre>
-    <p>Write a function that can return the name of the killer!</p>
+    <p>Write a function that can return the name of the person that has seen both of the pets.</p>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
