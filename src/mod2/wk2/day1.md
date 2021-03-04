@@ -148,7 +148,7 @@ Notice that we've used the `DOM path` strategy to find the form by its name: `do
 
 > You'll need to know the following events for the exam: `onchange; onmouseover; onload; onclick; onmouseout; onkeydown`
 
-> **Further reading**: The W3C has an excellent resource of all the [HTML events](https://www.w3schools.com/tags/ref_eventattributes.asp).
+**Further reading**: The W3C has an excellent resource of all the [HTML events](https://www.w3schools.com/tags/ref_eventattributes.asp).
 
 ## Assignment
 

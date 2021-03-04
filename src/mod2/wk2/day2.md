@@ -42,7 +42,7 @@ What you'd end up with would be:
 
 > You need to know `createElement` and `setAttribute` for the exam
 
-> `For` is a useful attribute that allows the use to click the label to set the focus on the input. This is handy for UX!
+> `For` is a useful attribute that sets the focus on the input when the label is clicked
 
 To add the label to the source, you'd append it to a node:
 
@@ -55,7 +55,7 @@ input.parentNode.append(errorLabel);
 
 As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. This has all changed now, in that mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.
 
-> Remember: you should always validate on the server-side as well as client-side validation is not a complete solution
+> You should always validate on the server-side as well as client-side validation is not a complete solution
 
 All that being said, a little validation project is a useful way to flex our new event driven skills.
 
@@ -64,14 +64,19 @@ All that being said, a little validation project is a useful way to flex our new
 Using the JSFiddle link from yesterday:
 
 - Validate all of the form inputs before allowing the form to submit
+
 - Provide meaningful error messages to user
+
 - Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!
+
 - Errors should tell the user _exactly_ what the problem is. Generic messages are a UX no-no
 
 You need to validate so that:
 
 - The user has filled in all the fields
+
 - Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)
+
 - Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this - this isn't required for the exam)
 
 ## Show and tell
