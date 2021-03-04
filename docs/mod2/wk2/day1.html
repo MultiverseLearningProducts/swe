@@ -29,7 +29,21 @@
     </blockquote>
     <p>You can read more about the history of JavaScript <a href="https://www.springboard.com/blog/history-of-javascript/">here</a>.</p>
     <h2>Assignment</h2>
-    <p>Have a read of the article above. What other facts and figures can you find about JavaScript? Has JavaScript been standardised? What is the standard called? JavaScript started life as a client-side language, but what can it also be used for now?</p>
+    <p>Have a read of the article above.</p>
+    <ul>
+      <li>
+        <p>What other facts and figures can you find about JavaScript?</p>
+      </li>
+      <li>
+        <p>Has JavaScript been standardised?</p>
+      </li>
+      <li>
+        <p>What is the standard called?</p>
+      </li>
+      <li>
+        <p>JavaScript started life as a client-side language, but what can it also be used for now?</p>
+      </li>
+    </ul>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -55,6 +69,15 @@
       <li>How to use standardised DOM methods in our programs</li>
     </ul>
     <h3>Working with DOM events</h3>
+    <p>Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers. Here are some examples that we will dig into later:</p>
+    <ul>
+      <li>You can get any element on a page in order to modifying it or add dynamic behaviour</li>
+      <li>You can add classes and attributes to elements programatically</li>
+      <li>You can add events that respond to user input</li>
+      <li>You can control the submission of forms</li>
+      <li>You can leverage the <code>onload</code> event to know when an asset or the entire page has loaded</li>
+      <li>You can write text to the document using <code>document.write</code></li>
+    </ul>
     <p>One of the primary uses of DOM methods is to create an event handler that can respond to a user event. What would some typical user events be?</p>
     <p>To create an event, we first need to get the element we want to assign the event to. There are a number of ways to accomplish this task:</p>
     <table>
@@ -91,10 +114,12 @@
         </tr>
       </tbody>
     </table>
-    <p>You will need to know <code>getElementById</code> for the exam.</p>
+    <blockquote>
+      <p>You will need to know <code>getElementByld; getElementsByTagName; getElementsByClassName</code> for the exam.</p>
+    </blockquote>
     <p>
-      As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is an important
-      skill when working with UI as we don't want to get all the elements if we don't need to.
+      As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is important
+      when working with UI as we don't want to get all the elements if we don't need to.
     </p>
     <p>Consider the following scenarios. Which selector would you use?</p>
     <ul>
@@ -104,7 +129,8 @@
       <li>You want to get the <code>footer</code> element of a web page. It doesn't have a name, ID or class name. There is only ever one footer on a page</li>
     </ul>
     <h3>How to write an event handler</h3>
-    <p>A common event handler you might come across is a form submit handler. For this example, let's assume we have the follow form markup:</p>
+    <p>A common event handler you might come across is a form submit handler. This fires everytime the form in question is submitted. To show this in action, let's work with the following form markup:</p>
+    <p>(structural HTML ommitted)</p>
     <pre><code class="language-html">&#x3C;form name="todoCreateForm">
   &#x3C;div class="form-group">
     &#x3C;label for="name">Name&#x3C;/label>
@@ -118,7 +144,7 @@
   &#x3C;button type="submit" class="btn btn-primary">Add Item&#x3C;/button>
 &#x3C;/form>
 </code></pre>
-    <p>Here's how we'd write an event handler that also responds to the event:</p>
+    <p>Here's how we'd write an event handler that also responds to the event by logging the value of the name field to the console:</p>
     <pre><code class="language-javascript">// get form and add listener using DOM path strategy
 const targetForm = document.forms.todoCreateForm;
 
@@ -131,10 +157,19 @@ targetForm.addEventListener("submit", (e) => {
   console.log(e.target.name.value);
 });
 </code></pre>
-    <p>If you run the code above, you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!</p>
-    <p>Notice that we've used the <code>DOM path</code> strategy to find the form by its name. What other ways could we get the form?</p>
+    <blockquote>
+      <p><code>e.preventDefault();</code> is a useful method to stop the form submission process. Very useful for testing! <code>e</code> is the event itself.</p>
+    </blockquote>
+    <p>If you run the code above (see JSFiddle below), you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!</p>
+    <p>Notice that we've used the <code>DOM path</code> strategy to find the form by its name: <code>document.forms.todoCreateForm;</code>. What other ways could we get the form?</p>
+    <blockquote>
+      <p>You'll need to know the following events for the exam: <code>onchange; onmouseover; onload; onclick; onmouseout; onkeydown</code></p>
+    </blockquote>
+    <blockquote>
+      <p><strong>Further reading</strong>: The W3C has an excellent resource of all the <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML events</a>.</p>
+    </blockquote>
     <h2>Assignment</h2>
-    <p>Use <a href="https://jsfiddle.net/95eaytjf/12/">this</a> JSFiddle.</p>
+    <p>Use <a href="https://jsfiddle.net/s1wk7p94/4/">this</a> JSFiddle.</p>
     <ul>
       <li>
         <p>Experiment with the other ways we can get a handle on the form. Will all of them work? If not, can we make them all work by adding something to the form?</p>
@@ -143,7 +178,7 @@ targetForm.addEventListener("submit", (e) => {
         <p>Can you log out the values of the other forms elements?</p>
       </li>
     </ul>
-    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day5.html">prev</a>|<a href="/swe/mod2/wk2/day1.html">next</a>;</p>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day5.html">prev</a>|<a href="/swe/mod2/wk2/day2.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

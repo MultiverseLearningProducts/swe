@@ -12,16 +12,75 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 2</h1>
     <h1>Overview of the day</h1>
+    <p>Today we will look at how to add elements to our page dynamically before adding validation to our event driven app we created yesterday.</p>
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Learn how to add an element dynamically to our page</li>
+      <li>Add validation to our form submission process</li>
+    </ul>
+    <h2>Adding elements dynamically</h2>
+    <p>Before we crack on with validation, it's worth considering the UX for a minute. In particular; how we tell the user there's been an error. As you'll know, popups and alerts on pages are not fun; we therefore need a subtler way to tell the user there's been an error.</p>
+    <p>There are many ways to do this, and you will have no doubt come across different strategies whilst submitting forms online yourself. One such way is to add a label dynamically to the page to inform the user what the error is. This is how you might achieve that:</p>
+    <pre><code class="language-javascript">// create a label
+const errorLabel = document.createElement("label");
+
+// set a "for" attribute equal to the input's ID to help UX
+errorLabel.setAttribute("for", input.id);
+
+// create a text node
+const errorLabelTextNode = document.createTextNode(errLabel);
+
+// append the text node to the label
+errorLabel.appendChild(errorLabelTextNode);
+
+// add a class for styling purposes
+errorLabel.classList.add("error-label");
+</code></pre>
+    <p>What you'd end up with would be:</p>
+    <pre><code class="language-html">&#x3C;label for="description" class="error-label">This field cannot be empty&#x3C;/label>
+</code></pre>
+    <blockquote>
+      <p>You need to know <code>createElement</code> and <code>setAttribute</code> for the exam</p>
+    </blockquote>
+    <blockquote>
+      <p><code>For</code> is a useful attribute that allows the use to click the label to set the focus on the input. This is handy for UX!</p>
+    </blockquote>
+    <p>To add the label to the source, you'd append it to a node:</p>
+    <pre><code class="language-javascript">// append to the parentNode of an input
+input.parentNode.append(errorLabel);
+</code></pre>
+    <h2>Adding validation</h2>
+    <p>As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. This has all changed now, in that mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.</p>
+    <blockquote>
+      <p>Remember: you should always validate on the server-side as well as client-side validation is not a complete solution</p>
+    </blockquote>
+    <p>All that being said, a little validation project is a useful way to flex our new event driven skills.</p>
     <h2>Assignment</h2>
-    <h1>Lesson 2</h1>
-    <h2>Learning Objectives</h2>
-    <h2>Assignment</h2>
-    <h1>Lesson 3</h1>
-    <h2>Learning Objectives</h2>
-    <h2>Assignment</h2>
-    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day1.html">prev</a>|<a href="/swe/mod2/wk2/day3html">next</a>;</p>
+    <p>Using the JSFiddle link from yesterday:</p>
+    <ul>
+      <li>Validate all of the form inputs before allowing the form to submit</li>
+      <li>Provide meaningful error messages to user</li>
+      <li>Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!</li>
+      <li>Errors should tell the user <em>exactly</em> what the problem is. Generic messages are a UX no-no</li>
+    </ul>
+    <p>You need to validate so that:</p>
+    <ul>
+      <li>The user has filled in all the fields</li>
+      <li>Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)</li>
+      <li>Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this - this isn't required for the exam)</li>
+    </ul>
+    <h2>Show and tell</h2>
+    <p>Can you show the cohort your finished validation assignment?</p>
+    <p>Key points to cover:</p>
+    <ul>
+      <li>Can you describe your software design approach? E.g procedural, modular, object oriented</li>
+      <li>What are you validating and how?</li>
+      <li>What UX considerations did you make?</li>
+      <li>How are your error messages displayed?</li>
+      <li>Found a cool solution? Please share!</li>
+    </ul>
+    <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day1.html">prev</a>|<a href="/swe/mod2/wk2/day3.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
