@@ -34,13 +34,13 @@ errorLabel.appendChild(errorLabelTextNode);
 errorLabel.classList.add("error-label");
 ```
 
+> You need to know `createElement` and `setAttribute` for the exam
+
 What you'd end up with would be:
 
 ```html
 <label for="description" class="error-label">This field cannot be empty</label>
 ```
-
-> You need to know `createElement` and `setAttribute` for the exam
 
 > `For` is a useful attribute that sets the focus on the input when the label is clicked
 
