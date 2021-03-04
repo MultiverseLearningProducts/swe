@@ -37,14 +37,14 @@ errorLabel.appendChild(errorLabelTextNode);
 // add a class for styling purposes
 errorLabel.classList.add("error-label");
 </code></pre>
+    <blockquote>
+      <p>You need to know <code>createElement</code> and <code>setAttribute</code> for the exam</p>
+    </blockquote>
     <p>What you'd end up with would be:</p>
     <pre><code class="language-html">&#x3C;label for="description" class="error-label">This field cannot be empty&#x3C;/label>
 </code></pre>
     <blockquote>
-      <p>You need to know <code>createElement</code> and <code>setAttribute</code> for the exam</p>
-    </blockquote>
-    <blockquote>
-      <p><code>For</code> is a useful attribute that allows the use to click the label to set the focus on the input. This is handy for UX!</p>
+      <p><code>For</code> is a useful attribute that sets the focus on the input when the label is clicked</p>
     </blockquote>
     <p>To add the label to the source, you'd append it to a node:</p>
     <pre><code class="language-javascript">// append to the parentNode of an input
@@ -53,22 +53,36 @@ input.parentNode.append(errorLabel);
     <h2>Adding validation</h2>
     <p>As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. This has all changed now, in that mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.</p>
     <blockquote>
-      <p>Remember: you should always validate on the server-side as well as client-side validation is not a complete solution</p>
+      <p>You should always validate on the server-side as well as client-side validation is not a complete solution</p>
     </blockquote>
     <p>All that being said, a little validation project is a useful way to flex our new event driven skills.</p>
     <h2>Assignment</h2>
     <p>Using the JSFiddle link from yesterday:</p>
     <ul>
-      <li>Validate all of the form inputs before allowing the form to submit</li>
-      <li>Provide meaningful error messages to user</li>
-      <li>Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!</li>
-      <li>Errors should tell the user <em>exactly</em> what the problem is. Generic messages are a UX no-no</li>
+      <li>
+        <p>Validate all of the form inputs before allowing the form to submit</p>
+      </li>
+      <li>
+        <p>Provide meaningful error messages to user</p>
+      </li>
+      <li>
+        <p>Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!</p>
+      </li>
+      <li>
+        <p>Errors should tell the user <em>exactly</em> what the problem is. Generic messages are a UX no-no</p>
+      </li>
     </ul>
     <p>You need to validate so that:</p>
     <ul>
-      <li>The user has filled in all the fields</li>
-      <li>Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)</li>
-      <li>Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this - this isn't required for the exam)</li>
+      <li>
+        <p>The user has filled in all the fields</p>
+      </li>
+      <li>
+        <p>Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)</p>
+      </li>
+      <li>
+        <p>Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this - this isn't required for the exam)</p>
+      </li>
     </ul>
     <h2>Show and tell</h2>
     <p>Can you show the cohort your finished validation assignment?</p>
