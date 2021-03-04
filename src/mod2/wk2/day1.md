@@ -105,7 +105,7 @@ Consider the following scenarios. Which selector would you use?
 
 ### How to write an event handler
 
-A common event handler you might come across is a form submit handler. For this example, let's work with the following form markup:
+A common event handler you might come across is a form submit handler. This fires everytime the form in question is submitted. To show this in action, let's work with the following form markup:
 
 (structural HTML ommitted)
 
@@ -148,6 +148,8 @@ Notice that we've used the `DOM path` strategy to find the form by its name: `do
 
 > You'll need to know the following events for the exam: `onchange; onmouseover; onload; onclick; onmouseout; onkeydown`
 
+> **Further reading**: The W3C has an excellent resource of all the [HTML events](https://www.w3schools.com/tags/ref_eventattributes.asp).
+
 ## Assignment
 
 Use [this](https://jsfiddle.net/s1wk7p94/4/) JSFiddle.
@@ -156,4 +158,4 @@ Use [this](https://jsfiddle.net/s1wk7p94/4/) JSFiddle.
 
 - Can you log out the values of the other forms elements?
 
-[main](/swe)|[prev](/swe/mod2/wk1/day5.html)|[next](/swe/mod2/wk2/day1.html);
+[main](/swe)|[prev](/swe/mod2/wk1/day5.html)|[next](/swe/mod2/wk2/day2.html);
