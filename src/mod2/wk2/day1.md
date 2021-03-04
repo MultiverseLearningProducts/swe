@@ -99,8 +99,11 @@ when working with UI as we don't want to get all the elements if we don't need t
 Consider the following scenarios. Which selector would you use?
 
 - You want to get all the forms that exist on a page
+
 - You want to get a form that has an ID of "myForm"
+
 - You want to get a specific button element that has a class name. You don't know if other buttons exist on the page
+
 - You want to get the `footer` element of a web page. It doesn't have a name, ID or class name. There is only ever one footer on a page
 
 ### How to write an event handler

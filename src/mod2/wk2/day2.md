@@ -69,7 +69,7 @@ Using the JSFiddle link from yesterday:
 
 - Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!
 
-- Errors should tell the user _exactly_ what the problem is. Generic messages are a UX no-no
+- Errors should tell the user what the problem is. Generic messages are a UX no-no
 
 You need to validate so that:
 
@@ -87,7 +87,7 @@ Can you show the cohort your finished validation assignment?
 
 Key points to cover:
 
-- Can you describe your software design approach? E.g procedural, modular, object oriented
+- Can you describe your software design approach? E.G. procedural, modular, object oriented
 - What are you validating and how?
 - What UX considerations did you make?
 - How are your error messages displayed?
