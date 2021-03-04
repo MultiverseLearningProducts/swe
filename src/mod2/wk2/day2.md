@@ -77,7 +77,9 @@ You need to validate so that:
 
 - Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)
 
-- Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this - this isn't required for the exam)
+- Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this)
+
+> RegEx is not required for the exam but is a very useful tool to match strings, e.g. `/\d{4}-\d{2}-\d{2}/.test("2021-01-17")` would return true
 
 ## Show and tell
 
