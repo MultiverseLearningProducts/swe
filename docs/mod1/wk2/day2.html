@@ -15,27 +15,13 @@
     <p>Today we are going to learn about how to use OAuth to secure our API.</p>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>
-        <p>Understand the limitations of Basic Auth</p>
-      </li>
-      <li>
-        <p>Know why and how to use sessions on a server</p>
-      </li>
-      <li>
-        <p>Understand the structure and purpose of JWT</p>
-      </li>
-      <li>
-        <p>Create a UML diagram to communicate the sequence of the OAuth flow</p>
-      </li>
-      <li>
-        <p>Understand OAuth and how it is used to secure website and APIs</p>
-      </li>
-      <li>
-        <p>Implement OAuth using Auth0</p>
-      </li>
-      <li>
-        <p>Understand the OpenID Connect protocol</p>
-      </li>
+      <li>Understand the limitations of Basic Auth</li>
+      <li>Know why and how to use Sessions on a server</li>
+      <li>Understand the structure and purpose of JWT</li>
+      <li>Create a UML diagram to communicate the sequence of the OAuth flow</li>
+      <li>Understand OAuth and how it is used to secure website and APIs</li>
+      <li>Implement OAuth using Auth0</li>
+      <li>Understand the OpenID Connect protocol</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
@@ -132,8 +118,8 @@ app.use(session(sessionSettings))
       <li>Add <code>/login</code> and <code>/logout</code> routes</li>
       <li>The <code>/login</code> route should be the only route that accepts Basic auth request</li>
       <li>Once a user is authenticated with Basic auth add them to a session</li>
-      <li>Update <code>/users/:id</code> to only return the user info if the user is in a session</li>
-      <li>If a user is in a session and visit the <code>/logout</code> route this should end their session and they will no longer be able to access <code>/users/:id</code></li>
+      <li>Update <code>/airports</code> and your other endpoints to only return the airport info if the user is in a session</li>
+      <li>If a user is in a session and visit the <code>/logout</code> route this should end their session and they will no longer be able to access <code>/airports</code></li>
       <li>Put your solution on Github and share it with your coach</li>
     </ul>
     <hr>
@@ -149,6 +135,7 @@ app.use(session(sessionSettings))
       <li>Make sure you have installed plant UML</li>
     </ul>
     <h2>Materials needed</h2>
+    <p><a href="https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing">OAuth Slides</a></p>
     <h2>The problem with sessions</h2>
     <p>Sessions are great, but your clients are now bound to 1 machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load.</p>
     <p>❓ Why not?</p>
