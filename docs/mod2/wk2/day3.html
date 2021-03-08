@@ -24,11 +24,14 @@
     <blockquote>
       <p>Did you know? The first known computer bug was a real bug (an insect) stuck in the electronics</p>
     </blockquote>
-    <h2>The console is your friend</h2>
+    <h2>The console</h2>
     <p>In Chrome, right click the page and hit "Inspect" then navigate to "Console". You should keep this open at all times during testing so you catch any errors.</p>
     <h2>Console logging</h2>
     <p>We've already used one of the primary strategies to debug and that is the <code>console.log</code> statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live!</p>
-    <h2>The stack trace (not required for exam)</h2>
+    <h2>Document.write</h2>
+    <p>A useful DOM method exists - `<code>document.write</code> - that you can use to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
+    <h2>The stack trace</h2>
+    <p>(Not required for exam).</p>
     <p>Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.</p>
     <p>A stack is a "Last in, First out" data structure, where the last function to get added to the stack gets executed and then "popped" off the stack. If the function being popped throws an error, JavaScript (and other languages) will produce what's known as a <code>stack trace</code>. This is a trace of all the function calls, starting with the function in error, all the way down to the function at the base of the stack.</p>
     <p>You can view a trace of your app any anytime just by adding <code>console.trace();</code> in any function.</p>
@@ -44,29 +47,51 @@
       <li>What is the function at the base of the stack?</li>
     </ul>
     <h2>The debugger statement</h2>
-    <p>The <code>debugger</code> keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a <code>breakpoint</code>. Add this to the validation code you wrote yesterday. What happens? What can you see and find in the console?</p>
+    <p>The <code>debugger</code> keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a <code>breakpoint</code>.</p>
+    <ul>
+      <li>Add this to the validation code you wrote yesterday</li>
+      <li>What happens?</li>
+      <li>What can you see and find in the console?</li>
+    </ul>
     <h2>Adding break points in Dev Tools</h2>
     <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:</p>
     <p>
       <img src="https://developers.google.com/web/tools/chrome-devtools/javascript/imgs/loc-breakpoint.png">
     </p>
+    <p>Right click the line you want to break on, then click "Add breakpoint".</p>
     <p>Now, when you refresh the page, the debugger will kick in. From here, you can analyse the contents of variables by hovering over them. You can also see the local, script and global variables on the right hand side.</p>
+    <h2>Exception handling with Try/Catch</h2>
+    <p>Sometimes you know ahead of time that a codeblock may fail, or you would like the codeblock to fail in a "graceful" way without breaking your entire application. For this with can use a <code>try/catch</code> block:</p>
+    <pre><code class="language-javascript">try {
+  // try and remove the sibling
+  field.nextElementSibling.remove();
+} catch (e) {
+  // print the error message
+  console.log(e.message);
+} finally {
+  // this section always runs
+}
+</code></pre>
+    <p>In the code above, we try to remove an element from the HTML. If the element isn't there, then a type error will be thrown. If we wrap it in a try/catch block, we can handle this exception, knowing that it may occur.</p>
+    <blockquote>
+      <p>The <code>finally</code> block also runs irrespective of whether there was an error. This section is optional.</p>
+    </blockquote>
     <h2>Assignment</h2>
     <p>Debug this broken app!</p>
     <p><a href="https://drive.google.com/file/d/16a_lShlRY9lMx6FbZYsPJ7HxJSy4Cs-c/view?usp=sharing">Here</a> is a link to a broken app. The app makes a fetch request to a URL, then attempts to load the results in the page. There are some new concepts (plus many concepts we have learnt!)</p>
-    <p>The main one to understand is the <code>Promise</code>. Remember the work we did callbacks last week? The JavaScript promise was an attempt to make asynchronous requests easier to write and maintain. Below is the syntax:</p>
+    <p>The main one to understand is the <code>Promise</code>. Remember the work we did callbacks last week? The JavaScript promise was an attempt at making asynchronous requests easier to read and write. Below is the syntax:</p>
     <pre><code class="language-javascript">fetch("https://someurl.com")
   .then((result) => {
     // return the result of the fetch
     return result;
   })
   .then((result) => {
-    // do something with result here
-    console.log(result)
+    // do something with returned result
+    console.log(result);
   })
-  .catch((error => {
-    // handle errors here
-    console.log(error)
+  .catch((error) => {
+    // handle any errors here
+    console.log(error);
   });
 </code></pre>
     <ul>
@@ -74,12 +99,9 @@
       <li>The working version fetches some colourful blocks and loads them into the page</li>
     </ul>
     <blockquote>
-      <p>Good to know: the fetch request and the anonymous functions within the promise also get added to the stack</p>
+      <p><strong>Good to know:</strong> the fetch request and the anonymous functions within the promise also get added to the stack</p>
     </blockquote>
     <h1>Lesson 2</h1>
-    <h2>Learning Objectives</h2>
-    <h2>Assignment</h2>
-    <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <h2>Assignment</h2>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
