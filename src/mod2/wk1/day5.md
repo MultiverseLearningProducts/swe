@@ -2,27 +2,44 @@
 
 # Overview of the day
 
-Today we will take a look at a number of string methods available before looking at the date object and the various methods we can call on it.
+Today we will take a look at a number of string and number methods available before looking at the date object and the various methods we can call on it.
 
 # Lesson 1
 
 ## Learning Objectives
 
 - Learn and apply string methods
+- Learn and apply number methods
 
 ### Common string methods
 
 JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings. We've already seen `toString()`, `length` and `indexOf`. Here are some common ones you will come across:
 
-| Method       | Purpose                                                             | Example                       |
-| :----------- | :------------------------------------------------------------------ | :---------------------------- |
-| `.length`    | Returns the length of a string                                      | `"abc".length`                |
-| `toString()` | Converts a variable to a string                                     | `x = y.toString()`            |
-| `indexOf`    | Returns the starting index of the first occurence of a string       | `"abc".indexOf('abc')`        |
-| `slice`      | Extracts a part of a string, starting and ending at defined indexes | `"abcdefg".slice(0, 3)`       |
-| `replace`    | Replaces an occurence of a string                                   | `"abc".replace('abc', 'xyz')` |
+| Method       | Purpose                                                             | Example                   |
+| :----------- | :------------------------------------------------------------------ | :------------------------ |
+| `.length`    | Returns the length of a string                                      | `y.length`                |
+| `toString()` | Converts a variable to a string                                     | `y = y.toString()`        |
+| `indexOf`    | Returns the starting index of the first occurence of a string       | `y.indexOf('abc')`        |
+| `slice`      | Extracts a part of a string, starting and ending at defined indexes | `y.slice(0, 3)`           |
+| `replace`    | Replaces an occurence of a string                                   | `y.replace('abc', 'xyz')` |
+
+If `y === "abcdefg"`, what would the results of the examples above be?
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
+
+### Common number methods
+
+In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:
+
+| Method        | Purpose                                                                       | Example                  |
+| :------------ | :---------------------------------------------------------------------------- | :----------------------- |
+| `toFixed`     | Returns a string, with the number written with a specified number of decimals | `x.toFixed(1)`           |
+| `toPrecision` | Returns a string, with a number written with a specified length               | `x.toPrecision(2);`      |
+| `Number`      | Returns a number, converted (typically) from a string                         | `x = Number("10")`       |
+| `parseInt`    | Returns an integer, converted from its argument (same as Number)              | `x = parseInt("10")`     |
+| `parseFloat`  | Returns a floating point number, converted from its argument                  | `x = parseFloat("10.2")` |
+
+If `x === 9.835`, what would the result be of the the first two functions above? Can you see the difference?
 
 ## Assignment
 
@@ -32,12 +49,11 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 
 - For example: `01803 312 698` would become `+44 1803 312 698`
 
-Test cases (+44 in all cases): 
+Test cases (+44 in all cases):
 
 - `020 208 8000`
 - `07985 427 937`
-- `01626 455 000` 
-
+- `01626 455 000`
 
 # Lesson 2
 
@@ -55,7 +71,7 @@ There are four ways to initialise a date object:
 const date1 = new Date(); // date now
 
 // year, month, day, hours, minutes, seconds, milliseconds
-const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); 
+const date2 = new Date(1900, 0, 17, 0, 0, 0, 0);
 
 const date3 = new Date(10000000000); // milliseconds
 
@@ -88,7 +104,7 @@ For this, we can utilise the date object's methods: `getFullYear(), getMonth(), 
 ```javascript
 let myDate = new Date(2021, 1, 25);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
 // 25, 1, 2021
 
 console.log(myDate.getDay()); // 4
@@ -121,7 +137,7 @@ let myDate = new Date(2021, 0, 25);
 
 myDate.setDate(myDate.getDate() - 2);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
 // 23, 0, 2021
 ```
 
@@ -156,6 +172,5 @@ Apollo 13, April 11, 1970 to April 17, 1970
 - Create a function that returns how many days the event lasted. If it lasted for one day, simply return `1 day`
 
 - Create another function that returns how long ago the event was from today's date
-
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
