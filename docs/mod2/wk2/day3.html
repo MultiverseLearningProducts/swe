@@ -12,7 +12,7 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 3</h1>
     <h1>Overview of the day</h1>
-    <p>Today we look at bug fixing and debugging strategies.</p>
+    <p>Today we look at bug fixing and debugging strategies. Later, we'll take a look at inline vs external scripts.</p>
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -103,9 +103,69 @@
     </blockquote>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand the difference between inline and external scripts</li>
+      <li>Research and present best practices when writing JavaScript</li>
+    </ul>
+    <h3>Inline vs external scripts</h3>
+    <p>If you've worked with CSS before, you may know that you can write CSS directly into the HTML source or you can link to an external file. The same holds true for JavaScript. We could inline a script as follows:</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html lang="en">
+  &#x3C;head>
+    &#x3C;meta charset="utf-8" />
+    &#x3C;title>Inline script&#x3C;/title>
+    &#x3C;script type="text/javascript">
+      console.log("Hello! I'm an inline script");
+    &#x3C;/script>
+  &#x3C;/head>
+  &#x3C;body>&#x3C;/body>
+&#x3C;/html>
+</code></pre>
+    <p>Alternatively, you can place your JavaScipt in an external <code>.js</code> file, and link to it in your HTML source:</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html lang="en">
+  &#x3C;head>
+    &#x3C;meta charset="utf-8" />
+    &#x3C;title>External script&#x3C;/title>
+    &#x3C;script type="text/javascript" src="./assets/js/external.js">&#x3C;/script>
+  &#x3C;/head>
+  &#x3C;body>&#x3C;/body>
+&#x3C;/html>
+</code></pre>
+    <p>Inline (and external) scripts typically go in the <code>&#x3C;head></code> section of the HTML, but this isn't a strict rule.</p>
+    <p>So, which method should you choose?</p>
+    <p>Well, larger scripts are almost certainly better in an external file. Here's why:</p>
+    <ul>
+      <li>
+        <p>A big script would "pollute" the HTML and make it tricky to work with</p>
+      </li>
+      <li>
+        <p>Larger scripts are normally written in a modular way across multiple files. Inline scripting goes against this design pattern.</p>
+      </li>
+      <li>
+        <p>External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge page load time benefits.</p>
+      </li>
+    </ul>
+    <p>When should you use an inline script?</p>
+    <ul>
+      <li>
+        <p>When you're doing small development tasks the don't require an external file</p>
+      </li>
+      <li>
+        <p>When you need <em>very</em> lightweight code to run that doesn't require an external file</p>
+      </li>
+      <li>
+        <p>When a script is dynamically loaded to the source (e.g. Google Analytics)</p>
+      </li>
+    </ul>
     <h2>Assignment</h2>
+    <ul>
+      <li>Take the validation work you've done and add it to local files</li>
+      <li>Experiment with inline and external strategies</li>
+      <li>Which do you prefer?</li>
+      <li>How can you see if an external JS file is cached?</li>
+    </ul>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
-    <pre><code></code></pre>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>
