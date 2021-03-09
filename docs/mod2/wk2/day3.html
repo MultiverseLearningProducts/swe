@@ -29,11 +29,16 @@
     <h2>Console logging</h2>
     <p>We've already used one of the primary strategies to debug and that is the <code>console.log</code> statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live!</p>
     <h2>Document.write</h2>
-    <p>A useful DOM method exists - `<code>document.write</code> - that you can use to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
+    <p><code>document.write</code> allos you to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
     <h2>The stack trace</h2>
-    <p>(Not required for exam).</p>
     <p>Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.</p>
+    <blockquote>
+      <p>Stack trace knowledge isn't required for the exam, but is useful to know</p>
+    </blockquote>
     <p>A stack is a "Last in, First out" data structure, where the last function to get added to the stack gets executed and then "popped" off the stack. If the function being popped throws an error, JavaScript (and other languages) will produce what's known as a <code>stack trace</code>. This is a trace of all the function calls, starting with the function in error, all the way down to the function at the base of the stack.</p>
+    <blockquote>
+      <p>You may have come across the website StackOverflow. This was named after an error that occurs when too many items get added to the stack.</p>
+    </blockquote>
     <p>You can view a trace of your app any anytime just by adding <code>console.trace();</code> in any function.</p>
     <p>Below is a very simple stack trace:</p>
     <pre><code class="language-javascript">Uncaught TypeError: invalidFields.cannieFinditCapt is not a function
@@ -50,7 +55,7 @@
     <p>The <code>debugger</code> keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a <code>breakpoint</code>.</p>
     <ul>
       <li>Add this to the validation code you wrote yesterday</li>
-      <li>What happens?</li>
+      <li>What happens when you refresh?</li>
       <li>What can you see and find in the console?</li>
     </ul>
     <h2>Adding break points in Dev Tools</h2>
@@ -105,7 +110,7 @@
     <h2>Learning Objectives</h2>
     <ul>
       <li>Understand the difference between inline and external scripts</li>
-      <li>Research and present best practices when writing JavaScript</li>
+      <li>Implement the strategies in code</li>
     </ul>
     <h3>Inline vs external scripts</h3>
     <p>If you've worked with CSS before, you may know that you can write CSS directly into the HTML source or you can link to an external file. The same holds true for JavaScript. We could inline a script as follows:</p>
@@ -132,7 +137,9 @@
   &#x3C;body>&#x3C;/body>
 &#x3C;/html>
 </code></pre>
-    <p>Inline (and external) scripts typically go in the <code>&#x3C;head></code> section of the HTML, but this isn't a strict rule.</p>
+    <blockquote>
+      <p>Inline (and external) scripts typically go in the <code>&#x3C;head></code> section of the HTML, but this isn't a strict rule.</p>
+    </blockquote>
     <p>So, which method should you choose?</p>
     <p>Well, larger scripts are almost certainly better in an external file. Here's why:</p>
     <ul>
@@ -143,13 +150,13 @@
         <p>Larger scripts are normally written in a modular way across multiple files. Inline scripting goes against this design pattern.</p>
       </li>
       <li>
-        <p>External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge page load time benefits.</p>
+        <p>External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge performance benefits.</p>
       </li>
     </ul>
     <p>When should you use an inline script?</p>
     <ul>
       <li>
-        <p>When you're doing small development tasks the don't require an external file</p>
+        <p>When you're doing small development tasks/testing that don't require an external file</p>
       </li>
       <li>
         <p>When you need <em>very</em> lightweight code to run that doesn't require an external file</p>

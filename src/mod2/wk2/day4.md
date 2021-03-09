@@ -15,27 +15,27 @@ To we will look at the form submission process before we tackle the final projec
 
 ## Understand the basics of HTTP
 
-Knowledge of HTTP is not required for the exam, but helps explain what GET and POST are.
+Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.
 
-When you request a web page, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, many HTTP requests will be made to the server for each resource. The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
+The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource.  Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png)
 
-> Open up Chrome, go to the network tab and refresh the page. You will see all the HTTP requests here.
+> Open up Chrome, go to the network tab and refresh the page. You will see the HTTP requests here.
 
 You can read more about HTTP [here](https://docs.google.com/presentation/d/1OFtwlhE-3qTp7qid4m7wlV2iKMvHQF_SYf2rbD_caKA/edit?usp=sharing).
 
 ## Understand the URL pattern
 
-The Uniform Resource Locator is used to tell the server what resource the client wants:
+The Uniform Resource Locator (URL) is used to find the resource on the internet.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png)
 
-Notice the query string on the end - this is used to send additional, insensitive information to the server.
+Notice the query string on the end - this is used to send additional (insensitive) information to the server.
 
 ## Understand the difference between GET and POST
 
-HTTP defines a number of standard methods that can be used to send and retrieve data from the server. By far the most common are `GET` and `POST`.
+HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are `GET` and `POST`.
 
 - When you request for a resource like a web page or image, the GET request will be used. Additional information can be set in the query parameters where it's visible to all (see above)
 
@@ -50,7 +50,7 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 Checkout this search engine called Google. On the home page, their form submits a request to the server using the GET method. When you submit your search, your query and a bunch of other information is sent to Google in the query parameters. Try it yourself!
 
 ```html
-<form action="/search" method="GET" role="search">
+<form action="/search" method="GET">
   <!-- form fields -->
 </form>
 ```
@@ -65,11 +65,11 @@ When you login to Google, a POST request is used. Your data is sensitive, and we
 
 Key points for the exam:
 
-- The form action is endpoint on the server that will receive the submission
 - Don't use GET to send sensitive data, use POST instead
 - Browsers place character limits on query strings
 - POST requests are never cached and won't show up in your browser history. Why do you think this is?
 - GET requests are cached and will show up in your history
+- The form action is the endpoint on the server that will receive the submission
 
 ## Final Assignment
 
