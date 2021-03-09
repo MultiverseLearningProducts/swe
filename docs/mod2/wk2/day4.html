@@ -22,23 +22,23 @@
       <li>Understand what happens when you submit a form</li>
     </ul>
     <h2>Understand the basics of HTTP</h2>
-    <p>Knowledge of HTTP is not required for the exam, but helps explain what GET and POST are.</p>
-    <p>When you request a web page, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, many HTTP requests will be made to the server for each resource. The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.</p>
+    <p>Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.</p>
+    <p>The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.</p>
     <p>
       <img src="https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png">
     </p>
     <blockquote>
-      <p>Open up Chrome, go to the network tab and refresh the page. You will see all the HTTP requests here.</p>
+      <p>Open up Chrome, go to the network tab and refresh the page. You will see the HTTP requests here.</p>
     </blockquote>
     <p>You can read more about HTTP <a href="https://docs.google.com/presentation/d/1OFtwlhE-3qTp7qid4m7wlV2iKMvHQF_SYf2rbD_caKA/edit?usp=sharing">here</a>.</p>
     <h2>Understand the URL pattern</h2>
-    <p>The Uniform Resource Locator is used to tell the server what resource the client wants:</p>
+    <p>The Uniform Resource Locator (URL) is used to find the resource on the internet.</p>
     <p>
       <img src="https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png">
     </p>
-    <p>Notice the query string on the end - this is used to send additional, insensitive information to the server.</p>
+    <p>Notice the query string on the end - this is used to send additional (insensitive) information to the server.</p>
     <h2>Understand the difference between GET and POST</h2>
-    <p>HTTP defines a number of standard methods that can be used to send and retrieve data from the server. By far the most common are <code>GET</code> and <code>POST</code>.</p>
+    <p>HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are <code>GET</code> and <code>POST</code>.</p>
     <ul>
       <li>
         <p>When you request for a resource like a web page or image, the GET request will be used. Additional information can be set in the query parameters where it's visible to all (see above)</p>
@@ -55,7 +55,7 @@
     </ul>
     <h2>Understand what happens when you submit a form</h2>
     <p>Checkout this search engine called Google. On the home page, their form submits a request to the server using the GET method. When you submit your search, your query and a bunch of other information is sent to Google in the query parameters. Try it yourself!</p>
-    <pre><code class="language-html">&#x3C;form action="/search" method="GET" role="search">
+    <pre><code class="language-html">&#x3C;form action="/search" method="GET">
   &#x3C;!-- form fields -->
 &#x3C;/form>
 </code></pre>
@@ -66,11 +66,11 @@
 </code></pre>
     <p>Key points for the exam:</p>
     <ul>
-      <li>The form action is endpoint on the server that will receive the submission</li>
       <li>Don't use GET to send sensitive data, use POST instead</li>
       <li>Browsers place character limits on query strings</li>
       <li>POST requests are never cached and won't show up in your browser history. Why do you think this is?</li>
       <li>GET requests are cached and will show up in your history</li>
+      <li>The form action is the endpoint on the server that will receive the submission</li>
     </ul>
     <h2>Assignment</h2>
     <h1>Lesson 2</h1>
