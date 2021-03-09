@@ -79,6 +79,10 @@ Last is a compound operator that adds one to i on each iteration of the loop
 i++;
 ```
 
+> The `break` keyword we saw yesterday can be used to exit a loop
+
+> Another keyword related to break is `continue`. This keyword skips the current loop iteration and continues with the next one
+
 ## Assignment
 
 Given an array of integers, create a function that can return a new array with each value doubled.

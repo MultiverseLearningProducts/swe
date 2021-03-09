@@ -79,9 +79,9 @@ switch (myString) {
 }
 ```
 
-Switch statement key points for the exam:
+Key points for the exam:
 
-- The break keyword "breaks out" of the whole code block
+- The break keyword "breaks out" and exits the whole code block (including loops)
 - The break keyword isn't required in the default block
 
 ### Functions
