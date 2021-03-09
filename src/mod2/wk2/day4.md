@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-To we will look at the form submission process
+To we will look at the form submission process before we tackle the final project for this module.
 
 # Lesson 1
 
@@ -71,18 +71,17 @@ Key points for the exam:
 - POST requests are never cached and won't show up in your browser history. Why do you think this is?
 - GET requests are cached and will show up in your history
 
-## Assignment
+## Final Assignment
 
-# Lesson 2
+The final assignment is to build a music player in JavaScript. Because styles and HTML can be time consuming to write, use [this](https://drive.google.com/file/d/1zyS7SvLBcGgKt1eabDHn95CAcl1yJqZ3/view?usp=sharing) markup.
 
-## Learning Objectives
+You will need to:
 
-## Assignment
-
-# Lesson 3
-
-## Learning Objectives
-
-## Assignment
+- Store your songs in an array of objects
+- Store song information such as title, album, date released etc
+- Display this info on the UI when the song is playing
+- Leverage DOM methods to play, pause, skip, etc. See [this](https://www.w3schools.com/jsref/met_audio_play.asp) link
+- If there's time, add a shuffle function and a favourite function
+- Extension: can you get the time elapsed bar to work?
 
 [main](/swe)|[prev](/swe/mod2/wk2/day3.html)|[next](/swe/mod2/wk2/day5.html);

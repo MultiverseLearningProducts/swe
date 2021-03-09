@@ -2,6 +2,8 @@
 
 # Overview of the day
 
+Today we'll look at the exam booking process and what to do if you can't make the exam.
+
 # Lesson 1
 
 ## Learning Objectives
@@ -9,12 +11,6 @@
 ## Assignment
 
 # Lesson 2
-
-## Learning Objectives
-
-## Assignment
-
-# Lesson 3
 
 ## Learning Objectives
 
