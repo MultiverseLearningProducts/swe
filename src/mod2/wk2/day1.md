@@ -127,6 +127,8 @@ A common event handler you might come across is a form submit handler. This fire
 </form>
 ```
 
+> Text inputs can also have a value attribute. E.G. `value="Daniel"`. This is useful for when you want to set the value manually
+
 Here's how we'd write an event handler that also responds to the event by logging the value of the name field to the console:
 
 ```javascript

@@ -27,15 +27,17 @@ We've already used one of the primary strategies to debug and that is the `conso
 
 ## Document.write
 
-A useful DOM method exists - ``document.write` - that you can use to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See [this](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4) example.
+`document.write` allos you to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See [this](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4) example.
 
 ## The stack trace
 
-(Not required for exam).
-
 Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.
 
+> Stack trace knowledge isn't required for the exam, but is useful to know
+
 A stack is a "Last in, First out" data structure, where the last function to get added to the stack gets executed and then "popped" off the stack. If the function being popped throws an error, JavaScript (and other languages) will produce what's known as a `stack trace`. This is a trace of all the function calls, starting with the function in error, all the way down to the function at the base of the stack.
+
+> You may have come across the website StackOverflow. This was named after an error that occurs when too many items get added to the stack.
 
 You can view a trace of your app any anytime just by adding `console.trace();` in any function.
 
@@ -54,10 +56,10 @@ Uncaught TypeError: invalidFields.cannieFinditCapt is not a function
 
 ## The debugger statement
 
-The `debugger` keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a `breakpoint`. 
+The `debugger` keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a `breakpoint`.
 
 - Add this to the validation code you wrote yesterday
-- What happens? 
+- What happens when you refresh?
 - What can you see and find in the console?
 
 ## Adding break points in Dev Tools
@@ -124,7 +126,7 @@ fetch("https://someurl.com")
 ## Learning Objectives
 
 - Understand the difference between inline and external scripts
-- Research and present best practices when writing JavaScript
+- Implement the strategies in code
 
 ### Inline vs external scripts
 
@@ -158,7 +160,7 @@ Alternatively, you can place your JavaScipt in an external `.js` file, and link 
 </html>
 ```
 
-Inline (and external) scripts typically go in the `<head>` section of the HTML, but this isn't a strict rule.
+> Inline (and external) scripts typically go in the `<head>` section of the HTML, but this isn't a strict rule.
 
 So, which method should you choose?
 
@@ -168,11 +170,11 @@ Well, larger scripts are almost certainly better in an external file. Here's why
 
 - Larger scripts are normally written in a modular way across multiple files. Inline scripting goes against this design pattern.
 
-- External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge page load time benefits.
+- External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge performance benefits.
 
 When should you use an inline script?
 
-- When you're doing small development tasks the don't require an external file
+- When you're doing small development tasks/testing that don't require an external file
 
 - When you need _very_ lightweight code to run that doesn't require an external file
 
