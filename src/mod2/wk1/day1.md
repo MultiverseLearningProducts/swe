@@ -199,6 +199,8 @@ x %= 2;
 console.log(x); // 1
 ```
 
+> When using operators on values that are not a number, JavaScript may return `NaN`, which literally means `Not-a-Number`
+
 #### Assignment operators
 
 | Operator | Purpose             | Example  | Same as     |

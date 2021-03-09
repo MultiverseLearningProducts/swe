@@ -12,11 +12,12 @@
   <body>
     <h1>Mod 2 > Week 1 > Day 5</h1>
     <h1>Overview of the day</h1>
-    <p>Today we will take a look at a number of string methods available before looking at the date object and the various methods we can call on it.</p>
+    <p>Today we will take a look at a number of string and number methods available before looking at the date object and the various methods we can call on it.</p>
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Learn and apply string methods</li>
+      <li>Learn and apply number methods</li>
     </ul>
     <h3>Common string methods</h3>
     <p>JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings. We've already seen <code>toString()</code>, <code>length</code> and <code>indexOf</code>. Here are some common ones you will come across:</p>
@@ -32,31 +33,71 @@
         <tr>
           <td align="left"><code>.length</code></td>
           <td align="left">Returns the length of a string</td>
-          <td align="left"><code>"abc".length</code></td>
+          <td align="left"><code>y.length</code></td>
         </tr>
         <tr>
           <td align="left"><code>toString()</code></td>
           <td align="left">Converts a variable to a string</td>
-          <td align="left"><code>x = y.toString()</code></td>
+          <td align="left"><code>y = y.toString()</code></td>
         </tr>
         <tr>
           <td align="left"><code>indexOf</code></td>
           <td align="left">Returns the starting index of the first occurence of a string</td>
-          <td align="left"><code>"abc".indexOf('abc')</code></td>
+          <td align="left"><code>y.indexOf('abc')</code></td>
         </tr>
         <tr>
           <td align="left"><code>slice</code></td>
           <td align="left">Extracts a part of a string, starting and ending at defined indexes</td>
-          <td align="left"><code>"abcdefg".slice(0, 3)</code></td>
+          <td align="left"><code>y.slice(0, 3)</code></td>
         </tr>
         <tr>
           <td align="left"><code>replace</code></td>
           <td align="left">Replaces an occurence of a string</td>
-          <td align="left"><code>"abc".replace('abc', 'xyz')</code></td>
+          <td align="left"><code>y.replace('abc', 'xyz')</code></td>
         </tr>
       </tbody>
     </table>
+    <p>If <code>y === "abcdefg"</code>, what would the results of the examples above be?</p>
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
+    <h3>Common number methods</h3>
+    <p>In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Method</th>
+          <th align="left">Purpose</th>
+          <th align="left">Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left"><code>toFixed</code></td>
+          <td align="left">Returns a string, with the number written with a specified number of decimals</td>
+          <td align="left"><code>x.toFixed(1)</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>toPrecision</code></td>
+          <td align="left">Returns a string, with a number written with a specified length</td>
+          <td align="left"><code>x.toPrecision(2);</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>Number</code></td>
+          <td align="left">Returns a number, converted (typically) from a string</td>
+          <td align="left"><code>x = Number("10")</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>parseInt</code></td>
+          <td align="left">Returns an integer, converted from its argument (same as Number)</td>
+          <td align="left"><code>x = parseInt("10")</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>parseFloat</code></td>
+          <td align="left">Returns a floating point number, converted from its argument</td>
+          <td align="left"><code>x = parseFloat("10.2")</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>If <code>x === 9.835</code>, what would the result be of the the first two functions above? Can you see the difference?</p>
     <h2>Assignment</h2>
     <ul>
       <li>
@@ -87,7 +128,7 @@
     <pre><code class="language-javascript">const date1 = new Date(); // date now
 
 // year, month, day, hours, minutes, seconds, milliseconds
-const date2 = new Date(1900, 0, 17, 0, 0, 0, 0); 
+const date2 = new Date(1900, 0, 17, 0, 0, 0, 0);
 
 const date3 = new Date(10000000000); // milliseconds
 
@@ -110,7 +151,7 @@ console.log(
     <p>For this, we can utilise the date object's methods: <code>getFullYear(), getMonth(), getDay(), getDate()</code>. These methods however, return integers. This means we have to do the work of transforming them into a formatted date like the one above.</p>
     <pre><code class="language-javascript">let myDate = new Date(2021, 1, 25);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
 // 25, 1, 2021
 
 console.log(myDate.getDay()); // 4
@@ -133,7 +174,7 @@ console.log(myDate.getDay()); // 4
 
 myDate.setDate(myDate.getDate() - 2);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear()); 
+console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
 // 23, 0, 2021
 </code></pre>
     <p>Can you think of a use for adding and subtracting dates in an application?</p>

@@ -54,7 +54,11 @@ Uncaught TypeError: invalidFields.cannieFinditCapt is not a function
 
 ## The debugger statement
 
-The `debugger` keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a `breakpoint`. Add this to the validation code you wrote yesterday. What happens? What can you see and find in the console?
+The `debugger` keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a `breakpoint`. 
+
+- Add this to the validation code you wrote yesterday
+- What happens? 
+- What can you see and find in the console?
 
 ## Adding break points in Dev Tools
 
