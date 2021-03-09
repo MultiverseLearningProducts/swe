@@ -220,7 +220,7 @@ x -= 2;
 console.log(x); // 0
 ```
 
-The line `x -= 2;` in plain English would be: "Take x (2), subtract 2, then assign the result back to x"
+The line `x -= 2;` in plain English would be: "Take x, subtract 2, then assign the result back to x"
 
 #### Math methods
 

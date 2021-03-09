@@ -156,4 +156,6 @@ console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 // "HTML Student", "JavaScript", 100
 ```
 
+> Objects are passed to functions by reference, primitives are passed by value
+
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);

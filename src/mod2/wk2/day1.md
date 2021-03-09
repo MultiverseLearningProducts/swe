@@ -149,7 +149,7 @@ If you run the code above (see JSFiddle below), you will get whatever value you 
 
 Notice that we've used the `DOM path` strategy to find the form by its name: `document.forms.todoCreateForm;`. What other ways could we get the form?
 
-> You'll need to know the following events for the exam: `onchange; onmouseover; onload; onclick; onmouseout; onkeydown`
+> For the exam, you'll need to know: `onchange, onmouseover, onload, onclick, onmouseout and onkeydown`
 
 **Further reading**: The W3C has an excellent resource of all the [HTML events](https://www.w3schools.com/tags/ref_eventattributes.asp).
 

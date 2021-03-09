@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we look at bug fixing and debugging strategies.
+Today we look at bug fixing and debugging strategies. Later, we'll take a look at inline vs external scripts.
 
 # Lesson 1
 
@@ -119,10 +119,66 @@ fetch("https://someurl.com")
 
 ## Learning Objectives
 
+- Understand the difference between inline and external scripts
+- Research and present best practices when writing JavaScript
+
+### Inline vs external scripts
+
+If you've worked with CSS before, you may know that you can write CSS directly into the HTML source or you can link to an external file. The same holds true for JavaScript. We could inline a script as follows:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Inline script</title>
+    <script type="text/javascript">
+      console.log("Hello! I'm an inline script");
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+Alternatively, you can place your JavaScipt in an external `.js` file, and link to it in your HTML source:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>External script</title>
+    <script type="text/javascript" src="./assets/js/external.js"></script>
+  </head>
+  <body></body>
+</html>
+```
+
+Inline (and external) scripts typically go in the `<head>` section of the HTML, but this isn't a strict rule.
+
+So, which method should you choose?
+
+Well, larger scripts are almost certainly better in an external file. Here's why:
+
+- A big script would "pollute" the HTML and make it tricky to work with
+
+- Larger scripts are normally written in a modular way across multiple files. Inline scripting goes against this design pattern.
+
+- External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge page load time benefits.
+
+When should you use an inline script?
+
+- When you're doing small development tasks the don't require an external file
+
+- When you need _very_ lightweight code to run that doesn't require an external file
+
+- When a script is dynamically loaded to the source (e.g. Google Analytics)
+
 ## Assignment
 
+- Take the validation work you've done and add it to local files
+- Experiment with inline and external strategies
+- Which do you prefer?
+- How can you see if an external JS file is cached?
+
 [main](/swe)|[prev](/swe/mod2/wk2/day2.html)|[next](/swe/mod2/wk2/day4.html);
-
-```
-
-```

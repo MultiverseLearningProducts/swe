@@ -79,7 +79,9 @@ You need to validate so that:
 
 - Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this)
 
-> RegEx is not required for the exam but is a very useful tool to match strings, e.g. `/\d{4}-\d{2}-\d{2}/.test("2021-01-17")` would return true
+- Extension task: users may enter a value in caps; "DANIEL", or they may enter a first letter in lowercase; "daniel". How can you validate and fix it before submission?
+
+> RegEx is not required for the exam but is a very useful tool to match strings
 
 ## Show and tell
 

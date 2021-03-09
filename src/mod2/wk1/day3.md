@@ -149,7 +149,7 @@ numbersAsStrings.sort();
 console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 ```
 
-**Question:** thinking back to our conversation about primitives, why has the sort method changed the array directly?
+> Thinking back to our conversation about primitives, why has the sort method changed the array directly?
 
 ### Sorting an array of numbers
 
