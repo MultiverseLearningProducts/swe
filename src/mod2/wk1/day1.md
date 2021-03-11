@@ -42,7 +42,7 @@ const myString = "Hi, Daniel";
 console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 ```
 
-> `console.log` is a very useful method to log out text, variables or just anything to the console (e.g. Chrome Dev Tools)
+> Don't know what datatype you're dealing with? `console.log(typeof myString)`
 
 Note that even though we've transformed the string to uppercase, the original variable has not been changed.
 

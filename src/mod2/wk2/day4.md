@@ -17,7 +17,7 @@ To we will look at the form submission process before we tackle the final projec
 
 Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.
 
-The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource.  Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
+The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png)
 
@@ -71,13 +71,17 @@ Key points for the exam:
 - GET requests are cached and will show up in your history
 - The form action is the endpoint on the server that will receive the submission
 
+# Lesson 2
+
 ## Final Assignment
 
-The final assignment is to build a music player in JavaScript. Because styles and HTML can be time consuming to write, use [this](https://drive.google.com/file/d/1zyS7SvLBcGgKt1eabDHn95CAcl1yJqZ3/view?usp=sharing) markup.
+The final assignment is to build a music player in JavaScript.
 
 You will need to:
 
-- Store your songs in an array of objects
+- Use [this](https://drive.google.com/file/d/1zyS7SvLBcGgKt1eabDHn95CAcl1yJqZ3/view?usp=sharing) markup
+- Find some MP3s
+- Store your songs in an array of objects (with a relative path to the mp3 on disk)
 - Store song information such as title, album, date released etc
 - Display this info on the UI when the song is playing
 - Leverage DOM methods to play, pause, skip, etc. See [this](https://www.w3schools.com/jsref/met_audio_play.asp) link

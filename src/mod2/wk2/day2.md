@@ -25,7 +25,9 @@ const errorLabel = document.createElement("label");
 errorLabel.setAttribute("for", input.id);
 
 // create a text node
-const errorLabelTextNode = document.createTextNode(errLabel);
+const errorLabelTextNode = document.createTextNode(
+  "This field cannot be empty"
+);
 
 // append the text node to the label
 errorLabel.appendChild(errorLabelTextNode);
@@ -50,6 +52,14 @@ To add the label to the source, you'd append it to a node:
 // append to the parentNode of an input
 input.parentNode.append(errorLabel);
 ```
+
+You can also use `innerHTML` to add text to the node. Instead of creating a text node and appending it, you could just add:
+
+```javascript
+errorLabel.innerHTML = "This field cannot be empty""
+```
+
+> An understanding of innerHTML is required for the exam
 
 ## Adding validation
 
