@@ -30,7 +30,7 @@ A candidate may not take a given exam any more than five times per year (12 mont
 
 ## Show and tell
 
-Please show the class you music player app. Be sure to cover:
+Please show the class your music player app. Be sure to cover:
 
 - How you designed the app
 - What its current capabilities are
