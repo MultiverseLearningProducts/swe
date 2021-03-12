@@ -20,7 +20,7 @@
     </ul>
     <h2>The History of JavaScript</h2>
     <p>
-      HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles often written directly into the HTML. Later, in 1996, CSS would be released and would allow
+      HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles controlled by HTML (e.g. `<code>&#x3C;center>Centred text&#x3C;/center</code>>). Later, in 1996, CSS would be released and would allow
       developers to decouple presentation (CSS) from document structure (HTML). The structure of web pages and styling was now standardised, but what about interactivity? What if the developer wanted to tell the user what the date and time was, or open a new window programmatically?
     </p>
     <p>Around this time, Microsoft and Netscape were duking it out for browser superiority and it was in fact a Netscape developer (Brandan Eich), who created a client-side scripting language in ten days that would later become JavaScript. It was initially called Mocha, then LiveScript, then later, JavaScript. It wasn't without its problems, but JavaScript enabled designers and developers to easily add dynamic features to their websites. For this reason, JavaScript rapidly emerged as the standard scripting language for the web.</p>
@@ -50,12 +50,21 @@
       <li>Learn about the DOM</li>
     </ul>
     <h3>What is the DOM?</h3>
-    <p>The DOM is a browser-based representation of a web page, which consists of a number of objects. It is a tree structure, where each element (called a node) belongs to a parent:</p>
+    <p>The DOM is a browser-based representation of a web page, which consists of a number of objects. It is represented as a tree structure, where each child element (called a node) belongs to a parent:</p>
     <p>
       <img src="https://miro.medium.com/max/700/1*5zKczvG219FSLibHQH4jSA.png">
     </p>
+    <blockquote>
+      <p>At the top level, above <code>document</code> is <code>window</code></p>
+    </blockquote>
     <p>As you can see from the image, each node can have a number of attributes. If you know HTML, you'll know an anchor has a <code>href</code>, and can also have a <code>class</code> attribute. A node can also have a text node as a child. HTML elements like headings and anchors will typically have a text node.</p>
+    <blockquote>
+      <p>In your browser console, type <code>window.document.head</code>. This will retrieve the head element of the page.</p>
+    </blockquote>
     <h3>The history of the DOM</h3>
+    <blockquote>
+      <p>DOM history isn't required for the exam but it is useful to know</p>
+    </blockquote>
     <p>As we learned above, Microsoft and Netscape were the main players in the mid-90s browser market. Each company favoured their own implementation of JavaScript; Microsoft had JScript and Netscape and JavaScript. Microsoft's JScript was actually just JavaScript but with a different name to avoid trademark issues.</p>
     <p>The first unofficial version of the DOM was called the <code>Legacy DOM</code> and this paved the way for client-side validation and other visual effects. At this point though, implementations of web pages with dynamic behaviour started to diverge. Whilst some Legacy DOM operations remained compatible, other dynamic extensions did not.</p>
     <p>By the time JavaScript was standardised in 1997, the W3C set out its recommendations for the stardardisation of the DOM. The DOM is now standardised across all browsers and is maintained by the Web Hypertext Application Technology Working Group (WHATWG).</p>

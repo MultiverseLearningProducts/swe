@@ -173,8 +173,6 @@ for (let j = 0; j < nestedArrayLength; j++) {
 }
 ```
 
-Congratulations! You've written your first algorithm in JavaScript! :-)
-
 ## Assignment
 
 The assignment is the same as the one above, except this time you're looping over you nested array, doubling the values, and returning the result.

@@ -63,7 +63,7 @@ errorLabel.innerHTML = "This field cannot be empty""
 
 ## Adding validation
 
-As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. This has all changed now, in that mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.
+As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. Things have developed since then in that there are mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.
 
 > You should always validate on the server-side as well as client-side validation is not a complete solution
 
@@ -79,7 +79,7 @@ Using the JSFiddle link from yesterday:
 
 - Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!
 
-- Errors should tell the user what the problem is. Generic messages are a UX no-no
+- Errors shouldn't be vague and should tell the user what the problem is
 
 You need to validate so that:
 

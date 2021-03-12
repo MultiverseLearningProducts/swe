@@ -12,7 +12,7 @@ Today we briefly look at the history of JavaScript, before looking at the Docume
 
 ## The History of JavaScript
 
-HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles often written directly into the HTML. Later, in 1996, CSS would be released and would allow
+HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles controlled by HTML (e.g. ``<center>Centred text</center`>). Later, in 1996, CSS would be released and would allow
 developers to decouple presentation (CSS) from document structure (HTML). The structure of web pages and styling was now standardised, but what about interactivity? What if the developer wanted to tell the user what the date and time was, or open a new window programmatically?
 
 Around this time, Microsoft and Netscape were duking it out for browser superiority and it was in fact a Netscape developer (Brandan Eich), who created a client-side scripting language in ten days that would later become JavaScript. It was initially called Mocha, then LiveScript, then later, JavaScript. It wasn't without its problems, but JavaScript enabled designers and developers to easily add dynamic features to their websites. For this reason, JavaScript rapidly emerged as the standard scripting language for the web.
@@ -41,13 +41,19 @@ Have a read of the article above.
 
 ### What is the DOM?
 
-The DOM is a browser-based representation of a web page, which consists of a number of objects. It is a tree structure, where each element (called a node) belongs to a parent:
+The DOM is a browser-based representation of a web page, which consists of a number of objects. It is represented as a tree structure, where each child element (called a node) belongs to a parent:
 
 ![](https://miro.medium.com/max/700/1*5zKczvG219FSLibHQH4jSA.png)
 
+> At the top level, above `document` is `window`
+
 As you can see from the image, each node can have a number of attributes. If you know HTML, you'll know an anchor has a `href`, and can also have a `class` attribute. A node can also have a text node as a child. HTML elements like headings and anchors will typically have a text node.
 
+> In your browser console, type `window.document.head`. This will retrieve the head element of the page.
+
 ### The history of the DOM
+
+> DOM history isn't required for the exam but it is useful to know
 
 As we learned above, Microsoft and Netscape were the main players in the mid-90s browser market. Each company favoured their own implementation of JavaScript; Microsoft had JScript and Netscape and JavaScript. Microsoft's JScript was actually just JavaScript but with a different name to avoid trademark issues.
 

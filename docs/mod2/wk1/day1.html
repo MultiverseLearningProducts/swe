@@ -253,7 +253,7 @@ myFunction();
         </tr>
       </tbody>
     </table>
-    <p>The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.</p>
+    <p>The modulus operator is an interesting one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.</p>
     <pre><code class="language-javascript">let x = 3;
 
 x %= 2;
@@ -264,6 +264,7 @@ console.log(x); // 1
       <p>When using operators on values that are not a number, JavaScript may return <code>NaN</code>, which literally means <code>Not-a-Number</code></p>
     </blockquote>
     <h4>Assignment operators</h4>
+    <p>Whenever we want to assign a value to a variable, or we want to do something and then assign a value to a variable, we will use the assignment operator.</p>
     <table>
       <thead>
         <tr>
@@ -349,6 +350,7 @@ console.log(x); // 0
       </tbody>
     </table>
     <h4>Comparison operators</h4>
+    <p>Comparison operators are typically used in conditional statements to check one or more values before doing something else.</p>
     <table>
       <thead>
         <tr>
@@ -400,8 +402,11 @@ console.log(x); // 0
         </tr>
       </tbody>
     </table>
-    <p><strong>Challenge:</strong> in breakout rooms, look at the examples above, in each case, what would <code>x</code> be equal to after the comparison has been done? Hint: it will be either <code>true</code> or <code>false</code>.</p>
+    <blockquote>
+      <p>Look at the examples above, in each case, what would <code>x</code> be equal to after the comparison has been done? Hint: it will be either <code>true</code> or <code>false</code>.</p>
+    </blockquote>
     <h4>Logical operators</h4>
+    <p>Logical operators are mostly used in conditional statements and provide the developer with more flexibility when checking values.</p>
     <table>
       <thead>
         <tr>
@@ -433,12 +438,13 @@ console.log(x); // 0
 let y = true;
 
 if (!x) {
-  // this line prints because x === false, therefore the check returns true
+  // this line prints because x === false
   console.log(x);
 }
 
 if (!y) {
-  console.log(y); // this line is never reached
+  // this line is never reached
+  console.log(y); 
 }
 </code></pre>
     <h2>Assignment</h2>

@@ -189,7 +189,7 @@ We can categorise the operators as follows:
 | ++       | Increment by one      | `x++`       |
 | --       | Decrement by one      | `x--`       |
 
-The modulus operator is a funky one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
+The modulus operator is an interesting one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
 
 ```javascript
 let x = 3;
@@ -202,6 +202,8 @@ console.log(x); // 1
 > When using operators on values that are not a number, JavaScript may return `NaN`, which literally means `Not-a-Number`
 
 #### Assignment operators
+
+Whenever we want to assign a value to a variable, or we want to do something and then assign a value to a variable, we will use the assignment operator.
 
 | Operator | Purpose             | Example  | Same as     |
 | :------- | :------------------ | :------- | ----------- |
@@ -236,6 +238,8 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 
 #### Comparison operators
 
+Comparison operators are typically used in conditional statements to check one or more values before doing something else.
+
 | Operator | Purpose                     | Example         |
 | :------- | :-------------------------- | :-------------- |
 | ==       | Equal to value              | `x = 2 == 2 `   |
@@ -247,9 +251,11 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | <=       | Less than or equal to       | `x = 2 <= 2`    |
 | >=       | Greater than or equal to    | `x = 2 >= 2`    |
 
-**Challenge:** in breakout rooms, look at the examples above, in each case, what would `x` be equal to after the comparison has been done? Hint: it will be either `true` or `false`.
+> Look at the examples above, in each case, what would `x` be equal to after the comparison has been done? Hint: it will be either `true` or `false`.
 
 #### Logical operators
+
+Logical operators are mostly used in conditional statements and provide the developer with more flexibility when checking values.
 
 | Operator | Purpose                                     | Example                             |
 | :------- | :------------------------------------------ | :---------------------------------- |
@@ -264,12 +270,13 @@ let x = false;
 let y = true;
 
 if (!x) {
-  // this line prints because x === false, therefore the check returns true
+  // this line prints because x === false
   console.log(x);
 }
 
 if (!y) {
-  console.log(y); // this line is never reached
+  // this line is never reached
+  console.log(y); 
 }
 ```
 

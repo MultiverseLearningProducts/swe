@@ -23,11 +23,11 @@ In Chrome, right click the page and hit "Inspect" then navigate to "Console". Yo
 
 ## Console logging
 
-We've already used one of the primary strategies to debug and that is the `console.log` statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live!
+We've already used one of the primary strategies to debug and that is the `console.log` statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live.
 
 ## Document.write
 
-`document.write` allos you to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See [this](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4) example.
+`document.write` allows you to write HTML to the page source dynamically and can be useful for testing. Bear in mind that if you write to the page after the content has been loaded, it will remove all of the body content. See [this](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4) example.
 
 ## The stack trace
 
@@ -62,6 +62,7 @@ The `debugger` keyword can be used anywhere in your applications to launch the d
 - What happens when you refresh?
 - What can you see and find in the console?
 
+> You'll need to have an understanding of the debugger keyword for the exam
 ## Adding break points in Dev Tools
 
 We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:

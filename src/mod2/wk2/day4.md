@@ -15,9 +15,9 @@ To we will look at the form submission process before we tackle the final projec
 
 ## Understand the basics of HTTP
 
-> Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.
+> Knowledge of HTTP is not required for the exam, but does helps to explain how GET and POST work
 
-The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
+The web is a collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png)
 
@@ -27,13 +27,15 @@ You can read more about HTTP [here](https://docs.google.com/presentation/d/1OFtw
 
 ## Understand the URL pattern
 
-> Knowledge of the URL pattern is not required for the exam, but helps to understand the difference between GET and POST
 
 The Uniform Resource Locator (URL) is used to find the resource on the internet.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png)
 
 Notice the query string on the end - this is used to send additional (insensitive) information to the server.
+
+> Knowledge of the URL pattern is not required for the exam, but helps to understand the difference between GET and POST
+
 
 ## Understand the difference between GET and POST
 

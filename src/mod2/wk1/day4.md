@@ -80,11 +80,13 @@ for (let key in person) {
 // "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 ```
 
+> Knowledge of the `for..in` loop isn't required for the exam
+
 ## Assignment
 
 Can you find the missing pets?!
 
-The deceased:
+The following pets have gone missing and the owner is worried:
 
 ```javascript
 ["Tiddles", "Poppy"];

@@ -23,7 +23,7 @@ JavaScript comes with a number of convenient, built-in string methods that can h
 | `slice`      | Extracts a part of a string, starting and ending at defined indexes | `y.slice(0, 3)`           |
 | `replace`    | Replaces an occurence of a string                                   | `y.replace('abc', 'xyz')` |
 
-If `y === "abcdefg"`, what would the results of the examples above be?
+> If `y === "abcdefg"`, what would the results of the examples above be?
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
@@ -39,7 +39,7 @@ In addition to the string methods, there are a number of built-in number methods
 | `parseInt`    | Returns an integer, converted from its argument (same as Number)              | `x = parseInt("10")`     |
 | `parseFloat`  | Returns a floating point number, converted from its argument                  | `x = parseFloat("10.2")` |
 
-If `x === 9.835`, what would the result be of the the first two functions above? Can you see the difference?
+> If `x === 9.835`, what would the result be of the the first two functions above? Can you see the difference?
 
 ## Assignment
 
@@ -173,4 +173,4 @@ Apollo 13, April 11, 1970 to April 17, 1970
 
 - Create another function that returns how long ago the event was from today's date
 
-[main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
+[main](/swe)|[prev](/swe/mod2/wk1/day4.html)|[next](/swe/mod2/wk2/day1.html);

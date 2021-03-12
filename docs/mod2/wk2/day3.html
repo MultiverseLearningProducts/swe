@@ -27,9 +27,9 @@
     <h2>The console</h2>
     <p>In Chrome, right click the page and hit "Inspect" then navigate to "Console". You should keep this open at all times during testing so you catch any errors.</p>
     <h2>Console logging</h2>
-    <p>We've already used one of the primary strategies to debug and that is the <code>console.log</code> statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live!</p>
+    <p>We've already used one of the primary strategies to debug and that is the <code>console.log</code> statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live.</p>
     <h2>Document.write</h2>
-    <p><code>document.write</code> allos you to write HTML to the page source dynamically. This should only be used when testing because if you write to the HTML file after it's been loaded, all the content will be replaced! See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
+    <p><code>document.write</code> allows you to write HTML to the page source dynamically and can be useful for testing. Bear in mind that if you write to the page after the content has been loaded, it will remove all of the body content. See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
     <h2>The stack trace</h2>
     <p>Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.</p>
     <blockquote>
@@ -58,7 +58,10 @@
       <li>What happens when you refresh?</li>
       <li>What can you see and find in the console?</li>
     </ul>
-    <h2>Adding break points in Dev Tools</h2>
+    <blockquote>
+      <p>You'll need to have an understanding of the debugger keyword for the exam</p>
+      <h2>Adding break points in Dev Tools</h2>
+    </blockquote>
     <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:</p>
     <p>
       <img src="https://developers.google.com/web/tools/chrome-devtools/javascript/imgs/loc-breakpoint.png">

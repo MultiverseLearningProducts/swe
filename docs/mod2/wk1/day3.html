@@ -37,7 +37,7 @@
 8
 "Fizz"
 </code></pre>
-    <h1>Lesson 1</h1>
+    <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>How to search an array</li>
@@ -66,7 +66,9 @@ console.log(arr1[myIndex]); // 007
     <p>Note the use of of the "bang" operator to allow the if statement to return true if in fact the method can't find <code>abcdefg</code> (so a false actually becomes true).</p>
     <h4>Search using array.find</h4>
     <p>Another useful method to search our array is the find method. This method employs a callback method to return the first value that satisfies the condition.</p>
-    <p>NB: knowledge of callbacks, filter and find is not required for the MTA exam.</p>
+    <blockquote>
+      <p>Knowledge of callbacks, filter and find is not required for the MTA exam.</p>
+    </blockquote>
     <pre><code class="language-javascript">let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
 
 // arrow function
@@ -89,7 +91,9 @@ console.log(result); // 1
 };
 </code></pre>
     <p>In the above example, <code>el</code> is each element that is passed into the callback function, so <code>1, 2, "holy smokes"</code>, and so on.</p>
-    <p><strong>Further reading</strong>: Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax. Also try and read more and practice Promises and Async/Await. Don't be afraid to ask your coach how this stuff works!</p>
+    <blockquote>
+      <p><strong>Further reading</strong>: Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax</p>
+    </blockquote>
     <h4>Search using array.filter</h4>
     <p>The last strategy we will look at is array.filter:</p>
     <pre><code class="language-javascript">let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
@@ -102,7 +106,7 @@ console.log(result); //  ["holy smokes", "007", "The name's Bond"]
     <p>Can you spot the difference between the find method earlier and the filter method above?</p>
     <p>One of the advantages of using the arrow functions that we introduced on day one is if you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.</p>
     <p>If this sounds confusing, make sure you ask your coach to explain what's going on!</p>
-    <h1>Lesson 2</h1>
+    <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>How to sort an array</li>
@@ -124,7 +128,9 @@ console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
 numbers.sort();
 console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
 </code></pre>
-    <p>How is JavaScript trying to sort the numbers above?</p>
+    <blockquote>
+      <p>How is JavaScript trying to sort the numbers above?</p>
+    </blockquote>
     <p>We can fix this by using a callback to examine the numbers in more detail:</p>
     <pre><code class="language-javascript">numbers.sort(function (a, b) {
   if (a > b) return 1; // switch numbers
@@ -137,13 +143,7 @@ console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
     <h3>Part 1</h3>
     <p>Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.</p>
     <h3>Part 2</h3>
-    <p>Using the arrays below, create a sort function that can take an array, sort the contents, then return the sorted array.</p>
-    <pre><code class="language-javascript">[1678, 2, 3, "Hihihi", 9, "435454"];
-[1678, 2, 3, -78, 9, 10001];
-[32466, 2, 3, "dinosourraahh", 9, 10.6];
-["SHARK!", 2, -1, 78, -9, 100.5];
-[000, 2, 3, "78", 9, 1.13435];
-</code></pre>
+    <p>Create a sort function that can take an array, sort the contents, then return the sorted array.</p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day2.html">prev</a>|<a href="/swe/mod2/wk1/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
