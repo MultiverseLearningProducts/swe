@@ -37,4 +37,4 @@ Please show the class your music player app. Be sure to cover:
 - What problems you had and how you solved them
 - A demo of the working product!
 
-[main](/swe)|[prev](/swe/mod2/wk2/day5.html)|[next](/swe/mod3/wk1/day1.html);
+[main](/swe)|[prev](/swe/mod2/wk2/day4.html)|[next](/swe/mod3/wk1/day1.html);

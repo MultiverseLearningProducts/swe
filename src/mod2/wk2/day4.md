@@ -15,17 +15,19 @@ To we will look at the form submission process before we tackle the final projec
 
 ## Understand the basics of HTTP
 
-Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.
+> Knowledge of HTTP is not required for the exam, but does helps explain what GET and POST do.
 
 The web is one big collection resources: HTML files, JavaScript file, images, videos, etc. When you request one of these resources, the HTTP protocol handles the request and response exchange between the client and the server. When you load a webpage, numerous HTTP requests will be made to the server for each resource. Once the request has been fulfilled (i.e. the resource has been sent to the client), the connection is closed.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png)
 
-> Open up Chrome, go to the network tab and refresh the page. You will see the HTTP requests here.
+> To see HTTP requests in action, open up Chrome, go to the network tab and refresh the page
 
 You can read more about HTTP [here](https://docs.google.com/presentation/d/1OFtwlhE-3qTp7qid4m7wlV2iKMvHQF_SYf2rbD_caKA/edit?usp=sharing).
 
 ## Understand the URL pattern
+
+> Knowledge of the URL pattern is not required for the exam, but helps to understand the difference between GET and POST
 
 The Uniform Resource Locator (URL) is used to find the resource on the internet.
 
@@ -34,6 +36,8 @@ The Uniform Resource Locator (URL) is used to find the resource on the internet.
 Notice the query string on the end - this is used to send additional (insensitive) information to the server.
 
 ## Understand the difference between GET and POST
+
+> Understanding the differences between Get and Post is required for the exam
 
 HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are `GET` and `POST`.
 
@@ -46,6 +50,8 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 - A form GET request sends the form data in the query string
 
 ## Understand what happens when you submit a form
+
+> Understanding the form submission process is required for the exam
 
 Checkout this search engine called Google. On the home page, their form submits a request to the server using the GET method. When you submit your search, your query and a bunch of other information is sent to Google in the query parameters. Try it yourself!
 
