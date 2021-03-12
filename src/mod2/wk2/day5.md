@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we take a look at how to book the exam.
+Today we take a look at how to book the exam before a show and tell later!
 
 # Lesson 1
 
