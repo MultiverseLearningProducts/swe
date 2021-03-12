@@ -29,7 +29,9 @@ const errorLabel = document.createElement("label");
 errorLabel.setAttribute("for", input.id);
 
 // create a text node
-const errorLabelTextNode = document.createTextNode(errLabel);
+const errorLabelTextNode = document.createTextNode(
+  "This field cannot be empty"
+);
 
 // append the text node to the label
 errorLabel.appendChild(errorLabelTextNode);
@@ -50,6 +52,12 @@ errorLabel.classList.add("error-label");
     <pre><code class="language-javascript">// append to the parentNode of an input
 input.parentNode.append(errorLabel);
 </code></pre>
+    <p>You can also use <code>innerHTML</code> to add text to the node. Instead of creating a text node and appending it, you could just add:</p>
+    <pre><code class="language-javascript">errorLabel.innerHTML = "This field cannot be empty""
+</code></pre>
+    <blockquote>
+      <p>An understanding of innerHTML is required for the exam</p>
+    </blockquote>
     <h2>Adding validation</h2>
     <p>As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. This has all changed now, in that mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.</p>
     <blockquote>
