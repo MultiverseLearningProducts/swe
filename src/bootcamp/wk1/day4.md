@@ -4,7 +4,6 @@
 Today we are going to look at creating asynchronous functions in JavaScript.
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following resources will help:
   * [Understanding the Event Loop](https://youtu.be/8aGhZQkoFbQ)
   * [Timers in Node.js](https://nodejs.org/en/docs/guides/timers-in-node/)
   * [Asynchronous JavaScript—How Callbacks, Promises, and Async-Await Work](https://dev.to/nas5w/asynchronous-javascript-how-callbacks-promises-and-async-await-work-1f7p)

@@ -5,7 +5,6 @@
 Today we take flight! The first session introduces static class functions. These will help us add a new layer of interactivity to our airports exercise. We then look at inheritance, a core concept of object oriented programming (OOP).
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following resources will help:
   * [Introduction to JavaScript Classes](https://www.w3schools.com/js/js_classes.asp)
   * [JavaScript Class Reference](https://www.w3schools.com/jsref/jsref_classes.asp)
   * [Using test coverage with Jest](https://egghead.io/lessons/javascript-track-project-code-coverage-with-jest)

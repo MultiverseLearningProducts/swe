@@ -5,7 +5,6 @@
 Today we are going to build a web server. In particular we want to understand the difference between static and dynamic content. We are going to set up a simple express server, and also use some templating to create dynamic content.
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following resources will help:
    * [Get started with Express Handlebars](https://www.youtube.com/watch?v=erfN7fH7A6s) 
    * [Create default Layout - Express Handlebars](https://www.youtube.com/watch?v=Yh5qW_L5YNQ)
 ----

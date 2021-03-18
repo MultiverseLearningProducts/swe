@@ -5,7 +5,6 @@
 We have rendered restaurant data from our data model in a browser. Today we will look at adding to our data model through the browser.
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following video resources will help:
   * [Learn HTML Forms In 25 Minutes](https://www.youtube.com/watch?v=fNcJuPIZ2WE)
   * [Form Validation (1min 36)](https://www.youtube.com/watch?v=MppB5jaKyZ4)
 

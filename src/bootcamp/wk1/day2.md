@@ -5,7 +5,6 @@
 Today we are doing to learn about test driven development. We are going to use this philosophy of test driven development (TDD) to begin creating JavaScript objects and use them to program in an object orientated style. 
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following videos will help:
 [Using Visual Studio Code, npm and Jest](https://www.youtube.com/watch?v=EIQgVdoYb0M) (from minute 5:30 onwards). 
 
 ---

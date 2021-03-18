@@ -4,7 +4,6 @@
 Today we are going to retrieve all the restaurants from the restaurant database and use them to populate a web page. We will use CSS @media along with CSS Grid to create a web page which is 'responsive' i.e. which adapts to the screen size of the user's device.
 
 ## Additional resources
-If you are struggling with any of the concepts from today, the following video resources will help:
    * [HTML basics for beginners (15 mins)](https://www.freecodecamp.org/news/html-basics-for-beginners/)
    * [CSS Box Model (4 mins)](https://www.youtube.com/watch?v=WH-86nJPVNk)
    * [Making Modern Layouts with CSS Grid | CSS Grid Basics (16 mins)](https://www.youtube.com/watch?v=br-0i3U1VCA)
