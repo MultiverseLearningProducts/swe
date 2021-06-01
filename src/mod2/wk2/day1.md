@@ -12,7 +12,7 @@ Today we briefly look at the history of JavaScript, before looking at the Docume
 
 ## The History of JavaScript
 
-HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles controlled by HTML (e.g. ``<center>Centred text</center`>). Later, in 1996, CSS would be released and would allow
+HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles controlled by HTML (e.g. `<center>Centred text</center>`). Later, in 1996, CSS would be released and would allow
 developers to decouple presentation (CSS) from document structure (HTML). The structure of web pages and styling was now standardised, but what about interactivity? What if the developer wanted to tell the user what the date and time was, or open a new window programmatically?
 
 Around this time, Microsoft and Netscape were duking it out for browser superiority and it was in fact a Netscape developer (Brandan Eich), who created a client-side scripting language in ten days that would later become JavaScript. It was initially called Mocha, then LiveScript, then later, JavaScript. It wasn't without its problems, but JavaScript enabled designers and developers to easily add dynamic features to their websites. For this reason, JavaScript rapidly emerged as the standard scripting language for the web.
@@ -142,7 +142,7 @@ Here's how we'd write an event handler that also responds to the event by loggin
 const targetForm = document.forms.todoCreateForm;
 
 // apply "submit" event handler
-targetForm.addEventListener("submit", (e) => {
+targetForm.addEventListener('submit', (e) => {
   // prevent the form from submitting
   e.preventDefault();
 

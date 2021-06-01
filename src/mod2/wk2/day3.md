@@ -63,6 +63,7 @@ The `debugger` keyword can be used anywhere in your applications to launch the d
 - What can you see and find in the console?
 
 > You'll need to have an understanding of the debugger keyword for the exam
+
 ## Adding break points in Dev Tools
 
 We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:
@@ -102,7 +103,7 @@ Debug this broken app!
 The main one to understand is the `Promise`. Remember the work we did callbacks last week? The JavaScript promise was an attempt at making asynchronous requests easier to read and write. Below is the syntax:
 
 ```javascript
-fetch("https://someurl.com")
+fetch('https://someurl.com')
   .then((result) => {
     // return the result of the fetch
     return result;

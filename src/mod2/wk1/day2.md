@@ -17,8 +17,8 @@ Today we're going to look at arrays and loops.
 An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:
 
 ```javascript
-let myArray1 = ["Hi!", 1, 2, 3.3]; // preferred method
-let myArray2 = new Array(1, "two", true);
+let myArray1 = ['Hi!', 1, 2, 3.3]; // preferred method
+let myArray2 = new Array(1, 'two', true);
 
 console.log(myArray1, myArray2); // ["Hi!", 1, 2, 3.3], [1, "two", true]
 ```
@@ -50,7 +50,7 @@ console.log(myArray[2] // 3.3
 ```
 
 ```javascript
-let myArray1 = ["Hi!", 1, 2, 3.3];
+let myArray1 = ['Hi!', 1, 2, 3.3];
 
 // more efficient - one console.log line
 
@@ -204,7 +204,7 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 - Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here?
 
-- Continue subtracting and adding the first and last values until you have an array that is nine elements in length
+- Continue subtracting and adding the numbers that follow by themselves
 
 - You should end up with function that returns an array like this:
   `[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
