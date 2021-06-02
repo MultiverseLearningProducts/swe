@@ -48,9 +48,9 @@ You will often need to search an array in your programs, and there are a number 
 The indexOf array method returns the index location of the item in question. Check it out:
 
 ```javascript
-let arr1 = [1, "holy smokes", "007", "The name's Bond"];
+let arr1 = [1, 'holy smokes', '007', "The name's Bond"];
 
-const myIndex = arr1.indexOf("007");
+const myIndex = arr1.indexOf('007');
 
 console.log(arr1[myIndex]); // 007
 ```
@@ -58,7 +58,7 @@ console.log(arr1[myIndex]); // 007
 Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return `-1`. You might think that this has no use, but in fact, it does. By checking if the method returned a `-1` we can provide the user some nice feedback:
 
 ```javascript
-if (arr1.indexOf("jimbobz") === -1) {
+if (arr1.indexOf('jimbobz') === -1) {
   console.log("Tell the user that the item doesn't exist...");
 }
 ```
@@ -68,7 +68,7 @@ if (arr1.indexOf("jimbobz") === -1) {
 The includes method is a very convenient method that returns a "truthy" result. By that, we mean the method will return true or false.
 
 ```javascript
-if (!arr1.includes("abcdefg")) {
+if (!arr1.includes('abcdefg')) {
   console.log("Tell the user that the item doesn't exist...");
 }
 ```
@@ -82,7 +82,7 @@ Another useful method to search our array is the find method. This method employ
 > Knowledge of callbacks, filter and find is not required for the MTA exam.
 
 ```javascript
-let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+let arr1 = [1, 2, 'holy smokes', '007', "The name's Bond"];
 
 // arrow function
 let result = arr1.find((el) => {
@@ -117,7 +117,7 @@ In the above example, `el` is each element that is passed into the callback func
 The last strategy we will look at is array.filter:
 
 ```javascript
-let arr1 = [1, 2, "holy smokes", "007", "The name's Bond"];
+let arr1 = [1, 2, 'holy smokes', '007', "The name's Bond"];
 
 let result = arr1.filter((el) => el.toString().length > 2);
 
@@ -140,13 +140,13 @@ If this sounds confusing, make sure you ask your coach to explain what's going o
 
 ### Sorting an array of strings
 
-From time to time, you may need to sort your array. Thankfullly, Sorting an array of strings in JavaScript is very straightforward:
+From time to time, you may need to sort your array. Thankfully, Sorting an array of strings in JavaScript is very straightforward:
 
 ```javascript
-let numbersAsStrings = ["1424242", "13220", "1000"];
+let strings = ['Dan', 'Jim', 'Edy'];
 
-numbersAsStrings.sort();
-console.log(numbersAsStrings); // ["1000", "13220", "1424242"]
+strings.sort();
+console.log(strings); // ["Dan", "Edy", "Jim"]
 ```
 
 > Thinking back to our conversation about primitives, why has the sort method changed the array directly?
@@ -180,11 +180,10 @@ In the example above, if the callback returns either 1 or a -1, we know that the
 
 ### Part 1
 
-Using the arrays below, set-up a search function that can take the array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
+Set-up a search function that can take an array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
 
 ### Part 2
 
 Create a sort function that can take an array, sort the contents, then return the sorted array.
-
 
 [main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);
