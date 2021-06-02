@@ -204,7 +204,7 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 - Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here?
 
-- Continue subtracting and adding the numbers that follow by themselves
+- Continue subtracting and adding the numbers that follow by themselves, adding them to the start and end of the array (start for negative numbers, end for positive)
 
 - You should end up with function that returns an array like this:
   `[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
