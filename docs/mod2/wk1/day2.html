@@ -22,8 +22,8 @@
     </ul>
     <h3>Defining an array</h3>
     <p>An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:</p>
-    <pre><code class="language-javascript">let myArray1 = ["Hi!", 1, 2, 3.3]; // preferred method
-let myArray2 = new Array(1, "two", true);
+    <pre><code class="language-javascript">let myArray1 = ['Hi!', 1, 2, 3.3]; // preferred method
+let myArray2 = new Array(1, 'two', true);
 
 console.log(myArray1, myArray2); // ["Hi!", 1, 2, 3.3], [1, "two", true]
 </code></pre>
@@ -43,7 +43,7 @@ console.log(myArray[0] // 1
 console.log(myArray[1] // 2
 console.log(myArray[2] // 3.3
 </code></pre>
-    <pre><code class="language-javascript">let myArray1 = ["Hi!", 1, 2, 3.3];
+    <pre><code class="language-javascript">let myArray1 = ['Hi!', 1, 2, 3.3];
 
 // more efficient - one console.log line
 
@@ -188,7 +188,7 @@ for (let i = 0; i &#x3C; myMdArray.length; i++) {
         <p>Next, add the value to itself, so <code>121 + 121</code>. Assign this value to the end of the array. Which method do you need to use here?</p>
       </li>
       <li>
-        <p>Continue subtracting and adding the first and last values until you have an array that is nine elements in length</p>
+        <p>Continue subtracting and adding the numbers that follow by themselves, adding them to the start and end of the array (start for negative numbers, end for positive)</p>
       </li>
       <li>
         <p>

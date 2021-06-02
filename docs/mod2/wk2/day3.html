@@ -60,8 +60,8 @@
     </ul>
     <blockquote>
       <p>You'll need to have an understanding of the debugger keyword for the exam</p>
-      <h2>Adding break points in Dev Tools</h2>
     </blockquote>
+    <h2>Adding break points in Dev Tools</h2>
     <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:</p>
     <p>
       <img src="https://developers.google.com/web/tools/chrome-devtools/javascript/imgs/loc-breakpoint.png">
@@ -88,7 +88,7 @@
     <p>Debug this broken app!</p>
     <p><a href="https://drive.google.com/file/d/16a_lShlRY9lMx6FbZYsPJ7HxJSy4Cs-c/view?usp=sharing">Here</a> is a link to a broken app. The app makes a fetch request to a URL, then attempts to load the results in the page. There are some new concepts (plus many concepts we have learnt!)</p>
     <p>The main one to understand is the <code>Promise</code>. Remember the work we did callbacks last week? The JavaScript promise was an attempt at making asynchronous requests easier to read and write. Below is the syntax:</p>
-    <pre><code class="language-javascript">fetch("https://someurl.com")
+    <pre><code class="language-javascript">fetch('https://someurl.com')
   .then((result) => {
     // return the result of the fetch
     return result;
