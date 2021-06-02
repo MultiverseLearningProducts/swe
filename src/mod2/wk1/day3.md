@@ -186,4 +186,8 @@ Set-up a search function that can take an array and a search parameter as an arg
 
 Create a sort function that can take an array, sort the contents, then return the sorted array.
 
+## Resources
+
+[Callbacks and async](https://developer.okta.com/blog/2019/01/16/history-and-future-of-async-javascript)
+
 [main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);

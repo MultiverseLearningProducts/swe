@@ -35,6 +35,7 @@ In addition to the string methods, there are a number of built-in number methods
 | :------------ | :---------------------------------------------------------------------------- | :----------------------- |
 | `toFixed`     | Returns a string, with the number written with a specified number of decimals | `x.toFixed(1)`           |
 | `toPrecision` | Returns a string, with a number written with a specified length               | `x.toPrecision(2);`      |
+| `valueOf`     | Returns the value of a primitive or object                                    | `x.valueOf()`            |
 | `Number`      | Returns a number, converted (typically) from a string                         | `x = Number("10")`       |
 | `parseInt`    | Returns an integer, converted from its argument (same as Number)              | `x = parseInt("10")`     |
 | `parseFloat`  | Returns a floating point number, converted from its argument                  | `x = parseFloat("10.2")` |
@@ -75,7 +76,7 @@ const date2 = new Date(1900, 0, 17, 0, 0, 0, 0);
 
 const date3 = new Date(10000000000); // milliseconds
 
-const date4 = new Date("October 13, 2014 11:13:00"); // date string
+const date4 = new Date('October 13, 2014 11:13:00'); // date string
 
 console.log(
   date1.toString(), // "Thu Feb 25 2021 14:20:51 GMT+0000 (Greenwich Mean Time)"
