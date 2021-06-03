@@ -148,6 +148,20 @@ console.log(myDate2.getDate(), myDate2.getMonth(), myDate2.getFullYear());
 
 Can you think of a use for adding and subtracting dates in an application?
 
+### Localised date format
+
+So what if you want your date to be presented in the British format; dd/mm/yyyy? Or perhaps the US format; mm/dd/yyyy?
+
+No problemo!
+
+```javascript
+console.log(myDate2.toLocaleDateString('en-GB')); // "01/04/2019"
+
+console.log(myDate2.toLocaleDateString('en-US')); // "4/1/2019"
+```
+
+Note that the representation of the months here is not zero-indexed.
+
 ## Assignment
 
 Here are some famous events:
