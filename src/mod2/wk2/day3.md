@@ -66,11 +66,9 @@ The `debugger` keyword can be used anywhere in your applications to launch the d
 
 ## Adding break points in Dev Tools
 
-We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:
+We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools.
 
-![](https://developers.google.com/web/tools/chrome-devtools/javascript/imgs/loc-breakpoint.png)
-
-Right click the line you want to break on, then click "Add breakpoint".
+Navigate to the sources tab, right click the line you want to break on, then click "Add breakpoint".
 
 Now, when you refresh the page, the debugger will kick in. From here, you can analyse the contents of variables by hovering over them. You can also see the local, script and global variables on the right hand side.
 
@@ -92,7 +90,7 @@ try {
 
 In the code above, we try to remove an element from the HTML. If the element isn't there, then a type error will be thrown. If we wrap it in a try/catch block, we can handle this exception, knowing that it may occur.
 
-> The `finally` block also runs irrespective of whether there was an error. This section is optional.
+> The `finally` block always runs if it is present
 
 ## Assignment
 

@@ -202,11 +202,11 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 - Your function should firstly subtract the value by itself, so `121 - 121`. Assign this value to the first position in an array. What method do you need for this?
 
-- Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here?
+- Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here? You should not have an array that looks like this: `[-121, 121]`
 
-- Continue subtracting and adding the numbers that follow by themselves, adding them to the start and end of the array (start for negative numbers, end for positive)
+- Next, subtract the negative number by itself and assign that to the beginning of the array. Do the same with the positive number, but assign to the end of the array.
 
 - You should end up with function that returns an array like this:
-  `[-968, -484, -242, -121, 0, 121, 242, 484, 968]`
+  `[-968, -484, -242, -121, 121, 242, 484, 968]`
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);
