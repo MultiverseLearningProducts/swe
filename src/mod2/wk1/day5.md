@@ -134,12 +134,16 @@ Keep working with the date code and the information above to create a string tha
 Along with the various `get` methods available to us, we also have a number of `set` methods. These methods can set the day, month, year and so on. We can combine these methods with an arithmetic operator to add and subtract dates:
 
 ```javascript
-let myDate = new Date(2021, 0, 25);
+let myDate2 = new Date(); // 3, 5, 2021
 
-myDate.setDate(myDate.getDate() - 2);
+myDate2.setDate(myDate2.getDate() - 2);
 
-console.log(myDate.getDate(), myDate.getMonth(), myDate.getFullYear());
-// 23, 0, 2021
+myDate2.setMonth(myDate2.getMonth() - 2);
+
+myDate2.setFullYear(myDate2.getFullYear() - 2);
+
+console.log(myDate2.getDate(), myDate2.getMonth(), myDate2.getFullYear());
+// 1, 3, 2019
 ```
 
 Can you think of a use for adding and subtracting dates in an application?
