@@ -146,20 +146,6 @@ Can you think of a use for adding and subtracting dates in an application?
 
 ## Assignment
 
-### Part 1
-
-- Create a function called `centuryFromYear`
-- Given a year, the function should return the century it is in
-
-Input/Output Examples
-
-- centuryFromYear(1705), returns (18)
-- centuryFromYear(1900), returns (19)
-- centuryFromYear(1601), returns (17)
-- centuryFromYear(2000), returns (20)
-
-### Part 2
-
 Here are some famous events:
 
 London Olympics, 27 July 2012 to 12 August 2012
