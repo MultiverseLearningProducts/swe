@@ -62,11 +62,8 @@
       <p>You'll need to have an understanding of the debugger keyword for the exam</p>
     </blockquote>
     <h2>Adding break points in Dev Tools</h2>
-    <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools:</p>
-    <p>
-      <img src="https://developers.google.com/web/tools/chrome-devtools/javascript/imgs/loc-breakpoint.png">
-    </p>
-    <p>Right click the line you want to break on, then click "Add breakpoint".</p>
+    <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools.</p>
+    <p>Navigate to the sources tab, right click the line you want to break on, then click "Add breakpoint".</p>
     <p>Now, when you refresh the page, the debugger will kick in. From here, you can analyse the contents of variables by hovering over them. You can also see the local, script and global variables on the right hand side.</p>
     <h2>Exception handling with Try/Catch</h2>
     <p>Sometimes you know ahead of time that a codeblock may fail, or you would like the codeblock to fail in a "graceful" way without breaking your entire application. For this with can use a <code>try/catch</code> block:</p>
@@ -82,7 +79,7 @@
 </code></pre>
     <p>In the code above, we try to remove an element from the HTML. If the element isn't there, then a type error will be thrown. If we wrap it in a try/catch block, we can handle this exception, knowing that it may occur.</p>
     <blockquote>
-      <p>The <code>finally</code> block also runs irrespective of whether there was an error. This section is optional.</p>
+      <p>The <code>finally</code> block always runs if it is present</p>
     </blockquote>
     <h2>Assignment</h2>
     <p>Debug this broken app!</p>
