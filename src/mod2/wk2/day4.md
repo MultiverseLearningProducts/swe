@@ -27,7 +27,6 @@ You can read more about HTTP [here](https://docs.google.com/presentation/d/1OFtw
 
 ## Understand the URL pattern
 
-
 The Uniform Resource Locator (URL) is used to find the resource on the internet.
 
 ![](https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png)
@@ -35,7 +34,6 @@ The Uniform Resource Locator (URL) is used to find the resource on the internet.
 Notice the query string on the end - this is used to send additional (insensitive) information to the server.
 
 > Knowledge of the URL pattern is not required for the exam, but helps to understand the difference between GET and POST
-
 
 ## Understand the difference between GET and POST
 
@@ -59,8 +57,29 @@ Checkout this search engine called Google. On the home page, their form submits 
 
 ```html
 <form action="/search" method="GET">
-  <!-- form fields -->
+  <label for="taskName">Task Name</label>
+  <input
+    type="text"
+    class="form-control"
+    name="taskName"
+    id="taskNameID"
+    placeholder="Name of the task"
+  />
+  <input
+    type="text"
+    class="form-control"
+    name="owner"
+    id="ownerID"
+    placeholder="The person that owns the task"
+  />
+  <!-- other form fields -->
 </form>
+```
+
+Likewise, if we were to name submit a task (amongst other fields) above, the keys and value pairs in the URL would be taken from the `name` field:
+
+```html
+http://someurl/search?taskName=mytaskname&owner=Daniel
 ```
 
 When you login to Google, a POST request is used. Your data is sensitive, and we don't want it in the query string where everyone can see it!

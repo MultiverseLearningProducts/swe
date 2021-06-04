@@ -29,7 +29,7 @@ We've already used one of the primary strategies to debug and that is the `conso
 
 `document.write` allows you to write HTML to the page source dynamically and can be useful for testing. Bear in mind that if you write to the page after the content has been loaded, it will remove all of the body content. See [this](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4) example.
 
-## The stack trace
+## The Stack Trace
 
 Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.
 
@@ -54,7 +54,7 @@ Uncaught TypeError: invalidFields.cannieFinditCapt is not a function
 - At what line did the error occur?
 - What is the function at the base of the stack?
 
-## The debugger statement
+## The Debugger statement
 
 The `debugger` keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a `breakpoint`.
 

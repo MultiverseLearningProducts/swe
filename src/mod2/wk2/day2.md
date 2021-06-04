@@ -19,21 +19,21 @@ There are many ways to do this, and you will have no doubt come across different
 
 ```javascript
 // create a label
-const errorLabel = document.createElement("label");
+const errorLabel = document.createElement('label');
 
 // set a "for" attribute equal to the input's ID to help UX
-errorLabel.setAttribute("for", input.id);
+errorLabel.setAttribute('for', input.id);
 
 // create a text node
 const errorLabelTextNode = document.createTextNode(
-  "This field cannot be empty"
+  'This field cannot be empty'
 );
 
 // append the text node to the label
 errorLabel.appendChild(errorLabelTextNode);
 
 // add a class for styling purposes
-errorLabel.classList.add("error-label");
+errorLabel.classList.add('error-label');
 ```
 
 > You need to know `createElement` and `setAttribute` for the exam
@@ -56,7 +56,7 @@ input.parentNode.append(errorLabel);
 You can also use `innerHTML` to add text to the node. Instead of creating a text node and appending it, you could just add:
 
 ```javascript
-errorLabel.innerHTML = "This field cannot be empty""
+errorLabel.innerHTML = 'This field cannot be empty';
 ```
 
 > An understanding of innerHTML is required for the exam
