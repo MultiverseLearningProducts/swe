@@ -114,32 +114,48 @@ function getDiscount(day) {
 
 There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
 
-Let's look at the syntax:
+#### Try these exam questions
+
+What is returned when to functions are called in the console.log statements?
 
 ```javascript
 // older way
 function addition(value1, value2) {
-  return value1 + value2;
+  return value1 += value2;
 }
 
+console.log(addition(567, "56")
+```
+
+1. NaN
+2. 56756
+3. "56756"
+
+```javascript
 // assigning a function to a variable using older way
 const multiply = function (value1, value2) {
   return value1 * value2;
 };
 
-// newer "arrow" function form
-const subtract = (value1, value2) => {
-  return value1 - value2;
-};
-
-console.log(addition(29, 2)
-console.log(subtract(29, 2)
 console.log(multiply(29, 2));
 ```
 
-#### Try this exam question
+1. 58
+2. 52
+3. A syntax error is thrown
 
-What is returned when to function is called in the console.log statement?
+```javascript
+// newer "arrow" function form
+const subtract = (value1, value2) => {
+  return value1--;
+};
+
+console.log(subtract(12, 25));
+```
+
+1. 11
+2. 12
+3. 13
 
 # Lesson 2
 
@@ -187,13 +203,9 @@ Key points:
 
 Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a `let` variable outside of its scope. We'll cover try/catch in more detail later.
 
-#### Try this exam question
+#### Try these exam questions
 
 What is logged to the console when the addition function is called?
-
-1. A syntax error is thrown
-2. NaN
-3. 7
 
 ```javascript
 let a = '2';
@@ -207,6 +219,29 @@ function addition(num1, num2 = 4) {
 
 console.log(addition(3));
 ```
+
+1. A syntax error is thrown
+2. NaN
+3. 7
+
+What is logged in the console?
+
+```javascript
+const myString = 'Hey, how you doing?';
+let newString;
+
+(function () {
+  newString = myString.length + ' Fine, thanks.';
+})();
+
+console.log(newString);
+```
+
+1. "Fine, thanks."
+2. "19 Fine, thanks."
+3. Uncaught ReferenceError
+
+> `NaN` literally means `Not-a-Number`
 
 ### Operators
 
@@ -240,7 +275,21 @@ x %= 2;
 console.log(x); // 1
 ```
 
-> When using operators on values that are not a number, JavaScript may return `NaN`, which literally means `Not-a-Number`
+#### Try this exam question
+
+What will be logged in the console log statement?
+
+```javascript
+const modulo = (value) => {
+  const referenceValue = 2;
+  return value % referenceValue === 0 ? 'Even number' : 'False number';
+};
+
+console.log(modulo(320));
+```
+
+1. "Even number"
+2. "False number"
 
 #### Assignment operators
 
@@ -266,6 +315,24 @@ console.log(x); // 0
 ```
 
 The line `x -= 2;` in plain English would be: "Take x, subtract 2, then assign the result back to x"
+
+#### Try this exam question
+
+What is logged in the console?
+
+```javascript
+let result = 3189;
+
+result += 21;
+result -= 10;
+result *= 66;
+
+console.log(result);
+```
+
+1. 211200
+2. 210100
+3.
 
 #### Math methods
 
