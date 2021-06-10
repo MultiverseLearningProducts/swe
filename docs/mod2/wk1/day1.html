@@ -68,6 +68,26 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
       <p>Don't know what datatype you're dealing with? <code>console.log(typeof myString)</code></p>
     </blockquote>
     <p>Note that even though we've transformed the string to uppercase, the original variable has not been changed.</p>
+    <h4>Try this exam question</h4>
+    <p>The following variables have been initialised.</p>
+    <pre><code class="language-javascript">let destination = 'London';
+let flightNumber = 123578;
+let hasPassengers = true;
+let hasTakeoffClearance = false;
+let fuelAmount = 2000.0;
+let passengers = [
+  {
+    name: 'Cyril Simon',
+    passportNumber: 323334343,
+  },
+  {
+    name: 'Paul Daniels',
+    passportNumber: 435454664,
+  },
+];
+let id = flightNumber + destination;
+</code></pre>
+    <p>What are their datatypes?</p>
     <h3>Conditionals</h3>
     <p>
       At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
@@ -131,9 +151,9 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 }
 </code></pre>
     <h3>Functions</h3>
-    <p>There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.</p>
+    <p>There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function. Find the different function strategies in the exam questions below.</p>
     <h4>Try these exam questions</h4>
-    <p>What is returned when to functions are called in the console.log statements?</p>
+    <p>What is logged in the console?</p>
     <pre><code class="language-javascript">// older way
 function addition(value1, value2) {
   return value1 += value2;
@@ -216,7 +236,7 @@ myFunction();
     </ul>
     <p>Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a <code>let</code> variable outside of its scope. We'll cover try/catch in more detail later.</p>
     <h4>Try these exam questions</h4>
-    <p>What is logged to the console when the addition function is called?</p>
+    <p>What is logged in the console?</p>
     <pre><code class="language-javascript">let a = '2';
 const b = 50;
 
@@ -315,7 +335,7 @@ x %= 2;
 console.log(x); // 1
 </code></pre>
     <h4>Try this exam question</h4>
-    <p>What will be logged in the console log statement?</p>
+    <p>What will be logged in the console?</p>
     <pre><code class="language-javascript">const modulo = (value) => {
   const referenceValue = 2;
   return value % referenceValue === 0 ? 'Even number' : 'False number';

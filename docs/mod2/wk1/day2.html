@@ -19,6 +19,7 @@
       <li>Defining an array</li>
       <li>Accessing an array</li>
       <li>Looping over an array</li>
+      <li>Array methods</li>
     </ul>
     <h3>Defining an array</h3>
     <p>An array is a datatype in JavaScript (and many other languages!) that can contain one or more values. There are two main ways to declare an array:</p>
@@ -51,25 +52,13 @@ for (let i = 0; i &#x3C; myArray1.length; i++) {
   console.log(myArray[i]); // 1, 2, 3.3
 }
 </code></pre>
-    <p>Let's break this loop down:</p>
-    <p>First, we initialise a variable and assign it zero</p>
-    <pre><code class="language-javascript">let i = 0;
-</code></pre>
-    <p>The next part of the loop effectively says "while the variable <code>i</code> is less than the length of myArray, continue looping"</p>
-    <pre><code class="language-javascript">i &#x3C; myArray1.length;
-</code></pre>
-    <p>Last is a compound operator that adds one to i on each iteration of the loop</p>
-    <pre><code class="language-javascript">i++;
-</code></pre>
     <blockquote>
       <p>The <code>break</code> keyword we saw yesterday can be used to exit a loop</p>
     </blockquote>
     <blockquote>
       <p>Another keyword related to break is <code>continue</code>. This keyword skips the current loop iteration and continues with the next one</p>
     </blockquote>
-    <h2>Assignment</h2>
-    <p>Given an array of integers, create a function that can return a new array with each value doubled.</p>
-    <p>For example: <code>[1, 2, 3] --> [2, 4, 6]</code></p>
+    <h3>Try these exam questions</h3>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -100,11 +89,13 @@ console.log(myMdArray[0][2]); // 3
 </code></pre>
     <p>In the code example above, we're accessing the first nested array, then the third element in that nested array.</p>
     <h3>Looping over multi-dimensional arrays</h3>
-    <p>To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop:</p>
+    <p>To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop. See the exam question below for an example and a challenge.</p>
+    <h3>Try this exam question</h3>
+    <p>You want to skip over the loop iterations that are even numbers and break out of the loop altogether if a duplicate value is found. Extend the code below to do this.</p>
     <pre><code class="language-javascript">let myMdArray = [
   [1, 2, 3],
-  [2, 3, 4],
-  [5, 6, 7],
+  [4, 5, 6],
+  [6, 8, 9],
 ];
 
 for (let i = 0; i &#x3C; myMdArray.length; i++) {
@@ -115,28 +106,6 @@ for (let i = 0; i &#x3C; myMdArray.length; i++) {
   }
 }
 </code></pre>
-    <p>Eeeeek! Looks scary, doesn't it? Let's break it down:</p>
-    <ol>
-      <li>The first loop loops over the contents of the first array:</li>
-    </ol>
-    <pre><code class="language-javascript">for (let i = 0; i &#x3C; myMdArray.length; i++) {
-  console.log(myMdArray[i]); // [1, 2, 3], [2, 3, 4], [5, 6, 7]
-}
-</code></pre>
-    <ol start="2">
-      <li>The second loop gets the length if the nested array, e.g. for the array <code>[1, 2, 3]</code>, the length is three.</li>
-    </ol>
-    <pre><code class="language-javascript">let nestedArrayLength = myMdArray[i].length;
-</code></pre>
-    <ol start="3">
-      <li>We then construct a second loop to loop through the second array, and use the square bracket notation to extract the elements</li>
-    </ol>
-    <pre><code class="language-javascript">for (let j = 0; j &#x3C; nestedArrayLength; j++) {
-  console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
-}
-</code></pre>
-    <h2>Assignment</h2>
-    <p>The assignment is the same as the one above, except this time you're looping over you nested array, doubling the values, and returning the result.</p>
     <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -176,27 +145,15 @@ for (let i = 0; i &#x3C; myMdArray.length; i++) {
         </tr>
       </tbody>
     </table>
-    <h2>Assignment</h2>
-    <ul>
-      <li>
-        <p>Create a function that takes a single element as a parameter, e.g. <code>121</code></p>
-      </li>
-      <li>
-        <p>Your function should firstly subtract the value by itself, so <code>121 - 121</code>. Assign this value to the first position in an array. What method do you need for this?</p>
-      </li>
-      <li>
-        <p>Next, add the value to itself, so <code>121 + 121</code>. Assign this value to the end of the array. Which method do you need to use here? You should not have an array that looks like this: <code>[-121, 121]</code></p>
-      </li>
-      <li>
-        <p>Next, subtract the negative number by itself and assign that to the beginning of the array. Do the same with the positive number, but assign to the end of the array.</p>
-      </li>
-      <li>
-        <p>
-          You should end up with function that returns an array like this:
-          <code>[-968, -484, -242, -121, 121, 242, 484, 968]</code>
-        </p>
-      </li>
-    </ul>
+    <h3>Try this exam question</h3>
+    <p>What does the array contain after calling the following methods on it?</p>
+    <pre><code class="language-javascript">let myArray = [12, 'test', 3, '@', 5];
+
+myArray.pop();
+myArray.unshift(12);
+myArray.shift();
+myArray.push(6);
+</code></pre>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day1.html">prev</a>|<a href="/swe/mod2/wk1/day3.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

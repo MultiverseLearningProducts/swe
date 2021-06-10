@@ -17,6 +17,7 @@
     <h2>Learning Objectives</h2>
     <ul>
       <li>Complete the FizzBuzz challenge</li>
+      <li>Searching and sorting arrays</li>
     </ul>
     <h2>Assignment - FizzBuzz</h2>
     <p>We now have enough knowledge under our belts to attempt a typical JavaScript interview question known as FizzBuzz.</p>
@@ -52,11 +53,7 @@ const myIndex = arr1.indexOf('007');
 
 console.log(arr1[myIndex]); // 007
 </code></pre>
-    <p>Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return <code>-1</code>. You might think that this has no use, but in fact, it does. By checking if the method returned a <code>-1</code> we can provide the user some nice feedback:</p>
-    <pre><code class="language-javascript">if (arr1.indexOf('jimbobz') === -1) {
-  console.log("Tell the user that the item doesn't exist...");
-}
-</code></pre>
+    <p>Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return <code>-1</code>.</p>
     <h4>Search using array.includes</h4>
     <p>The includes method is a very convenient method that returns a "truthy" result. By that, we mean the method will return true or false.</p>
     <pre><code class="language-javascript">if (!arr1.includes('abcdefg')) {
@@ -83,17 +80,6 @@ let result = arr1.find(function (el) {
 
 console.log(result); // 1
 </code></pre>
-    <h5>What is a callback?</h5>
-    <p>A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:</p>
-    <pre><code class="language-javascript">// anonymous callback function with no name
-(el) => {
-  return el.toString().length &#x3C; 5;
-};
-</code></pre>
-    <p>In the above example, <code>el</code> is each element that is passed into the callback function, so <code>1, 2, "holy smokes"</code>, and so on.</p>
-    <blockquote>
-      <p><strong>Further reading</strong>: Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax</p>
-    </blockquote>
     <h4>Search using array.filter</h4>
     <p>The last strategy we will look at is array.filter:</p>
     <pre><code class="language-javascript">let arr1 = [1, 2, 'holy smokes', '007', "The name's Bond"];
@@ -103,9 +89,35 @@ let result = arr1.filter((el) => el.toString().length > 2);
 console.log(result); //  ["holy smokes", "007", "The name's Bond"]
 </code></pre>
     <p>Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.</p>
-    <p>Can you spot the difference between the find method earlier and the filter method above?</p>
-    <p>One of the advantages of using the arrow functions that we introduced on day one is if you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.</p>
-    <p>If this sounds confusing, make sure you ask your coach to explain what's going on!</p>
+    <h3>Try this exam question</h3>
+    <p>What is logged to the console?</p>
+    <pre><code class="language-javascript">function findText() {
+  let loremIpsum =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  let i = loremIpsum.indexOf('Duis');
+  let newString = loremIpsum.substring(0, i);
+
+  newString = newString.trim();
+
+  let result;
+
+  if (newString.endsWith('consequence')) {
+    result += newString.toUpperCase();
+  } else {
+    result += loremIpsum.lastIndexOf('consequat');
+  }
+
+  return result;
+}
+
+console.log(findText());
+</code></pre>
+    <ol>
+      <li>NaN</li>
+      <li>221</li>
+      <li>LOREM IPSUM DOLOR SIT AMET</li>
+    </ol>
     <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -138,12 +150,6 @@ console.log(numbers); // [10001, 1678, 2, 3, 78, 9]
   return 0; // numbers are the same
 });
 </code></pre>
-    <p>In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same, so no switch is required. The function will keep checking and switching the values until the array is sorted.</p>
-    <h2>Assignment</h2>
-    <h3>Part 1</h3>
-    <p>Set-up a search function that can take an array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.</p>
-    <h3>Part 2</h3>
-    <p>Create a sort function that can take an array, sort the contents, then return the sorted array.</p>
     <h2>Resources</h2>
     <p><a href="https://developer.okta.com/blog/2019/01/16/history-and-future-of-async-javascript">Callbacks and async</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day2.html">prev</a>|<a href="/swe/mod2/wk1/day4.html">next</a>;</p>
