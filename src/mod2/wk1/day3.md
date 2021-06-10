@@ -9,6 +9,7 @@ Today we're going to start with a little test, then we'll go on to look at sorti
 ## Learning Objectives
 
 - Complete the FizzBuzz challenge
+- Searching and sorting arrays
 
 ## Assignment - FizzBuzz
 
@@ -55,13 +56,7 @@ const myIndex = arr1.indexOf('007');
 console.log(arr1[myIndex]); // 007
 ```
 
-Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return `-1`. You might think that this has no use, but in fact, it does. By checking if the method returned a `-1` we can provide the user some nice feedback:
-
-```javascript
-if (arr1.indexOf('jimbobz') === -1) {
-  console.log("Tell the user that the item doesn't exist...");
-}
-```
+Very cool! A nice easy way to get to the item. If it doesn't exist, the method will return `-1`.
 
 #### Search using array.includes
 
@@ -97,21 +92,6 @@ let result = arr1.find(function (el) {
 console.log(result); // 1
 ```
 
-##### What is a callback?
-
-A callback is a strategy used when a piece of code has to wait to do something first before it can do something else. In our example, our code has to first get the items one by one, then it can perform the the check on them. The check on them happens in an "anonymous" function. That is, a function with no name:
-
-```javascript
-// anonymous callback function with no name
-(el) => {
-  return el.toString().length < 5;
-};
-```
-
-In the above example, `el` is each element that is passed into the callback function, so `1, 2, "holy smokes"`, and so on.
-
-> **Further reading**: Callbacks are a key feature of JavaScript, so it is definitely worth spending some time getting comfortable with the syntax
-
 #### Search using array.filter
 
 The last strategy we will look at is array.filter:
@@ -126,11 +106,37 @@ console.log(result); //  ["holy smokes", "007", "The name's Bond"]
 
 Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.
 
-Can you spot the difference between the find method earlier and the filter method above?
+### Try this exam question
 
-One of the advantages of using the arrow functions that we introduced on day one is if you can squeeze the statement onto one line, then the return statement is "implied", therefore we don't need to actually type the word return, nor do we need to utilise the curly function braces over multiple lines.
+What is logged to the console?
 
-If this sounds confusing, make sure you ask your coach to explain what's going on!
+```javascript
+function findText() {
+  let loremIpsum =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  let i = loremIpsum.indexOf('Duis');
+  let newString = loremIpsum.substring(0, i);
+
+  newString = newString.trim();
+
+  let result;
+
+  if (newString.endsWith('consequence')) {
+    result += newString.toUpperCase();
+  } else {
+    result += loremIpsum.lastIndexOf('consequat');
+  }
+
+  return result;
+}
+
+console.log(findText());
+```
+
+1. NaN
+2. 221
+3. LOREM IPSUM DOLOR SIT AMET
 
 # Lesson 3
 
@@ -173,18 +179,6 @@ numbers.sort(function (a, b) {
   return 0; // numbers are the same
 });
 ```
-
-In the example above, if the callback returns either 1 or a -1, we know that the numbers need switching because one is greater or less than the other. If a zero is returned, the numbers are the same, so no switch is required. The function will keep checking and switching the values until the array is sorted.
-
-## Assignment
-
-### Part 1
-
-Set-up a search function that can take an array and a search parameter as an argument. Your function should return the item if it can be found, or a message saying that the item could not be found.
-
-### Part 2
-
-Create a sort function that can take an array, sort the contents, then return the sorted array.
 
 ## Resources
 

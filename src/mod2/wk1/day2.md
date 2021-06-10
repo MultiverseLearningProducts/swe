@@ -11,6 +11,7 @@ Today we're going to look at arrays and loops.
 - Defining an array
 - Accessing an array
 - Looping over an array
+- Array methods
 
 ### Defining an array
 
@@ -59,35 +60,11 @@ for (let i = 0; i < myArray1.length; i++) {
 }
 ```
 
-Let's break this loop down:
-
-First, we initialise a variable and assign it zero
-
-```javascript
-let i = 0;
-```
-
-The next part of the loop effectively says "while the variable `i` is less than the length of myArray, continue looping"
-
-```javascript
-i < myArray1.length;
-```
-
-Last is a compound operator that adds one to i on each iteration of the loop
-
-```javascript
-i++;
-```
-
 > The `break` keyword we saw yesterday can be used to exit a loop
 
 > Another keyword related to break is `continue`. This keyword skips the current loop iteration and continues with the next one
 
-## Assignment
-
-Given an array of integers, create a function that can return a new array with each value doubled.
-
-For example: `[1, 2, 3] --> [2, 4, 6]`
+### Try these exam questions
 
 # Lesson 2
 
@@ -131,13 +108,17 @@ In the code example above, we're accessing the first nested array, then the thir
 
 ### Looping over multi-dimensional arrays
 
-To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop:
+To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop. See the exam question below for an example and a challenge.
+
+### Try this exam question
+
+You want to skip over the loop iterations that are even numbers and break out of the loop altogether if a duplicate value is found. Extend the code below to do this.
 
 ```javascript
 let myMdArray = [
   [1, 2, 3],
-  [2, 3, 4],
-  [5, 6, 7],
+  [4, 5, 6],
+  [6, 8, 9],
 ];
 
 for (let i = 0; i < myMdArray.length; i++) {
@@ -148,34 +129,6 @@ for (let i = 0; i < myMdArray.length; i++) {
   }
 }
 ```
-
-Eeeeek! Looks scary, doesn't it? Let's break it down:
-
-1. The first loop loops over the contents of the first array:
-
-```javascript
-for (let i = 0; i < myMdArray.length; i++) {
-  console.log(myMdArray[i]); // [1, 2, 3], [2, 3, 4], [5, 6, 7]
-}
-```
-
-2. The second loop gets the length if the nested array, e.g. for the array `[1, 2, 3]`, the length is three.
-
-```javascript
-let nestedArrayLength = myMdArray[i].length;
-```
-
-3. We then construct a second loop to loop through the second array, and use the square bracket notation to extract the elements
-
-```javascript
-for (let j = 0; j < nestedArrayLength; j++) {
-  console.log(myMdArray[i][j]); // 1, 2, 3, 2, 3, 4, 5, 6, 7
-}
-```
-
-## Assignment
-
-The assignment is the same as the one above, except this time you're looping over you nested array, doubling the values, and returning the result.
 
 # Lesson 3
 
@@ -196,17 +149,17 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 | Shift   | `myArray1.shift()`    | Removes the first item in the array |
 | Unshift | `myArray1.unshift(1)` | Adds item to beginning of array     |
 
-## Assignment
+### Try this exam question
 
-- Create a function that takes a single element as a parameter, e.g. `121`
+What does the array contain after calling the following methods on it?
 
-- Your function should firstly subtract the value by itself, so `121 - 121`. Assign this value to the first position in an array. What method do you need for this?
+```javascript
+let myArray = [12, 'test', 3, '@', 5];
 
-- Next, add the value to itself, so `121 + 121`. Assign this value to the end of the array. Which method do you need to use here? You should not have an array that looks like this: `[-121, 121]`
-
-- Next, subtract the negative number by itself and assign that to the beginning of the array. Do the same with the positive number, but assign to the end of the array.
-
-- You should end up with function that returns an array like this:
-  `[-968, -484, -242, -121, 121, 242, 484, 968]`
+myArray.pop();
+myArray.unshift(12);
+myArray.shift();
+myArray.push(6);
+```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

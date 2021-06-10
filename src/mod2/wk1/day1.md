@@ -47,6 +47,31 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 
 Note that even though we've transformed the string to uppercase, the original variable has not been changed.
 
+#### Try this exam question
+
+The following variables have been initialised.
+
+```javascript
+let destination = 'London';
+let flightNumber = 123578;
+let hasPassengers = true;
+let hasTakeoffClearance = false;
+let fuelAmount = 2000.0;
+let passengers = [
+  {
+    name: 'Cyril Simon',
+    passportNumber: 323334343,
+  },
+  {
+    name: 'Paul Daniels',
+    passportNumber: 435454664,
+  },
+];
+let id = flightNumber + destination;
+```
+
+What are their datatypes?
+
 ### Conditionals
 
 At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
@@ -114,11 +139,11 @@ function getDiscount(day) {
 
 ### Functions
 
-There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function. Find the different function strategies in the exam questions below.
 
 #### Try these exam questions
 
-What is returned when to functions are called in the console.log statements?
+What is logged in the console?
 
 ```javascript
 // older way
@@ -207,7 +232,7 @@ Don't worry too much about the try/catch block above. This is an error handling 
 
 #### Try these exam questions
 
-What is logged to the console when the addition function is called?
+What is logged in the console?
 
 ```javascript
 let a = '2';
@@ -279,7 +304,7 @@ console.log(x); // 1
 
 #### Try this exam question
 
-What will be logged in the console log statement?
+What will be logged in the console?
 
 ```javascript
 const modulo = (value) => {
