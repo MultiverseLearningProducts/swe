@@ -291,6 +291,8 @@ console.log(modulo(320));
 1. "Even number"
 2. "False number"
 
+> Knowledge of the ternary operator isn't required for the exam
+
 #### Assignment operators
 
 Whenever we want to assign a value to a variable, or we want to do something and then assign a value to a variable, we will use the assignment operator.
@@ -332,7 +334,7 @@ console.log(result);
 
 1. 211200
 2. 210100
-3.
+3. 212121
 
 #### Math methods
 
@@ -343,6 +345,18 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`  |
 | Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`    |
 | Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)` |
+
+#### Try this exam question
+
+What will be logged in the console?
+
+```javascript
+console.log(Math.floor(Math.random() * 10 + 1));
+```
+
+1. A random decimal number between 0-10
+2. A whole number between 1-10
+3. A whole number between 0-10
 
 #### Comparison operators
 
@@ -359,7 +373,55 @@ Comparison operators are typically used in conditional statements to check one o
 | <=       | Less than or equal to       | `x = 2 <= 2`    |
 | >=       | Greater than or equal to    | `x = 2 >= 2`    |
 
-> Look at the examples above, in each case, what would `x` be equal to after the comparison has been done? Hint: it will be either `true` or `false`.
+#### Try these exam questions
+
+What will be logged in the console?
+
+```javascript
+let val1 = 2;
+let val2 = 1;
+
+console.log(val1-- > ++val2);
+```
+
+1. True
+2. False
+
+```javascript
+console.log(null || undefined || { greeting: 'Hi!' } || true);
+```
+
+1. null
+2. true
+3. `{ greeting: 'Hi!" }`
+
+```javascript
+console.log(null > '');
+```
+
+1. True
+2. False
+
+```javascript
+console.log('' > null);
+```
+
+1. True
+2. False
+
+```javascript
+console.log(null === 0);
+```
+
+1. True
+2. False
+
+```javascript
+console.log({ greeting: 'Hi!' } === { greeting: 'Hi!' });
+```
+
+1. True
+2. False
 
 #### Logical operators
 
