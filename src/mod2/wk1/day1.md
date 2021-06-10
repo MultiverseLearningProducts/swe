@@ -450,18 +450,19 @@ if (!y) {
 }
 ```
 
-## Assignment
+#### Try this exam question
 
-Write an application that can calculate a person's tax.
+What is logged to the console?
 
-- Your app should be able to accept the gross amount a person has earned
-- Your app should be able to calculate income tax
-- Finally, your app should tell the person their net pay for the month
+```javascript
+if (!true && !false) {
+  console.log('true');
+} else {
+  console.log('false');
+}
+```
 
-Tax rules:
-
-- Up to £37,500 is taxed at the basic rate of 20%
-- Between £37,500 and £150,000 is taxed at the higher rate of 40%.
-- Over £150,000 is taxed at the additional rate of 45%.
+1. "true"
+2. "false"
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
