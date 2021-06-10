@@ -37,7 +37,7 @@ The important point about primitives is that they cannot be modified after they 
 
 ```javascript
 // string primitive
-const myString = "Hi, Daniel";
+const myString = 'Hi, Daniel';
 
 console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 ```
@@ -52,12 +52,12 @@ At the heart of computers are transistors and electrical circuits where electric
 This is at the heart of conditions. If something is there, it's true, if not, it's false. We can write this in code:
 
 ```javascript
-if (myString === "Hi, Daniel") {
+if (myString === 'Hi, Daniel') {
   alert("Hey, it's Dan!"); // true
-} else if (myString === "Hi, Bob") {
+} else if (myString === 'Hi, Bob') {
   alert("Hey, it's Bob!"); // true
 } else {
-  alert("Hey, new person!"); // false
+  alert('Hey, new person!'); // false
 }
 ```
 
@@ -68,14 +68,14 @@ syntax.
 
 ```javascript
 switch (myString) {
-  case "Hi, Daniel":
+  case 'Hi, Daniel':
     alert("Hey, it's Dan!"); // true
     break;
-  case "Hi, Bob":
+  case 'Hi, Bob':
     alert("Hey, it's Bob!"); // true
     break;
   default:
-    alert("Hey, new person!"); // false
+    alert('Hey, new person!'); // false
 }
 ```
 
@@ -84,9 +84,36 @@ Key points for the exam:
 - The break keyword "breaks out" and exits the whole code block (including loops)
 - The break keyword isn't required in the default block
 
+#### Try this exam question
+
+The XYZ company offers a mid-week discount of 10% on Wednesdays.
+You need to write a JavaScript function that meets the following requirements:
+
+Accepts the day of the week as a string
+Returns the appropriate discount
+
+How should you complete the following code?
+
+```javascript
+function getDiscount(day) {
+  var discount = 0
+
+
+      discount = .1;
+      break;
+
+      discount = 0
+      break;
+  }
+
+  return discount
+}
+```
+
 ### Functions
 
 There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
+
 Let's look at the syntax:
 
 ```javascript
@@ -105,37 +132,34 @@ const subtract = (value1, value2) => {
   return value1 - value2;
 };
 
-console.log(addition(29, 2) // 31
-console.log(subtract(29, 2) // 27
-console.log(multiply(29, 2)); // 58
+console.log(addition(29, 2)
+console.log(subtract(29, 2)
+console.log(multiply(29, 2));
 ```
 
-What do you think the "return" statement does? Also, the functions accept what we call "arguements" or "parameters". What are these?
+#### Try this exam question
 
-## Assignment
-
-You now have all you need to write a simple application. Fire up [JSFiddle](http://jsfiddle.net) and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.
+What is returned when to function is called in the console.log statement?
 
 # Lesson 2
 
 ## Learning Objectives
 
 - Learn about variables and scoping
-- Learn and apply operators
-- Write a tax app
+- Learn the various operators
 
 ### Variables and scoping
 
 Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
 
 ```javascript
-const globalConstVariable = "Global scope";
+const globalConstVariable = 'Global scope';
 
 function myFunction() {
-  var localVarVariable = "Var local scope";
+  var localVarVariable = 'Var local scope';
 
   try {
-    let localLetVariable = "Let local scope";
+    let localLetVariable = 'Let local scope';
     console.log(globalConstVariable, localVarVariable, localLetVariable);
     // Output: "Global scope", "Var local scope", "Let local scope"
   } catch (err) {
@@ -155,17 +179,34 @@ Key points:
 
 - A globally scoped variable can be accessed anywhere in your code
 
-- A "var" variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable). Use sparingly if at all, as a var can be redeclared and doesn't support block scoping
+- A `const` (constant) variable cannot be reassigned
 
-- A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable).
+- A `var` variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable).
 
-| Variable | Example                         | Usage                                                                   |
-| :------- | :------------------------------ | ----------------------------------------------------------------------- |
-| `const`  | `const myString = "Hi, Daniel"` | When you know the variable won't change as it cannot be reassigned      |
-| `var`    | `var myNumber = 3.6`            | Use `let` instead                                                       |
-| `let`    | `let myBoolean = true`          | Use as needed functions and code blocks if the variable will not change |
+- A `let` variable can only be accessed in the block where it's defined (or globally if set as a global variable).
 
-Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.
+Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a `let` variable outside of its scope. We'll cover try/catch in more detail later.
+
+#### Try this exam question
+
+What is logged to the console when the addition function is called?
+
+1. A syntax error is thrown
+2. NaN
+3. 7
+
+```javascript
+let a = '2';
+const b = 50;
+
+function addition(num1, num2 = 4) {
+  a = num1;
+  const b = num2;
+  return a + b;
+}
+
+console.log(addition(3));
+```
 
 ### Operators
 
@@ -276,7 +317,7 @@ if (!x) {
 
 if (!y) {
   // this line is never reached
-  console.log(y); 
+  console.log(y);
 }
 ```
 
