@@ -23,21 +23,21 @@
     <p>Before we crack on with validation, it's worth considering the UX for a minute. In particular; how we tell the user there's been an error. As you'll know, popups and alerts on pages are not fun; we therefore need a subtler way to tell the user there's been an error.</p>
     <p>There are many ways to do this, and you will have no doubt come across different strategies whilst submitting forms online yourself. One such way is to add a label dynamically to the page to inform the user what the error is. This is how you might achieve that:</p>
     <pre><code class="language-javascript">// create a label
-const errorLabel = document.createElement("label");
+const errorLabel = document.createElement('label');
 
 // set a "for" attribute equal to the input's ID to help UX
-errorLabel.setAttribute("for", input.id);
+errorLabel.setAttribute('for', input.id);
 
 // create a text node
 const errorLabelTextNode = document.createTextNode(
-  "This field cannot be empty"
+  'This field cannot be empty'
 );
 
 // append the text node to the label
 errorLabel.appendChild(errorLabelTextNode);
 
 // add a class for styling purposes
-errorLabel.classList.add("error-label");
+errorLabel.classList.add('error-label');
 </code></pre>
     <blockquote>
       <p>You need to know <code>createElement</code> and <code>setAttribute</code> for the exam</p>
@@ -53,7 +53,7 @@ errorLabel.classList.add("error-label");
 input.parentNode.append(errorLabel);
 </code></pre>
     <p>You can also use <code>innerHTML</code> to add text to the node. Instead of creating a text node and appending it, you could just add:</p>
-    <pre><code class="language-javascript">errorLabel.innerHTML = "This field cannot be empty""
+    <pre><code class="language-javascript">errorLabel.innerHTML = 'This field cannot be empty';
 </code></pre>
     <blockquote>
       <p>An understanding of innerHTML is required for the exam</p>

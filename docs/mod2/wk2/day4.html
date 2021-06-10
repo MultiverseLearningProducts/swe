@@ -67,8 +67,26 @@
     </blockquote>
     <p>Checkout this search engine called Google. On the home page, their form submits a request to the server using the GET method. When you submit your search, your query and a bunch of other information is sent to Google in the query parameters. Try it yourself!</p>
     <pre><code class="language-html">&#x3C;form action="/search" method="GET">
-  &#x3C;!-- form fields -->
+  &#x3C;label for="taskName">Task Name&#x3C;/label>
+  &#x3C;input
+    type="text"
+    class="form-control"
+    name="taskName"
+    id="taskNameID"
+    placeholder="Name of the task"
+  />
+  &#x3C;input
+    type="text"
+    class="form-control"
+    name="owner"
+    id="ownerID"
+    placeholder="The person that owns the task"
+  />
+  &#x3C;!-- other form fields -->
 &#x3C;/form>
+</code></pre>
+    <p>Likewise, if we were to name submit a task (amongst other fields) above, the keys and value pairs in the URL would be taken from the <code>name</code> field:</p>
+    <pre><code class="language-html">http://someurl/search?taskName=mytaskname&#x26;owner=Daniel
 </code></pre>
     <p>When you login to Google, a POST request is used. Your data is sensitive, and we don't want it in the query string where everyone can see it!</p>
     <pre><code class="language-html">&#x3C;form action="/signin/v2/challenge/password/empty" method="POST">

@@ -59,7 +59,7 @@
     </table>
     <p>The important point about primitives is that they cannot be modified after they have been created, though you can re-assign the primitive variable. Primitives that cannot be modified are known as "immutable" and any modification will create a new variable. Let's illustrate this point:</p>
     <pre><code class="language-javascript">// string primitive
-const myString = "Hi, Daniel";
+const myString = 'Hi, Daniel';
 
 console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
 </code></pre>
@@ -72,12 +72,12 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
       At the heart of computers are transistors and electrical circuits where electrical currents flow. A presence of a current is a 1, or true, and no current is a 0, or false.
       This is at the heart of conditions. If something is there, it's true, if not, it's false. We can write this in code:
     </p>
-    <pre><code class="language-javascript">if (myString === "Hi, Daniel") {
+    <pre><code class="language-javascript">if (myString === 'Hi, Daniel') {
   alert("Hey, it's Dan!"); // true
-} else if (myString === "Hi, Bob") {
+} else if (myString === 'Hi, Bob') {
   alert("Hey, it's Bob!"); // true
 } else {
-  alert("Hey, new person!"); // false
+  alert('Hey, new person!'); // false
 }
 </code></pre>
     <p>Here we've used the "strict" conditional (===). This checks that the datatype AND the check in question match. We'll cover operators in more detail later.</p>
@@ -86,14 +86,14 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
       syntax.
     </p>
     <pre><code class="language-javascript">switch (myString) {
-  case "Hi, Daniel":
+  case 'Hi, Daniel':
     alert("Hey, it's Dan!"); // true
     break;
-  case "Hi, Bob":
+  case 'Hi, Bob':
     alert("Hey, it's Bob!"); // true
     break;
   default:
-    alert("Hey, new person!"); // false
+    alert('Hey, new person!'); // false
 }
 </code></pre>
     <p>Key points for the exam:</p>
@@ -101,49 +101,85 @@ console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
       <li>The break keyword "breaks out" and exits the whole code block (including loops)</li>
       <li>The break keyword isn't required in the default block</li>
     </ul>
-    <h3>Functions</h3>
+    <h4>Try this exam question</h4>
     <p>
-      There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.
-      Let's look at the syntax:
+      The XYZ company offers a mid-week discount of 10% on Wednesdays.
+      You need to write a JavaScript function that meets the following requirements:
     </p>
+    <p>
+      Accepts the day of the week as a string
+      Returns the appropriate discount
+    </p>
+    <p>How should you complete the following code?</p>
+    <pre><code class="language-javascript">function getDiscount(day) {
+  var discount = 0
+
+
+      discount = .1;
+      break;
+
+      discount = 0
+      break;
+  }
+
+  return discount
+}
+</code></pre>
+    <h3>Functions</h3>
+    <p>There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function.</p>
+    <h4>Try these exam questions</h4>
+    <p>What is returned when to functions are called in the console.log statements?</p>
     <pre><code class="language-javascript">// older way
 function addition(value1, value2) {
-  return value1 + value2;
+  return value1 += value2;
 }
 
-// assigning a function to a variable using older way
+console.log(addition(567, "56")
+</code></pre>
+    <ol>
+      <li>NaN</li>
+      <li>56756</li>
+      <li>"56756"</li>
+    </ol>
+    <pre><code class="language-javascript">// assigning a function to a variable using older way
 const multiply = function (value1, value2) {
   return value1 * value2;
 };
 
-// newer "arrow" function form
+console.log(multiply(29, 2));
+</code></pre>
+    <ol>
+      <li>58</li>
+      <li>52</li>
+      <li>A syntax error is thrown</li>
+    </ol>
+    <pre><code class="language-javascript">// newer "arrow" function form
 const subtract = (value1, value2) => {
-  return value1 - value2;
+  return value1--;
 };
 
-console.log(addition(29, 2) // 31
-console.log(subtract(29, 2) // 27
-console.log(multiply(29, 2)); // 58
+console.log(subtract(12, 25));
 </code></pre>
-    <p>What do you think the "return" statement does? Also, the functions accept what we call "arguements" or "parameters". What are these?</p>
-    <h2>Assignment</h2>
-    <p>You now have all you need to write a simple application. Fire up <a href="http://jsfiddle.net">JSFiddle</a> and write a function that takes the day as a string argument, then returns what you're normally doing on that day. You will need a conditional in your function to check the day and to return the appropriate value.</p>
+    <ol>
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+    </ol>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Learn about variables and scoping</li>
-      <li>Learn and apply operators</li>
-      <li>Write a tax app</li>
+      <li>Learn the various operators</li>
     </ul>
     <h3>Variables and scoping</h3>
     <p>Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:</p>
-    <pre><code class="language-javascript">const globalConstVariable = "Global scope";
+    <pre><code class="language-javascript">const globalConstVariable = 'Global scope';
 
 function myFunction() {
-  var localVarVariable = "Var local scope";
+  var localVarVariable = 'Var local scope';
 
   try {
-    let localLetVariable = "Let local scope";
+    let localLetVariable = 'Let local scope';
     console.log(globalConstVariable, localVarVariable, localLetVariable);
     // Output: "Global scope", "Var local scope", "Let local scope"
   } catch (err) {
@@ -164,39 +200,52 @@ myFunction();
         <p>A globally scoped variable can be accessed anywhere in your code</p>
       </li>
       <li>
-        <p>A "var" variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable). Use sparingly if at all, as a var can be redeclared and doesn't support block scoping</p>
+        <p>A <code>const</code> (constant) variable cannot be reassigned</p>
       </li>
       <li>
-        <p>A "let" variable can only be accessed in the block where it's defined (or globally if set as a global variable).</p>
+        <p>A <code>var</code> variable can be accessed anywhere in the function where it's defined (or globally if set as a global variable).</p>
+      </li>
+      <li>
+        <p>A <code>let</code> variable can only be accessed in the block where it's defined (or globally if set as a global variable).</p>
       </li>
     </ul>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Variable</th>
-          <th align="left">Example</th>
-          <th>Usage</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left"><code>const</code></td>
-          <td align="left"><code>const myString = "Hi, Daniel"</code></td>
-          <td>When you know the variable won't change as it cannot be reassigned</td>
-        </tr>
-        <tr>
-          <td align="left"><code>var</code></td>
-          <td align="left"><code>var myNumber = 3.6</code></td>
-          <td>Use <code>let</code> instead</td>
-        </tr>
-        <tr>
-          <td align="left"><code>let</code></td>
-          <td align="left"><code>let myBoolean = true</code></td>
-          <td>Use as needed functions and code blocks if the variable will not change</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Don't worry too much about the try/catch block above. This is an error handling strategy that we'll cover later.</p>
+    <p>Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a <code>let</code> variable outside of its scope. We'll cover try/catch in more detail later.</p>
+    <h4>Try these exam questions</h4>
+    <p>What is logged to the console when the addition function is called?</p>
+    <pre><code class="language-javascript">let a = '2';
+const b = 50;
+
+function addition(num1, num2 = 4) {
+  a = num1;
+  const b = num2;
+  return a + b;
+}
+
+console.log(addition(3));
+</code></pre>
+    <ol>
+      <li>A syntax error is thrown</li>
+      <li>NaN</li>
+      <li>7</li>
+    </ol>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">const myString = 'Hey, how you doing?';
+let newString;
+
+(function () {
+  newString = myString.length + ' Fine, thanks.';
+})();
+
+console.log(newString);
+</code></pre>
+    <ol>
+      <li>"Fine, thanks."</li>
+      <li>"19 Fine, thanks."</li>
+      <li>Uncaught ReferenceError</li>
+    </ol>
+    <blockquote>
+      <p><code>NaN</code> literally means <code>Not-a-Number</code></p>
+    </blockquote>
     <h3>Operators</h3>
     <p>We can categorise the operators as follows:</p>
     <ul>
@@ -260,8 +309,21 @@ x %= 2;
 
 console.log(x); // 1
 </code></pre>
+    <h4>Try this exam question</h4>
+    <p>What will be logged in the console log statement?</p>
+    <pre><code class="language-javascript">const modulo = (value) => {
+  const referenceValue = 2;
+  return value % referenceValue === 0 ? 'Even number' : 'False number';
+};
+
+console.log(modulo(320));
+</code></pre>
+    <ol>
+      <li>"Even number"</li>
+      <li>"False number"</li>
+    </ol>
     <blockquote>
-      <p>When using operators on values that are not a number, JavaScript may return <code>NaN</code>, which literally means <code>Not-a-Number</code></p>
+      <p>Knowledge of the ternary operator isn't required for the exam</p>
     </blockquote>
     <h4>Assignment operators</h4>
     <p>Whenever we want to assign a value to a variable, or we want to do something and then assign a value to a variable, we will use the assignment operator.</p>
@@ -321,6 +383,21 @@ x -= 2;
 console.log(x); // 0
 </code></pre>
     <p>The line <code>x -= 2;</code> in plain English would be: "Take x, subtract 2, then assign the result back to x"</p>
+    <h4>Try this exam question</h4>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">let result = 3189;
+
+result += 21;
+result -= 10;
+result *= 66;
+
+console.log(result);
+</code></pre>
+    <ol>
+      <li>211200</li>
+      <li>210100</li>
+      <li>212121</li>
+    </ol>
     <h4>Math methods</h4>
     <p>JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. Other Math operators can be found <a href="https://www.w3schools.com/js/js_math.asp">here</a></p>
     <table>
@@ -349,6 +426,15 @@ console.log(x); // 0
         </tr>
       </tbody>
     </table>
+    <h4>Try this exam question</h4>
+    <p>What will be logged in the console?</p>
+    <pre><code class="language-javascript">console.log(Math.floor(Math.random() * 10 + 1));
+</code></pre>
+    <ol>
+      <li>A random decimal number between 0-10</li>
+      <li>A whole number between 1-10</li>
+      <li>A whole number between 0-10</li>
+    </ol>
     <h4>Comparison operators</h4>
     <p>Comparison operators are typically used in conditional statements to check one or more values before doing something else.</p>
     <table>
@@ -402,9 +488,48 @@ console.log(x); // 0
         </tr>
       </tbody>
     </table>
-    <blockquote>
-      <p>Look at the examples above, in each case, what would <code>x</code> be equal to after the comparison has been done? Hint: it will be either <code>true</code> or <code>false</code>.</p>
-    </blockquote>
+    <h4>Try these exam questions</h4>
+    <p>What will be logged in the console?</p>
+    <pre><code class="language-javascript">let val1 = 2;
+let val2 = 1;
+
+console.log(val1-- > ++val2);
+</code></pre>
+    <ol>
+      <li>True</li>
+      <li>False</li>
+    </ol>
+    <pre><code class="language-javascript">console.log(null || undefined || { greeting: 'Hi!' } || true);
+</code></pre>
+    <ol>
+      <li>null</li>
+      <li>true</li>
+      <li><code>{ greeting: 'Hi!" }</code></li>
+    </ol>
+    <pre><code class="language-javascript">console.log(null > '');
+</code></pre>
+    <ol>
+      <li>True</li>
+      <li>False</li>
+    </ol>
+    <pre><code class="language-javascript">console.log('' > null);
+</code></pre>
+    <ol>
+      <li>True</li>
+      <li>False</li>
+    </ol>
+    <pre><code class="language-javascript">console.log(null === 0);
+</code></pre>
+    <ol>
+      <li>True</li>
+      <li>False</li>
+    </ol>
+    <pre><code class="language-javascript">console.log({ greeting: 'Hi!' } === { greeting: 'Hi!' });
+</code></pre>
+    <ol>
+      <li>True</li>
+      <li>False</li>
+    </ol>
     <h4>Logical operators</h4>
     <p>Logical operators are mostly used in conditional statements and provide the developer with more flexibility when checking values.</p>
     <table>
@@ -444,22 +569,21 @@ if (!x) {
 
 if (!y) {
   // this line is never reached
-  console.log(y); 
+  console.log(y);
 }
 </code></pre>
-    <h2>Assignment</h2>
-    <p>Write an application that can calculate a person's tax.</p>
-    <ul>
-      <li>Your app should be able to accept the gross amount a person has earned</li>
-      <li>Your app should be able to calculate income tax</li>
-      <li>Finally, your app should tell the person their net pay for the month</li>
-    </ul>
-    <p>Tax rules:</p>
-    <ul>
-      <li>Up to £37,500 is taxed at the basic rate of 20%</li>
-      <li>Between £37,500 and £150,000 is taxed at the higher rate of 40%.</li>
-      <li>Over £150,000 is taxed at the additional rate of 45%.</li>
-    </ul>
+    <h4>Try this exam question</h4>
+    <p>What is logged to the console?</p>
+    <pre><code class="language-javascript">if (!true &#x26;&#x26; !false) {
+  console.log('true');
+} else {
+  console.log('false');
+}
+</code></pre>
+    <ol>
+      <li>"true"</li>
+      <li>"false"</li>
+    </ol>
     <p><a href="/swe">main</a>|<a href="/swe/mod1/wk2/day5.html">prev</a>|<a href="/swe/mod2/wk1/day2.html">next</a></p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
