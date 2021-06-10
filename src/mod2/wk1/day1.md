@@ -17,9 +17,10 @@ This course also serves as an good introduction to the JavaScript language, irre
 ## Learning Objectives
 
 - Learn about primitives
-- Learn and apply conditionals
-- Learn and apply functions
-- Write your first app
+- Learn about conditionals
+- Learn about variables and scoping
+- Learn about functions
+- Learn about operators
 
 ### Primitives
 
@@ -82,7 +83,8 @@ switch (myString) {
 Key points for the exam:
 
 - The break keyword "breaks out" and exits the whole code block (including loops)
-- The break keyword isn't required in the default block
+
+- The break keyword isn't required in the default block if the default block is the last statement (but you can still add it if you want)
 
 #### Try this exam question
 
@@ -338,7 +340,7 @@ console.log(result);
 
 #### Math methods
 
-JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random, ceil and floor. Other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp)
+JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random; round; abs; floor; ceiling; min; max; pow and sqrt. We've detailed three of them below and the other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp).
 
 | Operator      | Purpose                                                | Example                             |
 | :------------ | :----------------------------------------------------- | :---------------------------------- |
