@@ -382,8 +382,8 @@ console.log(Math.floor(Math.random() * 10 + 1));
 ```
 
 1. A random decimal number between 0-10
-2. A whole number between 1-10
-3. A whole number between 0-10
+2. A random whole number between 1-10
+3. A random whole number between 0-10
 
 #### Comparison operators
 

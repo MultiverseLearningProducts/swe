@@ -159,7 +159,7 @@ console.log(strings); // ["Dan", "Edy", "Jim"]
 
 ### Sorting an array of numbers
 
-Things start to full apart a bit when we try and sort numbers:
+Things start to fall apart a bit when we try and sort numbers:
 
 ```javascript
 let numbers = [1678, 2, 3, 78, 9, 10001];

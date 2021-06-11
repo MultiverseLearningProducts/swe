@@ -19,18 +19,18 @@ We looked at arrays on day two. Arrays are great for storing independent values,
 
 ```javascript
 // not ideal!
-["name: Dan", "age: 35", "shoeSize: 9"];
+['name: Dan', 'age: 35', 'shoeSize: 9'];
 ```
 
 The example above would be very tricky to manage and wouldn't be an efficient approach. This is where objects come to the rescue. An object is a collection of information about, well, an object!
 
 ```javascript
 let person = {
-  name: "Daniel",
+  name: 'Daniel',
   age: 35,
   shoeSize: 9,
   smokes: false,
-  hobbies: ["motorbikes", "cats", "dogs", "football"],
+  hobbies: ['motorbikes', 'cats', 'dogs', 'football'],
 };
 ```
 
@@ -47,7 +47,7 @@ console.log(person.name); // Daniel
 You may see other ways of accessing the object, such as:
 
 ```javascript
-console.log(person["name"]); // Daniel
+console.log(person['name']); // Daniel
 ```
 
 ### Modifying an object
@@ -55,7 +55,7 @@ console.log(person["name"]); // Daniel
 Objects are mutable, so any change you make will change the object directly. Changing is as easy as re-assigning the value:
 
 ```javascript
-person.name = "Dan";
+person.name = 'Dan';
 
 console.log(person.name); // Dan
 ```
@@ -63,46 +63,35 @@ console.log(person.name); // Dan
 You can also push new items to an array with an object:
 
 ```javascript
-person.hobbies.push = "Scrabble";
+person.hobbies.push = 'Scrabble';
 
 console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 ```
 
-### Looping through an object
+#### Try this exam question
 
-To loop through an object, we can utilise a variation on the for loop called the `for..in` loop.
-
-```javascript
-for (let key in person) {
-  console.log(person[key]);
-}
-
-// "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
-```
-
-> Knowledge of the `for..in` loop isn't required for the exam
-
-## Assignment
-
-Can you find the missing pets?!
-
-The following pets have gone missing and the owner is worried:
+You have been asked to construct a for loop that can list the contents of an array in an object, in reverse order. How should you complete the code below?
 
 ```javascript
-["Tiddles", "Poppy"];
-```
+/* 
 
-Luckily, you have a list of people who have seen the missing pets. Perhaps they can help you track the pet down!
+Expected result in console:
 
-```javascript
-let people = {
-  James: ["Tiddles", "Poppy", "Leo"],
-  Johnny: ["Leo", "Tim", "Patch"],
-  Peter: ["Tim", "Kelly"],
+"Claude"
+"Whiskers"
+"Smokey"
+"Tiddles"
+
+*/
+
+var myObject = {
+  names: ['Tiddles', 'Smokey', 'Whiskers', 'Claude'],
 };
-```
 
-Write a function that can return the name of the person that has seen both of the pets.
+for (;;) {
+  console.log();
+}
+```
 
 # Lesson 2
 
@@ -116,48 +105,65 @@ Write a function that can return the name of the person that has seen both of th
 To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the change function?
 
 ```javascript
-let sampleStudent = "HTML Student";
-
-let sampleCourse = {
-  name: "HTML",
-  grade: 90,
-};
-
-function change(student, course) {
-  student = "JavaScript Student";
-  course.name = "JavaScript";
-  course.grade = 100;
+function updateNames(cats, firstCatsName) {
+  firstCatsName = 'Ginger';
+  cats.names[0] = 'Ginger';
 }
 
-change(sampleStudent, sampleCourse);
+var cats = {
+  names: ['Tiddles', 'Smokey', 'Whiskers', 'Claude'],
+};
 
-// What will be logged?
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
+var firstCatsName = 'Gizmo';
+
+updateNames(cats, firstCatsName);
+
+console.log(cats, firstCatsName); // what's logged here?
 ```
 
 The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
 
 For this rule to hold, we _should_ be able to modify the object, but we _shouldn't_ be able to modify the string
 
-```javascript
-function change(student, course) {
-  // this creates a new variable and does not modify sampleStudent
-  student = "JavaScript Student";
-
-  // this references sampleCourse and modifies it directly
-  course.name = "JavaScript";
-  course.grade = 100;
-}
-```
-
 Sure enough, if we log the result, we get:
 
 ```javascript
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
+console.log(cats, firstCatsName);
 
-// "HTML Student", "JavaScript", 100
+/*
+{
+  names: ["Ginger", "Smokey", "Whiskers", "Claude"]
+}, "Gizmo"
+*/
 ```
 
 > Objects are passed to functions by reference, primitives are passed by value
+
+#### Try this exam question
+
+What is logged in the console?
+
+```javascript
+let sampleStudent = 'HTML Student';
+
+let sampleCourse = {
+  name: 'HTML',
+  grade: 90,
+};
+
+function change(student, course) {
+  student = 'JavaScript Student';
+  course.name = 'JavaScript';
+  course.grade = 100;
+}
+
+change(sampleStudent, sampleCourse);
+
+console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
+```
+
+1. "HTML Student", "JavaScript", 100
+2. "JavaScript Student", "JavaScript", 100
+3. "HTML Student", "HTML", 90
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
