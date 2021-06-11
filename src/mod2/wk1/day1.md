@@ -18,9 +18,6 @@ This course also serves as an good introduction to the JavaScript language, irre
 
 - Learn about primitives
 - Learn about conditionals
-- Learn about variables and scoping
-- Learn about functions
-- Learn about operators
 
 ### Primitives
 

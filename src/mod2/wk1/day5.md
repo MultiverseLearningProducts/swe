@@ -23,9 +23,9 @@ JavaScript comes with a number of convenient, built-in string methods that can h
 | `slice`      | Extracts a part of a string, starting and ending at defined indexes | `y.slice(0, 3)`           |
 | `replace`    | Replaces an occurence of a string                                   | `y.replace('abc', 'xyz')` |
 
-> If `y === "abcdefg"`, what would the results of the examples above be?
-
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
+
+In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.
 
 ### Common number methods
 
@@ -40,21 +40,24 @@ In addition to the string methods, there are a number of built-in number methods
 | `parseInt`    | Returns an integer, converted from its argument (same as Number)              | `x = parseInt("10")`     |
 | `parseFloat`  | Returns a floating point number, converted from its argument                  | `x = parseFloat("10.2")` |
 
-> If `x === 9.835`, what would the result be of the the first two functions above? Can you see the difference?
+#### Try this exam question
 
-## Assignment
+You have been given the following code:
 
-- Create a function that can take a phone number, e.g `01803 312 698` and a country code to apply to the number
+```javascript
+function toDecimalPlaces(figure, decimalPlaces) {
+  // add code here
+}
 
-- Your function should remove the `0` and add the country code to the beginning of the string, then return the result
+console.log(toDecimalPlaces(3000.939, 2));
+```
 
-- For example: `01803 312 698` would become `+44 1803 312 698`
+What is the most appropriate line to add in place of the comment?
 
-Test cases (+44 in all cases):
-
-- `020 208 8000`
-- `07985 427 937`
-- `01626 455 000`
+1. return figure.toFixed(decimalPlaces);
+2. return figure.toPrecision(decimalPlaces);
+3. return figure.valueOf(figure);
+4. return figure.toString();
 
 # Lesson 2
 
@@ -117,12 +120,6 @@ There are a couple of quirks to be aware of: the month is being reported as "1",
 
 In addition, `getDay()` is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.
 
-## Assignment
-
-Keep working with the date code and the information above to create a string that reads:
-
-`The date is: Thursday, January 25th, 2021`
-
 # Lesson 3
 
 ## Learning Objectives
@@ -162,20 +159,37 @@ console.log(myDate2.toLocaleDateString('en-US')); // "4/1/2019"
 
 Note that the representation of the months here is not zero-indexed.
 
-## Assignment
+> You can also used `toLocaleString` to work with currency
 
-Here are some famous events:
+#### Try these exam questions
 
-London Olympics, 27 July 2012 to 12 August 2012
+What is logged in the console?
 
-Wedding of Prince William and Catherine Middleton, 29 April 2011
+```javascript
+const date1 = new Date(1986, 0, 17);
 
-Apollo 13, April 11, 1970 to April 17, 1970
+console.log(date1.toLocaleString('en-GB'));
+```
 
-- For each famous event, create a date object that represents the date the event started and the date it ended
+1. "17/01/1986, 00:00:00"
+2. "1/17/1986, 00:00:00"
+3. "1986/01/17, 00:00:00"
 
-- Create a function that returns how many days the event lasted. If it lasted for one day, simply return `1 day`
+You've been asked to complete a function that can add any number of days to a date.
 
-- Create another function that returns how long ago the event was from today's date
+What do you need to add in place of the comment?
+
+```javascript
+function myDateFunction(date, days) {
+  // add code here
+}
+
+const myDate = new Date(1986, 0, 17);
+myDateFunction(myDate, 21);
+```
+
+1. date.setDate(date.getFullYear() + days)
+2. myDate.setDate(date() + days)
+3. date.setDate(date.getDate() + days)
 
 [main](/swe)|[prev](/swe/mod2/wk1/day4.html)|[next](/swe/mod2/wk2/day1.html);
