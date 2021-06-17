@@ -61,27 +61,99 @@ You have been asked to get the page URL and insert it into a text field. How wou
     <script>
       var url = // ________
 
-      // _______.____________("url").____ = ___
+      // _______.____________("url")._____ = ___
     </script>
   </body>
 </html>
 ```
 
-### How to write an event handler
+### Working with event handlers
 
-A common event handler you might come across is a "keyup" handler. This fires everytime a key press is released.
+Event handlers can be added both inline or within an inline or external script:
+
+```javascript
+// inline event handler
+<button onclick="document.getElementById('demo').innerHTML = Date()">
+  The time is?
+</button>
+```
+
+Within an inline or external script:
 
 ```javascript
 // get form and add listener using DOM path strategy
 const targetForm = document.forms.todoCreateForm;
 
-// apply "keyup" event handler to form
-targetForm.addEventListener('keyup', (e) => {
-  // log out the name field's value
+// first example
+targetForm.addEventListener('submit', (e) => {
   console.log(e.target.name.value);
 });
+
+// second example
+targetForm.onsubmit = (e) => {
+  console.log('Form submitted!');
+};
 ```
 
 > For the exam, you'll need to know: `onchange, onmouseover, onload, onclick, onmouseout and onkeydown`
+
+#### Try this exam question
+
+You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.
+
+Tip: one is in inline event and the other is in an inline script.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .squareBox {
+        display: block;
+        background-color: green;
+        height: 2rem;
+        width: 2rem;
+        text-indent: -999px;
+      }
+
+      .circle {
+        display: block;
+        background-color: green;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 100%;
+        text-indent: -999px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a
+      class="squareBox"
+      id="squareBox"
+      href="#"
+      __________="__________________________ = '____'"
+      __________="__________________________ = '____'"
+    >
+      Square box
+    </a>
+
+    <a class="circle" id="circle" href="#"> Circle </a>
+
+    <script>
+      var circle = document.______________('circle');
+
+      circle.__________ = () => {
+        circle._____________________________;
+      };
+
+      circle.__________ = () => {
+        circle._____________________________;
+      };
+    </script>
+  </body>
+</html>
+```
 
 [main](/swe)|[prev](/swe/mod2/wk1/day5.html)|[next](/swe/mod2/wk2/day2.html);
