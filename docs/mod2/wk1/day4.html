@@ -24,15 +24,15 @@
     <h3>What is an object?</h3>
     <p>We looked at arrays on day two. Arrays are great for storing independent values, but don't scale well when we want to describe a subject in more detail.</p>
     <pre><code class="language-javascript">// not ideal!
-["name: Dan", "age: 35", "shoeSize: 9"];
+['name: Dan', 'age: 35', 'shoeSize: 9'];
 </code></pre>
     <p>The example above would be very tricky to manage and wouldn't be an efficient approach. This is where objects come to the rescue. An object is a collection of information about, well, an object!</p>
     <pre><code class="language-javascript">let person = {
-  name: "Daniel",
+  name: 'Daniel',
   age: 35,
   shoeSize: 9,
   smokes: false,
-  hobbies: ["motorbikes", "cats", "dogs", "football"],
+  hobbies: ['motorbikes', 'cats', 'dogs', 'football'],
 };
 </code></pre>
     <p>Information in objects is stored in key/value pairs. Above, <code>name</code> is the key and <code>Daniel</code> is the value.</p>
@@ -41,43 +41,40 @@
     <pre><code class="language-javascript">console.log(person.name); // Daniel
 </code></pre>
     <p>You may see other ways of accessing the object, such as:</p>
-    <pre><code class="language-javascript">console.log(person["name"]); // Daniel
+    <pre><code class="language-javascript">console.log(person['name']); // Daniel
 </code></pre>
     <h3>Modifying an object</h3>
     <p>Objects are mutable, so any change you make will change the object directly. Changing is as easy as re-assigning the value:</p>
-    <pre><code class="language-javascript">person.name = "Dan";
+    <pre><code class="language-javascript">person.name = 'Dan';
 
 console.log(person.name); // Dan
 </code></pre>
     <p>You can also push new items to an array with an object:</p>
-    <pre><code class="language-javascript">person.hobbies.push = "Scrabble";
+    <pre><code class="language-javascript">person.hobbies.push = 'Scrabble';
 
 console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 </code></pre>
-    <h3>Looping through an object</h3>
-    <p>To loop through an object, we can utilise a variation on the for loop called the <code>for..in</code> loop.</p>
-    <pre><code class="language-javascript">for (let key in person) {
-  console.log(person[key]);
-}
+    <h4>Try this exam question</h4>
+    <p>You have been asked to construct a for loop that can list the contents of an array in an object, in reverse order. How should you complete the code below?</p>
+    <pre><code class="language-javascript">/* 
 
-// "Dan", 35, 9, false, ["motorbikes", "cats", "dogs", "football", "Scrabble"]
-</code></pre>
-    <blockquote>
-      <p>Knowledge of the <code>for..in</code> loop isn't required for the exam</p>
-    </blockquote>
-    <h2>Assignment</h2>
-    <p>Can you find the missing pets?!</p>
-    <p>The following pets have gone missing and the owner is worried:</p>
-    <pre><code class="language-javascript">["Tiddles", "Poppy"];
-</code></pre>
-    <p>Luckily, you have a list of people who have seen the missing pets. Perhaps they can help you track the pet down!</p>
-    <pre><code class="language-javascript">let people = {
-  James: ["Tiddles", "Poppy", "Leo"],
-  Johnny: ["Leo", "Tim", "Patch"],
-  Peter: ["Tim", "Kelly"],
+Expected result in console:
+
+"Claude"
+"Whiskers"
+"Smokey"
+"Tiddles"
+
+*/
+
+var myObject = {
+  names: ['Tiddles', 'Smokey', 'Whiskers', 'Claude'],
 };
+
+for (;;) {
+  console.log();
+}
 </code></pre>
-    <p>Write a function that can return the name of the person that has seen both of the pets.</p>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -86,43 +83,59 @@ console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "footba
     </ul>
     <h3>Value vs reference</h3>
     <p>To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the change function?</p>
-    <pre><code class="language-javascript">let sampleStudent = "HTML Student";
+    <pre><code class="language-javascript">function updateNames(cats, firstCatsName) {
+  firstCatsName = 'Ginger';
+  cats.names[0] = 'Ginger';
+}
+
+var cats = {
+  names: ['Tiddles', 'Smokey', 'Whiskers', 'Claude'],
+};
+
+var firstCatsName = 'Gizmo';
+
+updateNames(cats, firstCatsName);
+
+console.log(cats, firstCatsName); // what's logged here?
+</code></pre>
+    <p>The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are <code>immutable</code>; arrays and objects are <code>mutable</code>.</p>
+    <p>For this rule to hold, we <em>should</em> be able to modify the object, but we <em>shouldn't</em> be able to modify the string</p>
+    <p>Sure enough, if we log the result, we get:</p>
+    <pre><code class="language-javascript">console.log(cats, firstCatsName);
+
+/*
+{
+  names: ["Ginger", "Smokey", "Whiskers", "Claude"]
+}, "Gizmo"
+*/
+</code></pre>
+    <blockquote>
+      <p>Objects are passed to functions by reference, primitives are passed by value</p>
+    </blockquote>
+    <h4>Try this exam question</h4>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">let sampleStudent = 'HTML Student';
 
 let sampleCourse = {
-  name: "HTML",
+  name: 'HTML',
   grade: 90,
 };
 
 function change(student, course) {
-  student = "JavaScript Student";
-  course.name = "JavaScript";
+  student = 'JavaScript Student';
+  course.name = 'JavaScript';
   course.grade = 100;
 }
 
 change(sampleStudent, sampleCourse);
 
-// What will be logged?
 console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
 </code></pre>
-    <p>The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are <code>immutable</code>; arrays and objects are <code>mutable</code>.</p>
-    <p>For this rule to hold, we <em>should</em> be able to modify the object, but we <em>shouldn't</em> be able to modify the string</p>
-    <pre><code class="language-javascript">function change(student, course) {
-  // this creates a new variable and does not modify sampleStudent
-  student = "JavaScript Student";
-
-  // this references sampleCourse and modifies it directly
-  course.name = "JavaScript";
-  course.grade = 100;
-}
-</code></pre>
-    <p>Sure enough, if we log the result, we get:</p>
-    <pre><code class="language-javascript">console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
-
-// "HTML Student", "JavaScript", 100
-</code></pre>
-    <blockquote>
-      <p>Objects are passed to functions by reference, primitives are passed by value</p>
-    </blockquote>
+    <ol>
+      <li>"HTML Student", "JavaScript", 100</li>
+      <li>"JavaScript Student", "JavaScript", 100</li>
+      <li>"HTML Student", "HTML", 90</li>
+    </ol>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day3.html">prev</a>|<a href="/swe/mod2/wk1/day5.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

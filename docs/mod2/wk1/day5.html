@@ -57,10 +57,8 @@
         </tr>
       </tbody>
     </table>
-    <blockquote>
-      <p>If <code>y === "abcdefg"</code>, what would the results of the examples above be?</p>
-    </blockquote>
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
+    <p>In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.</p>
     <h3>Common number methods</h3>
     <p>In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:</p>
     <table>
@@ -104,27 +102,21 @@
         </tr>
       </tbody>
     </table>
-    <blockquote>
-      <p>If <code>x === 9.835</code>, what would the result be of the the first two functions above? Can you see the difference?</p>
-    </blockquote>
-    <h2>Assignment</h2>
-    <ul>
-      <li>
-        <p>Create a function that can take a phone number, e.g <code>01803 312 698</code> and a country code to apply to the number</p>
-      </li>
-      <li>
-        <p>Your function should remove the <code>0</code> and add the country code to the beginning of the string, then return the result</p>
-      </li>
-      <li>
-        <p>For example: <code>01803 312 698</code> would become <code>+44 1803 312 698</code></p>
-      </li>
-    </ul>
-    <p>Test cases (+44 in all cases):</p>
-    <ul>
-      <li><code>020 208 8000</code></li>
-      <li><code>07985 427 937</code></li>
-      <li><code>01626 455 000</code></li>
-    </ul>
+    <h4>Try this exam question</h4>
+    <p>You have been given the following code:</p>
+    <pre><code class="language-javascript">function toDecimalPlaces(figure, decimalPlaces) {
+  // add code here
+}
+
+console.log(toDecimalPlaces(3000.939, 2));
+</code></pre>
+    <p>What is the most appropriate line to add in place of the comment?</p>
+    <ol>
+      <li>return figure.toFixed(decimalPlaces);</li>
+      <li>return figure.toPrecision(decimalPlaces);</li>
+      <li>return figure.valueOf(figure);</li>
+      <li>return figure.toString();</li>
+    </ol>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -169,9 +161,6 @@ console.log(myDate.getDay()); // 4
 </code></pre>
     <p>There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.</p>
     <p>In addition, <code>getDay()</code> is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.</p>
-    <h2>Assignment</h2>
-    <p>Keep working with the date code and the information above to create a string that reads:</p>
-    <p><code>The date is: Thursday, January 25th, 2021</code></p>
     <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -199,22 +188,34 @@ console.log(myDate2.getDate(), myDate2.getMonth(), myDate2.getFullYear());
 console.log(myDate2.toLocaleDateString('en-US')); // "4/1/2019"
 </code></pre>
     <p>Note that the representation of the months here is not zero-indexed.</p>
-    <h2>Assignment</h2>
-    <p>Here are some famous events:</p>
-    <p>London Olympics, 27 July 2012 to 12 August 2012</p>
-    <p>Wedding of Prince William and Catherine Middleton, 29 April 2011</p>
-    <p>Apollo 13, April 11, 1970 to April 17, 1970</p>
-    <ul>
-      <li>
-        <p>For each famous event, create a date object that represents the date the event started and the date it ended</p>
-      </li>
-      <li>
-        <p>Create a function that returns how many days the event lasted. If it lasted for one day, simply return <code>1 day</code></p>
-      </li>
-      <li>
-        <p>Create another function that returns how long ago the event was from today's date</p>
-      </li>
-    </ul>
+    <blockquote>
+      <p>You can also used <code>toLocaleString</code> to work with currency</p>
+    </blockquote>
+    <h4>Try these exam questions</h4>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">const date1 = new Date(1986, 0, 17);
+
+console.log(date1.toLocaleString('en-GB'));
+</code></pre>
+    <ol>
+      <li>"17/01/1986, 00:00:00"</li>
+      <li>"1/17/1986, 00:00:00"</li>
+      <li>"1986/01/17, 00:00:00"</li>
+    </ol>
+    <p>You've been asked to complete a function that can add any number of days to a date.</p>
+    <p>What do you need to add in place of the comment?</p>
+    <pre><code class="language-javascript">function myDateFunction(date, days) {
+  // add code here
+}
+
+const myDate = new Date(1986, 0, 17);
+myDateFunction(myDate, 21);
+</code></pre>
+    <ol>
+      <li>date.setDate(date.getFullYear() + days)</li>
+      <li>myDate.setDate(date() + days)</li>
+      <li>date.setDate(date.getDate() + days)</li>
+    </ol>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day4.html">prev</a>|<a href="/swe/mod2/wk2/day1.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
