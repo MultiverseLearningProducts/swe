@@ -12,39 +12,7 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 1</h1>
     <h1>Overview of the day</h1>
-    <p>Today we briefly look at the history of JavaScript, before looking at the Document Object Model, or DOM for short. Later, we'll take a look at event driven programming with JavaScript.</p>
     <h1>Lesson 1</h1>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Understand the history of JavaScript (not required for the exam)</li>
-    </ul>
-    <h2>The History of JavaScript</h2>
-    <p>
-      HTML existed long before the mid-90s and web pages could be styled in rudimentary ways, with styles controlled by HTML (e.g. <code>&#x3C;center>Centred text&#x3C;/center></code>). Later, in 1996, CSS would be released and would allow
-      developers to decouple presentation (CSS) from document structure (HTML). The structure of web pages and styling was now standardised, but what about interactivity? What if the developer wanted to tell the user what the date and time was, or open a new window programmatically?
-    </p>
-    <p>Around this time, Microsoft and Netscape were duking it out for browser superiority and it was in fact a Netscape developer (Brandan Eich), who created a client-side scripting language in ten days that would later become JavaScript. It was initially called Mocha, then LiveScript, then later, JavaScript. It wasn't without its problems, but JavaScript enabled designers and developers to easily add dynamic features to their websites. For this reason, JavaScript rapidly emerged as the standard scripting language for the web.</p>
-    <blockquote>
-      <p>A client-side scripting language is a language that's interpreted at run time in the browser. This is as opposed to a compiled language like C++ or Java, which needs to be compiled before it can be run</p>
-    </blockquote>
-    <p>You can read more about the history of JavaScript <a href="https://www.springboard.com/blog/history-of-javascript/">here</a>.</p>
-    <h2>Assignment</h2>
-    <p>Have a read of the article above.</p>
-    <ul>
-      <li>
-        <p>What other facts and figures can you find about JavaScript?</p>
-      </li>
-      <li>
-        <p>Has JavaScript been standardised?</p>
-      </li>
-      <li>
-        <p>What is the standard called?</p>
-      </li>
-      <li>
-        <p>JavaScript started life as a client-side language, but what can it also be used for now?</p>
-      </li>
-    </ul>
-    <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Learn about the DOM</li>
@@ -61,16 +29,7 @@
     <blockquote>
       <p>In your browser console, type <code>window.document.head</code>. This will retrieve the head element of the page.</p>
     </blockquote>
-    <h3>The history of the DOM</h3>
-    <blockquote>
-      <p>DOM history isn't required for the exam but it is useful to know</p>
-    </blockquote>
-    <p>As we learned above, Microsoft and Netscape were the main players in the mid-90s browser market. Each company favoured their own implementation of JavaScript; Microsoft had JScript and Netscape and JavaScript. Microsoft's JScript was actually just JavaScript but with a different name to avoid trademark issues.</p>
-    <p>The first unofficial version of the DOM was called the <code>Legacy DOM</code> and this paved the way for client-side validation and other visual effects. At this point though, implementations of web pages with dynamic behaviour started to diverge. Whilst some Legacy DOM operations remained compatible, other dynamic extensions did not.</p>
-    <p>By the time JavaScript was standardised in 1997, the W3C set out its recommendations for the stardardisation of the DOM. The DOM is now standardised across all browsers and is maintained by the Web Hypertext Application Technology Working Group (WHATWG).</p>
-    <h2>Assignment</h2>
-    <p>Find a simple web page and sketch out (yep, pencil and all!) the DOM. Don't forget to ask your coach if you get stuck!</p>
-    <h1>Lesson 3</h1>
+    <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Working with DOM events</li>
@@ -78,15 +37,7 @@
       <li>How to use standardised DOM methods in our programs</li>
     </ul>
     <h3>Working with DOM events</h3>
-    <p>Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers. Here are some examples that we will dig into later:</p>
-    <ul>
-      <li>You can get any element on a page in order to modifying it or add dynamic behaviour</li>
-      <li>You can add classes and attributes to elements programatically</li>
-      <li>You can add events that respond to user input</li>
-      <li>You can control the submission of forms</li>
-      <li>You can leverage the <code>onload</code> event to know when an asset or the entire page has loaded</li>
-      <li>You can write text to the document using <code>document.write</code></li>
-    </ul>
+    <p>Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers.</p>
     <p>One of the primary uses of DOM methods is to create an event handler that can respond to a user event. What would some typical user events be?</p>
     <p>To create an event, we first need to get the element we want to assign the event to. There are a number of ways to accomplish this task:</p>
     <table>
@@ -106,96 +57,111 @@
           <td align="left">Returns a HTMLCollection containing all elements with the specified class name</td>
         </tr>
         <tr>
-          <td align="left">getElementsByName()</td>
-          <td align="left">Returns a HTMLCollection containing all elements with a specified name</td>
-        </tr>
-        <tr>
           <td align="left">getElementsByTagName()</td>
           <td align="left">Returns a HTMLCollection containing all elements with the specified tag name</td>
-        </tr>
-        <tr>
-          <td align="left">querySelector()</td>
-          <td align="left">Returns the first element that matches a specified CSS selector(s) in the document</td>
-        </tr>
-        <tr>
-          <td align="left">querySelectorAll()</td>
-          <td align="left">Returns a static NodeList containing all elements that matches a specified CSS selector(s) in the document</td>
         </tr>
       </tbody>
     </table>
     <blockquote>
       <p>You will need to know <code>getElementByld; getElementsByTagName; getElementsByClassName</code> for the exam.</p>
     </blockquote>
-    <p>
-      As you can see, some of the DOM methods return an array of elements, whereas some return just one element. Choosing the right selector is important
-      when working with UI as we don't want to get all the elements if we don't need to.
-    </p>
-    <p>Consider the following scenarios. Which selector would you use?</p>
-    <ul>
-      <li>
-        <p>You want to get all the forms that exist on a page</p>
-      </li>
-      <li>
-        <p>You want to get a form that has an ID of "myForm"</p>
-      </li>
-      <li>
-        <p>You want to get a specific button element that has a class name. You don't know if other buttons exist on the page</p>
-      </li>
-      <li>
-        <p>You want to get the <code>footer</code> element of a web page. It doesn't have a name, ID or class name. There is only ever one footer on a page</p>
-      </li>
-    </ul>
-    <h3>How to write an event handler</h3>
-    <p>A common event handler you might come across is a form submit handler. This fires everytime the form in question is submitted. To show this in action, let's work with the following form markup:</p>
-    <p>(structural HTML ommitted)</p>
-    <pre><code class="language-html">&#x3C;form name="todoCreateForm">
-  &#x3C;div class="form-group">
-    &#x3C;label for="name">Name&#x3C;/label>
-    &#x3C;input
-      type="text"
-      class="form-control"
-      name="name"
-      placeholder="Name of the task"
-    />
-  &#x3C;/div>
-  &#x3C;button type="submit" class="btn btn-primary">Add Item&#x3C;/button>
-&#x3C;/form>
+    <h4>Try this exam question</h4>
+    <p>You have been asked to get the page URL and insert it into a text field. How would you complete the code that is commented out to achieve this?</p>
+    <pre><code class="language-html">&#x3C;html lang="en">
+  &#x3C;head>
+    &#x3C;meta charset="utf-8" />
+  &#x3C;/head>
+  &#x3C;body>
+    &#x3C;form action="/action_page">
+      &#x3C;label for="url">URL:&#x3C;/label>&#x3C;br />
+      &#x3C;input type="text" id="url" name="url" />
+    &#x3C;/form>
+    &#x3C;script>
+      var url = // ________
+
+      // _______.____________("url")._____ = ___
+    &#x3C;/script>
+  &#x3C;/body>
+&#x3C;/html>
 </code></pre>
-    <blockquote>
-      <p>Text inputs can also have a value attribute. E.G. <code>value="Daniel"</code>. This is useful for when you want to set the value manually</p>
-    </blockquote>
-    <p>Here's how we'd write an event handler that also responds to the event by logging the value of the name field to the console:</p>
+    <h3>Working with event handlers</h3>
+    <p>Event handlers can be added both inline or within an inline or external script:</p>
+    <pre><code class="language-javascript">// inline event handler
+&#x3C;button onclick="document.getElementById('demo').innerHTML = Date()">
+  The time is?
+&#x3C;/button>
+</code></pre>
+    <p>Within an inline or external script:</p>
     <pre><code class="language-javascript">// get form and add listener using DOM path strategy
 const targetForm = document.forms.todoCreateForm;
 
-// apply "submit" event handler
+// first example
 targetForm.addEventListener('submit', (e) => {
-  // prevent the form from submitting
-  e.preventDefault();
-
-  // log out the name field's value
   console.log(e.target.name.value);
 });
+
+// second example
+targetForm.onsubmit = (e) => {
+  console.log('Form submitted!');
+};
 </code></pre>
-    <blockquote>
-      <p><code>e.preventDefault();</code> is a useful method to stop the form submission process. Very useful for testing! <code>e</code> is the event itself.</p>
-    </blockquote>
-    <p>If you run the code above (see JSFiddle below), you will get whatever value you put into the name field. In just a small amount of lines, your code is responding to an event and getting a value from the form. Very cool!</p>
-    <p>Notice that we've used the <code>DOM path</code> strategy to find the form by its name: <code>document.forms.todoCreateForm;</code>. What other ways could we get the form?</p>
     <blockquote>
       <p>For the exam, you'll need to know: <code>onchange, onmouseover, onload, onclick, onmouseout and onkeydown</code></p>
     </blockquote>
-    <p><strong>Further reading</strong>: The W3C has an excellent resource of all the <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">HTML events</a>.</p>
-    <h2>Assignment</h2>
-    <p>Use <a href="https://jsfiddle.net/s1wk7p94/4/">this</a> JSFiddle.</p>
-    <ul>
-      <li>
-        <p>Experiment with the other ways we can get a handle on the form. Will all of them work? If not, can we make them all work by adding something to the form?</p>
-      </li>
-      <li>
-        <p>Can you log out the values of the other forms elements?</p>
-      </li>
-    </ul>
+    <h4>Try this exam question</h4>
+    <p>You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.</p>
+    <p>Tip: one is in inline event and the other is in an inline script.</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html lang="en">
+  &#x3C;head>
+    &#x3C;meta charset="utf-8" />
+    &#x3C;style>
+      .squareBox {
+        display: block;
+        background-color: green;
+        height: 2rem;
+        width: 2rem;
+        text-indent: -999px;
+      }
+
+      .circle {
+        display: block;
+        background-color: green;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 100%;
+        text-indent: -999px;
+      }
+    &#x3C;/style>
+  &#x3C;/head>
+
+  &#x3C;body>
+    &#x3C;a
+      class="squareBox"
+      id="squareBox"
+      href="#"
+      __________="__________________________ = '____'"
+      __________="__________________________ = '____'"
+    >
+      Square box
+    &#x3C;/a>
+
+    &#x3C;a class="circle" id="circle" href="#"> Circle &#x3C;/a>
+
+    &#x3C;script>
+      var circle = document.______________('circle');
+
+      circle.__________ = () => {
+        circle._____________________________;
+      };
+
+      circle.__________ = () => {
+        circle._____________________________;
+      };
+    &#x3C;/script>
+  &#x3C;/body>
+&#x3C;/html>
+</code></pre>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day5.html">prev</a>|<a href="/swe/mod2/wk2/day2.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
