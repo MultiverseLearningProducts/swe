@@ -99,7 +99,7 @@ targetForm.onsubmit = (e) => {
 
 #### Try this exam question
 
-You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.
+You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so that when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.
 
 Tip: one is in inline event and the other is in an inline script.
 
