@@ -9,6 +9,7 @@ GET vs POST
 ## Learning objectives
 
 - Understand the difference between GET and POST
+- Understand the form submission process
 
 ## GET vs POST
 
