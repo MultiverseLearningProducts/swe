@@ -35,69 +35,6 @@ Notice the query string on the end - this is used to send additional (insensitiv
 
 > Knowledge of the URL pattern is not required for the exam, but helps to understand the difference between GET and POST
 
-## Understand the difference between GET and POST
-
-> Understanding the differences between Get and Post is required for the exam
-
-HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are `GET` and `POST`.
-
-- When you request for a resource like a web page or image, the GET request will be used. Additional information can be set in the query parameters where it's visible to all (see above)
-
-- When you submit a form, either the GET or POST can be used
-
-- A form POST request sends data to the server for processing in the message body, hidden from the user (but not encrypted!)
-
-- A form GET request sends the form data in the query string
-
-## Understand what happens when you submit a form
-
-> Understanding the form submission process is required for the exam
-
-Checkout this search engine called Google. On the home page, their form submits a request to the server using the GET method. When you submit your search, your query and a bunch of other information is sent to Google in the query parameters. Try it yourself!
-
-```html
-<form action="/search" method="GET">
-  <label for="taskName">Task Name</label>
-  <input
-    type="text"
-    class="form-control"
-    name="taskName"
-    id="taskNameID"
-    placeholder="Name of the task"
-  />
-  <input
-    type="text"
-    class="form-control"
-    name="owner"
-    id="ownerID"
-    placeholder="The person that owns the task"
-  />
-  <!-- other form fields -->
-</form>
-```
-
-Likewise, if we were to name submit a task (amongst other fields) above, the keys and value pairs in the URL would be taken from the `name` field:
-
-```html
-http://someurl/search?taskName=mytaskname&owner=Daniel
-```
-
-When you login to Google, a POST request is used. Your data is sensitive, and we don't want it in the query string where everyone can see it!
-
-```html
-<form action="/signin/v2/challenge/password/empty" method="POST">
-  <!-- form fields -->
-</form>
-```
-
-Key points for the exam:
-
-- Don't use GET to send sensitive data, use POST instead
-- Browsers place character limits on query strings
-- POST requests are never cached and won't show up in your browser history. Why do you think this is?
-- GET requests are cached and will show up in your history
-- The form action is the endpoint on the server that will receive the submission
-
 # Lesson 2
 
 ## Final Assignment

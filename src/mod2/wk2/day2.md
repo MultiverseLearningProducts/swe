@@ -2,107 +2,194 @@
 
 # Overview of the day
 
-Today we will look at how to add elements to our page dynamically before adding validation to our event driven app we created yesterday.
+Today we will look at how to add elements to our page dynamically.
 
 # Lesson 1
 
 ## Learning Objectives
 
-- Learn how to add an element dynamically to our page
-- Add validation to our form submission process
+- Learn how to add an element dynamically to a page
 
 ## Adding elements dynamically
 
-Before we crack on with validation, it's worth considering the UX for a minute. In particular; how we tell the user there's been an error. As you'll know, popups and alerts on pages are not fun; we therefore need a subtler way to tell the user there's been an error.
-
-There are many ways to do this, and you will have no doubt come across different strategies whilst submitting forms online yourself. One such way is to add a label dynamically to the page to inform the user what the error is. This is how you might achieve that:
-
-```javascript
-// create a label
-const errorLabel = document.createElement('label');
-
-// set a "for" attribute equal to the input's ID to help UX
-errorLabel.setAttribute('for', input.id);
-
-// create a text node
-const errorLabelTextNode = document.createTextNode(
-  'This field cannot be empty'
-);
-
-// append the text node to the label
-errorLabel.appendChild(errorLabelTextNode);
-
-// add a class for styling purposes
-errorLabel.classList.add('error-label');
-```
-
-> You need to know `createElement` and `setAttribute` for the exam
-
-What you'd end up with would be:
+Let's pretend we have the following label we'd like to append to the source code:
 
 ```html
-<label for="description" class="error-label">This field cannot be empty</label>
+<label for="someInput" class="error-label">This field cannot be empty</label>
 ```
 
-> `For` is a useful attribute that sets the focus on the input when the label is clicked
+How could you create this dynamically in JavaScript and insert it? How could you add the `for` attribute as well as the class and the inner text?
 
-To add the label to the source, you'd append it to a node:
+### Try this exam question
+
+Research the questions above then fill in the blanks:
 
 ```javascript
-// append to the parentNode of an input
-input.parentNode.append(errorLabel);
+var myLabel = document.___________('_____');
+
+myLabel.____________setAttribute('___', '_________');
+myLabel._________.add('error-label');
+myLabel._________ = 'Error label content';
 ```
 
-You can also use `innerHTML` to add text to the node. Instead of creating a text node and appending it, you could just add:
+How could you then write this to the source? There are a number of ways to achieve this, but in terms of the exam, we only need to know `document.write`. This DOM method will insert anything you wish into the source, including our dynamically generated label above.
+
+### Try this exam question
+
+You have been asked to evaluate the following source code. What is written to the page?
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      document.write('Hello World!');
+    </script>
+  </body>
+</html>
+```
+
+1. Hello World!
+2. Hello Kitty!
+3. Nothing is written to the page
+
+### Try this exam question
+
+You have been asked to evaluate the following source code. What happens when the function is called?
+
+```html
+<!DOCTYPE html>
+<html>
+  <body onload="writeToPage()">
+    <h1>Welcome to my website!</h1>
+
+    <script>
+      function writeToPage() {
+        document.write('Hello World!');
+      }
+    </script>
+  </body>
+</html>
+```
+
+1. "Hello World!" is written to the page below the `<h1>` tag
+2. Nothing is written to the page dynamically, though the `h1` tag remains visible
+3. "Hello World!" is written to the page, replacing all other content
+
+> The `onload` DOM method is very useful to run some code after the page has completed loading
+
+# Lesson 2
+
+## Learning objectives
+
+- Understand the try/catch block
+
+### Exception handling with Try/Catch
+
+Sometimes you know ahead of time that a codeblock may fail, or you would like the codeblock to fail in a "graceful" way without breaking your entire application. For this with can use a `try/catch` block:
 
 ```javascript
-errorLabel.innerHTML = 'This field cannot be empty';
+try {
+  // try and remove the sibling
+  field.nextElementSibling.remove();
+} catch (e) {
+  // print the error message
+  console.log(e.message);
+} finally {
+  // this section always runs
+}
 ```
 
-> An understanding of innerHTML is required for the exam
+In the code above, we try to remove an element from the HTML. If the element isn't there, then a type error will be thrown. If we wrap it in a try/catch block, we can handle this exception, knowing that it may occur.
 
-## Adding validation
+#### Try this exam question
 
-As we covered before, one of the primary uses of JavaScript in the early days was to validate a form before submission. Things have developed since then in that there are mechanisms within HTML5 can take care of most of the client-side validation for us. In addition, many developers will offload the validation to an already established and tested library.
+You have been asked to evaluate the following code. What is printed out to the console?
 
-> You should always validate on the server-side as well as client-side validation is not a complete solution
+```javascript
+try {
+  throw new Error("There's been a problem!");
+} catch (e) {
+  console.log(e.message);
+} finally {
+  console.log(e.message);
+}
+```
 
-All that being said, a little validation project is a useful way to flex our new event driven skills.
+1. "There's been a problem!" ... Uncaught ReferenceError: e is not defined
+2. "There's been a problem!"
+3. Nothing is printed out
 
-## Assignment
+# Lesson 3
 
-Using the JSFiddle link from yesterday:
+## Lesson objectives
 
-- Validate all of the form inputs before allowing the form to submit
+- Understand inline vs external scripts
 
-- Provide meaningful error messages to user
+## Learning Objectives
 
-- Consider the user experience (UX) here. Errors should be subtle(ish) but clear; nobody likes a jarring alert box popup!
+- Understand the difference between inline and external scripts
+- Implement the strategies in code
 
-- Errors shouldn't be vague and should tell the user what the problem is
+### Inline vs external scripts
 
-You need to validate so that:
+If you've worked with CSS before, you may know that you can write CSS directly into the HTML source or you can link to an external file. The same holds true for JavaScript. We could inline a script as follows:
 
-- The user has filled in all the fields
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Inline script</title>
+    <script type="text/javascript">
+      console.log("Hello! I'm an inline script");
+    </script>
+  </head>
+  <body></body>
+</html>
+```
 
-- Fields are of a certain length (e.g. a required name field with just one letter entered is suspect)
+Alternatively, you can place your JavaScipt in an external `.js` file, and link to it in your HTML source:
 
-- Extension task: verify that the format of fields such as date, email, credit card number, etc. fit a required pattern (you may need to use RegEx for this)
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>External script</title>
+    <script type="text/javascript" src="./assets/js/external.js"></script>
+  </head>
+  <body></body>
+</html>
+```
 
-- Extension task: users may enter a value in caps; "DANIEL", or they may enter a first letter in lowercase; "daniel". How can you validate and fix it before submission?
+### Try these exam questions
 
-> RegEx is not required for the exam but is a very useful tool to match strings
+True or false?
 
-## Show and tell
+1. Inline scripts can be cached
 
-Can you show the cohort your finished validation assignment?
+- True
+- False
 
-Key points to cover:
+2. External scripts can be cached
 
-- Can you describe your software design approach? E.G. procedural, modular, object oriented
-- What are you validating and how?
-- What UX considerations did you make?
-- How are your error messages displayed?
-- Found a cool solution? Please share!
+- True
+- False
+
+3. You should always use external scripts where possible
+
+- True
+- False
+
+4. You shouldn't inline large JavaScript files
+
+- True
+- False
+
+5. You should put large JavaScript files in an external script
+
+- True
+- False
 
 [main](/swe)|[prev](/swe/mod2/wk2/day1.html)|[next](/swe/mod2/wk2/day3.html);
