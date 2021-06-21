@@ -4,8 +4,6 @@
 
 Below is information on how to book the exam as well as the retake policy.
 
-# Lesson 1
-
 ## How to book the exam
 
 - To schedule your exam, go [here](https://examregistration.microsoft.com/?action=1&locale=en-us&examcode=98-382&examname=Introduction%20to%20Programming%20Using%20JavaScript&returnToLearningUrl=https://docs.microsoft.com/learn/certifications/exams/98-382)
