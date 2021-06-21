@@ -2,10 +2,14 @@
 
 # Overview of the day
 
-To we will look at the form submission process before we tackle the final project for this module.
+This is your time to revise the material we've covered and/or review anything else in the exam
+specification that you feel you need to.
 
-# Lesson 1
+You can review the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
-## Learning Objectives
+## Resources
+
+- [5 Official practice questions](http://pts.measureup.com/web/PBS/LMS/index.php?role=0&course=test201811110358927&ref=mindhub)
+- [Up to 39 practice questions](https://www.itexams.com/exam/98-382)
 
 [main](/swe)|[prev](/swe/mod2/wk2/day3.html)|[next](/swe/mod2/wk2/day5.html);

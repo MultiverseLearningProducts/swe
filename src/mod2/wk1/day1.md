@@ -4,13 +4,11 @@
 
 You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
-This course also serves as an good introduction to the JavaScript language, irrespective of whether you're taking an exam.
-
 # Course stucture
 
 **Week 1** - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
 
-**Week 2** - we look at the history of JavaScript before looking at the Document Object Model (DOM), events, interacting with user interfaces, forms, GET/POST, debugging and more.
+**Week 2** - we look at the Document Object Model (DOM), events, forms, GET/POST, debugging and more.
 
 # Lesson 1
 
