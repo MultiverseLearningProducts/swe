@@ -26,15 +26,4 @@ Here's Microsoft's retake policy:
 
 A candidate may not take a given exam any more than five times per year (12 months). This 12-month period starts from the first attempt. The candidate is eligible to retake the exam 12 months from the date of their first attempt.
 
-# Lesson 2
-
-## Show and tell
-
-Please show the class your music player app. Be sure to cover:
-
-- How you designed the app
-- What its current capabilities are
-- What problems you had and how you solved them
-- A demo of the working product!
-
 [main](/swe)|[prev](/swe/mod2/wk2/day4.html)|[next](/swe/mod3/wk1/day1.html);
