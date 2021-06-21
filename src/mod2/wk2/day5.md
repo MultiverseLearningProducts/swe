@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we take a look at how to book the exam before a show and tell later!
+Below is information on how to book the exam as well as the retake policy.
 
 # Lesson 1
 
