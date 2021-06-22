@@ -91,10 +91,39 @@ As mentioned above, we can add URLs and an associated data payload to the histor
 history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
 ```
 
-If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`.
+If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`, though you can only access the state that belongs to a URL when the URL is active. For instance, I can access the object `{ name: 'Daniel' }` when on the ``/hello` URL but nowhere else.
 
 ### When/where is pushState used?
 
-We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload.
+We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload. This is where `pushState` can help.
+
+### Try this exam question
+
+The following code is run in the console when the user is on `https://www.google.com`:
+
+```javascript
+history.pushState({ name: 'Test' }, 'Test page', '/test');
+history.pushState(
+  { name: 'Another test' },
+  'Another test page',
+  '/another-test'
+);
+
+history.state; // what is logged?
+history.back();
+history.back();
+```
+
+What URL does the user end up on?
+
+1. https://www.google.com/test
+2. https://www.google.com/another-test
+3. https://www.google.com
+
+What state is logged?
+
+1. {}
+2. Undefined
+3. { name: 'Another test' }
 
 [main](/swe)|[prev](/swe/mod2/wk2/day2.html)|[next](/swe/mod2/wk2/day4.html);
