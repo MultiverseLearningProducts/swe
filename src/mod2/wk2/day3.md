@@ -72,7 +72,7 @@ True or false?
 
 Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the `History` object. Using the History object, we can navigate through the session history programmatically. We can even push new history items to the stack as if the user had navigated to a new page.
 
-To access the History object in the browser, simple open the console and type `window.history` or more simply `history`.
+To access the History object in the browser, simply open the console and type `window.history` or more simply `history`.
 
 > Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below)
 
@@ -91,7 +91,7 @@ As mentioned above, we can add URLs and an associated data payload to the histor
 history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
 ```
 
-If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`, though you can only access the state that belongs to a URL when the URL is active. For instance, I can access the object `{ name: 'Daniel' }` when on the ``/hello` URL but nowhere else.
+If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`, though you can only access the state that belongs to a URL when the URL is active. For instance, I can only access the object `{ name: 'Daniel' }` when on the ``/hello` URL but nowhere else.
 
 ### When/where is pushState used?
 
