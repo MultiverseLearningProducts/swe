@@ -30,24 +30,9 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 True or false?
 
 1. GET requests are cached
-
-- True
-- False
-
 2. POST requests are cached
-
-- True
-- False
-
 3. GET requests have character limits
-
-- True
-- False
-
 4. You should always use the POST method when handling sensitive data
-
-- True
-- False
 
 5. You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?
 
@@ -73,9 +58,9 @@ True or false?
 </form>
 ```
 
-- http://mywebsite.org/search?name=Do+the+washing&owner=Simon
-- http://mywebsite.org/search?taskid=Do+the+washing&ownerid=Simon
-- http://mywebsite.org/search?nametaskid=Do+the+washing&ownerownerid=Simon
+1. http://mywebsite.org/search?name=Do+the+washing&owner=Simon
+2. http://mywebsite.org/search?taskid=Do+the+washing&ownerid=Simon
+3. http://mywebsite.org/search?nametaskid=Do+the+washing&ownerownerid=Simon
 
 # Lesson 2
 
@@ -85,6 +70,31 @@ True or false?
 
 ## Handling state with the History object
 
-To do
+Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the `History` object. Using the History object, we can navigate through the session history programmatically. We can even push new history items to the stack as if the user had navigated to a new page.
+
+To access the History object in the browser, simple open the console and type `window.history` or more simply `history`.
+
+> Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below)
+
+From here, you can programatically navigate back and forward:
+
+```javascript
+window.history.forward();
+window.history.back();
+```
+
+### History.pushState
+
+As mentioned above, we can add URLs and an associated data payload to the history stack by using `history.pushState()`:
+
+```javascript
+history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
+```
+
+If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`.
+
+### When/where is pushState used?
+
+We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload.
 
 [main](/swe)|[prev](/swe/mod2/wk2/day2.html)|[next](/swe/mod2/wk2/day4.html);

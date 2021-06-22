@@ -90,7 +90,7 @@ Sometimes you know ahead of time that a codeblock may fail, or you would like th
 
 ```javascript
 try {
-  // try and remove the sibling
+  // try and remove an element
   field.nextElementSibling.remove();
 } catch (e) {
   // print the error message
@@ -167,29 +167,10 @@ Alternatively, you can place your JavaScipt in an external `.js` file, and link 
 
 True or false?
 
-1. Inline scripts can be cached
-
-- True
-- False
-
+1. Inline scripts are cached
 2. External scripts can be cached
-
-- True
-- False
-
 3. You should always use external scripts where possible
-
-- True
-- False
-
 4. You shouldn't inline large JavaScript files
-
-- True
-- False
-
 5. You should put large JavaScript files in an external script
-
-- True
-- False
 
 [main](/swe)|[prev](/swe/mod2/wk2/day1.html)|[next](/swe/mod2/wk2/day3.html);
