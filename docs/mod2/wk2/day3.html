@@ -12,166 +12,97 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 3</h1>
     <h1>Overview of the day</h1>
-    <p>Today we look at bug fixing and debugging strategies. Later, we'll take a look at inline vs external scripts.</p>
+    <p>Today we look at GET vs POST and the History object</p>
     <h1>Lesson 1</h1>
-    <h2>Learning Objectives</h2>
+    <h2>Learning objectives</h2>
     <ul>
-      <li>Understand common debugging strategies</li>
-      <li>Leverage Chrome Dev Tools to debug</li>
+      <li>Understand the difference between GET and POST</li>
+      <li>Understand the form submission process</li>
     </ul>
-    <h1>Common debugging strategies</h1>
-    <p>Debugging is the process of finding and fixing bugs in your programs. All programs (even ones that are live and deployed!) have bugs. Even operating systems will have bugs that the developers will "patch". A patch is fix for a problem in a computer program.</p>
-    <blockquote>
-      <p>Did you know? The first known computer bug was a real bug (an insect) stuck in the electronics</p>
-    </blockquote>
-    <h2>The console</h2>
-    <p>In Chrome, right click the page and hit "Inspect" then navigate to "Console". You should keep this open at all times during testing so you catch any errors.</p>
-    <h2>Console logging</h2>
-    <p>We've already used one of the primary strategies to debug and that is the <code>console.log</code> statement. Use this often in the development process to test the output of programs, but do consider removing these statements when your apps go live.</p>
-    <h2>Document.write</h2>
-    <p><code>document.write</code> allows you to write HTML to the page source dynamically and can be useful for testing. Bear in mind that if you write to the page after the content has been loaded, it will remove all of the body content. See <a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_doc_write4">this</a> example.</p>
-    <h2>The Stack Trace</h2>
-    <p>Being able to read a stack trace is an important skill when debugging your JavaScript applications. Programs often consist of many functions that call one another to achieve a result. You may have written your validation apps in this modular way.</p>
-    <blockquote>
-      <p>Stack trace knowledge isn't required for the exam, but is useful to know</p>
-    </blockquote>
-    <p>A stack is a "Last in, First out" data structure, where the last function to get added to the stack gets executed and then "popped" off the stack. If the function being popped throws an error, JavaScript (and other languages) will produce what's known as a <code>stack trace</code>. This is a trace of all the function calls, starting with the function in error, all the way down to the function at the base of the stack.</p>
-    <blockquote>
-      <p>You may have come across the website StackOverflow. This was named after an error that occurs when too many items get added to the stack.</p>
-    </blockquote>
-    <p>You can view a trace of your app any anytime just by adding <code>console.trace();</code> in any function.</p>
-    <p>Below is a very simple stack trace:</p>
-    <pre><code class="language-javascript">Uncaught TypeError: invalidFields.cannieFinditCapt is not a function
-    at validateSelectFields (validation.js:134)
-    at HTMLFormElement.validateForm (validation.js:74)
+    <h2>GET vs POST</h2>
+    <p>HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are <code>GET</code> and <code>POST</code>.</p>
+    <ul>
+      <li>
+        <p>When you request for a resource like a web page or image, the GET request will be used.</p>
+      </li>
+      <li>
+        <p>For the GET request, aAdditional information can be set in the query parameters where it's visible to all</p>
+      </li>
+      <li>
+        <p>When you submit a form, either the GET or POST can be used - the main difference is where the data to be sent is stored</p>
+      </li>
+      <li>
+        <p>A form POST request sends data to the server for processing in the message body, hidden from the user (but not encrypted!)</p>
+      </li>
+      <li>
+        <p>A form GET request sends the form data in the query string</p>
+      </li>
+    </ul>
+    <h3>Try these exam questions</h3>
+    <p>True or false?</p>
+    <ol>
+      <li>GET requests are cached</li>
+    </ol>
+    <ul>
+      <li>True</li>
+      <li>False</li>
+    </ul>
+    <ol start="2">
+      <li>POST requests are cached</li>
+    </ol>
+    <ul>
+      <li>True</li>
+      <li>False</li>
+    </ul>
+    <ol start="3">
+      <li>GET requests have character limits</li>
+    </ol>
+    <ul>
+      <li>True</li>
+      <li>False</li>
+    </ul>
+    <ol start="4">
+      <li>You should always use the POST method when handling sensitive data</li>
+    </ol>
+    <ul>
+      <li>True</li>
+      <li>False</li>
+    </ul>
+    <ol start="5">
+      <li>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</li>
+    </ol>
+    <pre><code class="language-html">&#x3C;form action="http://mywebsite.org/search" method="GET">
+  &#x3C;label for="taskName">Task Name&#x3C;/label>
+  &#x3C;input
+    type="text"
+    class="form-control"
+    name="name"
+    id="taskid"
+    placeholder="Name of the task"
+  />
+  &#x3C;input
+    type="text"
+    class="form-control"
+    name="owner"
+    id="ownerid"
+    placeholder="The person that owns the task"
+  />
+
+  &#x3C;!-- other form fields -->
+&#x3C;/form>
 </code></pre>
     <ul>
-      <li>What is the error?</li>
-      <li>Where did the error occur?</li>
-      <li>At what line did the error occur?</li>
-      <li>What is the function at the base of the stack?</li>
+      <li><a href="http://mywebsite.org/search?name=Do+the+washing&#x26;owner=Simon">http://mywebsite.org/search?name=Do+the+washing&#x26;owner=Simon</a></li>
+      <li><a href="http://mywebsite.org/search?taskid=Do+the+washing&#x26;ownerid=Simon">http://mywebsite.org/search?taskid=Do+the+washing&#x26;ownerid=Simon</a></li>
+      <li><a href="http://mywebsite.org/search?nametaskid=Do+the+washing&#x26;ownerownerid=Simon">http://mywebsite.org/search?nametaskid=Do+the+washing&#x26;ownerownerid=Simon</a></li>
     </ul>
-    <h2>The Debugger statement</h2>
-    <p>The <code>debugger</code> keyword can be used anywhere in your applications to launch the debugging tool in the environment you're in. This has the effect of setting a <code>breakpoint</code>.</p>
-    <ul>
-      <li>Add this to the validation code you wrote yesterday</li>
-      <li>What happens when you refresh?</li>
-      <li>What can you see and find in the console?</li>
-    </ul>
-    <blockquote>
-      <p>You'll need to have an understanding of the debugger keyword for the exam</p>
-    </blockquote>
-    <h2>Adding break points in Dev Tools</h2>
-    <p>We can add the debugger statement to our code manually, but there is a more convenient way of doing this in Chrome Dev Tools.</p>
-    <p>Navigate to the sources tab, right click the line you want to break on, then click "Add breakpoint".</p>
-    <p>Now, when you refresh the page, the debugger will kick in. From here, you can analyse the contents of variables by hovering over them. You can also see the local, script and global variables on the right hand side.</p>
-    <h2>Exception handling with Try/Catch</h2>
-    <p>Sometimes you know ahead of time that a codeblock may fail, or you would like the codeblock to fail in a "graceful" way without breaking your entire application. For this with can use a <code>try/catch</code> block:</p>
-    <pre><code class="language-javascript">try {
-  // try and remove the sibling
-  field.nextElementSibling.remove();
-} catch (e) {
-  // print the error message
-  console.log(e.message);
-} finally {
-  // this section always runs
-}
-</code></pre>
-    <p>In the code above, we try to remove an element from the HTML. If the element isn't there, then a type error will be thrown. If we wrap it in a try/catch block, we can handle this exception, knowing that it may occur.</p>
-    <blockquote>
-      <p>The <code>finally</code> block always runs if it is present</p>
-    </blockquote>
-    <h2>Assignment</h2>
-    <p>Debug this broken app!</p>
-    <p><a href="https://drive.google.com/file/d/16a_lShlRY9lMx6FbZYsPJ7HxJSy4Cs-c/view?usp=sharing">Here</a> is a link to a broken app. The app makes a fetch request to a URL, then attempts to load the results in the page. There are some new concepts (plus many concepts we have learnt!)</p>
-    <p>The main one to understand is the <code>Promise</code>. Remember the work we did callbacks last week? The JavaScript promise was an attempt at making asynchronous requests easier to read and write. Below is the syntax:</p>
-    <pre><code class="language-javascript">fetch('https://someurl.com')
-  .then((result) => {
-    // return the result of the fetch
-    return result;
-  })
-  .then((result) => {
-    // do something with returned result
-    console.log(result);
-  })
-  .catch((error) => {
-    // handle any errors here
-    console.log(error);
-  });
-</code></pre>
-    <ul>
-      <li>Can you use some of the debugging strategies introduced above to debug the broken app?</li>
-      <li>The working version fetches some colourful blocks and loads them into the page</li>
-    </ul>
-    <blockquote>
-      <p><strong>Good to know:</strong> the fetch request and the anonymous functions within the promise also get added to the stack</p>
-    </blockquote>
     <h1>Lesson 2</h1>
-    <h2>Learning Objectives</h2>
+    <h2>Learning objectives</h2>
     <ul>
-      <li>Understand the difference between inline and external scripts</li>
-      <li>Implement the strategies in code</li>
+      <li>Learn how to handle state with the History object</li>
     </ul>
-    <h3>Inline vs external scripts</h3>
-    <p>If you've worked with CSS before, you may know that you can write CSS directly into the HTML source or you can link to an external file. The same holds true for JavaScript. We could inline a script as follows:</p>
-    <pre><code class="language-html">&#x3C;!DOCTYPE html>
-&#x3C;html lang="en">
-  &#x3C;head>
-    &#x3C;meta charset="utf-8" />
-    &#x3C;title>Inline script&#x3C;/title>
-    &#x3C;script type="text/javascript">
-      console.log("Hello! I'm an inline script");
-    &#x3C;/script>
-  &#x3C;/head>
-  &#x3C;body>&#x3C;/body>
-&#x3C;/html>
-</code></pre>
-    <p>Alternatively, you can place your JavaScipt in an external <code>.js</code> file, and link to it in your HTML source:</p>
-    <pre><code class="language-html">&#x3C;!DOCTYPE html>
-&#x3C;html lang="en">
-  &#x3C;head>
-    &#x3C;meta charset="utf-8" />
-    &#x3C;title>External script&#x3C;/title>
-    &#x3C;script type="text/javascript" src="./assets/js/external.js">&#x3C;/script>
-  &#x3C;/head>
-  &#x3C;body>&#x3C;/body>
-&#x3C;/html>
-</code></pre>
-    <blockquote>
-      <p>Inline (and external) scripts typically go in the <code>&#x3C;head></code> section of the HTML, but this isn't a strict rule.</p>
-    </blockquote>
-    <p>So, which method should you choose?</p>
-    <p>Well, larger scripts are almost certainly better in an external file. Here's why:</p>
-    <ul>
-      <li>
-        <p>A big script would "pollute" the HTML and make it tricky to work with</p>
-      </li>
-      <li>
-        <p>Larger scripts are normally written in a modular way across multiple files. Inline scripting goes against this design pattern.</p>
-      </li>
-      <li>
-        <p>External files can be cached by the browser, meaning if the file hasn't changed, then it won't download the file if it doesn't need to. This has huge performance benefits.</p>
-      </li>
-    </ul>
-    <p>When should you use an inline script?</p>
-    <ul>
-      <li>
-        <p>When you're doing small development tasks/testing that don't require an external file</p>
-      </li>
-      <li>
-        <p>When you need <em>very</em> lightweight code to run that doesn't require an external file</p>
-      </li>
-      <li>
-        <p>When a script is dynamically loaded to the source (e.g. Google Analytics)</p>
-      </li>
-    </ul>
-    <h2>Assignment</h2>
-    <ul>
-      <li>Take the validation work you've done and add it to local files</li>
-      <li>Experiment with inline and external strategies</li>
-      <li>Which do you prefer?</li>
-      <li>How can you see if an external JS file is cached?</li>
-    </ul>
+    <h2>Handling state with the History object</h2>
+    <p>To do</p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
