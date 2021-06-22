@@ -41,35 +41,21 @@
     <h3>Try these exam questions</h3>
     <p>True or false?</p>
     <ol>
-      <li>GET requests are cached</li>
-    </ol>
-    <ul>
-      <li>True</li>
-      <li>False</li>
-    </ul>
-    <ol start="2">
-      <li>POST requests are cached</li>
-    </ol>
-    <ul>
-      <li>True</li>
-      <li>False</li>
-    </ul>
-    <ol start="3">
-      <li>GET requests have character limits</li>
-    </ol>
-    <ul>
-      <li>True</li>
-      <li>False</li>
-    </ul>
-    <ol start="4">
-      <li>You should always use the POST method when handling sensitive data</li>
-    </ol>
-    <ul>
-      <li>True</li>
-      <li>False</li>
-    </ul>
-    <ol start="5">
-      <li>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</li>
+      <li>
+        <p>GET requests are cached</p>
+      </li>
+      <li>
+        <p>POST requests are cached</p>
+      </li>
+      <li>
+        <p>GET requests have character limits</p>
+      </li>
+      <li>
+        <p>You should always use the POST method when handling sensitive data</p>
+      </li>
+      <li>
+        <p>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</p>
+      </li>
     </ol>
     <pre><code class="language-html">&#x3C;form action="http://mywebsite.org/search" method="GET">
   &#x3C;label for="taskName">Task Name&#x3C;/label>
@@ -91,18 +77,58 @@
   &#x3C;!-- other form fields -->
 &#x3C;/form>
 </code></pre>
-    <ul>
+    <ol>
       <li><a href="http://mywebsite.org/search?name=Do+the+washing&#x26;owner=Simon">http://mywebsite.org/search?name=Do+the+washing&#x26;owner=Simon</a></li>
       <li><a href="http://mywebsite.org/search?taskid=Do+the+washing&#x26;ownerid=Simon">http://mywebsite.org/search?taskid=Do+the+washing&#x26;ownerid=Simon</a></li>
       <li><a href="http://mywebsite.org/search?nametaskid=Do+the+washing&#x26;ownerownerid=Simon">http://mywebsite.org/search?nametaskid=Do+the+washing&#x26;ownerownerid=Simon</a></li>
-    </ul>
+    </ol>
     <h1>Lesson 2</h1>
     <h2>Learning objectives</h2>
     <ul>
       <li>Learn how to handle state with the History object</li>
     </ul>
     <h2>Handling state with the History object</h2>
-    <p>To do</p>
+    <p>Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the <code>History</code> object. Using the History object, we can navigate through the session history programmatically. We can even push new history items to the stack as if the user had navigated to a new page.</p>
+    <p>To access the History object in the browser, simply open the console and type <code>window.history</code> or more simply <code>history</code>.</p>
+    <blockquote>
+      <p>Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below)</p>
+    </blockquote>
+    <p>From here, you can programatically navigate back and forward:</p>
+    <pre><code class="language-javascript">window.history.forward();
+window.history.back();
+</code></pre>
+    <h3>History.pushState</h3>
+    <p>As mentioned above, we can add URLs and an associated data payload to the history stack by using <code>history.pushState()</code>:</p>
+    <pre><code class="language-javascript">history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
+</code></pre>
+    <p>If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing <code>history.state</code>, though you can only access the state that belongs to a URL when the URL is active. For instance, I can only access the object <code>{ name: 'Daniel' }</code> when on the `<code>/hello</code> URL but nowhere else.</p>
+    <h3>When/where is pushState used?</h3>
+    <p>We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload. This is where <code>pushState</code> can help.</p>
+    <h3>Try this exam question</h3>
+    <p>The following code is run in the console when the user is on <code>https://www.google.com</code>:</p>
+    <pre><code class="language-javascript">history.pushState({ name: 'Test' }, 'Test page', '/test');
+history.pushState(
+  { name: 'Another test' },
+  'Another test page',
+  '/another-test'
+);
+
+history.state; // what is logged?
+history.back();
+history.back();
+</code></pre>
+    <p>What URL does the user end up on?</p>
+    <ol>
+      <li><a href="https://www.google.com/test">https://www.google.com/test</a></li>
+      <li><a href="https://www.google.com/another-test">https://www.google.com/another-test</a></li>
+      <li><a href="https://www.google.com">https://www.google.com</a></li>
+    </ol>
+    <p>What state is logged?</p>
+    <ol>
+      <li>{}</li>
+      <li>Undefined</li>
+      <li>{ name: 'Another test' }</li>
+    </ol>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
