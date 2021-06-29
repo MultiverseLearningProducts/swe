@@ -237,7 +237,7 @@ fetch(url, {
     .catch(console.error);
 </code></pre>
     <h2>Assignment</h2>
-    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.multiverse-coaches.io/">https://http-challenge.multiverse-coaches.io/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
+    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.multiverse-coaches.io/">https://http-challenge.multiverse-coaches.io/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. Push your code to github and share a link to your repo with your coach.</p>
     <h1>🤷🏽‍♂️ Tips</h1>
     <ul>
       <li>To read the responses you need to call <code>res.text()</code></li>
@@ -246,6 +246,8 @@ fetch(url, {
     </ul>
     <pre><code class="language-javascript">const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/);
 </code></pre>
+    <h2>Assignment Extension</h2>
+    <p>Instead of your <code>index.html</code> simply being a page to load your javascript into, make it an actual webpage. Use html inputs and event handlers to allow a user visiting your website to complete the html challenge with their own answers.</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/178">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/bootcamp/wk5/day3.html">prev</a>|<a href="/swe/mod1/wk1/day2.html">next</a>

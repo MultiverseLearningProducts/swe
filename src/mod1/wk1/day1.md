@@ -233,7 +233,7 @@ fetch(url, {
 
 ## Assignment
 
-Can you repeat the calls that we made earlier to https://http-challenge.multiverse-coaches.io/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
+Can you repeat the calls that we made earlier to https://http-challenge.multiverse-coaches.io/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. Push your code to github and share a link to your repo with your coach.
 
 # 🤷🏽‍♂️ Tips
 
@@ -244,6 +244,10 @@ Can you repeat the calls that we made earlier to https://http-challenge.multiver
 ```javascript
 const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/);
 ```
+
+## Assignment Extension
+
+Instead of your `index.html` simply being a page to load your javascript into, make it an actual webpage. Use html inputs and event handlers to allow a user visiting your website to complete the html challenge with their own answers.
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)

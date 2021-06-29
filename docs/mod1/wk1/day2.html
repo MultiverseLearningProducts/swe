@@ -19,11 +19,8 @@
     <blockquote>
       <p>REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.</p>
     </blockquote>
-    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a> servers implemented their own endpoints named in ways that different development teams saw fit. For example one application might have an endpoint called <code>/getUsers</code> another might call it <code>/allUsers</code> there was no agreed path name for fetching all users from an endpoint.</p>
-    <p>REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
-    <blockquote>
-      <p>This is achieved by placing constraints on connector semantics where other styles have focused on component semantics. Roy Thomas Fielding</p>
-    </blockquote>
+    <p>Note the word <strong>style</strong> - REST is a style of designing APIs in the same way that Object-Oriented Progrmamming is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!</p>
+    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a> servers implemented their own endpoints named in ways that different development teams saw fit. For example, in your restaurant app, some teams had endpoints like <code>/createRestaurant</code> and others like <code>/addRestaurant</code>. REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
     <p>Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
@@ -96,7 +93,7 @@
         </tr>
       </tbody>
     </table>
-    <p>Nested resources simple extend the same pattern.</p>
+    <p>Nested resources simply extend the same pattern:</p>
     <table>
       <thead>
         <tr>
@@ -148,425 +145,17 @@
       </tbody>
     </table>
     <p>You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.</p>
-    <h3>Documentation</h3>
-    <p>You will often find yourself consuming 3rd party APIs. Consider these 2 RESTful fundamentals; verbs and paths. We can expect to see these 2 things in most RESTful APIs. How quickly and easily it is to integrate with 3rd party APIs is largely down to the quality of their documentation. Often documentation is generated from the API code itself. This is a popular way to document APIs. Have a look at the examples of online generated API documentation below:</p>
-    <ul>
-      <li><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos">Github</a></li>
-      <li><a href="https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders">Dropbox</a></li>
-      <li><a href="https://www.twilio.com/docs/usage/bulkexport/job#fetch-a-job-resource">Twilio</a></li>
-      <li><a href="https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets">Twitter</a></li>
-      <li><a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-multiple-albums">Spotify</a></li>
-      <li><a href="https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0">The Sneaker Database</a></li>
-    </ul>
-    <p>❓ What are the common elements you can identify in each of the API documentation sites above?</p>
-    <p>❓ There are quite a few albums on Spotify and we can't actually <code>GET</code> all of them. What is the mechanism Spotify have used to limit the albums you can request?</p>
-    <p>❓ Why do you think auto generated documentation is a popular choice for dev teams who create and maintain public facing APIs?</p>
-    <h3>OpenAPI</h3>
-    <p>OpenAPI was originally part of the Swagger framework. Swagger became very popular and the developer community embraced the specification, it has become a recognised standard used across the industry. OpenAPI became a separate project in 2016, overseen by the OpenAPI Initiative, an open-source collaboration project of the Linux Foundation.</p>
-    <p>
-      Lets use <a href="https://www.openapis.org/">OpenAPI</a>/<a href="https://swagger.io/">Swagger</a> to define our API in a standard structure. There are lots of benefits from becoming familiar with this standard.
-      You will become confident and familiar will all the things you need to consider when you design your own API endpoints. Other developers will be able to integrate with your API easily. Other tools can read the information about your API from the OpenAPI standard structure and generate web based documentation for you! Below is a starter example of an OpenAPI <code>airports-config.yaml</code> file.
-    </p>
-    <pre><code class="language-yaml">openapi: 3.0.0
-info:
-  title: Airports API
-  description: Get all your airport data here https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json 
-  version: 1.0.0
-servers:
-  - url: http://localhost:3000
-    description: if you are using NodeJS your dev port might be 3000
-  - url: http://localhost:8080
-    description: if you are using Spring your dev port will be 8080
-  - url: https://airports-api.whitehatcoaches.org.uk
-    description: this is the production baseURL
-paths:
-  /airports:
-    get:
-      summary: Returns a list of all the airports
-      description: |
-        blar blar 28,000 airports etc
-
-        * you can also use
-        * markdown in this section
-
-        ![airport](https://twistedsifter.com/wp-content/uploads/2014/11/mexico-city-international-airport-drone-video.jpg)
-
-        Including images!
-      responses:
-        200:
-          description: an array of JSON objects that represent each airport
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    icao:
-                      type: string
-                    iata:
-                      type: string
-                    name:
-                      type: string
-                    city:
-                      type: string
-                    state:
-                      type: string
-                    country:
-                      type: string
-                    elevation:
-                      type: integer
-                    lat:
-                      type: number
-                      format: double
-                    lon:
-                      type: number
-                      format: double
-                    tz:
-                      type: string
-                  example:
-                    icao: "00AK"
-                    iata: ""
-                    name: "Lowell Field"
-                    city: "Anchor Point"
-                    state: "Alaska"
-                    country: "US"
-                    elevation: 450
-                    lat: 59.94919968
-                    lon: -151.695999146
-                    tz: "America/Anchorage"
-</code></pre>
-    <p>You can upload this to a site like <a href="https://readme.com/">readme.com</a> (or use a <a href="https://whitehatlearningproducts.github.io/swe/api-example.yaml">url</a>) and generate a page of documentation like the ones we have looked at above.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/104598397-712b8180-566e-11eb-97b3-05f2c0d577b5.png" alt="a page of OpenAPI markup rendered as a webpage">
-    </p>
-    <h2>Assignment</h2>
-    <p>In an OpenAPI <code>airports-config.yaml</code> file create a complete set of documented RESTful endpoints for the <code>/airports</code> resource. The resource we can use is the Airports we used in the first 5 week bootcamp. You can look up the specification for <a href="https://swagger.io/resources/open-api/">openapi here</a>. We want routes to create, read (all airports and a single airport), update and delete;</p>
-    <p>You might find this <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">list of HTTP status codes</a> useful when defining your endpoint's responses.</p>
-    <p>Once you have got your <code>airports-config.yaml</code> file completed you can even have a go at generating a server from that definition. Below are instructions using javascript and java.</p>
-    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">/**
-* npm install -g swagger-node-codegen
-* snc airports_config.yaml -o airports-node
-* cd into the airports-node folder and start the server with npm start
-*/
-
-npm start
-</code></pre>
-    <pre><code class="language-java">/*
-  download swagger-codegen-cli-3.0.24.jar from https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar
-
-  in the same folder create a config.json file with the following as its contents:
-
-  {
-    "basePackage": "org.whitehat",
-    "configPackage": "org.whitehat.app.config"
-  }
-
-  now run the command below
-
-  java -jar swagger-codegen-cli-3.0.24.jar generate \
-    -i $PWD/airports-config.yaml \
-    -l spring \
-    -o airports-java \
-    -c $PWD/config.json \
-    -DhideGenerationTimestamp=true
-*/
-</code></pre>
-    <p>Be ready to demo your generated server and share your <code>airports-config.yaml</code> file with your coach.</p>
-    <hr>
-    <h2>Lesson 2 - Build your own OpenAPI</h2>
+    <h2>Lesson 2 - Build your own API</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Produce an API server with integrated documentation</li>
+      <li>Produce an API server</li>
       <li>Implement CRUD operations on a single resource using RESTful endpoints</li>
     </ul>
-    <h2>Before we start</h2>
-    <p>You will need a valid <code>airports-config.yaml</code> openAPI definition file.</p>
-    <h2>Materials needed</h2>
     <h2>Lesson</h2>
-    <p>Auto generated code is all very well, but you also need to know how to build your own RESTful service. In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. You will be integrating OpenAPI documentation using swagger. There are a few steps below to get you started. If you would like to build your server in another language like PHP or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>
-    <h3>Dependencies</h3>
-    <p>First of all find and install the dependencies your server is going to need to create auto generated documentation.</p>
-    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">{
-  "name": "airports",
-  "version": "1.0.0",
-  "description": "Use this package.json to start your assignment",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "author": "your Github username can go here",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "swagger-jsdoc": "^6.0.1",
-    "swagger-ui-express": "^4.1.6",
-    "js-yaml": "^4.0.0"
-  }
-}
-</code></pre>
-    <pre><code class="language-java">/*
-  Goto https://start.spring.io and generate a project with the group 'org.whitehat' and package name 'org.whitehat.airports' that includes 'Spring Boot Web' as a dependency. Once you have downloaded and unzipped your project, add the following dependencies to your `pom.xml` file (in the `&#x3C;dependencies>` list).  
-*/
-		&#x3C;dependency>
-			&#x3C;groupId>org.springdoc&#x3C;/groupId>
-			&#x3C;artifactId>springdoc-openapi-ui&#x3C;/artifactId>
-			&#x3C;version>1.5.2&#x3C;/version>
-		&#x3C;/dependency>
-
-		&#x3C;dependency>
-			&#x3C;groupId>com.googlecode.json-simple&#x3C;/groupId>
-			&#x3C;artifactId>json-simple&#x3C;/artifactId>
-			&#x3C;version>1.1.1&#x3C;/version>
-		&#x3C;/dependency>
-
-		&#x3C;dependency>
-			&#x3C;groupId>com.fasterxml.jackson.core&#x3C;/groupId>
-			&#x3C;artifactId>jackson-databind&#x3C;/artifactId>
-			&#x3C;version>2.11.1&#x3C;/version>
-		&#x3C;/dependency>
-</code></pre>
-    <h3>Configuration</h3>
-    <p>The next step is to configure your server to create API documentation from your code. Previously we used the OpenAPI yaml file to describe our routes, but that method means we would have to keep updating the config yaml file if we made changes to the endpoint. Instead now we are going to use swagger to generate docs NOT from a yaml file - but from the actual code itself. You can remove the <code>paths</code> property from your yaml file.</p>
-    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">const express = require('express')
-const app = express()
-const swaggerUi = require('swagger-ui-express')
-const airports = require('./airports.json')
-const YAML = require('js-yaml')
-const fs = require('fs')
-const docs = YAML.load(fs.readFileSync('./airports-config.yaml').toString())
-const swaggerDocs = require('swagger-jsdoc')({
-    swaggerDefinition: docs,
-    apis: ['./server.js']
-})
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {explorer: true}))
-
-app.listen(3000, () => console.log("Airport API ready. Documents at http://localhost:3000/api-docs"))
-</code></pre>
-    <pre><code class="language-java">// in a file named AirportsApplication.java
-package org.whitehat.airports;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.servers.Server;
-
-@SpringBootApplication
-public class AirportsApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(AirportsApplication.class, args);
-	}
-
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
-
-		return new OpenAPI()
-			.info(new Info()
-				.title("Airports")
-				.version(appVersion)
-				.description("28,000 airports")
-			)
-			.addServersItem(new Server().url("http://localhost:8080/"))
-			.addServersItem(new Server().url("https://api.whitehatcoaches.org.uk/"));
-	}
-}
-
-/*
-in /src/main/resources/application.properties
-  springdoc.swagger-ui.path=/api-docs
-  springdoc.version=1.0.0
-*/
-
-// `http://localhost:8080/api-docs`
-</code></pre>
-    <h3>Auto Document Paths</h3>
-    <p>Now we can start to annotate our routes to support swagger auto documenting our paths.</p>
-    <nav class="tabbed-code-block"><a href="#javascript">Javascript</a><a href="#java">Java</a></nav>
-    <pre><code class="language-javascript">// server.js
-/**
- * @swagger
- * /airports:
- *   get:
- *     summary: returns an array of airports
- *     responses:
- *       200:
- *         description: all the airports
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 properties:
- *                   icao:
- *                     type: string
- *                   iata:
- *                     type: string
- *                   name:
- *                     type: string
- *                   city:
- *                     type: string
- *                   state:
- *                     type: string
- *                   country:
- *                     type: string
- *                   elevation:
- *                     type: integer
- *                   lat:
- *                     type: float
- *                   lon:
- *                     type: float
- *                   tz:
- *                     type: string
- *                 example:
- *                   icao: "00AK"
- *                   iata: ""
- *                   name: "Lowell Field"
- *                   city: "Anchor Point"
- *                   state: "Alaska"
- *                   country: "US"
- *                   elevation: 450
- *                   lat: 59.94919968
- *                   lon: -151.695999146
- *                   tz: "America/Anchorage"                 
- */
-app.get('/airports', (req, res) => {
-    res.send(airports)
-})
-</code></pre>
-    <pre><code class="language-java">package org.whitehat.airports;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/airports")
-public class AirportsController {
-    private static List&#x3C;Airport> airports;
-
-    static {
-        // next line is using the Try-With-Resource syntax to ensure that the
-        // input stream gets closed (very important else get memory leaks!)
-        try (InputStream is = AirportsController.class.getResourceAsStream("/static/airports.json");){
-            ObjectMapper mapper = new ObjectMapper();
-
-            airports = mapper.readValue(is, new TypeReference&#x3C;List&#x3C;Airport>>() {
-            });
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    
-    @GetMapping("/")
-    public List&#x3C;Airport> getAirports() {
-        return AirportsController.airports;
-    }
-
-    // You can build out the rest of the endpoints
-    // just a heads-up http://localhost:8080/airports/ remember the trailing slash.
-    // Because Java is strongly typed swagger will to most of the work to document your endpoint - you can add extra information (go see the docs https://springdoc.org/)
-}
-</code></pre>
-    <p>in <em>javascript</em> You can use schemas to save yourself repeating the definition of an <code>Airport</code>. If you create a class definition for an Airport you can annotate it then reference it in your route annotations. i.e. in an <code>Airport.js</code> file you can define your airport:</p>
-    <pre><code class="language-javascript">/**
- * @swagger
- *   components:
- *     schemas:
- *       Airport:
- *         type: object
- *         properties:
- *           icao:
- *             type: string
- *           iata:
- *             type: string
- *           name:
- *             type: string
- *           city:
- *             type: string
- *           state:
- *             type: string
- *           country:
- *             type: string
- *           elevation:
- *             type: integer
- *           lat:
- *             type: float
- *           lon:
- *             type: float
- *           tz:
- *             type: string
- *         example:
- *           icao: "00AK"
- *           iata: ""
- *           name: "Lowell Field"
- *           city: "Anchor Point"
- *           state: "Alaska"
- *           country: "US"
- *           elevation: 450
- *           lat: 59.94919968
- *           lon: -151.695999146
- *           tz: "America/Anchorage"
- */
-
-module.exports = class Airport {
-    icao = ""
-    iata = ""
-    name = ""
-    city = ""
-    state = ""
-    country = ""
-    elevation = 0
-    lat = 0.0
-    lon = -0.0
-    tz = ""
-
-    constructor (data) {
-        Object.assign(this, data)
-    }
-}
-</code></pre>
-    <p>Then this can be referenced in your route definitions like this (you also have to reference the file in the <code>swagger-jsdoc</code> config):</p>
-    <pre><code class="language-javascript">const swaggerDocs = require('swagger-jsdoc')({
-    swaggerDefinition: docs,
-    apis: ['./server.js', './Airport.js'] // &#x3C;- reference the file your schema is in here
-})
-/**
- * @swagger
- * /airports:
- *   get:
- *     summary: returns an array of airports
- *     responses:
- *       200:
- *         description: all the airports
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Airport'                 
- */
-app.get('/airports', (req, res) => {
-    res.send(airports)
-})
-</code></pre>
+    <p>In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. If you would like to build your server in another language (rather than Node.js/express) like Java or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>
     <h2>Assignment</h2>
     <h3>Part 1</h3>
-    <p>Based on your <code>airports-config.yaml</code> OpenAPI definition file, can you build out a RESTful server with the same spec, only now the documented endpoints will be generated from the code itself. Your server should have the ability to serve requests to Create, Read, Update and Delete airports.</p>
+    <p>Build out a RESTful server. Your server should have the ability to serve requests to Create, Read, Update and Delete airports.</p>
     <table>
       <thead>
         <tr>
@@ -587,25 +176,25 @@ app.get('/airports', (req, res) => {
           <td>POST</td>
           <td><code>/airports</code></td>
           <td>201</td>
-          <td>create a new user</td>
+          <td>create a new airport</td>
         </tr>
         <tr>
           <td>GET</td>
           <td><code>/airports/{id}</code></td>
           <td>200</td>
-          <td>retrieve a specific user</td>
+          <td>retrieve a specific airport</td>
         </tr>
         <tr>
           <td>PUT</td>
           <td><code>/airports/{id}</code></td>
           <td>200</td>
-          <td>update a user</td>
+          <td>update a airport</td>
         </tr>
         <tr>
           <td>DELETE</td>
           <td><code>/airports/{id}</code></td>
           <td>200</td>
-          <td>delete a user</td>
+          <td>delete a airport</td>
         </tr>
       </tbody>
     </table>
@@ -615,7 +204,6 @@ app.get('/airports', (req, res) => {
     <p><code>http://localhost:3000/airports?page=2&#x26;pageSize=25</code></p>
     <p>Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter (this should default to 25).</p>
     <p>❓ What pagination errors might you now need to handle?</p>
-    <p>❓ What different HTTP codes might an endpoint like this return?</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/179">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>
