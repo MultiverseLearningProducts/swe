@@ -10,7 +10,7 @@ To get the most out of this module, make sure you watch this video
 
 Pay close attention - you'll be quizzed.
 
-If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp.
+If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp. They'll be important for many of the exercises.
 
 ## Overview of the day
 
@@ -120,8 +120,8 @@ All HTTP requests can have a body. The body can contain different flavors of enc
 
 | flavor                | encoding                                                                                                                                    |
 | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| form-data             | `artist=Frank+Zappa&album=Hot+Rats&track=Peaches+%C3%88n+Ragalia`                                                                           |
-| x-www-form-urlencoded | `artist=Frank%20Zappa&album=Hot%20Rats&track=Peaches%20%C3%88n%20Ragalia`                                                                   |
+| form-data             | `artist=Frank+Zappa&album=Hot+Rats...`                                                                                                      |
+| x-www-form-urlencoded | `artist=Frank%20Zappa&album=Hot%20Ra...`                                                                                                    |
 | JSON string           | `"{"artist":"Frank Zappa","album":"Hot Rats","track":"Peaches Èn Ragalia"}"`                                                                |
 | XML                   | `"<?xml version="1.0" encoding="UTF-8"?><root><artist>Frank Zappa</artist><album>Hot Rats</album><track>Peaches Èn Ragalia</track></root>"` |
 
