@@ -180,7 +180,7 @@ window.encodeURIComponent("Peaches Èn Ragalia"); // returns Peaches%20%C3%88n%2
     <h2>Assignment</h2>
     <p>Below is a URL. Can you make an HTTP request to that URL using <a href="https://www.postman.com/">postman</a>? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on <a href="https://applied.multiverse.io">https://applied.multiverse.io</a>.</p>
     <ol>
-      <li>Make a GET request to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a></li>
+      <li>Make a GET request to <a href="https://http-challenge.multiverse-coaches.io/">https://http-challenge.multiverse-coaches.io/</a></li>
       <li>Follow the instructions you receive from the response</li>
     </ol>
     <hr>
@@ -218,7 +218,7 @@ window.encodeURIComponent("Peaches Èn Ragalia"); // returns Peaches%20%C3%88n%2
     </p>
     <h3>Headers</h3>
     <p>We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.</p>
-    <pre><code class="language-javascript">const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices";
+    <pre><code class="language-javascript">const url = "https://http-challenge.multiverse-coaches.io/apprentices";
 const payload = {
     name: "Frank Zappa",
 };
@@ -237,7 +237,7 @@ fetch(url, {
     .catch(console.error);
 </code></pre>
     <h2>Assignment</h2>
-    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
+    <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.multiverse-coaches.io/">https://http-challenge.multiverse-coaches.io/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
     <h1>🤷🏽‍♂️ Tips</h1>
     <ul>
       <li>To read the responses you need to call <code>res.text()</code></li>

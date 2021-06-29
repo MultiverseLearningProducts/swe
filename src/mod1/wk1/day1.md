@@ -155,7 +155,7 @@ Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_
 
 Below is a URL. Can you make an HTTP request to that URL using [postman](https://www.postman.com/)? Read the instructions that you get back from the server as each response is a different challenge piece that will lead to a final puzzle on https://applied.multiverse.io.
 
-1. Make a GET request to https://http-challenge.whitehatcoaches.org.uk/
+1. Make a GET request to https://http-challenge.multiverse-coaches.io/
 1. Follow the instructions you receive from the response
 
 ---
@@ -212,7 +212,7 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
 We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.
 
 ```javascript
-const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices";
+const url = "https://http-challenge.multiverse-coaches.io/apprentices";
 const payload = {
     name: "Frank Zappa",
 };
@@ -233,7 +233,7 @@ fetch(url, {
 
 ## Assignment
 
-Can you repeat the calls that we made earlier to https://http-challenge.whitehatcoaches.org.uk/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
+Can you repeat the calls that we made earlier to https://http-challenge.multiverse-coaches.io/ only this time have a script in an `index.html` page that opens in your browser, and makes use of `fetch` to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.
 
 # 🤷🏽‍♂️ Tips
 
