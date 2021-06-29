@@ -1,8 +1,14 @@
 # Mod 1 > Week 1 > Day 1
 
-## Overview of the day
+At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our jouney will begin today with the building block of RESTful APIs - the Hyper Text Transfer Protocol (HTTP).
 
-At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our jouney will begin today with the building block of RESTful apis - the Hyper Text Transfer Protocol (HTTP).
+## Pre-work
+
+To get the most out of this module, make sure you watch this video !(https://youtu.be/iYM2zFP3Zn0). Pay close attention - you'll be quizzed.
+
+If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp.
+
+## Overview of the day
 
 We are going to use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native `fetch` api.
 
