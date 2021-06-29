@@ -4,7 +4,7 @@ At the end of this module you will be building a RESTful API that has both authe
 
 ## Pre-work
 
-To get the most out of this module, make sure you watch this video !(https://youtu.be/iYM2zFP3Zn0). Pay close attention - you'll be quizzed.
+To get the most out of this module, make sure you watch this video !(https://www.youtube.com/embed/iYM2zFP3Zn0). Pay close attention - you'll be quizzed.
 
 If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp.
 
