@@ -4,7 +4,9 @@ At the end of this module you will be building a RESTful API that has both authe
 
 ## Pre-work
 
-To get the most out of this module, make sure you watch this video !(https://www.youtube.com/embed/iYM2zFP3Zn0). Pay close attention - you'll be quizzed.
+To get the most out of this module, make sure you watch this video
+!(https://www.youtube.com/watch?v=iYM2zFP3Zn0&feature=youtu.be)
+Pay close attention - you'll be quizzed.
 
 If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp.
 
@@ -12,21 +14,21 @@ If you're not comfortable with async JavaScript, callbacks and promises, make su
 
 We are going to use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native `fetch` api.
 
-----
+---
 
 ## Lesson 1 - The Anatomy of HTTP
 
 ## Learning Objectives
 
-* Understand the Hypertext Transfer Protocol (HTTP)
-* Understand the difference between HTTP and HTTPS
-* Understand the different HTTP verbs and which one is appropriate for modelling CRUD operations
-* Understand the most common HTTP response codes and how these indicate success or failure in RESTful operations
-* Become familiar with using Postman to call RESTful APIs
+-   Understand the Hypertext Transfer Protocol (HTTP)
+-   Understand the difference between HTTP and HTTPS
+-   Understand the different HTTP verbs and which one is appropriate for modelling CRUD operations
+-   Understand the most common HTTP response codes and how these indicate success or failure in RESTful operations
+-   Become familiar with using Postman to call RESTful APIs
 
 ## Before we start
 
-* Install [Postman](https://www.postman.com/)
+-   Install [Postman](https://www.postman.com/)
 
 ## Materials needed
 
@@ -40,13 +42,13 @@ HTTP stands for the 'hyper text transfer protocol'. It is a protocol or 'way of 
 
 The method part of HTTP helps to communicate what this request is trying to do. The most commonly used verbs are GET & POST.
 
-|Method|Function|
-|:-----|:-------|
-|GET|to retrieve data|
-|POST|to create data|
-|PUT|to replace data|
-|PATCH|to update data|
-|DELETE|to remove data|
+| Method | Function         |
+| :----- | :--------------- |
+| GET    | to retrieve data |
+| POST   | to create data   |
+| PUT    | to replace data  |
+| PATCH  | to update data   |
+| DELETE | to remove data   |
 
 ❓ Can you see how to select these in postman?
 
@@ -54,12 +56,12 @@ The method part of HTTP helps to communicate what this request is trying to do. 
 
 This is the part at the very beginning of the request. `http://` this tells the browser we are making an http request. Protocols you might come across are:
 
-* `http://` - hyper text transfer protocol
-* `https://` - secure hyper text transfer protocol (encrypted)
-* `file://` - when you open a local file in your browser
-* `ws://` - open a websocket
-* `ftp://` - when you connect to a remote file server ftp stands for file transfer protocol
-* `ipfs://` - the inter-planetary file system find out more about this at [https://ipfs.io/](https://ipfs.io/)
+-   `http://` - hyper text transfer protocol
+-   `https://` - secure hyper text transfer protocol (encrypted)
+-   `file://` - when you open a local file in your browser
+-   `ws://` - open a websocket
+-   `ftp://` - when you connect to a remote file server ftp stands for file transfer protocol
+-   `ipfs://` - the inter-planetary file system find out more about this at [https://ipfs.io/](https://ipfs.io/)
 
 ### Host
 
@@ -72,8 +74,9 @@ This comes after the host address. This is the part of the address that is subje
 ```sh
 https://api.spotify.com/v1/albums
 ```
-* `/v1/albums` - is the path
-* `api.spotify.com` - is the host.
+
+-   `/v1/albums` - is the path
+-   `api.spotify.com` - is the host.
 
 ### Parameters
 
@@ -88,11 +91,13 @@ https://api.spotify.com/v1/albums/12345
 ### Query parameters
 
 Query parameters can be added to the end of an address. Adding a `?` at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' `artist` an equals `=` and then the 'value' `Frank%20Zappa` that makes a key=value pair. Look for the ampersand `&` that separates the key value pairs. Query parameters must be encoded so there are no special characters or spaces. This encoding is called URIEncoding the best API in the browser to use for this is `window.encodeURIComponent`.
+
 ```javascript
-"?artist=Frank Zappa&album=Hot Rats&track=Peaches Èn Ragalia" // not URI encoded
-window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20Ragalia
-"?artist=Frank%20Zappa&album=Hot%20Rats&track=Peaches%20%C3%88n%20Ragalia" // safe query string
+"?artist=Frank Zappa&album=Hot Rats&track=Peaches Èn Ragalia"; // not URI encoded
+window.encodeURIComponent("Peaches Èn Ragalia"); // returns Peaches%20%C3%88n%20Ragalia
+("?artist=Frank%20Zappa&album=Hot%20Rats&track=Peaches%20%C3%88n%20Ragalia"); // safe query string
 ```
+
 All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information
 
 ❓ What are the 2 ways we can pass data in an HTTP request?
@@ -111,12 +116,12 @@ All HTTP requests can have a body. The body can contain different flavors of enc
 }
 ```
 
-|flavor|encoding|
-|:-----|:-------|
-form-data|`artist=Frank+Zappa&album=Hot+Rats&track=Peaches+%C3%88n+Ragalia`
-x-www-form-urlencoded|`artist=Frank%20Zappa&album=Hot%20Rats&track=Peaches%20%C3%88n%20Ragalia`
-JSON string|`"{"artist":"Frank Zappa","album":"Hot Rats","track":"Peaches Èn Ragalia"}"`
-XML|`"<?xml version="1.0" encoding="UTF-8"?><root><artist>Frank Zappa</artist><album>Hot Rats</album><track>Peaches Èn Ragalia</track></root>"`
+| flavor                | encoding                                                                                                                                    |
+| :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| form-data             | `artist=Frank+Zappa&album=Hot+Rats&track=Peaches+%C3%88n+Ragalia`                                                                           |
+| x-www-form-urlencoded | `artist=Frank%20Zappa&album=Hot%20Rats&track=Peaches%20%C3%88n%20Ragalia`                                                                   |
+| JSON string           | `"{"artist":"Frank Zappa","album":"Hot Rats","track":"Peaches Èn Ragalia"}"`                                                                |
+| XML                   | `"<?xml version="1.0" encoding="UTF-8"?><root><artist>Frank Zappa</artist><album>Hot Rats</album><track>Peaches Èn Ragalia</track></root>"` |
 
 There are more kinds of encoding for example binary which is for files but this is enough to be getting on with.
 
@@ -134,13 +139,13 @@ Here is a list of all the different `Content-Type`s that are supported: [https:/
 
 The response object is similar to the request object. The main difference is a response will have a status code property. It is the responsibility of the developers building and maintaining a service to set the correct status code for a response before sending it back to the client.
 
-|Range|Status|
-|:----|:-----|
-100 - 103|Informational response
-200 - 226|Success
-300 - 308|Redirection
-400 - 451|Client Errors
-500 - 598|Server Errors
+| Range     | Status                 |
+| :-------- | :--------------------- |
+| 100 - 103 | Informational response |
+| 200 - 226 | Success                |
+| 300 - 308 | Redirection            |
+| 400 - 451 | Client Errors          |
+| 500 - 598 | Server Errors          |
 
 Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) so you know how to handle HTTP responses like a boss.
 
@@ -151,7 +156,7 @@ Below is a URL. Can you make an HTTP request to that URL using [postman](https:/
 1. Make a GET request to https://http-challenge.whitehatcoaches.org.uk/
 1. Follow the instructions you receive from the response
 
-----
+---
 
 ## Lesson 2 - Advances API calls with fetch
 
@@ -159,8 +164,8 @@ In this session we are just going to make sure everyone is comfortable using fet
 
 ## Learning Objectives
 
-* Set headers in a HTTP request using fetch
-* Set GET and POST methods for a fetch HTTP request
+-   Set headers in a HTTP request using fetch
+-   Set GET and POST methods for a fetch HTTP request
 
 ## Before we start
 
@@ -171,13 +176,19 @@ Create a new .html file with a script tag, write your code in the script tag.
 ## Lesson
 
 Postman is a great tool, very useful for working with new APIs. In this session we are going to learn to do the things we did with postman using the Promise based fetch API in the browser.
+
 ```javascript
-fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
+fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`);
 ```
+
 This is the most basic usage, thats a GET request (by default) to the address passed as an argument. We don't deal with the response. The response is async and is a raw response object.
+
 ```javascript
-fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => console.table(res))
+fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then((res) =>
+    console.table(res)
+);
 ```
+
 ![the response object](https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png)
 
 ❓ Can you see the status code?
@@ -185,11 +196,13 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => con
 ❓ Are there any headers?
 
 To parse the response into a more friendly JSON object we can call `res.json()` then we can access our data in a convenient format.
+
 ```javascript
 fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
-  .then(res => res.json())
-  .then(res => console.log(res))
+    .then((res) => res.json())
+    .then((res) => console.log(res));
 ```
+
 ![data from the response](https://user-images.githubusercontent.com/4499581/102642623-ebdbac80-4155-11eb-9d63-29751bbb4a51.png)
 
 ### Headers
@@ -197,23 +210,23 @@ fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
 We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.
 
 ```javascript
-const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices"
+const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices";
 const payload = {
-    name: "Frank Zappa"
-}
+    name: "Frank Zappa",
+};
 fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
 })
-.then(res => res.text())
-.then(msg => {
-    const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
-    console.log(yourId, msg)
-})
-.catch(console.error)
+    .then((res) => res.text())
+    .then((msg) => {
+        const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/);
+        console.log(yourId, msg);
+    })
+    .catch(console.error);
 ```
 
 ## Assignment
@@ -222,12 +235,12 @@ Can you repeat the calls that we made earlier to https://http-challenge.whitehat
 
 # 🤷🏽‍♂️ Tips
 
-* To read the responses you need to call `res.text()`
-* You'll need to pluck 'Your-Id' out of the response (see below)
-* You will have to manage a series of async requests. Remember fetch is promise based an you can chain `.then` together with one `.catch`. Any errors will be caught by your final catch function.
+-   To read the responses you need to call `res.text()`
+-   You'll need to pluck 'Your-Id' out of the response (see below)
+-   You will have to manage a series of async requests. Remember fetch is promise based an you can chain `.then` together with one `.catch`. Any errors will be caught by your final catch function.
 
 ```javascript
-const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)
+const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/);
 ```
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/178)

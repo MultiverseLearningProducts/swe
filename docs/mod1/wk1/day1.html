@@ -13,7 +13,11 @@
     <h1>Mod 1 > Week 1 > Day 1</h1>
     <p>At the end of this module you will be building a RESTful API that has both authentication and authorisation. We are going to build up to this final challenge in a gradual way. Our jouney will begin today with the building block of RESTful APIs - the Hyper Text Transfer Protocol (HTTP).</p>
     <h2>Pre-work</h2>
-    <p>To get the most out of this module, make sure you watch this video !(<a href="https://www.youtube.com/embed/iYM2zFP3Zn0">https://www.youtube.com/embed/iYM2zFP3Zn0</a>). Pay close attention - you'll be quizzed.</p>
+    <p>
+      To get the most out of this module, make sure you watch this video
+      !(<a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0&#x26;feature=youtu.be">https://www.youtube.com/watch?v=iYM2zFP3Zn0&#x26;feature=youtu.be</a>)
+      Pay close attention - you'll be quizzed.
+    </p>
     <p>If you're not comfortable with async JavaScript, callbacks and promises, make sure you study and practice these before arriving at the bootcamp.</p>
     <h2>Overview of the day</h2>
     <p>We are going to use <a href="https://www.postman.com/">Postman</a> to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native <code>fetch</code> api.</p>
@@ -95,9 +99,9 @@
     <p>❓ What is the difference between the path and parameters?</p>
     <h3>Query parameters</h3>
     <p>Query parameters can be added to the end of an address. Adding a <code>?</code> at the end of an address indicates that the following string is a list of key value pairs. In the example below after the '?' you should see a 'key' <code>artist</code> an equals <code>=</code> and then the 'value' <code>Frank%20Zappa</code> that makes a key=value pair. Look for the ampersand <code>&#x26;</code> that separates the key value pairs. Query parameters must be encoded so there are no special characters or spaces. This encoding is called URIEncoding the best API in the browser to use for this is <code>window.encodeURIComponent</code>.</p>
-    <pre><code class="language-javascript">"?artist=Frank Zappa&#x26;album=Hot Rats&#x26;track=Peaches Èn Ragalia" // not URI encoded
-window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20Ragalia
-"?artist=Frank%20Zappa&#x26;album=Hot%20Rats&#x26;track=Peaches%20%C3%88n%20Ragalia" // safe query string
+    <pre><code class="language-javascript">"?artist=Frank Zappa&#x26;album=Hot Rats&#x26;track=Peaches Èn Ragalia"; // not URI encoded
+window.encodeURIComponent("Peaches Èn Ragalia"); // returns Peaches%20%C3%88n%20Ragalia
+("?artist=Frank%20Zappa&#x26;album=Hot%20Rats&#x26;track=Peaches%20%C3%88n%20Ragalia"); // safe query string
 </code></pre>
     <p>All this extra information will be included in the HTTP request. Query strings have a maximum size limit (specific to the browser) and therefore aren’t good for transmitting a large amount of information</p>
     <p>❓ What are the 2 ways we can pass data in an HTTP request?</p>
@@ -194,10 +198,12 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
     <p>Postman is a great tool, very useful for working with new APIs. In this session we are going to learn to do the things we did with postman using the Promise based fetch API in the browser.</p>
-    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
+    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`);
 </code></pre>
     <p>This is the most basic usage, thats a GET request (by default) to the address passed as an argument. We don't deal with the response. The response is async and is a raw response object.</p>
-    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then(res => console.table(res))
+    <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`).then((res) =>
+    console.table(res)
+);
 </code></pre>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/102642314-635d0c00-4155-11eb-9bb6-b91c187d40cd.png" alt="the response object">
@@ -206,31 +212,31 @@ window.encodeURIComponent("Peaches Èn Ragalia") // returns Peaches%20%C3%88n%20
     <p>❓ Are there any headers?</p>
     <p>To parse the response into a more friendly JSON object we can call <code>res.json()</code> then we can access our data in a convenient format.</p>
     <pre><code class="language-javascript">fetch(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10`)
-  .then(res => res.json())
-  .then(res => console.log(res))
+    .then((res) => res.json())
+    .then((res) => console.log(res));
 </code></pre>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/102642623-ebdbac80-4155-11eb-9d63-29751bbb4a51.png" alt="data from the response">
     </p>
     <h3>Headers</h3>
     <p>We are going to be working with the headers of our requests so lets have a look at setting headers in the fetch API. Below we are going to POST some data to our endpoint like we did earlier with postman.</p>
-    <pre><code class="language-javascript">const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices"
+    <pre><code class="language-javascript">const url = "https://http-challenge.whitehatcoaches.org.uk/apprentices";
 const payload = {
-    name: "Frank Zappa"
-}
+    name: "Frank Zappa",
+};
 fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
 })
-.then(res => res.text())
-.then(msg => {
-    const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/)
-    console.log(yourId, msg)
-})
-.catch(console.error)
+    .then((res) => res.text())
+    .then((msg) => {
+        const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/);
+        console.log(yourId, msg);
+    })
+    .catch(console.error);
 </code></pre>
     <h2>Assignment</h2>
     <p>Can you repeat the calls that we made earlier to <a href="https://http-challenge.whitehatcoaches.org.uk/">https://http-challenge.whitehatcoaches.org.uk/</a> only this time have a script in an <code>index.html</code> page that opens in your browser, and makes use of <code>fetch</code> to make each call in sequence. You will need to retrieve the 'Your-Id' from the initial GET request and use it in the subsequence requests. You don't need to do the final applied quiz, instead submit your code to github and share a link to your repo with your coach.</p>
@@ -240,7 +246,7 @@ fetch(url, {
       <li>You'll need to pluck 'Your-Id' out of the response (see below)</li>
       <li>You will have to manage a series of async requests. Remember fetch is promise based an you can chain <code>.then</code> together with one <code>.catch</code>. Any errors will be caught by your final catch function.</li>
     </ul>
-    <pre><code class="language-javascript">const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/)
+    <pre><code class="language-javascript">const [yourId] = msg.match(/(?&#x3C;=\/)[a-zA-Z0-9]+(?=')/);
 </code></pre>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/178">attendance log</a>
