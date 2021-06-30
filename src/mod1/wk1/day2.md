@@ -40,11 +40,11 @@ There are 2 aspects to RESTful architectures.
 
 ### VERBS/METHODS
 
-Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH` `PUT` `DELETE` _(there are more but these are the main ones)_ one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource `/albums`; to **read** all the albums we would make an http request and use the `GET` method. If we wanted to **add** a new album we would make an http request to the **same** address `/albums` but use the `POST` method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource; reading with `GET` or creating with `POST`. We CAN make a `GET` request with a body and create a new `/albums` resource BUT that would not be RESTful.
+Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH` `PUT` `DELETE` _(there are more but these are the main ones)_ one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource `/albums`; to **read** all the albums we would make an http request and use the `GET` method. If we wanted to **add** a new album we would make an http request to the **same** address `/albums` but use the `POST` method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource - reading with `GET` or creating with `POST`. We *could* make a `GET` request with a body and create a new `/albums` resource but that would not be RESTful.
 
 ### Resources
 
-A 'resource' some thing we want to access or interact with is also a fundamental concept in REST. Usually this is our service or data. For example on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:
+A 'resource' is some thing we want to access or interact with and is also a fundamental concept in REST. Usually, this is our service or data. For example, on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:
 
 | HTTP Method | URL            | Status code   | Description                                         |
 | ----------- | -------------- | ------------- | --------------------------------------------------- |
@@ -75,9 +75,9 @@ You might wonder why can't I just reference a track with the URL below?
 | :------------------- | :--: | :------------------------------------------------ |
 | `/tracks/{track_id}` | GET  | return the track with the id specified in the URL |
 
-You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.
+You can address a single track resource, however, we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or, as Roy Thomas Fielding put it, 'connector semantics'.
 
-In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. If you would like to build your server in another language (rather than Node.js/express) like Java or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use [Symfony](https://symfony.com/).
+In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. If you would like to build your server in another language (rather than Node.js/express) like Java or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. e.g. for PHP you can use [Symfony](https://symfony.com/).
 
 # Lesson 2 - API testing
 
@@ -93,15 +93,15 @@ You need to have completed your RESTful web server.
 
 ## Lesson
 
-We have a server. Now we are professional software engineers we know whats missing. Tests. There are 3 different kinds of tests we commonly write for our services:
+APIs, like any other form of code, require tests. There are 3 different kinds of tests we commonly write for our services:
 
 1. Unit tests
-1. Integration tests
-1. System tests
+2. Integration tests
+3. System tests
 
-Unit tests we wrote lots of these in our first bootcamp for our airport and scooter classes etc. A unit test verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.
+We wrote lots of unit tests in our first bootcamp for our airport and scooter classes etc. A unit test verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.
 
-Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests.
+Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example, our RESTful controllers interact with the server and HTTP requests.
 
 ### Test cases
 
@@ -117,11 +117,11 @@ We should always tests that the endpoint works given acceptable input, and we sh
 
 ### Running in test mode
 
-Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run.
+Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us, in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed, our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Often setup invovles seeding a database and teardown involves resetting it to the state before the test ran. Integration tests will often have setup and teardown phases that have to run each time the tests run.
 
 ### Rethinking the server
 
-In our tests we will want to get hold of the server object (it's called `app`). At the moment we define and configure the server and start it in the same file. Lets not do that. Change your code to just export the `app` object:
+In our tests we will want to get hold of the server object (it's called `app`). At the moment, we define and configure the server and start it in the same file. Lets not do that. Change your code to just export the `app` object:
 
 ```javascript
 // app.listen(3000, () => console.log('server docs http://localhost:3000/api-docs'))
@@ -131,7 +131,7 @@ module.exports = app;
 In a separate file you can add that line that actually starts the server and make that file your entry point:
 
 ```javascript
-// /main.js
+// /index.js
 const app = require("./server");
 app.listen(3000, () => console.log("server listening on port", 3000));
 ```
@@ -141,7 +141,7 @@ Now in your `package.json` you can call this file to start the server:
 ```json
 {
     "scripts": {
-        "start": "node main.js",
+        "start": "node index.js",
         "test": "jest --runInBand --detectOpenHandles --verbose"
     }
 }
@@ -184,7 +184,7 @@ Using the [airports.json](https://raw.githubusercontent.com/WhiteHatLearningProd
 | PUT         | `/airports/{id}` | 200         | update a airport            |
 | DELETE      | `/airports/{id}` | 200         | delete a airport            |
 
-Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint, try to test for the different status codes that you listed in your original `airports-config.yaml` OpenAPI spec.
+Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint.
 
 Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.
 
