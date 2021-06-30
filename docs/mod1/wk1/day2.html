@@ -12,24 +12,24 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Today we are going to focus on creating and using RESTful APIs. Yesterday we looked at the anatomy of an HTTP request and response. Today we will build on that knowledge and look at the most popular way to organise accessing resources using HTTP.</p>
+    <p>Yesterday we looked at the anatomy of an HTTP request and response. Today we are going to focus on creating and testing RESTful APIs.</p>
     <hr>
-    <h2>Lesson 1 - What is RESTful</h2>
+    <h2>Lesson 1 - RESTful APIs</h2>
     <p>REST is a shortened form of "REpresentative State Transfer".</p>
     <blockquote>
       <p>REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.</p>
     </blockquote>
     <p>Note the word <strong>style</strong> - REST is a style of designing APIs in the same way that Object-Oriented Progrmamming is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!</p>
-    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a> servers implemented their own endpoints named in ways that different development teams saw fit. For example, in your restaurant app, some teams had endpoints like <code>/createRestaurant</code> and others like <code>/addRestaurant</code>. REST introduced a standard way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
+    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a>, servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like <code>/createRestaurant</code> and others like <code>/addRestaurant</code>. This makes intuitive sense: an endpoint in Express is essentially just a function, and, if you were naming a function to create a restaurant, <code>createRestaurant()</code> is a sensible choice. However, REST introduced a <strong>standard</strong> way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
     <p>Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Connect the correct HTTP verbs to RESTful operations</li>
-      <li>Implement the OpenAPI specification</li>
+      <li>Implement a RESTful API</li>
     </ul>
     <h2>Before we start</h2>
     <ul>
-      <li>Create a free Spotify account so you can use their API (optional)</li>
+      <li>(optional) Create a free Spotify account so you can use their API</li>
     </ul>
     <h2>Materials needed</h2>
     <ul>
@@ -42,7 +42,7 @@
       <li>Using the right path for your resources</li>
     </ol>
     <h3>VERBS/METHODS</h3>
-    <p>Built into the HTTP spec are the http 'methods' or 'verbs'. <code>GET</code> <code>POST</code> <code>PATCH</code> <code>PUT</code> <code>DELETE</code> <em>(there are more these are the main ones)</em> one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource <code>/albums</code>; to read all the albums we would make an http request and use the <code>GET</code> method. If we wanted to add a new album we would make an http request to the same address <code>/albums</code> but use the <code>POST</code> method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource; reading with <code>GET</code> or creating with <code>POST</code>. We CAN make a <code>GET</code> request with a body and create a new <code>/albums</code> resource BUT that would not be RESTful.</p>
+    <p>Built into the HTTP spec are the http 'methods' or 'verbs'. <code>GET</code> <code>POST</code> <code>PATCH</code> <code>PUT</code> <code>DELETE</code> <em>(there are more but these are the main ones)</em> one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource <code>/albums</code>; to <strong>read</strong> all the albums we would make an http request and use the <code>GET</code> method. If we wanted to <strong>add</strong> a new album we would make an http request to the <strong>same</strong> address <code>/albums</code> but use the <code>POST</code> method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource; reading with <code>GET</code> or creating with <code>POST</code>. We CAN make a <code>GET</code> request with a body and create a new <code>/albums</code> resource BUT that would not be RESTful.</p>
     <h3>Resources</h3>
     <p>A 'resource' some thing we want to access or interact with is also a fundamental concept in REST. Usually this is our service or data. For example on Spotify albums are a resource; so are artists and playlists. There is a standard set of paths used to interact with any resource:</p>
     <table>
@@ -145,17 +145,75 @@
       </tbody>
     </table>
     <p>You can address a single track resource. However we are not capturing the relationship between this resource and the album resource that it belongs to. Often you will need to redirect back to a route that requires you to identify which album the track belongs to. The nested RESTful pattern helps you to do this cleanly in your controllers. REST is just a convention or as Roy Thomas Fielding put it 'connector semantics'.</p>
-    <h2>Lesson 2 - Build your own API</h2>
+    <p>In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. If you would like to build your server in another language (rather than Node.js/express) like Java or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>
+    <h1>Lesson 2 - API testing</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Produce an API server</li>
-      <li>Implement CRUD operations on a single resource using RESTful endpoints</li>
+      <li>Be capable of writing API tests</li>
     </ul>
+    <h2>Before we start</h2>
+    <p>You need to have completed your RESTful web server.</p>
+    <h2>Materials needed</h2>
     <h2>Lesson</h2>
-    <p>In this session we are going to build our service from the ground up and practice defining RESTful routes for ourselves. If you would like to build your server in another language (rather than Node.js/express) like Java or C# you are very welcome to do so. You might need to look online for instructions to perform the following steps for the framework you are using. i.e. for PHP you can use <a href="https://symfony.com/">Symfony</a>.</p>
+    <p>We have a server. Now we are professional software engineers we know whats missing. Tests. There are 3 different kinds of tests we commonly write for our services:</p>
+    <ol>
+      <li>Unit tests</li>
+      <li>Integration tests</li>
+      <li>System tests</li>
+    </ol>
+    <p>Unit tests we wrote lots of these in our first bootcamp for our airport and scooter classes etc. A unit test verifies the correct output of a part of our programme given a particular input. Unit tests should be run in isolation and not depend on other parts of the programme.</p>
+    <p>Integration tests are different. We use these to verify the behavior of different parts of our programme working together. For example our RESTful controllers interact with the server and HTTP requests.</p>
+    <h3>Test cases</h3>
+    <p>We would ideally want to test each endpoint thoroughly. That means tests for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">different responses</a>. For example:</p>
+    <ol>
+      <li>200 Ok</li>
+      <li>201 Created</li>
+      <li>400 Bad request</li>
+      <li>404 Not Found</li>
+      <li>415 Unsupported media type</li>
+    </ol>
+    <p>We should always tests that the endpoint works given acceptable input, and we should also test for likely errors like: wrong content type, malformed payloads etc.</p>
+    <h3>Running in test mode</h3>
+    <p>Most testing frameworks have built into them a setup phase and a teardown phase. During the setup phase you get things ready for your tests. For us in the setup phase we need to start our server so that it is running and ready to receive requests. Once the server is running the tests will begin. Once all the tests have completed our framework will run the teardown phase, during this phase we close down our server so it stops gracefully. Integration tests will often have setup and teardown phases that have to run each time the tests run.</p>
+    <h3>Rethinking the server</h3>
+    <p>In our tests we will want to get hold of the server object (it's called <code>app</code>). At the moment we define and configure the server and start it in the same file. Lets not do that. Change your code to just export the <code>app</code> object:</p>
+    <pre><code class="language-javascript">// app.listen(3000, () => console.log('server docs http://localhost:3000/api-docs'))
+module.exports = app;
+</code></pre>
+    <p>In a separate file you can add that line that actually starts the server and make that file your entry point:</p>
+    <pre><code class="language-javascript">// /main.js
+const app = require("./server");
+app.listen(3000, () => console.log("server listening on port", 3000));
+</code></pre>
+    <p>Now in your <code>package.json</code> you can call this file to start the server:</p>
+    <pre><code class="language-json">{
+    "scripts": {
+        "start": "node main.js",
+        "test": "jest --runInBand --detectOpenHandles --verbose"
+    }
+}
+</code></pre>
+    <h3>Writing integration tests</h3>
+    <p>We can use a library called <code>supertest</code> to help with the setup and tear down phase for each of our tests. Below is an example of a test file:</p>
+    <pre><code class="language-javascript">const app = require("../server");
+const request = require("supertest");
+
+describe("My Airport server", () => {
+    test("can GET all the airports", (done) => {
+        request(app)
+            .get("/airports")
+            .expect(200)
+            .expect((response) => {
+                expect(response.body.length).toBeGreaterThan(28000);
+            })
+            .end(done);
+    });
+});
+</code></pre>
+    <p>Notice how we are importing our <code>app</code> object and passing it to supertest (we called that import <code>request</code> as thats what it represents). You can look at the examples on the <a href="https://www.npmjs.com/package/supertest">supertest npm page</a> to get going with GET and POST.</p>
     <h2>Assignment</h2>
     <h3>Part 1</h3>
-    <p>Build out a RESTful server. Your server should have the ability to serve requests to Create, Read, Update and Delete airports.</p>
+    <p>Using the <a href="https://raw.githubusercontent.com/WhiteHatLearningProducts/airports/master/airportsData.json">airports.json</a>, build out a RESTful server. Your server should have the ability to serve requests to Create, Read, Update and Delete airports. For now, you don't need to worry about persisting the changes to disk.</p>
     <table>
       <thead>
         <tr>
@@ -198,12 +256,14 @@
         </tr>
       </tbody>
     </table>
+    <p>Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint, try to test for the different status codes that you listed in your original <code>airports-config.yaml</code> OpenAPI spec.</p>
     <p>Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.</p>
     <h3>Part 2</h3>
     <p>We have 28,000 airport records. That's a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.</p>
     <p><code>http://localhost:3000/airports?page=2&#x26;pageSize=25</code></p>
     <p>Implement pagination for the GET <code>/airports</code> route enabling users to define a page number (required) and an optional <code>pageSize</code> query parameter (this should default to 25).</p>
     <p>❓ What pagination errors might you now need to handle?</p>
+    <hr>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/179">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day1.html">prev</a>|<a href="/swe/mod1/wk1/day3.html">next</a>
