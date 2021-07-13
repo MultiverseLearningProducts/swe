@@ -223,6 +223,7 @@ We are going to use [Postman](https://www.postman.com/) to call some RESTful API
 -   Week 2
     -   [Day 1](/swe/mod1/wk2/day1.html)
     -   [Final Project](/swe/mod1/wk2/finalProject.html)
+    -   [API documentation](/swe/mod1/wk2/apiDocumentation.html)
     -   [OAuth Extension](/swe/mod1/wk2/OAuthExtension.html)
 
 ---
