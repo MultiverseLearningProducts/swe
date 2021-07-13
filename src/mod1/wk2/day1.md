@@ -1,216 +1,228 @@
 # Mod 1 > Week 2 > Day 1
 
 ## Overview of the day
-Today we are going to use Basic Auth to secure a RESTful API. 
 
-## Overall Learning Objectives
-* Understand the difference between authentication and authorisation
-* Construct a RESTful API to Create, Read, Update and Delete (CRUD) a user
-* Implement a credential store using hashed passwords
-* Use Basic Authentication to secure the User API
+Today we are going to learn about session-based auth and how to use OAuth to secure our API.
 
-## Lesson 1 - Authentication and authorisation
+## Learning Objectives
 
-### Learning Objectives
-  
-  * Understand the difference between authentication and authorisation
-  * Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
- 
- > `Authentication` is the process of verifying who a user is
+-   Understand the limitations of Basic Auth
+-   Know why and how to use Sessions on a server
+-   Understand the structure and purpose of JWT
+-   Create a UML diagram to communicate the sequence of the OAuth flow
+-   Understand OAuth and how it is used to secure website and APIs
+-   Implement OAuth using Auth0
+-   Understand the OpenID Connect protocol
 
- > `Authorisation` is the process of verifying what they have access to
+## Before we start
 
- Here's an example to illustrate this: 
- 
- Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is **authentication**. 
+-   Ensure you have the Postman application installed
 
-![hotel checkin](https://user-images.githubusercontent.com/1316724/102709159-a9be8200-429f-11eb-903b-12976c1f051d.png)
+## Materials needed
 
-<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/free-icon/check-in-desk_2261372?related_item_id=2261377&term=hotel%20checking%20in" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+-   Postman application
+-   VS Code (for Javascript development) or IntelliJ (for Java development)
 
-Once authentication is complete, you are given a key card which gives you entry to your room - this is **authorisation** as you are being granted access to a resource (in this case your room). You are not authorised to access any other rooms.
+# Lesson 1 - Sessions
 
-![hotel keycard](https://user-images.githubusercontent.com/1316724/102709120-43d1fa80-429f-11eb-9d57-43906703fbf9.png)
+## What's wrong with Basic Auth?
 
-<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+-   The password is sent over the wire in base64 encoding which can be easily decoded
+-   The password is sent repeatedly i.e. on each request meaning there is a large attack window
+-   The password is cached by the web browser, therefore it could be silently reused by any other request to the server e.g. CSRF
+-   The password may be stored permanently in the browser hence could be stolen by another user on a shared machine
 
-### 🧑🏽‍💻👩🏾‍💻 Assignment
-In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:
-   1. Showing your passport at the airport
-   2. Determining which floor in a building an employee can access
-   3. Checking a boarding pass before boarding a flight
-   4. A manager accessing payroll information
-   5. Entering a username and password
-   6. Using biometrics (such as fingerprints) 
-   7. Using a key to open a door
+## Sessions
 
-## Basic Authentication
+Wouldn't it be much better if after being authenticated the server could keep track of which users it had already checked the passwords for. This is the purpose of sessions on a server. They are a means by which the server can keep track of who is who. Without sessions our server will just treat each request the same.
 
-Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as `Basic Authentication`. 
+Lets have a look at trying to manage state on our server. Lets be really simple and just imagine we have a counter.
 
-Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string username:password
+```javascript
+class Counter {
+    constructor() {
+        this.value = 1;
+    }
+
+    inc() {
+        this.value += 1;
+        return this.value.toString();
+    }
+}
+```
+
+We want to expose this to our users so they can make requests and receive incrementing values i.e. 1,2,3,4,5 etc
+
+```javascript
+app.get("/counter", (req, res) => {
+    const counter = new Counter();
+    res.send(counter.inc());
+});
+```
+
+❓ What is the problem with this?
+
+Lets pull the counter out of the route and have it in the scope of the server instance:
+
+```javascript
+const counter = new Counter();
+
+app.get("/counter", (req, res) => {
+    res.send(counter.inc());
+});
+```
+
+❓ What is the problem with this? (try different browser windows)
+
+The behaviour we are after is each connected client gets their own dedicated counter. So as they refresh their individual page, their personal counter increments.
+
+For this we will need to extend our server by adding sessions. The session object will be added to the request object. Each individually connected client will be allocated a `req.session.id` unique to them and there interaction with the server. On the session object we can store values for that connection. For example:
+
+```javascript
+req.session.user_id = user.id;
+```
+
+You can only store JSON stringable values so our instance of our counter cannot be stored as it will get turned into the string representation of the class instance. No good to us. So we will use the `req.session.id` as a hashkey so we can lookup the counter for each particular connected client.
+
+### Use Sessions
+
+To add sessions `npm i express-session` then use the following config:
+
+```javascript
+const session = require("express-session");
+const sessionSettings = {
+    secret: "best cohort ever",
+    resave: false,
+    saveUninitialized: true,
+};
+app.use(session(sessionSettings));
+```
+
+Update your Counter class to keep track of every instance (use a static property).
+
+```javascript
+class Counter {
+    static lookup = {};
+
+    constructor(id) {
+        this.value = 1;
+        Counter.lookup[id] = this; // every counter we create is added to the lookup hash map which we can access at Counter.lookup
+    }
+
+    inc() {
+        this.value += 1;
+        return this.value.toString();
+    }
+}
+```
+
+Add a middleware function that will run on every request this makes sure new requests have an instance of the counter they can access with their session id:
+
+```javascript
+app.use((req, res, next) => {
+    Counter.lookup[req.session.id] =
+        Counter.lookup[req.session.id] || new Counter(req.session.id);
+    next();
+});
+```
+
+finally in the route return the next value
+
+```javascript
+app.get("/counter", (req, res) => {
+    res.send(Counter.lookup[req.session.id].inc());
+});
+```
+
+❓ How can we use this functionality to auth a user only once?
+
+This is now a more familiar concept to you. Getting a session assigned to you is like 'logging' in. To 'log out' you just remove that counter from the session.
+
+## Assignment
+
+-   Implement sessions on your server
+-   Add `/login` and `/logout` routes
+-   The `/login` route should be the only route that accepts Basic auth request
+-   Once a user is authenticated with Basic auth add them to a session
+-   Update `/airports` and your other endpoints to only return the airport info if the user is in a session
+-   If a user is in a session and visit the `/logout` route this should end their session and they will no longer be able to access `/airports`
+-   Put your solution on Github and share it with your coach
+
+---
+
+# Lesson 2
+
+## Learning Objectives
+
+-   Create a UML sequence diagram
+-   Encode and Decode JWT tokens
+-   Recall the structure of a JWT
+
+## Before we start
+
+-   Make sure you have installed plant UML
+
+## Materials needed
+
+[OAuth Slides](https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing)
+
+## The problem with sessions
+
+Sessions are great, but your clients are now bound to 1 machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load.
+
+❓ Why not?
+
+Sessions are stateful. To achieve the same thing as a session (auth you once then keep track of you) I could use a token based auth system.
+
+## What is OAuth?
+
+OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
+
+If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.
+
+![clubber getting their hand stamped](https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&auto=webp)
+<small><i>Photo: Caitlin Ochs for The New York Times</i></small>
+
+In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).
+
+## What makes OAuth secure?
+
+-   Token management means we can track each device that uses the API (and revoke access if we want)
+-   OAuth provides 'scopes' which allow for fine-grained authorization
+-   Tokens expire, making it very hard for them to be reused
+
+Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:
+
+![oauth flow showing how an identify provider issues a token which is used to secure a resource](https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png)
+
+# Lesson 2 - JWT
+
+OAuth returns access tokens as JSON Web Tokens (JWTs) format. A JWT is easy to identify, it is three strings separated by a `.`
 
 Here is an example:
-> Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
 
-That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called `atob` and `btoa`. Try it. In your console encode the following string "Hello you".
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM`
 
-![an example of using b to a function and a to b function to encode and decode a string](https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png)
+Use https://jwt.io to see the secret message hidden inside this token!
 
-### 👮‍♀️ Assignment
-From the string in the `Authorization` header above, determine the user's username and password.
+**Activity**: Create your own messages and send them to the Slack channel!
 
-❓ Do you think Basic Authentication is a secure scheme?
+A JWT is made up of 3 parts:
 
-## Hashing passwords
-### Learning Objectives
-  * Understand why passwords should be hashed
-  * Understand the implications of exposing sensitive data
-  * Create a database of user names and hashed passwords 
+-   **Header** - specifies the type of token and the algorithm used to sign the token
+-   **Payload** - the information that we want to transmit and other information about our token
+-   **Signature** - verifies who sent the token and that the token has not been tampered with
 
-Basic auth uses the `Authorization` header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format _username:password_. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string and decode it. Now the server has the username and password sent from the client we need to match it with the username and password held in our database.
+To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
 
-❓ Imagine if we held all our user's passwords in plaintext. What risks do you think this could cause?
-
-**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
-
-To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
-
-As a reminder, here is some code which implements a secure hashing algorithm:
-
-|Javascript|Java|
-```javascript
-const bcrypt = require('bcrypt')
-...
-bcrypt.hash('password101', 10).then(console.log)
-// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
-```
-```java
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-//...
-BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-String hashedPassword = passwordEncoder.encode("your password");
-// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
+```ruby
+SHA1(base64Encode(Header) + "." + base64Encode(Payload), secret)
+// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c <- that is the Signature part
 ```
 
-Once you have your hash you can check it like this:
+## Assignment
 
-|Javascript|Java|
-```javascript
-bcrypt.compare('password101', '$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK').then(console.log)
-// true
-```
-```java
-BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK");
-// true
-```
-
-### Assignment
-Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). When saving this user to your database, you need to hash the password before saving it so we're not storing passwords in plaintext. Later, we will secure our API so only registered users can access it.
-
-----
-
-## Lesson 4 - Creating and Securing a User API
-### Learning Objectives
-* Describe the middleware design pattern
-* Use what you have learnt in previous lessons to secure an API using Basic Auth
-
-### Lesson
-Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.
-
-To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
-
-Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.
-
-![middleware diagram](https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png)
-
-As that check happens in the middle of the request response cycle, it has been given the name of middleware. This is a generic design pattern you will see in many systems.
-
-A whole series of things can happen in middleware not just authentication, but also authorisation. Thats why the diagram above has 2 middleware rings. There are 2 middlewares the request has to pass through before it gets to the controller. Below is a general pattern for a middleware function.
-
-```javascript
-function (request, response, next) {
-  // check or change something in the request
-  // maybe its not ok so from here you might
-  return response.code(403) // status code 403 forbidden
-  // the controller was never reached!
-  // maybe all is well and you can contiune with the request
-  // calling next() finishes this middleware and goes onto
-  // either the next middleware or into the controller/route handler itself
-  return next()
-}
-```
-
-❓ What other things might you want to do in middleware?
-
-❓ is the password sent on every request or cached?
-
-We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.
-
-### Assignment
-  * Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson using Basic Auth
-  * (Extension) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
-
-Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
-
-|Javascript|Java|
-```javascript
-// check for a basic auth header with correct credentials
-app.use(basicAuth({
-  authorizer: dbAuthorizer, // customer authorizer,
-  authorizeAsync: true, // we check the db which makes this async
-  challenge: true,
-  unauthorizedResponse: (req) => {
-    return `unauthorized. ip: ${req.ip}`
-  }
-}));
-
-// our custom async authorizer middleware, this is called for each request
-function dbAuthorizer(username, password, callback) {
-  const sql = "select password from users where username = ?;";
-  db.get(sql, [username], async (err, user) => {
-    err ? callback(err) : bcrypt.compare(password, user.password, callback);
-  });
-```
-```java
-@Configuration
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // do not use the line below in production apps!!
-        httpSecurity.csrf().disable(); // hack to support DELETE method
-        httpSecurity.authorizeRequests().anyRequest().authenticated()
-                .and().httpBasic();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authentication)
-            throws Exception {
-        // use jdbc authentication (for in memory authentication use authentication.inMemoryAuthentication())
-        authentication.jdbcAuthentication()
-                .dataSource(dataSource)
-                .authoritiesByUsernameQuery("select username,authority "
-                        + "from authorities "
-                        + "where username = ?")
-                .usersByUsernameQuery(
-                        "select username, password, 'true' as enabled from users where username = ?");
-
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        // specify we want the password hashed using bcrypt
-        return new BCryptPasswordEncoder();
-    }
-}
-```
+-   Use [PlantUML](http://www.plantuml.com/plantuml/uml) to create your own sequence diagram which illustrates the OAuth flow.
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/183)
-[main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day2.html)
+[main](/swe)|[prev](/swe/mod1/wk2/day1.html)|[next](/swe/mod1/wk2/day3.html)

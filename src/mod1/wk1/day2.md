@@ -14,7 +14,7 @@ REST is a shortened form of "<u>RE</u>presentative <u>S</u>tate <u>T</u>ransfer"
 
 Note the word **style** - REST is a style of designing APIs in the same way that Object-Oriented is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!
 
-Before REST was first proposed in a [dissertation by Roy Thomas Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm), servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like `/createRestaurant` and others like `/addRestaurant`. This makes intuitive sense: an endpoint in Express is essentially just a function, and, if you were naming a function to create a restaurant, `createRestaurant()` is a sensible choice. However, REST introduced a **standard** way to address resources on a server which made it much easier for other services to discover and use those resources.
+Before REST was first proposed in a [dissertation by Roy Thomas Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm), servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like `/createRestaurant` and others like `/addRestaurant`. This makes intuitive sense: an endpoint in Express is essentially just a function and, if you were naming a function to create a restaurant, `createRestaurant()` is a sensible choice. However, REST introduced a **standard** way to address resources on a server which made it much easier for other services to discover and use those resources.
 
 Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.
 
@@ -57,19 +57,20 @@ A 'resource' is some thing we want to access or interact with and is also a fund
 
 Nested resources simply extend the same pattern:
 
-| HTTP Method | URL                                    | Status code | Description                                                                                       |
-| ----------- | -------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------- |
-| GET         | `/albums/{id}/tracks`                  | 200         | return the tracks for the album with the id specified in the URL                                  |
-| POST        | `/albums/{id}/tracks`                  | 201         | create a new track for the album with the id specified in the URL                                 |
-| GET         | `/albums/{album_id}/tracks/{track_id}` | 200         | return the track with the id specified in the URL from the album with the id specified in the URL |
+| HTTP Method | URL                   | Status code | Description                                                       |
+| ----------- | --------------------- | ----------- | ----------------------------------------------------------------- |
+| GET         | `/albums/{id}/tracks` | 200         | return the tracks for the album with the id specified in the URL  |
+| POST        | `/albums/{id}/tracks` | 201         | create a new track for the album with the id specified in the URL |
 
 Can you see the pattern?
+
+To get a specific track you would use the following: `GET` `/albums/{album_id}/tracks/{track_id}`.
 
 ❓ How might you update a track for a given album?
 
 ❓ Can you match the CRUD operations to http methods?
 
-You might wonder why can't I just reference a track with the URL below?
+Given all track_ids are unique, you might wonder why can't I just reference a track with the URL below:
 
 | URL                  | VERB | Resource                                          |
 | :------------------- | :--: | :------------------------------------------------ |
@@ -85,13 +86,11 @@ In this session we are going to build our service from the ground up and practic
 
 -   Be capable of writing API tests
 
-## Before we start
-
-You need to have completed your RESTful web server.
-
 ## Materials needed
 
 ## Lesson
+
+Before we get into implementing our API, we should first look at how to test our API. This will allow us to use Test-Driven Development.
 
 APIs, like any other form of code, require tests. There are 3 different kinds of tests we commonly write for our services:
 

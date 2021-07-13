@@ -12,7 +12,8 @@
   <body>
     <h1>Mod 1 > Week 1 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <h2>Lesson - Symmetric Key Encryption</h2>
+    <p>Today we're going to be looking at encryption.</p>
+    <h2>Lesson 1 - Symmetric Key Encryption</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>encrypt a text message using a key</li>
@@ -39,49 +40,56 @@
     <p>Only your pair will be able to encrypt an decrypt each others messages. There are a few things we need to cover before we can do this using the Web Crypto API.</p>
     <h3>Strings to ArrayBuffers</h3>
     <p>The encryption functions we can use in the browser require your messages to be encoded as an ArrayBuffer. We like reading text as unicode characters but computers like to deal with text in different structures. Below is an example of a string converted to an ArrayBuffer. You can try this yourself using the browser based <code>TextEncoder</code>;</p>
-    <pre><code class="language-html">new TextEncoder().encode("We like to read unicode characters")
-
-[87, 101, 32, 108, 105, 107, 101, 32, 116, 111, 32, 114, 101, 97, 100, 32, 117, 110, 105, 99, 111, 100, 101, 32, 99, 104, 97, 114, 97, 99, 116, 101, 114, 115]
+    <pre><code class="language-html">new TextEncoder().encode("We like to read unicode characters") [87, 101, 32,
+108, 105, 107, 101, 32, 116, 111, 32, 114, 101, 97, 100, 32, 117, 110, 105, 99,
+111, 100, 101, 32, 99, 104, 97, 114, 97, 99, 116, 101, 114, 115]
 </code></pre>
     <p>❓ Why do you think an encryption function might want you to pass it a string as an ArrayBuffer?</p>
     <h3>Picking an algorithm</h3>
     <p>From your hashing function I hope you have learnt that it can be quite compute intensive using algorithms to hash or encrypt data. This is one of the tradeoffs that you have to consider - security vs performance. You can have a really hard to break encryption algorithm, but it will likely take time to encrypt your data, your machine's fans might start up as the processor is having to work really hard. You can cut some corners and simplify your algorithm to get better performance, but it might then be easier to break your encryption.</p>
     <p>For our assignment today we are going to use the <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode">'AES-GCM'</a> algorithm (Advanced Encryption Standard Galois Counter Mode).</p>
     <pre><code class="language-javascript">const algorithm = {
-    name: 'AES-GCM',
-    length: 128
-}
+    name: "AES-GCM",
+    length: 128,
+};
 </code></pre>
     <h3>Initialisation Vector</h3>
     <p>Just like the enigma code machine required daily settings that were shared by both encryption and decryption agents, our code machine requires settings that must be unique and shared between both parties.</p>
     <pre><code class="language-javascript">const settings = {
-    name: 'AES-GCM',
-    iv: new Uint8Array([229, 56, 109, 253, 36, 111, 243, 241, 13, 56, 220, 129, 127, 237, 6, 73])
-}
+    name: "AES-GCM",
+    iv: new Uint8Array([
+        229, 56, 109, 253, 36, 111, 243, 241, 13, 56, 220, 129, 127, 237, 6, 73,
+    ]),
+};
 </code></pre>
     <p><code>iv:</code> is short for 'initialisation vector' this is used in the algorithm that will be encrypting and decrypting your messages. You need to find a way to privately share this setting with each other. You could direct message each other on slack and share this value with each other. To generate it you can use <code>crypto.getRandomValues(new Uint8Array(16))</code>. Then share the values in the array with each other.</p>
     <h3>Key Generation</h3>
     <p>This is the key part. There are 2 steps we need to generate a key, and export a shareable version of it for our partner. Remember this is were symmetric encryption gets it's name, the same key on both sides of the exchange.</p>
-    <pre><code class="language-javascript">const key = await crypto.subtle.generateKey(algorithm, true, ["encrypt", "decrypt"])
-const shareableKey = await crypto.subtle.exportKey('jwk', key)
+    <pre><code class="language-javascript">const key = await crypto.subtle.generateKey(algorithm, true, [
+    "encrypt",
+    "decrypt",
+]);
+const shareableKey = await crypto.subtle.exportKey("jwk", key);
 </code></pre>
     <p>The arguments to generateKey are the algorithm object we defined above, a boolean that decides if we can export the key or not, and an array of things we can do with the key; The shareableKey means we have a shareable version of the key that our partner can use to decrypt our messages. We can share the key with the message because without the settings you can't use it.</p>
     <h3>Encryption</h3>
     <p>You have everything you need to encrypt your messages (<code>encrypt</code> is async and promise based).</p>
-    <pre><code class="language-javascript">const msg = "We like to read unicode characters"
-const toEncode = new TextEncoder().encode(msg)
+    <pre><code class="language-javascript">const msg = "We like to read unicode characters";
+const toEncode = new TextEncoder().encode(msg);
 /*
   settings, key etc
 */
-const ciphertext = await crypto.subtle.encrypt(settings, key, toEncode)
+const ciphertext = await crypto.subtle.encrypt(settings, key, toEncode);
 </code></pre>
     <p>"ciphertext" is the term given to our encrypted data. Its an ArrayBuffer, similar to the one we feed into the <code>encrypt</code> function.</p>
     <h3>Pre-flight</h3>
     <p>Now we have encrypted our message it is in an ArrayBuffer. We need to do a little more work to make this easier to transport. It's going to be tricky to copy and paste an ArrayBuffer and preserve its properties.</p>
-    <pre><code class="language-javascript">const encryptedBufferToString = Array
-    .from(new Uint8Array(ciphertext))
-    .map(byte => String.fromCharCode(byte)).join('')
-const toTransfer = btoa(encryptedBufferToString + "|" + JSON.stringify(shareableKey))
+    <pre><code class="language-javascript">const encryptedBufferToString = Array.from(new Uint8Array(ciphertext))
+    .map((byte) => String.fromCharCode(byte))
+    .join("");
+const toTransfer = btoa(
+    encryptedBufferToString + "|" + JSON.stringify(shareableKey)
+);
 </code></pre>
     <p>The code above creates a new array from the ciphertext then maps over each value and turns it back into a unicode character i.e. <code>112</code> -> <code>p</code> - the array is then joined into a string.</p>
     <p>The final stage is to base64 encode the joined together encryptedBufferToString (our encrypted message) and the shareable key. I have joined them using a "|" so the other side can 'split' on that character and extract the message and key.</p>
@@ -89,17 +97,27 @@ const toTransfer = btoa(encryptedBufferToString + "|" + JSON.stringify(shareable
     <p><code>console.log(toTransfer)</code> will give you your encrypted message ready to be passed via slack.</p>
     <h3>Decryption</h3>
     <p>What follows can be in a totally separate file. The only thing that needs to be shared in the <code>iv</code> (initialisation vector) settings. Unpack the pre-flight steps and get your ciphertext ArrayBuffer back in play.</p>
-    <pre><code class="language-javascript">const [encryptedBufferToString, shareableKey] = atob("RuY2z0rri/YnJPGlvOzze9Nj+hLGQTsvTPXcljNWj/VSSvm9PjTbo3x7ImFsZyI6IkExMjhHQ00iLCJleHQiOnRydWUsImsiOiIxSmRHS081U2pod3FTSUx4bzZSeldBIiwia2V5X29wcyI6WyJlbmNyeXB0IiwiZGVjcnlwdCJdLCJrdHkiOiJvY3QifQ==").split("|")
-const ciphertext = new Uint8Array(encryptedBufferToString.match(/[\s\S]/g).map(ch => ch.charCodeAt(0)))
+    <pre><code class="language-javascript">const [encryptedBufferToString, shareableKey] = atob(
+    "RuY2z0rri/YnJPGlvOzze9Nj+hLGQTsvTPXcljNWj/VSSvm9PjTbo3x7ImFsZyI6IkExMjhHQ00iLCJleHQiOnRydWUsImsiOiIxSmRHS081U2pod3FTSUx4bzZSeldBIiwia2V5X29wcyI6WyJlbmNyeXB0IiwiZGVjcnlwdCJdLCJrdHkiOiJvY3QifQ=="
+).split("|");
+const ciphertext = new Uint8Array(
+    encryptedBufferToString.match(/[\s\S]/g).map((ch) => ch.charCodeAt(0))
+);
 </code></pre>
     <p>To decrypt messages you need to get the shareableKey back to a 'crypto' key.</p>
-    <pre><code class="language-javascript">const key = await crypto.subtle.importKey('jwk', JSON.parse(shareableKey), algorithm, false, ["decrypt"])
+    <pre><code class="language-javascript">const key = await crypto.subtle.importKey(
+    "jwk",
+    JSON.parse(shareableKey),
+    algorithm,
+    false,
+    ["decrypt"]
+);
 </code></pre>
     <p>Combine the settings, key and ciphertext to the <code>decrypt</code> function.</p>
-    <pre><code class="language-javascript">const decrypted = await crypto.subtle.decrypt(settings, key, ciphertext)
+    <pre><code class="language-javascript">const decrypted = await crypto.subtle.decrypt(settings, key, ciphertext);
 </code></pre>
     <p>Last step is to decode the ArrayBuffer into a human readable string:</p>
-    <pre><code class="language-javascript">const decodedMessage = new TextDecoder().decode(decrypted)
+    <pre><code class="language-javascript">const decodedMessage = new TextDecoder().decode(decrypted);
 </code></pre>
     <p>You are now able to communicate through an encrypted channel with your partner!</p>
     <h3>Summary</h3>
@@ -111,6 +129,104 @@ const ciphertext = new Uint8Array(encryptedBufferToString.match(/[\s\S]/g).map(c
       <li>Use slack to pass your messages to each other</li>
       <li>Try to decode other peoples messages using your code (does it work?)</li>
     </ul>
+    <h2>Lesson 1 - Asymmetric Encryption</h2>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>contrast the tradeoffs between Symmetric and Asymmetric encryption</li>
+      <li>Generate a public and private key pair</li>
+      <li>Use a public key to encrypt a message</li>
+      <li>Use a private key to decrypt a message</li>
+    </ul>
+    <h2>Before we start</h2>
+    <p>You should know about hashing and symmetric encryption.</p>
+    <h2>Materials needed</h2>
+    <h2>Lesson</h2>
+    <p>
+      <img src="https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-asymmetric-encryption.png" alt="a illustration of asymmetric encryption">
+    </p>
+    <p>Asymmetric encryption makes use of 2 different keys. A public key and a private key. The public key is used to encrypt a message. The difference is that public key has its own exclusive private key. They are a key pair. The public key can be out in the wild and people can encrypt messages till their hearts are content. It is only the owner of the private key who can unlock and decrypt the messages encrypted with the paired public key.</p>
+    <p>This solves the problem of key distribution which you had to deal with yesterday when you were encrypting messages with the same key. There are other differences between symmetric and asymmetric encryption.</p>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Symmetric Encryption</th>
+          <th align="left">Asymmetric Encryption</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Uses a single key to encrypt and decrypt the data</td>
+          <td align="left">Uses two separate keys for encryption and decryption. They are known as "public key" and "private key"</td>
+        </tr>
+        <tr>
+          <td align="left">Is more straightforward and conventional</td>
+          <td align="left">Was invented to mitigate the risks of symmetric encryption and is more complicated</td>
+        </tr>
+        <tr>
+          <td align="left">Is faster when compared to asymmetric encryption</td>
+          <td align="left">Is slower and required more computational power</td>
+        </tr>
+        <tr>
+          <td align="left">Requires smaller key lengths (usually about 128-256 bit length)</td>
+          <td align="left">Keys are longer in length</td>
+        </tr>
+        <tr>
+          <td align="left">Provides confidentiality of the data</td>
+          <td align="left">Provides confidentiality, authenticity and non-repudiation (something you cant deny)</td>
+        </tr>
+        <tr>
+          <td align="left">Good for encrypting large amounts of data</td>
+          <td align="left">Good for encrypting smaller amounts of data</td>
+        </tr>
+        <tr>
+          <td align="left">Typical algorithms RC4, AES, DES, 3DES, QUAD</td>
+          <td align="left">Typical algorithms RSA, Diffie-Hellman, ECC, El Gamal, DSA</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Secret ballot</h3>
+    <p>We are going to encrypt a file and send it using asymmetric encryption. I want us to vote on the following question:</p>
+    <blockquote>
+      <p>Who in your cohort do you vote to be cohort president?</p>
+    </blockquote>
+    <p>This is a secret ballot so your submission needs to be encrypted. You need to write the name of the apprentice you'd like to be president in a file and encrypt it with my public key. I, as the returning officer, will not be voting but I will collect and decrypt your encrypted submissions using my private key.</p>
+    <h3>OpenSSL</h3>
+    <p><a href="https://www.openssl.org/">OpenSSL</a> is a general-purpose cryptography library. It comes bundled with Git so both OSX and Windows users can access this command line tool. Git makes use of SSH keys to help you securely connect to your Github repos without having to authenticate with a username and password every time you interact with them. You might recall adding your public key to your Github account? We will use a similar key pair only in the Privacy-Enhanced Mail format or PEM.</p>
+    <p>
+      <img src="https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png" alt="how to open Git Bash on Windows">
+    </p>
+    <h3>Generate the key pair</h3>
+    <p>I will generate a key pair on my machine.</p>
+    <pre><code class="language-sh">openssl genrsa -out id_rsa.pem 2048
+</code></pre>
+    <p>That creates the private key on my computer in a file called <code>id_rsa.pem</code>. Now I'm going to extract the public key from that file which I'll share with you.</p>
+    <pre><code class="language-sh">openssl rsa -in id_rsa.pem -outform PEM -pubout -out id_rsa.pub.pem
+</code></pre>
+    <p>Now I have 2 files <code>id_rsa.pem</code> and <code>id_rsa.pub.pem</code> I'll sent this to you all in slack. It's totally fine to share this key. However I have to be guarded about the private key on my computer, but is fine as I don't need to move it or share it.</p>
+    <h3>Encrypt</h3>
+    <p>Can you store the public key in a folder and create another file next to it with your nomination for president. Now lets create a third file (the encrypted vote file).</p>
+    <pre><code class="language-sh">openssl rsautl -encrypt -pubin -inkey id_rsa.pub.pem -in my_vote.txt -out vote.txt
+</code></pre>
+    <p>You can check the contents of your <code>vote.txt</code> file. You should be unable to distinguish the name you put in <code>my_vote.txt</code> file. You can send this file to me via slack.</p>
+    <h3>Decrypt</h3>
+    <p>When I receive your file I am going to decrypt it with my private key and record the name in a spreadsheet.</p>
+    <pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt
+</code></pre>
+    <p>That will output the name to my terminal. If I wanted to save the decrypted message to disc I would add the file name I wanted to save it as after the <code>-out</code> flag.</p>
+    <pre><code class="language-sh">openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt -out decrypted_vote.txt
+</code></pre>
+    <h3>Results</h3>
+    <p>To decrypt, we will use a bash command to batch decrypt all of your votes in one go:</p>
+    <p><code>for i in ./vote*.txt;do echo "`openssl rsautl -decrypt -inkey id_rsa.pem -in "$i"`" >> output.txt;done</code></p>
+    <p>The votes are in and the new cohort president is...</p>
+    <h3>Summary</h3>
+    <p>In this session we have generated an asymmetric key pair consisting of a public and private key. You have used a public key to encrypt a file and have sent that to me securely and privately. You have seen me use my private key to decrypt your file and retrieve the name you sent me. My private key has not moved from my disc and we've been able to send encrypted messages without having to share sensitive keys.</p>
+    <h2>Assignment</h2>
+    <h3>Part 1</h3>
+    <p>We have looked at hashing, symmetric and asymmetric encryption, these are building blocks. Digitally signing a file uses the cryptographic building blocks we have looked at to verify that a file has not been tampered with in transit. Can you research how to digitally 'sign' a file using openssl. Send your file and it's signature to your partner in crypto and get them to verify your file. How can you break the verification?</p>
+    <h3>Part 2</h3>
+    <p>Near the end of the day, we'll all regroup to complete a cryptography quiz on <a href="">https://www.kahoot.it</a>.</p>
+    <hr>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/181">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day3.html">prev</a>|<a href="/swe/mod1/wk1/day5.html">next</a>

@@ -1,14 +1,16 @@
-# Mod 1 > Week 2 > Day 3
+# Mod 1 > Oauth Extensions
 
 ## Overview of the day
+
 Today we are going to implement the Auth0 client-credentials flow. We are then going to outsource our User accounts and authentication to Auth0. This is the day when we also start to plan for the final Module project.
 
 ## Learning Objectives
-  * Use token based authorization to protect resources
+
+-   Use token based authorization to protect resources
 
 ## Before we start
 
-* Create a Auth0 account
+-   Create a Auth0 account
 
 ## Materials needed
 
@@ -16,58 +18,63 @@ Today we are going to implement the Auth0 client-credentials flow. We are then g
 
 In this lesson you will sign up to Auth0, a commercial implementation of OAuth, used by many well known companies including M&S to secure their Web APIs.
 
-  1. Go to https://auth0.com/signup 
-  2. Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.
-  3. Navigate to your Dashboard and select to `Create API` for your UsersAPI using the same details as below ![Auth0 Users API](https://user-images.githubusercontent.com/1316724/102825938-b2b26f00-43d7-11eb-8eb5-444ba240a13b.PNG "Users API") 
-  4. Navigate to the `Test` tab of your new API. You will see that a new application has been created called UsersAPI(Test Application) which is authorized to access the API.
+1. Go to https://auth0.com/signup
+2. Use your personal email account, select your region as Europe and opt out of notifications. Ensure you create a PERSONAL account type.
+3. Navigate to your Dashboard and select to `Create API` for your UsersAPI using the same details as below ![Auth0 Users API](https://user-images.githubusercontent.com/1316724/102825938-b2b26f00-43d7-11eb-8eb5-444ba240a13b.PNG "Users API")
+4. Navigate to the `Test` tab of your new API. You will see that a new application has been created called UsersAPI(Test Application) which is authorized to access the API.
 
-      You will see a section called `Asking Auth0 for tokens from my application`. Let's look in more detail at the parameters passed as part of the cURL request:
+    You will see a section called `Asking Auth0 for tokens from my application`. Let's look in more detail at the parameters passed as part of the cURL request:
 
-      | Element | Explanation |
-      | ------- | ----------- |
-      | audience | represents the resource which we are trying to access |
-      | grant_type | we are using `client_credentials` OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow [here](https://auth0.com/docs/flows/client-credentials-flow). If you are creating an SPA you should use the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce) instead (we will cover this later).
-      | client_id | this is the id of the UsersAPI(Test Application) which is authorised to access the UsersAPI. |
-      | client_secret | this is the client secret of the UsersAPI(Test Application) which is authorised to access the UsersAPI. |
+    | Element       | Explanation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | audience      | represents the resource which we are trying to access                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | grant_type    | we are using `client_credentials` OAuth flow as we are making a machine -> machine connection hence schemes like username + password or social logins don't make sense. You can read more about this flow [here](https://auth0.com/docs/flows/client-credentials-flow). If you are creating an SPA you should use the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce) instead (we will cover this later). |
+    | client_id     | this is the id of the UsersAPI(Test Application) which is authorised to access the UsersAPI.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | client_secret | this is the client secret of the UsersAPI(Test Application) which is authorised to access the UsersAPI.                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-  5. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
+5. Use the information from the cURL request to help you construct a Postman request to obtain a new OAuth token.
 
-  6. You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents. 
+6. You should see a 200 success status and the body of the response should contain an `access_token`. Paste it into the Debugger at https://jwt.io and explore the contents.
 
-      Common claims held within JWTs are:
+    Common claims held within JWTs are:
 
-        * Issuer (iss)
-        * Subject (sub)
-        * Audience (aud)
-        * Expiration time (exp)
-        * Not before (nbf)
-        * Issued at (iat)
-        * JWT ID (jti)
+    - Issuer (iss)
+    - Subject (sub)
+    - Audience (aud)
+    - Expiration time (exp)
+    - Not before (nbf)
+    - Issued at (iat)
+    - JWT ID (jti)
 
 # Lesson 2 - Securing your API with OAuth
+
 Make a copy of the Airports API you have created. This is currently secured using Basic Auth and we are going to modify it to be secured instead by OAuth.
 
 **Coach note** - solutions for JavaScript and Java at https://github.com/WhiteHatLearningProducts/swe-solutions/tree/main/mod1/users-api/oauthSecured/
 
 ## Javascript developers
-1. Install the following node package dependencies:
-`npm install cors dotenv express-jwt jwks-rsa`
 
-2. Remove the dependency to `express-basic-auth` 
+1. Install the following node package dependencies:
+   `npm install cors dotenv express-jwt jwks-rsa`
+
+2. Remove the dependency to `express-basic-auth`
 
 3. Add the following to the start of your `app.js` file as follows
-```javascript
-const jwt = require('express-jwt');
-const jwksRsa = require('jwks-rsa');
-const cors = require('cors'); 
 
-require('dotenv').config('.env'); // Note: env vars should not be used in production
+```javascript
+const jwt = require("express-jwt");
+const jwksRsa = require("jwks-rsa");
+const cors = require("cors");
+
+require("dotenv").config(".env"); // Note: env vars should not be used in production
 ```
 
 4. Add the following line AFTER the call to initialise Express
+
 ```javascript
 app.use(cors());
 ```
+
 5. Create a `.env` file and add the following entries (substituting in your personal Auth0 domain):
 
     `AUTH0_AUDIENCE=https://users`
@@ -75,27 +82,30 @@ app.use(cors());
     `AUTH0_DOMAIN=[your domain].eu.auth0.com`
 
 6. Add a function to check for a valid OAuth (JWT) token:
+
 ```javascript
 // create middleware for checking the JWT
 const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
-  }),
-  audience: process.env.AUTH0_AUDIENCE,
-  issuer: `https://${process.env.AUTH0_DOMAIN}`,
-  algorithms: ['RS256']
+    secret: jwksRsa.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`,
+    }),
+    audience: process.env.AUTH0_AUDIENCE,
+    issuer: `https://${process.env.AUTH0_DOMAIN}`,
+    algorithms: ["RS256"],
 });
-
 ```
+
 7. Secure your API:
+
 ```javascript
 app.get("/airports/:id", checkJwt, (req, res) => {
 ```
 
 ## Java developers
+
 1. Add the OAuth dependencies to your `pom.xml` file:
 
 ```xml
@@ -152,7 +162,9 @@ public class AudienceValidator implements OAuth2TokenValidator<Jwt> {
     }
 }
 ```
+
 3. Modifiy your SecurityConfiguration to use OAuth
+
 ```java
 @Configuration
 @EnableWebSecurity
@@ -212,7 +224,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 }
 ```
+
 4. Add a new file `application.yml` under `src/main/resources` to specify your Auth0 domain and audience
+
 ```xml
 auth0:your Auth
   audience: https://users
@@ -239,21 +253,25 @@ _YOUR_CLIENT_ID below needs to be replaced with the value in the example body fr
 const auth0Config = {
     client_id: YOUR_CLIENT_ID,
     client_secret: YOUR_CLIENT_SECRET,
-    audience: 'http://localhost:3000/',
-    grant_type: 'client_credentials'
-}
-const {access_token} = await fetch('https://dev-7954hoz9.eu.auth0.com/oauth/token', {
-    method: 'POST',
-    headers: {
-        'content-type': 'application/json'
-    },
-    body: JSON.stringify(auth0Config)
-}).then(res => res.json())
+    audience: "http://localhost:3000/",
+    grant_type: "client_credentials",
+};
+const { access_token } = await fetch(
+    "https://dev-7954hoz9.eu.auth0.com/oauth/token",
+    {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(auth0Config),
+    }
+).then((res) => res.json());
 
-res.send(access_token)
+res.send(access_token);
 ```
 
 ## Calling your API
+
 1. Once you user has called `/login` and obtain an Auth0 token
 
 2. Call `/users/:id` with an `Authorization` header that uses a `Bearer Token` set to this token. Hopefully you should see a 200 OK response! See below for an example (this is generated by Postman).
@@ -269,6 +287,7 @@ res.send(access_token)
 ## Assignment
 
 Implement token based authorization using Auth0 as a token provider.
+
 1. Authenticate on https://Auth0.com
 1. Create a new API
 1. Update your express server with the jwtCheck middleware function
@@ -276,15 +295,15 @@ Implement token based authorization using Auth0 as a token provider.
 1. Once your user is authenticated in the /login route - Get a token from Auth0 and send it back to your user
 1. Verify everything is secure and working ok you should not be able to access the /users/:id route without a token
 
-----
+---
 
 # Lesson 2 - Offload user Authorization and Authentication to Auth0
 
 ## Learning Objectives
 
-* Set up Auth0s universal login
-* Recall and follow the 3 stages of design planning (input, processes, outputs)
-* Communicate the design of a programme using diagrams
+-   Set up Auth0s universal login
+-   Recall and follow the 3 stages of design planning (input, processes, outputs)
+-   Communicate the design of a programme using diagrams
 
 ## Lesson
 
@@ -298,7 +317,7 @@ OpenID Connect uses an additional JSON Web Token (JWT), called an ID token, to h
 
 Use https://jwt.io to find out the name and email hidden in the JWT ID token.
 
-So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard. 
+So, instead of passing a user name and password to our Login page and looking this up in our user database, we will delegate authentication to Auth0. This avoid us having to store usernames and passwords (a good thing!) but means that users need to be registered in the Auth0 dashboard.
 
 ## Implementing authentication using Auth0
 
@@ -317,26 +336,26 @@ So, instead of passing a user name and password to our Login page and looking th
 
 This [library](https://npmjs.com/express-openid-connect) creates 3 routes for you on your express server. Be careful not to over write these. They are:
 
-|route|purpose|
-|:----|:------|
-|`/login`|visit this route to authenticate and create new users (see below)|
-|`/logout`|invalidate the logged in users token which will effectively end their 'session'|
-|`/callback`|This is the redirect back to your app after successful authentication|
-|`/`|This is the "home" route. Logged in users arrive here after being redirected from `/callback`|
+| route       | purpose                                                                                       |
+| :---------- | :-------------------------------------------------------------------------------------------- |
+| `/login`    | visit this route to authenticate and create new users (see below)                             |
+| `/logout`   | invalidate the logged in users token which will effectively end their 'session'               |
+| `/callback` | This is the redirect back to your app after successful authentication                         |
+| `/`         | This is the "home" route. Logged in users arrive here after being redirected from `/callback` |
 
 ![the login page from Auth0](https://user-images.githubusercontent.com/4499581/105988966-59092880-6098-11eb-87d4-d1c59af032d0.png)
 
 You also have a couple of middleware functions from the library to help protect all and individual routes. The library adds a [RequestContext](https://auth0.github.io/express-openid-connect/interfaces/requestcontext.html) object onto the `req` object in express. You can access the logged in user like this `req.oidc.user`. You can view their token like this `req.oidc.accessToken`. Below are two of the main functions in the library to get you going.
 
-|middleware|purpose|
-|:---------|:------|
-|auth      |this adds `req.oidc` to all your requests|
-|requiresAuth|use this to protect routes that require a user to be logged in|
+| middleware   | purpose                                                        |
+| :----------- | :------------------------------------------------------------- |
+| auth         | this adds `req.oidc` to all your requests                      |
+| requiresAuth | use this to protect routes that require a user to be logged in |
 
 ```javascript
-app.get('/profile', requiresAuth(), (req, res) => {
-  res.send(req.oidc.user)
-})
+app.get("/profile", requiresAuth(), (req, res) => {
+    res.send(req.oidc.user);
+});
 
 /**
 {
@@ -357,10 +376,10 @@ That last property the `sub` is a unique id number for that user. That might be 
 
 Take a copy of your Airports API. Now we're going to offload the authentication and authorisation to OIDC. Some things to bear in mind:
 
-* You will need to have a public folder to server assets out of i.e. `style.css`
-* You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)
+-   You will need to have a public folder to server assets out of i.e. `style.css`
+-   You need to decide on how you will integrate your frontend views (handlebars, pug, vue.js, react)
 
-You can look back a previous projects to remind yourself of how to do this. 
+You can look back a previous projects to remind yourself of how to do this.
 
 Here's an example of how to integrate OIDC in JavaScript:
 
@@ -393,34 +412,3 @@ app.listen(3000, () => {
     console.log("All ready for banking"))
 })
 ```
-
-## Assignment
-
-Below is a spec for a banking app.
-
-1. Users should be able log into your app
-1. Users should be able to see a balance on their account
-1. Your app will need to be deployed (we suggest Heroku)
-1. A user should be able to invite a friend via a link in an email (you can integrate with Gmail for this)
-1. A user should see all their friends listed when they are logged in
-1. A user should be able to transfer balance to their friends
-
-In groups, take 20 minutes to come up with a design pitch for this app.
-
-* What will your data model look like? 
-* How will you trigger an email?
-* How will the link in the email work?
-* How can a user add funds?
-* How can you transfer funds from one user to another?
-* What UI do you need to build?
-* How will you deploy your app?
-* How will you divide the work?
-* How will you collaborate?
-
-Also think about the skills your team need to have to be successful? E.G. good communication.
-
-
-You will have 2 days to complete this challenge. You can work in groups of 3. You will need to deploy to heroku so your email link will work.
-
-[attendance log](https://platform.multiverse.io/apprentice/attendance-log/185)
-[main](/swe)|[prev](/swe/mod1/wk2/day2.html)|[next](/swe/mod1/wk2/day4.html)

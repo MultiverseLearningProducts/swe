@@ -2,128 +2,239 @@
 
 ## Overview of the day
 
-Today we conclude our study of cryptography by looking at asymetrical encryption. The day will also include a quiz so you can test your knowledge in preparation for next weeks material.
+Today we are going to use Basic Auth to secure a RESTful API.
 
-----
+## Overall Learning Objectives
 
-## Lesson 1 - Asymmetric Encryption
+-   Understand the difference between authentication and authorisation
+-   Construct a RESTful API to Create, Read, Update and Delete (CRUD) a user
+-   Implement a credential store using hashed passwords
+-   Use Basic Authentication to secure the User API
 
-## Learning Objectives
+## Lesson 1 - Authentication and authorisation
 
-* contrast the tradeoffs between Symmetric and Asymmetric encryption
-* Generate a public and private key pair
-* Use a public key to encrypt a message
-* Use a private key to decrypt a message 
+### Learning Objectives
 
-## Before we start
+-   Understand the difference between authentication and authorisation
+-   Understand how user names and passwords are encoded in the Basic Authentication HTTP scheme
 
-You should know about hashing and symmetric encryption.
+> `Authentication` is the process of verifying who a user is
 
-## Materials needed
+> `Authorisation` is the process of verifying what they have access to
 
-## Lesson
+Here's an example to illustrate this:
 
-![a illustration of asymmetric encryption](https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-asymmetric-encryption.png)
+Imagine you have booked a hotel room. When you get to the checkout you are asked for you driving license to prove who you are - this is **authentication**.
 
-Asymmetric encryption makes use of 2 different keys. A public key and a private key. The public key is used to encrypt a message. The difference is that public key has its own exclusive private key. They are a key pair. The public key can be out in the wild and people can encrypt messages till their hearts are content. It is only the owner of the private key who can unlock and decrypt the messages encrypted with the paired public key.
+![hotel checkin](https://user-images.githubusercontent.com/1316724/102709159-a9be8200-429f-11eb-903b-12976c1f051d.png)
 
-This solves the problem of key distribution which you had to deal with yesterday when you were encrypting messages with the same key. There are other differences between symmetric and asymmetric encryption.
+<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/free-icon/check-in-desk_2261372?related_item_id=2261377&term=hotel%20checking%20in" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-|Symmetric Encryption|Asymmetric Encryption|
-|:---|:---|
-Uses a single key to encrypt and decrypt the data|Uses two separate keys for encryption and decryption. They are known as "public key" and "private key"
-Is more straightforward and conventional|Was invented to mitigate the risks of symmetric encryption and is more complicated
-Is faster when compared to asymmetric encryption|Is slower and required more computational power
-Requires smaller key lengths (usually about 128-256 bit length)|Keys are longer in length
-Provides confidentiality of the data|Provides confidentiality, authenticity and non-repudiation (something you cant deny)
-Good for encrypting large amounts of data|Good for encrypting smaller amounts of data
-Typical algorithms RC4, AES, DES, 3DES, QUAD|Typical algorithms RSA, Diffie-Hellman, ECC, El Gamal, DSA
+Once authentication is complete, you are given a key card which gives you entry to your room - this is **authorisation** as you are being granted access to a resource (in this case your room). You are not authorised to access any other rooms.
 
-### Secret ballot
+![hotel keycard](https://user-images.githubusercontent.com/1316724/102709120-43d1fa80-429f-11eb-9d57-43906703fbf9.png)
 
-We are going to encrypt a file and send it using asymmetric encryption. I want us to vote on the following question:
+<div style="padding-top:10px;padding-bottom:10px;font-size:xx-small">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-> Who in your cohort do you vote to be cohort president?
+### 🧑🏽‍💻👩🏾‍💻 Assignment
 
-This is a secret ballot so your submission needs to be encrypted. You need to write the name of the apprentice you'd like to be president in a file and encrypt it with my public key. I, as the returning officer, will not be voting but I will collect and decrypt your encrypted submissions using my private key.
+In breakout rooms, determine which of the following are examples of authentication and which are examples of authorisation:
 
-### OpenSSL
+1. Showing your passport at the airport
+2. Determining which floor in a building an employee can access
+3. Checking a boarding pass before boarding a flight
+4. A manager accessing payroll information
+5. Entering a username and password
+6. Using biometrics (such as fingerprints)
+7. Using a key to open a door
 
-[OpenSSL](https://www.openssl.org/) is a general-purpose cryptography library. It comes bundled with Git so both OSX and Windows users can access this command line tool. Git makes use of SSH keys to help you securely connect to your Github repos without having to authenticate with a username and password every time you interact with them. You might recall adding your public key to your Github account? We will use a similar key pair only in the Privacy-Enhanced Mail format or PEM.
+## Basic Authentication
 
-![how to open Git Bash on Windows](https://content.codecademy.com/courses/freelance-1/unit-3/git%20bash%20setup/annotated_gitbash_start.png)
+Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as `Basic Authentication`.
 
-### Generate the key pair
+Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string username:password
 
-I will generate a key pair on my machine.
+Here is an example:
 
-```sh
-openssl genrsa -out id_rsa.pem 2048
+> Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
+
+That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called `atob` and `btoa`. Try it. In your console encode the following string "Hello you".
+
+![an example of using b to a function and a to b function to encode and decode a string](https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png)
+
+### 👮‍♀️ Assignment
+
+From the string in the `Authorization` header above, determine the user's username and password.
+
+❓ Do you think Basic Authentication is a secure scheme?
+
+## Hashing passwords
+
+### Learning Objectives
+
+-   Understand why passwords should be hashed
+-   Understand the implications of exposing sensitive data
+-   Create a database of user names and hashed passwords
+
+Basic auth uses the `Authorization` header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format _username:password_. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string and decode it. Now the server has the username and password sent from the client we need to match it with the username and password held in our database.
+
+❓ Imagine if we held all our user's passwords in plaintext. What risks do you think this could cause?
+
+**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
+
+To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
+
+As a reminder, here is some code which implements a secure hashing algorithm:
+
+|Javascript|Java|
+
+```javascript
+const bcrypt = require('bcrypt')
+...
+bcrypt.hash('password101', 10).then(console.log)
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
 ```
-That creates the private key on my computer in a file called `id_rsa.pem`. Now I'm going to extract the public key from that file which I'll share with you.
 
-```sh
-openssl rsa -in id_rsa.pem -outform PEM -pubout -out id_rsa.pub.pem
-```
-Now I have 2 files `id_rsa.pem` and `id_rsa.pub.pem` I'll sent this to you all in slack. It's totally fine to share this key. However I have to be guarded about the private key on my computer, but is fine as I don't need to move it or share it.
+```java
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-### Encrypt
-
-Can you store the public key in a folder and create another file next to it with your nomination for president. Now lets create a third file (the encrypted vote file).
-```sh
-openssl rsautl -encrypt -pubin -inkey id_rsa.pub.pem -in my_vote.txt -out vote.txt
-```
-You can check the contents of your `vote.txt` file. You should be unable to distinguish the name you put in `my_vote.txt` file. You can send this file to me via slack.
-
-### Decrypt
-
-When I receive your file I am going to decrypt it with my private key and record the name in a spreadsheet.
-```sh
-openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt
-```
-That will output the name to my terminal. If I wanted to save the decrypted message to disc I would add the file name I wanted to save it as after the `-out` flag.
-```sh
-openssl rsautl -decrypt -inkey id_rsa.pem -in vote.txt -out decrypted_vote.txt
+//...
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+String hashedPassword = passwordEncoder.encode("your password");
+// $2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK
 ```
 
-### Results
+Once you have your hash you can check it like this:
 
-To decrypt, we will use a bash command to batch decrypt all of your votes in one go:
+|Javascript|Java|
 
-```for i in ./vote*.txt;do echo "`openssl rsautl -decrypt -inkey id_rsa.pem -in "$i"`" >> output.txt;done```
+```javascript
+bcrypt
+    .compare(
+        "password101",
+        "$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK"
+    )
+    .then(console.log);
+// true
+```
 
-The votes are in and the new cohort president is...
+```java
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RHTtmd6N.Yegy3V9ALTlYDcCM76HxBqq044q6xLK");
+// true
+```
 
-### Summary
+### Assignment
 
-In this session we have generated an asymmetric key pair consisting of a public and private key. You have used a public key to encrypt a file and have sent that to me securely and privately. You have seen me use my private key to decrypt your file and retrieve the name you sent me. My private key has not moved from my disc and we've been able to send encrypted messages without having to share sensitive keys.
+Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). When saving this user to your database, you need to hash the password before saving it so we're not storing passwords in plaintext. Later, we will secure our API so only registered users can access it.
 
-## Assignment
+---
 
-We have looked at hashing, symmetric and asymmetric encryption, these are building blocks. Digitally signing a file uses the cryptographic building blocks we have looked at to verify that a file has not been tampered with in transit. Can you research how to digitally 'sign' a file using openssl. Send your file and it's signature to your partner in crypto and get them to verify your file. How can you break the verification?
+## Lesson 4 - Creating and Securing a User API
 
-----
+### Learning Objectives
 
-## Lesson 2 - Crypto Quiz
+-   Describe the middleware design pattern
+-   Use what you have learnt in previous lessons to secure an API using Basic Auth
 
-## Learning Objectives
+### Lesson
 
-* Recall the main features of hashing
-* Identify what makes an encryption symmetrical/asymmetrical
-* Identify an advantage/disadvantage of symmetrical/asymmetrical encryption
-* What factors go into selecting an encrypting algorithm
+Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.
 
-## Before we start
+To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
 
-You should have completed all our sessions and have had the chance to ask any questions.
+Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.
 
-## Materials needed
+![middleware diagram](https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png)
 
-## Lesson
+As that check happens in the middle of the request response cycle, it has been given the name of middleware. This is a generic design pattern you will see in many systems.
 
-For the Quiz follow [https://www.kahoot.it]().
+A whole series of things can happen in middleware not just authentication, but also authorisation. Thats why the diagram above has 2 middleware rings. There are 2 middlewares the request has to pass through before it gets to the controller. Below is a general pattern for a middleware function.
 
-## Assignment
+```javascript
+function (request, response, next) {
+  // check or change something in the request
+  // maybe its not ok so from here you might
+  return response.code(403) // status code 403 forbidden
+  // the controller was never reached!
+  // maybe all is well and you can contiune with the request
+  // calling next() finishes this middleware and goes onto
+  // either the next middleware or into the controller/route handler itself
+  return next()
+}
+```
+
+❓ What other things might you want to do in middleware?
+
+❓ is the password sent on every request or cached?
+
+We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.
+
+### Assignment
+
+-   Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson using Basic Auth
+-   (Extension) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
+
+Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
+
+|Javascript|Java|
+
+```javascript
+// check for a basic auth header with correct credentials
+app.use(basicAuth({
+  authorizer: dbAuthorizer, // customer authorizer,
+  authorizeAsync: true, // we check the db which makes this async
+  challenge: true,
+  unauthorizedResponse: (req) => {
+    return `unauthorized. ip: ${req.ip}`
+  }
+}));
+
+// our custom async authorizer middleware, this is called for each request
+function dbAuthorizer(username, password, callback) {
+  const sql = "select password from users where username = ?;";
+  db.get(sql, [username], async (err, user) => {
+    err ? callback(err) : bcrypt.compare(password, user.password, callback);
+  });
+```
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        // do not use the line below in production apps!!
+        httpSecurity.csrf().disable(); // hack to support DELETE method
+        httpSecurity.authorizeRequests().anyRequest().authenticated()
+                .and().httpBasic();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder authentication)
+            throws Exception {
+        // use jdbc authentication (for in memory authentication use authentication.inMemoryAuthentication())
+        authentication.jdbcAuthentication()
+                .dataSource(dataSource)
+                .authoritiesByUsernameQuery("select username,authority "
+                        + "from authorities "
+                        + "where username = ?")
+                .usersByUsernameQuery(
+                        "select username, password, 'true' as enabled from users where username = ?");
+
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // specify we want the password hashed using bcrypt
+        return new BCryptPasswordEncoder();
+    }
+}
+```
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/182)
-[main](/swe)|[prev](/swe/mod1/wk1/day4.html)|[next](/swe/mod1/wk2/day1.html)
+[main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day2.html)

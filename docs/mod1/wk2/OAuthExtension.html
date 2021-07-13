@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Mod 1 > Week 2 > Day 3</title>
+    <title>Mod 1 > Oauth Extensions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
     <link rel="stylesheet" href="/swe/modest.css">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/swe/style.css">
   </head>
   <body>
-    <h1>Mod 1 > Week 2 > Day 3</h1>
+    <h1>Mod 1 > Oauth Extensions</h1>
     <h2>Overview of the day</h2>
     <p>Today we are going to implement the Auth0 client-credentials flow. We are then going to outsource our User accounts and authentication to Auth0. This is the day when we also start to plan for the final Module project.</p>
     <h2>Learning Objectives</h2>
@@ -101,11 +101,11 @@
         <p>Add the following to the start of your <code>app.js</code> file as follows</p>
       </li>
     </ol>
-    <pre><code class="language-javascript">const jwt = require('express-jwt');
-const jwksRsa = require('jwks-rsa');
-const cors = require('cors'); 
+    <pre><code class="language-javascript">const jwt = require("express-jwt");
+const jwksRsa = require("jwks-rsa");
+const cors = require("cors");
 
-require('dotenv').config('.env'); // Note: env vars should not be used in production
+require("dotenv").config(".env"); // Note: env vars should not be used in production
 </code></pre>
     <ol start="4">
       <li>Add the following line AFTER the call to initialise Express</li>
@@ -124,17 +124,16 @@ require('dotenv').config('.env'); // Note: env vars should not be used in produc
     </ol>
     <pre><code class="language-javascript">// create middleware for checking the JWT
 const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`
-  }),
-  audience: process.env.AUTH0_AUDIENCE,
-  issuer: `https://${process.env.AUTH0_DOMAIN}`,
-  algorithms: ['RS256']
+    secret: jwksRsa.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: `https://${process.env.AUTH0_DOMAIN}.well-known/jwks.json`,
+    }),
+    audience: process.env.AUTH0_AUDIENCE,
+    issuer: `https://${process.env.AUTH0_DOMAIN}`,
+    algorithms: ["RS256"],
 });
-
 </code></pre>
     <ol start="7">
       <li>Secure your API:</li>
@@ -279,18 +278,21 @@ spring:
 const auth0Config = {
     client_id: YOUR_CLIENT_ID,
     client_secret: YOUR_CLIENT_SECRET,
-    audience: 'http://localhost:3000/',
-    grant_type: 'client_credentials'
-}
-const {access_token} = await fetch('https://dev-7954hoz9.eu.auth0.com/oauth/token', {
-    method: 'POST',
-    headers: {
-        'content-type': 'application/json'
-    },
-    body: JSON.stringify(auth0Config)
-}).then(res => res.json())
+    audience: "http://localhost:3000/",
+    grant_type: "client_credentials",
+};
+const { access_token } = await fetch(
+    "https://dev-7954hoz9.eu.auth0.com/oauth/token",
+    {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(auth0Config),
+    }
+).then((res) => res.json());
 
-res.send(access_token)
+res.send(access_token);
 </code></pre>
     <h2>Calling your API</h2>
     <ol>
@@ -400,9 +402,9 @@ res.send(access_token)
         </tr>
       </tbody>
     </table>
-    <pre><code class="language-javascript">app.get('/profile', requiresAuth(), (req, res) => {
-  res.send(req.oidc.user)
-})
+    <pre><code class="language-javascript">app.get("/profile", requiresAuth(), (req, res) => {
+    res.send(req.oidc.user);
+});
 
 /**
 {
@@ -453,34 +455,6 @@ app.listen(3000, () => {
     console.log("All ready for banking"))
 })
 </code></pre>
-    <h2>Assignment</h2>
-    <p>Below is a spec for a banking app.</p>
-    <ol>
-      <li>Users should be able log into your app</li>
-      <li>Users should be able to see a balance on their account</li>
-      <li>Your app will need to be deployed (we suggest Heroku)</li>
-      <li>A user should be able to invite a friend via a link in an email (you can integrate with Gmail for this)</li>
-      <li>A user should see all their friends listed when they are logged in</li>
-      <li>A user should be able to transfer balance to their friends</li>
-    </ol>
-    <p>In groups, take 20 minutes to come up with a design pitch for this app.</p>
-    <ul>
-      <li>What will your data model look like?</li>
-      <li>How will you trigger an email?</li>
-      <li>How will the link in the email work?</li>
-      <li>How can a user add funds?</li>
-      <li>How can you transfer funds from one user to another?</li>
-      <li>What UI do you need to build?</li>
-      <li>How will you deploy your app?</li>
-      <li>How will you divide the work?</li>
-      <li>How will you collaborate?</li>
-    </ul>
-    <p>Also think about the skills your team need to have to be successful? E.G. good communication.</p>
-    <p>You will have 2 days to complete this challenge. You can work in groups of 3. You will need to deploy to heroku so your email link will work.</p>
-    <p>
-      <a href="https://platform.multiverse.io/apprentice/attendance-log/185">attendance log</a>
-      <a href="/swe">main</a>|<a href="/swe/mod1/wk2/day2.html">prev</a>|<a href="/swe/mod1/wk2/day4.html">next</a>
-    </p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
   </body>

@@ -20,7 +20,7 @@
       <p>REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.</p>
     </blockquote>
     <p>Note the word <strong>style</strong> - REST is a style of designing APIs in the same way that Object-Oriented is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!</p>
-    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a>, servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like <code>/createRestaurant</code> and others like <code>/addRestaurant</code>. This makes intuitive sense: an endpoint in Express is essentially just a function, and, if you were naming a function to create a restaurant, <code>createRestaurant()</code> is a sensible choice. However, REST introduced a <strong>standard</strong> way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
+    <p>Before REST was first proposed in a <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">dissertation by Roy Thomas Fielding</a>, servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like <code>/createRestaurant</code> and others like <code>/addRestaurant</code>. This makes intuitive sense: an endpoint in Express is essentially just a function and, if you were naming a function to create a restaurant, <code>createRestaurant()</code> is a sensible choice. However, REST introduced a <strong>standard</strong> way to address resources on a server which made it much easier for other services to discover and use those resources.</p>
     <p>Today REST is widely implemented across the internet and we are going to learn about how to read and create our own RESTful web services.</p>
     <h2>Learning Objectives</h2>
     <ul>
@@ -116,18 +116,13 @@
           <td>201</td>
           <td>create a new track for the album with the id specified in the URL</td>
         </tr>
-        <tr>
-          <td>GET</td>
-          <td><code>/albums/{album_id}/tracks/{track_id}</code></td>
-          <td>200</td>
-          <td>return the track with the id specified in the URL from the album with the id specified in the URL</td>
-        </tr>
       </tbody>
     </table>
     <p>Can you see the pattern?</p>
+    <p>To get a specific track you would use the following: <code>GET</code> <code>/albums/{album_id}/tracks/{track_id}</code>.</p>
     <p>❓ How might you update a track for a given album?</p>
     <p>❓ Can you match the CRUD operations to http methods?</p>
-    <p>You might wonder why can't I just reference a track with the URL below?</p>
+    <p>Given all track_ids are unique, you might wonder why can't I just reference a track with the URL below:</p>
     <table>
       <thead>
         <tr>
@@ -151,10 +146,9 @@
     <ul>
       <li>Be capable of writing API tests</li>
     </ul>
-    <h2>Before we start</h2>
-    <p>You need to have completed your RESTful web server.</p>
     <h2>Materials needed</h2>
     <h2>Lesson</h2>
+    <p>Before we get into implementing our API, we should first look at how to test our API. This will allow us to use Test-Driven Development.</p>
     <p>APIs, like any other form of code, require tests. There are 3 different kinds of tests we commonly write for our services:</p>
     <ol>
       <li>Unit tests</li>
