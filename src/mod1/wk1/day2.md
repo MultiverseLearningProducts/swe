@@ -12,7 +12,7 @@ REST is a shortened form of "<u>RE</u>presentative <u>S</u>tate <u>T</u>ransfer"
 
 > REST is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
 
-Note the word **style** - REST is a style of designing APIs in the same way that Object-Oriented Progrmamming is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!
+Note the word **style** - REST is a style of designing APIs in the same way that Object-Oriented is a style for designing programmes. The term is often used fairly loosely on the internet so be careful!
 
 Before REST was first proposed in a [dissertation by Roy Thomas Fielding](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm), servers implemented their own endpoints named in ways that different development teams saw fit. For example, in a restaurant app, some teams might name endpoints like `/createRestaurant` and others like `/addRestaurant`. This makes intuitive sense: an endpoint in Express is essentially just a function, and, if you were naming a function to create a restaurant, `createRestaurant()` is a sensible choice. However, REST introduced a **standard** way to address resources on a server which made it much easier for other services to discover and use those resources.
 
@@ -40,7 +40,7 @@ There are 2 aspects to RESTful architectures.
 
 ### VERBS/METHODS
 
-Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH` `PUT` `DELETE` _(there are more but these are the main ones)_ one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource `/albums`; to **read** all the albums we would make an http request and use the `GET` method. If we wanted to **add** a new album we would make an http request to the **same** address `/albums` but use the `POST` method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource - reading with `GET` or creating with `POST`. We *could* make a `GET` request with a body and create a new `/albums` resource but that would not be RESTful.
+Built into the HTTP spec are the http 'methods' or 'verbs'. `GET` `POST` `PATCH` `PUT` `DELETE` _(there are more but these are the main ones)_ one fundamental concept in REST is that these verbs should be used for particular operations. For example we might have a resource `/albums`; to **read** all the albums we would make an http request and use the `GET` method. If we wanted to **add** a new album we would make an http request to the **same** address `/albums` but use the `POST` method and include data in the body of the request. The method indicates the kind of operation that will be performed for that resource - reading with `GET` or creating with `POST`. We _could_ make a `GET` request with a body and create a new `/albums` resource but that would not be RESTful.
 
 ### Resources
 
