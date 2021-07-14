@@ -247,7 +247,7 @@ const [yourId] = msg.match(/(?<=\/)[a-zA-Z0-9]+(?=')/);
 
 ## Assignment Extension
 
-Instead of your `index.html` simply being a page to load your javascript into, make it an actual webpage. Use html inputs and event handlers to allow a user visiting your website to complete the html challenge with their own answers.
+Instead of your `index.html` simply being a page to load your javascript into, make it an actual interactive webpage. Use html inputs and event handlers to allow a user visiting your website to complete the html challenge with their own answers.
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/178)
 [main](/swe)|[prev](/swe/bootcamp/wk5/day3.html)|[next](/swe/mod1/wk1/day2.html)
