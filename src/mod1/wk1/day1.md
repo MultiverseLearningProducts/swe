@@ -160,7 +160,7 @@ Below is a URL. Can you make an HTTP request to that URL using [postman](https:/
 
 ---
 
-## Lesson 2 - Advances API calls with fetch
+## Lesson 2 - Browser API calls with fetch
 
 In this session we are just going to make sure everyone is comfortable using fetch in the browser to form more advanced HTTP requests. As well as using a tool like postman, we also want you to know how to send HTTP requests in your client-side javascript code.
 
