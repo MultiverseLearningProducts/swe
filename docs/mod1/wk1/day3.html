@@ -37,10 +37,10 @@
     </ul>
     <h2>Lesson</h2>
     <p>The first concept in cryptography we need to understand is hashing. A hashing algorithm takes as its input some data of any length and will return you some different data of a fixed length. Often the output data will be displayed as a hexadecimal integer. An example hashing function is md5.</p>
-    <pre><code>md5("multiverse") 
+    <pre><code class="language-sh">md5("multiverse")
 -> 63e9e039993b3acc92b0ee3615ec110b
 
-md5("the outstanding alternative to university") 
+md5("the outstanding alternative to university")
 -> 1e042cc7ec5625ffb2fcd5a786140173
 </code></pre>
     <p>The hashing algorithm will produce the same result with the same input each time. How the initial string is boiled down to a hash is often done through a mathematical formula.</p>
@@ -76,9 +76,9 @@ md5("the outstanding alternative to university")
       Find the 4-letter string of lowercase letters (i.e. a-z) which produces the md5 <code>dbfcafe986040cc10ada1a4314c436db</code>
       You can use
     </p>
-    <pre><code class="language-javascript">const crypto = require('crypto');
+    <pre><code class="language-javascript">const crypto = require("crypto");
 const word = "blah";
-var hash = crypto.createHash('md5').update(word).digest('hex');
+var hash = crypto.createHash("md5").update(word).digest("hex");
 </code></pre>
     <p>to generate an md5 hash in Node.js</p>
     <h3>Part 2</h3>

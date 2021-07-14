@@ -33,21 +33,20 @@ Can you complete [this Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=
 
 Today introduces the subject of cryptography. Why study this? It is this area of mathematics that really gave birth to some of the first computers. For example, here in the UK at Bletchley Park, Tommy Flowers created the [Colossus](https://www.tnmoc.org/colossus) computer to break codes. Cryptography features heavily in production systems and solves the problem of passing private data through a public network. You may be familiar with your SSH keys that help you connect to Github, or sites that respond over `https://`. These secure network connections are made possible by implementing cryptographic concepts - 3 of which we will study to help us secure our API servers.
 
-
 ## Learning Objectives
 
-* Recall the features of hashing functions
-* Understand how hashing functions can be used
+-   Recall the features of hashing functions
+-   Understand how hashing functions can be used
 
 ## Lesson
 
 The first concept in cryptography we need to understand is hashing. A hashing algorithm takes as its input some data of any length and will return you some different data of a fixed length. Often the output data will be displayed as a hexadecimal integer. An example hashing function is md5.
 
-```
-md5("multiverse") 
+```sh
+md5("multiverse")
 -> 63e9e039993b3acc92b0ee3615ec110b
 
-md5("the outstanding alternative to university") 
+md5("the outstanding alternative to university")
 -> 1e042cc7ec5625ffb2fcd5a786140173
 ```
 
@@ -65,10 +64,9 @@ Can you think of any further security issues we might still face even if we hash
 
 > Hashes are irreversible
 
-
 ### Verifying changes
 
-Hashes have a fixed length. If you hash a single character or the complete works of Shakespeare you end up with a hash that is exactly the same length. 
+Hashes have a fixed length. If you hash a single character or the complete works of Shakespeare you end up with a hash that is exactly the same length.
 
 If I have an important file that I want to transfer to you, I can make a hash of the file. Then I send you the file and you can check with my hashing function that you get the same hash. If you do the file has not been tampered with.
 
@@ -82,7 +80,7 @@ How might you go about hashing a directory structure like you have in a codebase
 
 Hashes can be used to speed up searching. Imagine a website like Facebook; at the time of writing, they have about 3 billion users. When a user completes a sign up form, Facebook first checks they don't already have an account registered with that email. But imagine how long that would take if they had to iterate over 3 billion users to be sure the user wasn't already registered.
 
-A better strategy than iterating is to use a hash table. Hash tables can still store their data in an array but, instead of simply storing values in insertion-order, each value being added to the table is hashed and its hash is used to generate an array index where the value is stored. 
+A better strategy than iterating is to use a hash table. Hash tables can still store their data in an array but, instead of simply storing values in insertion-order, each value being added to the table is hashed and its hash is used to generate an array index where the value is stored.
 
 ![hash table](https://user-images.githubusercontent.com/44523714/124125061-1a293580-da71-11eb-997d-7c72419ae699.png)
 
@@ -95,12 +93,14 @@ The advantage of this is that, since hashes always produce the same output given
 ### Part 1
 
 Find the 4-letter string of lowercase letters (i.e. a-z) which produces the md5 `dbfcafe986040cc10ada1a4314c436db`
-You can use 
+You can use
+
 ```javascript
-const crypto = require('crypto');
+const crypto = require("crypto");
 const word = "blah";
-var hash = crypto.createHash('md5').update(word).digest('hex');
+var hash = crypto.createHash("md5").update(word).digest("hex");
 ```
+
 to generate an md5 hash in Node.js
 
 ### Part 2
@@ -110,13 +110,13 @@ As an extension, decide how you are going to handle collisions (two separate key
 
 ### Part 3
 
-
 Research the following topics:
-   - What makes a hashing algorithm suitable to be used for passwords?
-   - What are password salts and rainbow tables?
-   - What are the most popular libraries for hashing passwords in Node.js (or the backend language/framework you use)
-   
-----
+
+-   What makes a hashing algorithm suitable to be used for passwords?
+-   What are password salts and rainbow tables?
+-   What are the most popular libraries for hashing passwords in Node.js (or the backend language/framework you use)
+
+---
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/180)
 [main](/swe)|[prev](/swe/mod1/wk1/day2.html)|[next](/swe/mod1/wk1/day4.html)
