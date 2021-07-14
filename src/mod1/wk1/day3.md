@@ -46,6 +46,9 @@ The first concept in cryptography we need to understand is hashing. A hashing al
 md5("multiverse")
 -> 63e9e039993b3acc92b0ee3615ec110b
 
+md5("multiverse")
+-> 63e9e039993b3acc92b0ee3615ec110b
+
 md5("the outstanding alternative to university")
 -> 1e042cc7ec5625ffb2fcd5a786140173
 ```
