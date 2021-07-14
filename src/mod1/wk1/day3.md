@@ -71,7 +71,7 @@ Can you think of any further security issues we might still face even if we hash
 
 Hashes have a fixed length. If you hash a single character or the complete works of Shakespeare you end up with a hash that is exactly the same length.
 
-If I have an important file that I want to transfer to you, I can make a hash of the file. Then I send you the file and you can check with my hashing function that you get the same hash. If you do the file has not been tampered with.
+If I have an important file that I want to transfer to you, I can make a hash of the file. Then I send you the file and you can check with my hashing function that you get the same hash. If you do, the file has not been tampered with.
 
 This is because changing just 1 single character of the input string to a hash will result in a totally different hash. This is how git works. Under the hood, git is storing hashes of your file and folders. When a file is changed it hashes differently. Your commits are hashes of your whole project.
 
