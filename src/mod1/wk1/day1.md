@@ -149,7 +149,7 @@ The response object is similar to the request object. The main difference is a r
 | 400 - 451 | Client Errors          |
 | 500 - 598 | Server Errors          |
 
-Read through the [HTTP Status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) so you know how to handle HTTP responses like a boss.
+You don't need to learn all the status codes (they're easy to Google) but knowing what in general a 2xx, 4xx or 5xx means is helpful.
 
 ## Assignment
 
