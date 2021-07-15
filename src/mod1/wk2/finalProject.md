@@ -31,8 +31,6 @@ Your task is to create a journal app where users can record their thoughts each 
 
 Each day of the project, you'll need to complete the appropriate log:
 
-Week 2 day 2 > [attendance log](https://platform.multiverse.io/apprentice/attendance-log/184)
-
 Week 2 day 3 > [attendance log](https://platform.multiverse.io/apprentice/attendance-log/185)
 
 Week 2 day 4 > [attendance log](https://platform.multiverse.io/apprentice/attendance-log/186)

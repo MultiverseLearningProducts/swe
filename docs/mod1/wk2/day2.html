@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mod 1 > Week 2 > Day 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/swe/favicon.ico">
+    <link rel="stylesheet" href="/swe/modest.css">
+    <link rel="stylesheet" href="/swe/prism.css">
+    <link rel="stylesheet" href="/swe/style.css">
+  </head>
+  <body>
+    <h1>Mod 1 > Week 2 > Day 2</h1>
+    <h2>Overview of the day</h2>
+    <p>Today we are going to learn about OAuth</p>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand OAuth and how it is used to secure website and APIs</li>
+      <li>Create a UML diagram to communicate the sequence of the OAuth flow</li>
+      <li>Understand the OpenID Connect protocol</li>
+    </ul>
+    <h1>Lesson - OAuth</h1>
+    <h2>Materials needed</h2>
+    <p><a href="https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing">OAuth Slides</a></p>
+    <h2>What is OAuth?</h2>
+    <p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
+    <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
+    <p>
+      <img src="https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&#x26;auto=webp" alt="clubber getting their hand stamped">
+      Photo: Caitlin Ochs for The New York Times
+    </p>
+    <p>In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
+    <h2>What makes OAuth secure?</h2>
+    <ul>
+      <li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
+      <li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
+      <li>Tokens expire, making it very hard for them to be reused</li>
+    </ul>
+    <p>Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png" alt="oauth flow showing how an identify provider issues a token which is used to secure a resource">
+    </p>
+    <h3>OAuth</h3>
+    <ul>
+      <li>Use <a href="http://www.plantuml.com/plantuml/uml">PlantUML</a> to create your own sequence diagram which illustrates the OAuth flow.</li>
+    </ul>
+    <p><a href="https://platform.multiverse.io/apprentice/attendance-log/184">attendance log</a></p>
+    <p><a href="/swe">main</a>|<a href="/swe/mod1/wk2/day1.html">prev</a>|<a href="/swe/mod1/wk2/finalProject.html">next</a></p>
+    <script src="/swe/prism.js"></script>
+    <script src="/swe/tabbed-code-blocks.js"></script>
+  </body>
+</html>

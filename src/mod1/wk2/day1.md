@@ -9,10 +9,6 @@ Today we are going to learn about session-based auth and how to use OAuth to sec
 -   Understand the limitations of Basic Auth
 -   Know why and how to use Sessions on a server
 -   Understand the structure and purpose of JWT
--   Create a UML diagram to communicate the sequence of the OAuth flow
--   Understand OAuth and how it is used to secure website and APIs
--   Implement OAuth using Auth0
--   Understand the OpenID Connect protocol
 
 ## Before we start
 
@@ -150,79 +146,89 @@ This is now a more familiar concept to you. Getting a session assigned to you is
 
 ---
 
-# Lesson 2
+# Lesson 2 - Token-based Authentication
 
 ## Learning Objectives
 
--   Create a UML sequence diagram
+-   Understand how token-based auth can replace sessions
 -   Encode and Decode JWT tokens
 -   Recall the structure of a JWT
 
-## Before we start
-
--   Make sure you have installed plant UML
-
-## Materials needed
-
-[OAuth Slides](https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing)
-
 ## The problem with sessions
 
-Sessions are great, but your clients are now bound to 1 machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load.
+Sessions are great but your clients are now bound to one machine. If I have a cluster of computers managing incoming requests and your session is in the memory of machine 1, I can't bounce you to machine 2 to lighten the load. Often, to get around this problem, a separate caching service such as Redis is used to store all the sessions for your application.
 
-❓ Why not?
+However, to achieve the same thing as a session (authenticate you once then keep track of you) I could use a token based auth system.
 
-Sessions are stateful. To achieve the same thing as a session (auth you once then keep track of you) I could use a token based auth system.
+## JWT
 
-## What is OAuth?
-
-OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.
-
-If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.
-
-![clubber getting their hand stamped](https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&auto=webp)
-<small><i>Photo: Caitlin Ochs for The New York Times</i></small>
-
-In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).
-
-## What makes OAuth secure?
-
--   Token management means we can track each device that uses the API (and revoke access if we want)
--   OAuth provides 'scopes' which allow for fine-grained authorization
--   Tokens expire, making it very hard for them to be reused
-
-Let's look at this diagram which illustrates the OAuth flow we are going to be using to secure our API resource:
-
-![oauth flow showing how an identify provider issues a token which is used to secure a resource](https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png)
-
-# Lesson 2 - JWT
-
-OAuth returns access tokens as JSON Web Tokens (JWTs) format. A JWT is easy to identify, it is three strings separated by a `.`
+JSON Web Tokens (JWTs) are an open industry standard. They are easy to identify, being 3 strings separated by a `.`
 
 Here is an example:
 
-`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBXaGl0ZUhhdCEifQ.XSYkatPu3LirweyU13rLWblqQRNvbqoJJ0qwX_mdYgM`
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBNdWx0aXZlcnNlISJ9.UaobFhVDPjPLdQFpXCkvojm7jxMY-wfyfzo7ORoFI4A`
 
-Use https://jwt.io to see the secret message hidden inside this token!
-
-**Activity**: Create your own messages and send them to the Slack channel!
-
-A JWT is made up of 3 parts:
+The 3 dots separate the 3 parts of a JWT:
 
 -   **Header** - specifies the type of token and the algorithm used to sign the token
--   **Payload** - the information that we want to transmit and other information about our token
--   **Signature** - verifies who sent the token and that the token has not been tampered with
+-   **Payload** - the actual information that we want to transmit
+-   **Signature** - used to verify the token has not been tampered with
 
-To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
+The signature is the key part. It is generated by combining the header with the payload **and a secret only the server knows** and hashing them (the function actually involves slightly more than a normal hash but the principle still stands).
 
-```ruby
-SHA1(base64Encode(Header) + "." + base64Encode(Payload), secret)
+```js
+HmacSha256(base64Encode(Header) + "." + base64Encode(Payload), secret);
 // SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c <- that is the Signature part
 ```
 
+So, let's say that when a user logs in with their password we want them stay logged-in for 30 minutes. We can take their user id and the time in 30 minutes and put that data in a JSON:
+
+```js
+JSON.stringify({ userId: user.id, expires: Date.now() + 30 * 60 * 1000 });
+```
+
+That is our payload. We then base64-encode it (and do the same with whatever headers are relevant). We now have the first two parts of the JWT. We then pass these into a HMAC function with our secret. This gives us our signature. We append this to the end of the JWT and send it to the user.
+
+The user then sends us back this token on their next request. To check that it's valid, we extract the header and payload from the JWT and apply the HMAC function, as before, to the payload, headers and secret. This will give us back a signature and, if the signature matches that on the end of the JWT, we know only we could have created it and so the token is valid. If the user had tampered with the JWT (say, by changing their userId) we would know because the signature would no longer match.
+
+**Activity**: Use https://jwt.io to create your own messages and send them to the Slack channel!
+
+## Creating and Storing Secrets
+
+The security of JWTs relies on the fact that only the server know the secret it uses to sign the token. We therefore need to be careful with how we handle this secret.
+
+To generate a secret, openssl's `rand` is useful:
+
+```sh
+> openssl rand -hex 16
+71db048a3af939a4632c3953e5dc1ff5
+```
+
+In theory, we could put that secret directly into our source code. However, anyone with access to our git repository would then be able to read it. A better system is to make the secret an environmental variable. Environmental variables are variables within a programme which are set from outside the programme. As well as for secrets, they're useful for definining things like the port which a process should run on; the URLs it should make requests to; the mode an application is in (testing vs development vs production etc.) and so on.
+
+In Node.js, we can set an environmental variable using a `.env` file. In this file, we can set our environmental variables like so:
+
+```sh
+JWT_SECRET=268b38878c05cdeb684b3e69ee28e5411a1cc2d1c0555abbfac9a75dc9332441
+
+PORT=4000
+```
+
+To load them, we need to install the `dotenv` package using npm then call its config method. Our environmental variables are then loaded onto the `process.env` object:
+
+```js
+require("dotenv").config();
+
+console.log(process.env.JWT_SECRET);
+```
+
+**Importantly**, we should then add our `.env` to our `.gitignore` file to ensure it never gets pushed to our repository. If we push `.env` by mistake, we should immediately change our key.
+
+Lots of deployment platforms (Heroku, AWS etc.) also allow you to enter an application's environmental variables on their website. They will then encrypt them on disk and use them when running the application.
+
 ## Assignment
 
--   Use [PlantUML](http://www.plantuml.com/plantuml/uml) to create your own sequence diagram which illustrates the OAuth flow.
+TBD
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/183)
 [main](/swe)|[prev](/swe/mod1/wk2/day1.html)|[next](/swe/mod1/wk2/day3.html)
