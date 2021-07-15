@@ -80,7 +80,7 @@ Basic auth uses the `Authorization` header in the HTTP request, along with the "
 
 ❓ Imagine if we held all our user's passwords in plaintext. What risks do you think this could cause?
 
-**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its repretation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
+**Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its reputation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
 
 To avoid storing passwords in plaintext, we `hash` them with an one-way hashing function. You learnt about hashing last week. If the cryptographic function used for the hashing is strong, then it's computationally impossible to calculate the original password from the hash.
 

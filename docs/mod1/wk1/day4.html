@@ -19,10 +19,6 @@
       <li>encrypt a text message using a key</li>
       <li>decrypt a text message using a key</li>
     </ul>
-    <h2>Before we start</h2>
-    <p>You should have some idea about hashing algorithms</p>
-    <h2>Materials needed</h2>
-    <p>You will need a text editor and browser</p>
     <h2>Symmetric Key Encryption</h2>
     <p>
       <img src="https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-symmetric-encryption.png" alt="a diagram of symmetric encryption">
@@ -33,12 +29,13 @@
     <p>❓ How is symmetric encryption different from hashing?</p>
     <p>❓ These books would have been very carefully protected, why do you think that is?</p>
     <p>❓ What is one of the vulnerabilities of symmetric encryption</p>
+    <p>❓ It's always recommended that a symmetric key is shared in a different channel (e.g. phone, email etc.) to the channel the encrypted message is sent through. Why do you think that is?</p>
     <h3>One-Time Pad</h3>
-    <p>It can be hard to wrap your head around the idea that a key - which is just a series of bits - can be used to encrypt and decrypt messages. Secure algorithms like AES deliberately introduce confusion so it can be hard to follow their logic.</p>
+    <p>It can be hard to wrap your head around the idea that a key - which is just a series of bits - can be used to encrypt and decrypt messages. This is especially true since secure algorithms like AES deliberately introduce confusion so it can be hard to follow their logic.</p>
     <p>A simple (but theoretically effective) symmetric encyrption algorithm is called the one time pad. The algorithm works as follows:</p>
     <p>First, take the message you want to encrypt. For our purposes, let's assume the message can only contain the 26 lower-case characters a-z.</p>
-    <p>Second, generate a random string of a-z characters of the <strong>same length</strong> as the original message. This is our symmetric key.</p>
-    <p>To encrypt the message, we align the message and the key and convert each character to its alphabetic position (a=1, b=2, etc.). For each character index, we add the value in the message with the value in the key. This addition is performed modulo 26 (<code>% 26</code>) so, if the sum exceeds 26, we wrap back round.</p>
+    <p>Second, generate a random string of a-z characters of the <strong>same length</strong> as the original message. This is our symmetric key and the person receiving the message will need it too.</p>
+    <p>To encrypt the message, we align the message and the key and convert each character to its alphabetic position (a=1, b=2, etc.). For each character index, we add the value in the message with the value in the key. This addition is performed modulo 26 so, if the sum exceeds 26, we wrap back round (e.g. 27 wraps back to 1).</p>
     <p>
       <img src="https://user-images.githubusercontent.com/44523714/125615946-0aed878b-c0b6-4ec7-bc5b-9fe3c4dc07ae.png" alt="one-time pad encryption of cat with ahy gives us dis">
     </p>
@@ -47,7 +44,7 @@
     <p>
       <img src="https://user-images.githubusercontent.com/44523714/125615937-9ad3effc-5ef3-418f-b2f2-53ae0f7a1c65.png" alt="one-time pad decryption of dis with ahy gives us cat">
     </p>
-    <p>again <code>(19 - 25) % 26</code> = <code>20</code> so we get 'T' back. (Note: JavaScript's <code>%</code> operator will give -6 instead, there is a work-around below).</p>
+    <p>Again, <code>(19 - 25) % 26</code> = <code>20</code> so we get 'T' back. (Note: JavaScript's <code>%</code> operator will give -6 instead, there is a work-around below).</p>
     <p>The one-time pad, despite its simplicity, is perfectly secure. Its problem is that it doesn't introduce much confusion between the encrypted and original message, so a key should never be used more than once (hence the 'one-time'). This is why algorithms like AES are used instead.</p>
     <h3>OpenSSL</h3>
     <p><a href="https://www.openssl.org/">OpenSSL</a> is a general-purpose cryptography library. It comes bundled with Git so both OSX and Windows users can access this command line tool.</p>
@@ -104,7 +101,8 @@ pls keep it secret
 }
 </code></pre>
     <p>This will ensure your modulus doesn't output negative numbers.</p>
-    <p>Write some unit tests for your <code>encrypt</code> and <code>decrypt</code> functions.</p>
+    <p>Write some unit tests for your <code>encrypt</code> and <code>decrypt</code> functions. Your functions should ideally validate the user input and throw errors accordingly.</p>
+    <p>Once you're confident your functions works, you can try share messages with members of your cohort.</p>
     <h2>Lesson 2 - Asymmetric Encryption</h2>
     <h2>Learning Objectives</h2>
     <ul>

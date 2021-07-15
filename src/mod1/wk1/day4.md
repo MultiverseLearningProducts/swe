@@ -11,14 +11,6 @@ Today we're going to be looking at encryption.
 -   encrypt a text message using a key
 -   decrypt a text message using a key
 
-## Before we start
-
-You should have some idea about hashing algorithms
-
-## Materials needed
-
-You will need a text editor and browser
-
 ## Symmetric Key Encryption
 
 ![a diagram of symmetric encryption](https://sectigostore.com/blog/wp-content/uploads/2020/04/types-of-encryption-symmetric-encryption.png)
@@ -35,17 +27,19 @@ The enigma code machine used symmetric encryption. The operator would set up the
 
 ❓ What is one of the vulnerabilities of symmetric encryption
 
+❓ It's always recommended that a symmetric key is shared in a different channel (e.g. phone, email etc.) to the channel the encrypted message is sent through. Why do you think that is?
+
 ### One-Time Pad
 
-It can be hard to wrap your head around the idea that a key - which is just a series of bits - can be used to encrypt and decrypt messages. Secure algorithms like AES deliberately introduce confusion so it can be hard to follow their logic.
+It can be hard to wrap your head around the idea that a key - which is just a series of bits - can be used to encrypt and decrypt messages. This is especially true since secure algorithms like AES deliberately introduce confusion so it can be hard to follow their logic.
 
 A simple (but theoretically effective) symmetric encyrption algorithm is called the one time pad. The algorithm works as follows:
 
 First, take the message you want to encrypt. For our purposes, let's assume the message can only contain the 26 lower-case characters a-z.
 
-Second, generate a random string of a-z characters of the **same length** as the original message. This is our symmetric key.
+Second, generate a random string of a-z characters of the **same length** as the original message. This is our symmetric key and the person receiving the message will need it too.
 
-To encrypt the message, we align the message and the key and convert each character to its alphabetic position (a=1, b=2, etc.). For each character index, we add the value in the message with the value in the key. This addition is performed modulo 26 (`% 26`) so, if the sum exceeds 26, we wrap back round.
+To encrypt the message, we align the message and the key and convert each character to its alphabetic position (a=1, b=2, etc.). For each character index, we add the value in the message with the value in the key. This addition is performed modulo 26 so, if the sum exceeds 26, we wrap back round (e.g. 27 wraps back to 1).
 
 ![one-time pad encryption of cat with ahy gives us dis](https://user-images.githubusercontent.com/44523714/125615946-0aed878b-c0b6-4ec7-bc5b-9fe3c4dc07ae.png)
 
@@ -55,7 +49,7 @@ Given the key and the encrypted message, we can decrypt it by **subtracting** th
 
 ![one-time pad decryption of dis with ahy gives us cat](https://user-images.githubusercontent.com/44523714/125615937-9ad3effc-5ef3-418f-b2f2-53ae0f7a1c65.png)
 
-again `(19 - 25) % 26` = `20` so we get 'T' back. (Note: JavaScript's `%` operator will give -6 instead, there is a work-around below).
+Again, `(19 - 25) % 26` = `20` so we get 'T' back. (Note: JavaScript's `%` operator will give -6 instead, there is a work-around below).
 
 The one-time pad, despite its simplicity, is perfectly secure. Its problem is that it doesn't introduce much confusion between the encrypted and original message, so a key should never be used more than once (hence the 'one-time'). This is why algorithms like AES are used instead.
 
@@ -136,7 +130,9 @@ function mod(x, y) {
 
 This will ensure your modulus doesn't output negative numbers.
 
-Write some unit tests for your `encrypt` and `decrypt` functions.
+Write some unit tests for your `encrypt` and `decrypt` functions. Your functions should ideally validate the user input and throw errors accordingly.
+
+Once you're confident your functions works, you can try share messages with members of your cohort.
 
 ## Lesson 2 - Asymmetric Encryption
 
