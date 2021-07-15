@@ -126,11 +126,11 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 
 ### Assignment
 
-Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). When saving this user to your database, you need to hash the password before saving it so we're not storing passwords in plaintext. Later, we will secure our API so only registered users can access it.
+Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). The user's username and password **hash** should be saved to a database (you can use whatever database you like).
 
 ---
 
-## Lesson 4 - Creating and Securing a User API
+## Lesson 2 - Creating and Securing a User API
 
 ### Learning Objectives
 
@@ -152,15 +152,15 @@ As that check happens in the middle of the request response cycle, it has been g
 A whole series of things can happen in middleware not just authentication, but also authorisation. Thats why the diagram above has 2 middleware rings. There are 2 middlewares the request has to pass through before it gets to the controller. Below is a general pattern for a middleware function.
 
 ```javascript
-function (request, response, next) {
-  // check or change something in the request
-  // maybe its not ok so from here you might
-  return response.code(403) // status code 403 forbidden
-  // the controller was never reached!
-  // maybe all is well and you can contiune with the request
-  // calling next() finishes this middleware and goes onto
-  // either the next middleware or into the controller/route handler itself
-  return next()
+function myMiddleware(request, response, next) {
+    // check or change something in the request
+    // maybe its not ok so from here you might
+    return response.code(403); // status code 403 forbidden
+    // the controller was never reached!
+    // maybe all is well and you can contiune with the request
+    // calling next() finishes this middleware and goes onto
+    // either the next middleware or into the controller/route handler itself
+    return next();
 }
 ```
 
@@ -168,73 +168,29 @@ function (request, response, next) {
 
 ❓ is the password sent on every request or cached?
 
-We are going to implement middlewares on our server. First of you need to authenticate the request and only accept requests from users your server knows about (the users in your database). We don't want any user to be able to see a list of all the other users, that is our authorisation rule.
+If you are using Express, you can make the entire application use a middleware function through
+
+```js
+app.use(myMiddleware);
+```
+
+or a single endpoint like:
+
+```js
+app.get('/restaurants', myMiddleware, (req, res) => {
+  ...
+});
+```
+
+We are going to implement middleware on our server so that only users in our database can access the airport API.
 
 ### Assignment
 
--   Enhance your API to check the incoming username and password against the details held in the database you created in the previous lesson using Basic Auth
--   (Extension) Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
+Secure your API with basic authentication. Requests to your API will now need to include valid credentials (following the basic auth protocol) for users saved in your database. To achieve this, create a middleware function that checks an incoming request's authorization header to ensure that the username and password sent are valid.
 
-Protect your Create, Read, Update and Delete user resources with Basic Authentication using the following code:
+### Extension Assignment
 
-|Javascript|Java|
-
-```javascript
-// check for a basic auth header with correct credentials
-app.use(basicAuth({
-  authorizer: dbAuthorizer, // customer authorizer,
-  authorizeAsync: true, // we check the db which makes this async
-  challenge: true,
-  unauthorizedResponse: (req) => {
-    return `unauthorized. ip: ${req.ip}`
-  }
-}));
-
-// our custom async authorizer middleware, this is called for each request
-function dbAuthorizer(username, password, callback) {
-  const sql = "select password from users where username = ?;";
-  db.get(sql, [username], async (err, user) => {
-    err ? callback(err) : bcrypt.compare(password, user.password, callback);
-  });
-```
-
-```java
-@Configuration
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private DataSource dataSource;
-
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // do not use the line below in production apps!!
-        httpSecurity.csrf().disable(); // hack to support DELETE method
-        httpSecurity.authorizeRequests().anyRequest().authenticated()
-                .and().httpBasic();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authentication)
-            throws Exception {
-        // use jdbc authentication (for in memory authentication use authentication.inMemoryAuthentication())
-        authentication.jdbcAuthentication()
-                .dataSource(dataSource)
-                .authoritiesByUsernameQuery("select username,authority "
-                        + "from authorities "
-                        + "where username = ?")
-                .usersByUsernameQuery(
-                        "select username, password, 'true' as enabled from users where username = ?");
-
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        // specify we want the password hashed using bcrypt
-        return new BCryptPasswordEncoder();
-    }
-}
-```
+Create a simple form which sends a username and password to your API using Basic Auth (i.e. simulates what Postman was doing in the previous lesson).
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/182)
-[main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day2.html)
+[main](/swe)|[prev](/swe/mod1/wk1/day4.html)|[next](/swe/mod1/wk2/day1.html)
