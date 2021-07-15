@@ -231,4 +231,4 @@ Lots of deployment platforms (Heroku, AWS etc.) also allow you to enter an appli
 TBD
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/183)
-[main](/swe)|[prev](/swe/mod1/wk2/day1.html)|[next](/swe/mod1/wk2/day3.html)
+[main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day1.html)
