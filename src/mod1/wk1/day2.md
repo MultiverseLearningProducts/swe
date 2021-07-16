@@ -185,7 +185,7 @@ Using the [airports.json](https://raw.githubusercontent.com/WhiteHatLearningProd
 
 Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint.
 
-Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.
+Extension exercise: writing to and from your airports in memory is fine for this exercise, but, if you want to go a step further, try and save the new JSON file to disk each time.
 
 ### Part 2
 

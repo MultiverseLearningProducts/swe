@@ -19,13 +19,14 @@ Your task is to create a journal app where users can record their thoughts each 
 -   Your app's repository should be stored on Github
 -   Your API should include unit tests
 
-### Extensions
+### Bonus Points
 
 -   Document your API
 -   Deploy your app (e.g. to Heroku)
 -   Allow users to login using OpenID Connect
 -   Allow users to share a given entry with a given user
--   Create end-to-end tests using Cypress
+-   Create end-to-end tests (e.g. using Cypress)
+-   Anything else cool
 
 ## Session Attendance Logs
 

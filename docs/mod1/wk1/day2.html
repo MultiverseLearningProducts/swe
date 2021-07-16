@@ -251,7 +251,7 @@ describe("My Airport server", () => {
       </tbody>
     </table>
     <p>Can you create a test suite for your API server? You will likely have to implement a setup and teardown phase. Write a few tests for each endpoint.</p>
-    <p>Extension exercise: writing to and from your JSON file in memory is fine for this exercise, but if you want to go a step further, try and write the new file to disk.</p>
+    <p>Extension exercise: writing to and from your airports in memory is fine for this exercise, but, if you want to go a step further, try and save the new JSON file to disk each time.</p>
     <h3>Part 2</h3>
     <p>We have 28,000 airport records. That's a lot. This would be much easier to consume in smaller chunks. Often large resources will be managed like this in "pages" of results. So lets say we have a page size of 25 that would mean we have to return only the first 25 airports (0 - 24 array indexes) that response would represent page 1. Page 2 would consist of the next 25 airports (25 - 49 array indexes). You will often see this handled as query parameters.</p>
     <p><code>http://localhost:3000/airports?page=2&#x26;pageSize=25</code></p>

@@ -37,7 +37,12 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 
 ![oauth flow showing how an identify provider issues a token which is used to secure a resource](https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png)
 
-### OAuth
+It's important to understand the difference between OAuth and OpenID-Connect. OpenID-Connect is a small extension to OAuth. OAuth is for _authorization_ whereas OpenID-Connect is for _authentication_.
+
+-   When you give an app access to your contacts, that's OAuth
+-   When you login to an app using your Google account, that's OpenID-Connect
+
+### Assignment
 
 -   Use [PlantUML](http://www.plantuml.com/plantuml/uml) to create your own sequence diagram which illustrates the OAuth flow.
 
