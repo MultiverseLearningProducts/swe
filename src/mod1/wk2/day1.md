@@ -204,7 +204,7 @@ To generate a secret, openssl's `rand` is useful:
 71db048a3af939a4632c3953e5dc1ff5
 ```
 
-In theory, we could put that secret directly into our source code. However, anyone with access to our git repository would then be able to read it. A better system is to make the secret an environmental variable. Environmental variables are variables within a programme which are set from outside the programme. As well as for secrets, they're useful for definining things like the port which a process should run on; the URLs it should make requests to; the mode an application is in (testing vs development vs production etc.) and so on.
+In theory, we could put that secret directly into our source code, however, anyone with access to our git repository would then be able to read it. A better system is to make the secret an **environmental variable**. Environmental variables are variables within a programme which are set from outside the programme. As well as for secrets, they're useful for definining things like the port which a process should run on; the URLs it should make requests to; the mode an application is running in (testing vs development vs production etc.) and so on.
 
 In Node.js, we can set an environmental variable using a `.env` file. In this file, we can set our environmental variables like so:
 

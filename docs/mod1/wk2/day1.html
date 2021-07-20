@@ -156,7 +156,7 @@ app.use(session(sessionSettings));
     <pre><code class="language-sh">> openssl rand -hex 16
 71db048a3af939a4632c3953e5dc1ff5
 </code></pre>
-    <p>In theory, we could put that secret directly into our source code. However, anyone with access to our git repository would then be able to read it. A better system is to make the secret an environmental variable. Environmental variables are variables within a programme which are set from outside the programme. As well as for secrets, they're useful for definining things like the port which a process should run on; the URLs it should make requests to; the mode an application is in (testing vs development vs production etc.) and so on.</p>
+    <p>In theory, we could put that secret directly into our source code, however, anyone with access to our git repository would then be able to read it. A better system is to make the secret an <strong>environmental variable</strong>. Environmental variables are variables within a programme which are set from outside the programme. As well as for secrets, they're useful for definining things like the port which a process should run on; the URLs it should make requests to; the mode an application is running in (testing vs development vs production etc.) and so on.</p>
     <p>In Node.js, we can set an environmental variable using a <code>.env</code> file. In this file, we can set our environmental variables like so:</p>
     <pre><code class="language-sh">JWT_SECRET=268b38878c05cdeb684b3e69ee28e5411a1cc2d1c0555abbfac9a75dc9332441
 
