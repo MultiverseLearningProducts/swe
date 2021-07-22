@@ -106,7 +106,33 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 // true
 </code></pre>
     <h3>Assignment</h3>
-    <p>Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). The user's username and password <strong>hash</strong> should be saved to a database (you can use whatever database you like).</p>
+    <ol>
+      <li>Create a new server (e.g. a new Express app)</li>
+      <li>Create a new database (e.g. using sqlite + sequelize)</li>
+      <li>Create a <code>users</code> table in your database with <code>id</code>, <code>username</code> and <code>passwordHash</code> columns</li>
+      <li>Connect your database to your server</li>
+      <li>Add a POST <code>/users</code> endpoint to your server (sign-up)</li>
+      <li>This endpoint should:
+        <ol>
+          <li>Receive a username and password in the request body</li>
+          <li>Hash the password with bcrypt</li>
+          <li>Save the hash (and the username) to the databse</li>
+          <li>Return a 201</li>
+        </ol>
+      </li>
+    </ol>
+    <p>
+      <strong>users</strong>
+      | id | username | passwordHash |
+      |----|----------|--------------------------------------------------------------|
+      | 1 | hello123 | $2y$12$O8kKZKMclRFlBz8rCa1Gb./zoydaFZcj2/s23pOQI3wpT/8xEZb4e |
+      | 2 | dog990 | $2y$12$2K3rJl8zC.0ck9hNstWJk.o2mXyBXB.qmSXwlPIqt8r0om/qj0Z2e |
+    </p>
+    <h3>Assignment extension</h3>
+    <ol>
+      <li>Prevent users signing up with usernames that already exist in the database and, if they try, return the correct status code</li>
+      <li>Create unit tests for your endpoint (e.g. with jest/supertest)</li>
+    </ol>
     <hr>
     <h2>Lesson 2 - Creating and Securing a User API</h2>
     <h3>Learning Objectives</h3>

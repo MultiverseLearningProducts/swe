@@ -126,7 +126,27 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 
 ### Assignment
 
-Using the Airports API you created last week, add the ability to create a new user (think a POST request via Postman). The user's username and password **hash** should be saved to a database (you can use whatever database you like).
+1. Create a new server (e.g. a new Express app)
+2. Create a new database (e.g. using sqlite + sequelize)
+3. Create a `users` table in your database with `id`, `username` and `passwordHash` columns
+4. Connect your database to your server
+5. Add a POST `/users` endpoint to your server (sign-up)
+6. This endpoint should:
+    1. Receive a username and password in the request body
+    2. Hash the password with bcrypt
+    3. Save the hash (and the username) to the databse
+    4. Return a 201
+
+**users**
+| id | username | passwordHash |
+|----|----------|--------------------------------------------------------------|
+| 1 | hello123 | $2y$12$O8kKZKMclRFlBz8rCa1Gb./zoydaFZcj2/s23pOQI3wpT/8xEZb4e |
+| 2 | dog990 | $2y$12$2K3rJl8zC.0ck9hNstWJk.o2mXyBXB.qmSXwlPIqt8r0om/qj0Z2e |
+
+### Assignment extension
+
+1. Prevent users signing up with usernames that already exist in the database and, if they try, return the correct status code
+2. Create unit tests for your endpoint (e.g. with jest/supertest)
 
 ---
 
