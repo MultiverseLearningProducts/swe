@@ -163,9 +163,9 @@ users
 
 ### Lesson
 
-Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.
+Resources on a server often need protecting. Servers typically contain sensitive information which must be kept private, or resources which only certain users should be allowed to modify.
 
-To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
+To protect resources, we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
 
 Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.
 
@@ -205,8 +205,6 @@ app.get('/restaurants', myMiddleware, (req, res) => {
   ...
 });
 ```
-
-We are going to implement middleware on our server so that only users in our database can access the airport API.
 
 ### Assignment
 

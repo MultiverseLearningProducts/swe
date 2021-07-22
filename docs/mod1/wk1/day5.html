@@ -142,8 +142,8 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
       <li>Use what you have learnt in previous lessons to secure an API using Basic Auth</li>
     </ul>
     <h3>Lesson</h3>
-    <p>Our Airports resource in an unsecured state is just like any other resource like training shoes or albums. However we are going to treat it differently.</p>
-    <p>To protect resources we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
+    <p>Resources on a server often need protecting. Servers typically contain sensitive information which must be kept private, or resources which only certain users should be allowed to modify.</p>
+    <p>To protect resources, we need to authenticate the user making the request. We are using basic auth to do that by putting the <em>username:password</em> in the headers of the request.</p>
     <p>Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.</p>
     <p>
       <img src="https://miro.medium.com/max/960/1*Fnreje0WgqdBjjLXop9L0A.png" alt="middleware diagram">
@@ -171,7 +171,6 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
   ...
 });
 </code></pre>
-    <p>We are going to implement middleware on our server so that only users in our database can access the airport API.</p>
     <h3>Assignment</h3>
     <p>Secure your API with basic authentication. Requests to your API will now need to include valid credentials (following the basic auth protocol) for users saved in your database. To achieve this, create a middleware function that checks an incoming request's authorization header to ensure that the username and password sent are valid.</p>
     <h3>Extension Assignment</h3>
