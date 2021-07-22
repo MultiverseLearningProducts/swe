@@ -137,12 +137,15 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
     3. Save the hash (and the username) to the databse
     4. Return a 201
 
-**users**
+```
+users
 
 | id  | username | passwordHash                                                 |
 | --- | -------- | ------------------------------------------------------------ |
 | 1   | hello123 | $2y$12$O8kKZKMclRFlBz8rCa1Gb./zoydaFZcj2/s23pOQI3wpT/8xEZb4e |
 | 2   | dog990   | $2y$12$2K3rJl8zC.0ck9hNstWJk.o2mXyBXB.qmSXwlPIqt8r0om/qj0Z2e |
+
+```
 
 ### Assignment extension
 
