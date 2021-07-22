@@ -128,7 +128,7 @@ function mod(x, y) {
 }
 ```
 
-This will ensure your modulus doesn't output negative numbers.
+This will ensure your modulus only outputs numbers from 1-26.
 
 Write some unit tests for your `encrypt` and `decrypt` functions. Your functions should ideally validate the user input and throw errors accordingly.
 
