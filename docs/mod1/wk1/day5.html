@@ -121,13 +121,28 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
         </ol>
       </li>
     </ol>
-    <p>
-      <strong>users</strong>
-      | id | username | passwordHash |
-      |----|----------|--------------------------------------------------------------|
-      | 1 | hello123 | $2y$12$O8kKZKMclRFlBz8rCa1Gb./zoydaFZcj2/s23pOQI3wpT/8xEZb4e |
-      | 2 | dog990 | $2y$12$2K3rJl8zC.0ck9hNstWJk.o2mXyBXB.qmSXwlPIqt8r0om/qj0Z2e |
-    </p>
+    <p><strong>users</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>username</th>
+          <th>passwordHash</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>hello123</td>
+          <td>$2y$12$O8kKZKMclRFlBz8rCa1Gb./zoydaFZcj2/s23pOQI3wpT/8xEZb4e</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>dog990</td>
+          <td>$2y$12$2K3rJl8zC.0ck9hNstWJk.o2mXyBXB.qmSXwlPIqt8r0om/qj0Z2e</td>
+        </tr>
+      </tbody>
+    </table>
     <h3>Assignment extension</h3>
     <ol>
       <li>Prevent users signing up with usernames that already exist in the database and, if they try, return the correct status code</li>
