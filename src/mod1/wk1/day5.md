@@ -48,37 +48,15 @@ In breakout rooms, determine which of the following are examples of authenticati
 6. Using biometrics (such as fingerprints)
 7. Using a key to open a door
 
-## Basic Authentication
-
-Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as `Basic Authentication`.
-
-Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string username:password
-
-Here is an example:
-
-> Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
-
-That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called `atob` and `btoa`. Try it. In your console encode the following string "Hello you".
-
-![an example of using b to a function and a to b function to encode and decode a string](https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png)
-
-### 👮‍♀️ Assignment
-
-From the string in the `Authorization` header above, determine the user's username and password.
-
-❓ Do you think Basic Authentication is a secure scheme?
-
 ## Hashing passwords
 
 ### Learning Objectives
 
 -   Understand why passwords should be hashed
 -   Understand the implications of exposing sensitive data
--   Create a database of user names and hashed passwords
+-   Create a database of usernames and hashed passwords
 
-Basic auth uses the `Authorization` header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format _username:password_. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string and decode it. Now the server has the username and password sent from the client we need to match it with the username and password held in our database.
-
-❓ Imagine if we held all our user's passwords in plaintext. What risks do you think this could cause?
+❓ Imagine if we held all our users' passwords in plaintext. What risks do you think this could cause?
 
 **Answer** - we will have leaked sensitive information that your users have trusted you with. Imagine if they used the same username and password on other sites. Your organisation could face very large fines under the General Data Protection Regulation (GDPR) and suffer serious damage to its reputation - listen to this [video](https://www.bbc.co.uk/news/business-48905907) to hear about one recent example.
 
@@ -124,6 +102,10 @@ boolean isMatch = passwordEncoder.match("your password", "$2b$10$AQXoVkfzAovJ9RH
 // true
 ```
 
+The `bcrypt` npm library will automatically incorporate a salt. Bcrypt stores the salt along with the password (and the algorithm and cost factor) in its output, so you don't need to worry about storing the salt seprately.
+
+![bcryptOutput](https://user-images.githubusercontent.com/44523714/126747590-68d068da-cf0e-4221-8dd4-a0647fc6be5c.png)
+
 ### Assignment
 
 1. Create a new server (e.g. a new Express app)
@@ -165,6 +147,27 @@ users
 
 Resources on a server often need protecting. Servers typically contain sensitive information which must be kept private, or resources which only certain users should be allowed to modify.
 
+## Basic Authentication
+
+Now we have our API we need to consider how we will secure access to the API. For this we will use a username and password, commonly known as `Basic Authentication`.
+
+Basic authentication is a simple authentication scheme that is built into the HTTP protocol. The client sends an HTTP request with an `Authorization` header that contains the word `Basic` followed by a space and a base64-encoded string username:password
+
+Here is an example:
+
+> Authorization: Basic ZnJlZC5mbGludHN0b25lQHdoaXRlaGF0Lm9yZy51azpteXBhc3N3MHJk
+
+That long string of numbers and letters after the word "Basic" is a base64 encoded string. You can encode and decode base64 strings in your browser using a pair of functions called `atob` and `btoa`. Try it. In your console encode the following string "Hello you".
+
+![an example of using b to a function and a to b function to encode and decode a string](https://user-images.githubusercontent.com/4499581/104713069-451a0a00-571b-11eb-8f49-aeed427f2ce3.png)
+
+### 👮‍♀️ Assignment
+
+From the string in the `Authorization` header above, determine the user's username and password.
+
+❓ Do you think Basic Authentication is a secure scheme?
+
+Basic auth uses the `Authorization` header in the HTTP request, along with the "Basic" keyword and a base64 encoded string in the following format _username:password_. To validate that a user's login details are correct using Basic auth the server will look in the headers for this base64 encoded string and decode it. Now the server has the username and password sent from the client we need to match it with the username and password held in our database.
 To protect resources, we need to authenticate the user making the request. We are using basic auth to do that by putting the _username:password_ in the headers of the request.
 
 Our server now needs to check the request is authentic and from a user it knows before responding. That check needs to happen before we respond.
