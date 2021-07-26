@@ -109,16 +109,6 @@ app.use(session(sessionSettings));
 </code></pre>
     <p>❓ How can we use this functionality to auth a user only once?</p>
     <p>This is now a more familiar concept to you. Getting a session assigned to you is like 'logging' in. To 'log out' you just remove that counter from the session.</p>
-    <h2>Assignment</h2>
-    <ul>
-      <li>Implement sessions on your server</li>
-      <li>Add <code>/login</code> and <code>/logout</code> routes</li>
-      <li>The <code>/login</code> route should be the only route that accepts Basic auth request</li>
-      <li>Once a user is authenticated with Basic auth add them to a session</li>
-      <li>Update <code>/airports</code> and your other endpoints to only return the airport info if the user is in a session</li>
-      <li>If a user is in a session and visit the <code>/logout</code> route this should end their session and they will no longer be able to access <code>/airports</code></li>
-      <li>Put your solution on Github and share it with your coach</li>
-    </ul>
     <hr>
     <h1>Lesson 2 - Token-based Authentication</h1>
     <h2>Learning Objectives</h2>
@@ -170,7 +160,14 @@ console.log(process.env.JWT_SECRET);
     <p><strong>Importantly</strong>, we should then add our <code>.env</code> to our <code>.gitignore</code> file to ensure it never gets pushed to our repository. If we push <code>.env</code> by mistake, we should immediately change our key.</p>
     <p>Lots of deployment platforms (Heroku, AWS etc.) also allow you to enter an application's environmental variables on their website. They will then encrypt them on disk and use them when running the application.</p>
     <h2>Assignment</h2>
-    <p>TBD</p>
+    <p>Implement sign-up and login using JWT. You can use <a href="https://gist.github.com/charliemerrell/0507ef05e81945e4a8bd1114d5183343">this code</a> to generate and check JWTs using the npm <a href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken library</a>. Create an API with 3 endpoints:</p>
+    <ul>
+      <li><code>POST /users</code> where new users send their username and password. Store these in your database (with the appropriate salting + hashing).</li>
+      <li><code>POST /login</code> where existing users send their username and password and, if their credentialls are valid, receive a JWT back.</li>
+      <li><code>GET /greeting</code> an endpoint that sends some back <code>"Hello, &#x3C;insert username>"</code> <strong>if</strong> the request includes a valid JWT.</li>
+    </ul>
+    <h2>Assignment Extension</h2>
+    <p>Create a frontend that uses your API. It should include sign-up and login forms, and store JWTs in <code>localStorage</code>. The JWT should be attached as an <code>Authorization</code> header when making requests to the <code>/greeting</code> endpoint.</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/183">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod1/wk1/day5.html">prev</a>|<a href="/swe/mod1/wk2/day1.html">next</a>

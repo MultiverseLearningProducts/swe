@@ -134,16 +134,6 @@ app.get("/counter", (req, res) => {
 
 This is now a more familiar concept to you. Getting a session assigned to you is like 'logging' in. To 'log out' you just remove that counter from the session.
 
-## Assignment
-
--   Implement sessions on your server
--   Add `/login` and `/logout` routes
--   The `/login` route should be the only route that accepts Basic auth request
--   Once a user is authenticated with Basic auth add them to a session
--   Update `/airports` and your other endpoints to only return the airport info if the user is in a session
--   If a user is in a session and visit the `/logout` route this should end their session and they will no longer be able to access `/airports`
--   Put your solution on Github and share it with your coach
-
 ---
 
 # Lesson 2 - Token-based Authentication
@@ -228,7 +218,15 @@ Lots of deployment platforms (Heroku, AWS etc.) also allow you to enter an appli
 
 ## Assignment
 
-TBD
+Implement sign-up and login using JWT. You can use [this code](https://gist.github.com/charliemerrell/0507ef05e81945e4a8bd1114d5183343) to generate and check JWTs using the npm [jsonwebtoken library](https://www.npmjs.com/package/jsonwebtoken). Create an API with 3 endpoints:
+
+-   `POST /users` where new users send their username and password. Store these in your database (with the appropriate salting + hashing).
+-   `POST /login` where existing users send their username and password and, if their credentialls are valid, receive a JWT back.
+-   `GET /greeting` an endpoint that sends some back `"Hello, <insert username>"` **if** the request includes a valid JWT.
+
+## Assignment Extension
+
+Create a frontend that uses your API. It should include sign-up and login forms, and store JWTs in `localStorage`. The JWT should be attached as an `Authorization` header when making requests to the `/greeting` endpoint.
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/183)
 [main](/swe)|[prev](/swe/mod1/wk1/day5.html)|[next](/swe/mod1/wk2/day1.html)
