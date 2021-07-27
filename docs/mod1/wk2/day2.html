@@ -23,14 +23,15 @@
     <p><a href="https://docs.google.com/presentation/d/1koHMeKC-Se2NHRc96Bc4VBUmGj6cT7P11GsR4IazeWU/edit?usp=sharing">OAuth Slides</a></p>
     <h2>What is OAuth?</h2>
     <p>OAuth (2.0) is an open standard for authorization. It controls authorization to a protected resource such as an API.</p>
-    <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
+    <p>If you’ve ever signed up to a new application and agreed to let it access your Facebook data or phone contacts, then you’ve used OAuth. OAuth provides secure delegated access which means an application can access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing an Identity Provider (we will be using Auth0) to issue access tokens. The token informs the API that the bearer of the token is authorized to access the API.</p>
     <p>
       <img src="https://static01.nyt.com/images/2017/06/18/nyregion/12nytoday3/12nytoday3-superJumbo.jpg?quality=90&#x26;auto=webp" alt="clubber getting their hand stamped">
       Photo: Caitlin Ochs for The New York Times
     </p>
-    <p>In a nightclub when you enter and pay your entry fee you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
+    <p>In a nightclub, when you enter and pay your entry fee, you will often be stamped or presented with a bracelet to ware on your wrist. This shows the security staff on the door that you have paid, and you can enter and leave the club for that evening. The bracelet or stamp is like a token the club (Identity Provider) has issue. With a legitimate stamp or bracelet the door staff (API middleware) check it and then if its ok let you in (to the controller).</p>
     <h2>What makes OAuth secure?</h2>
     <ul>
+      <li>We don't need to share our password with the 3rd party service</li>
       <li>Token management means we can track each device that uses the API (and revoke access if we want)</li>
       <li>OAuth provides 'scopes' which allow for fine-grained authorization</li>
       <li>Tokens expire, making it very hard for them to be reused</li>
@@ -39,10 +40,10 @@
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/102925060-9cb1b680-448a-11eb-8177-7eda1802026f.png" alt="oauth flow showing how an identify provider issues a token which is used to secure a resource">
     </p>
-    <p>It's important to understand the difference between OAuth and OpenID-Connect. OpenID-Connect is a small extension to OAuth. OAuth is for <em>authorization</em> whereas OpenID-Connect is for <em>authentication</em>.</p>
+    <p>It's important to understand the difference between OAuth and OpenID-Connect. OpenID-Connect is a small extension to OAuth. OAuth is for <em>authorization</em> whereas OpenID-Connect is for <em>authentication</em>. OAuth allows you to give a 3rd party app partial access to your resources (e.g. your Google calendar). OpenID-Connect let's you sign-up and login to an app using your credentials from another app (e.g. "Sign up using Facebook").</p>
     <ul>
-      <li>When you give an app access to your contacts, that's OAuth</li>
-      <li>When you login to an app using your Google (or Facebook, Apple etc.) account, that's OpenID-Connect</li>
+      <li>When you give an app access to post to your Facebook wall, that's OAuth</li>
+      <li>When you login to an app using your Google account, that's OpenID-Connect</li>
     </ul>
     <h3>Assignment</h3>
     <ul>
