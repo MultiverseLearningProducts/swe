@@ -7,8 +7,7 @@ Today we are going to learn about OAuth
 ## Learning Objectives
 
 -   Understand OAuth and how it is used to secure website and APIs
--   Create a UML diagram to communicate the sequence of the OAuth flow
--   Understand the OpenID Connect protocol
+-   Understand the difference between OAuth and OpenID connect
 
 # Lesson - OAuth
 
@@ -40,7 +39,7 @@ Let's look at this diagram which illustrates the OAuth flow we are going to be u
 It's important to understand the difference between OAuth and OpenID-Connect. OpenID-Connect is a small extension to OAuth. OAuth is for _authorization_ whereas OpenID-Connect is for _authentication_.
 
 -   When you give an app access to your contacts, that's OAuth
--   When you login to an app using your Google account, that's OpenID-Connect
+-   When you login to an app using your Google (or Facebook, Apple etc.) account, that's OpenID-Connect
 
 ### Assignment
 

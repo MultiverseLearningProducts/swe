@@ -215,15 +215,21 @@ At the end of this module you will be building a RESTful API that has both authe
 We are going to use [Postman](https://www.postman.com/) to call some RESTful APIs and look in detail at the requests we send and responses we receive. Then we will look at performing these same requests using the browser's native `fetch` api.
 
 -   Week 1
+
     -   [Day 1](/swe/mod1/wk1/day1.html)
     -   [Day 2](/swe/mod1/wk1/day2.html)
     -   [Day 3](/swe/mod1/wk1/day3.html)
     -   [Day 4](/swe/mod1/wk1/day4.html)
     -   [Day 5](/swe/mod1/wk1/day5.html)
+
 -   Week 2
+
     -   [Day 1](/swe/mod1/wk2/day1.html)
+    -   [Day 1](/swe/mod1/wk2/day2.html)
     -   [Final Project](/swe/mod1/wk2/finalProject.html)
+
 -   Additional
+
     -   [API documentation](/swe/mod1/additional/apiDocumentation.html)
     -   [OAuth Extension](/swe/mod1/additional/OAuthExtension.html)
 
