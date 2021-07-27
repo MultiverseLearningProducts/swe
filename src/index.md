@@ -225,7 +225,7 @@ We are going to use [Postman](https://www.postman.com/) to call some RESTful API
 -   Week 2
 
     -   [Day 1](/swe/mod1/wk2/day1.html)
-    -   [Day 1](/swe/mod1/wk2/day2.html)
+    -   [Day 2](/swe/mod1/wk2/day2.html)
     -   [Final Project](/swe/mod1/wk2/finalProject.html)
 
 -   Additional
