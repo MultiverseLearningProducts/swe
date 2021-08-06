@@ -32,12 +32,12 @@ There are a number of ways in which we can retrieve specific elements of the DOM
 
 > You will need to know `getElementByld; getElementsByTagName; getElementsByClassName; document.forms` for the exam.
 
-You will also need to know how to change the value of an element.
-> To change the value of a form field use `document.getElementById("someFormField").value=newValue`
-> To change the value of any other type of element use `document.getElementById("p1").innerHTML = "New text!"`
+You will also need to know how to change the value of an element or element attribute.
+> To change the value of an HTML attribute use element`.setAttribute()` e.g. `button.setAttribute("class", "visible")`;
+> To change the value of a form field use `.value` e.g. `document.getElementById("someFormField").value=newValue`
+> To change the value of any other type of element use `.innerHTML` e.g. `document.getElementById("p1").innerHTML = "New text!"`
 
-
-> In your browser console, type `window.location.href`. This will retrieve the URL of the web page.  
+> To retrieve the URL of a web page, type `window.location.href` (note this can be simplified to `location.href`). 
 
 #### Try these exam questions
 
@@ -50,7 +50,7 @@ Edit the commented code below to change the paragraph text:
 <p id="p1">Good morning!</p>
 
 <script>
-   document.//____________("p1").//____________ = "Good evening!";
+   document./*____________*/("p1")./*____________*/ = "Good evening!";
 </script>
 
 </body>
@@ -88,7 +88,7 @@ function myFunction() {
 </html>
 ```
 
-You have been asked to get the URL of the current web page and display it in the "url" form text field. How would you edit the commented code to achieve this?
+You have been asked to get the URL of the current web page and display it as placeholder text in the "url" form text field. How would you edit the commented code to achieve this? Hint - `placeholder` is an attribute of an text field.
 
 
 ```html
@@ -98,15 +98,15 @@ You have been asked to get the URL of the current web page and display it in the
   </head>
   <body>
     <form action="/restaurants" method="post">
-      <label for="restaurantName">Name:</label><br />
-      <input type="text" id="restaurantName" name="restaurantName"/>
-      <label for="url">URL:</label><br />
-      <input type="text" id="url" name="url" />
+      <label for="restaurantName">Name:</label><br/>
+      <input type="text" id="restaurantName" name="restaurantName"/><br/>
+      <label for="url">URL:</label><br/>
+      <input type="text" id="url" name="url"/><br/>
     </form>
     <script>
       var page_url = window.// ___________ . ___________
 
-      document./*____________*/("url")/*.____________*/ = page_url
+      document./*____________*/("url")/*.____________*/("placeholder", page_url)
     </script>
   </body>
 </html>
@@ -172,7 +172,7 @@ Name: <input type="text" id="myText" value="Jamie">
 
 <script>
 function myFunction() {
-  document.//_____________.//__________ = "Joe";
+  document./*_____________.__________*/ = "Joe";
 }
 </script>
 
