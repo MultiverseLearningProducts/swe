@@ -12,12 +12,14 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 3</h1>
     <h1>Overview of the day</h1>
-    <p>Today we look at GET vs POST and the History object</p>
+    <p>Today we look at GET vs POST, the History object and local and session storage.</p>
     <h1>Lesson 1</h1>
     <h2>Learning objectives</h2>
     <ul>
       <li>Understand the difference between GET and POST</li>
       <li>Understand the form submission process</li>
+      <li>Understand how to store the session history</li>
+      <li>Understand the difference between local and session storage</li>
     </ul>
     <h2>GET vs POST</h2>
     <p>HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are <code>GET</code> and <code>POST</code>.</p>
@@ -26,7 +28,7 @@
         <p>When you request for a resource like a web page or image, the GET request will be used.</p>
       </li>
       <li>
-        <p>For the GET request, aAdditional information can be set in the query parameters where it's visible to all</p>
+        <p>For the GET request, additional information can be set in the query parameters where it's visible to all</p>
       </li>
       <li>
         <p>When you submit a form, either the GET or POST can be used - the main difference is where the data to be sent is stored</p>
@@ -129,6 +131,21 @@ history.back();
       <li>Undefined</li>
       <li>{ name: 'Another test' }</li>
     </ol>
+    <h1>Lesson 3</h1>
+    <h2>Learning objectives</h2>
+    <ul>
+      <li>Understand <code>localStorage</code> and <code>sessionStorage</code></li>
+    </ul>
+    <h2>Storing data in local storage</h2>
+    <p><code>localStorage</code> and <code>sessionStorage</code> allow us to save key/value pairs in a browser.</p>
+    <blockquote>
+      <p><code>localStorage</code> persists even when the browser is closed or the user's computer is shutdown</p>
+    </blockquote>
+    <blockquote>
+      <p><code>sessionStorage</code> is removed when a browser tab is closed</p>
+    </blockquote>
+    <h3>Try these exam questions</h3>
+    <p>Research how you would set/retrieve/remove items from localStorage and sessionStorage.</p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

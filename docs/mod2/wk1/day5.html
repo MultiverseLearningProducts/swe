@@ -59,6 +59,8 @@
     </table>
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
     <p>In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.</p>
+    <h4>Try these exam questions</h4>
+    <p>Try the <a href="https://applied.multiverse.io/mod/quiz/view.php?id=9958">Applied Strings Quiz</a></p>
     <h3>Common number methods</h3>
     <p>In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:</p>
     <table>
@@ -72,7 +74,7 @@
       <tbody>
         <tr>
           <td align="left"><code>toFixed</code></td>
-          <td align="left">Returns a string, with the number written with a specified number of decimals</td>
+          <td align="left">Returns a string with the specified number of digits after the decimal point. The number is rounded if necessary.</td>
           <td align="left"><code>x.toFixed(1)</code></td>
         </tr>
         <tr>
@@ -102,8 +104,8 @@
         </tr>
       </tbody>
     </table>
-    <h4>Try this exam question</h4>
-    <p>You have been given the following code:</p>
+    <h4>Try these exam questions</h4>
+    <p>The code below should log the number 3000.94</p>
     <pre><code class="language-javascript">function toDecimalPlaces(figure, decimalPlaces) {
   // add code here
 }
@@ -116,6 +118,14 @@ console.log(toDecimalPlaces(3000.939, 2));
       <li>return figure.toPrecision(decimalPlaces);</li>
       <li>return figure.valueOf(figure);</li>
       <li>return figure.toString();</li>
+    </ol>
+    <p>What will be logged in the console?</p>
+    <pre><code class="language-javascript">console.log((12.345).toPrecision(2));
+</code></pre>
+    <ol>
+      <li>12.34</li>
+      <li>12</li>
+      <li>12.3</li>
     </ol>
     <h1>Lesson 2</h1>
     <h2>Learning Objectives</h2>
@@ -159,8 +169,11 @@ console.log(myDate.getDay()); // 4
 
 // Do the work here to get the text based string
 </code></pre>
-    <p>There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.</p>
-    <p>In addition, <code>getDay()</code> is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.</p>
+    <p>There are a couple of quirks to be aware of:</p>
+    <ul>
+      <li>months start at 0. So January is 0, December is 11.</li>
+      <li>days of the week start at 0 with Sunday being day 0, Saturday day 6.</li>
+    </ul>
     <h1>Lesson 3</h1>
     <h2>Learning Objectives</h2>
     <ul>
@@ -216,6 +229,7 @@ myDateFunction(myDate, 21);
       <li>myDate.setDate(date() + days)</li>
       <li>date.setDate(date.getDate() + days)</li>
     </ol>
+    <p>Now try the <a href="https://applied.multiverse.io/mod/quiz/view.php?id=9904">Applied Dates Quiz</a></p>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day4.html">prev</a>|<a href="/swe/mod2/wk2/day1.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>

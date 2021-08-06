@@ -82,7 +82,7 @@ for (;;) {
       <li>Become a more effective programmer</li>
     </ul>
     <h3>Value vs reference</h3>
-    <p>To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the change function?</p>
+    <p>To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the <code>updateNames</code> function?</p>
     <pre><code class="language-javascript">function updateNames(cats, firstCatsName) {
   firstCatsName = 'Ginger';
   cats.names[0] = 'Ginger';
@@ -112,29 +112,39 @@ console.log(cats, firstCatsName); // what's logged here?
     <blockquote>
       <p>Objects are passed to functions by reference, primitives are passed by value</p>
     </blockquote>
-    <h4>Try this exam question</h4>
+    <h4>Try these exam questions</h4>
     <p>What is logged in the console?</p>
-    <pre><code class="language-javascript">let sampleStudent = 'HTML Student';
-
-let sampleCourse = {
-  name: 'HTML',
-  grade: 90,
-};
-
-function change(student, course) {
-  student = 'JavaScript Student';
-  course.name = 'JavaScript';
-  course.grade = 100;
+    <pre><code class="language-javascript">function multiplyIt(x) {
+    x *= 3;
+    return x;
 }
 
-change(sampleStudent, sampleCourse);
+var a = 2;
+var result = multiplyIt(a);
 
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
+console.log(a); 
+console.log(result); 
+</code></pre>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">function borrow(name, number, book) {
+  name = name.toUpperCase();
+  number = number + "-1";
+  book.name.toUpperCase();
+  book.author.toUpperCase();
+}
+
+let name = 'shanie';
+let number = '123678';
+let book = {name: 'Intro to Java', author:'A. Guru'};
+
+borrow(name, number, book);
+
+console.log(name, number, book.name);
 </code></pre>
     <ol>
-      <li>"HTML Student", "JavaScript", 100</li>
-      <li>"JavaScript Student", "JavaScript", 100</li>
-      <li>"HTML Student", "HTML", 90</li>
+      <li>shanie 123678 Intro to Java</li>
+      <li>SHANIE 123678-1 INTRO TO JAVA</li>
+      <li>shanie 123678 INTRO TO JAVA</li>
     </ol>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk1/day3.html">prev</a>|<a href="/swe/mod2/wk1/day5.html">next</a>;</p>
     <script src="/swe/prism.js"></script>

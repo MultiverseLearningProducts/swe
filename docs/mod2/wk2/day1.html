@@ -16,6 +16,7 @@
     <h2>Learning Objectives</h2>
     <ul>
       <li>Learn about the DOM</li>
+      <li>Understand how to retrieve elements of the DOM</li>
     </ul>
     <h3>What is the DOM?</h3>
     <p>The DOM is a browser-based representation of a web page, which consists of a number of objects. It is represented as a tree structure, where each child element (called a node) belongs to a parent:</p>
@@ -29,17 +30,7 @@
     <blockquote>
       <p>In your browser console, type <code>window.document.head</code>. This will retrieve the head element of the page.</p>
     </blockquote>
-    <h1>Lesson 2</h1>
-    <h2>Learning Objectives</h2>
-    <ul>
-      <li>Working with DOM events</li>
-      <li>How to write an event handler</li>
-      <li>How to use standardised DOM methods in our programs</li>
-    </ul>
-    <h3>Working with DOM events</h3>
-    <p>Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers.</p>
-    <p>One of the primary uses of DOM methods is to create an event handler that can respond to a user event. What would some typical user events be?</p>
-    <p>To create an event, we first need to get the element we want to assign the event to. There are a number of ways to accomplish this task:</p>
+    <p>There are a number of ways in which we can retrieve specific elements of the DOM.</p>
     <table>
       <thead>
         <tr>
@@ -49,41 +40,109 @@
       </thead>
       <tbody>
         <tr>
-          <td align="left">getElementById()</td>
+          <td align="left">document.getElementById()</td>
           <td align="left">Returns the element that has the ID attribute with the specified value</td>
         </tr>
         <tr>
-          <td align="left">getElementsByClassName()</td>
+          <td align="left">document.getElementsByClassName()</td>
           <td align="left">Returns a HTMLCollection containing all elements with the specified class name</td>
         </tr>
         <tr>
-          <td align="left">getElementsByTagName()</td>
+          <td align="left">document.getElementsByTagName()</td>
           <td align="left">Returns a HTMLCollection containing all elements with the specified tag name</td>
+        </tr>
+        <tr>
+          <td align="left">document.forms()</td>
+          <td align="left">Returns an HTMLCollection listing all the <code>&#x3C;form></code> elements contained in the document</td>
         </tr>
       </tbody>
     </table>
     <blockquote>
-      <p>You will need to know <code>getElementByld; getElementsByTagName; getElementsByClassName</code> for the exam.</p>
+      <p>You will need to know <code>getElementByld; getElementsByTagName; getElementsByClassName; document.forms</code> for the exam.</p>
     </blockquote>
-    <h4>Try this exam question</h4>
-    <p>You have been asked to get the page URL and insert it into a text field. How would you complete the code that is commented out to achieve this?</p>
+    <p>You will also need to know how to change the value of an element or element attribute.</p>
+    <blockquote>
+      <p>
+        To change the value of an HTML attribute use element<code>.setAttribute()</code> e.g. <code>button.setAttribute("class", "visible")</code>;
+        To change the value of a form field use <code>.value</code> e.g. <code>document.getElementById("someFormField").value=newValue</code>
+        To change the value of any other type of element use <code>.innerHTML</code> e.g. <code>document.getElementById("p1").innerHTML = "New text!"</code>
+      </p>
+    </blockquote>
+    <blockquote>
+      <p>To retrieve the URL of a web page, type <code>window.location.href</code> (note this can be simplified to <code>location.href</code>).</p>
+    </blockquote>
+    <h4>Try these exam questions</h4>
+    <p>Edit the commented code below to change the paragraph text:</p>
+    <pre><code class="language-html">&#x3C;html>
+&#x3C;body>
+
+&#x3C;p id="p1">Good morning!&#x3C;/p>
+
+&#x3C;script>
+   document./*____________*/("p1")./*____________*/ = "Good evening!";
+&#x3C;/script>
+
+&#x3C;/body>
+&#x3C;/html>
+</code></pre>
+    <p>Edit the commented code below to change the selected item:</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html>
+&#x3C;body>
+
+&#x3C;form>
+  Select your favorite programming language:
+  &#x3C;select id="myChoice">
+    &#x3C;option value="c++">C++&#x3C;/option>
+    &#x3C;option value="java">Java&#x3C;/option>
+    &#x3C;option value="javascript">JavaScript&#x3C;/option>
+    &#x3C;option value="python">Python&#x3C;/option>
+  &#x3C;/select>
+&#x3C;/form>
+
+&#x3C;p>Click the button to change the selected language to Java.&#x3C;/p>
+
+&#x3C;button type="button" onclick="myFunction()">Change it&#x3C;/button>
+
+&#x3C;script>
+function myFunction() {
+  document./*_____________*/("myChoice")./*__________*/ = "Java";
+}
+&#x3C;/script>
+
+&#x3C;/body>
+&#x3C;/html>
+</code></pre>
+    <p>You have been asked to get the URL of the current web page and display it as placeholder text in the "url" form text field. How would you edit the commented code to achieve this? Hint - <code>placeholder</code> is an attribute of an text field.</p>
     <pre><code class="language-html">&#x3C;html lang="en">
   &#x3C;head>
     &#x3C;meta charset="utf-8" />
   &#x3C;/head>
   &#x3C;body>
-    &#x3C;form action="/action_page">
-      &#x3C;label for="url">URL:&#x3C;/label>&#x3C;br />
-      &#x3C;input type="text" id="url" name="url" />
+    &#x3C;form action="/restaurants" method="post">
+      &#x3C;label for="restaurantName">Name:&#x3C;/label>&#x3C;br/>
+      &#x3C;input type="text" id="restaurantName" name="restaurantName"/>&#x3C;br/>
+      &#x3C;label for="url">URL:&#x3C;/label>&#x3C;br/>
+      &#x3C;input type="text" id="url" name="url"/>&#x3C;br/>
     &#x3C;/form>
     &#x3C;script>
-      var url = // ________
+      var page_url = window.// ___________ . ___________
 
-      // _______.____________("url")._____ = ___
+      document./*____________*/("url")/*.____________*/("placeholder", page_url)
     &#x3C;/script>
   &#x3C;/body>
 &#x3C;/html>
 </code></pre>
+    <h1>Lesson 2</h1>
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Working with DOM events</li>
+      <li>How to write an event handler</li>
+      <li>How to use standardised DOM methods in our programs</li>
+    </ul>
+    <h3>Working with DOM events</h3>
+    <p>Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers.</p>
+    <p>One of the primary uses of DOM methods is to create an event handler that can respond to a user event such as a button click. What other user events can you think of?</p>
     <h3>Working with event handlers</h3>
     <p>Event handlers can be added both inline or within an inline or external script:</p>
     <pre><code class="language-javascript">// inline event handler
@@ -106,11 +165,31 @@ targetForm.onsubmit = (e) => {
 };
 </code></pre>
     <blockquote>
-      <p>For the exam, you'll need to know: <code>onchange, onmouseover, onload, onclick, onmouseout and onkeydown</code></p>
+      <p>For the exam, you'll need to know about the following event types: <code>onchange, onmouseover, onload, onclick, onmouseout and onkeydown</code></p>
     </blockquote>
-    <h4>Try this exam question</h4>
+    <h4>Try these exam questions</h4>
+    <p>Edit the commented code below to change the form text field from "Jamie" to "Joe":</p>
+    <pre><code class="language-html">&#x3C;!DOCTYPE html>
+&#x3C;html>
+&#x3C;body>
+
+Name: &#x3C;input type="text" id="myText" value="Jamie">
+
+&#x3C;p>Click the button to change the value of the text field.&#x3C;/p>
+
+&#x3C;button onclick="myFunction()">Change it&#x3C;/button>
+
+&#x3C;script>
+function myFunction() {
+  document./*_____________.__________*/ = "Joe";
+}
+&#x3C;/script>
+
+&#x3C;/body>
+&#x3C;/html>
+</code></pre>
     <p>You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so that when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.</p>
-    <p>Tip: one is in inline event and the other is in an inline script.</p>
+    <p>Tip: one is an inline event and the other is in an inline script.</p>
     <pre><code class="language-html">&#x3C;!DOCTYPE html>
 &#x3C;html lang="en">
   &#x3C;head>
