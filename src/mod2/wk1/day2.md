@@ -62,9 +62,19 @@ for (let i = 0; i < myArray1.length; i++) {
 
 > The `break` keyword we saw yesterday can be used to exit a loop
 
-> Another keyword related to break is `continue`. This keyword skips the current loop iteration and continues with the next one
+> Another keyword related to break is `continue`. This keyword skips the current loop iteration and continues with the next one. Note that `continue` is NOT valid in a switch statement.
 
 ### Try these exam questions
+In the code below, the name and age of students are held in the arrays. How would you output Fariah's age?
+
+```javascript
+let student1 = ['Jay', 24];
+let student2 = ['Mia', 45];
+let student3 = ['Fariah', 19];
+
+let students = [student1, student2, student3];
+```
+
 
 # Lesson 2
 
@@ -149,6 +159,8 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 | Shift   | `myArray1.shift()`    | Removes the first item in the array |
 | Unshift | `myArray1.unshift(1)` | Adds item to beginning of array     |
 
+Here is a [fun animation](https://simplestepscode.com/array-push-pop-shift-unshift/) to help you remember these methods.
+
 ### Try this exam question
 
 What does the array contain after calling the following methods on it?
@@ -161,5 +173,8 @@ myArray.unshift(12);
 myArray.shift();
 myArray.push(6);
 ```
+
+Also try out this [Applied Arrays Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=9863)
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

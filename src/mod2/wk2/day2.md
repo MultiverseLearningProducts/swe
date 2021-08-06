@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we will look at how to add elements to our page dynamically.
+Today we will look at how to add elements to our page dynamically. We'll also look at error handling with try/catch, where JavaScript can be placed in a web page and the different type of dialog boxes that can be used.
 
 # Lesson 1
 
@@ -122,10 +122,6 @@ try {
 
 # Lesson 3
 
-## Lesson objectives
-
-- Understand inline vs external scripts
-
 ## Learning Objectives
 
 - Understand the difference between inline and external scripts
@@ -172,5 +168,23 @@ True or false?
 3. You should always use external scripts where possible
 4. You shouldn't inline large JavaScript files
 5. You should put large JavaScript files in an external script
+6. Inline scripts can only go in the `<body>` section
+
+# Lesson 4
+
+## Learning Objectives
+
+- Understand the difference between confirm, alert and prompt popup boxes
+
+### Popup boxes
+JavaScript has three types of popup boxes. These are
+* Alert box - just has an "OK" button
+* Confirm box - displays text plus "OK" or "Cancel" 
+* Prompt box - requires the user to click either "OK" or "Cancel" after entering an input value
+
+### Try these exam questions
+
+Create instances of all 3 dialog box types.
+
 
 [main](/swe)|[prev](/swe/mod2/wk2/day1.html)|[next](/swe/mod2/wk2/day3.html);

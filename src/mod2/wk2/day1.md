@@ -7,6 +7,7 @@
 ## Learning Objectives
 
 - Learn about the DOM
+- Understand how to retrieve elements of the DOM
 
 ### What is the DOM?
 
@@ -20,6 +21,97 @@ As you can see from the image, each node can have a number of attributes. If you
 
 > In your browser console, type `window.document.head`. This will retrieve the head element of the page.
 
+There are a number of ways in which we can retrieve specific elements of the DOM.
+
+| Method                   | Description                                                                    |
+| :----------------------- | :----------------------------------------------------------------------------- |
+| document.getElementById()         | Returns the element that has the ID attribute with the specified value         |
+| document.getElementsByClassName() | Returns a HTMLCollection containing all elements with the specified class name |
+| document.getElementsByTagName()   | Returns a HTMLCollection containing all elements with the specified tag name   |
+| document.forms() | Returns an HTMLCollection listing all the `<form>` elements contained in the document|
+
+> You will need to know `getElementByld; getElementsByTagName; getElementsByClassName; document.forms` for the exam.
+
+You will also need to know how to change the value of an element.
+> To change the value of a form field use `document.getElementById("someFormField").value=newValue`
+> To change the value of any other type of element use `document.getElementById("p1").innerHTML = "New text!"`
+
+
+> In your browser console, type `window.location.href`. This will retrieve the URL of the web page.  
+
+#### Try these exam questions
+
+Edit the commented code below to change the paragraph text:
+
+```html
+<html>
+<body>
+
+<p id="p1">Good morning!</p>
+
+<script>
+   document.//____________("p1").//____________ = "Good evening!";
+</script>
+
+</body>
+</html>
+```
+
+Edit the commented code below to change the selected item:
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  Select your favorite programming language:
+  <select id="myChoice">
+    <option value="c++">C++</option>
+    <option value="java">Java</option>
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+  </select>
+</form>
+
+<p>Click the button to change the selected language to Java.</p>
+
+<button type="button" onclick="myFunction()">Change it</button>
+
+<script>
+function myFunction() {
+  document./*_____________*/("myChoice")./*__________*/ = "Java";
+}
+</script>
+
+</body>
+</html>
+```
+
+You have been asked to get the URL of the current web page and display it in the "url" form text field. How would you edit the commented code to achieve this?
+
+
+```html
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <form action="/restaurants" method="post">
+      <label for="restaurantName">Name:</label><br />
+      <input type="text" id="restaurantName" name="restaurantName"/>
+      <label for="url">URL:</label><br />
+      <input type="text" id="url" name="url" />
+    </form>
+    <script>
+      var page_url = window.// ___________ . ___________
+
+      document./*____________*/("url")/*.____________*/ = page_url
+    </script>
+  </body>
+</html>
+```
+
 # Lesson 2
 
 ## Learning Objectives
@@ -32,40 +124,7 @@ As you can see from the image, each node can have a number of attributes. If you
 
 Standardisation of the DOM comes with many benefits for the JavaScript developer. It means that numerous methods are available across many different browsers.
 
-One of the primary uses of DOM methods is to create an event handler that can respond to a user event. What would some typical user events be?
-
-To create an event, we first need to get the element we want to assign the event to. There are a number of ways to accomplish this task:
-
-| Method                   | Description                                                                    |
-| :----------------------- | :----------------------------------------------------------------------------- |
-| getElementById()         | Returns the element that has the ID attribute with the specified value         |
-| getElementsByClassName() | Returns a HTMLCollection containing all elements with the specified class name |
-| getElementsByTagName()   | Returns a HTMLCollection containing all elements with the specified tag name   |
-
-> You will need to know `getElementByld; getElementsByTagName; getElementsByClassName` for the exam.
-
-#### Try this exam question
-
-You have been asked to get the page URL and insert it into a text field. How would you complete the code that is commented out to achieve this?
-
-```html
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <form action="/action_page">
-      <label for="url">URL:</label><br />
-      <input type="text" id="url" name="url" />
-    </form>
-    <script>
-      var url = // ________
-
-      // _______.____________("url")._____ = ___
-    </script>
-  </body>
-</html>
-```
+One of the primary uses of DOM methods is to create an event handler that can respond to a user event such as a button click. What other user events can you think of?
 
 ### Working with event handlers
 
@@ -95,13 +154,35 @@ targetForm.onsubmit = (e) => {
 };
 ```
 
-> For the exam, you'll need to know: `onchange, onmouseover, onload, onclick, onmouseout and onkeydown`
+> For the exam, you'll need to know about the following event types: `onchange, onmouseover, onload, onclick, onmouseout and onkeydown`
 
-#### Try this exam question
+#### Try these exam questions
+Edit the commented code below to change the form text field from "Jamie" to "Joe":
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+Name: <input type="text" id="myText" value="Jamie">
+
+<p>Click the button to change the value of the text field.</p>
+
+<button onclick="myFunction()">Change it</button>
+
+<script>
+function myFunction() {
+  document.//_____________.//__________ = "Joe";
+}
+</script>
+
+</body>
+</html>
+```
 
 You've been given the following HTML source code. It renders a green square and a green circle. You have been asked to complete the code so that when the user hovers over either the square or the cicle, the background color turns red, then goes back to green when the user hovers out.
 
-Tip: one is in inline event and the other is in an inline script.
+Tip: one is an inline event and the other is in an inline script.
 
 ```html
 <!DOCTYPE html>

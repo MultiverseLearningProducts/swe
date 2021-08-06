@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we look at GET vs POST and the History object
+Today we look at GET vs POST, the History object and local and session storage.
 
 # Lesson 1
 
@@ -10,6 +10,8 @@ Today we look at GET vs POST and the History object
 
 - Understand the difference between GET and POST
 - Understand the form submission process
+- Understand how to store the session history
+- Understand the difference between local and session storage
 
 ## GET vs POST
 
@@ -17,7 +19,7 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 
 - When you request for a resource like a web page or image, the GET request will be used.
 
-- For the GET request, aAdditional information can be set in the query parameters where it's visible to all
+- For the GET request, additional information can be set in the query parameters where it's visible to all
 
 - When you submit a form, either the GET or POST can be used - the main difference is where the data to be sent is stored
 
@@ -125,5 +127,22 @@ What state is logged?
 1. {}
 2. Undefined
 3. { name: 'Another test' }
+
+# Lesson 3
+
+## Learning objectives
+
+- Understand `localStorage` and `sessionStorage`
+
+## Storing data in local storage
+`localStorage` and `sessionStorage` allow us to save key/value pairs in a browser.
+
+> `localStorage` persists even when the browser is closed or the user's computer is shutdown
+
+> `sessionStorage` is removed when a browser tab is closed
+
+### Try these exam questions
+
+Research how you would set/retrieve/remove items from localStorage and sessionStorage.
 
 [main](/swe)|[prev](/swe/mod2/wk2/day2.html)|[next](/swe/mod2/wk2/day4.html);

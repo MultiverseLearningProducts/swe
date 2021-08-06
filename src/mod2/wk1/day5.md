@@ -27,22 +27,25 @@ Check out the full list of methods over on the [W3C website](https://www.w3schoo
 
 In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.
 
+#### Try these exam questions
+Try the [Applied Strings Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=9958)
+
 ### Common number methods
 
 In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:
 
 | Method        | Purpose                                                                       | Example                  |
 | :------------ | :---------------------------------------------------------------------------- | :----------------------- |
-| `toFixed`     | Returns a string, with the number written with a specified number of decimals | `x.toFixed(1)`           |
+| `toFixed`     | Returns a string with the specified number of digits after the decimal point. The number is rounded if necessary. | `x.toFixed(1)`           |
 | `toPrecision` | Returns a string, with a number written with a specified length               | `x.toPrecision(2);`      |
 | `valueOf`     | Returns the value of a primitive or object                                    | `x.valueOf()`            |
 | `Number`      | Returns a number, converted (typically) from a string                         | `x = Number("10")`       |
 | `parseInt`    | Returns an integer, converted from its argument (same as Number)              | `x = parseInt("10")`     |
 | `parseFloat`  | Returns a floating point number, converted from its argument                  | `x = parseFloat("10.2")` |
 
-#### Try this exam question
+#### Try these exam questions
 
-You have been given the following code:
+The code below should log the number 3000.94 
 
 ```javascript
 function toDecimalPlaces(figure, decimalPlaces) {
@@ -58,6 +61,17 @@ What is the most appropriate line to add in place of the comment?
 2. return figure.toPrecision(decimalPlaces);
 3. return figure.valueOf(figure);
 4. return figure.toString();
+
+
+What will be logged in the console?
+
+```javascript
+console.log((12.345).toPrecision(2));
+```
+
+1. 12.34
+2. 12
+3. 12.3
 
 # Lesson 2
 
@@ -116,9 +130,9 @@ console.log(myDate.getDay()); // 4
 // Do the work here to get the text based string
 ```
 
-There are a couple of quirks to be aware of: the month is being reported as "1", or January. All good right? Wrong! A "1" is actually February. This is because the months are zero-based.
-
-In addition, `getDay()` is returning "4" and not "Thursday". This is because the days in JavaScript are represented by the integers 0-6. Zero is Monday, six is Sunday.
+There are a couple of quirks to be aware of: 
+* months start at 0. So January is 0, December is 11.
+* days of the week start at 0 with Sunday being day 0, Saturday day 6. 
 
 # Lesson 3
 
@@ -191,5 +205,9 @@ myDateFunction(myDate, 21);
 1. date.setDate(date.getFullYear() + days)
 2. myDate.setDate(date() + days)
 3. date.setDate(date.getDate() + days)
+
+
+Now try the [Applied Dates Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=9904)
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day4.html)|[next](/swe/mod2/wk2/day1.html);

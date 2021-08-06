@@ -63,6 +63,7 @@ let passengers = [
   },
 ];
 let id = flightNumber + destination;
+let flightTime;
 ```
 
 What are their datatypes?
@@ -108,7 +109,7 @@ Key points for the exam:
 
 #### Try this exam question
 
-The XYZ company offers a mid-week discount of 10% on Wednesdays.
+The "Blown Away" hair salon offers discounts of 20% on Wednesdays and Thursdays.
 You need to write a JavaScript function that meets the following requirements:
 
 Accepts the day of the week as a string
@@ -121,7 +122,8 @@ function getDiscount(day) {
   var discount = 0
 
 
-      discount = .1;
+
+      discount = .2;
       break;
 
       discount = 0
@@ -188,6 +190,12 @@ console.log(subtract(12, 25));
 
 ### Variables and scoping
 
+JavaScript variable naming rules:
+* Variables must begin with a Unicode letter, dollar sign or underscore. (Note - Unicode is an international character set).
+* Variables can contain letters, digits, underscores, and dollar signs
+* JavaScript keywords (e.g. break) cannot be used to name variables
+* Variable names are case sensitive 
+
 Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
 
 ```javascript
@@ -226,6 +234,18 @@ Key points:
 Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a `let` variable outside of its scope. We'll cover try/catch in more detail later.
 
 #### Try these exam questions
+Which of the following are valid JavaScript variable names?
+
+```javascript
+const continue = 123
+const £cost = 29.99
+const @name = "ali"
+const $cost = 20.99
+const _name = "marcos"
+const 123_name = "dinah"
+const früh = 27
+```
+
 
 What is logged in the console?
 
@@ -245,6 +265,30 @@ console.log(addition(3));
 1. A syntax error is thrown
 2. NaN
 3. 7
+
+What is logged in the console?
+
+```javascript
+let a = 40;
+const b = 5;
+
+function divide1() {
+  let a = 20;
+  const b = 10;
+
+  return a / b;
+}
+
+function divide2() {
+  return a / b;
+}
+
+console.log(divide1()+" "+divide2());
+```
+
+1. 2 8
+2. 8 8
+3. 2 2
 
 What is logged in the console?
 
@@ -340,7 +384,7 @@ console.log(x); // 0
 
 The line `x -= 2;` in plain English would be: "Take x, subtract 2, then assign the result back to x"
 
-#### Try this exam question
+#### Try these exam questions
 
 What is logged in the console?
 
@@ -358,15 +402,27 @@ console.log(result);
 2. 210100
 3. 212121
 
+What is wrong with this code?
+
+```javascript
+if (a = b) {
+  console.log("numbers are the same!")
+} else {
+  console.log("numbers are not the same!")
+}
+```
+
 #### Math methods
 
-JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random; round; abs; floor; ceiling; min; max; pow and sqrt. We've detailed three of them below and the other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp).
+JavaScript contains a number of useful Math methods that can do the hard work for you. For the exam, you'll need to know: random; round; abs; floor; ceiling; min; max; pow and sqrt. We've detailed four of them below and the other Math operators can be found [here](https://www.w3schools.com/js/js_math.asp).
 
 | Operator      | Purpose                                                | Example                             |
 | :------------ | :----------------------------------------------------- | :---------------------------------- |
 | Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`  |
 | Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`    |
 | Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)` |
+| Math.round()  | Returns the value rounded to the nearest whole number | `let rounded = Math.round(4.4)` |
+
 
 #### Try this exam question
 
@@ -379,6 +435,16 @@ console.log(Math.floor(Math.random() * 10 + 1));
 1. A random decimal number between 0-10
 2. A random whole number between 1-10
 3. A random whole number between 0-10
+
+What will be logged in the console?
+
+```javascript
+console.log(Math.round(2.5));
+```
+
+1. 2
+2. 2.5
+3. 3
 
 #### Comparison operators
 
