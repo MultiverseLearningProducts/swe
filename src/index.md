@@ -12,7 +12,7 @@ This programme is composed of the following:
 
 -   **Module 1:** A 2 week bootcamp that builds and expands on the RESTful concept introduced in the 5-week bootcamp. Topics covered include: HTTP/HTTPS, RESTful API best practices, Building out a RESTful API, Securing an API using Basic Auth, Sessions, and Securing an API with OAuth
 
--   **Module 2:** A two week bootcamp that will get you develop your proficiency with HTML, CSS and asynchronous JavaScript. You'll cover: WebSockets; web workers; XMLHTTPRequests; canvas elements; media elements; responsive design through media queries; and error handling in Javascript. By the end of the module you will be prepared to take the Microsoft Technology Associate Certification (MTA): Introduction to Programming Using JavaScript
+-   **Module 2:** A two week bootcamp that will get you develop your prepared to take the Microsoft Technology Associate Certification (MTA): Introduction to Programming Using JavaScript
 
 -   **Module 3:** A two week bootcamp to fully understand and navigate the software development lifecycle. Through a mixture of independent reading and a team project, you will learn about both agile and waterfall development methodologies and experience 2 x 1-week sprints. By the end of the module you will be prepared to take the BCS Level 4 Diploma in Software Development Methodologies
 
