@@ -180,8 +180,5 @@ numbers.sort(function (a, b) {
 });
 ```
 
-## Resources
-
-[Callbacks and async](https://developer.okta.com/blog/2019/01/16/history-and-future-of-async-javascript)
 
 [main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);

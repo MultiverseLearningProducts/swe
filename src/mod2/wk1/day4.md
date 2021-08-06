@@ -102,7 +102,7 @@ for (;;) {
 
 ### Value vs reference
 
-To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the change function?
+To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the `updateNames` function?
 
 ```javascript
 function updateNames(cats, firstCatsName) {
@@ -139,31 +139,44 @@ console.log(cats, firstCatsName);
 
 > Objects are passed to functions by reference, primitives are passed by value
 
-#### Try this exam question
+#### Try these exam questions
 
 What is logged in the console?
 
 ```javascript
-let sampleStudent = 'HTML Student';
-
-let sampleCourse = {
-  name: 'HTML',
-  grade: 90,
-};
-
-function change(student, course) {
-  student = 'JavaScript Student';
-  course.name = 'JavaScript';
-  course.grade = 100;
+function multiplyIt(x) {
+    x *= 3;
+    return x;
 }
 
-change(sampleStudent, sampleCourse);
+var a = 2;
+var result = multiplyIt(a);
 
-console.log(sampleStudent, sampleCourse.name, sampleCourse.grade);
+console.log(a); 
+console.log(result); 
 ```
 
-1. "HTML Student", "JavaScript", 100
-2. "JavaScript Student", "JavaScript", 100
-3. "HTML Student", "HTML", 90
+What is logged in the console?
+
+```javascript
+function borrow(name, number, book) {
+  name = name.toUpperCase();
+  number = number + "-1";
+  book.name.toUpperCase();
+  book.author.toUpperCase();
+}
+
+let name = 'shanie';
+let number = '123678';
+let book = {name: 'Intro to Java', author:'A. Guru'};
+
+borrow(name, number, book);
+
+console.log(name, number, book.name);
+```
+
+1. shanie 123678 Intro to Java
+2. SHANIE 123678-1 INTRO TO JAVA
+3. shanie 123678 INTRO TO JAVA
 
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);
