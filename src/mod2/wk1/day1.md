@@ -148,7 +148,7 @@ function addition(value1, value2) {
   return value1 += value2;
 }
 
-console.log(addition(567, "56")
+console.log(addition(567, "56"))
 ```
 
 1. NaN
