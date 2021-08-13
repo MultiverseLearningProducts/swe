@@ -35,8 +35,11 @@ The important point about primitives is that they cannot be modified after they 
 // string primitive
 const myString = 'Hi, Daniel';
 
-console.log(myString.toUpperCase(), myString); // "Hi, DANIEL", "Hi, Daniel"
+console.log(myString.toUpperCase(), myString); 
 ```
+The output will be:
+`HI, DANIEL Hi, Daniel`
+Notice how `myString` has not changed.
 
 > Don't know what datatype you're dealing with? `console.log(typeof myString)`
 
