@@ -36,7 +36,7 @@ The important point about primitives is that they cannot be modified after they 
 const myString = 'Hi, Daniel';
 
 console.log(myString.toUpperCase(), myString); // HI, DANIEL Hi, Daniel
-
+```
 > Don't know what datatype you're dealing with? `console.log(typeof myString)`
 
 Note that even though we've transformed the string to uppercase, the original variable has not been changed.
@@ -195,6 +195,19 @@ JavaScript variable naming rules:
 * JavaScript keywords (e.g. break) cannot be used to name variables
 * Variable names are case sensitive 
 
+#### Try this exam question
+Which of the following are valid JavaScript variable names?
+
+```javascript
+const continue = 123
+const £cost = 29.99
+const @name = "ali"
+const $cost = 20.99
+const _name = "marcos"
+const 123_name = "dinah"
+const früh = 27
+```
+
 Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:
 
 ```javascript
@@ -233,18 +246,6 @@ Key points:
 Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a `let` variable outside of its scope. We'll cover try/catch in more detail later.
 
 #### Try these exam questions
-Which of the following are valid JavaScript variable names?
-
-```javascript
-const continue = 123
-const £cost = 29.99
-const @name = "ali"
-const $cost = 20.99
-const _name = "marcos"
-const 123_name = "dinah"
-const früh = 27
-```
-
 
 What is logged in the console?
 
@@ -306,6 +307,22 @@ console.log(newString);
 2. "19 Fine, thanks."
 3. Uncaught ReferenceError
 
+What is logged in the console?
+
+```javascript
+const myString = 'Hey, how you doing?';
+
+(function () {
+  myString = myString.length + ' Fine, thanks.';
+})();
+
+console.log(myString);
+```
+
+1. "Fine, thanks."
+2. "19 Fine, thanks."
+3. TypeError
+
 > `NaN` literally means `Not-a-Number`
 
 ### Operators
@@ -333,11 +350,11 @@ We can categorise the operators as follows:
 The modulus operator is an interesting one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.
 
 ```javascript
-let x = 3;
+let x = 4;
 
 x %= 2;
 
-console.log(x); // 1
+console.log(x); // 0
 ```
 
 #### Try this exam question
@@ -388,22 +405,35 @@ The line `x -= 2;` in plain English would be: "Take x, subtract 2, then assign t
 What is logged in the console?
 
 ```javascript
-let result = 3189;
+let result = 20;
 
-result += 21;
+result += 20;
 result -= 10;
-result *= 66;
+result *= 3;
 
 console.log(result);
 ```
 
-1. 211200
-2. 210100
-3. 212121
+1. 90
+2. 60
+3. 20
 
 What is wrong with this code?
 
 ```javascript
+if (a = b) {
+  console.log("numbers are the same!")
+} else {
+  console.log("numbers are not the same!")
+}
+```
+
+Read this code carefully. What is printed to the console?
+
+```javascript
+let a = 3;
+let b = 2;
+
 if (a = b) {
   console.log("numbers are the same!")
 } else {
@@ -417,7 +447,7 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 
 | Operator      | Purpose                                                | Example                             |
 | :------------ | :----------------------------------------------------- | :---------------------------------- |
-| Math.random() | Returns a random number between 0 and 1                | `let randomNumber = Math.random()`  |
+| Math.random() | Returns a random number in the range 0 to less than 1 (inclusive of 0, but not 1)                 | `let randomNumber = Math.random()`  |
 | Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`    |
 | Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)` |
 | Math.round()  | Returns the value rounded to the nearest whole number | `let rounded = Math.round(4.4)` |
@@ -452,11 +482,11 @@ Comparison operators are typically used in conditional statements to check one o
 | Operator | Purpose                     | Example         |
 | :------- | :-------------------------- | :-------------- |
 | ==       | Equal to value              | `x = 2 == 2 `   |
-| ===      | Equal to value and type     | `x = 2 === "2"` |
-| !=       | Not equal to value          | `x = 2 != 2`    |
+| ===      | Equal to value and type     | `x = 2 === 2` |
+| !=       | Not equal to value          | `x = 2 != 3`    |
 | !==      | Not equal to value and type | `x = 2 !== "2"` |
-| >        | Greater than                | `x = 2 > 2`     |
-| <        | Less than                   | `x = 2 < 2`     |
+| >        | Greater than                | `x = 2 > 1`     |
+| <        | Less than                   | `x = 2 < 3`     |
 | <=       | Less than or equal to       | `x = 2 <= 2`    |
 | >=       | Greater than or equal to    | `x = 2 >= 2`    |
 
@@ -473,14 +503,6 @@ console.log(val1-- > ++val2);
 
 1. True
 2. False
-
-```javascript
-console.log(null || undefined || { greeting: 'Hi!' } || true);
-```
-
-1. null
-2. true
-3. `{ greeting: 'Hi!" }`
 
 ```javascript
 console.log(null > '');
@@ -537,7 +559,16 @@ if (!y) {
 }
 ```
 
-#### Try this exam question
+#### Try these exam questions
+What is logged to the console?
+
+```javascript
+console.log(null || undefined || { greeting: 'Hi!' } || true);
+```
+
+1. null
+2. true
+3. `{ greeting: 'Hi!" }`
 
 What is logged to the console?
 
