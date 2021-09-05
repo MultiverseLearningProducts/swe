@@ -59,17 +59,14 @@
 const myString = 'Hi, Daniel';
 
 console.log(myString.toUpperCase(), myString); // HI, DANIEL Hi, Daniel
-
-> Don't know what datatype you're dealing with? `console.log(typeof myString)`
-
-Note that even though we've transformed the string to uppercase, the original variable has not been changed.
-
-#### Try this exam question
-
-The following variables have been initialised.
-
-```javascript
-let destination = 'London';
+</code></pre>
+    <blockquote>
+      <p>Don't know what datatype you're dealing with? <code>console.log(typeof myString)</code></p>
+    </blockquote>
+    <p>Note that even though we've transformed the string to uppercase, the original variable has not been changed.</p>
+    <h4>Try this exam question</h4>
+    <p>The following variables have been initialised.</p>
+    <pre><code class="language-javascript">let destination = 'London';
 let flightNumber = 123578;
 let hasPassengers = true;
 let hasTakeoffClearance = false;
@@ -205,6 +202,16 @@ console.log(subtract(12, 25));
       <li>JavaScript keywords (e.g. break) cannot be used to name variables</li>
       <li>Variable names are case sensitive</li>
     </ul>
+    <h4>Try this exam question</h4>
+    <p>Which of the following are valid JavaScript variable names?</p>
+    <pre><code class="language-javascript">const continue = 123
+const £cost = 29.99
+const @name = "ali"
+const $cost = 20.99
+const _name = "marcos"
+const 123_name = "dinah"
+const früh = 27
+</code></pre>
     <p>Scoping defines whether a function or block of code can access a variable. Here there are two flavours: local scope and global scope. Let's illustrate the difference in code:</p>
     <pre><code class="language-javascript">const globalConstVariable = 'Global scope';
 
@@ -244,15 +251,6 @@ myFunction();
     </ul>
     <p>Don't worry too much about the try/catch block above. This is an error handling strategy that is useful to prove we can't access a <code>let</code> variable outside of its scope. We'll cover try/catch in more detail later.</p>
     <h4>Try these exam questions</h4>
-    <p>Which of the following are valid JavaScript variable names?</p>
-    <pre><code class="language-javascript">const continue = 123
-const £cost = 29.99
-const @name = "ali"
-const $cost = 20.99
-const _name = "marcos"
-const 123_name = "dinah"
-const früh = 27
-</code></pre>
     <p>What is logged in the console?</p>
     <pre><code class="language-javascript">let a = '2';
 const b = 50;
@@ -306,6 +304,20 @@ console.log(newString);
       <li>"Fine, thanks."</li>
       <li>"19 Fine, thanks."</li>
       <li>Uncaught ReferenceError</li>
+    </ol>
+    <p>What is logged in the console?</p>
+    <pre><code class="language-javascript">const myString = 'Hey, how you doing?';
+
+(function () {
+  myString = myString.length + ' Fine, thanks.';
+})();
+
+console.log(myString);
+</code></pre>
+    <ol>
+      <li>"Fine, thanks."</li>
+      <li>"19 Fine, thanks."</li>
+      <li>TypeError</li>
     </ol>
     <blockquote>
       <p><code>NaN</code> literally means <code>Not-a-Number</code></p>
@@ -367,11 +379,11 @@ console.log(newString);
       </tbody>
     </table>
     <p>The modulus operator is an interesting one that will pop up in your code from time to time. This operator takes a number, divides it by another number, then returns the remainder.</p>
-    <pre><code class="language-javascript">let x = 3;
+    <pre><code class="language-javascript">let x = 4;
 
 x %= 2;
 
-console.log(x); // 1
+console.log(x); // 0
 </code></pre>
     <h4>Try this exam question</h4>
     <p>What will be logged in the console?</p>
@@ -449,21 +461,31 @@ console.log(x); // 0
     <p>The line <code>x -= 2;</code> in plain English would be: "Take x, subtract 2, then assign the result back to x"</p>
     <h4>Try these exam questions</h4>
     <p>What is logged in the console?</p>
-    <pre><code class="language-javascript">let result = 3189;
+    <pre><code class="language-javascript">let result = 20;
 
-result += 21;
+result += 20;
 result -= 10;
-result *= 66;
+result *= 3;
 
 console.log(result);
 </code></pre>
     <ol>
-      <li>211200</li>
-      <li>210100</li>
-      <li>212121</li>
+      <li>90</li>
+      <li>60</li>
+      <li>20</li>
     </ol>
     <p>What is wrong with this code?</p>
     <pre><code class="language-javascript">if (a = b) {
+  console.log("numbers are the same!")
+} else {
+  console.log("numbers are not the same!")
+}
+</code></pre>
+    <p>Read this code carefully. What is printed to the console?</p>
+    <pre><code class="language-javascript">let a = 3;
+let b = 2;
+
+if (a = b) {
   console.log("numbers are the same!")
 } else {
   console.log("numbers are not the same!")
@@ -482,7 +504,7 @@ console.log(result);
       <tbody>
         <tr>
           <td align="left">Math.random()</td>
-          <td align="left">Returns a random number between 0 and 1</td>
+          <td align="left">Returns a random number in the range 0 to less than 1 (inclusive of 0, but not 1)</td>
           <td align="left"><code>let randomNumber = Math.random()</code></td>
         </tr>
         <tr>
@@ -538,12 +560,12 @@ console.log(result);
         <tr>
           <td align="left">===</td>
           <td align="left">Equal to value and type</td>
-          <td align="left"><code>x = 2 === "2"</code></td>
+          <td align="left"><code>x = 2 === 2</code></td>
         </tr>
         <tr>
           <td align="left">!=</td>
           <td align="left">Not equal to value</td>
-          <td align="left"><code>x = 2 != 2</code></td>
+          <td align="left"><code>x = 2 != 3</code></td>
         </tr>
         <tr>
           <td align="left">!==</td>
@@ -553,12 +575,12 @@ console.log(result);
         <tr>
           <td align="left">></td>
           <td align="left">Greater than</td>
-          <td align="left"><code>x = 2 > 2</code></td>
+          <td align="left"><code>x = 2 > 1</code></td>
         </tr>
         <tr>
           <td align="left">&#x3C;</td>
           <td align="left">Less than</td>
-          <td align="left"><code>x = 2 &#x3C; 2</code></td>
+          <td align="left"><code>x = 2 &#x3C; 3</code></td>
         </tr>
         <tr>
           <td align="left">&#x3C;=</td>
@@ -582,13 +604,6 @@ console.log(val1-- > ++val2);
     <ol>
       <li>True</li>
       <li>False</li>
-    </ol>
-    <pre><code class="language-javascript">console.log(null || undefined || { greeting: 'Hi!' } || true);
-</code></pre>
-    <ol>
-      <li>null</li>
-      <li>true</li>
-      <li><code>{ greeting: 'Hi!" }</code></li>
     </ol>
     <pre><code class="language-javascript">console.log(null > '');
 </code></pre>
@@ -656,7 +671,15 @@ if (!y) {
   console.log(y);
 }
 </code></pre>
-    <h4>Try this exam question</h4>
+    <h4>Try these exam questions</h4>
+    <p>What is logged to the console?</p>
+    <pre><code class="language-javascript">console.log(null || undefined || { greeting: 'Hi!' } || true);
+</code></pre>
+    <ol>
+      <li>null</li>
+      <li>true</li>
+      <li><code>{ greeting: 'Hi!" }</code></li>
+    </ol>
     <p>What is logged to the console?</p>
     <pre><code class="language-javascript">if (!true &#x26;&#x26; !false) {
   console.log('true');
