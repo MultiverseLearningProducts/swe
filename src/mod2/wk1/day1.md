@@ -524,19 +524,6 @@ console.log(val1-- > ++val2);
 1. True
 2. False
 
-```javascript
-console.log(null > '');
-```
-
-1. True
-2. False
-
-```javascript
-console.log('' > null);
-```
-
-1. True
-2. False
 
 ```javascript
 console.log(null === 0);
@@ -580,15 +567,6 @@ if (!y) {
 ```
 
 #### Try these exam questions
-What is logged to the console?
-
-```javascript
-console.log(null || undefined || { greeting: 'Hi!' } || true);
-```
-
-1. null
-2. true
-3. `{ greeting: 'Hi!" }`
 
 What is logged to the console?
 
