@@ -501,14 +501,14 @@ Comparison operators are typically used in conditional statements to check one o
 
 | Operator | Purpose                     | Example         |
 | :------- | :-------------------------- | :-------------- |
-| ==       | Equal to value              | `x = 2 == 2 `   |
-| ===      | Equal to value and type     | `x = 2 === 2` |
-| !=       | Not equal to value          | `x = 2 != 3`    |
-| !==      | Not equal to value and type | `x = 2 !== "2"` |
-| >        | Greater than                | `x = 2 > 1`     |
-| <        | Less than                   | `x = 2 < 3`     |
-| <=       | Less than or equal to       | `x = 2 <= 2`    |
-| >=       | Greater than or equal to    | `x = 2 >= 2`    |
+| ==       | Equal to value              | `'2' == 2 `   |
+| ===      | Equal to value and type     | `2 === 2` |
+| !=       | Not equal to value          | `2 != 3`    |
+| !==      | Not equal to value and type | `2 !== '2'` |
+| >        | Greater than                | `2 > 1`     |
+| <        | Less than                   | `2 < 3`     |
+| <=       | Less than or equal to       | `2 <= 2`    |
+| >=       | Greater than or equal to    | `3 >= 2`    |
 
 #### Try these exam questions
 
