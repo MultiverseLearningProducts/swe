@@ -51,12 +51,12 @@ Objects include functions and arrays. Objects are mutable - their values can cha
 Objects are compared by reference instead of value. Two objects are only strictly equal if they refer to the same underlying object.
 
 ```javascript
-const obj1 = { 'name': 'sha' };
-const obj2 = { 'name': 'sha' };
+const obj1 = { name: 'sha' };
+const obj2 = { name: 'sha' };
 obj1 === obj2;  // false
 ```
 ```javascript
-const obj1 = { 'name': 'sha' };
+const obj1 = { name: 'sha' };
 const obj2 = obj1;
 obj1 === obj2;  // true
 ```
@@ -131,7 +131,7 @@ Key points for the exam:
 The "Blown Away" hair salon offers discounts of 20% on Wednesdays and Thursdays.
 You need to write a JavaScript function that meets the following requirements:
 
-Accepts the day of the week as a string
+Accepts the day of the week as a string. 
 Returns the appropriate discount
 
 How should you complete the following code?
@@ -155,7 +155,7 @@ function getDiscount(day) {
 
 ### Functions
 
-There is not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function. Find the different function strategies in the exam questions below.
+There are not one, not two, but three ways to declare functions. This is because there's the older way, a newer way, plus a convenient option where we can assign a variable equal to a function. Find the different function strategies in the exam questions below.
 
 #### Try these exam questions
 
@@ -602,5 +602,14 @@ if (!true && !false) {
 
 1. "true"
 2. "false"
+
+# Video resources
+* [Javascript types](https://www.youtube.com/watch?v=e-_mDyqm2oU)
+* [Equality](https://www.youtube.com/watch?v=nQJrfphxKBg)
+* [Switch statement](https://www.tabnine.com/academy/javascript/how-to-use-switch-statements-in-javascript/)
+* [Operators](https://academyclass.com/blog/different-javascript-operators/)
+* [Scope](https://www.youtube.com/watch?v=XgSjoHgy3Rk) - up to 3:30
+
+
 
 [main](/swe)|[prev](/swe/mod1/wk2/day5.html)|[next](/swe/mod2/wk1/day2.html)
