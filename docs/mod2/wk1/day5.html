@@ -60,7 +60,35 @@
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
     <p>In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.</p>
     <h4>Try these exam questions</h4>
-    <p>Try the <a href="https://applied.multiverse.io/mod/quiz/view.php?id=9958">Applied Strings Quiz</a></p>
+    <p>What is logged to the console?</p>
+    <pre><code class="language-javascript">function findText() {
+  let loremIpsum =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  let i = loremIpsum.indexOf('Duis');
+  let newString = loremIpsum.substring(0, i);
+
+  newString = newString.trim();
+
+  let result;
+
+  if (newString.endsWith('consequence')) {
+    result += newString.toUpperCase();
+  } else {
+    result += loremIpsum.lastIndexOf('consequat');
+  }
+
+  return result;
+}
+
+console.log(findText());
+</code></pre>
+    <ol>
+      <li>NaN</li>
+      <li>221</li>
+      <li>LOREM IPSUM DOLOR SIT AMET</li>
+    </ol>
+    <p>Also try the <a href="https://applied.multiverse.io/mod/quiz/view.php?id=9958">Applied Strings Quiz</a></p>
     <h3>Common number methods</h3>
     <p>In addition to the string methods, there are a number of built-in number methods. Here are the ones you'll need to know for the exam:</p>
     <table>
