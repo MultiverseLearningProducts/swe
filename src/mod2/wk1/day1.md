@@ -19,7 +19,7 @@ You are going to become a Microsoft Technical Associate by gaining an industry r
 
 ## JavaScript types
 
-### Primitives
+### Primitives (Value types)
 
 Primitives are the simplest datatypes and are "built-in" to the JavaScript language. Examples include:
 
@@ -45,7 +45,7 @@ Note that even though we've transformed the string to uppercase, the original va
 
 Primitives are compared by value. Two primitives are strictly equal if they have the same value.
 
-### Objects
+### Objects (Reference Types)
 Objects include functions and arrays. Objects are mutable - their values can change.
 
 Objects are compared by reference instead of value. Two objects are only strictly equal if they refer to the same underlying object.
@@ -607,7 +607,7 @@ if (!true && !false) {
 * [Javascript types](https://www.youtube.com/watch?v=e-_mDyqm2oU)
 * [Equality](https://www.youtube.com/watch?v=nQJrfphxKBg)
 * [Switch statement](https://www.tabnine.com/academy/javascript/how-to-use-switch-statements-in-javascript/)
-* [Operators](https://academyclass.com/blog/different-javascript-operators/)
+* [Operators](https://www.youtube.com/watch?v=xlz3akrBhRI&t=5s)
 * [Scope](https://www.youtube.com/watch?v=XgSjoHgy3Rk) - up to 3:30
 
 
