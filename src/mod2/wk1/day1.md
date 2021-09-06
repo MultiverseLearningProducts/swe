@@ -14,12 +14,14 @@ You are going to become a Microsoft Technical Associate by gaining an industry r
 
 ## Learning Objectives
 
-- Learn about primitives
+- Learn about JavaScript types
 - Learn about conditionals
+
+## JavaScript types
 
 ### Primitives
 
-Primitives are the simplest datatypes and are "built-in" to the JavaScript language. There are 7 primitive data types, but we'll focus on the main 5 for now:
+Primitives are the simplest datatypes and are "built-in" to the JavaScript language. Examples include:
 
 | Primitive | Example                         |
 | :-------- | :------------------------------ |
@@ -40,6 +42,24 @@ console.log(myString.toUpperCase(), myString); // HI, DANIEL Hi, Daniel
 > Don't know what datatype you're dealing with? `console.log(typeof myString)`
 
 Note that even though we've transformed the string to uppercase, the original variable has not been changed.
+
+Primitives are compared by value. Two primitives are strictly equal if they have the same value.
+
+### Objects
+Objects include functions and arrays. Objects are mutable - their values can change.
+
+Objects are compared by reference instead of value. Two objects are only strictly equal if they refer to the same underlying object.
+
+```javascript
+const obj1 = { 'name': 'sha' };
+const obj2 = { 'name': 'sha' };
+obj1 === obj2;  // false
+```
+```javascript
+const obj1 = { 'name': 'sha' };
+const obj2 = obj1;
+obj1 === obj2;  // true
+```
 
 #### Try this exam question
 
