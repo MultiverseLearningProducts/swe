@@ -19,11 +19,12 @@
     <h1>Lesson 1</h1>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>Learn about primitives</li>
+      <li>Learn about JavaScript types</li>
       <li>Learn about conditionals</li>
     </ul>
+    <h2>JavaScript types</h2>
     <h3>Primitives</h3>
-    <p>Primitives are the simplest datatypes and are "built-in" to the JavaScript language. There are 7 primitive data types, but we'll focus on the main 5 for now:</p>
+    <p>Primitives are the simplest datatypes and are "built-in" to the JavaScript language. Examples include:</p>
     <table>
       <thead>
         <tr>
@@ -64,6 +65,18 @@ console.log(myString.toUpperCase(), myString); // HI, DANIEL Hi, Daniel
       <p>Don't know what datatype you're dealing with? <code>console.log(typeof myString)</code></p>
     </blockquote>
     <p>Note that even though we've transformed the string to uppercase, the original variable has not been changed.</p>
+    <p>Primitives are compared by value. Two primitives are strictly equal if they have the same value.</p>
+    <h3>Objects</h3>
+    <p>Objects include functions and arrays. Objects are mutable - their values can change.</p>
+    <p>Objects are compared by reference instead of value. Two objects are only strictly equal if they refer to the same underlying object.</p>
+    <pre><code class="language-javascript">const obj1 = { 'name': 'sha' };
+const obj2 = { 'name': 'sha' };
+obj1 === obj2;  // false
+</code></pre>
+    <pre><code class="language-javascript">const obj1 = { 'name': 'sha' };
+const obj2 = obj1;
+obj1 === obj2;  // true
+</code></pre>
     <h4>Try this exam question</h4>
     <p>The following variables have been initialised.</p>
     <pre><code class="language-javascript">let destination = 'London';
