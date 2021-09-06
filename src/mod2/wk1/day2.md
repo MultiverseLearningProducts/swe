@@ -64,17 +64,6 @@ for (let i = 0; i < myArray1.length; i++) {
 
 > Another keyword related to break is `continue`. This keyword skips the current loop iteration and continues with the next one. Note that `continue` is NOT valid in a switch statement.
 
-### Try these exam questions
-In the code below, the name and age of students are held in the arrays. How would you output Fariah's age?
-
-```javascript
-let student1 = ['Jay', 24];
-let student2 = ['Mia', 45];
-let student3 = ['Fariah', 19];
-
-let students = [student1, student2, student3];
-```
-
 
 # Lesson 2
 
@@ -120,7 +109,16 @@ In the code example above, we're accessing the first nested array, then the thir
 
 To loop over a multi-dimensional array, we can deploy our trusty for loop again except this time, we need to use a nested for loop. See the exam question below for an example and a challenge.
 
-### Try this exam question
+### Try these exam questions
+In the code below, the name and age of students are held in the arrays. How would you output Fariah's age?
+
+```javascript
+let student1 = ['Jay', 24];
+let student2 = ['Mia', 45];
+let student3 = ['Fariah', 19];
+
+let students = [student1, student2, student3];
+```
 
 You want to skip over the loop iterations that are even numbers and break out of the loop altogether if a duplicate value is found. Extend the code below to do this.
 

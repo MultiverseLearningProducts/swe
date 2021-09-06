@@ -106,37 +106,6 @@ console.log(result); //  ["holy smokes", "007", "The name's Bond"]
 
 Again, this employs a callback function. This time though, the filter method returns an array of all the matches. In the case above, we convert everything to a string, then check if the length is greater than two.
 
-### Try this exam question
-
-What is logged to the console?
-
-```javascript
-function findText() {
-  let loremIpsum =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-  let i = loremIpsum.indexOf('Duis');
-  let newString = loremIpsum.substring(0, i);
-
-  newString = newString.trim();
-
-  let result;
-
-  if (newString.endsWith('consequence')) {
-    result += newString.toUpperCase();
-  } else {
-    result += loremIpsum.lastIndexOf('consequat');
-  }
-
-  return result;
-}
-
-console.log(findText());
-```
-
-1. NaN
-2. 221
-3. LOREM IPSUM DOLOR SIT AMET
 
 # Lesson 3
 
