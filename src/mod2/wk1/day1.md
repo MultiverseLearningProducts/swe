@@ -468,9 +468,9 @@ JavaScript contains a number of useful Math methods that can do the hard work fo
 | Operator      | Purpose                                                | Example                             |
 | :------------ | :----------------------------------------------------- | :---------------------------------- |
 | Math.random() | Returns a random number in the range 0 to less than 1 (inclusive of 0, but not 1)                 | `Math.random()`  |
-| Math.ceil()   | Returns the value rounded up to nearest whole number   | `let roundedUp = Math.ceil(4.4)`    |
-| Math.floor()  | Returns the value rounded down to nearest whole number | `let roundedDown = Math.floor(4.4)` |
-| Math.round()  | Returns the value rounded to the nearest whole number | `let rounded = Math.round(4.4)` |
+| Math.ceil()   | Returns the value rounded up to nearest whole number   | `Math.ceil(4.4) // 5`    |
+| Math.floor()  | Returns the value rounded down to nearest whole number | `Math.floor(4.9) // 4` |
+| Math.round()  | Returns the value rounded to the nearest whole number | `Math.round(4.4) // 4` |
 | Math.abs()  | Make the number positive | `Math.abs(-1) // 1` |
 
 #### Try this exam question
