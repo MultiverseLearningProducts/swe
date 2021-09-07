@@ -152,10 +152,10 @@ Arrays have a number of built-in methods you can use to manipulate them in some 
 
 | Method  | Example               | Effect                              |
 | :------ | :-------------------- | ----------------------------------- |
-| Push    | `myArray1.push(1)`,`myArray1.push("cat", "dog")   | Adds item(s) to the end of array       |
+| Push    | `myArray1.push(1)`   | Adds item(s) to the end of array       |
 | Pop     | `myArray1.pop()`      | Removes the last item in the array  |
 | Shift   | `myArray1.shift()`    | Removes the first item in the array |
-| Unshift | `myArray1.unshift(1)`,`myArray1.unshift("cat", "dog")` | Adds item(s) to beginning of array     |
+| Unshift | `myArray1.unshift("cat", "dog")` | Adds item(s) to beginning of array     |
 
 Here is a [fun animation](https://simplestepscode.com/array-push-pop-shift-unshift/) to help you remember these methods.
 
