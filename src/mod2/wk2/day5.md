@@ -12,6 +12,8 @@ Below is information on how to book the exam as well, what to expect on the day 
 
 - You'll need a voucher code, which your coach will give to you
 
+- Decide whether to book at a test centre or [online](https://home.pearsonvue.com/microsoft/onvue). Note the [system requirements and rules](https://home.pearsonvue.com/microsoft/onvue) for online tests.
+
 ## What to expect on the day
 You will have 45 minutes to complete 39 multiple choice questions. The pass mark is 70%.
 

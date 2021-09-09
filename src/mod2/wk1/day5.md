@@ -13,19 +13,20 @@ Today we will take a look at a number of string and number methods available bef
 
 ### Common string methods
 
-JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings. We've already seen `toString()`, `length` and `indexOf`. Here are some common ones you will come across:
+JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings Here are some common ones you will come across:
 
 | Method       | Purpose                                                             | Example                   |
 | :----------- | :------------------------------------------------------------------ | :------------------------ |
-| `.length`    | Returns the length of a string                                      | `y.length`                |
-| `toString()` | Converts a variable to a string                                     | `y = y.toString()`        |
-| `indexOf`    | Returns the starting index of the first occurence of a string       | `y.indexOf('abc')`        |
-| `slice`      | Extracts a part of a string, starting and ending at defined indexes | `y.slice(0, 3)`           |
-| `replace`    | Replaces an occurence of a string                                   | `y.replace('abc', 'xyz')` |
+| `.length`    | Returns the length of a string                                      | `y.length`                |      |
+| `indexOf`    | Returns the starting index of the first occurence of a string       | `y.console.log('Multiverse'.indexOf('e')) // 6`        |
+| `lastIndexOf`    | Returns the starting index of the last occurence of a string       | `y.console.log('Multiverse'.lastIndexOf('e')) // 9`        |
+| `endsWith`    | Does the string ends with the characters of a specified string?     | `y.console.log('Multiverse'.endsWith('e')) // true`        |
+| `slice`      | Extracts a part of a string, starting and ending at defined indexes | `console.log('HelloWorld'.slice(0, 5)) // Hello`           |
+| `replace`    | Returns a new string                                    | `console.log('JavaScript'.replace('Java', 'Type')); // "TypeScript"` |
+| `substring`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // "av"`|
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
-In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.
 
 #### Try these exam questions
 
