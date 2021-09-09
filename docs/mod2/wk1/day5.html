@@ -20,7 +20,7 @@
       <li>Learn and apply number methods</li>
     </ul>
     <h3>Common string methods</h3>
-    <p>JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings. We've already seen <code>toString()</code>, <code>length</code> and <code>indexOf</code>. Here are some common ones you will come across:</p>
+    <p>JavaScript comes with a number of convenient, built-in string methods that can help us find and manipulate strings Here are some common ones you will come across:</p>
     <table>
       <thead>
         <tr>
@@ -36,29 +36,38 @@
           <td align="left"><code>y.length</code></td>
         </tr>
         <tr>
-          <td align="left"><code>toString()</code></td>
-          <td align="left">Converts a variable to a string</td>
-          <td align="left"><code>y = y.toString()</code></td>
-        </tr>
-        <tr>
           <td align="left"><code>indexOf</code></td>
           <td align="left">Returns the starting index of the first occurence of a string</td>
-          <td align="left"><code>y.indexOf('abc')</code></td>
+          <td align="left"><code>y.console.log('Multiverse'.indexOf('e')) // 6</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>lastIndexOf</code></td>
+          <td align="left">Returns the starting index of the last occurence of a string</td>
+          <td align="left"><code>y.console.log('Multiverse'.lastIndexOf('e')) // 9</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>endsWith</code></td>
+          <td align="left">Does the string ends with the characters of a specified string?</td>
+          <td align="left"><code>y.console.log('Multiverse'.endsWith('e')) // true</code></td>
         </tr>
         <tr>
           <td align="left"><code>slice</code></td>
           <td align="left">Extracts a part of a string, starting and ending at defined indexes</td>
-          <td align="left"><code>y.slice(0, 3)</code></td>
+          <td align="left"><code>console.log('HelloWorld'.slice(0, 5)) // Hello</code></td>
         </tr>
         <tr>
           <td align="left"><code>replace</code></td>
-          <td align="left">Replaces an occurence of a string</td>
-          <td align="left"><code>y.replace('abc', 'xyz')</code></td>
+          <td align="left">Returns a new string</td>
+          <td align="left"><code>console.log('JavaScript'.replace('Java', 'Type')); // "TypeScript"</code></td>
+        </tr>
+        <tr>
+          <td align="left"><code>substring</code></td>
+          <td align="left">Returns a new string containing part of the original string</td>
+          <td align="left"><code>console.log('Java'.substring(1, 3)) // "av"</code></td>
         </tr>
       </tbody>
     </table>
     <p>Check out the full list of methods over on the <a href="https://www.w3schools.com/js/js_string_methods.asp">W3C website</a>.</p>
-    <p>In addition to the above, ensure you understand: lastIndexOf, endsWith and substring.</p>
     <h4>Try these exam questions</h4>
     <p>What is logged to the console?</p>
     <pre><code class="language-javascript">function findText() {
