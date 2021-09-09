@@ -179,4 +179,8 @@ console.log(name, number, book.name);
 2. SHANIE 123678-1 INTRO TO JAVA
 3. shanie 123678 INTRO TO JAVA
 
+# Video resources
+* [JavaScript Value vs Reference Types](https://www.youtube.com/watch?v=fD0t_DKREbE)
+* [Reference Vs Value In JavaScript](https://www.youtube.com/watch?v=-hBJz2PPIVE)
+
 [main](/swe)|[prev](/swe/mod2/wk1/day3.html)|[next](/swe/mod2/wk1/day5.html);

@@ -26,6 +26,7 @@ JavaScript comes with a number of convenient, built-in string methods that can h
 | `substring`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
 | `trim`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
 | `repeat`    | Returns a new string copied x times                                   | ` console.log('Java'.repeat(2))  // JavaJava`|
+| `concat`    | Returns a new string copied x times                                   | ` console.log('Java'.concat('Script') // JavaScript`|
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
@@ -167,6 +168,10 @@ console.log(myDate.getDay()); // 4
 There are a couple of quirks to be aware of: 
 * months start at 0. So January is 0, December is 11.
 * days of the week start at 0 with Sunday being day 0, Saturday day 6. 
+
+Also, if you see a date in this format:
+`2021-09-09T13:02:21.463Z`
+- the `Z` refers to "Zulu time" (UTC) - think of it as GMT
 
 # Lesson 3
 
