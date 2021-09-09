@@ -17,13 +17,15 @@ JavaScript comes with a number of convenient, built-in string methods that can h
 
 | Method       | Purpose                                                             | Example                   |
 | :----------- | :------------------------------------------------------------------ | :------------------------ |
-| `.length`    | Returns the length of a string                                      | `y.length`                |      |
-| `indexOf`    | Returns the starting index of the first occurence of a string       | `y.console.log('Multiverse'.indexOf('e')) // 6`        |
-| `lastIndexOf`    | Returns the starting index of the last occurence of a string       | `y.console.log('Multiverse'.lastIndexOf('e')) // 9`        |
-| `endsWith`    | Does the string ends with the characters of a specified string?     | `y.console.log('Multiverse'.endsWith('e')) // true`        |
+| `.length`    | Returns the length of a string                                      | `console.log('Multiverse'.length) // 10`                |      |
+| `indexOf`    | Returns the starting index of the first occurence of a string       | `console.log('Multiverse'.indexOf('e')) // 6`        |
+| `lastIndexOf`    | Returns the starting index of the last occurence of a string       | `console.log('Multiverse'.lastIndexOf('e')) // 9`        |
+| `endsWith`    | Does the string ends with the characters of a specified string?     | `console.log('Multiverse'.endsWith('e')) // true`        |
 | `slice`      | Extracts a part of a string, starting and ending at defined indexes | `console.log('HelloWorld'.slice(0, 5)) // Hello`           |
-| `replace`    | Returns a new string                                    | `console.log('JavaScript'.replace('Java', 'Type')); // "TypeScript"` |
-| `substring`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // "av"`|
+| `replace`    | Returns a new string with whitespace trimmed from both ends | `console.log(' JavaScript '.trim()); // JavaScript` |
+| `substring`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
+| `trim`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
+| `repeat`    | Returns a new string copied x times                                   | ` console.log('Java'.repeat(2))  // JavaJava`|
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
