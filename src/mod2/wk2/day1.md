@@ -240,9 +240,9 @@ Tip: one is an inline event and the other is in an inline script.
 ```
 
 ## Challenges
-1. Create an HTML page containing a Button. Add another Button with the words "Switch it" on it, which disables `myButton` when pressed and then enables it when pressed again. Clue - there is a `.disabled` property on a button! 
+1. Create an HTML page containing a Button called `myButton`. Add another Button with the words "Switch it" on it, which disables `myButton` when pressed and then enables it when pressed again. Clue - there is a `.disabled` property on a button! 
 
-2. Create an HTML page which prints out the name of the key pressed (in the correct case) when a user types into a text box. 
+2. Create an HTML page which captures each key press that a user types into a input text box and prints them, one at a time, below the text box.
 
 3. Create an HTML page which changes from one image to another when the user hovers their mouse over the image.
 
