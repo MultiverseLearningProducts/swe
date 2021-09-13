@@ -34,7 +34,9 @@ There are a number of ways in which we can retrieve specific elements of the DOM
 
 You will also need to know how to change the value of an element or element attribute.
 > To change the value of an HTML attribute use element`.setAttribute()` e.g. `button.setAttribute("class", "visible")`;
+
 > To change the value of a form field use `.value` e.g. `document.getElementById("someFormField").value=newValue`
+
 > To change the value of any other type of element use `.innerHTML` e.g. `document.getElementById("p1").innerHTML = "New text!"`
 
 > To retrieve the URL of a web page, type `window.location.href` (note this can be simplified to `location.href`). 
@@ -236,5 +238,15 @@ Tip: one is an inline event and the other is in an inline script.
   </body>
 </html>
 ```
+
+## Challenges
+1. Create an HTML page containing a Button. Add another Button with the words "Switch it" on it, which disables `myButton` when pressed and then enables it when pressed again. Clue - there is a `.disabled` property on a button! 
+
+2. Create an HTML page which prints out the name of the key pressed (in the correct case) when a user types into a text box. 
+
+3. Create an HTML page which changes from one image to another when the user hovers their mouse over the image.
+
+4. Create an HTML page which displays the current date when a button is clicked
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day5.html)|[next](/swe/mod2/wk2/day2.html);
