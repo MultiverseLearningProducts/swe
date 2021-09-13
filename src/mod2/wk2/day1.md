@@ -248,5 +248,7 @@ Tip: one is an inline event and the other is in an inline script.
 
 4. Create an HTML page which displays the current date when a button is clicked
 
+5. Create an HTML page which displays the URL of the current page when you click a button 
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day5.html)|[next](/swe/mod2/wk2/day2.html);
