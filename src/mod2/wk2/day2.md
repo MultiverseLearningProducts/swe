@@ -12,20 +12,29 @@ Today we will look at how to add elements to our page dynamically. We'll also lo
 
 ## Adding elements dynamically
 
-The exam requires you to know how to use the `document.write()` method to add HTML or JavaScript content. 
+The exam requires you to know how to use the `document.write()` and `document.createElement()` methods to content to an HTML page. 
 
-> Note that if `document.write` is used after the HTML document is fully loaded, it will delete all existing HTML.
+`document.createElement()` allows us to create elements of a particular type and insert them in specific places. For example, this is how we could create a button and add it to the body of the HTML.
 
-Let's assume we have the following HTML we'd like to append to our source code:
+```javascript
+let myButton = document.createElement("button");   
+myButton.innerHTML = "CLICK ME";                   
+document.body.appendChild(myButton);            
+```
+
+`document.write` allows us to write HTML expressions or JavaScript code directly to a document. Content is output precisely where the JavaScript statement is embedded.
+
+For exampe, let's assume we have the following HTML we'd like to append to our source code.
 
 ```html
 <h1>Hello World!</h1><p>Have a nice day!</p>
 ```
 
-We can add this using the following JavaScript:
+We can add this using the following JavaScript.
 ```javascript
 document.write("<h1>Hello World!</h1><p>Have a nice day!</p>")
 ```
+> Note that if `document.write` is used after the HTML document is fully loaded, it will delete all existing HTML.
 
 ### Try this exam question
 
