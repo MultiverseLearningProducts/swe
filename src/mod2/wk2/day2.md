@@ -12,7 +12,7 @@ Today we will look at how to add elements to our page dynamically. We'll also lo
 
 ## Adding elements dynamically
 
-The exam requires you to know how to use the `document.write()` and `document.createElement()` methods to content to an HTML page. 
+The exam requires you to know how to use the `document.write()` and `document.createElement()` methods to content to an HTML page.  
 
 `document.createElement()` allows us to create elements of a particular type and insert them in specific places. For example, this is how we could create a button and add it to the body of the HTML.
 
