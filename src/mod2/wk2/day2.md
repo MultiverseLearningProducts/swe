@@ -150,6 +150,8 @@ Alternatively, you can place your JavaScipt in an external `.js` file, and link 
 * External scripts can also go in both the `<body>` and `<head>` sections of an HTML page
 * Placing JavaScript in an external file separates HTML and code and makes files easier to read
 
+For more information and to try out some examples refer to [this tutorial](https://www.w3schools.com/js/js_whereto.asp)
+
 # Lesson 4
 
 ## Learning Objectives
