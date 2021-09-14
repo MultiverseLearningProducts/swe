@@ -81,9 +81,9 @@ document.body.appendChild(myButton);
     <pre><code class="language-javascript">try {
   throw new Error("There's been a problem!");
 } catch (e) {
-  console.log(e.message);
+  console.log("e.message");
 } finally {
-  console.log(e.message);
+  console.log("finally called");
 }
 </code></pre>
     <ol>
@@ -122,16 +122,14 @@ document.body.appendChild(myButton);
   &#x3C;body>&#x3C;/body>
 &#x3C;/html>
 </code></pre>
-    <h3>Try these exam questions</h3>
-    <p>True or false?</p>
-    <ol>
-      <li>Inline scripts are cached</li>
-      <li>External scripts can be cached</li>
-      <li>You should always use external scripts where possible</li>
-      <li>You shouldn't inline large JavaScript files</li>
-      <li>You should put large JavaScript files in an external script</li>
-      <li>Inline scripts can only go in the <code>&#x3C;body></code> section</li>
-    </ol>
+    <h3>Key things to know for the exam</h3>
+    <ul>
+      <li>Inline scripts are <strong>not</strong> cached (a browser can't cache part of a file)</li>
+      <li>External scripts can be cached (they are their own file)</li>
+      <li>Inline scripts can go in both the <code>&#x3C;body></code> and <code>&#x3C;head></code> sections of an HTML page</li>
+      <li>External scripts can also go in both the <code>&#x3C;body></code> and <code>&#x3C;head></code> sections of an HTML page</li>
+      <li>Placing JavaScript in an external file separates HTML and code and makes files easier to read</li>
+    </ul>
     <h1>Lesson 4</h1>
     <h2>Learning Objectives</h2>
     <ul>
