@@ -28,37 +28,24 @@
         <p>When you request for a resource like a web page or image, the GET request will be used.</p>
       </li>
       <li>
-        <p>For the GET request, additional information can be set in the query parameters where it's visible to all</p>
-      </li>
-      <li>
-        <p>When you submit a form, either the GET or POST can be used - the main difference is where the data to be sent is stored</p>
+        <p>For GET requests, additional information can be sent in the query parameters where it's visible to all e.g. <code>q=apple&#x26;category=fruit</code> GET requests <strong>do not</strong> have message bodies.</p>
       </li>
       <li>
         <p>A form POST request sends data to the server for processing in the message body, hidden from the user (but not encrypted!)</p>
       </li>
       <li>
-        <p>A form GET request sends the form data in the query string</p>
+        <p>Typically, POST is used to submit form data. If a GET is used, the data is sent in the query parameters.</p>
       </li>
     </ul>
     <h3>Try these exam questions</h3>
     <p>True or false?</p>
     <ol>
-      <li>
-        <p>GET requests are cached</p>
-      </li>
-      <li>
-        <p>POST requests are cached</p>
-      </li>
-      <li>
-        <p>GET requests have character limits</p>
-      </li>
-      <li>
-        <p>You should always use the POST method when handling sensitive data</p>
-      </li>
-      <li>
-        <p>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</p>
-      </li>
+      <li>GET requests are cached</li>
+      <li>POST requests are cached</li>
+      <li>GET requests have character limits</li>
+      <li>You should always use the POST method when handling sensitive data</li>
     </ol>
+    <p>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</p>
     <pre><code class="language-html">&#x3C;form action="http://mywebsite.org/search" method="GET">
   &#x3C;label for="taskName">Task Name&#x3C;/label>
   &#x3C;input
