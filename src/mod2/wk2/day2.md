@@ -12,46 +12,18 @@ Today we will look at how to add elements to our page dynamically. We'll also lo
 
 ## Adding elements dynamically
 
-Let's pretend we have the following label we'd like to append to the source code:
+The exam requires you to know how to use the `document.write()` method to add HTML or JavaScript content. 
+
+> Note that if `document.write` is used after the HTML document is fully loaded, it will delete all existing HTML.
+
+Let's assume we have the following HTML we'd like to append to our source code:
 
 ```html
-<label for="someInput" class="error-label">This field cannot be empty</label>
+<h1>Hello World!</h1><p>Have a nice day!</p>
 ```
 
-How could you create this dynamically in JavaScript and insert it? How could you add the `for` attribute as well as the class and the inner text?
-
-### Try this exam question
-
-Research the questions above then fill in the blanks:
-
-```javascript
-var myLabel = document.___________('_____');
-
-myLabel.____________setAttribute('___', '_________');
-myLabel._________.add('error-label');
-myLabel._________ = 'Error label content';
-```
-
-How could you then write this to the source? There are a number of ways to achieve this, but in terms of the exam, we only need to know `document.write`. This DOM method will insert anything you wish into the source, including our dynamically generated label above.
-
-### Try this exam question
-
-You have been asked to evaluate the following source code. What is written to the page?
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <script>
-      document.write('Hello World!');
-    </script>
-  </body>
-</html>
-```
-
-1. Hello World!
-2. Hello Kitty!
-3. Nothing is written to the page
+We can add this using the following JavaScript:
+`document.write("<h1>Hello World!</h1><p>Have a nice day!</p>")`
 
 ### Try this exam question
 
@@ -76,7 +48,7 @@ You have been asked to evaluate the following source code. What happens when the
 2. Nothing is written to the page dynamically, though the `h1` tag remains visible
 3. "Hello World!" is written to the page, replacing all other content
 
-> The `onload` DOM method is very useful to run some code after the page has completed loading
+> Note that the `onload` DOM method is very useful to run some code **after** the page has completed loading
 
 # Lesson 2
 
@@ -116,7 +88,7 @@ try {
 }
 ```
 
-1. "There's been a problem!" ... Uncaught ReferenceError: e is not defined
+1. "There's been a problem!" "finally called"
 2. "There's been a problem!"
 3. Nothing is printed out
 

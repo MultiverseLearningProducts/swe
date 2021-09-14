@@ -19,13 +19,11 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 
 - When you request for a resource like a web page or image, the GET request will be used.
 
-- For the GET request, additional information can be set in the query parameters where it's visible to all
-
-- When you submit a form, either the GET or POST can be used - the main difference is where the data to be sent is stored
+- For GET requests, additional information can be sent in the query parameters where it's visible to all e.g. `q=apple&category=fruit` GET requests **do not** have message bodies.
 
 - A form POST request sends data to the server for processing in the message body, hidden from the user (but not encrypted!)
 
-- A form GET request sends the form data in the query string
+- Typically, POST is used to submit form data. If a GET is used, the data is sent in the query parameters.
 
 ### Try these exam questions
 
@@ -36,7 +34,7 @@ True or false?
 3. GET requests have character limits
 4. You should always use the POST method when handling sensitive data
 
-5. You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?
+You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?
 
 ```html
 <form action="http://mywebsite.org/search" method="GET">
