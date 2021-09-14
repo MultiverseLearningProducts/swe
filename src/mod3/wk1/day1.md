@@ -34,7 +34,7 @@ What follows is a brief overview of the different inputs and outputs for each st
 
 ## Lesson
 
-!("https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&amp;loop=false&amp;delayms=3000")
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 Frameworks are abstract structures to help support our understand of complex systems. Frameworks give us:
 
