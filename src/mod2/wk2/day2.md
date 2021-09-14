@@ -23,7 +23,9 @@ Let's assume we have the following HTML we'd like to append to our source code:
 ```
 
 We can add this using the following JavaScript:
-`document.write("<h1>Hello World!</h1><p>Have a nice day!</p>")`
+```javascript
+document.write("<h1>Hello World!</h1><p>Have a nice day!</p>")
+```
 
 ### Try this exam question
 
