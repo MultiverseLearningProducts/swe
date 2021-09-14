@@ -19,35 +19,17 @@
       <li>Learn how to add an element dynamically to a page</li>
     </ul>
     <h2>Adding elements dynamically</h2>
-    <p>Let's pretend we have the following label we'd like to append to the source code:</p>
-    <pre><code class="language-html">&#x3C;label for="someInput" class="error-label">This field cannot be empty&#x3C;/label>
+    <p>The exam requires you to know how to use the <code>document.write()</code> method to add HTML or JavaScript content.</p>
+    <blockquote>
+      <p>Note that if <code>document.write</code> is used after the HTML document is fully loaded, it will delete all existing HTML.</p>
+    </blockquote>
+    <p>Let's assume we have the following HTML we'd like to append to our source code:</p>
+    <pre><code class="language-html">&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>
 </code></pre>
-    <p>How could you create this dynamically in JavaScript and insert it? How could you add the <code>for</code> attribute as well as the class and the inner text?</p>
-    <h3>Try this exam question</h3>
-    <p>Research the questions above then fill in the blanks:</p>
-    <pre><code class="language-javascript">var myLabel = document.___________('_____');
-
-myLabel.____________setAttribute('___', '_________');
-myLabel._________.add('error-label');
-myLabel._________ = 'Error label content';
-</code></pre>
-    <p>How could you then write this to the source? There are a number of ways to achieve this, but in terms of the exam, we only need to know <code>document.write</code>. This DOM method will insert anything you wish into the source, including our dynamically generated label above.</p>
-    <h3>Try this exam question</h3>
-    <p>You have been asked to evaluate the following source code. What is written to the page?</p>
-    <pre><code class="language-html">&#x3C;!DOCTYPE html>
-&#x3C;html>
-  &#x3C;body>
-    &#x3C;script>
-      document.write('Hello World!');
-    &#x3C;/script>
-  &#x3C;/body>
-&#x3C;/html>
-</code></pre>
-    <ol>
-      <li>Hello World!</li>
-      <li>Hello Kitty!</li>
-      <li>Nothing is written to the page</li>
-    </ol>
+    <p>
+      We can add this using the following JavaScript:
+      <code>document.write("&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>")</code>
+    </p>
     <h3>Try this exam question</h3>
     <p>You have been asked to evaluate the following source code. What happens when the function is called?</p>
     <pre><code class="language-html">&#x3C;!DOCTYPE html>
@@ -69,7 +51,7 @@ myLabel._________ = 'Error label content';
       <li>"Hello World!" is written to the page, replacing all other content</li>
     </ol>
     <blockquote>
-      <p>The <code>onload</code> DOM method is very useful to run some code after the page has completed loading</p>
+      <p>Note that the <code>onload</code> DOM method is very useful to run some code <strong>after</strong> the page has completed loading</p>
     </blockquote>
     <h1>Lesson 2</h1>
     <h2>Learning objectives</h2>
@@ -100,7 +82,7 @@ myLabel._________ = 'Error label content';
 }
 </code></pre>
     <ol>
-      <li>"There's been a problem!" ... Uncaught ReferenceError: e is not defined</li>
+      <li>"There's been a problem!" "finally called"</li>
       <li>"There's been a problem!"</li>
       <li>Nothing is printed out</li>
     </ol>
