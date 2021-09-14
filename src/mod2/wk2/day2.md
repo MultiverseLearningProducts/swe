@@ -93,9 +93,9 @@ You have been asked to evaluate the following code. What is printed out to the c
 try {
   throw new Error("There's been a problem!");
 } catch (e) {
-  console.log(e.message);
+  console.log("e.message");
 } finally {
-  console.log(e.message);
+  console.log("finally called");
 }
 ```
 
@@ -142,16 +142,13 @@ Alternatively, you can place your JavaScipt in an external `.js` file, and link 
 </html>
 ```
 
-### Try these exam questions
+### Key things to know for the exam
 
-True or false?
-
-1. Inline scripts are cached
-2. External scripts can be cached
-3. You should always use external scripts where possible
-4. You shouldn't inline large JavaScript files
-5. You should put large JavaScript files in an external script
-6. Inline scripts can only go in the `<body>` section
+* Inline scripts are **not** cached (a browser can't cache part of a file)
+* External scripts can be cached (they are their own file)
+* Inline scripts can go in both the `<body>` and `<head>` sections of an HTML page
+* External scripts can also go in both the `<body>` and `<head>` sections of an HTML page
+* Placing JavaScript in an external file separates HTML and code and makes files easier to read
 
 # Lesson 4
 
