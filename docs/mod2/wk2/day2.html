@@ -19,16 +19,22 @@
       <li>Learn how to add an element dynamically to a page</li>
     </ul>
     <h2>Adding elements dynamically</h2>
-    <p>The exam requires you to know how to use the <code>document.write()</code> method to add HTML or JavaScript content.</p>
+    <p>The exam requires you to know how to use the <code>document.write()</code> and <code>document.createElement()</code> methods to content to an HTML page.</p>
+    <p><code>document.createElement()</code> allows us to create elements of a particular type and insert them in specific places. For example, this is how we could create a button and add it to the body of the HTML.</p>
+    <pre><code class="language-javascript">let myButton = document.createElement("button");   
+myButton.innerHTML = "CLICK ME";                   
+document.body.appendChild(myButton);            
+</code></pre>
+    <p><code>document.write</code> allows us to write HTML expressions or JavaScript code directly to a document. Content is output precisely where the JavaScript statement is embedded.</p>
+    <p>For exampe, let's assume we have the following HTML we'd like to append to our source code.</p>
+    <pre><code class="language-html">&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>
+</code></pre>
+    <p>We can add this using the following JavaScript.</p>
+    <pre><code class="language-javascript">document.write("&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>")
+</code></pre>
     <blockquote>
       <p>Note that if <code>document.write</code> is used after the HTML document is fully loaded, it will delete all existing HTML.</p>
     </blockquote>
-    <p>Let's assume we have the following HTML we'd like to append to our source code:</p>
-    <pre><code class="language-html">&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>
-</code></pre>
-    <p>We can add this using the following JavaScript:</p>
-    <pre><code class="language-javascript">document.write("&#x3C;h1>Hello World!&#x3C;/h1>&#x3C;p>Have a nice day!&#x3C;/p>")
-</code></pre>
     <h3>Try this exam question</h3>
     <p>You have been asked to evaluate the following source code. What happens when the function is called?</p>
     <pre><code class="language-html">&#x3C;!DOCTYPE html>
