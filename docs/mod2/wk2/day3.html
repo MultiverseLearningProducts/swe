@@ -37,14 +37,17 @@
         <p>Typically, POST is used to submit form data. If a GET is used, the data is sent in the query parameters.</p>
       </li>
     </ul>
-    <h3>Try these exam questions</h3>
-    <p>True or false?</p>
-    <ol>
-      <li>GET requests are cached</li>
-      <li>POST requests are cached</li>
-      <li>GET requests have character limits</li>
+    <h3>Key things to know for the exam</h3>
+    <ul>
+      <li>The response to GET requests can be cached</li>
+      <li>The response to POST requests should not be cached</li>
+      <li>
+        GET requests are stored in the browser's history
+        POST requests are not
+      </li>
+      <li>There is a limit to how many characters you can send in a GET request URL</li>
       <li>You should always use the POST method when handling sensitive data</li>
-    </ol>
+    </ul>
     <p>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</p>
     <pre><code class="language-html">&#x3C;form action="http://mywebsite.org/search" method="GET">
   &#x3C;label for="taskName">Task Name&#x3C;/label>
@@ -77,47 +80,41 @@
       <li>Learn how to handle state with the History object</li>
     </ul>
     <h2>Handling state with the History object</h2>
-    <p>Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the <code>History</code> object. Using the History object, we can navigate through the session history programmatically. We can even push new history items to the stack as if the user had navigated to a new page.</p>
+    <p>Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the <code>History</code> object. Using the History object, we can navigate through the session history programmatically.</p>
     <p>To access the History object in the browser, simply open the console and type <code>window.history</code> or more simply <code>history</code>.</p>
     <blockquote>
-      <p>Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below)</p>
+      <p>Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below).</p>
     </blockquote>
-    <p>From here, you can programatically navigate back and forward:</p>
+    <p>Using JavaScript you can programatically navigate back and forward through the history:</p>
     <pre><code class="language-javascript">window.history.forward();
 window.history.back();
 </code></pre>
-    <h3>History.pushState</h3>
-    <p>As mentioned above, we can add URLs and an associated data payload to the history stack by using <code>history.pushState()</code>:</p>
-    <pre><code class="language-javascript">history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
-</code></pre>
-    <p>If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing <code>history.state</code>, though you can only access the state that belongs to a URL when the URL is active. For instance, I can only access the object <code>{ name: 'Daniel' }</code> when on the `<code>/hello</code> URL but nowhere else.</p>
-    <h3>When/where is pushState used?</h3>
-    <p>We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload. This is where <code>pushState</code> can help.</p>
-    <h3>Try this exam question</h3>
-    <p>The following code is run in the console when the user is on <code>https://www.google.com</code>:</p>
-    <pre><code class="language-javascript">history.pushState({ name: 'Test' }, 'Test page', '/test');
-history.pushState(
-  { name: 'Another test' },
-  'Another test page',
-  '/another-test'
-);
+    <p>Here is an example of creating a web page with "Back" and "Forward" buttons. These will work the same way the browser's Back and Forward buttons do.</p>
+    <pre><code class="language-javascript">&#x3C;html>
+&#x3C;head>
+&#x3C;script>
+function goBack() {
+  window.history.back()
+}
+function goForward() {
+  window.history.forward()
+}
+&#x3C;/script>
+&#x3C;/head>
+&#x3C;body>
 
-history.state; // what is logged?
-history.back();
-history.back();
+&#x3C;input type="button" value="Back" onclick="goBack()">
+&#x3C;input type="button" value="Forward" onclick="goForward()">
+
+&#x3C;/body>
+&#x3C;/html>
 </code></pre>
-    <p>What URL does the user end up on?</p>
-    <ol>
-      <li><a href="https://www.google.com/test">https://www.google.com/test</a></li>
-      <li><a href="https://www.google.com/another-test">https://www.google.com/another-test</a></li>
-      <li><a href="https://www.google.com">https://www.google.com</a></li>
-    </ol>
-    <p>What state is logged?</p>
-    <ol>
-      <li>{}</li>
-      <li>Undefined</li>
-      <li>{ name: 'Another test' }</li>
-    </ol>
+    <h3>Manually modifying the history state</h3>
+    <p>We can manually add an entry to the history state stack using <code>history.pushState()</code>:</p>
+    <pre><code class="language-javascript">history.pushState({ name: 'Some page' }, 'Some title', '/someURL');
+</code></pre>
+    <p>We can manually remove an entry from the history state using <code>history.popState()</code></p>
+    <p>You can also access the history state by typing <code>history.state</code>.</p>
     <h1>Lesson 3</h1>
     <h2>Learning objectives</h2>
     <ul>
