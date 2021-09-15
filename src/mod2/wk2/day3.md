@@ -84,7 +84,7 @@ window.history.back();
 ```
 Here is an example of creating a web page with "Back" and "Forward" buttons. These will work the same way the browser's Back and Forward buttons do.
 
-```javascript
+```html
 <html>
 <head>
 <script>
