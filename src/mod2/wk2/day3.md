@@ -25,14 +25,14 @@ HTTP defines a number of standard methods that can be used to send and retrieve 
 
 - Typically, POST is used to submit form data. If a GET is used, the data is sent in the query parameters.
 
-### Try these exam questions
+### Key things to know for the exam
 
-True or false?
-
-1. GET requests are cached
-2. POST requests are cached
-3. GET requests have character limits
-4. You should always use the POST method when handling sensitive data
+* The response to GET requests can be cached
+* The response to POST requests should not be cached
+* GET requests are stored in the browser's history
+POST requests are not
+* There is a limit to how many characters you can send in a GET request URL
+* You should always use the POST method when handling sensitive data
 
 You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?
 
