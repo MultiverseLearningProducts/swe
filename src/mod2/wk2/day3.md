@@ -70,61 +70,50 @@ You've been given the source below to evaluate. If a user were to enter a task n
 
 ## Handling state with the History object
 
-Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the `History` object. Using the History object, we can navigate through the session history programmatically. We can even push new history items to the stack as if the user had navigated to a new page.
+Earlier we looked at the DOM. As we now know, the DOM exposes many convenient objects and methods for our use as web developers. One such object is the `History` object. Using the History object, we can navigate through the session history programmatically. 
 
 To access the History object in the browser, simply open the console and type `window.history` or more simply `history`.
 
-> Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below)
+> Note for security reasons you can't see the actual history using this method, but you can see the length of the object as well as the data state (more on this below).
 
-From here, you can programatically navigate back and forward:
+Using JavaScript you can programatically navigate back and forward through the history:
 
 ```javascript
 window.history.forward();
 window.history.back();
 ```
-
-### History.pushState
-
-As mentioned above, we can add URLs and an associated data payload to the history stack by using `history.pushState()`:
+Here is an example of creating a web page with "Back" and "Forward" buttons. These will work the same way the browser's Back and Forward buttons do.
 
 ```javascript
-history.pushState({ name: 'Daniel' }, 'Some title', '/hello');
+<html>
+<head>
+<script>
+function goBack() {
+  window.history.back()
+}
+function goForward() {
+  window.history.forward()
+}
+</script>
+</head>
+<body>
+
+<input type="button" value="Back" onclick="goBack()">
+<input type="button" value="Forward" onclick="goForward()">
+
+</body>
+</html>
 ```
 
-If you were to add this to your console, you will see the URL has updated. You can also access the data state by typing `history.state`, though you can only access the state that belongs to a URL when the URL is active. For instance, I can only access the object `{ name: 'Daniel' }` when on the ``/hello` URL but nowhere else.
-
-### When/where is pushState used?
-
-We live in an internet world where AJAX requests get made and therefore full page refreshes can be avoided. If however, a significant amount of content is changed on a web page with an asynchronous request, we may want to preserve that state with a new URL and an associated data payload. This is where `pushState` can help.
-
-### Try this exam question
-
-The following code is run in the console when the user is on `https://www.google.com`:
+### Manually modifying the history state
+We can manually add an entry to the history state stack using `history.pushState()`:
 
 ```javascript
-history.pushState({ name: 'Test' }, 'Test page', '/test');
-history.pushState(
-  { name: 'Another test' },
-  'Another test page',
-  '/another-test'
-);
-
-history.state; // what is logged?
-history.back();
-history.back();
+history.pushState({ name: 'Some page' }, 'Some title', '/someURL');
 ```
+We can manually remove an entry from the history state using `history.popState()`
 
-What URL does the user end up on?
-
-1. https://www.google.com/test
-2. https://www.google.com/another-test
-3. https://www.google.com
-
-What state is logged?
-
-1. {}
-2. Undefined
-3. { name: 'Another test' }
+You can also access the history state by typing `history.state`.
 
 # Lesson 3
 
