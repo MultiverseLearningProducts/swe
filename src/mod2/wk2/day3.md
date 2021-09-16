@@ -191,4 +191,19 @@ Examples:
 * `-1 && 0` // false
 * `-1 && b` // true
 
+# Lesson 5
+
+## Learning objectives
+`use strict` defines that JavaScript code should be executed in "strict mode".
+
+With strict mode, you can not use undeclared variables.
+```javascript
+"use strict";
+a = 5;  // error (a is not defined).
+```
+# Lesson 6
+
+## Learning objectives
+The `<noscript>` tag defines alternate content to be displayed to users that have disabled JavaScript in their browser or have a browser that can't support scripts.
+
 [main](/swe)|[prev](/swe/mod2/wk2/day2.html)|[next](/swe/mod2/wk2/day4.html);
