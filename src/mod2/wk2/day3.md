@@ -34,7 +34,10 @@ Take a look at this form
 </form>
 ```
 When the "Submit" button is pressed, the data will be appended to the URL as key-value pairs as follows:
-`http://localhost:5500/action_page.php?fname=asdsad&lname=asdasdsd` note that the keys are the `name` attributes of the input field.
+```html
+`http://localhost:5500/action_page.php?fname=asdsad&lname=asdasdsd` 
+```
+note that the keys are the `name` attributes of the input field.
 
 If the method above was changed to `POST`, the data would still be sent as key-value pairs but would be sent in the HTTP request body instead.
 ```html
