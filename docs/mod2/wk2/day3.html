@@ -12,7 +12,7 @@
   <body>
     <h1>Mod 2 > Week 2 > Day 3</h1>
     <h1>Overview of the day</h1>
-    <p>Today we look at GET vs POST, the History object and local and session storage.</p>
+    <p>Today we look at GET vs POST, the History object and local and session storage. We also discuss Truthy versus Falsy values.</p>
     <h1>Lesson 1</h1>
     <h2>Learning objectives</h2>
     <ul>
@@ -25,7 +25,7 @@
     <p>HTTP defines a number of standard methods that can be used to send and retrieve data to/from a server. By far the most common are <code>GET</code> and <code>POST</code>.</p>
     <ul>
       <li>
-        <p>When you request for a resource like a web page or image, the GET request will be used.</p>
+        <p>When you request a resource like a web page or image, the GET request will be used.</p>
       </li>
       <li>
         <p>For GET requests, additional information can be sent in the query parameters where it's visible to all e.g. <code>q=apple&#x26;category=fruit</code> GET requests <strong>do not</strong> have message bodies.</p>
@@ -37,6 +37,22 @@
         <p>Typically, POST is used to submit form data. If a GET is used, the data is sent in the query parameters.</p>
       </li>
     </ul>
+    <p>Take a look at this form</p>
+    <pre><code class="language-html">&#x3C;form action="/action_page.php" method="GET">
+  &#x3C;input type="text" id="id1" name="fname">&#x3C;br>&#x3C;br>
+  &#x3C;input type="text" id="id1" name="lname">&#x3C;br>&#x3C;br>
+  &#x3C;input type="submit" value="Submit">
+&#x3C;/form>
+</code></pre>
+    <p>
+      When the "Submit" button is pressed, the data will be appended to the URL as key-value pairs as follows:
+      <code>http://localhost:5500/action_page.php?fname=asdsad&#x26;lname=asdasdsd</code> note that the keys are the <code>name</code> attributes of the input field.
+    </p>
+    <p>If the method above was changed to <code>POST</code>, the data would still be sent as key-value pairs but would be sent in the HTTP request body instead.</p>
+    <pre><code class="language-html">http://localhost:5500/action_page.php
+
+fname=asdsad&#x26;lname=asdasdsd
+</code></pre>
     <h3>Key things to know for the exam</h3>
     <ul>
       <li>The response to GET requests can be cached</li>
@@ -47,6 +63,7 @@
       </li>
       <li>There is a limit to how many characters you can send in a GET request URL</li>
       <li>You should always use the POST method when handling sensitive data</li>
+      <li>Form values are sent as key-value pairs, the key being the name of the input field</li>
     </ul>
     <p>You've been given the source below to evaluate. If a user were to enter a task name of "Do the washing" and an owner of the task as "Simon", then were to submit the form, what would the URL be?</p>
     <pre><code class="language-html">&#x3C;form action="http://mywebsite.org/search" method="GET">
@@ -115,11 +132,23 @@ function goForward() {
 </code></pre>
     <p>We can manually remove an entry from the history state using <code>history.popState()</code></p>
     <p>You can also access the history state by typing <code>history.state</code>.</p>
+    <blockquote>
+      <p>Note that there is a limit of 640k for storage of state data.</p>
+    </blockquote>
     <h1>Lesson 3</h1>
     <h2>Learning objectives</h2>
     <ul>
-      <li>Understand <code>localStorage</code> and <code>sessionStorage</code></li>
+      <li>Understand <code>cookies</code>, <code>localStorage</code> and <code>sessionStorage</code></li>
     </ul>
+    <h2>Cookies</h2>
+    <p>A cookie is a small piece of data stored on a user's browser by a website. Cookies are used for analytics or to personalise a user's experience with a website.</p>
+    <p>Cookies can be set and modified at with JavaScript using <code>document.cookie</code>.</p>
+    <blockquote>
+      <p>Cookie storage is very small - typically limited to 4k</p>
+    </blockquote>
+    <blockquote>
+      <p>Check out what cookies are stored on your browser through Developer Tools->Application->Cookies</p>
+    </blockquote>
     <h2>Storing data in local storage</h2>
     <p><code>localStorage</code> and <code>sessionStorage</code> allow us to save key/value pairs in a browser.</p>
     <blockquote>
@@ -128,8 +157,54 @@ function goForward() {
     <blockquote>
       <p><code>sessionStorage</code> is removed when a browser tab is closed</p>
     </blockquote>
+    <blockquote>
+      <p>both <code>localStorage</code> and <code>sessionStorage</code> can hold at least 5Mb of data, much larger than a cookie</p>
+    </blockquote>
     <h3>Try these exam questions</h3>
     <p>Research how you would set/retrieve/remove items from localStorage and sessionStorage.</p>
+    <h1>Lesson 4</h1>
+    <h2>Learning objectives</h2>
+    <ul>
+      <li>Understand the difference between JavaScript Falsy and Truthy values</li>
+    </ul>
+    <h2>Truthy versus Falsy</h2>
+    <p>A <code>falsy</code> value is a value that is considered false when encountered in a Boolean context.</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Falsy value</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>"" or ''</td>
+        </tr>
+        <tr>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>undefined</td>
+        </tr>
+        <tr>
+          <td>NaN</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>everything else is a Truthy.</p>
+    <p>Examples:</p>
+    <ul>
+      <li><code>false &#x26;&#x26; "dog"</code> // false</li>
+      <li><code>0 || true</code> // true</li>
+      <li><code>"" &#x26;&#x26; true</code> // false</li>
+      <li><code>-1 &#x26;&#x26; 0</code> // false</li>
+      <li><code>-1 &#x26;&#x26; b</code> // true</li>
+    </ul>
     <p><a href="/swe">main</a>|<a href="/swe/mod2/wk2/day2.html">prev</a>|<a href="/swe/mod2/wk2/day4.html">next</a>;</p>
     <script src="/swe/prism.js"></script>
     <script src="/swe/tabbed-code-blocks.js"></script>
