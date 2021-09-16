@@ -11,7 +11,7 @@ You must have 2 forms of ID ready to display before the test starts. The first n
 
 If you are taking the test at a test center you will not be allowed to bring in personal belongings/phones/watches etc. (these will be kept securely for you). You should be allowed to bring in a (clear) water bottle. If you are driving to a test centre you may need to pay for parking at the site. 
 
-If you have any issues on the day, e.g. you can't make it because your Internet is down, call Pearson Vue on 0800 731 99 05
+If you have any issues on the day, e.g. you can't make it because your Internet is down, call Pearson Vue on 0800 731 99 05.
 
 ## Exam format
 You will have 45 minutes to complete 39 multiple choice questions. The pass mark is 70%.
