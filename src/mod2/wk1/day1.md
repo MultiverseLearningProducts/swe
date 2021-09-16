@@ -4,6 +4,16 @@
 
 You are going to become a Microsoft Technical Associate by gaining an industry recognised qualification. This course covers the content necessary to prepare for MTA 98-382: Introduction to JavaScript exam. This is a multiple choice exam with 39 questions with a time limit of 45 minutes. You can check out the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4tiyb).
 
+## How to book the exam
+
+- If you feel you are entitled to reasonable adjustments such as extra time, contact your coach who will explain how to apply for this.
+
+- To schedule your exam, go [here](https://examregistration.microsoft.com/?action=1&locale=en-us&examcode=98-382&examname=Introduction%20to%20Programming%20Using%20JavaScript&returnToLearningUrl=https://docs.microsoft.com/learn/certifications/exams/98-382). Note - if you have been given reasonable adjustments you will be used to book via the phone instead.
+
+- You'll need a voucher code, which your coach will give to you
+
+- Decide whether to book at a test centre or [online](https://home.pearsonvue.com/microsoft/onvue). Note the [system requirements and rules](https://home.pearsonvue.com/microsoft/onvue) for online tests.
+
 # Course stucture
 
 **Week 1** - we focus on the "nuts and bolts" of the JavaScript language. Primitives, variables, functions, arrays, objects, conditionals, loops and more.
