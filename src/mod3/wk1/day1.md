@@ -88,7 +88,7 @@ The inputs for the feasibility study are business needs. At the end of this sect
 
 > Management is doing things right, leadership is doing the right things.
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTT3P1ioBFXXr7u0hNMmx03XYMMydTxmYJ7GUS0IK6lxySP9O-3fobzpAjV8cjY2uNm2KlzVJkrye-I/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTT3P1ioBFXXr7u0hNMmx03XYMMydTxmYJ7GUS0IK6lxySP9O-3fobzpAjV8cjY2uNm2KlzVJkrye-I/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 ## Inputs
 

@@ -21,7 +21,7 @@ List and describe techniques and tools used in requirements analysis, including:
 
 ## Lesson
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 > A context diagram defines a boundary between the system, or part of a system, and its environment, showing the entities that interact with it.
 
@@ -51,11 +51,11 @@ After completing this section you should be able to:
 *   Explain how prototyping and modelling can be used to aid analysis and design.
 
 ## Lesson
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRPopOEl-AIie0nwaZejCYHwcF0YsEUton4qjaufmt1zMk9yD1psuSf3CV_1NvjJIZGhGs-HjWq7t_U/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRPopOEl-AIie0nwaZejCYHwcF0YsEUton4qjaufmt1zMk9yD1psuSf3CV_1NvjJIZGhGs-HjWq7t_U/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 ## Inputs
 
-The inputs for design are requirements. The purpose of design is to solves the problem of how to realise the requirement. There are 5 types of design we need to consider.
+The inputs for design are requirements. The purpose of design is to solves the problem of how to realise the requirement. There are 4 types of design we need to consider.
 
 1.  Input output design
 2.  Process design
@@ -64,47 +64,9 @@ The inputs for design are requirements. The purpose of design is to solves the p
 
 There are often constraints acting on designers. All of the factors below can impact the design stage of the SDLC.
 
-<table>
-
-<thead>
-
-<tr>
-
-<th style="text-align:left">Project</th>
-
-<th style="text-align:left">Technical</th>
-
-<th style="text-align:left">Organisational</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:left">Money  
-Time  
-Skills</td>
-
-<td style="text-align:left">Hardware  
-Software  
-Legacy  
-Standards</td>
-
-<td style="text-align:left">Politics  
-Stakeholders  
-Standards  
-Legislation  
-Cultural Differences  
-Quality of requirements</td>
-
-</tr>
-
-</tbody>
-
-</table>
+|Project|Technical|Organisational|
+|:------|:--------|:-------------|
+<ul><li>Money</li><li>Time</li><li>Skills</li></ul>|<ul><li>Hardware</li><li>Software</li><li>Legacy</li><li>Standards</li></ul>|<ul><li>Politics</li><li>Stakeholders</li><li>Legislation</li><li>Cultural Differences</li><li>Quality of requirements</li></ul>
 
 ## I/O design
 
@@ -137,7 +99,7 @@ Input output design starts by identifying the inputs. Can you select the inputs 
 
 ❓ Can you identify the correct list of inputs?
 
-❓Can you identify the correct list of outputs?
+❓ Can you identify the correct list of outputs?
 
 Once we have identified the inputs from the requirements then we need to design a way to collect those inputs. We need to decide what we should do with those inputs, for example they may need processing, or storing. Then we can design a way to access the outputs for the requirements.
 
@@ -203,7 +165,7 @@ A good example of normalisation is the way we can store a one-to-many relationsh
 
 ## 👨🏽‍🎓 Assignment
 
-Design what you think would be a good starting point for the data in our ordering system. Create your designs using UML. When you have finished you should upload your work [here](https://applied.whitehat.org.uk/mod/assign/view.php?id=7120&action=editsubmission).
+Design and represent the data model for one of the synoptic projects in a UML diagram. When you have finished you should upload your work [here](https://applied.multiverse.io/mod/assign/view.php?id=10720).
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/200)
 [main](/swe)|[prev](/swe/mod3/wk1/day2.html)|[next](/swe/mod3/wk1/day4.html)
