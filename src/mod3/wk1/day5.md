@@ -68,7 +68,7 @@ To test exhaustibly is not practical or possible. For example 15 fields in a for
 
 In pairs discuss the following scenario. I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong?
 
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/rFaWOw8bIMM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+!(https://www.youtube.com/embed/rFaWOw8bIMM)
 
 ## 4 Different types of testing
 
@@ -108,59 +108,21 @@ The purpose of this test is to evaluate the system’s compliance with the busin
 2.  White Box/Black Box
 3.  Functional/Non-functional
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Static</th>
-<th style="text-align:left">Dynamic</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><img src="https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg" alt="static van"></td>
-<td style="text-align:left"><img src="https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&amp;hash=193E23BD23DFD2666426DB2E5C8FFE92" alt="moving van"></td>
-</tr>
-<tr>
-<td style="text-align:left">Static tests do not require your app to be running. You can test things on a static vehicle; for example do the lights work? can you move the seats?</td>
-<td style="text-align:left">Dynamic tests require your app to be running. To really test the breaks of a vehicle, you need to get up some speed.</td>
-</tr>
-</tbody>
-</table>
-<br />
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Black Box</th>
-<th style="text-align:left">White Box</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/79354719-afa3dc80-7f34-11ea-9379-802c2f0bf121.jpg" alt="black box testing"></td>
-<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/79354705-aa469200-7f34-11ea-81e2-6dca80025096.jpg" alt="white box testing"></td>
-</tr>
-<tr>
-<td style="text-align:left">Black box testing asks WHAT the system does. WHAT inputs produce WHAT outputs.</td>
-<td style="text-align:left">White box testing tests HOW things work? HOW does your logic work? Does the structure of the code deal with all the possible states?</td>
-</tr>
-</tbody>
-</table>
-<br />
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/tlThdr3O5Qo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Functional</th>
-<th style="text-align:left">Non-functional</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><ul><li>Do the breaks work?</li><li>Does the route load on the map ok?</li><li>Does auto pilot initiate ok?</li></ul></td>
-<td style="text-align:left"><ul><li>Does it feel safe?</li><li>It is boring?</li><li>Is it easy to stop the auto pilot?</li></ul></td>
-</tr>
-</tbody>
-</table>
+|Static|Dynamic|
+|:--|:--|
+|![static van](https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg)|![dynamic moving van](https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&amp;hash=193E23BD23DFD2666426DB2E5C8FFE92)
+|Static tests do not require your app to be running. You can test things on a static vehicle; for example do the lights work? can you move the seats?|Dynamic tests require your app to be running. To really test the breaks of a vehicle, you need to get up some speed.|
+
+|Black Box|White Box|
+|:--------|:--------|
+![black box](https://user-images.githubusercontent.com/4499581/79354719-afa3dc80-7f34-11ea-9379-802c2f0bf121.jpg)|![white box](https://user-images.githubusercontent.com/4499581/79354705-aa469200-7f34-11ea-81e2-6dca80025096.jpg)
+|Black box testing asks WHAT the system does. WHAT inputs produce WHAT outputs.|White box testing tests HOW things work? HOW does your logic work? Does the structure of the code deal with all the possible states?|
+
+!(https://www.youtube.com/embed/tlThdr3O5Qo)
+
+|Functional|Non-functional|
+|:--------|:--------|
+Do the breaks work? Does the route load on the map ok? Does auto pilot initiate ok?|Does it feel safe? It is boring? Is it easy to stop the auto pilot?
 
 **Functional testing** is binary. Think PASS/FAIL. On a form functional input might be a checkbox.
 
