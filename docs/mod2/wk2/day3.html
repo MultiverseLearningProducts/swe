@@ -44,10 +44,10 @@
   &#x3C;input type="submit" value="Submit">
 &#x3C;/form>
 </code></pre>
-    <p>
-      When the "Submit" button is pressed, the data will be appended to the URL as key-value pairs as follows:
-      <code>http://localhost:5500/action_page.php?fname=asdsad&#x26;lname=asdasdsd</code> note that the keys are the <code>name</code> attributes of the input field.
-    </p>
+    <p>When the "Submit" button is pressed, the data will be appended to the URL as key-value pairs as follows:</p>
+    <pre><code class="language-html">`http://localhost:5500/action_page.php?fname=asdsad&#x26;lname=asdasdsd` 
+</code></pre>
+    <p>note that the keys are the <code>name</code> attributes of the input field.</p>
     <p>If the method above was changed to <code>POST</code>, the data would still be sent as key-value pairs but would be sent in the HTTP request body instead.</p>
     <pre><code class="language-html">http://localhost:5500/action_page.php
 

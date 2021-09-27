@@ -74,7 +74,7 @@ This level involves the experts. These are the people who actually wrote the sof
 
 It happens. Sometimes software breaks in production.
 
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/nmjDwNe0BcE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+!(https://www.youtube.com/embed/nmjDwNe0BcE)
 
 Bad. However RBS was able to find what caused the problem. In the following section we are going to learn about 4 different kinds of structured problem solving techniques.
 
@@ -99,7 +99,7 @@ Fault tree analysis is a top-down approach to identify all potential causes lead
 
 ![Ishakawa (fishbone) diagrams](https://user-images.githubusercontent.com/4499581/80510935-534cae00-8973-11ea-9843-db6da42e890b.png)
 
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/mLvizyDFLQ4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+!(https://www.youtube.com/embed/mLvizyDFLQ4)
 
 How to make your own:
 
@@ -120,61 +120,16 @@ How to make your own:
 
 ## Kepner-Tregoe “Root cause analysis”
 
-<table>
-
-<thead>
-
-<tr>
-
-<th style="text-align:left">Type</th>
-
-<th style="text-align:left">Analysis</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:left">Situational Analysis</td>
-
-<td style="text-align:left">Clarify the situation, outline concerns and choose a direction.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Problem Analysis</td>
-
-<td style="text-align:left">Define the problem and determine its root cause.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Decision Analysis</td>
-
-<td style="text-align:left">Identify alternatives and perform a risk analysis for each one.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Potential Problem Analysis</td>
-
-<td style="text-align:left">The best of the alternatives is further scrutinised against negative consequences and actions are proposed to minimise the risk.</td>
-
-</tr>
-
-</tbody>
-
-</table>
+|Type|Analysis|
+|:---|:-------|
+Situational Analysis|Clarify the situation, outline concerns and choose a direction.
+Problem Analysis|Define the problem and determine its root cause.
+Decision Analysis|Identify alternatives and perform a risk analysis for each one.
+Potential Problem Analysis|The best of the alternatives is further scrutinised against negative consequences and actions are proposed to minimise the risk.
 
 ⚠️ warning this this video contains footage of a tragic event in which people died.
 
-<iframe width="100%" height="444" src="https://www.youtube.com/embed/nspP1YFftAY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+!(https://www.youtube.com/embed/nspP1YFftAY)
 
 ## Assignment 👩‍💻🧑‍💻
 
