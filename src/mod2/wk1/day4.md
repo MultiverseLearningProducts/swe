@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we'll look at objects before looking at value vs reference.
+Today we'll look at how primitives and objects are stored and what happens to them when they are passed into functions.
 
 # Lesson 1
 
@@ -97,12 +97,75 @@ for (;;) {
 
 ## Learning Objectives
 
-- What is meant by value vs reference
-- Become a more effective programmer
+- Understand how primitives and objects are stored in memory
+- Understand the difference between mutable and immutable variables
+- Understand what happens when a primitive or object are passed into a function
 
-### Value vs reference
+### Primitives versus objects
+In JavaScript, a primitive is data that is not an object and has no methods. JavaScript primitives include:
+* string
+* number
+* boolean
 
-To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the `updateNames` function?
+> Primitives are **immutable**, meaning they cannot change
+
+Here is an example to help explain further:
+```javascript
+let name = "daniel";
+name.toUpperCase();
+console.log(name);      // still "daniel" - strings are immutable
+```
+
+> Don't get confused with variables which hold the primitive. It's the primitive **value** which is immutable, not the variable. Variables can of course be reassigned to different primitive values (unless the variable is a `const` of course)
+
+The size of a primitive is fixed, so JavaScript stores the value in memory on the call "stack". It might be helpful to imagine this as a box with the name of the variable written on the outside and the value in the box.
+
+TODO
+
+> In contrast to primitives, objects are **mutable**, meaning they can change.
+
+Here is an example to help explain further:
+```javascript
+let person = {
+  name: 'Daniel',
+  age: 35,
+  shoeSize: 9,
+  smokes: false,
+  hobbies: ['motorbikes', 'cats', 'dogs', 'football'],
+};
+
+person.name = 'Dan';
+
+console.log(person.name);  // Dan - has been modified
+```
+
+We don't know how big an object will get therefore JavaScript holds the object in an area in something called the "heap" - imagine this as a very large area of memory that can handle objects growing or shrinking. Continuing with our box analogy from early, the box representing the variable "person" above, actually holds a *reference* or *pointer* to the memory address of the object on the heap. 
+
+TODO
+
+### Passing variables to functions
+
+When we pass a primitive to a function, a *copy* of the primitive is taken and stored in a *new variable* which just has function scope. The 2 variables are completely unrelated so any change to either has no effect on the other. Here's an example to help illustrate this:
+
+```javascript
+function addTen(a, b) {  // a & b are *copies* of the variables passed in
+    a = a+10;
+    b = b+10;
+}
+
+let x = 2;
+let y = 4;
+
+addTen(2, 4)
+
+console.log(x);   // unchanged - still 2
+console.log(y);   // unchanged - still 4
+```
+
+Let's contrast this to passing an object to a function.
+
+
+How about this code which passes both a primitive and an object?
 
 ```javascript
 function updateNames(cats, firstCatsName) {
@@ -121,15 +184,10 @@ updateNames(cats, firstCatsName);
 console.log(cats, firstCatsName); // what's logged here?
 ```
 
-The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
+Remember, primitives can't be modified after they've been created, whereas objects and arrays can.  `firstCatsName` is a string primitive so will not be changed. `cats` is an object so any changes will be reflected.
 
-For this rule to hold, we _should_ be able to modify the object, but we _shouldn't_ be able to modify the string
-
-Sure enough, if we log the result, we get:
-
+The result will be:
 ```javascript
-console.log(cats, firstCatsName);
-
 /*
 {
   names: ["Ginger", "Smokey", "Whiskers", "Claude"]

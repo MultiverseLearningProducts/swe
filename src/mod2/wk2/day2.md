@@ -149,6 +149,7 @@ Alternatively, you can place your JavaScipt in an external `.js` file, and link 
 * Inline scripts can go in both the `<body>` and `<head>` sections of an HTML page
 * External scripts can also go in both the `<body>` and `<head>` sections of an HTML page
 * Placing JavaScript in an external file separates HTML and code and makes files easier to read
+* Javascript code is executed in the order it is included in the HTML document irrespective of whether it is inline or external js
 
 For more information and to try out some examples refer to [this tutorial](https://www.w3schools.com/js/js_whereto.asp)
 
@@ -167,6 +168,7 @@ JavaScript has three types of popup boxes. These are
 ### Try these exam questions
 
 Create instances of all 3 dialog box types.
+
 
 
 [main](/swe)|[prev](/swe/mod2/wk2/day1.html)|[next](/swe/mod2/wk2/day3.html);

@@ -591,6 +591,10 @@ if (!true && !false) {
 1. "true"
 2. "false"
 
+# Test your knowledge from today
+Try out the [Day 1 quizzes on Applied](https://applied.multiverse.io/course/view.php?id=310)
+
+
 # Video resources
 * [Javascript types](https://www.youtube.com/watch?v=e-_mDyqm2oU)
 * [Equality](https://www.youtube.com/watch?v=nQJrfphxKBg)
