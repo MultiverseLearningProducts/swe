@@ -22,7 +22,7 @@ Today we look at different software methodologies and come to see their strength
 
 ## Lesson
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+!(https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 ## Business and market contexts
 
@@ -36,7 +36,7 @@ Consider waterfall and agile based on the factors listed below.
 
 ## Assignment
 
-In a piece of writting:
+In a piece of writing:
 
 *   Explain the main principles of a waterfall approach to software development
 *   Explain the main principles of an agile approach to software development
