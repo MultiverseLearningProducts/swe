@@ -2,7 +2,7 @@
 
 # Overview of the day
 
-Today we'll look at objects before looking at value vs reference.
+Today we'll look at how primitives and objects are stored and what happens to them when they are passed into functions.
 
 # Lesson 1
 
@@ -60,7 +60,7 @@ person.name = 'Dan';
 console.log(person.name); // Dan
 ```
 
-You can also push new items to an array with an object:
+You can also push new items to an array within an object:
 
 ```javascript
 person.hobbies.push = 'Scrabble';
@@ -97,12 +97,83 @@ for (;;) {
 
 ## Learning Objectives
 
-- What is meant by value vs reference
-- Become a more effective programmer
+- Understand how primitives and objects are stored in memory
+- Understand the difference between mutable and immutable variables
+- Understand what happens when a primitive or object are passed into a function
 
-### Value vs reference
+### Primitives versus objects
+JavaScript primitives include:
+* string
+* number
+* boolean
 
-To understand what is meant when we say value vs reference, take a look at the following code. What will be logged after we call the `updateNames` function?
+Here are some examples of primitives:
+```javascript
+"Bob"
+true
+35
+```
+
+> Primitives are **immutable**, meaning they cannot change. The size of a primitive is fixed, so JavaScript stores the value in memory on the call "stack".
+
+Imagine a variable as a box containing a primitive value. The variables could be assigned a new value (unless they are `const`s, however the primitive value itself cannot be changed. 
+
+<img width="294" alt="primitives" src="https://user-images.githubusercontent.com/1316724/134978246-ca88424d-ee45-4204-8a6e-1c74651bf0a4.PNG">
+
+A box with no value in it is an "undefined"  variable.
+
+Using what you have learnt above, can you explain how the following snippet of code works?
+
+```javascript
+let name = "daniel";
+name.toUpperCase();
+console.log(name);      // still "daniel" - strings are immutable
+```
+
+> In contrast to primitives, objects are **mutable**, meaning they can change.
+
+Here is an example to help explain further:
+```javascript
+let person = {
+  name: 'Daniel',
+  age: 35,
+  shoeSize: 9,
+  smokes: false,
+  hobbies: ['motorbikes', 'cats', 'dogs', 'football'],
+};
+
+person.name = 'Dan';
+
+console.log(person.name);  // Dan - has been modified
+```
+
+We don't know how big an object will get therefore JavaScript holds the object in an area in something called the "heap" - imagine this as a very large area of memory that can handle objects growing or shrinking. Continuing with our box analogy from early, the box representing the variable "person" above, actually holds a *reference* or *pointer* to the memory address of the object on the heap. 
+
+<img width="247" alt="object" src="https://user-images.githubusercontent.com/1316724/134981058-cf1f6a4f-6ce3-4484-837d-c59a9a9224ab.PNG">
+
+### Passing variables to functions
+When we pass a *primitive* to a function, a *copy* of the primitive is taken and stored in a *new variable* which just has function scope. The 2 variables are completely unrelated so any change to either has no effect on the other. Here's an example to help illustrate this:
+
+```javascript
+function addTen(a, b) {  // a & b are *copies* of the variables passed in
+    a = a+10;
+    b = b+10;
+}
+
+let x = 2;
+let y = 4;
+
+addTen(2, 4)
+
+console.log(x);   // unchanged - still 2
+console.log(y);   // unchanged - still 4
+```
+
+When we pass an object to a function, a copy of the variable holding the *reference* is taken - the original and copy both point to exactly the *same* object in memory, hence changes affect both.
+
+<img width="247" alt="object" src="https://user-images.githubusercontent.com/1316724/134981058-cf1f6a4f-6ce3-4484-837d-c59a9a9224ab.PNG">
+
+Look at this example:
 
 ```javascript
 function updateNames(cats, firstCatsName) {
@@ -118,18 +189,12 @@ var firstCatsName = 'Gizmo';
 
 updateNames(cats, firstCatsName);
 
-console.log(cats, firstCatsName); // what's logged here?
+console.log(cats, firstCatsName); 
 ```
+Remember, primitives can't be modified after they've been created, whereas objects and arrays can.  `firstCatsName` is a string primitive so will not be changed. `cats` is an object so any changes will be reflected.
 
-The answers might surprise you! Let's come back to that shortly. For now, cast your mind back to day one when we spoke about primitives. As you'll know, primitives can't be modified after they've been created, whereas objects and arrays can. Primitives are `immutable`; arrays and objects are `mutable`.
-
-For this rule to hold, we _should_ be able to modify the object, but we _shouldn't_ be able to modify the string
-
-Sure enough, if we log the result, we get:
-
+The result will be:
 ```javascript
-console.log(cats, firstCatsName);
-
 /*
 {
   names: ["Ginger", "Smokey", "Whiskers", "Claude"]
@@ -137,7 +202,7 @@ console.log(cats, firstCatsName);
 */
 ```
 
-> Objects are passed to functions by reference, primitives are passed by value
+> Objects passed into a function can be modified by the function, primitive values passed to function are never modified
 
 #### Try these exam questions
 

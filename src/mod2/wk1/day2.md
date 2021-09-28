@@ -172,7 +172,10 @@ myArray.shift();
 myArray.push(6);
 ```
 
-Also try out this [Applied Arrays Quiz](https://applied.multiverse.io/mod/quiz/view.php?id=9863)
+# Test your knowledge from today
+* Try out the [Arrays Quiz on Applied](https://applied.multiverse.io/course/view.php?id=310)
+* Try out the [Day 2 revision checker quiz on Applied](https://applied.multiverse.io/course/view.php?id=310)
+
 
 
 [main](/swe)|[prev](/swe/mod2/wk1/day1.html)|[next](/swe/mod2/wk1/day3.html);

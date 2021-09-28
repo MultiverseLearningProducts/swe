@@ -31,5 +31,7 @@ You can review the spec [here](https://query.prod.cms.rt.microsoft.com/cms/api/a
 
 - [5 Official practice questions](http://pts.measureup.com/web/PBS/LMS/index.php?role=0&course=test201811110358927&ref=mindhub). If you have problems accessing the test, try creating an account at https://account.measureup.com. 
 - [More practice questions](https://www.itexams.com/exam/98-382). Please note the answers to some of these are incorrect! Also, do not signup / login else you will be ask to purchase additional questions.
+- [All the Applied Quizzes (use the ones prefixed "Mod2 (JS Exam)")](https://applied.multiverse.io/course/view.php?id=310&section=0&notifyeditingon=1)
+- [W3Schools JavaScript Quiz](https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS)
 
 [main](/swe)|[prev](/swe/mod2/wk2/day3.html)|[next](/swe/mod2/wk2/day5.html);

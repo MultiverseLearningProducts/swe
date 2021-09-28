@@ -149,5 +149,9 @@ numbers.sort(function (a, b) {
 });
 ```
 
+# Test your knowledge from today
+* Try out the [Arrays Quiz on Applied](https://applied.multiverse.io/course/view.php?id=310)
+* Try out the [Day 3 revision checker quiz on Applied](https://applied.multiverse.io/course/view.php?id=310)
+
 
 [main](/swe)|[prev](/swe/mod2/wk1/day2.html)|[next](/swe/mod2/wk1/day4.html);
