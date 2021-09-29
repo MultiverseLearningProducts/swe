@@ -1,0 +1,29 @@
+{
+    "questions": [
+        {
+            "id": "q1",
+            "question": "Which stage of the software development lifecycle (SDLC) would include the  following activities; Consideration of the potential risks involved in developing software, Determining whether the project outcome will be worth the costs involved.",
+            "answers": [
+                {
+                    "id": "q1a1",
+                    "answer": "Implementation / Deployment"
+                },
+                {
+                    "id": "q1a2",
+                    "answer": "Requirements Analysis"
+                },
+                {
+                    "id": "q1a3",
+                    "answer": "Testing"
+                },
+                {
+                    "id": "q1a4",
+                    "answer": "Feasibility Study"
+                }
+            ]
+        }
+    ],
+    "correct_answers": {
+        "q1": "q1a4"
+    }
+}
