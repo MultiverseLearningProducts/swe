@@ -375,6 +375,160 @@
             ]
         },
         {
+            "id": "q18",
+            "question": "A software development project is being initiated, and the project manager has set  the following broad objectives for the software development team [ Focus on the customers, Energise the team, Eliminate waste, Learn quickly, Keep improving ] Which of the following methodologies has a focus on eliminating waste?",
+            "answers": [
+                {
+                    "id": "q18a1",
+                    "answer": "Unified Process (UP)"
+                },
+                {
+                    "id": "q18a2",
+                    "answer": "Lean"
+                },
+                {
+                    "id": "q18a3",
+                    "answer": "Scrum"
+                },
+                {
+                    "id": "q18a4",
+                    "answer": "XP"
+                }
+            ]
+        },
+        {
+            "id": "q19",
+            "question": "A software development team includes application planners, software designers, coders, and technical architects and follows an agile approach to development. The  team is involved in testing, implementation (deployment) and maintenance of  software as needed.  Which of the following would be required by all the software development team members? a. communication skills, b. leadership skills, c. coding skills, d. shared responsibility ethos for the team's work",
+            "answers": [
+                {
+                    "id": "q19a1",
+                    "answer": "a and b only"
+                },
+                {
+                    "id": "q19a2",
+                    "answer": "a and c only"
+                },
+                {
+                    "id": "q19a3",
+                    "answer": "a and d only"
+                },
+                {
+                    "id": "q19a4",
+                    "answer": "b and c only"
+                }
+            ]
+        },
+        {
+            "id": "q20",
+            "question": "When using Agile methodologies, it is common to have daily and / or weekly  progress meetings. Which of the following questions SHOULD NOT be asked to team members during  these daily / weekly progress meetings?",
+            "answers": [
+                {
+                    "id": "q20a1",
+                    "answer": "Are there any impediments that prevent the team from meeting the goals of the  iteration?"
+                },
+                {
+                    "id": "q20a2",
+                    "answer": "What will you do next to help the team achieve the goals of the iteration?"
+                },
+                {
+                    "id": "q20a3",
+                    "answer": "What did you do over the last day / week to help the team achieve its goals of the  iteration?"
+                },
+                {
+                    "id": "q20a4",
+                    "answer": "Which team member is preventing the team from achieving the goals of the  iteration?"
+                }
+            ]
+        },
+        {
+            "id": "q21",
+            "question": "Which of the following would be used by a code developer?",
+            "answers": [
+                {
+                    "id": "q21a1",
+                    "answer": "Business case"
+                },
+                {
+                    "id": "q21a2",
+                    "answer": "Test strategy"
+                },
+                {
+                    "id": "q21a3",
+                    "answer": "Functional requirements specification"
+                },
+                {
+                    "id": "q21a4",
+                    "answer": "Technical design document"
+                }
+            ]
+        },
+        {
+            "id": "q22",
+            "question": "Software is being developed for a set of users who are only available to collaborate  during the analysis and acceptance testing parts of the project. They will also be  available to be trained on the new software before it goes live. Which of the following development approaches would be MOST appropriate given  the limited availability of the users?",
+            "answers": [
+                {
+                    "id": "q22a1",
+                    "answer": "Kanban"
+                },
+                {
+                    "id": "q22a2",
+                    "answer": "Extreme Programming (XP)"
+                },
+                {
+                    "id": "q22a3",
+                    "answer": "Sequential"
+                },
+                {
+                    "id": "q22a4",
+                    "answer": "Test Driven Development (TDD)"
+                }
+            ]
+        },
+        {
+            "id": "q23",
+            "question": "Which of the following is a (type of) functional requirement?",
+            "answers": [
+                {
+                    "id": "q23a1",
+                    "answer": "Supportability requirement"
+                },
+                {
+                    "id": "q23a2",
+                    "answer": "User interface requirement"
+                },
+                {
+                    "id": "q23a3",
+                    "answer": "Security requirement"
+                },
+                {
+                    "id": "q23a4",
+                    "answer": "Availability requirement"
+                }
+            ]
+        },
+        {
+            "id": "q24",
+            "question": "Which of the following are types of non-functional testing? a. load test, b. integration test, c. regression test, d. recovery test, e. scalability test",
+            "answers": [
+                {
+                    "id": "q24a1",
+                    "answer": "b, c and d only"
+                },
+                {
+                    "id": "q24a2",
+                    "answer": "a and e only"
+                },
+                {
+                    "id": "q24a3",
+                    "answer": "b and c only"
+                },
+                {
+                    "id": "q24a4",
+                    "answer": "a, d and e only"
+                }
+            ]
+        },
+        {
             "id": "",
             "question": "",
             "answers": [
@@ -383,7 +537,7 @@
                     "answer": ""
                 }
             ]
-        }
+        }      
     ],
     "correct_answers": {
         "q1": "q1a4",
@@ -400,6 +554,15 @@
         "q13": "q13a4",
         "q14": "q14a4",
         "q15": "q15a4",
-        "q16": "q16a4"
+        "q16": "q16a4",
+        "q17": "q17a4",
+        "q18": "q18a2",
+        "q19": "q19a3",
+        "q20": "q20a4",
+        "q21": "q21a4",
+        "q22": "q22a3",
+        "q23": "q23a2",
+        "q24": "q24a4",
+        "q25": "q25a3"
     }
 }
