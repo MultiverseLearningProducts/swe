@@ -203,19 +203,19 @@
             "question": "Interaction diagrams are a deliverable of which stage of the SDLC?",
             "answers": [
                 {
-                    "id": "q9a1",
+                    "id": "q10a1",
                     "answer": "Design"
                 },
                 {
-                    "id": "q9a2",
+                    "id": "q10a2",
                     "answer": "Analysis"
                 },
                 {
-                    "id": "q9a3",
+                    "id": "q10a3",
                     "answer": "Code Development"
                 },
                 {
-                    "id": "q9a4",
+                    "id": "q10a4",
                     "answer": "Implementation (Deployment)"
                 }
             ]
