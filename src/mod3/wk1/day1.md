@@ -2,78 +2,70 @@
 
 ![BCS Software Methodologies](https://user-images.githubusercontent.com/4499581/74535594-076e9900-4f2e-11ea-990c-1dda13f0e278.png)
 
-# Software Development Life Cycle (SDLC)
+# Exam overview
+The purpose of this exam is to ensure that apprentices are able to demonstrate knowledge and understanding of Software Development Methodologies as required by the [IfATE standards](https://www.instituteforapprenticeships.org/apprenticeship-standards/software-developer-v1-0), specifically:
 
-The _function_ of the SDLC is to translate business requirements through a structured set of processes to operational IT systems.
+1. Understand and operate at all stages of the software development lifecycle.
+2. Understand the similarities and differences (taking into account the positives and
+negatives of both approaches) between agile and waterfall software development
+methodologies.
+3. Understand how teams work effectively to produce software and contribute
+appropriately.
 
-The _role_ of the SDLC is to remove the unpredictable “human element” and replace it with structured and managed processes. This makes possible the construction of larger more complex IT systems.
+## Exam format
+The exam consists of 40 multiple-choice question which must be completed within 1 hour. The pass mark is 26/40 (65%).
 
-It is important to appreciate that the essence of this module is internalising the formula and systems for creating mission impact with software. It’s going to make you a professional software engineer with savvy business awareness.
+The exam is currently taken remotely and you are required to install specific software on your computer to allow remote invigitation.
 
-Whilst we learn about these abstract ideas and concepts it is essential that you make them come to life by applying them back to your own experiences and business environment.
+The exam marks are split as follows:
+* 50% of the marks are awarded for knowledge of the role and function of the software development lifecycle (SDLC)
+* 20% of the marks are awarded for knowledge of Software Development Methodologies such as Agile and Waterfall
+* 30% of the markes are awarded for knowledge of the Roles and Responsibilities within a software team
 
-What follows is a brief overview of the different inputs and outputs for each stage of the SDLC. At the end of this module you should be able to:
+## Exam pre-requisites
+* Read the email from exams@multiverse.io entitled "Tech Requirements for your Upcoming BCS Software Development Methodologies Exam" and ensure you have all the pre-requisite hardware and software installed. 
+* Ensure you have completed your registration for the BCS Candidate Portal (you should have received an email from certifications@bcs.uk)previously emailed to you and can login to the BCS Candidate Portal at https://eprofessional.bcs.org/Portal/Candidate/Login
+* Ensure you have an invite in your diary for your exam date sent from exams@multiverse.io
 
-*   Recognise that there are several ways to represent the terminology and stages of the SDLC.
-*   Describe the role of the SDLC in the context of developing of IT systems and services, and operational software end-products.
-*   Explain the purpose of the SDLC as a means to facilitate the creation of effective software.
-
-----
-
-## Lesson 1 - SDLC
+# Lesson 1 - The SDLC
 
 ## Learning Objectives
 
-* What is the software development lifecycle (SDLC)
-* What are the seven generic stages and their high-level deliverables from each stage
-* What are the main activities in each stage
-
-## Before we start
-
-## Materials needed
-
-## Lesson
-
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&amp;loop=false&amp;delayms=3000)
-
-Frameworks are abstract structures to help support our understand of complex systems. Frameworks give us:
-
-*   Labels
-*   Patterns
-*   Incomes and outcomes
-
-Like a recipe is only a representation of a dish that you could make, a framework is also just a recipe for an outcome. Our task in the module is to learn the labels, learn the patterns, understand the outputs of the SDLC and apply it to our own experiences.
-
-## Assignment
+* Explain the role and function of the software development lifecycle
+* Relate the seven generic stages of the software development lifecycle 
 
 ![SDLC](https://user-images.githubusercontent.com/4499581/74645922-ba2e3980-5170-11ea-9f62-0fa8f6d594e0.jpg)
 
-*   Feasibility Study
-*   Requirements Engineering
-*   Design
-*   Development
-*   Testing
-*   Implementation
-*   Maintenance
+The purpose of the SDLC is to specify a set of steps to create a software end-product. It guides us in turning business requirements into operational IT systems.
 
-Memorise these 7 stages of the SDLC. You will see variations of these on-line and in literature. These are the 7 terms that BCS use so we are going to use them.
+The 7 stages of the SDLC are listed below.
+
+TODO - diagram
+
+Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these through this module.
+
+The high level purpose of each stage is described below, we will discuss each stage in detail in future lessons.
+
+|**Stage**|**Purpose**|
+|---------|-----------|
+|Feasibility Study|Determine if the project is worthwhile|
+|Requirements Engineering|Obtain the user requirements|
+|Design|Design the system|
+|Development|Write the code|
+|Testing|Test the software|
+|Implementation|Deploy the software|
+|Maintenance|Support the software|
+
+> Remember that your portfolio will need to evidence projects which cover all of the above stages of the software lifecycle (excluding Feasibility Study)
 
 ----
 
-## Lesson 2 - Feasibility Study
+# Lesson 2 - Feasibility Study stage
 
 ## Learning Objectives
 
-The inputs for the feasibility study are business needs. At the end of this section you should be able to:
-
 *   Explain how software development is initiated when a need or an opportunity is identified.
-*   Describe the purpose and main activities of a feasibility study, including:
-    *   technical feasibility
-    *   financial feasibility
-    *   collection of information
-    *   assessment of risks and implications
-    *   consideration of alternatives
-    *   feasibility report writing
+*   Describe the purpose and main activities of a feasibility study.
 *   Explain why it is important to plan software development.
 *   Explain the purpose of a business case.
 *   Describe potential tangible and intangible benefits that can be achieved using operational software, including:
@@ -84,32 +76,48 @@ The inputs for the feasibility study are business needs. At the end of this sect
     *   increased income
 *   Demonstrate a simple cost benefit analysis for a given case.
 
-## Lesson
+## Purpose
+> A feasibility study involves investigation and research to evaluate a project's potential for success. 
 
-> Management is doing things right, leadership is doing the right things.
-
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTT3P1ioBFXXr7u0hNMmx03XYMMydTxmYJ7GUS0IK6lxySP9O-3fobzpAjV8cjY2uNm2KlzVJkrye-I/embed?start=false&amp;loop=false&amp;delayms=3000)
-
-## Inputs
-
-The initial input to the SDLC can come from a number of different places.
+The idea for a project can come from a number of different places.
 
 *   Market forces from competitors
 *   New technologies
 *   Changes in regulations
 *   Identifying a gap in the market
 
-This first phase of the SDLC looks at the aims of the business and the environment that it is operating in and asks the question “what should we be doing to fulfil our aims?”.
+For example, modern banking apps like Monzo and Starling introduced the ability to freeze a debit card via an app. Other banks saw this and reacted to the competition by implementing this same feature for their own customers. This is an example of a SDLC being driven by business needs.
 
-That might be reacting to competitors. For example modern banking apps like Monzo and Starling introduced the ability to freeze a debit card from an app. Other banks saw this and reacted to the competition by implementing this same feature for their own customers. This is an example of a SDLC being driven by business needs.
+Listen to this [Dragon's Den pitch](https://www.youtube.com/watch?v=nf4zNLxJZnY) - do you think the idea is feasible? 
 
-During the feasibility study executive staff figure out what their organisation should do next. This period of research and decision making is often dominated by the economic principle of **Return on Investment** (ROI).
+## Creating a Feasibility Study
+A feasibility study considers the following:
+* **Business** feasibility 
+   * can we get the project out ahead of our competitors?
+   * does the project fit with our organisational culture/goals?
+* **Technical** feasibility
+   * do we have suitably skilled developers?
+   * do we have infrastrure to support the rollout?
+* **Financial** feasibility
+   * can the project be done within budget?
+   * will there be an acceptable return on investment?
 
-### Return on Investment
+### Cost Benefit Analysis / Return on Investment
+The financial feasibility is determined based on whether the benefits outweigh the costs of delivery. 
 
-> Return on investment (ROI) is a ratio between net profit (over a period) and cost of investment (resulting from an investment of some resources at a point in time). A high ROI means the investment’s gains compare favourably to its cost.
+Costs and benefits can be either:
+   * _Tangible_ (easily measureable e.g. cost savings) 
+   * _Non-tangible_ (harder to measure e.g. increase in staff morale)
 
-To become more familiar with this concept can you work your way through these two examples:
+**Cost Benefit Analysis** takes into account the non-tangible benefits
+**Return on Investment (ROI)** only takes into account tangible benefits.
+
+The cost-benefit or ROI ratio is calculated as follows:
+> Cost-benefit (or ROI) ratio = benefits / cost
+
+If a project has a cost-benefit or ROI ratio greater than 1.0, the project is expected to deliver value.
+
+Let's consider 2 examples.
 
 > **Example 1.** A new (fourth) lane on the M1 is to be constructed. The costs and benefits of this road are as follows:
 > 
@@ -121,36 +129,59 @@ To become more familiar with this concept can you work your way through these tw
 > 6.  £3.5million for displacement of households
 > 7.  £11million in time-savings calculated from wages
 
-❓ What is the cost benefit ratio is (rounded to 2 decimal places)
+❓ What is the cost benefit ratio (rounded to 2 decimal places)
 
 ❓ Given the cost benefit ratio of the above should you go ahead with the 4th lane?
 
 > **Example 2.** A financial technology startup is expanding and adding two new programmers. The CEO of the company decides to run a cost benefit analysis to determine whether the decision will be beneficial to the company - and to what degree.  
 >   
-> The company is analysing a time horizon of one year, and estimates that revenue would increase some 50% if the two programmers were hired.  
+> The company estimates that revenue would increase by around £100,000 if the two programmers were hired.  
 >   
-> On the cost side of the equation, the CEO must examine the cost of the two programmer’s salaries - estimated at £75,000\. Additionally, there is the cost of recruitment, which might be around £3,000\. Training could add an additional £4,000.  
+> On the cost side of the equation, the CEO must examine the cost of the two programmer’s salaries - estimated at £55,000\. Additionally, there is the cost of recruitment, which might be around £3,000\. Equipment could add an additional £4,000.  
 >   
-> Additionally, there is the cost of new work areas and computers, totalling £5,000, and the cost of additional licensing for software and the like, around £2,000.  
->   
-> When calculating benefits, the CEO would examine the benefit of additional revenue within a 12 month period, estimated around £100,000\. Additionally, the increase in product quality resulting from the new programmers (and therefore presumed customer satisfaction) would increase by 10%, adding an estimated £10,000 in value to the company, within a 12 month period.
-
-❓ Should the CEO hire 2 new programmers?
 
 ❓ What is the cost benefit ratio (rounded to 2 decimal places)?
 
-For the resources and investment will the organisation see a benefit that out weights this cost? This is what this phase of the SDLC is concerned with and will distill all this thinking into an output.
+❓ Should the CEO hire 2 new programmers?
 
-## Output
+### Business Case
+A Business Case document is created after the Feasibility Study and provides the justification for undertaking the project. It typically consists of the following sections:
 
-The output of this phase is a feasibility study for the executives running the organisation. A statement "we should do this", or "we need to offer this service" is usually at the conclusion of the document, with data and evidence backing up the recommendations.
+* Management Summary
+* Background
+* Options and alternatives considered
+* Benefits
+* Costs
+* Impacts
+* Risks
+* Conclusion & recommendations
 
-This output forms the input for the next phase of the software development life cycle.
+
+## Roles involved in the Feasibility Study stage
+* Business Analyst
+* Project Sponsor
+...
+
 
 ## Assignment
+Choose one of the following Feasibility Studies to review (no need to read it all, just the Executive Summary and table of contents)
 
-_Can you identify the business need that the feature you are working on addresses?_
-[Business Needs Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7991&action=editsubmission)
+* [Feasibility Study of the Network Rail southern connection to Heathrow Airport](https://www.networkrail.co.uk/wp-content/uploads/2019/04/Southern-Rail-Access-to-Heathrow-Feasibility-Study.pdf)
+
+* [Feasibility Study into the Establishment of a National Musical Instrument Fund](https://www.musicnetwork.ie/content/files/NMIF-feasibility-study-FINAL-report-28-07-14.pdf)
+
+* [Esports Feasibility Report](https://www.hereeast.com/documents/18/HEREEAST-210125_Esports_Feasibility_Report_Final.pdf)
+
+Now skim through a Business Case and see how this differs in structure to the Feasibility Study
+
+* [Business Case for Lydney Cycling Improvements](https://www.gloucestershire.gov.uk/media/2084418/lydney-cycling-improvements-full-business-case.pdf)
+
+* [Business Case for an A4 Corridor Cycle Scheme](https://www.slough.gov.uk/downloads/file/718/a4-corridor-cycle-scheme-full-business-case)
+
+* [Business Case for Heathrow Airport North West Runway](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/374664/evidence-base-heathrow-north-west-final.pdf)
+
+## Quiz
+Complete this quiz on Applied to test your knowledge
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/198)
 [main](/swe)|[prev](/swe/mod2/wk2/day5.html)|[next](/swe/mod3/wk1/day2.html)
