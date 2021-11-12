@@ -34,13 +34,13 @@ The exam marks are split as follows:
 * Explain the role and function of the software development lifecycle
 * Relate the seven generic stages of the software development lifecycle 
 
-![SDLC](https://user-images.githubusercontent.com/4499581/74645922-ba2e3980-5170-11ea-9f62-0fa8f6d594e0.jpg)
-
 The purpose of the SDLC is to specify a set of steps to create a software end-product. It guides us in turning business requirements into operational IT systems.
 
 The 7 stages of the SDLC are listed below.
 
-TODO - diagram
+
+![The 7 stages of the SDLC](https://user-images.githubusercontent.com/1316724/141513299-3b05720a-284b-4ac8-b936-33c621536f8a.png)
+
 
 Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these through this module.
 
