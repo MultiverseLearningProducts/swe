@@ -8,9 +8,7 @@ Today we focus on the requirements analysis stage of the SDLC.
 
 ## Lesson 1 - Requirements Analysis
 
-## Learning Objectives
-
-At the end of this section you should be able to:
+### Learning Objectives
 
 *   Distinguish the role of the customer and the user in defining requirements.
 *   Describe how user research can facilitate understanding of the customer and enduser; who they are; the problem they are faced with; and how they are currently dealing with the problem, including questionnaires; user interviews; contextual enquiry; focus groups; personas; customer journey mapping.
@@ -28,108 +26,36 @@ At the end of this section you should be able to:
 *   Recognise common ways in which software requirements can be expressed.
 *   Describe the qualities of good requirements and the impact of poor requirements.
 *   Explain how a data dictionary / glossary of terms can be used.
-
-## Lesson
+* List and describe techniques and tools used in requirements analysis, including
+functional decomposition; Use Case diagrams; context diagram; UML (Unified
+Modelling Language) tools, activity diagrams
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-# The Input
+### Input to the Requirements Analysis stage
 
 The input for this stage of the SDLC are the business needs recommended in the feasibility Study. This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.
 
-There are a number of roles in this stage that we should be familiar with.
+There are a number of roles involved this stage that we should be familiar with.
 
-<table>
+|**Role**|**Responsibility**|
+|--------|------------------|
+|Project Sponsor (customer)|Owns the project and is accountable to the organisation for delivery of business benefits (feasibility study). Controls the scope of the project|
+|Managers|Own specific requirements|
+|Users|People who use the current system and will use the new system. Important they they buy into the new solution|
+|Domain Experts|???|
+|Project Manager|Responsible for development and deliverable to the Project Sponsor|
+|Business Analysts|Elicit, document and analyse requirements|
+|Testers|Help validate that requirements are testable|
+|Developers|Help validate that requirements are clearly defined|
 
-<thead>
-
-<tr>
-
-<th style="text-align:left">role</th>
-
-<th style="text-align:left">responsibility</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:left">Project Sponsor</td>
-
-<td style="text-align:left">Owns the project is accountable to the organisation for delivery of business benefits (feasibility study) controls the scope of the project.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Managers</td>
-
-<td style="text-align:left">advise, have a say, own part of the solution</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Users</td>
-
-<td style="text-align:left">People who use the current system, and will use the new system. Need to articulate their individual processes and buy into the new solution.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Project Manager</td>
-
-<td style="text-align:left">Responsible for development and deliverable to the Project Sponsor.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Business Analysts</td>
-
-<td style="text-align:left">Eliciting, documenting, analysing requirements</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Testers</td>
-
-<td style="text-align:left">Help validate business analysts elicited requirements are testable</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Developers</td>
-
-<td style="text-align:left">Can consult with business analysts, verify that requirements are clearly defined and add technical detail to proposals</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the **Project Sponsor** as a customer. They will ultimately receive the final product, but they may not use the product themselves, the team or their workers may end up using the product.
-
-## Assignment 🤔
-
-In your own words can you explain the difference between the Project Sponsor and the Users?
-
-[Project Sponsor and Users Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7992&action=editsubmission)
+Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the **Project Sponsor** as a customer. They will ultimately receive the final product even though they may not use the product themselves, their team may end up using the product.
 
 ----
 
 ## Lesson 2 - Elicitation
 
-> Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron.
-
-<small>“Developing Information Systems” by James Cadle</small>
+> "Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron" <small>_Developing Information Systems by James Cadle_</small>
 
 It’s the **Business Analysts** that will go into an organisation and mine for requirements. How do they do this?
 
@@ -141,96 +67,68 @@ It’s the **Business Analysts** that will go into an organisation and mine for 
 *   Scenarios
 *   Prototyping
 
-All of the above methods involve talking to people. There is also another approach that is more data driven.
+For example, a Business Analyst might look at a user inputting data in a form and ask questions such as:
+* what are the current input fields in this form? 
+* why these fields? 
+* where is the input data used? 
+They might also want to know quantitive things like: 
+* how many invoices are filed in a month?
+* how many automated emails sent? 
+* when is the system at capacity? 
+
+All of the methods described above involve talking to people. There are also others approaches that are more data driven.
 
 *   Questionnaires
 *   Document analysis
 *   Record searching
 *   Activity sampling
 
-For example a business analysts might look at a user inputing data in a form and ask what are the current input fields in this form? Why these fields? Where is the input data used? or analysis screen grabs and dissect components. They might also want to know things like how many invoices are filed in a month? How many automated emails sent? When is the system at capacity? Volumetric information like this can help the analysis.
+As an example, imagine you are a Business Analyst working on a project to automate manual processes in a leisure centre. You could use activity sampling to understand what those manual processes were. By visiting the leisure centre at different times (to generate a fair sample) and recording what the receptionist is doing you gather your requirements. For example:
 
-### Activity sampling
-
-To perform **“Activity sampling”** you do the following: At different times (to generate a fair sample) visit a location or office floor and record what each person is doing. For example:
-
-*   person1: Responding to emails
-*   person2: In a meeting
+*   person1: Responding to phone calls
+*   person2: Booking a swimming course
 *   person3: Tea break
-*   person4: Working on a feature
-*   person5: Standup
+*   person4: Looking for lost property
+*   person5: Giving change for the car park
 
-The set of activity samples when considered together can help provide an impression of what members of the organisation are doing during working hours.
+From this input, the Business Analyst may  choose to create Personas (ficticious characters which represent the different types of actors that will use your product) and define User Stories which describe a feature from the perspective of the end user.
 
-### Functional vs Non-Functional
+### Assignment
+Create Personas and User Stories for a recipe box delivery service. Use the template provided by your coach and make the Personas as interesting as possible!
+
+## Lesson 3 - Categories of requirements
 
 !(https://www.youtube.com/embed)
 
-Business analysis elicit both functional and non-functional requirements.
+Requirements analysis elicits both functional and non-functional requirements.
 
-## Thinking time 🤔
+Functional requirements describe _how_ a system should work
 
-In your own words can you identify a functional and non-functional component of the software you have worked on.
+|**ID**|**Priority**|**Description**|
+|------|------------|---------------|
+|FR1|MUST|Menu options include vegetarian, vegan and calorie controlled choices
+|FR2|MUST|Allergen information is displayed against each ingredient|
+|FR3|MUST|The password reset email contains a unique link which expires after one hour|
+|FR4|SHOULD|Payment options include ApplePay|
 
-[Functional and Non-Functional Assignment](https://applied.whitehat.org.uk/mod/assign/view.php?id=7993&action=editsubmission)
+Non-functional requirements describe the _constraints_ on the system such as system availability, conformance to security standards etc. Some examples are listed below but take time to study a more complete list on [Wikipedia](https://en.wikipedia.org/wiki/Non-functional_requirement)
 
-# The Output
+|**ID**|**Priority**|**Description**|
+|------|------------|---------------|
+|NFR1|MUST|The home page loads in less than 2 seconds|
+|NFR2|MUST|The system supports up to 1000 concurrent users|
+|NFR3|MUST|Data is held in a Postgres database|
 
-The output of this stage is a requirements document. There are various forms this document might take. Below is a break down of the main 4.
+Requirements can also be categorised further into:
 
-<table>
+|**Category**|**Description**|
+|-----------|---------------|
+|Business requirements|General requirements high-level statements|
+|Stakeholder requirements|Statements for the needs of individuals|
+|Solution requirements|Detailed technical requirements (i.e. database must handle 2,000 concurrent connections)|
+|Transition requirements|What is required to go from state A to state B (training, recruitment, processes, re-structuring)|
 
-<thead>
-
-<tr>
-
-<th style="text-align:left">output</th>
-
-<th style="text-align:left">description</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:left">Business requirements</td>
-
-<td style="text-align:left">General requirements high-level statements</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Stakeholder requirements</td>
-
-<td style="text-align:left">Statements for the needs of individuals</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Solution requirements</td>
-
-<td style="text-align:left">Detailed technical requirements (i.e. database must handle 2,000 concurrent connections)</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Transition requirements</td>
-
-<td style="text-align:left">What is required to go from state A to state B (training, recruitment, processes, re-structuring)</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-## What makes a “Good” requirement
+> What makes a “Good” requirement?
 
 There is quite an art to form a good requirement. Below are the main qualities your requirement must have:
 
@@ -242,129 +140,22 @@ There is quite an art to form a good requirement. Below are the main qualities y
 *   Prioritised
 *   Testable
 
-In this table you can see examples of bad verses good requirements.
+### Outputs from the Requirements Analysis stage
+The output of this stage is a requirements document. There are various forms this document might take, here is a [requirements document for new web-based sales system for Solar Based Energy Inc](http://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html).
 
-<table>
+A requirements document typically includes:
+* a **Glossary of Terms** - a definition of acronyms or domain specific words used within the document
+* **UML Use Case diagrams**
+* **UML Activity diagrams**
+* Functional Models - **Functional Decomposition** is the process of breaking down that complexity into smaller functions. Study [this example](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png) from the Centre of Missing People.
 
-<thead>
+### Assignment
+Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
 
-<tr>
+Update your portfolio to include Use Cases 
+and User Stories for one or more projects you have delivered.
 
-<th style="text-align:left">Quality</th>
-
-<th style="text-align:left">Bad</th>
-
-<th style="text-align:left">Good</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:left">Atomic</td>
-
-<td style="text-align:left">Students will be able to enrol to undergraduate and post-graduate courses</td>
-
-<td style="text-align:left">Students will be able to enrol to undergraduate courses.  
-
-Students will be able to enrol to post-graduate courses.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Unique id</td>
-
-<td style="text-align:left">Students will be able to enrol to undergraduate courses, Students will be able to enrol to post-graduate courses</td>
-
-<td style="text-align:left">**0x12** Course Enrolment  
-**0x13** Undergraduate enrolment  
-**0x14** Post-grad enrolment</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Complete</td>
-
-<td style="text-align:left">A professor user will log into the system by providing his username, password, and other relevant information</td>
-
-<td style="text-align:left">A professor user will log into the system by providing his username, password and department code</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Consistent</td>
-
-<td style="text-align:left">A student will have either undergraduate courses or post-graduate courses but not both. Some courses will be open to both under-graduate and post graduate.</td>
-
-<td style="text-align:left">A student will have either under-graduate or post graduates but not both.</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Traceable</td>
-
-<td style="text-align:left">Maintain student information-mapped to BRD [req.ID](http://req.ID)?</td>
-
-<td style="text-align:left">Maintain student information-Mapped to BRD req ID 4.1</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Prioritised</td>
-
-<td style="text-align:left">Registered student-Priority 1  
-Maintain User Information-Priority 1  
-Enrol courses-Priority 1  
-View Report Card-Priority 1</td>
-
-<td style="text-align:left">Register Student-Priority 1  
-Maintain User Information-Priority 2  
-Enrol courses-Priority 1  
-View Report Card-Priority 3</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">Testable</td>
-
-<td style="text-align:left">Each page of the system will load in an acceptable time-frame</td>
-
-<td style="text-align:left">Register student and enrol courses pages of the system will load within 5 seconds</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-## Requirements Document
-
-![contents of a requirements document](https://user-images.githubusercontent.com/4499581/75255155-64ddd200-57d9-11ea-953e-b9af99e10e97.jpg)
-
-Typically you would find the sections listed above in a requirements document.
-
-### Glossary of Terms
-
-A glossary of terms is a dictionary of acronyms or domain specific words that need defining.
-
-### Functional Models
-
-Functional models are often a way to illustrate or explain how a system needs to work. Functional Decomposition is the process of breaking down that complexity into smaller functions. Below is an example from [sites.google.com/site/centerofmissingpeople](https://sites.google.com/site/centerofmissingpeople) of functional decomposition.
-
-![an example of functional decomposition](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png)
-
-## Assignment
-
-Explore the [Center of Missing People](https://sites.google.com/site/centerofmissingpeople) site and identify the qualities of a good requirement. Submit your comments to your coach for review.
+Explore the [Center of Missing People](https://sites.google.com/site/centerofmissingpeople) site and identify the qualities of a good requirement. 
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
 [main](/swe)|[prev](/swe/mod3/wk1/day1.html)|[next](/swe/mod3/wk1/day3.html)

@@ -38,9 +38,7 @@ The purpose of the SDLC is to specify a set of steps to create a software end-pr
 
 The 7 stages of the SDLC are listed below.
 
-
-![The 7 stages of the SDLC](https://user-images.githubusercontent.com/1316724/141513299-3b05720a-284b-4ac8-b936-33c621536f8a.png)
-
+![SDLC stages](https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png)
 
 Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these through this module.
 
@@ -49,7 +47,7 @@ The high level purpose of each stage is described below, we will discuss each st
 |**Stage**|**Purpose**|
 |---------|-----------|
 |Feasibility Study|Determine if the project is worthwhile|
-|Requirements Engineering|Obtain the user requirements|
+|Requirements Analysis|Obtain the user requirements|
 |Design|Design the system|
 |Development|Write the code|
 |Testing|Test the software|
@@ -155,13 +153,6 @@ A Business Case document is created after the Feasibility Study and provides the
 * Impacts
 * Risks
 * Conclusion & recommendations
-
-
-## Roles involved in the Feasibility Study stage
-* Business Analyst
-* Project Sponsor
-...
-
 
 ## Assignment
 Choose one of the following Feasibility Studies to review (no need to read it all, just the Executive Summary and table of contents)
