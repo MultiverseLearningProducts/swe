@@ -176,5 +176,8 @@ Now skim through a Business Case and see how this differs in structure to the Fe
 ## Quiz
 Complete this quiz on Applied to test your knowledge
 
+## Additional resources
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&loop=false&delayms=3000)
+
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/198)
 [main](/swe)|[prev](/swe/mod2/wk2/day5.html)|[next](/swe/mod3/wk1/day2.html)
