@@ -53,15 +53,13 @@ There are a number of roles involved this stage that we should be familiar with.
 |Testers|Help validate that requirements are testable|
 |Developers|Help validate that requirements are clearly defined|
 
-Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the **Project Sponsor** as a customer. They will ultimately receive the final product even though they may not use the product themselves, their team may end up using the product.
+Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the _Project Sponsor_ as a customer. They will ultimately receive the final product even though they may not use the product themselves, their team may end up using the product.
 
-----
-
-## Lesson 2 - Elicitation
+### Capturing requirements
 
 > "Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron" <small>_Developing Information Systems by James Cadle_</small>
 
-It’s the **Business Analysts** that will go into an organisation and mine for requirements. How do they do this?
+It’s the _Business Analysts_ that will go into an organisation and mine for requirements. How do they do this?
 
 *   Interviews
 *   Focus groups
@@ -97,10 +95,7 @@ As an example, imagine you are a Business Analyst working on a project to automa
 
 From this input, the Business Analyst may  choose to create Personas (ficticious characters which represent the different types of actors that will use your product) and define User Stories which describe a feature from the perspective of the end user.
 
-### Assignment
-Create Personas and User Stories for a recipe box delivery service. Use the template provided by your coach and make the Personas as interesting as possible!
-
-## Lesson 3 - Categories of requirements
+### Categories of requirements
 
 !(https://www.youtube.com/embed)
 
@@ -132,8 +127,7 @@ Requirements can also be categorised further into:
 |Solution requirements|Detailed technical requirements (i.e. database must handle 2,000 concurrent connections)|
 |Transition requirements|What is required to go from state A to state B (training, recruitment, processes, re-structuring)|
 
-> What makes a “Good” requirement?
-
+### What makes a good requirement
 There is quite an art to form a good requirement. Below are the main qualities your requirement must have:
 
 *   Atomic
@@ -144,26 +138,31 @@ There is quite an art to form a good requirement. Below are the main qualities y
 *   Prioritised
 *   Testable
 
+### Expressing requirements
+_Functional decomposition_ is the analysis of complex systems/requirements by breaking them down into smaller, simpler elements. 
+
+Requirements can be expressed in a number of different forms for example, in tables such as shown earlier or, using [Functional Decomposition digrams](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png), using UML diagrams or writing User Stories (or a combination of all!).
+
+TODO - Use Case diagrams show..
+
+TODO - Activity diagrams show..
+
+TODO - We can also expressed requrements as User Stories.
+
 ### Outputs from the Requirements Analysis stage
-The output of this stage is a requirements document. There are various forms this document might take, here is a [requirements document for new web-based sales system for Solar Based Energy Inc](http://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html).
+The output of this stage is a requirements document. 
 
-A requirements document typically includes:
-* a **Glossary of Terms** - a definition of acronyms or domain specific words used within the document
-* **UML Use Case diagrams**
-TODO - add one in
+Here are some examples of real requirements documents:
+* [Requirements document for new web-based sales system for Solar Based Energy Inc](http://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html).
 
-* **UML Activity diagrams**
-TODO - add one in
+* [Requirements for the Center of Missing People website](https://sites.google.com/site/centerofmissingpeople). 
 
-* Functional Models - **Functional Decomposition** is the process of breaking down that complexity into smaller functions. Study [this example](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png) from the Centre of Missing People.
+A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. TODO.
 
 ### Assignment
 Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
 
-Update your portfolio to include Use Cases 
-and User Stories for one or more projects you have delivered.
-
-Explore the [Center of Missing People](https://sites.google.com/site/centerofmissingpeople) site and identify the qualities of a good requirement. 
+Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
 
 ## Additional resources
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
