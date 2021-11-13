@@ -30,11 +30,15 @@ Today we focus on the requirements analysis stage of the SDLC.
 functional decomposition; Use Case diagrams; context diagram; UML (Unified
 Modelling Language) tools, activity diagrams
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+### Inputs
 
-### Input to the Requirements Analysis stage
+The input for this stage of the SDLC are the business needs recommended in the feasibility Study. 
 
-The input for this stage of the SDLC are the business needs recommended in the feasibility Study. This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.
+### Purpose
+
+This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.
+
+### Who is involved
 
 There are a number of roles involved this stage that we should be familiar with.
 
@@ -146,7 +150,11 @@ The output of this stage is a requirements document. There are various forms thi
 A requirements document typically includes:
 * a **Glossary of Terms** - a definition of acronyms or domain specific words used within the document
 * **UML Use Case diagrams**
+TODO - add one in
+
 * **UML Activity diagrams**
+TODO - add one in
+
 * Functional Models - **Functional Decomposition** is the process of breaking down that complexity into smaller functions. Study [this example](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png) from the Centre of Missing People.
 
 ### Assignment
@@ -156,6 +164,9 @@ Update your portfolio to include Use Cases
 and User Stories for one or more projects you have delivered.
 
 Explore the [Center of Missing People](https://sites.google.com/site/centerofmissingpeople) site and identify the qualities of a good requirement. 
+
+## Additional resources
+[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
 [main](/swe)|[prev](/swe/mod3/wk1/day1.html)|[next](/swe/mod3/wk1/day3.html)

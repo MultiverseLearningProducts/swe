@@ -40,6 +40,8 @@ The 7 stages of the SDLC are listed below.
 
 ![SDLC stages](https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png)
 
+TODO - V model?
+
 Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these through this module.
 
 The high level purpose of each stage is described below, we will discuss each stage in detail in future lessons.
