@@ -12,41 +12,10 @@
   <body>
     <h1>Mod 3 > Week 1 > Day 4</h1>
     <h2>Overview of the day</h2>
-    <p>Continuing our dive into the design phase of the SDLC we are also going to start looking at development phase (our area!).</p>
+    <p>Today we look at the Development stage of the SDLC</p>
     <hr>
-    <h2>Lesson 1 - Security and control design</h2>
+    <h2>Lesson 1 - The Development Phase</h2>
     <h2>Learning Objectives</h2>
-    <ul>
-      <li>Identify the system components that need to be considered when designing software, including software architecture; user interface; user ergonomics; infrastructure / platform components; tools; operational processes; measures and metrics.</li>
-    </ul>
-    <h2>Lesson</h2>
-    <p>Security and control design are the mechanisms we design to ensure the system has integrity. The safeguards we introduce for the inputs and outputs of our system. For example; validating inputs from the user. Restricting write access to certain tables. Restricting read access for certain users.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75792946-9240f780-5d66-11ea-9183-389a2758c527.jpg" alt="ordering system">
-    </p>
-    <p>❓ In our ordering system above which part of the design is responsible for security and control?</p>
-    <h2>Scope</h2>
-    <p>Let us now consider the design phase in the context agile and waterfall software development methodologies.</p>
-    <h2>Outputs</h2>
-    <p>The outputs of the design stage might be:</p>
-    <ul>
-      <li>Use Case diagrams</li>
-      <li>Process diagrams</li>
-      <li>Data models</li>
-      <li>Class diagrams</li>
-      <li>Control flow diagrams</li>
-      <li>UI/Component/Form designs</li>
-    </ul>
-    <h2>Assignment 🤔</h2>
-    <ul>
-      <li>Explain in your opinion why <a href="https://www.interaction-design.org/literature/topics/human-computer-interaction">human computer interaction</a> is an important consideration for the design of the software you create?</li>
-      <li>In your own words what would you say is the <strong>purpose</strong> of the design stage of the SDLC</li>
-      <li>Use this like to submit your assignment <a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7995&#x26;action=editsubmission">Human Computer Interaction Assignment</a></li>
-    </ul>
-    <hr>
-    <h2>Lesson 2 - The Development Phase</h2>
-    <h2>Learning Objectives</h2>
-    <p>We are going to learn about the following:</p>
     <ul>
       <li>Summarise the main features and benefits of version control for the development of code, including change history; concurrent working; tracking and preventing conflicts; traceability; security.</li>
       <li>Demonstrate how version control, in conjunction with configuration and release management, can be used for software that is being developed for use on multiple platforms.</li>
@@ -55,7 +24,12 @@
       <li>Explain the purpose and benefit of peer reviews and retrospectives in the development process.</li>
     </ul>
     <h2>Lesson</h2>
-    <p>The input for the Development phase are designs. Version control gives us the following 5 features can you research these and answer the questions below:</p>
+    <h3>Input to the Development stage</h3>
+    <p>The inputs for the Development stage are designs.</p>
+    <h3>Purpose of the Development stage</h3>
+    <p>The purpose of the Development stage is to build and/or assemble (high-quality) software components to meet a system design.</p>
+    <h3>Version control</h3>
+    <p>Version control (also known as <em>configuration management</em>) provides the following features:</p>
     <ul>
       <li>Change history</li>
       <li>Concurrent working</li>
@@ -63,41 +37,63 @@
       <li>Traceability</li>
       <li>Security</li>
     </ul>
-    <p>❓ Which git command lets you view the change history of a project tracked by git?</p>
+    <p>There are many different types of version control, the mostly commonly used is <code>git</code>.</p>
+    <p>❓ Which <code>git</code> command lets you view the change history of a project tracked by git?</p>
     <p>❓ If I want to work concurrently on a code base without disturbing the work of other team members what should I do?</p>
-    <p>❓ If I make changes that overwrite or alter code from the master branch what might happen?</p>
-    <p>❓ If I want to find out who wrote a particular line of code what traceability tool from git can I use?</p>
-    <p>❓ Which of the following is a valid security concern when using version control?</p>
-    <h1>📄</h1>
-    <p>Write a piece in your portfolio that demonstrates HOW you use git in your work. Address the five points above and relate them to your role and times you have used these features.</p>
-    <hr>
-    <h2>Release Management</h2>
-    <p>Throughout the software development process, your code will go through cycles of development, testing, and fixing. Depending on your team, technology, platform, and other variables, you’ll likely have several environments that you use to manage your application. 1 In order to effectively test and release software, it’s imperative to have a simple and reliable release process for getting your code onto your various environments.</p>
-    <p>Your options for release management are literally endless. You could write your own scripts entirely from scratch or lean on tools like Jenkins, CircleCI, GoCD or TeamCity.</p>
-    <p>If it’s difficult to release code, you won’t release as frequently, and you may end up facing difficult choices where you need to release an update but fear disrupting your customers or acting to quickly. With a good release process, you should be incredibly confident releasing updates with no interruption to your customers. The best rule of thumb to know if your release process is good is whether you get anxious when releasing updates. That anxiety is often a symptom of a lack of confidence in your processes, and you should probably spend some time streamlining your releases.</p>
-    <p>Beyond the necessary side of getting your code where it needs to be, one of the biggest benefits of good release management is the ability to rollback in the event of an emergency. No matter how finely tuned your development and release process is, you’ll occasionally have hiccups in production.</p>
-    <p>
-      <img src="https://preview.redd.it/o0g6oez12yl01.jpg?width=960&#x26;crop=smart&#x26;auto=webp&#x26;s=d031a34a6f86ebabf21a75155b3dba3b25216958" alt="rollback broken code">
-    </p>
-    <p>When this happens, you’ll want to be able to easily rollback to your previously released codebase without breaking anything. This way, you’re not forced to rush an ill-considered fix out the door. Instead, you just rollback so that you can resolve the issue without affecting customers and then release again when it’s ready.</p>
-    <p>You might also have different environments that you deploy to:</p>
+    <p>❓ If I make changes to the same line of code as another developer how does version control software indicate this to me?</p>
+    <p>❓ If I want to find out who wrote a particular line of code what traceability tool from <code>git</code> can I use?</p>
+    <p>❓ What features could you use in GitHub to ensure no one outside your company can see the code</p>
+    <h3>Coding standards and code reviews</h3>
+    <p>Coding standards help us to develop better quality code by specifying best practices.</p>
+    <p>Code reviews look at the static code and detect bugs, vulnerabilities and "code smells".</p>
+    <p>Nowadays, default language specific coding standards are incorporated into Interactive Development Environments (IDEs). Visual notifications of non-conformance help us fix code as we go, rather than relying on manual checks at the end of the development process.</p>
+    <p>TODO - add diagram</p>
+    <p>One very popular automated code review tool is <a href="https://www.sonarqube.org/">SonarQube</a>. SonarQube includes thousands of automated static code analysis rules such as:</p>
+    <ul>
+      <li>TODO</li>
+    </ul>
+    <p>SonarQube is often incorporated into a Continous Deployment pipeline - TODO</p>
+    <p>Of course, manual code reviews still have their place</p>
+    <p>TODO - PRs</p>
+    <h3>Release Management</h3>
+    <p>Throughout the software development process, your code will go through cycles of development, testing, and fixing. Depending on your team, technology, platform, and other variables, you’ll likely have several environments that you use to manage your application, for example:</p>
     <ul>
       <li>Development</li>
       <li>Staging</li>
-      <li>QA testers</li>
+      <li>QA test</li>
       <li>Production</li>
     </ul>
+    <p>In order to effectively test and release software, it’s imperative you have a simple and reliable release process for pushing your code onto your different environments.</p>
+    <p>Your options for release management are literally endless. You could write your own scripts entirely from scratch or lean on tools like <a href="https://www.jenkins.io/">Jenkins</a>, <a href="https://circleci.com/">CircleCI</a>, <a href="https://www.gocd.org/">GoCD</a> or <a href="https://www.jetbrains.com/teamcity/">TeamCity</a>.</p>
+    <p>If it’s difficult to release code, you won’t be able to deploy updates frequently and, when you do, you risk disrupting your customers. With a good release process, you should be incredibly confident releasing updates with no interruption to your customers.</p>
+    <p>Beyond the necessary side of getting your code where it needs to be, one of the biggest benefits of good release management is the ability to rollback in the event of an emergency. No matter how finely tuned your development and release process is, you’ll occasionally have hiccups in production.</p>
+    <p>When this happens, you’ll want to be able to easily rollback to your previously released codebase without breaking anything. This way, you’re not forced to rush an ill-considered fix out the door. Instead, you just rollback so that you can resolve the issue without affecting customers and then release again when it’s ready.</p>
+    <p>You might also have different environments that you deploy to:</p>
     <h3>Continuous deployment</h3>
-    <p>Continuous deployment is one of the most advanced setups for team that have quality and process locked down. In these situations, releases are set up to happen automatically if new code successfully passes all of the automated tests. In order to do this, your team has to have an incredibly level of confidence that new code is tested and working. In this scenario, whenever someone adds new code, it will be run through all of your automated tests and, assuming they pass, put the code into production.</p>
-    <hr>
-    <h1>📄</h1>
-    <p>Write a piece in your portfolio that explains the coding guidelines and standards that you have to follow (i.e. code must have tests, code lint rules etc). You should also explain the process of peer reviews and retrospectives that you have to follow in your team.</p>
-    <h1>👩‍💻🧑‍💻</h1>
-    <p>In pairs explain the purpose of a range of programming tools, including compilers; interpreters; debuggers; GUI designers.</p>
-    <h2>💻 Assignment</h2>
-    <p>Take one of your repositories that is currently in version control (this should be a personal project). Can you implement a release management strategy for your project? Merging or pushing to master should trigger tests and a deployment.</p>
-    <h1>Outputs</h1>
-    <p>The output of the development phase is untested working software.</p>
+    <p>Continuous deployment is a software release process whereby releases to a production environment happen automatically if new code successfully passes all of the automated tests. In order to do this, your team must have a TODOhas to have an incredibly level of confidence that new code is tested and working.</p>
+    <h3>Outputs of the Development stage</h3>
+    <p>The output of the Development stage is code which is ready for test. Note that in reality unit testing may have - TODO</p>
+    <h2>Assigment 1</h2>
+    <p><a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/software-developer-v1-0">IfATE</a> require you to evidence the following standards in your portfolio:</p>
+    <blockquote>
+      <p>Can interpret and follow:</p>
+      <ul>
+        <li>company defined ‘coding standards’ or industry good practice for coding</li>
+        <li>...team or client approaches to continuous integration, version and source control</li>
+      </ul>
+    </blockquote>
+    <p>📄 Update your portfolio with a section which details:</p>
+    <ul>
+      <li>the version control system you use</li>
+      <li>how concurrent changes are handled</li>
+      <li>the coding standards you use</li>
+      <li>any tools (e.g. SonarQube) you use and why this benefits</li>
+      <li>how peer reviews are carried out<br>Make specific reference to projects you have worked on and show screenshots to bring the words to life.</li>
+    </ul>
+    <h2>Assigment 2</h2>
+    <p>Installed SonarQube and use it to analyse personal code that you have written (e.g. the code from the Bootcamp).</p>
+    <h2>Assigment 3</h2>
+    <p>In pairs, explain the purpose of a range of programming tools, including compilers; interpreters; debuggers; GUI designers.</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/201">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day3.html">prev</a>|<a href="/swe/mod3/wk1/day5.html">next</a>

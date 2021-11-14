@@ -12,7 +12,7 @@
   <body>
     <h1>Mod 3 > Week 1 > Day 2</h1>
     <h2>Overview of the day</h2>
-    <p>Today we focus on the requirements analysis stage of the SDLC.</p>
+    <p>Today we focus on the Requirements Analysis stage of the SDLC.</p>
     <hr>
     <h2>Lesson 1 - Requirements Analysis</h2>
     <h3>Learning Objectives</h3>
@@ -36,16 +36,12 @@
       <li>Recognise common ways in which software requirements can be expressed.</li>
       <li>Describe the qualities of good requirements and the impact of poor requirements.</li>
       <li>Explain how a data dictionary / glossary of terms can be used.</li>
-      <li>
-        List and describe techniques and tools used in requirements analysis, including
-        functional decomposition; Use Case diagrams; context diagram; UML (Unified
-        Modelling Language) tools, activity diagrams
-      </li>
+      <li>List and describe techniques and tools used in requirements analysis, including functional decomposition; Use Case diagrams; context diagram; UML (Unified Modelling Language) tools, activity diagrams</li>
     </ul>
-    <h3>Inputs</h3>
-    <p>The input for this stage of the SDLC are the business needs recommended in the feasibility Study.</p>
-    <h3>Purpose</h3>
-    <p>This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.</p>
+    <h3>Inputs to the Requirements Analysis stage</h3>
+    <p>The input for this stage of the SDLC are the business needs recommended in the Feasibility Study.</p>
+    <h3>Purpose of the Requirements Analysis stage</h3>
+    <p>This stage of the SDLC is about working out exactly what needs to be built or purchased in order to deliver the business impacts and benefits defined in the Feasibility Study.</p>
     <h3>Who is involved</h3>
     <p>There are a number of roles involved this stage that we should be familiar with.</p>
     <table>
@@ -70,7 +66,7 @@
         </tr>
         <tr>
           <td>Domain Experts</td>
-          <td>???</td>
+          <td>Under the domain</td>
         </tr>
         <tr>
           <td>Project Manager</td>
@@ -126,13 +122,12 @@
     </ul>
     <p>As an example, imagine you are a Business Analyst working on a project to automate manual processes in a leisure centre. You could use activity sampling to understand what those manual processes were. By visiting the leisure centre at different times (to generate a fair sample) and recording what the receptionist is doing you gather your requirements. For example:</p>
     <ul>
-      <li>person1: Responding to phone calls</li>
-      <li>person2: Booking a swimming course</li>
-      <li>person3: Tea break</li>
-      <li>person4: Looking for lost property</li>
-      <li>person5: Giving change for the car park</li>
+      <li>responding to phone calls</li>
+      <li>booking a swimming course</li>
+      <li>having a tea break</li>
+      <li>looking for lost property</li>
+      <li>giving change for the car park</li>
     </ul>
-    <p>From this input, the Business Analyst may choose to create Personas (ficticious characters which represent the different types of actors that will use your product) and define User Stories which describe a feature from the perspective of the end user.</p>
     <h3>Categories of requirements</h3>
     <iframe src="https://www.youtube.com/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>Requirements analysis elicits both functional and non-functional requirements.</p>
@@ -233,12 +228,50 @@
       <li>Prioritised</li>
       <li>Testable</li>
     </ul>
+    <p>Let's look at some examples of good and poor requirements in terms of how "complete" and "unambiguous" they are:</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Poor</strong></th>
+          <th><strong>Good</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The system must be useable</td>
+          <td>The system must conform to the <a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Nielson Top 10 Usability Heuristics</a></td>
+        </tr>
+        <tr>
+          <td>All code must have 80% test coverage</td>
+          <td>The system must be well tested</td>
+        </tr>
+      </tbody>
+    </table>
+    <blockquote>
+      <p><em>TASK - Imagine you are creating a food delivery service called "SOFresh". Create a set of functional and non-functional requirements to express the requirements for the site. Use the ones above as a starting point.</em></p>
+    </blockquote>
     <h3>Expressing requirements</h3>
     <p><em>Functional decomposition</em> is the analysis of complex systems/requirements by breaking them down into smaller, simpler elements.</p>
-    <p>Requirements can be expressed in a number of different forms for example, in tables such as shown earlier or, using <a href="https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png">Functional Decomposition digrams</a>, using UML diagrams or writing User Stories (or a combination of all!).</p>
-    <p>TODO - Use Case diagrams show..</p>
-    <p>TODO - Activity diagrams show..</p>
-    <p>TODO - We can also expressed requrements as User Stories.</p>
+    <p>Requirements can be expressed in a number of different forms including:</p>
+    <ul>
+      <li><a href="https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png">Functional Decomposition diagrams</a></li>
+      <li><em>UML Use Case</em> diagrams which show the interactions between the Actors and the system</li>
+      <li><em>UML Activity</em> diagrams which show how activities are co-ordinated</li>
+      <li><em>Personas</em> - ficticious characters which represent the different types of actors that will use a product</li>
+      <li><em>User Stories</em> which describe a feature from the perspective of the end user</li>
+    </ul>
+    <blockquote>
+      <p><em>TASK - using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system</em></p>
+    </blockquote>
+    <blockquote>
+      <p><em>TASK - using the User Story template provided by your coach, describe least 3 stories which provide users of the SoFresh system</em></p>
+    </blockquote>
+    <blockquote>
+      <p><em>TASK - create a UML Use Case Diagram to represent the interactions between the Actors in the SoFresh system</em></p>
+    </blockquote>
+    <blockquote>
+      <p><em>TASK - create a UML Activity Diagram model an automated chatbot responding to a customer query</em></p>
+    </blockquote>
     <h3>Outputs from the Requirements Analysis stage</h3>
     <p>The output of this stage is a requirements document.</p>
     <p>Here are some examples of real requirements documents:</p>
@@ -251,9 +284,15 @@
       </li>
     </ul>
     <p>A requirements document should include a <em>Glossary of Terms</em> which explains acronyms or domain specific words used within the document.It should also include a <em>Data Dictionary</em> which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. TODO.</p>
-    <h3>Assignment</h3>
-    <p>Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.</p>
-    <p>Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.</p>
+    <h2>Assignment</h2>
+    <ul>
+      <li>
+        <p>Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.</p>
+      </li>
+      <li>
+        <p>Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.</p>
+      </li>
+    </ul>
     <h2>Additional resources</h2>
     <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed">Slides</a></p>
     <p>
