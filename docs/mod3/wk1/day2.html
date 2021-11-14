@@ -15,8 +15,7 @@
     <p>Today we focus on the requirements analysis stage of the SDLC.</p>
     <hr>
     <h2>Lesson 1 - Requirements Analysis</h2>
-    <h2>Learning Objectives</h2>
-    <p>At the end of this section you should be able to:</p>
+    <h3>Learning Objectives</h3>
     <ul>
       <li>Distinguish the role of the customer and the user in defining requirements.</li>
       <li>Describe how user research can facilitate understanding of the customer and enduser; who they are; the problem they are faced with; and how they are currently dealing with the problem, including questionnaires; user interviews; contextual enquiry; focus groups; personas; customer journey mapping.</li>
@@ -37,22 +36,66 @@
       <li>Recognise common ways in which software requirements can be expressed.</li>
       <li>Describe the qualities of good requirements and the impact of poor requirements.</li>
       <li>Explain how a data dictionary / glossary of terms can be used.</li>
+      <li>
+        List and describe techniques and tools used in requirements analysis, including
+        functional decomposition; Use Case diagrams; context diagram; UML (Unified
+        Modelling Language) tools, activity diagrams
+      </li>
     </ul>
-    <h2>Lesson</h2>
-    <h1>The Input</h1>
-    <p>The input for this stage of the SDLC are the business needs recommended in the feasibility Study. This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.</p>
-    <p>There are a number of roles in this stage that we should be familiar with.</p>
-    <p>Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the <strong>Project Sponsor</strong> as a customer. They will ultimately receive the final product, but they may not use the product themselves, the team or their workers may end up using the product.</p>
-    <h2>Assignment 🤔</h2>
-    <p>In your own words can you explain the difference between the Project Sponsor and the Users?</p>
-    <p><a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7992&#x26;action=editsubmission">Project Sponsor and Users Assignment</a></p>
-    <hr>
-    <h2>Lesson 2 - Elicitation</h2>
+    <h3>Inputs</h3>
+    <p>The input for this stage of the SDLC are the business needs recommended in the feasibility Study.</p>
+    <h3>Purpose</h3>
+    <p>This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.</p>
+    <h3>Who is involved</h3>
+    <p>There are a number of roles involved this stage that we should be familiar with.</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Role</strong></th>
+          <th><strong>Responsibility</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Project Sponsor (customer)</td>
+          <td>Owns the project and is accountable to the organisation for delivery of business benefits (feasibility study). Controls the scope of the project</td>
+        </tr>
+        <tr>
+          <td>Managers</td>
+          <td>Own specific requirements</td>
+        </tr>
+        <tr>
+          <td>Users</td>
+          <td>People who use the current system and will use the new system. Important they they buy into the new solution</td>
+        </tr>
+        <tr>
+          <td>Domain Experts</td>
+          <td>???</td>
+        </tr>
+        <tr>
+          <td>Project Manager</td>
+          <td>Responsible for development and deliverable to the Project Sponsor</td>
+        </tr>
+        <tr>
+          <td>Business Analysts</td>
+          <td>Elicit, document and analyse requirements</td>
+        </tr>
+        <tr>
+          <td>Testers</td>
+          <td>Help validate that requirements are testable</td>
+        </tr>
+        <tr>
+          <td>Developers</td>
+          <td>Help validate that requirements are clearly defined</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Usually we think about customers as external to an organisation. For example when we buy something from JD sports, we are the customer. However in the roles above you can think of the <em>Project Sponsor</em> as a customer. They will ultimately receive the final product even though they may not use the product themselves, their team may end up using the product.</p>
+    <h3>Capturing requirements</h3>
     <blockquote>
-      <p>Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron.</p>
+      <p>"Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron" <em>Developing Information Systems by James Cadle</em></p>
     </blockquote>
-    <p>“Developing Information Systems” by James Cadle</p>
-    <p>It’s the <strong>Business Analysts</strong> that will go into an organisation and mine for requirements. How do they do this?</p>
+    <p>It’s the <em>Business Analysts</em> that will go into an organisation and mine for requirements. How do they do this?</p>
     <ul>
       <li>Interviews</li>
       <li>Focus groups</li>
@@ -62,33 +105,124 @@
       <li>Scenarios</li>
       <li>Prototyping</li>
     </ul>
-    <p>All of the above methods involve talking to people. There is also another approach that is more data driven.</p>
+    <p>For example, a Business Analyst might look at a user inputting data in a form and ask questions such as:</p>
+    <ul>
+      <li>what are the current input fields in this form?</li>
+      <li>why these fields?</li>
+      <li>
+        where is the input data used?
+        They might also want to know quantitive things like:
+      </li>
+      <li>how many invoices are filed in a month?</li>
+      <li>how many automated emails sent?</li>
+      <li>when is the system at capacity?</li>
+    </ul>
+    <p>All of the methods described above involve talking to people. There are also others approaches that are more data driven.</p>
     <ul>
       <li>Questionnaires</li>
       <li>Document analysis</li>
       <li>Record searching</li>
       <li>Activity sampling</li>
     </ul>
-    <p>For example a business analysts might look at a user inputing data in a form and ask what are the current input fields in this form? Why these fields? Where is the input data used? or analysis screen grabs and dissect components. They might also want to know things like how many invoices are filed in a month? How many automated emails sent? When is the system at capacity? Volumetric information like this can help the analysis.</p>
-    <h3>Activity sampling</h3>
-    <p>To perform <strong>“Activity sampling”</strong> you do the following: At different times (to generate a fair sample) visit a location or office floor and record what each person is doing. For example:</p>
+    <p>As an example, imagine you are a Business Analyst working on a project to automate manual processes in a leisure centre. You could use activity sampling to understand what those manual processes were. By visiting the leisure centre at different times (to generate a fair sample) and recording what the receptionist is doing you gather your requirements. For example:</p>
     <ul>
-      <li>person1: Responding to emails</li>
-      <li>person2: In a meeting</li>
+      <li>person1: Responding to phone calls</li>
+      <li>person2: Booking a swimming course</li>
       <li>person3: Tea break</li>
-      <li>person4: Working on a feature</li>
-      <li>person5: Standup</li>
+      <li>person4: Looking for lost property</li>
+      <li>person5: Giving change for the car park</li>
     </ul>
-    <p>The set of activity samples when considered together can help provide an impression of what members of the organisation are doing during working hours.</p>
-    <h3>Functional vs Non-Functional</h3>
+    <p>From this input, the Business Analyst may choose to create Personas (ficticious characters which represent the different types of actors that will use your product) and define User Stories which describe a feature from the perspective of the end user.</p>
+    <h3>Categories of requirements</h3>
     <iframe src="https://www.youtube.com/embed" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>Business analysis elicit both functional and non-functional requirements.</p>
-    <h2>Thinking time 🤔</h2>
-    <p>In your own words can you identify a functional and non-functional component of the software you have worked on.</p>
-    <p><a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7993&#x26;action=editsubmission">Functional and Non-Functional Assignment</a></p>
-    <h1>The Output</h1>
-    <p>The output of this stage is a requirements document. There are various forms this document might take. Below is a break down of the main 4.</p>
-    <h2>What makes a “Good” requirement</h2>
+    <p>Requirements analysis elicits both functional and non-functional requirements.</p>
+    <p>Functional requirements describe <em>how</em> a system should work</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>ID</strong></th>
+          <th><strong>Priority</strong></th>
+          <th><strong>Description</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FR1</td>
+          <td>MUST</td>
+          <td>Menu options include vegetarian, vegan and calorie controlled choices</td>
+        </tr>
+        <tr>
+          <td>FR2</td>
+          <td>MUST</td>
+          <td>Allergen information is displayed against each ingredient</td>
+        </tr>
+        <tr>
+          <td>FR3</td>
+          <td>MUST</td>
+          <td>The password reset email contains a unique link which expires after one hour</td>
+        </tr>
+        <tr>
+          <td>FR4</td>
+          <td>SHOULD</td>
+          <td>Payment options include ApplePay</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Non-functional requirements describe the <em>constraints</em> on the system such as system availability, conformance to security standards etc. Some examples are listed below but take time to study a more complete list on <a href="https://en.wikipedia.org/wiki/Non-functional_requirement">Wikipedia</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>ID</strong></th>
+          <th><strong>Priority</strong></th>
+          <th><strong>Description</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NFR1</td>
+          <td>MUST</td>
+          <td>The home page loads in less than 2 seconds</td>
+        </tr>
+        <tr>
+          <td>NFR2</td>
+          <td>MUST</td>
+          <td>The system supports up to 1000 concurrent users</td>
+        </tr>
+        <tr>
+          <td>NFR3</td>
+          <td>MUST</td>
+          <td>Data is held in a Postgres database</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Requirements can also be categorised further into:</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Category</strong></th>
+          <th><strong>Description</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Business requirements</td>
+          <td>General requirements high-level statements</td>
+        </tr>
+        <tr>
+          <td>Stakeholder requirements</td>
+          <td>Statements for the needs of individuals</td>
+        </tr>
+        <tr>
+          <td>Solution requirements</td>
+          <td>Detailed technical requirements (i.e. database must handle 2,000 concurrent connections)</td>
+        </tr>
+        <tr>
+          <td>Transition requirements</td>
+          <td>What is required to go from state A to state B (training, recruitment, processes, re-structuring)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>What makes a good requirement</h3>
     <p>There is quite an art to form a good requirement. Below are the main qualities your requirement must have:</p>
     <ul>
       <li>Atomic</li>
@@ -99,22 +233,29 @@
       <li>Prioritised</li>
       <li>Testable</li>
     </ul>
-    <p>In this table you can see examples of bad verses good requirements.</p>
-    <p>Students will be able to enrol to post-graduate courses.</p>
-    <h2>Requirements Document</h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75255155-64ddd200-57d9-11ea-953e-b9af99e10e97.jpg" alt="contents of a requirements document">
-    </p>
-    <p>Typically you would find the sections listed above in a requirements document.</p>
-    <h3>Glossary of Terms</h3>
-    <p>A glossary of terms is a dictionary of acronyms or domain specific words that need defining.</p>
-    <h3>Functional Models</h3>
-    <p>Functional models are often a way to illustrate or explain how a system needs to work. Functional Decomposition is the process of breaking down that complexity into smaller functions. Below is an example from <a href="https://sites.google.com/site/centerofmissingpeople">sites.google.com/site/centerofmissingpeople</a> of functional decomposition.</p>
-    <p>
-      <img src="https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png" alt="an example of functional decomposition">
-    </p>
-    <h2>Assignment</h2>
-    <p>Explore the <a href="https://sites.google.com/site/centerofmissingpeople">Center of Missing People</a> site and identify the qualities of a good requirement. Submit your comments to your coach for review.</p>
+    <h3>Expressing requirements</h3>
+    <p><em>Functional decomposition</em> is the analysis of complex systems/requirements by breaking them down into smaller, simpler elements.</p>
+    <p>Requirements can be expressed in a number of different forms for example, in tables such as shown earlier or, using <a href="https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png">Functional Decomposition digrams</a>, using UML diagrams or writing User Stories (or a combination of all!).</p>
+    <p>TODO - Use Case diagrams show..</p>
+    <p>TODO - Activity diagrams show..</p>
+    <p>TODO - We can also expressed requrements as User Stories.</p>
+    <h3>Outputs from the Requirements Analysis stage</h3>
+    <p>The output of this stage is a requirements document.</p>
+    <p>Here are some examples of real requirements documents:</p>
+    <ul>
+      <li>
+        <p><a href="http://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html">Requirements document for new web-based sales system for Solar Based Energy Inc</a>.</p>
+      </li>
+      <li>
+        <p><a href="https://sites.google.com/site/centerofmissingpeople">Requirements for the Center of Missing People website</a>.</p>
+      </li>
+    </ul>
+    <p>A requirements document should include a <em>Glossary of Terms</em> which explains acronyms or domain specific words used within the document.It should also include a <em>Data Dictionary</em> which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. TODO.</p>
+    <h3>Assignment</h3>
+    <p>Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.</p>
+    <p>Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.</p>
+    <h2>Additional resources</h2>
+    <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed">Slides</a></p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/199">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day1.html">prev</a>|<a href="/swe/mod3/wk1/day3.html">next</a>
