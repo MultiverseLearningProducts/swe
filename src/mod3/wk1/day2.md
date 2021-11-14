@@ -93,7 +93,7 @@ As an example, imagine you are a Business Analyst working on a project to automa
 
 ### Categories of requirements
 
-!(https://www.youtube.com/embed)
+!(https://youtu.be/nvIvnfsaFYw)
 
 Requirements analysis elicits both functional and non-functional requirements.
 
@@ -126,8 +126,7 @@ Requirements can also be categorised further into:
 ### What makes a good requirement
 There is quite an art to form a good requirement. Below are the main qualities your requirement must have:
 
-*   Atomic
-*   Uniquely identified
+*   Unique and atomic (focusses on one thing)
 *   Complete
 *   Consistent and unambiguous
 *   Traceable
@@ -178,7 +177,7 @@ A requirements document should include a _Glossary of Terms_ which explains acro
 * Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
 
 ## Additional resources
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
+[TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
 [main](/swe)|[prev](/swe/mod3/wk1/day1.html)|[next](/swe/mod3/wk1/day3.html)

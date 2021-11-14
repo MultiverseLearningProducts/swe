@@ -54,7 +54,7 @@ We can identify inputs from Use Case diagrams created as part of the Requirement
 
 Within the system boundary (shown as a rectangle) are the requirements (shown as elipses). Outside the system boundary are Actors who either provide inputs or consume outputs. 
 
-![use case diagram](https://user-images.githubusercontent.com/4499581/75772283-8ee84480-5d43-11ea-9c95-defd5db09005.jpg)
+<img width="250" alt="Food delivery service Use Case diagram" src="https://user-images.githubusercontent.com/1316724/141701063-414e71fb-2571-41b4-9d36-f3385d8ada92.png">
 
 ### User Interface design
 User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly". 
@@ -65,27 +65,20 @@ Jakob Nielsen is one of the world's leading expert on UI design. Read his [top 1
 
 _Wireframes_ express the UI in a visual form and allow a basis for discussion before software is built.
 
+<img width="250" alt="wireframe for food delivery site" src="https://user-images.githubusercontent.com/1316724/141701337-05f9464f-fce7-45e8-8761-4411a3704d5f.PNG">
+
 ### Process Design
-_Process Design_ focusses on how a requirement/Use Case will be realised via a set of software components.
+_Process Design_ focusses on how a requirement/Use Case will be realised via a set of software components. We refer to _Design Patterns_ to find solutions to commonly occuring problems.  
 
 Our order system could be broken down into the following set of software components.
 
-![process diagram](https://user-images.githubusercontent.com/4499581/75778926-9feb8280-5d50-11ea-8179-519a861ecf95.jpg)
+<img width="250" alt="process diagram" src="https://user-images.githubusercontent.com/4499581/75778926-9feb8280-5d50-11ea-8179-519a861ecf95.jpg">
 
 Here, the website is a static site hosted on Surge. The organisation runs its own bespoke accounting software solution hosted on its own servers. The databases are hosted on Amazon Web Wervices (AWS) and exposed via a RESTful API. Authentication of HTTP requests is done via a dedicated service which is also hosted on AWS.
 
 The process of placing an order can be expressed either in a worded format, or, as a UML sequence diagram, showing the flows between software components and Actors.
 
-TODO
-
-1.  A user requests the website hosted on surge
-2.  Surge responds with the website index page
-3.  From the website a request with items to order is sent to an Auth service on AWS
-4.  That Auth service validates the request then forwards the order onto the API
-5.  The API processes the order by reading and writing to the databases
-6.  The API responds to the request with a status
-
-A user will be free to select items. Then they will be able to place an order. If they are logged in and have an active session then we will create an Order record, and update the Users orders collection.
+TODO - add a sequence diagram
 
 #### High level to lower level
 
@@ -95,7 +88,7 @@ For example in the diagram above we have an Authentication step in our process. 
 
 ![activity diagram](https://user-images.githubusercontent.com/4499581/75785433-a16e7800-5d5b-11ea-9edc-405fb8d53d29.jpg)
 
-TODO - make it a sequence diagram
+TODO - move this to previous stage
 
 ### Data Design
 
@@ -118,32 +111,24 @@ A good example of normalisation is the way we can store a one-to-many relationsh
 Security and control design are the mechanisms we use to ensure the system has integrity and conforms to legislation such as GDPR. We introduce safeguards to protect data inputs and outputs as well as data at rest.
 
 Examples include:
-* Input validation.
-* Restricting write access to certain tables. 
-* Hashing of password data.
+* Input validation
+* Restricting write access to certain tables 
+* Hashing of password data
 
 ### Outputs from the Design stage
-*   Use Case diagrams
+*   UML Sequence diagrams
 *   Process diagrams
 *   Data models
 *   Class diagrams
 *   Control flow diagrams
-*   UI/Component/Form designs
-
-TODO
+*   UI designs
 
 ## Assignment
-Create the following design artefacts for one of the synoptic projects.
-
-TODO
-
-TODO - When you have finished you should upload your work [here](https://applied.multiverse.io/mod/assign/view.php?id=10720). 
-
+TODO - Create the following design artefacts for one of the synoptic projects.
 
 ## Additional resources
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000)
+[TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000)
 
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vRPopOEl-AIie0nwaZejCYHwcF0YsEUton4qjaufmt1zMk9yD1psuSf3CV_1NvjJIZGhGs-HjWq7t_U/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/200)
