@@ -25,9 +25,9 @@
       <li>Explain why good design leads to better operational software, and why the quality of design can have a direct impact on operational cost as well as quality.</li>
       <li>Explain how prototyping and modelling can be used to aid analysis and design.</li>
     </ul>
-    <h3>Inputs</h3>
+    <h3>Inputs to the Design stage</h3>
     <p>The inputs to the Design stage are requirements.</p>
-    <h3>Purpose</h3>
+    <h3>Purpose of the Design stage</h3>
     <p>The <em>purpose</em> of Design is to formulate a solution to realise the system's requirements.</p>
     <p>The <em>scope</em> of Design is:</p>
     <ol>
@@ -46,7 +46,7 @@
       <li>requirements for using specific technologies</li>
     </ul>
     <p>They will also be affected by the quality of requirements and the availability of stakeholders for clarification of requirements.</p>
-    <h3>Input Output design</h3>
+    <h3>Input/Output design</h3>
     <p><em>Input design</em> focusses on the interaction between the user and the system.</p>
     <p><em>Output design</em> focusses on the interaction between the system and an external actor (person or other system). It considers how data will be stored and processed.</p>
     <p>We can identify inputs from Use Case diagrams created as part of the Requirements Analysis stage.</p>
@@ -99,7 +99,23 @@
     </ul>
     <p>A good example of normalisation is the way we can store a one-to-many relationship in a relational database. For example, our Customers will have many Orders. To normalise that data structure we should store the Customer once and use their id in the Orders table to create that relationship.</p>
     <h3>Security and control design</h3>
-    <p>Controls ensure the integrity of the data being processed or stored. Consideration must be given to relevant legislation (e.g. GDPR) and ensuring the security of data.</p>
+    <p>Security and control design are the mechanisms we use to ensure the system has integrity and conforms to legislation such as GDPR. We introduce safeguards to protect data inputs and outputs as well as data at rest.</p>
+    <p>Examples include:</p>
+    <ul>
+      <li>Input validation.</li>
+      <li>Restricting write access to certain tables.</li>
+      <li>Hashing of password data.</li>
+    </ul>
+    <h3>Outputs from the Design stage</h3>
+    <ul>
+      <li>Use Case diagrams</li>
+      <li>Process diagrams</li>
+      <li>Data models</li>
+      <li>Class diagrams</li>
+      <li>Control flow diagrams</li>
+      <li>UI/Component/Form designs</li>
+    </ul>
+    <p>TODO</p>
     <h2>Assignment</h2>
     <p>Create the following design artefacts for one of the synoptic projects.</p>
     <p>TODO</p>
