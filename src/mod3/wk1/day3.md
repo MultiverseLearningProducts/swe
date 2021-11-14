@@ -18,11 +18,11 @@ Today we look at the Design stage of the SDLC
 *   Explain why good design leads to better operational software, and why the quality of design can have a direct impact on operational cost as well as quality. 
 *   Explain how prototyping and modelling can be used to aid analysis and design. 
 
-### Inputs
+### Inputs to the Design stage
 
 The inputs to the Design stage are requirements. 
 
-### Purpose
+### Purpose of the Design stage
 The _purpose_ of Design is to formulate a solution to realise the system's requirements. 
 
 The _scope_ of Design is:
@@ -44,7 +44,7 @@ The system designer/architect wil be constrained by the non-functional requireme
 
 They will also be affected by the quality of requirements and the availability of stakeholders for clarification of requirements.
 
-### Input Output design
+### Input/Output design
 
 _Input design_ focusses on the interaction between the user and the system.
 
@@ -115,7 +115,22 @@ This is a technique used in data design  to ensure data structures:
 A good example of normalisation is the way we can store a one-to-many relationship in a relational database. For example, our Customers will have many Orders. To normalise that data structure we should store the Customer once and use their id in the Orders table to create that relationship.
 
 ### Security and control design
-Controls ensure the integrity of the data being processed or stored. Consideration must be given to relevant legislation (e.g. GDPR) and ensuring the security of data.
+Security and control design are the mechanisms we use to ensure the system has integrity and conforms to legislation such as GDPR. We introduce safeguards to protect data inputs and outputs as well as data at rest.
+
+Examples include:
+* Input validation.
+* Restricting write access to certain tables. 
+* Hashing of password data.
+
+### Outputs from the Design stage
+*   Use Case diagrams
+*   Process diagrams
+*   Data models
+*   Class diagrams
+*   Control flow diagrams
+*   UI/Component/Form designs
+
+TODO
 
 ## Assignment
 Create the following design artefacts for one of the synoptic projects.

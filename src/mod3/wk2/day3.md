@@ -20,6 +20,39 @@ Today we look at different software methodologies and come to see their strength
     *   Responding to change over following a plan
 *   Describe the primary similarities and differences between waterfall and agile software development methods.
 
+TODO - 
+
+## Scope
+
+Let us now consider the design phase in the context agile and waterfall software development methodologies.
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Methodology</th>
+<th style="text-align:left">Design notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/75794619-f2d13400-5d68-11ea-97ea-85e4a63a720f.jpg" alt="waterfall"></td>
+<td style="text-align:left"><h3>Waterfall</h3><p>In the waterfall method all the design work is done before the developers start to write any code. The scope of the design stage in waterfall is large.</p></td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/75794618-f2389d80-5d68-11ea-989d-ede01ad61484.jpg" alt="v-model"></td>
+<td style="text-align:left"><h3>V-Model</h3><p>In this method the designs created service as both instructions and verification. The design stage is often divided into system design and component design. The design stage is large in scope.</p></td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/75794616-f1a00700-5d68-11ea-97ed-d8fd88a3ed27.jpg" alt="incremental"></td>
+<td style="text-align:left"><h3>Incremental</h3><p>In the incremental method the design work is done before development begins. The designs might be created for all the different increments, so a set of designs for increment1, then another set of designs for increment2 etc. Whilst the scope of an increment is limited the design phase is not.</p></td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="https://user-images.githubusercontent.com/4499581/75794612-efd64380-5d68-11ea-9478-458e5a348aea.jpg" alt="iterative"></td>
+<td style="text-align:left"><h3>Iterative</h3><p>With the iterative method design work is contained within an iterative cycle so is much shorter and smaller in scope.</p></td>
+</tr>
+</tbody>
+</table>
+
 ## Lesson
 
 !(https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)

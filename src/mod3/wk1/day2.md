@@ -2,7 +2,7 @@
 
 ## Overview of the day
 
-Today we focus on the requirements analysis stage of the SDLC.
+Today we focus on the Requirements Analysis stage of the SDLC.
 
 ----
 
@@ -26,17 +26,15 @@ Today we focus on the requirements analysis stage of the SDLC.
 *   Recognise common ways in which software requirements can be expressed.
 *   Describe the qualities of good requirements and the impact of poor requirements.
 *   Explain how a data dictionary / glossary of terms can be used.
-* List and describe techniques and tools used in requirements analysis, including
-functional decomposition; Use Case diagrams; context diagram; UML (Unified
-Modelling Language) tools, activity diagrams
+* List and describe techniques and tools used in requirements analysis, including functional decomposition; Use Case diagrams; context diagram; UML (Unified Modelling Language) tools, activity diagrams
 
-### Inputs
+### Inputs to the Requirements Analysis stage
 
-The input for this stage of the SDLC are the business needs recommended in the feasibility Study. 
+The input for this stage of the SDLC are the business needs recommended in the Feasibility Study. 
 
-### Purpose
+### Purpose of the Requirements Analysis stage
 
-This stage of the SDLC is about working out exactly what needs to be build or purchased in order to deliver the business impacts and benefits defined in the feasibility study.
+This stage of the SDLC is about working out exactly what needs to be built or purchased in order to deliver the business impacts and benefits defined in the Feasibility Study.
 
 ### Who is involved
 
@@ -47,7 +45,7 @@ There are a number of roles involved this stage that we should be familiar with.
 |Project Sponsor (customer)|Owns the project and is accountable to the organisation for delivery of business benefits (feasibility study). Controls the scope of the project|
 |Managers|Own specific requirements|
 |Users|People who use the current system and will use the new system. Important they they buy into the new solution|
-|Domain Experts|???|
+|Domain Experts|Under the domain|
 |Project Manager|Responsible for development and deliverable to the Project Sponsor|
 |Business Analysts|Elicit, document and analyse requirements|
 |Testers|Help validate that requirements are testable|
@@ -87,13 +85,11 @@ All of the methods described above involve talking to people. There are also oth
 
 As an example, imagine you are a Business Analyst working on a project to automate manual processes in a leisure centre. You could use activity sampling to understand what those manual processes were. By visiting the leisure centre at different times (to generate a fair sample) and recording what the receptionist is doing you gather your requirements. For example:
 
-*   person1: Responding to phone calls
-*   person2: Booking a swimming course
-*   person3: Tea break
-*   person4: Looking for lost property
-*   person5: Giving change for the car park
-
-From this input, the Business Analyst may  choose to create Personas (ficticious characters which represent the different types of actors that will use your product) and define User Stories which describe a feature from the perspective of the end user.
+*   responding to phone calls
+*   booking a swimming course
+*   having a tea break
+*   looking for lost property
+*   giving change for the car park
 
 ### Categories of requirements
 
@@ -138,16 +134,33 @@ There is quite an art to form a good requirement. Below are the main qualities y
 *   Prioritised
 *   Testable
 
+Let's look at some examples of good and poor requirements in terms of how "complete" and "unambiguous" they are:
+
+|**Poor**|**Good**|
+|--------|--------|
+|The system must be useable|The system must conform to the [Nielson Top 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)|
+|All code must have 80% test coverage|The system must be well tested|
+
+> _TASK - Imagine you are creating a food delivery service called "SOFresh". Create a set of functional and non-functional requirements to express the requirements for the site. Use the ones above as a starting point._
+
 ### Expressing requirements
 _Functional decomposition_ is the analysis of complex systems/requirements by breaking them down into smaller, simpler elements. 
 
-Requirements can be expressed in a number of different forms for example, in tables such as shown earlier or, using [Functional Decomposition digrams](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png), using UML diagrams or writing User Stories (or a combination of all!).
+Requirements can be expressed in a number of different forms including: 
+* [Functional Decomposition diagrams](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png)
+* _UML Use Case_ diagrams which show the interactions between the Actors and the system
+* _UML Activity_ diagrams which show how activities are co-ordinated
+* _Personas_ - ficticious characters which represent the different types of actors that will use a product
+* _User Stories_ which describe a feature from the perspective of the end user
 
-TODO - Use Case diagrams show..
+> _TASK - using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system_ 
 
-TODO - Activity diagrams show..
+> _TASK - using the User Story template provided by your coach, describe least 3 stories which provide users of the SoFresh system_ 
 
-TODO - We can also expressed requrements as User Stories.
+> _TASK - create a UML Use Case Diagram to represent the interactions between the Actors in the SoFresh system_
+
+> _TASK - create a UML Activity Diagram model an automated chatbot responding to a customer query_
+
 
 ### Outputs from the Requirements Analysis stage
 The output of this stage is a requirements document. 
@@ -159,10 +172,10 @@ Here are some examples of real requirements documents:
 
 A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. TODO.
 
-### Assignment
-Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
+## Assignment
+* Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
 
-Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
+* Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
 
 ## Additional resources
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)

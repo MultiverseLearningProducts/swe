@@ -34,15 +34,14 @@ The exam marks are split as follows:
 * Explain the role and function of the software development lifecycle
 * Relate the seven generic stages of the software development lifecycle 
 
+## Purpose of the SDLC
 The purpose of the SDLC is to specify a set of steps to create a software end-product. It guides us in turning business requirements into operational IT systems.
 
 The 7 stages of the SDLC are listed below.
 
-![SDLC stages](https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png)
+<img src="https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png" alt="SDLC stages" width="200">
 
-TODO - V model?
-
-Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these through this module.
+Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these throughout this module.
 
 The high level purpose of each stage is described below, we will discuss each stage in detail in future lessons.
 
@@ -76,7 +75,7 @@ The high level purpose of each stage is described below, we will discuss each st
     *   increased income
 *   Demonstrate a simple cost benefit analysis for a given case.
 
-## Purpose
+## Purpose of a Feasibility Study
 > A feasibility study involves investigation and research to evaluate a project's potential for success. 
 
 The idea for a project can come from a number of different places.
@@ -92,13 +91,13 @@ Listen to this [Dragon's Den pitch](https://www.youtube.com/watch?v=nf4zNLxJZnY)
 
 ## Creating a Feasibility Study
 A feasibility study considers the following:
-* **Business** feasibility 
+* Business feasibility 
    * can we get the project out ahead of our competitors?
    * does the project fit with our organisational culture/goals?
-* **Technical** feasibility
+* Technical feasibility
    * do we have suitably skilled developers?
-   * do we have infrastrure to support the rollout?
-* **Financial** feasibility
+   * do we have infrastructure to support the rollout?
+* Financial feasibility
    * can the project be done within budget?
    * will there be an acceptable return on investment?
 
@@ -106,45 +105,38 @@ A feasibility study considers the following:
 The financial feasibility is determined based on whether the benefits outweigh the costs of delivery. 
 
 Costs and benefits can be either:
-   * _Tangible_ (easily measureable e.g. cost savings) 
-   * _Non-tangible_ (harder to measure e.g. increase in staff morale)
+   * _Tangible_ - these are provable in advance e.g. cost savings
+   * _Non-tangible_ - these cannot be proven in advance and are harder to measure e.g. increase in staff morale
 
-**Cost Benefit Analysis** takes into account the non-tangible benefits
-**Return on Investment (ROI)** only takes into account tangible benefits.
+_Cost Benefit Analysis_ takes into account the non-tangible benefits, 
+_Return on Investment (ROI)_ only takes into account tangible benefits.
 
-The cost-benefit or ROI ratio is calculated as follows:
-> Cost-benefit (or ROI) ratio = benefits / cost
+Cost-benefit is calculated as follows:
+> Cost-benefit = Benefit - Cost
 
-If a project has a cost-benefit or ROI ratio greater than 1.0, the project is expected to deliver value.
+Cost-benefit _ratio_ is calculated as follows:
+> Cost-benefit = Benefits / Cost
 
-Let's consider 2 examples.
+If a project has a cost-benefit ratio greater than 1.0, the project is generally expected to deliver value.
 
-> **Example 1.** A new (fourth) lane on the M1 is to be constructed. The costs and benefits of this road are as follows:
-> 
-> 1.  £7.5million reduction in accidents calculated from life insurance values
-> 2.  £3.2million in planning applications
-> 3.  £2million in time-saving calculated from leisure preferences
-> 4.  £6.5million in materials
-> 5.  £6million for labour
-> 6.  £3.5million for displacement of households
-> 7.  £11million in time-savings calculated from wages
+Let's look at an example:
 
-❓ What is the cost benefit ratio (rounded to 2 decimal places)
+A new lane on the M4 is to be constructed. The costs and benefits of this road are as follows:
 
-❓ Given the cost benefit ratio of the above should you go ahead with the 4th lane?
+* £6 million benefit in reduction in accidents 
+* £11 million benefit in time-savings 
+* £3.8 million cost in materials costs
+* £3.2 million cost in labour 
 
-> **Example 2.** A financial technology startup is expanding and adding two new programmers. The CEO of the company decides to run a cost benefit analysis to determine whether the decision will be beneficial to the company - and to what degree.  
->   
-> The company estimates that revenue would increase by around £100,000 if the two programmers were hired.  
->   
-> On the cost side of the equation, the CEO must examine the cost of the two programmer’s salaries - estimated at £55,000\. Additionally, there is the cost of recruitment, which might be around £3,000\. Equipment could add an additional £4,000.  
->   
+❓ What is the cost benefit 
 
-❓ What is the cost benefit ratio (rounded to 2 decimal places)?
+❓ What is the cost benefit ratio (rounded to 2 decimal places)? 
 
-❓ Should the CEO hire 2 new programmers?
+Based on this, should the road go ahead?
 
-### Business Case
+Now, read a real live example of the [Emergency Telehealth and Navigation programme cost benefit analysis](https://www.gov.uk/guidance/cost-benefit-analysis-health-economic-studies#example-the-ethan-initiative)
+
+## Business Case
 A Business Case document is created after the Feasibility Study and provides the justification for undertaking the project. It typically consists of the following sections:
 
 * Management Summary
@@ -165,7 +157,7 @@ Choose one of the following Feasibility Studies to review (no need to read it al
 
 * [Esports Feasibility Report](https://www.hereeast.com/documents/18/HEREEAST-210125_Esports_Feasibility_Report_Final.pdf)
 
-Now skim through a Business Case and see how this differs in structure to the Feasibility Study
+Now skim through a Business Case and see how this differs in structure to the Feasibility Study.
 
 * [Business Case for Lydney Cycling Improvements](https://www.gloucestershire.gov.uk/media/2084418/lydney-cycling-improvements-full-business-case.pdf)
 
@@ -173,11 +165,14 @@ Now skim through a Business Case and see how this differs in structure to the Fe
 
 * [Business Case for Heathrow Airport North West Runway](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/374664/evidence-base-heathrow-north-west-final.pdf)
 
-## Quiz
-Complete this quiz on Applied to test your knowledge
+Now complete the following quizzes in Applied:
+* https://applied.multiverse.io/mod/quiz/view.php?id=11615
+* https://applied.multiverse.io/mod/quiz/view.php?id=11616
 
 ## Additional resources
-[Slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&loop=false&delayms=3000)
+
+[TODO - Coach Slides](https://docs.google.com/presentation/d/e/2PACX-1vT-jjCXgRttr3Iup8KVPz1sja4uIYeMoPwim0YQsDF3eoXyjoC1Cu8vXsDHQxDootrmR4oIsFmTYm6b/embed?start=false&loop=false&delayms=3000)
+
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/198)
 [main](/swe)|[prev](/swe/mod2/wk2/day5.html)|[next](/swe/mod3/wk1/day2.html)
