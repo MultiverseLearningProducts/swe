@@ -51,9 +51,6 @@
     <p><em>Output design</em> focusses on the interaction between the system and an external actor (person or other system). It considers how data will be stored and processed.</p>
     <p>We can identify inputs from Use Case diagrams created as part of the Requirements Analysis stage.</p>
     <p>Within the system boundary (shown as a rectangle) are the requirements (shown as elipses). Outside the system boundary are Actors who either provide inputs or consume outputs.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75772283-8ee84480-5d43-11ea-9c95-defd5db09005.jpg" alt="use case diagram">
-    </p>
     <h3>User Interface design</h3>
     <p>User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly".</p>
     <blockquote>
@@ -62,30 +59,18 @@
     <p>Jakob Nielsen is one of the world's leading expert on UI design. Read his <a href="https://www.nngroup.com/articles/ten-usability-heuristics/">top 10 usability principles</a> to find out what makes a usable UI.</p>
     <p><em>Wireframes</em> express the UI in a visual form and allow a basis for discussion before software is built.</p>
     <h3>Process Design</h3>
-    <p><em>Process Design</em> focusses on how a requirement/Use Case will be realised via a set of software components.</p>
+    <p><em>Process Design</em> focusses on how a requirement/Use Case will be realised via a set of software components. We refer to <em>Design Patterns</em> to find solutions to commonly occuring problems.</p>
     <p>Our order system could be broken down into the following set of software components.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75778926-9feb8280-5d50-11ea-8179-519a861ecf95.jpg" alt="process diagram">
-    </p>
     <p>Here, the website is a static site hosted on Surge. The organisation runs its own bespoke accounting software solution hosted on its own servers. The databases are hosted on Amazon Web Wervices (AWS) and exposed via a RESTful API. Authentication of HTTP requests is done via a dedicated service which is also hosted on AWS.</p>
     <p>The process of placing an order can be expressed either in a worded format, or, as a UML sequence diagram, showing the flows between software components and Actors.</p>
-    <p>TODO</p>
-    <ol>
-      <li>A user requests the website hosted on surge</li>
-      <li>Surge responds with the website index page</li>
-      <li>From the website a request with items to order is sent to an Auth service on AWS</li>
-      <li>That Auth service validates the request then forwards the order onto the API</li>
-      <li>The API processes the order by reading and writing to the databases</li>
-      <li>The API responds to the request with a status</li>
-    </ol>
-    <p>A user will be free to select items. Then they will be able to place an order. If they are logged in and have an active session then we will create an Order record, and update the Users orders collection.</p>
+    <p>TODO - add a sequence diagram</p>
     <h4>High level to lower level</h4>
     <p>Our process design at the moment is quite high level, we can now go into more and more detail as we design the system in more and more detail.</p>
     <p>For example in the diagram above we have an Authentication step in our process. That might need a more detailed design. Below is an activity diagram that shows how to handle incoming requests.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/75785433-a16e7800-5d5b-11ea-9edc-405fb8d53d29.jpg" alt="activity diagram">
     </p>
-    <p>TODO - make it a sequence diagram</p>
+    <p>TODO - move this to previous stage</p>
     <h3>Data Design</h3>
     <p>Next we might want to start thinking about our data structures. In object oriented (OO) programming, our data structures are mirrored in code and in the datastore. For example, our program might have an <strong>Order</strong> class that we interact with in our program, and each instance of an <strong>Order</strong> is also persisted as a row in a datastore.</p>
     <p>Data design starts with the requirements. Once it is clear what needs to be persisted, often data is then <strong><em>normalised</em></strong>.</p>
@@ -102,27 +87,23 @@
     <p>Security and control design are the mechanisms we use to ensure the system has integrity and conforms to legislation such as GDPR. We introduce safeguards to protect data inputs and outputs as well as data at rest.</p>
     <p>Examples include:</p>
     <ul>
-      <li>Input validation.</li>
-      <li>Restricting write access to certain tables.</li>
-      <li>Hashing of password data.</li>
+      <li>Input validation</li>
+      <li>Restricting write access to certain tables</li>
+      <li>Hashing of password data</li>
     </ul>
     <h3>Outputs from the Design stage</h3>
     <ul>
-      <li>Use Case diagrams</li>
+      <li>UML Sequence diagrams</li>
       <li>Process diagrams</li>
       <li>Data models</li>
       <li>Class diagrams</li>
       <li>Control flow diagrams</li>
-      <li>UI/Component/Form designs</li>
+      <li>UI designs</li>
     </ul>
-    <p>TODO</p>
     <h2>Assignment</h2>
-    <p>Create the following design artefacts for one of the synoptic projects.</p>
-    <p>TODO</p>
-    <p>TODO - When you have finished you should upload your work <a href="https://applied.multiverse.io/mod/assign/view.php?id=10720">here</a>.</p>
+    <p>TODO - Create the following design artefacts for one of the synoptic projects.</p>
     <h2>Additional resources</h2>
-    <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&#x26;loop=false&#x26;delayms=3000">Slides</a></p>
-    <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vRPopOEl-AIie0nwaZejCYHwcF0YsEUton4qjaufmt1zMk9yD1psuSf3CV_1NvjJIZGhGs-HjWq7t_U/embed?start=false&#x26;loop=false&#x26;delayms=3000">Slides</a></p>
+    <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&#x26;loop=false&#x26;delayms=3000">TODO - Slides</a></p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/200">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day2.html">prev</a>|<a href="/swe/mod3/wk1/day4.html">next</a>
