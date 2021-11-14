@@ -39,7 +39,7 @@ The purpose of the SDLC is to specify a set of steps to create a software end-pr
 
 The 7 stages of the SDLC are listed below.
 
-<img src="https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png" alt="SDLC stages" width="200">
+![SDLC stages](https://user-images.githubusercontent.com/1316724/141534650-df8dcfe7-59a1-4f92-8097-40a2fee02923.png)
 
 Note that you will see variations of these terms on-line and in literature however these are the terms used by the BCS hence we will use these throughout this module.
 

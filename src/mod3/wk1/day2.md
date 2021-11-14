@@ -93,7 +93,7 @@ As an example, imagine you are a Business Analyst working on a project to automa
 
 ### Categories of requirements
 
-!(https://youtu.be/nvIvnfsaFYw)
+!(https://www.youtube.com/embed/nvIvnfsaFYw)
 
 Requirements analysis elicits both functional and non-functional requirements.
 
