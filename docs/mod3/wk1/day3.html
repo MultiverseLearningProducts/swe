@@ -43,22 +43,20 @@
     <ul>
       <li>budget</li>
       <li>timescales</li>
+      <li>performance requirements</li>
       <li>requirements for using specific technologies</li>
     </ul>
     <p>They will also be affected by the quality of requirements and the availability of stakeholders for clarification of requirements.</p>
     <h3>Input/Output design</h3>
     <p><em>Input design</em> focusses on the interaction between the user and the system.</p>
     <p><em>Output design</em> focusses on the interaction between the system and an external actor (person or other system). It considers how data will be stored and processed.</p>
-    <p>We can identify inputs from Use Case diagrams created as part of the Requirements Analysis stage.</p>
-    <p>Within the system boundary (shown as a rectangle) are the requirements (shown as elipses). Outside the system boundary are Actors who either provide inputs or consume outputs.</p>
+    <p>We can identify inputs and outputs from the Use Case diagrams created as part of the Requirements Analysis stage.</p>
     <p>
-      <img src="https://user-images.githubusercontent.com/1316724/141701063-414e71fb-2571-41b4-9d36-f3385d8ada92.png" alt="Food delivery service Use Case diagram">
+      <img src="https://user-images.githubusercontent.com/1316724/141860873-f8c30b0d-fe5a-4f00-8810-45a5e5059cfc.png" alt="Use Case diagram with inputs and output highlighted">
     </p>
     <h3>User Interface design</h3>
     <p>User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly".</p>
-    <blockquote>
-      <p>Check out <a href="https://www.elegantthemes.com/blog/resources/bad-web-design-a-look-at-the-most-hilariously-terrible-websites-from-around-the-web">these examples</a> of really poorful designed websites!</p>
-    </blockquote>
+    <p>Check out <a href="https://www.elegantthemes.com/blog/resources/bad-web-design-a-look-at-the-most-hilariously-terrible-websites-from-around-the-web">these examples</a> of really poorful designed websites!</p>
     <p>Jakob Nielsen is one of the world's leading expert on UI design. Read his <a href="https://www.nngroup.com/articles/ten-usability-heuristics/">top 10 usability principles</a> to find out what makes a usable UI.</p>
     <p><em>Wireframes</em> express the UI in a visual form and allow a basis for discussion before software is built.</p>
     <p>
@@ -66,20 +64,16 @@
     </p>
     <h3>Process Design</h3>
     <p><em>Process Design</em> focusses on how a requirement/Use Case will be realised via a set of software components. We refer to <em>Design Patterns</em> to find solutions to commonly occuring problems.</p>
-    <p>Our order system could be broken down into the following set of software components.</p>
+    <blockquote>
+      <p>What Design Patterns are you aware of?</p>
+    </blockquote>
+    <p>We could use a <em>UML Component Diagram</em> to represent our order system as a set of software components. Using on our non-functional requirements, we can determine how much hardware / cloud storage we may require.</p>
     <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75778926-9feb8280-5d50-11ea-8179-519a861ecf95.jpg" alt="process diagram">
+      <img src="https://user-images.githubusercontent.com/1316724/141865154-26e469bc-6681-4072-90e9-efefb61a2e37.png" alt="componentDiagram">
     </p>
-    <p>Here, the website is a static site hosted on Surge. The organisation runs its own bespoke accounting software solution hosted on its own servers. The databases are hosted on Amazon Web Wervices (AWS) and exposed via a RESTful API. Authentication of HTTP requests is done via a dedicated service which is also hosted on AWS.</p>
-    <p>The process of placing an order can be expressed either in a worded format, or, as a UML sequence diagram, showing the flows between software components and Actors.</p>
-    <p>TODO - add a sequence diagram</p>
-    <h4>High level to lower level</h4>
-    <p>Our process design at the moment is quite high level, we can now go into more and more detail as we design the system in more and more detail.</p>
-    <p>For example in the diagram above we have an Authentication step in our process. That might need a more detailed design. Below is an activity diagram that shows how to handle incoming requests.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/75785433-a16e7800-5d5b-11ea-9edc-405fb8d53d29.jpg" alt="activity diagram">
-    </p>
-    <p>TODO - move this to previous stage</p>
+    <h4>Detailed design</h4>
+    <p>Our process design at the moment is very high level, we can now drill into more detail by modelling the classes involved in the system and representing them using a <em>UML Class diagram</em> and then using a <em>UML Sequence diagram</em> to show the detailed interactions between components/classes.</p>
+    <p>TODO - add diagram</p>
     <h3>Data Design</h3>
     <p>Next we might want to start thinking about our data structures. In object oriented (OO) programming, our data structures are mirrored in code and in the datastore. For example, our program might have an <strong>Order</strong> class that we interact with in our program, and each instance of an <strong>Order</strong> is also persisted as a row in a datastore.</p>
     <p>Data design starts with the requirements. Once it is clear what needs to be persisted, often data is then <strong><em>normalised</em></strong>.</p>
@@ -110,7 +104,12 @@
       <li>UI designs</li>
     </ul>
     <h2>Assignment</h2>
-    <p>TODO - Create the following design artefacts for one of the synoptic projects.</p>
+    <p>Add the following diagrams to your portfolio:</p>
+    <ul>
+      <li>UML Sequence diagram</li>
+      <li>UI Wireframes</li>
+      <li>Database design</li>
+    </ul>
     <h2>Additional resources</h2>
     <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&#x26;loop=false&#x26;delayms=3000">TODO - Slides</a></p>
     <p>
