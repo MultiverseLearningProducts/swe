@@ -40,6 +40,7 @@ Poor design leads to costly re-work further into the SDLC and risks disengaging 
 The system designer/architect wil be constrained by the non-functional requirements of the system such as:
 * budget
 * timescales
+* performance requirements
 * requirements for using specific technologies
 
 They will also be affected by the quality of requirements and the availability of stakeholders for clarification of requirements.
@@ -50,16 +51,15 @@ _Input design_ focusses on the interaction between the user and the system.
 
 _Output design_ focusses on the interaction between the system and an external actor (person or other system). It considers how data will be stored and processed.
 
-We can identify inputs from Use Case diagrams created as part of the Requirements Analysis stage. 
+We can identify inputs and outputs from the Use Case diagrams created as part of the Requirements Analysis stage. 
 
-Within the system boundary (shown as a rectangle) are the requirements (shown as elipses). Outside the system boundary are Actors who either provide inputs or consume outputs. 
+![Use Case diagram with inputs and output highlighted](https://user-images.githubusercontent.com/1316724/141860873-f8c30b0d-fe5a-4f00-8810-45a5e5059cfc.png)
 
-![Food delivery service Use Case diagram](https://user-images.githubusercontent.com/1316724/141701063-414e71fb-2571-41b4-9d36-f3385d8ada92.png)
 
 ### User Interface design
 User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly". 
 
-> Check out [these examples](https://www.elegantthemes.com/blog/resources/bad-web-design-a-look-at-the-most-hilariously-terrible-websites-from-around-the-web) of really poorful designed websites!
+Check out [these examples](https://www.elegantthemes.com/blog/resources/bad-web-design-a-look-at-the-most-hilariously-terrible-websites-from-around-the-web) of really poorful designed websites!
 
 Jakob Nielsen is one of the world's leading expert on UI design. Read his [top 10 usability principles](https://www.nngroup.com/articles/ten-usability-heuristics/) to find out what makes a usable UI.
 
@@ -70,25 +70,17 @@ _Wireframes_ express the UI in a visual form and allow a basis for discussion be
 ### Process Design
 _Process Design_ focusses on how a requirement/Use Case will be realised via a set of software components. We refer to _Design Patterns_ to find solutions to commonly occuring problems.  
 
-Our order system could be broken down into the following set of software components.
+> What Design Patterns are you aware of?
 
-![process diagram](https://user-images.githubusercontent.com/4499581/75778926-9feb8280-5d50-11ea-8179-519a861ecf95.jpg)
+We could use a _UML Component Diagram_ to represent our order system as a set of software components. Using on our non-functional requirements, we can determine how much hardware / cloud storage we may require.
 
-Here, the website is a static site hosted on Surge. The organisation runs its own bespoke accounting software solution hosted on its own servers. The databases are hosted on Amazon Web Wervices (AWS) and exposed via a RESTful API. Authentication of HTTP requests is done via a dedicated service which is also hosted on AWS.
+![componentDiagram](https://user-images.githubusercontent.com/1316724/141865154-26e469bc-6681-4072-90e9-efefb61a2e37.png)
 
-The process of placing an order can be expressed either in a worded format, or, as a UML sequence diagram, showing the flows between software components and Actors.
+#### Detailed design
 
-TODO - add a sequence diagram
+Our process design at the moment is very high level, we can now drill into more detail by modelling the classes involved in the system and representing them using a _UML Class diagram_ and then using a _UML Sequence diagram_ to show the detailed interactions between components/classes.
 
-#### High level to lower level
-
-Our process design at the moment is quite high level, we can now go into more and more detail as we design the system in more and more detail.
-
-For example in the diagram above we have an Authentication step in our process. That might need a more detailed design. Below is an activity diagram that shows how to handle incoming requests.
-
-![activity diagram](https://user-images.githubusercontent.com/4499581/75785433-a16e7800-5d5b-11ea-9edc-405fb8d53d29.jpg)
-
-TODO - move this to previous stage
+TODO - add diagram
 
 ### Data Design
 
@@ -124,7 +116,10 @@ Examples include:
 *   UI designs
 
 ## Assignment
-TODO - Create the following design artefacts for one of the synoptic projects.
+Add the following diagrams to your portfolio:
+* UML Sequence diagram
+* UI Wireframes
+* Database design
 
 ## Additional resources
 [TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000)

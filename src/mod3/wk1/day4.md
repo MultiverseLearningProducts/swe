@@ -92,11 +92,6 @@ Continuous deployment is a software release process whereby releases to a produc
 The output of the Development stage is code which is ready for test. Note that in reality unit testing may have - TODO
 
 ## Assigment 1
-[IfATE](https://www.instituteforapprenticeships.org/apprenticeship-standards/software-developer-v1-0) require you to evidence the following standards in your portfolio:
-
-> Can interpret and follow:
-> * company defined ‘coding standards’ or industry good practice for coding
-> * ...team or client approaches to continuous integration, version and source control
 
 📄 Update your portfolio with a section which details:
    * the version control system you use
