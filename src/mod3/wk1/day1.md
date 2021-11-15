@@ -108,7 +108,7 @@ Costs and benefits can be either:
    * _Tangible_ - these are provable in advance e.g. cost savings
    * _Non-tangible_ - these cannot be proven in advance and are harder to measure e.g. increase in staff morale
 
-_Cost Benefit Analysis_ takes into account the non-tangible benefits, 
+_Cost Benefit Analysis_ takes into account both the tangible and the non-tangible benefits, 
 _Return on Investment (ROI)_ only takes into account tangible benefits.
 
 Cost-benefit is calculated as follows:
