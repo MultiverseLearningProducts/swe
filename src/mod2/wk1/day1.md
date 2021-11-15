@@ -414,7 +414,7 @@ Whenever we want to assign a value to a variable, or we want to do something and
 | =        | Assignment          | `x = 2`  | n/a         |
 | +=       | Addition assignment | `x += 2` | `x = x + 2` |
 | -=       | Subtract assignment | `x -= 2` | `x = x - 2` |
-| \*=      | Muliply assignment  | `x *= 2` | `x = x - 2` |
+| \*=      | Muliply assignment  | `x *= 2` | `x = x * 2` |
 | /=       | Divide assignment   | `x /= 2` | `x = x / 2` |
 | %=       | Modulus assignment  | `x %= 2` | `x = x % 2` |
 
