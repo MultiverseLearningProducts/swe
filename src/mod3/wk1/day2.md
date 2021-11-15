@@ -45,7 +45,7 @@ There are a number of roles involved this stage that we should be familiar with.
 |Project Sponsor (customer)|Owns the project and is accountable to the organisation for delivery of business benefits (feasibility study). Controls the scope of the project|
 |Managers|Own specific requirements|
 |Users|People who use the current system and will use the new system. Important they they buy into the new solution|
-|Domain Experts|Under the domain|
+|Domain Experts|Experience in working in the domain|
 |Project Manager|Responsible for development and deliverable to the Project Sponsor|
 |Business Analysts|Elicit, document and analyse requirements|
 |Testers|Help validate that requirements are testable|
@@ -138,7 +138,7 @@ Let's look at some examples of good and poor requirements in terms of how "compl
 |**Poor**|**Good**|
 |--------|--------|
 |The system must be useable|The system must conform to the [Nielson Top 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)|
-|All code must have 80% test coverage|The system must be well tested|
+|The system must be well tested|All code must have 80% test coverage|
 
 > _TASK - Imagine you are creating a food delivery service called "SOFresh". Create a set of functional and non-functional requirements to express the requirements for the site. Use the ones above as a starting point._
 
@@ -169,7 +169,7 @@ Here are some examples of real requirements documents:
 
 * [Requirements for the Center of Missing People website](https://sites.google.com/site/centerofmissingpeople). 
 
-A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. TODO.
+A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. 
 
 ## Assignment
 * Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
