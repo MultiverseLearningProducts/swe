@@ -87,7 +87,10 @@ The idea for a project can come from a number of different places.
 
 For example, modern banking apps like Monzo and Starling introduced the ability to freeze a debit card via an app. Other banks saw this and reacted to the competition by implementing this same feature for their own customers. This is an example of a SDLC being driven by business needs.
 
-Listen to this [Dragon's Den pitch](https://www.youtube.com/watch?v=nf4zNLxJZnY) - do you think the idea is feasible? 
+Listen to this Dragon's Den pitch. Do you think the idea is feasible? 
+
+!(https://www.youtube.com/embed/nf4zNLxJZnY)
+
 
 ## Creating a Feasibility Study
 A feasibility study considers the following:

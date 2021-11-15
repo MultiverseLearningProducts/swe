@@ -148,18 +148,16 @@ _Functional decomposition_ is the analysis of complex systems/requirements by br
 Requirements can be expressed in a number of different forms including: 
 * [Functional Decomposition diagrams](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png)
 * _UML Use Case_ diagrams which show the interactions between the Actors and the system
+ ![So Fresh simple Use Case diagram](https://user-images.githubusercontent.com/1316724/141853327-9226b72b-71d2-49c3-af37-ca6879c05297.png)
+
 * _UML Activity_ diagrams which show how activities are co-ordinated
+
+ ![Activity diagram](https://user-images.githubusercontent.com/1316724/141858901-75fae65d-d564-41a8-980a-d2ec312f56c8.png)
 * _Personas_ - ficticious characters which represent the different types of actors that will use a product
+ ![Example Persona of an ex rockstar who requires high quality ingredients for his new hobby of cooking](https://user-images.githubusercontent.com/1316724/141855403-c77baa84-1777-4a53-99b9-c87a667b2cef.PNG)
+
 * _User Stories_ which describe a feature from the perspective of the end user
-
-> _TASK - using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system_ 
-
-> _TASK - using the User Story template provided by your coach, describe least 3 stories which provide users of the SoFresh system_ 
-
-> _TASK - create a UML Use Case Diagram to represent the interactions between the Actors in the SoFresh system_
-
-> _TASK - create a UML Activity Diagram model an automated chatbot responding to a customer query_
-
+ ![userStories](https://user-images.githubusercontent.com/1316724/141854008-95a7e86a-7565-41e2-89a4-33228987669e.PNG)
 
 ### Outputs from the Requirements Analysis stage
 The output of this stage is a requirements document. 
@@ -172,9 +170,17 @@ Here are some examples of real requirements documents:
 A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. 
 
 ## Assignment
-* Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
+1. Using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system
 
-* Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
+2. using the User Story template provided by your coach, describe least 3 stories which provide users of the SoFresh system
+
+3. Create a UML Use Case Diagram to represent the interactions between the Actors in the SoFresh system
+
+4. Create a UML Activity Diagram to model an automated chatbot responding to a customer query
+
+5. Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
+
+6. Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
 
 ## Additional resources
 [TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
