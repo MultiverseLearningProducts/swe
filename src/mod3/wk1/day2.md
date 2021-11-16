@@ -175,7 +175,6 @@ Here are some examples of real requirements documents:
 * [Requirements for the Center of Missing People website](https://sites.google.com/site/centerofmissingpeople). 
 
 
-
 ## Assignment 1
 1. Using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system
 
@@ -192,6 +191,7 @@ Commit your code to GitHub and send a link to your coach for review.
 1. Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table as follows:
 
 **Requirements**
+
 |**Functional**|**Non-functional**|
 |--------------|------------------|
 |XXX           |YYY               |
