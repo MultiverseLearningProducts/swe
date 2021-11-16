@@ -148,6 +148,7 @@ _Functional decomposition_ is the analysis of complex systems/requirements by br
 Requirements can be expressed in a number of different forms including: 
 * [Functional Decomposition diagrams](https://sites.google.com/site/centerofmissingpeople/_/rsrc/1480218719774/decomposition-diagram/Functional%20decomposition.png)
 * _UML Use Case_ diagrams which show the interactions between the Actors and the system
+
  ![So Fresh simple Use Case diagram](https://user-images.githubusercontent.com/1316724/141853327-9226b72b-71d2-49c3-af37-ca6879c05297.png)
 
 * _UML Activity_ diagrams which show how activities are co-ordinated
