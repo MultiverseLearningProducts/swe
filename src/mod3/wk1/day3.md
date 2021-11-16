@@ -59,7 +59,9 @@ We can identify inputs and outputs from the Use Case diagrams created as part of
 ### User Interface design
 User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly". 
 
-Check out [these examples](https://www.elegantthemes.com/blog/resources/bad-web-design-a-look-at-the-most-hilariously-terrible-websites-from-around-the-web) of really poorful designed websites!
+Check out these really poorful designed websites!
+
+!(https://www.youtube.com/embed/6befMTTTTRQ) 
 
 Jakob Nielsen is one of the world's leading expert on UI design. Read his [top 10 usability principles](https://www.nngroup.com/articles/ten-usability-heuristics/) to find out what makes a usable UI.
 

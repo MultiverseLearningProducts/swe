@@ -162,25 +162,41 @@ Requirements can be expressed in a number of different forms including:
 ### Outputs from the Requirements Analysis stage
 The output of this stage is a requirements document. 
 
+A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document. 
+
+It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. 
+
 Here are some examples of real requirements documents:
+
+* [Patient Level Contract Monitoring (PLCM): Requirements Specification](https://www.england.nhs.uk/wp-content/uploads/2018/12/13-dcb-3003-plcm-reqs-spec-for-dcb.pdf)
+
 * [Requirements document for new web-based sales system for Solar Based Energy Inc](http://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html).
 
 * [Requirements for the Center of Missing People website](https://sites.google.com/site/centerofmissingpeople). 
 
-A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document.It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. 
 
-## Assignment
+
+## Assignment 1
 1. Using the Persona template provided by your coach, describe the bios, needs and challenges of at least 3 ficticious users of the SoFresh system
 
-2. using the User Story template provided by your coach, describe least 3 stories which provide users of the SoFresh system
+2. Using the User Story template provided by your coach, describe at least 3 stories which provide value to users of the SoFresh system
 
 3. Create a UML Use Case Diagram to represent the interactions between the Actors in the SoFresh system
 
 4. Create a UML Activity Diagram to model an automated chatbot responding to a customer query
 
-5. Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table.
+Commit your code to GitHub and send a link to your coach for review. 
 
-6. Update your portfolio to include Use Cases and User Stories for one or more projects you have delivered.
+## Assignment 2
+
+1. Update your portfolio to specify functional and non-functional requirements for each of the projects you have delivered. List them in a table as follows:
+
+**Requirements**
+|**Functional**|**Non-functional**|
+|--------------|------------------|
+|XXX           |YYY               |
+
+2. Update your portfolio to include a Use Case diagram and User Stories for at least one project you have delivered.
 
 ## Additional resources
 [TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
