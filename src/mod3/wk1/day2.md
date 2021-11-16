@@ -164,7 +164,7 @@ The output of this stage is a requirements document.
 
 A requirements document should include a _Glossary of Terms_ which explains acronyms or domain specific words used within the document. 
 
-It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. 
+It should also include a _Data Dictionary_ which lists data requirements in such a way that in the Design phase it will be easy able to design a relational database or data structure. Her is an [example Data Dictionary](https://lta.cr.usgs.gov/DD/aerial_single_frame.html)
 
 Here are some examples of real requirements documents:
 
