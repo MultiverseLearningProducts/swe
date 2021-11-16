@@ -28,7 +28,7 @@
     <h3>Inputs to the Design stage</h3>
     <p>The inputs to the Design stage are requirements.</p>
     <h3>Purpose of the Design stage</h3>
-    <p>The <em>purpose</em> of Design is to formulate a solution to realise the system's requirements.</p>
+    <p>The <em>purpose</em> of Design is to formulate a solution or software specification to realise the system's requirements. The chosen design is elaborated in sufficient detail to to allow developers to implement it.</p>
     <p>The <em>scope</em> of Design is:</p>
     <ol>
       <li>Input and output design</li>
@@ -39,12 +39,13 @@
     <p>Good design simplifies the job of the developer during the Implementation state of the SDLC and results in a system which meets the requirements of its users.</p>
     <p>Poor design leads to costly re-work further into the SDLC and risks disengaging users or even losing customers.</p>
     <h3>Design constraints</h3>
-    <p>The system designer/architect wil be constrained by the non-functional requirements of the system such as:</p>
+    <p>The system designer/architect will be constrained by the non-functional requirements of the system such as:</p>
     <ul>
       <li>budget</li>
       <li>timescales</li>
       <li>performance requirements</li>
       <li>requirements for using specific technologies</li>
+      <li>security requirements</li>
     </ul>
     <p>They will also be affected by the quality of requirements and the availability of stakeholders for clarification of requirements.</p>
     <h3>Input/Output design</h3>
@@ -56,27 +57,43 @@
     </p>
     <h3>User Interface design</h3>
     <p>User Interface (UI) design focusses on making the process of inputting data to the system "user-friendly".</p>
-    <p>Check out these really poorful designed websites!</p>
-    <iframe src="https://www.youtube.com/embed/6befMTTTTRQ" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>Jakob Nielsen is one of the world's leading expert on UI design. Read his <a href="https://www.nngroup.com/articles/ten-usability-heuristics/">top 10 usability principles</a> to find out what makes a usable UI.</p>
+    <blockquote>
+      <p>Check out this <a href="https://www.shein.co.uk">website</a> - does it conform to Jakob's heuristics? Which ones does it break?</p>
+    </blockquote>
+    <blockquote>
+      <p><a href="https://medium.com/@nourhan.kay/the-usability-accessibility-and-ethics-of-amazon-c416467f22e1">This document</a> shows the heuristics applied to Amazon's website.</p>
+    </blockquote>
     <p><em>Wireframes</em> express the UI in a visual form and allow a basis for discussion before software is built.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/141701337-05f9464f-fce7-45e8-8761-4411a3704d5f.PNG" alt="wireframe for food delivery site">
     </p>
-    <h3>Process Design</h3>
+    <h3>Process Design (flow of information)</h3>
     <p><em>Process Design</em> focusses on how a requirement/Use Case will be realised via a set of software components. We refer to <em>Design Patterns</em> to find solutions to commonly occuring problems.</p>
     <blockquote>
       <p>What Design Patterns are you aware of?</p>
     </blockquote>
-    <p>We could use a <em>UML Component Diagram</em> to represent our order system as a set of software components. Using on our non-functional requirements, we can determine how much hardware / cloud storage we may require.</p>
+    <p>Architecture is defined by ISO/IEC 42010:211 as <em>"The fundamental organization of a system embodied in its components, their relationships to each other and to the environment, an the principles guiding its design and evolution"</em> (ISO 2011)</p>
+    <p>Let's look at some <a href="https://dzone.com/articles/solution-architecture-vs-software-architecture">examples of software architectures</a></p>
+    <p>We can use a <em>UML Component Diagram</em> to represent our SoFresh architecture as a set of software components.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/141865154-26e469bc-6681-4072-90e9-efefb61a2e37.png" alt="componentDiagram">
     </p>
+    <p>Our non-functional requirements constrain our architecture and design, for example, how much hardware / cloud storage we may require, on which Cloud server the software will be deployed to.</p>
     <h4>Detailed design</h4>
     <p>Our process design at the moment is very high level, we can now drill into more detail by modelling the classes involved in the system and representing them using a <em>UML Class diagram</em> and then using a <em>UML Sequence diagram</em> to show the detailed interactions between components/classes.</p>
-    <p>TODO - add diagram</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/142079800-2ecdd1a0-a244-4187-b735-22f1077a5276.png" alt="UML Class diagram">
+    </p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/1316724/142079993-330edb60-175b-428e-b8ae-46dacf1fcf5e.png" alt="UML Sequence diagram">
+    </p>
+    <blockquote>
+      <p>The BCS documentation sometimes refers to sequence diagrams as interaction, collaboration or timing diagrams!</p>
+    </blockquote>
     <h3>Data Design</h3>
     <p>Next we might want to start thinking about our data structures. In object oriented (OO) programming, our data structures are mirrored in code and in the datastore. For example, our program might have an <strong>Order</strong> class that we interact with in our program, and each instance of an <strong>Order</strong> is also persisted as a row in a datastore.</p>
+    <p>We can use an <a href="https://www.lucidchart.com/pages/er-diagrams">Entity-Relationship Diagram (ERD)</a> to model relationships between tables. It's like a class diagram but for databases!</p>
     <p>Data design starts with the requirements. Once it is clear what needs to be persisted, often data is then <strong><em>normalised</em></strong>.</p>
     <h4>Normalisation</h4>
     <p>This is a technique used in data design to ensure data structures:</p>
@@ -86,7 +103,8 @@
       <li>contain the latest values</li>
       <li>combine items into logical groupings</li>
     </ul>
-    <p>A good example of normalisation is the way we can store a one-to-many relationship in a relational database. For example, our Customers will have many Orders. To normalise that data structure we should store the Customer once and use their id in the Orders table to create that relationship.</p>
+    <p>This <a href="https://www.guru99.com/database-normalization.html">webpage</a> explain the process of normalisation through an example.</p>
+    <p>Another example of normalisation is how we store a one-to-many relationship in a relational database. For example, our Customers will have many Orders. To normalise that data structure we should store the Customer once and use their id in the Orders table to create that relationship.</p>
     <h3>Security and control design</h3>
     <p>Security and control design are the mechanisms we use to ensure the system has integrity and conforms to legislation such as GDPR. We introduce safeguards to protect data inputs and outputs as well as data at rest.</p>
     <p>Examples include:</p>
@@ -97,20 +115,16 @@
     </ul>
     <h3>Outputs from the Design stage</h3>
     <ul>
+      <li>Architecture diagrams</li>
       <li>UML Sequence diagrams</li>
       <li>Process diagrams</li>
       <li>Data models</li>
       <li>Class diagrams</li>
-      <li>Control flow diagrams</li>
       <li>UI designs</li>
     </ul>
     <h2>Assignment</h2>
-    <p>Add the following diagrams to your portfolio:</p>
-    <ul>
-      <li>UML Sequence diagram</li>
-      <li>UI Wireframes</li>
-      <li>Database design</li>
-    </ul>
+    <p>Add a UML Sequence diagram to your portfolio.</p>
+    <p>Consider whether a UML Component diagrams could be used to express the architecture of your system and, if so, add this to your portfolio.</p>
     <h2>Additional resources</h2>
     <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&#x26;loop=false&#x26;delayms=3000">TODO - Slides</a></p>
     <p>
