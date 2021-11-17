@@ -77,7 +77,7 @@ _Process Design_ focusses on how a requirement/Use Case will be realised via a s
 
 Architecture is defined by ISO/IEC 42010:211 as _"The fundamental organization of a system embodied in its components, their relationships to each other and to the environment, an the principles guiding its design and evolution"_ (ISO 2011)
 
-Let's look at some architectures from companies using Amazon Web Services (AWS) components.
+Let's look at some architectures from companies using Amazon Web Services (AWS) components. Listen closely to how non-functional requirements impact how the architecture is designed.
 
 !(https://www.youtube.com/embed/h0VJBi8eCYA)
 
