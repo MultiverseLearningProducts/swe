@@ -2,21 +2,17 @@
 
 ## Overview of the day
 
-Writing tested code is a foundational competency. Today we are exploring 7 of the more high level principles behind good testing strategies.
+Today we look at the Testing stage of the SDLC.
 
 ----
 
-## Lesson 1 - Testing
+## Lesson 1 - The Testing stage
 
 ## Learning Objectives
 
-* Explain why testing is necessary, including the principles of early testing; risk
-reduction; conformance to functional and non-functional requirements; finding
-defects; differentiating testing from debugging.
-* Explain how to determine the correct types of test coverage based on a
-requirement.
-* Summarise the different levels of testing, their purposes and the generic test
-process that supports them:
+* Explain why testing is necessary, including the principles of early testing; risk reduction; conformance to functional and non-functional requirements; finding defects; differentiating testing from debugging.
+* Explain how to determine the correct types of test coverage based on a requirement.
+* Summarise the different levels of testing, their purposes and the generic test process that supports them:
     - unit testing;
     - integration testing;
     - system testing;
@@ -28,29 +24,34 @@ used, including:
     - White Box and Black Box testing;
     - experience-based testing.
 * Distinguish functional and non-functional categories of tests for a given case.
+* Recognise that different organisations apply different approaches to testing depending on development methodologies used and organisational preferences.
+* Distinguish advantages and disadvantages of using independent software testing teams as opposed to using testers who have been involved in other aspects of development.
+* Explain the use of equivalence classes and use cases in testing code
+* Show how to efficiently and effectively debug code, including:
+    * Types of error;
+    * Exception handling;
+    * Reproduction;
+    * Elimination;
+    * Logging;
+    * Test coverage.
 
 ## Lesson
 
-This section will cover the following:
+TODO - V model
 
-*   The 3 reasons why we test code
-*   The 7 Principles of Software Testing
-*   4 Different types of testing
-*   6 Different techniques of testing
+# Inputs to the Testing stage
 
-# Inputs
-
-The input for the testing phase is untested software.
+The input to the Testing stage is untested software.
 
 ## Why Test?
 
-The purpose of testing software is to remove
+The purpose of testing software is to remove:
 
-1. Errors
-1. Defects
-1. Failures
+1. _Errors_ - caused by code that is incorrect
+1. _Defects_ - caused by code that works, but does not work in the way it is intended too
+1. _Failures_ - cause your software to stop working all together
 
-Errors caused by code that is incorrect. Defects caused by code that works, but does not work in the way it is intended too. Failures cause your software to stop working all together. Testing should be written to ensure your software is free from these 3 kinds of defects.
+Testing should ensure your software is free from these 3 kinds of defects.
 
 ## The 7 Principles of Software Testing
 
@@ -60,14 +61,7 @@ In the diagram above you can see the **International Software Testing Qualificat
 
 To test exhaustibly is not practical or possible. For example 15 fields in a form that can each take one of 5 possible values would required 30,517,578,125 unit tests to prove each combination. Please don’t do that. Testing frameworks have to be tested by other tests…
 
-![turtles all the way down](https://i.imgur.com/ksa6Y1j.jpg)
-
-…turtles all the way down.
-
-# 👩‍💻🧑‍💻
-
-In pairs discuss the following scenario. I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong?
-
+TODO -
 !(https://www.youtube.com/embed/rFaWOw8bIMM)
 
 ## 4 Different types of testing
@@ -132,7 +126,7 @@ Both of these are important to test for.
 
 ## Assignment
 
-Given I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong? Can you write a list of test cases (things you would test) for this scenario? Post your test cases to your coach via Slack.
+
 
 ----
 
