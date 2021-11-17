@@ -12,28 +12,20 @@
   <body>
     <h1>Mod 3 > Week 1 > Day 5</h1>
     <h2>Overview of the day</h2>
-    <p>Writing tested code is a foundational competency. Today we are exploring 7 of the more high level principles behind good testing strategies.</p>
+    <p>Today we look at the Testing stage of the SDLC.</p>
     <hr>
-    <h2>Lesson 1 - Testing</h2>
+    <h2>Lesson 1 - The Testing stage</h2>
     <h2>Learning Objectives</h2>
     <ul>
-      <li>
-        Explain why testing is necessary, including the principles of early testing; risk
-        reduction; conformance to functional and non-functional requirements; finding
-        defects; differentiating testing from debugging.
-      </li>
-      <li>
-        Explain how to determine the correct types of test coverage based on a
-        requirement.
-      </li>
-      <li>
-        Summarise the different levels of testing, their purposes and the generic test
-        process that supports them:
-        <pre><code>- unit testing;
-- integration testing;
-- system testing;
-- acceptance testing.
-</code></pre>
+      <li>Explain why testing is necessary, including the principles of early testing; risk reduction; conformance to functional and non-functional requirements; finding defects; differentiating testing from debugging.</li>
+      <li>Explain how to determine the correct types of test coverage based on a requirement.</li>
+      <li>Summarise the different levels of testing, their purposes and the generic test process that supports them:
+        <ul>
+          <li>unit testing;</li>
+          <li>integration testing;</li>
+          <li>system testing;</li>
+          <li>acceptance testing.</li>
+        </ul>
       </li>
       <li>
         Describe different types and techniques for software testing and why they would be
@@ -45,25 +37,32 @@
 </code></pre>
       </li>
       <li>Distinguish functional and non-functional categories of tests for a given case.</li>
+      <li>Recognise that different organisations apply different approaches to testing depending on development methodologies used and organisational preferences.</li>
+      <li>Distinguish advantages and disadvantages of using independent software testing teams as opposed to using testers who have been involved in other aspects of development.</li>
+      <li>Explain the use of equivalence classes and use cases in testing code</li>
+      <li>Show how to efficiently and effectively debug code, including:
+        <ul>
+          <li>Types of error;</li>
+          <li>Exception handling;</li>
+          <li>Reproduction;</li>
+          <li>Elimination;</li>
+          <li>Logging;</li>
+          <li>Test coverage.</li>
+        </ul>
+      </li>
     </ul>
     <h2>Lesson</h2>
-    <p>This section will cover the following:</p>
-    <ul>
-      <li>The 3 reasons why we test code</li>
-      <li>The 7 Principles of Software Testing</li>
-      <li>4 Different types of testing</li>
-      <li>6 Different techniques of testing</li>
-    </ul>
-    <h1>Inputs</h1>
-    <p>The input for the testing phase is untested software.</p>
+    <p>TODO - V model</p>
+    <h1>Inputs to the Testing stage</h1>
+    <p>The input to the Testing stage is untested software.</p>
     <h2>Why Test?</h2>
-    <p>The purpose of testing software is to remove</p>
+    <p>The purpose of testing software is to remove:</p>
     <ol>
-      <li>Errors</li>
-      <li>Defects</li>
-      <li>Failures</li>
+      <li><em>Errors</em> - caused by code that is incorrect</li>
+      <li><em>Defects</em> - caused by code that works, but does not work in the way it is intended too</li>
+      <li><em>Failures</em> - cause your software to stop working all together</li>
     </ol>
-    <p>Errors caused by code that is incorrect. Defects caused by code that works, but does not work in the way it is intended too. Failures cause your software to stop working all together. Testing should be written to ensure your software is free from these 3 kinds of defects.</p>
+    <p>Testing should ensure your software is free from these 3 kinds of defects.</p>
     <h2>The 7 Principles of Software Testing</h2>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/79204022-ce6e7a00-7e33-11ea-81cb-d6b3498ca10f.png" alt="testing systems">
@@ -71,12 +70,9 @@
     <p>In the diagram above you can see the <strong>International Software Testing Qualifications Board’s</strong> 7 principles of testing.</p>
     <p>To test exhaustibly is not practical or possible. For example 15 fields in a form that can each take one of 5 possible values would required 30,517,578,125 unit tests to prove each combination. Please don’t do that. Testing frameworks have to be tested by other tests…</p>
     <p>
-      <img src="https://i.imgur.com/ksa6Y1j.jpg" alt="turtles all the way down">
+      TODO -
+      !(<a href="https://www.youtube.com/embed/rFaWOw8bIMM">https://www.youtube.com/embed/rFaWOw8bIMM</a>)
     </p>
-    <p>…turtles all the way down.</p>
-    <h1>👩‍💻🧑‍💻</h1>
-    <p>In pairs discuss the following scenario. I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong?</p>
-    <iframe src="https://www.youtube.com/embed/rFaWOw8bIMM" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <h2>4 Different types of testing</h2>
     <ol>
       <li>Unit</li>
@@ -171,7 +167,6 @@
     <p><strong>Non-functional testing</strong> is NOT binary, it requires more explanation. Think FEELINGS? On a form non-functional input might be a free text field inviting your thoughts.</p>
     <p>Both of these are important to test for.</p>
     <h2>Assignment</h2>
-    <p>Given I have a file in folder A and want to move it to folder B. What are all the different things that could go wrong? Can you write a list of test cases (things you would test) for this scenario? Post your test cases to your coach via Slack.</p>
     <hr>
     <h2>Lesson 2 - Equivalence classes and Use Cases</h2>
     <h2>Learning Objectives</h2>
