@@ -63,7 +63,7 @@ console.log(person.name); // Dan
 You can also push new items to an array within an object:
 
 ```javascript
-person.hobbies.push = 'Scrabble';
+person.hobbies.push('Scrabble');
 
 console.log(person.hobbies); //  hobbies: ["motorbikes", "cats", "dogs", "football", "Scrabble"]
 ```
