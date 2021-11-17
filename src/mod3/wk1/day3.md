@@ -143,6 +143,8 @@ Examples include:
 ## Assignment
 Add a UML Sequence diagram to your portfolio.
 
+Do you use any Design Patterns? If so, mention them in your portfolio!
+
 Find out what the architecture of your work application is. Does it run in the cloud? How does it protect against malicious inputs? What software & hardware components are deployed? How does it scale? 
 
 ## Additional resources
