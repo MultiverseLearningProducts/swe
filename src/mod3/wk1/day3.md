@@ -79,9 +79,9 @@ Architecture is defined by ISO/IEC 42010:211 as _"The fundamental organization o
 
 Let's look at some architectures from companies using Amazon Web Services (AWS) components.
 
-![https://www.youtube.com/embed/fSV0u48sEVg]
+!(https://www.youtube.com/embed/fSV0u48sEVg)
 
-![https://www.youtube.com/embed/h0VJBi8eCYA]
+!(https://www.youtube.com/embed/h0VJBi8eCYA)
 
 We can use a _UML Component Diagram_ to represent architectural components, e.g. https://dzone.com/articles/solution-architecture-vs-software-architecture
 
