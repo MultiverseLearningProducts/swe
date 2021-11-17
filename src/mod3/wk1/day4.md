@@ -99,10 +99,11 @@ The output of the Development stage is code which is ready for test. Note that i
    * the coding standards you use 
    * any tools (e.g. SonarQube) you use and why this benefits
    * how peer reviews are carried out   
+
 Make specific reference to projects you have worked on and show screenshots to bring the words to life.
 
 ## Assigment 2
-Installed SonarQube and use it to analyse personal code that you have written (e.g. the code from the Bootcamp). 
+Install SonarQube and use it to analyse personal code that you have written (e.g. the code from the Bootcamp). 
 
 ## Assigment 3
 In pairs, explain the purpose of a range of programming tools, including compilers; interpreters; debuggers; GUI designers.

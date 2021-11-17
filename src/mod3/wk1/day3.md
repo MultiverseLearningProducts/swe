@@ -77,11 +77,18 @@ _Process Design_ focusses on how a requirement/Use Case will be realised via a s
 
 Architecture is defined by ISO/IEC 42010:211 as _"The fundamental organization of a system embodied in its components, their relationships to each other and to the environment, an the principles guiding its design and evolution"_ (ISO 2011)
 
-Let's look at some [examples of software architectures](https://dzone.com/articles/solution-architecture-vs-software-architecture)
+Let's look at some architectures from companies using Amazon Web Services (AWS) components.
 
-We can use a _UML Component Diagram_ to represent our SoFresh architecture as a set of software components. 
+![https://www.youtube.com/embed/fSV0u48sEVg]
+
+![https://www.youtube.com/embed/h0VJBi8eCYA]
+
+We can use a _UML Component Diagram_ to represent architectural components, e.g. https://dzone.com/articles/solution-architecture-vs-software-architecture
+
+Here is a very simplified architecture diagram created using a UML Component Diagrams for our SoFresh system. 
 
 ![componentDiagram](https://user-images.githubusercontent.com/1316724/141865154-26e469bc-6681-4072-90e9-efefb61a2e37.png)
+
 
 Our non-functional requirements constrain our architecture and design, for example, how much hardware / cloud storage we may require, on which Cloud server the software will be deployed to.
 
@@ -123,6 +130,7 @@ Examples include:
 * Input validation
 * Restricting write access to certain tables 
 * Hashing of password data
+* Backup and recovery
 
 ### Outputs from the Design stage
 *   Architecture diagrams
@@ -135,10 +143,12 @@ Examples include:
 ## Assignment
 Add a UML Sequence diagram to your portfolio.
 
-Consider whether a UML Component diagrams could be used to express the architecture of your system and, if so, add this to your portfolio.
+Find out what the architecture of your work application is. Does it run in the cloud? How does it protect against malicious inputs? What software & hardware components are deployed? How does it scale? 
 
 ## Additional resources
 [TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vTxqagPim3SJ1f4Js8PVwPc8zzgkm-wPSZB6I0LUw9jEIihFYUUjkc7-SB0jcahUZevJZH0avpYUWuQ/embed?start=false&amp;loop=false&amp;delayms=3000)
+
+[AWS example architectures](https://aws.amazon.com/architecture/this-is-my-architecture/)
 
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/200)
