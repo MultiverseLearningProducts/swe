@@ -22,11 +22,11 @@ JavaScript comes with a number of convenient, built-in string methods that can h
 | `lastIndexOf`    | Returns the starting index of the last occurence of a string       | `console.log('Multiverse'.lastIndexOf('e')) // 9`        |
 | `endsWith`    | Does the string ends with the characters of a specified string?     | `console.log('Multiverse'.endsWith('e')) // true`        |
 | `slice`      | Extracts a part of a string, starting and ending at defined indexes | `console.log('HelloWorld'.slice(0, 5)) // Hello`           |
-| `replace`    | Returns a new string with whitespace trimmed from both ends | `console.log(' JavaScript '.trim()); // JavaScript` |
+| `replace`    | Returns a new string with the first instance of the target string replaced with a new string | `console.log('Java Java'.replace('Java', 'Python')); // Python Java` |
 | `substring`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
-| `trim`    | Returns a new string containing part of the original string                                   | ` console.log('Java'.substring(1, 3))  // av`|
+| `trim`    | Returns a new string with whitespace removed from both ends                                   | `console.log(' Java '.trim())  // Java`|
 | `repeat`    | Returns a new string copied x times                                   | ` console.log('Java'.repeat(2))  // JavaJava`|
-| `concat`    | Returns a new string copied x times                                   | ` console.log('Java'.concat('Script') // JavaScript`|
+| `concat`    | Returns a new string of both strings concatenated                                   | ` console.log('Java'.concat('Script')) // JavaScript`|
 
 Check out the full list of methods over on the [W3C website](https://www.w3schools.com/js/js_string_methods.asp).
 
