@@ -74,12 +74,16 @@ If it’s difficult to release code, you won’t be able to deploy updates frequ
 
 Another important benefit of good release management is the ability to rollback in the event of an emergency. 
 
-### Continuous deployment
+### Continuous integration & Continuous Deployment (CI/CD)
 
-Continuous deployment is a software release process whereby releases to a production environment happen automatically if new code successfully passes all of the automated tests. In order to do this, your team must have an incredibly level of confidence that new code is tested and working. 
+_Continuous Integration (CI)_ describes the process of running automated builds and tests every time a commit is made to a shared repository.
+
+_Continuous Deployment (CD)_ is a software release process whereby code is automatically packaged and released to a production environment if the code  passes all of the automated tests.
+
+!(https://www.youtube.com/embed/M4CXOocovZ4)
 
 ### Outputs of the Development stage
-The output of the Development stage is code which is ready for testing. 
+The output of the Development stage is code which is ready for testing.
 
 ## Assignment
 Update your portfolio with the following:
