@@ -13,16 +13,16 @@ Today we look at the Testing stage of the SDLC.
 * Explain why testing is necessary, including the principles of early testing; risk reduction; conformance to functional and non-functional requirements; finding defects; differentiating testing from debugging.
 * Explain how to determine the correct types of test coverage based on a requirement.
 * Summarise the different levels of testing, their purposes and the generic test process that supports them:
-    - unit testing;
-    - integration testing;
-    - system testing;
-    - acceptance testing.
+    * unit testing;
+    * integration testing;
+    * system testing;
+    * acceptance testing.
 * Describe different types and techniques for software testing and why they would be
 used, including:
-    - functional and non-functional testing;
-    - regression testing;
-    - White Box and Black Box testing;
-    - experience-based testing.
+    * functional and non-functional testing;
+    * regression testing;
+    * White Box and Black Box testing;
+    * experience-based testing.
 * Distinguish functional and non-functional categories of tests for a given case.
 * Recognise that different organisations apply different approaches to testing depending on development methodologies used and organisational preferences.
 * Distinguish advantages and disadvantages of using independent software testing teams as opposed to using testers who have been involved in other aspects of development.
@@ -57,19 +57,19 @@ Tests are based on 2 key principles:
 
 The earlier in the SDLC we test, the sooner we find issues and avoid shipping flawed software. 
 
-TODO - add https://www.celerity.com/the-cost-implications-of
+![the cost of a bug at different stages of the SDLC (more expensive as you go through the stages)](https://user-images.githubusercontent.com/1316724/142419932-fa647920-0470-438d-976c-d4578074e96b.PNG)
 
 ## The "V" model
 
 The "V" model (also known as the Verification and Validation model) associates a testing phase to each SDLC stage.
 
-TODO - add an image
+![V Model](https://user-images.githubusercontent.com/1316724/142423248-4d4a7996-8412-4810-acf8-52252b542aaf.png)
 
 _Static testing_ focusses on the early stages of the SDLC. It aims to remove errors which could lead to defects in software code. Examples of static testing include:
 * checking requirements against the business case
 * checking the design against requirements
 
-Static testing is done via reviews and walkthrough.
+Static testing is done via reviews and walkthroughs.
 
 _Dynamic testing_ focusses on testing the code as it is executing. It aims to detect defects. Examples include:
 * unit testing
@@ -162,7 +162,7 @@ We only need one test in each class because, testing that 6 is OK would be equiv
 
 ### Boundary Value Analysis
 
-We could also do some _boundary value analysis_ by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99\. Then we might have a set of tests for the following values:
+We could also do some _boundary value analysis_ by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99. Then we might have a set of tests for the following values:
 
 *   -99
 *   -1
@@ -188,11 +188,14 @@ A test plan typically includes:
 
 ## Outputs
 
-The output of the testing phase is fully tested software.
+The output of the Testing phase is fully tested software.
 
 ## Assignment
+1. Look for job vacancies for software testers - what kind of skills do they require? 
 
-Look for job vacancies for software testers
+2. What are the advantages and disadvantages of outsourcing testing to an external organisation?
+
+3. Update your portfolio to evidence different kinds of tests e.g. unit, system, performance
 
 ## Additional resources
 https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010

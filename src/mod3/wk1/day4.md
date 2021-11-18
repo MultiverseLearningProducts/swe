@@ -68,7 +68,8 @@ Your options for release management are endless. You could write your own script
 * [Jenkins](https://www.jenkins.io/)
 * [CircleCI](https://circleci.com/)
 * [GoCD](https://www.gocd.org/)
-* [TeamCity](https://www.jetbrains.com/teamcity/).
+* [TeamCity](https://www.jetbrains.com/teamcity/)
+* [GitHub Actions](https://github.com/features/actions)
 
 If it’s difficult to release code, you won’t be able to deploy updates frequently and, when you do, you risk disrupting your customers. With a good release process, you should be incredibly confident releasing updates with no interruption to your customers. 
 
