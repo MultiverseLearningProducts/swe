@@ -52,80 +52,41 @@
       </li>
     </ul>
     <h2>Lesson</h2>
-    <p>TODO - V model</p>
-    <h1>Inputs to the Testing stage</h1>
+    <h2>Inputs to the Testing stage</h2>
     <p>The input to the Testing stage is untested software.</p>
     <h2>Why Test?</h2>
-    <p>The purpose of testing software is to remove:</p>
+    <p>The purpose of testing software is to ensure the quality of the system is as high as possible by removing:</p>
     <ol>
-      <li><em>Errors</em> - caused by code that is incorrect</li>
-      <li><em>Defects</em> - caused by code that works, but does not work in the way it is intended too</li>
-      <li><em>Failures</em> - cause your software to stop working all together</li>
+      <li><em>Errors</em> - mistakes made by humans</li>
+      <li><em>Defects</em> - bugs in software code</li>
+      <li><em>Failures</em> - stopping the system from doing something it should</li>
     </ol>
-    <p>Testing should ensure your software is free from these 3 kinds of defects.</p>
-    <h2>The 7 Principles of Software Testing</h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79204022-ce6e7a00-7e33-11ea-81cb-d6b3498ca10f.png" alt="testing systems">
-    </p>
-    <p>In the diagram above you can see the <strong>International Software Testing Qualifications Board’s</strong> 7 principles of testing.</p>
-    <p>To test exhaustibly is not practical or possible. For example 15 fields in a form that can each take one of 5 possible values would required 30,517,578,125 unit tests to prove each combination. Please don’t do that. Testing frameworks have to be tested by other tests…</p>
-    <p>
-      TODO -
-      !(<a href="https://www.youtube.com/embed/rFaWOw8bIMM">https://www.youtube.com/embed/rFaWOw8bIMM</a>)
-    </p>
-    <h2>4 Different types of testing</h2>
-    <ol>
-      <li>Unit</li>
-      <li>Integration</li>
-      <li>System</li>
-      <li>Acceptance</li>
-    </ol>
-    <h3>Unit Testing</h3>
-    <p>Unit Tests isolate a section of code and verify its correctness. A unit may be an individual function, method, procedure, module, or object. Unit tests are static tests (see below).</p>
-    <h3>Integration Testing</h3>
-    <p>Integration tests determine if independently developed units of software work correctly when they are connected to each other. These tests often assert behaviours, and can be static or dynamic. For example calling this endpoint;</p>
-    <pre><code>/users/x023/photos
-</code></pre>
-    <p>should return a JSON string with an array of urls. This is testing that the server correctly interacts with the database and returns the correct values.</p>
-    <h3>System Testing</h3>
-    <p>The whole system is run. This is a dynamic test. Examples of system testing are end-to-end tests; automated, codified interactions (see <a href="https://www.cypress.io/">cypress.io</a>) with assertions of state or outputs. Other examples of system testing include;</p>
+    <iframe src="https://www.youtube.com/embed/tlThdr3O5Qo" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>Tests are based on 2 key principles:</p>
     <ul>
-      <li>load testing</li>
-      <li>penetration testing (PEN testing)</li>
+      <li><em>Verification</em> - is the system being build in the correct way?</li>
+      <li><em>Validation</em> - is the right system being build?</li>
     </ul>
-    <h3>Acceptance Testing</h3>
-    <p>The purpose of this test is to evaluate the system’s compliance with the business requirements and assess whether it is acceptable for delivery. You built a perfect bridge, but have you met the business requirements?</p>
-    <p>
-      <img src="https://capiro.co.uk/wp-content/uploads/2017/02/HiRes-e1486720284485.jpg" alt="bridge built in wrong place">
-    </p>
-    <h2>6 Different techniques of testing</h2>
-    <ol>
-      <li>Static/Dynamic</li>
-      <li>White Box/Black Box</li>
-      <li>Functional/Non-functional</li>
-    </ol>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Static</th>
-          <th align="left">Dynamic</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left">
-            <img src="https://cdn.motor1.com/images/mgl/EqyMv/s1/volkswagen-id-buzz-concept-detroit-2017.jpg" alt="static van">
-          </td>
-          <td align="left">
-            <img src="https://www.inchcape.co.uk/-/media/ba79d1fea496499b8ec94a3dbe692b96.jpeg?la=en-gb&#x26;hash=193E23BD23DFD2666426DB2E5C8FFE92" alt="dynamic moving van">
-          </td>
-        </tr>
-        <tr>
-          <td align="left">Static tests do not require your app to be running. You can test things on a static vehicle; for example do the lights work? can you move the seats?</td>
-          <td align="left">Dynamic tests require your app to be running. To really test the breaks of a vehicle, you need to get up some speed.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>The earlier in the SDLC we test, the sooner we find issues and avoid shipping flawed software.</p>
+    <p>TODO - add <a href="https://www.celerity.com/the-cost-implications-of">https://www.celerity.com/the-cost-implications-of</a></p>
+    <h2>The "V" model</h2>
+    <p>The "V" model (also known as the Verification and Validation model) associates a testing phase to each SDLC stage.</p>
+    <p>TODO - add an image</p>
+    <p><em>Static testing</em> focusses on the early stages of the SDLC. It aims to remove errors which could lead to defects in software code. Examples of static testing include:</p>
+    <ul>
+      <li>checking requirements against the business case</li>
+      <li>checking the design against requirements</li>
+    </ul>
+    <p>Static testing is done via reviews and walkthrough.</p>
+    <p><em>Dynamic testing</em> focusses on testing the code as it is executing. It aims to detect defects. Examples include:</p>
+    <ul>
+      <li>unit testing</li>
+      <li>system testing</li>
+      <li>user acceptance testing</li>
+    </ul>
+    <p>We can further breakdown dynamic testing into:</p>
+    <p><em>Black-box</em> testing - here we treat the system as a black box and only concern ourselves with the inputs and output e.g. system testing, integration testing, user acceptance testing</p>
+    <p><em>White-box</em> testing - here we are aware of the inner workings of our code e.g. unit tests</p>
     <table>
       <thead>
         <tr>
@@ -143,63 +104,66 @@
           </td>
         </tr>
         <tr>
-          <td align="left">Black box testing asks WHAT the system does. WHAT inputs produce WHAT outputs.</td>
-          <td align="left">White box testing tests HOW things work? HOW does your logic work? Does the structure of the code deal with all the possible states?</td>
+          <td align="left">Black box testing asks WHAT inputs produce WHAT outputs</td>
+          <td align="left">White box testing asks HOW the internal logic of the system works</td>
         </tr>
       </tbody>
     </table>
-    <iframe src="https://www.youtube.com/embed/tlThdr3O5Qo" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Functional</th>
-          <th align="left">Non-functional</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="left">Do the breaks work? Does the route load on the map ok? Does auto pilot initiate ok?</td>
-          <td align="left">Does it feel safe? It is boring? Is it easy to stop the auto pilot?</td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>Functional testing</strong> is binary. Think PASS/FAIL. On a form functional input might be a checkbox.</p>
-    <p><strong>Non-functional testing</strong> is NOT binary, it requires more explanation. Think FEELINGS? On a form non-functional input might be a free text field inviting your thoughts.</p>
-    <p>Both of these are important to test for.</p>
-    <h2>Assignment</h2>
-    <hr>
-    <h2>Lesson 2 - Equivalence classes and Use Cases</h2>
-    <h2>Learning Objectives</h2>
+    <p><em>Experience-based testing</em> - key stakeholders identify areas of the system that, in their experience, are likely to be yield defects e.g. areas of high complexity, areas which previously caused issues.</p>
+    <h2>The 7 Principles of Software Testing</h2>
+    <p>The International Software Testing Qualifications Board describes the following 7 principles of testing.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/79204022-ce6e7a00-7e33-11ea-81cb-d6b3498ca10f.png" alt="testing systems">
+    </p>
+    <p>This video explains each one in detail.</p>
+    <iframe src="https://www.youtube.com/embed/rFaWOw8bIMM" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <h2>More on dynamic testing</h2>
+    <p>Dynamic testing is concerned with 4 test types:</p>
+    <ol>
+      <li>Unit</li>
+      <li>Integration</li>
+      <li>System</li>
+      <li>Acceptance</li>
+    </ol>
+    <h3>Unit Testing</h3>
+    <p>Unit Tests isolate a section of code and verify its correctness. A unit may be an individual function, method, procedure, module, or object.</p>
+    <blockquote>
+      <p>Unit tests are run by developers</p>
+    </blockquote>
+    <h3>Integration Testing</h3>
+    <p>Integration tests determine if independently developed units of software work correctly when they are connected to each other. For example calling this endpoint <code>/users/x023/photos</code> should return a JSON string with an array of urls. This is testing that the server correctly interacts with the database and returns the correct values.</p>
+    <blockquote>
+      <p>Integration tests are run by developers or testers</p>
+    </blockquote>
+    <h3>System Testing</h3>
+    <p>Examples of system testing are end-to-end tests such as <a href="https://www.cypress.io/">Cypress tests</a>) with assertions of state or outputs. Other examples of system tests include non-functional tests such as load/performance tests, security penetration tests.</p>
+    <blockquote>
+      <p>System tests are run by testers</p>
+    </blockquote>
+    <h3>Acceptance Testing</h3>
+    <p>The purpose of acceptance tests are to evaluate the system’s compliance with the business requirements and assess whether it is acceptable for delivery. You built a perfect bridge, but did you meet the business requirements?! The Use Cases and User Stories developed during the Requirements Analysis stage help define user acceptance tests.</p>
+    <blockquote>
+      <p>Acceptance tests are run by the end-users, supported by business analysts</p>
+    </blockquote>
+    <h2>Non-functional testing</h2>
+    <p>During each stage of dynamic testing we must ensure that the system meets the non-functional requirements defined in the Requirements Analysis stage of the SDLC. Non-functional testing includes:</p>
     <ul>
-      <li>Recognise that different organisations apply different approaches to testing depending on development methodologies used and organisational preferences.</li>
-      <li>Distinguish advantages and disadvantages of using independent software testing teams as opposed to using testers who have been involved in other aspects of development.</li>
-      <li>Explain the use of equivalence classes and use cases in testing code</li>
-      <li>Show how to efficiently and effectively debug code, including:
-        <ul>
-          <li>Types of error;</li>
-          <li>Exception handling;</li>
-          <li>Reproduction;</li>
-          <li>Elimination;</li>
-          <li>Logging;</li>
-          <li>Test coverage.</li>
-        </ul>
-      </li>
+      <li>performance testing</li>
+      <li>load testing</li>
+      <li>security testing</li>
+      <li>accessibility testing</li>
+      <li>backup &#x26; recovery testing</li>
     </ul>
-    <h2>Before we start</h2>
-    <h2>Materials needed</h2>
-    <h2>Lesson</h2>
-    <p>One of the seven principles of testing is <strong>exhaustive testing is impossible</strong>. So how should we go about testing our applications? The answer is to use equivalence classes.</p>
-    <p>Say we have an input field that is designed to take the number of tickets you can book for a concert. One individual can buy upto 10 tickets. We want to test this. For example</p>
+    <h2>Writing a good test case</h2>
+    <h3>Equivalence classes</h3>
+    <p>One of the seven principles of testing is <strong>exhaustive testing is impossible</strong>. So how should we go about testing our applications? The answer is to use <em>equivalence classes</em>. Equivalence partioning divides the input data to a software unit into partitions of equivalent data from which test cases can be derived.</p>
+    <p>Imagine we have an input field that is designed to take the number of tickets you can book for a concert. One individual can buy up to 10 tickets. We want to test this. For example</p>
     <ul>
       <li>Selecting -2 tickets is not a valid amount</li>
       <li>Selecting 11 tickets is not a valid amount</li>
       <li>Selecting 6 tickets is OK</li>
     </ul>
-    <p>We can divide up the range of possible values like this.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79448889-23e48b80-7fda-11ea-8397-96a67b7165b5.png" alt="equivalence classes example">
-    </p>
-    <p>What emerges are four “classes” of tests that are created by the different ranges of valid and invalid possible inputs.</p>
+    <p>What emerges are four classes or partions of tests that are created by the different ranges of valid and invalid possible inputs.</p>
     <ol>
       <li>negative numbers FAIL</li>
       <li>zero FAIL</li>
@@ -208,7 +172,7 @@
     </ol>
     <p>We only need one test in each class because, testing that 6 is OK would be equivalent to testing 7 is OK. They are both valid amounts, the result of the test would be the same or equivalent. There is no point in testing in this class more than once because the results are equal or equivalent. Same for the out of range values, we tested with 11, but would expect the same results for 50, 100, 1000 etc</p>
     <h3>Boundary Value Analysis</h3>
-    <p>We could also do some <strong>boundary value analysis</strong> by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99. Then we might have a set of tests for the following values:</p>
+    <p>We could also do some <em>boundary value analysis</em> by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99. Then we might have a set of tests for the following values:</p>
     <ul>
       <li>-99</li>
       <li>-1</li>
@@ -219,16 +183,24 @@
       <li>99</li>
     </ul>
     <p>Can you see we test the values at each boundary? The min and max possible values as identified by our equivalence classes.</p>
-    <h3>Use cases (test cases)</h3>
-    <p>Use cases apply the same idea as equivalence classes, but scaled up and applied to a whole system. Below you can see a diagram of a system. Carefully selected user journeys are put together so that every part of the application is tested.</p>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79450177-7b83f680-7fdc-11ea-9f55-8fe1c7361de4.gif" alt="use case example">
-    </p>
-    <p>Can you see how each test lights up a different part of the application. One of those tests is a use-case, together they form a set of test cases. These test cases test the whole application (not exhaustively) section by section.</p>
-    <h3>Outputs</h3>
+    <h2>Regression testing</h2>
+    <p>Regression testing ensures that unchanged areas of the system have not been affected by new changes. Running the regression test suite is just as important as creating and running new tests!</p>
+    <h2>Writing a test plan</h2>
+    <p>A test plan typically includes:</p>
+    <ul>
+      <li>Test schedule</li>
+      <li>Test data</li>
+      <li>Test scenarios</li>
+      <li>Entry criteria</li>
+      <li>Exit criteria</li>
+      <li>Traceability to requirements</li>
+    </ul>
+    <h2>Outputs</h2>
     <p>The output of the testing phase is fully tested software.</p>
     <h2>Assignment</h2>
-    <p>Can you explain in your own words the 7 principles of software testing. Follow this link - <a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7996&#x26;action=editsubmission">7 Testing Principles Assignment</a> - to submit your written assignment.</p>
+    <p>Look for job vacancies for software testers</p>
+    <h2>Additional resources</h2>
+    <p><a href="https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010">https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010</a></p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/202">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day4.html">prev</a>|<a href="/swe/mod3/wk2/day1.html">next</a>
