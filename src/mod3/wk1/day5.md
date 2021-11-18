@@ -139,6 +139,10 @@ During each stage of dynamic testing we must ensure that the system meets the no
 * accessibility testing
 * backup & recovery testing
 
+This video explains how a load testing tool works.
+
+!(https://www.youtube.com/embed/38VsAXAZZMg)
+
 ## Writing a good test case
 
 ### Equivalence classes
