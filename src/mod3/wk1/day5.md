@@ -17,8 +17,7 @@ Today we look at the Testing stage of the SDLC.
     * integration testing;
     * system testing;
     * acceptance testing.
-* Describe different types and techniques for software testing and why they would be
-used, including:
+* Describe different types and techniques for software testing and why they would be used, including:
     * functional and non-functional testing;
     * regression testing;
     * White Box and Black Box testing;
