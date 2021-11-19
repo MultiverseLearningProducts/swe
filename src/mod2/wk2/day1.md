@@ -82,7 +82,7 @@ Edit the commented code below to change the selected item:
 
 <script>
 function myFunction() {
-  document./*_____________*/("myChoice")./*__________*/ = "Java";
+  document./*_____________*/("myChoice")./*__________*/ = "java";
 }
 </script>
 

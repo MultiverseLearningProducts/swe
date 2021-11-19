@@ -93,7 +93,7 @@ You have been asked to evaluate the following code. What is printed out to the c
 try {
   throw new Error("There's been a problem!");
 } catch (e) {
-  console.log("e.message");
+  console.log(e.message);
 } finally {
   console.log("finally called");
 }

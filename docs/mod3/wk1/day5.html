@@ -75,7 +75,7 @@
     <p>
       <img src="https://user-images.githubusercontent.com/1316724/142423248-4d4a7996-8412-4810-acf8-52252b542aaf.png" alt="V Model">
     </p>
-    <p><em>Static testing</em> focusses on the early stages of the SDLC. It aims to remove errors which could lead to defects in software code. Examples of static testing include:</p>
+    <p><em>Static testing</em> focusses on the early stages of the SDLC, before code is written. It aims to remove errors which could lead to defects in software code. Examples of static testing include:</p>
     <ul>
       <li>checking requirements against the business case</li>
       <li>checking the design against requirements</li>
@@ -177,17 +177,9 @@
     </ol>
     <p>We only need one test in each class because, testing that 6 is OK would be equivalent to testing 7 is OK. They are both valid amounts, the result of the test would be the same or equivalent. There is no point in testing in this class more than once because the results are equal or equivalent. Same for the out of range values, we tested with 11, but would expect the same results for 50, 100, 1000 etc</p>
     <h3>Boundary Value Analysis</h3>
-    <p>We could also do some <em>boundary value analysis</em> by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99. Then we might have a set of tests for the following values:</p>
-    <ul>
-      <li>-99</li>
-      <li>-1</li>
-      <li>0</li>
-      <li>1</li>
-      <li>10</li>
-      <li>11</li>
-      <li>99</li>
-    </ul>
-    <p>Can you see we test the values at each boundary? The min and max possible values as identified by our equivalence classes.</p>
+    <p>Boundary testing is the process of testing the extreme ends or boundaries of input values.</p>
+    <p>For example, imagine we are writing an application which alerts individuals between 28 and 40 to come for their COVID vaccination. Both 28 and 40 will be considered as boundary values.</p>
+    <p>The assumption of boundary value analysis is that boundary values are most likely to cause an error.</p>
     <h2>Regression testing</h2>
     <p>Regression testing ensures that unchanged areas of the system have not been affected by new changes. Running the regression test suite is just as important as creating and running new tests!</p>
     <h2>Writing a test plan</h2>
@@ -215,7 +207,8 @@
       </li>
     </ol>
     <h2>Additional resources</h2>
-    <p><a href="https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010">https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010</a></p>
+    <p><a href="https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010">Example job spec for a tester at Tesla</a></p>
+    <p><a href="https://www.youtube.com/watch?v=FlZm3nFMIAM&#x26;t=2153s">Fireside Chat: DevOps at Amazon with Ken Exner, GM of AWS Developer Tools - AWS Online Tech Talks</a></p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/202">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day4.html">prev</a>|<a href="/swe/mod3/wk2/day1.html">next</a>
