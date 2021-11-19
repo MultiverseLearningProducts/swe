@@ -46,7 +46,7 @@ Planning for implementation should happen as early as possible. Consider must be
 |Project Manager|Plan the implementation activities and oversee the resolution of an 'Early Life' issues (operational issues which occur just after the release)|
 |End-Users|Help to identify training needs. Advise about best way to transition to the new system.|
 |Business Analysts|Carry out user training. Advice on business processes to manage impact. Ensure documentation is available.|
-|Service Manager|Understands how any outage will impact on service level agreements|
+|Service Manager|The Service Manager supports the IT infrastructure and understands how any outage will impact on service level agreements (SLAs)|
 |Developers, technical support staff|What order the technical release tasks should be done. Handle data migrations. 'Early life' support (dealing with operational issues which occur just after the release)|
 |Project Sponsor|Gives the ok to the implementation taking place having weighed up the impacts on business|
 

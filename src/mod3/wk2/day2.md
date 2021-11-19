@@ -15,28 +15,20 @@ Today we look at the Maintenance stage of the SDLC.
     - Temporary workaround / bug fix;
     - Performance improvement;
     - Routine updates and upgrades;
-* Explain the reasons and drivers for changes to software including changed user
-requirement; problem or incident identified; regulatory or other mandatory change;
-infrastructure / platform change.
+* Explain the reasons and drivers for changes to software including changed user requirement; problem or incident identified; regulatory or other mandatory change;infrastructure / platform change.
 * Describe the purpose of a service level agreement for operational software.
-* Describe in outline a typical process for reporting, logging, and dealing with
-incidents and problems in operational software, and explain the terms ‘first-line
-support’ and ‘second-line support’ in this context.
-* Describe at a high-level problem-solving techniques, including brainstorming; fault
-tree analysis; Kepner-Tregoe root cause analysis; Ishakawa diagrams (fishbone
-diagrams); decomposition.
-* Explain the importance of managing and controlling changes to operational
-software.
+* Describe in outline a typical process for reporting, logging, and dealing with incidents and problems in operational software, and explain the terms ‘first-line support’ and ‘second-line support’ in this context.
+* Describe at a high-level problem-solving techniques, including brainstorming; fault tree analysis; Kepner-Tregoe root cause analysis; Ishakawa diagrams (fishbone diagrams); decomposition.
+* Explain the importance of managing and controlling changes to operational software.
 * Describe in outline a typical process for the control of changes to live software.
 
 ## Lesson
 
 ## Purpose of the Maintenance stage
 
-The maintenance stage is your deployed software being cared for and improved. This phase ensures that software and services are accessible to users. This is the phase where the initial business needs that caused the software development life cycle to start turning are realised (or not).
+The maintenance stage is where deployed software is supported and enhanced. We discover whether the business case that initiated the software development life cycle is realised and discover how decisions made during the design and development stages impact the longevity of the system.
 
-
-What now? We have live software in production that is addressing a business need. If only that were it. But things change:
+Software needs to be maintained for the following reasons:
 
 *   New user requirements
 *   Market forces
@@ -46,7 +38,7 @@ What now? We have live software in production that is addressing a business need
 
 ## Inputs to the Maintenance stage
 
-The input to the maintenance stage is production software. This phase mainly deals with:
+The input to the maintenance stage is production software. This stage mainly deals with:
 
 *   Major enhancements
 *   Minor enhancements
@@ -123,10 +115,12 @@ Decision Analysis|Identify alternatives and perform a risk analysis for each one
 Potential Problem Analysis|The best of the alternatives is further scrutinised against negative consequences and actions are proposed to minimise the risk.
 
 
-## Output
+## Output of the Maintenance stage
 
 The output of the maintenance phase is operational software that satisfies the business needs identified in the first stage of the SDLC.
 
+## Assignment
+TODO
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/204)
 [main](/swe)|[prev](/swe/mod3/wk2/day1.html)|[next](/swe/mod3/wk2/day3.html)
