@@ -12,123 +12,215 @@
   <body>
     <h1>Mod 1 > Week 2 > Day 1</h1>
     <h2>Overview of the day</h2>
-    <p>The purpose of the implementation stage is to make a new system operational. This is achieved through the transfer of the tested software modules to the operational or <strong>live</strong> environment, along with setting up of the data required for the new system.</p>
+    <p>Today we look at the Implementation (Deployment) stage of the SDLC.</p>
     <hr>
-    <h2>Lesson 1 - Implementation</h2>
     <h2>Learning Objectives</h2>
     <ul>
       <li>Describe the activities undertaken during release and deployment of an IT service, including implementation planning; training users and operations; user documentation; build software release; deploy software.</li>
-      <li>Explain the relative advantages and disadvantages of ‘phased deployment’ versus ‘big bang’ deployment of software.</li>
-      <li>Relate phased deployment and big bang deployment to waterfall and agile methods of development.</li>
-    </ul>
-    <h2>Lesson</h2>
-    <p>The input to this phase is tested software.</p>
-    <h1>👩‍💻🧑‍💻</h1>
-    <p>In pairs discuss <strong>Releases of software requires planning</strong>. What things need to be considered before releasing software?</p>
-    <h3>Roles</h3>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79749421-18a99c80-8307-11ea-81b7-2af4a9333ecc.png" alt="roles in implementation stage">
-    </p>
-    <h1>👩‍💻🧑‍💻</h1>
-    <p>Can you identify members of your team who fulfil these or similar roles?</p>
-    <h2>Deployment</h2>
-    <p>There are 4 different ways to deploy software.</p>
-    <h3>The Big Bang</h3>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79762545-ce321b00-831a-11ea-8bcf-afc8b7de864a.png" alt="the big bang method">
-    </p>
-    <ul>
-      <li>Clean break</li>
-      <li>Everyone start with new system together</li>
-      <li>Usually less expensive</li>
-    </ul>
-    <ul>
-      <li>High risk if failure</li>
-      <li>No going back point fix forward only</li>
-      <li>Unanticipated effects</li>
-    </ul>
-    <h3>Parallel Running</h3>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79762570-d2f6cf00-831a-11ea-8711-10dfdd721133.png" alt="parallel running two systems">
-    </p>
-    <ul>
-      <li>Less risk, old system still operates</li>
-      <li>Transition users gradually or in phases</li>
-      <li>can validate operations through comparisons</li>
-    </ul>
-    <ul>
-      <li>Expensive (have to maintain two systems)</li>
-      <li>More complex sharing state across two systems</li>
-      <li>Users may not use new system</li>
-    </ul>
-    <h3>Pilots</h3>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79762573-d427fc00-831a-11ea-823f-0801de8879aa.png" alt="run pilots">
-    </p>
-    <ul>
-      <li>Trials/pilots to identify potential issues</li>
-      <li>Can eliminate problems before full scale deployment</li>
-      <li>Can use feedback from pilot to improve the product</li>
-      <li>Catching errors early is cheaper and more efficient</li>
-    </ul>
-    <ul>
-      <li>Can’t find problems at scale</li>
-      <li>Pilot software likely to be different to final release</li>
-    </ul>
-    <h3>Feature releases</h3>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79762578-d5592900-831a-11ea-9217-76259c1d1411.png" alt="feature releases">
-    </p>
-    <ul>
-      <li>High priority requirements delivered sooner</li>
-      <li>Introduce complexity gradually</li>
-      <li>Users can learn at a steady pace</li>
-      <li>Can fall back to previous version (without new feature) if there are problems</li>
-    </ul>
-    <ul>
-      <li>Users may lose interest in limited early version</li>
-      <li>Users may not like new features being regularly introduced</li>
-      <li>Users may not use new features sticking to original limited work flows</li>
-    </ul>
-    <p>❓ What kind of software methodology is big bang most suited too?</p>
-    <p>❓ When apple releases a new version of Mac OS which release methodology do they use?</p>
-    <h2>UK Voting Rollout Assignment</h2>
-    <p>Votes at the next election will be collected digitally via an app. Your team is going to write the software and be responsible for deploying it. Can you provide your coach with your software release strategy?</p>
-    <p>Create your strategy in a document and upload to applied here ▶️ <a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7997&#x26;action=editsubmission">UK Voting Rollout Assignment</a></p>
-    <hr>
-    <h2>Lesson 2 - Traceability</h2>
-    <h2>Learning Objectives</h2>
-    <ul>
       <li>Explain how configuration management techniques are used to control and manage the different software development artefacts through the stages of the SDLC and into live operation.</li>
+      <li>Explain the relative advantages and disadvantages of 'phased deployment' versus 'big bang' deployment of software.</li>
+      <li>Relate phased deployment and big bang deployment to waterfall and agile methods of development.</li>
       <li>Explain the role of software developers in ‘early life support’ for operational software.</li>
-      <li>
-        Explain the concepts of ‘release packages’; alpha and beta releases; major and
-        minor releases; software upgrades.
-      </li>
+      <li>Explain the concepts of ‘release packages’; alpha and beta releases; major and minor releases; software upgrades.</li>
       <li>Produce an appropriate version numbering system for software releases in a given case.</li>
       <li>Explain the concept of software licensing, and describe the types of licence that can be deployed, including proprietary licence; end-user licence; enterprise licence; site licence; workstation licence; perpetual licence; open-source licence.</li>
     </ul>
     <h2>Lesson</h2>
-    <p>A traceability matrix keeps track of the relationship between a requirement and its artefacts (test, code, deployment, version). This way features can be tracked across teams, throughout the SDLC.</p>
+    <h2>Inputs to the Implementation stage</h2>
+    <p>The input to this phase is tested software.</p>
+    <h2>Purpose of Implementation</h2>
+    <p>The purpose of the Implementation stage is to make a new system operational. This is achieved through the transfer of the tested software modules to the <strong>live</strong> environment, along with setting up of the data required for the new system.</p>
+    <h2>Planning for Implementation</h2>
+    <p>Planning for implementation should happen as early as possible. Consider must be given to:</p>
+    <ul>
+      <li>when the implementation will take place</li>
+      <li>how you will determine if the implementation was successful</li>
+      <li>what training users will need</li>
+      <li>what documentation will be required</li>
+    </ul>
+    <h2>Roles</h2>
     <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79765580-b52b6900-831e-11ea-94fd-bea5ea75db17.png" alt="trace">
+      <img src="https://user-images.githubusercontent.com/4499581/79749421-18a99c80-8307-11ea-81b7-2af4a9333ecc.png" alt="roles in implementation stage">
     </p>
-    <h1>👩‍💻🧑‍💻</h1>
-    <p>In pairs discuss <strong>how could traceability be a powerful tool</strong>?</p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Role</strong></th>
+          <th><strong>Responsibility</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Project Manager</td>
+          <td>Plan the implementation activities</td>
+        </tr>
+        <tr>
+          <td>End-Users</td>
+          <td>Help to identify training needs. Advise about best way to transition to the new system</td>
+        </tr>
+        <tr>
+          <td>Business Analysts</td>
+          <td>Carry out user training. Advice on business processes to manage impact. Ensure documentation is available.</td>
+        </tr>
+        <tr>
+          <td>Service Manager</td>
+          <td>Understands impact on service levels, timings, comms</td>
+        </tr>
+        <tr>
+          <td>Technical Specialists</td>
+          <td>What order to technically do things in. Best methods to actually deal with data migrations. Early life support (developers, tech support)</td>
+        </tr>
+        <tr>
+          <td>Project Sponsor</td>
+          <td>Green lights the implementation having weighed up the impacts on business</td>
+        </tr>
+      </tbody>
+    </table>
+    <blockquote>
+      <p><em>TASK</em> - Can you identify members of your team who fulfil these or similar roles?</p>
+    </blockquote>
+    <h2>Deployment</h2>
+    <p>There are 4 different ways to deploy software.</p>
+    <h3>Direct Changeover (Big Bang)</h3>
+    <p>This approach is relevant to the Waterfall methodology where each stage of the SDLC is fully completed and signed off and finally the software is deployed live.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/79762545-ce321b00-831a-11ea-8bcf-afc8b7de864a.png" alt="the big bang method">
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Clean break</td>
+          <td>High risk if failure</td>
+        </tr>
+        <tr>
+          <td>Everyone start with new system together</td>
+          <td>No going back point fix forward only</td>
+        </tr>
+        <tr>
+          <td>Usually less expensive</td>
+          <td>Unanticipated effects</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Parallel Running</h3>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/79762570-d2f6cf00-831a-11ea-8711-10dfdd721133.png" alt="parallel running two systems">
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Less risk, old system still operates</td>
+          <td>Expensive (have to maintain two systems)</td>
+        </tr>
+        <tr>
+          <td>Transition users gradually or in phases</td>
+          <td>More complex sharing state across two systems</td>
+        </tr>
+        <tr>
+          <td>Can validate operations through comparisons</td>
+          <td>Users may not use new system</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Pilots</h3>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/79762573-d427fc00-831a-11ea-823f-0801de8879aa.png" alt="run pilots">
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trials/pilots to identify potential issues</td>
+          <td>Can’t find problems at scale</td>
+        </tr>
+        <tr>
+          <td>Can eliminate problems before full scale deployment</td>
+          <td>Pilot software likely to be different to final release</td>
+        </tr>
+        <tr>
+          <td>Can use feedback from pilot to improve the product</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Catching errors early is cheaper and more efficient</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Phased implementation (Feature releases)</h3>
+    <p>This approach is relevant to the Agile methodology where each sprint delivers a release of software.</p>
+    <p>
+      <img src="https://user-images.githubusercontent.com/4499581/79762578-d5592900-831a-11ea-9217-76259c1d1411.png" alt="feature releases">
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>High priority requirements delivered sooner</td>
+          <td>Users may lose interest in limited early version</td>
+        </tr>
+        <tr>
+          <td>Introduce complexity gradually</td>
+          <td>Users may not like new features being regularly introduced</td>
+        </tr>
+        <tr>
+          <td>Users can learn at a steady pace</td>
+          <td>Users may not use new features sticking to original limited work flows</td>
+        </tr>
+        <tr>
+          <td>Can fall back to previous version (without new feature) if there are problems</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>❓ What kind of software methodology is big bang most suited too?</p>
+    <p>❓ When Apple releases a new version of Mac OS which release methodology do they use?</p>
+    <h2>Traceability matrix</h2>
+    <iframe src="https://www.youtube.com/embed/cm-cSW66Isc" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>A traceability matrix keeps track of the relationship between a requirement and its artefacts (test, code, deployment, version). This way features can be tracked across teams, throughout the SDLC.</p>
     <h2>Semantic Versioning (Semver)</h2>
-    <p>Semver is a naming convention for versioning software. Its make of three components:</p>
-    <h2>10.13.6</h2>
-    <p><strong>10</strong> is the Major version<br><strong>13</strong> is the Minor version<br><strong>6</strong> is the patch number</p>
-    <p>To progress the Major version you would expect breaking changes. Minor version increments indicate NEW features, new functionality, but no breaking changes. The patch number indicates fixes and improvements, nothing new in features or functionality.</p>
-    <h1>🧐</h1>
-    <p>What is the semantic version of your operating system? If you have a Windows computer Microsoft has stopped using sermver in favour of build numbers, try your version of Android or iOS.</p>
-    <h3>different phases of release</h3>
+    <p>Semantic Versioning (Semver) is a naming convention for versioning software. It is made of three components:</p>
+    <p><code>Major.Minor.Patch</code></p>
+    <p>e.g. <code>10.13.6</code></p>
+    <p><code>10</code> is the Major version<br><code>13</code> is the Minor version<br><code>6</code> is the patch number</p>
+    <p>The Major version is incremented if you make breaking changes.</p>
+    <p>The minor version is incremented with new features but no breaking changes.</p>
+    <p>The patch number is incremented with bug fixes and improvements.</p>
+    <blockquote>
+      <p><em>TASK</em> - Checkout what the semantic version of your iOS or Android operating system is.</p>
+    </blockquote>
+    <h3>Different phases of release</h3>
     <p>
       <img src="https://i0.wp.com/psyongames.com/wp-content/uploads/2016/11/AlphaBeta_ReleaseCore.png?w=1184&#x26;ssl=1" alt="alpha beta 1.0">
     </p>
     <p>From the drawing above you can see the purpose of the different phases of release. An Alpha release to a small number of users, often testers, the essential first pass at the core of the application. Beta release opens to a wider user base, the application is not quite ready for complete release. Release in semver would be 1.0.0.</p>
+    <h2>Output of the Implementation stage</h2>
+    <p>The output of the Implementation stage is operational software.</p>
+    <p>TODO - <a href="https://youtu.be/FlZm3nFMIAM">https://youtu.be/FlZm3nFMIAM</a> - Fireside Chat: DevOps at Amazon with Ken Exner, GM of AWS Developer Tools - AWS Online Tech Talks</p>
     <h2>Assignment</h2>
-    <p>Can you research the licences listed below and create a piece of writing that details the features of each licence. Try to use examples of actual application you use or are familiar with for each kind of licence.</p>
+    <p>Can you research the licences listed below find examples of pplication that use this kind of licence.</p>
     <ul>
       <li>proprietary licence</li>
       <li>end-user licence</li>
@@ -138,9 +230,6 @@
       <li>perpetual licence</li>
       <li>open-source licence</li>
     </ul>
-    <p>Submit your work here: <a href="https://applied.whitehat.org.uk/mod/assign/view.php?id=7998&#x26;action=editsubmission">Submit Licences Assignment</a></p>
-    <h1>Output</h1>
-    <p>The output of the implementation phase is operational software.</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/203">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day5.html">prev</a>|<a href="/swe/mod3/wk2/day2.html">next</a>
