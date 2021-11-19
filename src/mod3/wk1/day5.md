@@ -64,7 +64,7 @@ The "V" model (also known as the Verification and Validation model) associates a
 
 ![V Model](https://user-images.githubusercontent.com/1316724/142423248-4d4a7996-8412-4810-acf8-52252b542aaf.png)
 
-_Static testing_ focusses on the early stages of the SDLC. It aims to remove errors which could lead to defects in software code. Examples of static testing include:
+_Static testing_ focusses on the early stages of the SDLC, before code is written. It aims to remove errors which could lead to defects in software code. Examples of static testing include:
 * checking requirements against the business case
 * checking the design against requirements
 
@@ -165,17 +165,11 @@ We only need one test in each class because, testing that 6 is OK would be equiv
 
 ### Boundary Value Analysis
 
-We could also do some _boundary value analysis_ by testing the boundaries of our values as defined in our equivalence classes. For example let us set a lower limit of -99, and an upper limit of 99. Then we might have a set of tests for the following values:
+Boundary testing is the process of testing the extreme ends or boundaries of input values.
 
-*   -99
-*   -1
-*   0
-*   1
-*   10
-*   11
-*   99
+For example, imagine we are writing an application which alerts individuals between 28 and 40 to come for their COVID vaccination. Both 28 and 40 will be considered as boundary values. 
 
-Can you see we test the values at each boundary? The min and max possible values as identified by our equivalence classes.
+The assumption of boundary value analysis is that boundary values are most likely to cause an error.
 
 ## Regression testing
 Regression testing ensures that unchanged areas of the system have not been affected by new changes. Running the regression test suite is just as important as creating and running new tests! 
@@ -201,7 +195,9 @@ The output of the Testing phase is fully tested software.
 3. Update your portfolio to evidence different kinds of tests e.g. unit, system, performance
 
 ## Additional resources
-https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010
+[Example job spec for a tester at Tesla](https://www.tesla.com/en_GB/careers/search/job/software-qualityassuranceengineer-75010)
+
+[Fireside Chat: DevOps at Amazon with Ken Exner, GM of AWS Developer Tools - AWS Online Tech Talks](https://www.youtube.com/watch?v=FlZm3nFMIAM&t=2153s)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/202)
 [main](/swe)|[prev](/swe/mod3/wk1/day4.html)|[next](/swe/mod3/wk2/day1.html)

@@ -8,14 +8,14 @@ Today we look at the Implementation (Deployment) stage of the SDLC.
 
 ## Learning Objectives
 
-* Describe the activities undertaken during release and deployment of an IT service, including implementation planning; training users and operations; user documentation; build software release; deploy software.
-* Explain how configuration management techniques are used to control and manage the different software development artefacts through the stages of the SDLC and into live operation.
-* Explain the relative advantages and disadvantages of 'phased deployment' versus 'big bang' deployment of software.
-* Relate phased deployment and big bang deployment to waterfall and agile methods of development.
-* Explain the role of software developers in ‘early life support’ for operational software.
-* Explain the concepts of ‘release packages’; alpha and beta releases; major and minor releases; software upgrades.
-* Produce an appropriate version numbering system for software releases in a given case.
-* Explain the concept of software licensing, and describe the types of licence that can be deployed, including proprietary licence; end-user licence; enterprise licence; site licence; workstation licence; perpetual licence; open-source licence.
+* Describe the activities undertaken during release and deployment of an IT service, including implementation planning; training users and operations; user documentation; build software release; deploy software. 
+* Explain how configuration management techniques are used to control and manage the different software development artefacts through the stages of the SDLC and into live operation. 
+* Explain the relative advantages and disadvantages of 'phased deployment' versus 'big bang' deployment of software. 
+* Relate phased deployment and big bang deployment to waterfall and agile methods of development. 
+* Explain the role of software developers in 'early life support' for operational software. 
+* Explain the concepts of 'release packages'; alpha and beta releases; major and minor releases; software upgrades. 
+* Produce an appropriate version numbering system for software releases in a given case. 
+* Explain the concept of software licensing, and describe the types of licence that can be deployed, including proprietary licence; end-user licence; enterprise licence; site licence; workstation licence; perpetual licence; open-source licence. 
 
 ## Lesson
 
@@ -25,25 +25,30 @@ The input to this phase is tested software.
 ## Purpose of Implementation
 The purpose of the Implementation stage is to make a new system operational. This is achieved through the transfer of the tested software modules to the **live** environment, along with setting up of the data required for the new system.
 
+It is critical that earlier stages of the SDLC have included rigorous configuration management (version control) of software components so that it is clear exactly what bug fixes, features and improvements the final 'release package' contains.
+
 ## Planning for Implementation
 Planning for implementation should happen as early as possible. Consider must be given to:
 * when the implementation will take place
-* how you will determine if the implementation was successful
+* how data will be migrated (often done via an _Extract-Transform-Load_ (_ETL_) process where data is _extracted_ from the old system, _transformed_ into a format suitable for the new system and _loaded_ into the new system)
+* what hardware / infrastructure upgrades will be required
 * what training users will need
 * what documentation will be required
+* who will be 'on call' to support the release
+* how you will determine if the implementation was successful
+* what happens if it all goes wrong
+
 
 ## Roles
 
-![roles in implementation stage](https://user-images.githubusercontent.com/4499581/79749421-18a99c80-8307-11ea-81b7-2af4a9333ecc.png)
-
 |**Role**|**Responsibility**|
 |--------|------------------|
-|Project Manager|Plan the implementation activities|
-|End-Users|Help to identify training needs. Advise about best way to transition to the new system|
+|Project Manager|Plan the implementation activities and oversee the resolution of an 'Early Life' issues (operational issues which occur just after the release)|
+|End-Users|Help to identify training needs. Advise about best way to transition to the new system.|
 |Business Analysts|Carry out user training. Advice on business processes to manage impact. Ensure documentation is available.|
-|Service Manager|Understands impact on service levels, timings, comms|
-|Technical Specialists|What order to technically do things in. Best methods to actually deal with data migrations. Early life support (developers, tech support)|
-|Project Sponsor|Green lights the implementation having weighed up the impacts on business|
+|Service Manager|Understands how any outage will impact on service level agreements|
+|Developers, technical support staff|What order the technical release tasks should be done. Handle data migrations. 'Early life' support (dealing with operational issues which occur just after the release)|
+|Project Sponsor|Gives the ok to the implementation taking place having weighed up the impacts on business|
 
 > _TASK_ - Can you identify members of your team who fulfil these or similar roles?
 
@@ -97,11 +102,6 @@ This approach is relevant to the Agile methodology where each sprint delivers a 
 |Users can learn at a steady pace|Users may not use new features sticking to original limited work flows|
 |Can fall back to previous version (without new feature) if there are problems||
 
-❓ What kind of software methodology is big bang most suited too?
-
-❓ When Apple releases a new version of Mac OS which release methodology do they use?
-
-
 ## Traceability matrix
 
 !(https://www.youtube.com/embed/cm-cSW66Isc)
@@ -122,27 +122,30 @@ e.g. `10.13.6`
 
 The Major version is incremented if you make breaking changes. 
 
-The minor version is incremented with new features but no breaking changes. 
+The Minor version is incremented with new features but no breaking changes. 
 
-The patch number is incremented with bug fixes and improvements.
+The Patch number is incremented with bug fixes and improvements.
 
 > _TASK_ - Checkout what the semantic version of your iOS or Android operating system is. 
 
+> _TASK_ - study the versioning strategy for software you use at work such as VSCode, IntelliJ, JUnit.
+
 ### Different phases of release
 
-![alpha beta 1.0](https://i0.wp.com/psyongames.com/wp-content/uploads/2016/11/AlphaBeta_ReleaseCore.png?w=1184&ssl=1)
+1. _Alpha_ release
 
-From the drawing above you can see the purpose of the different phases of release. An Alpha release to a small number of users, often testers, the essential first pass at the core of the application. Beta release opens to a wider user base, the application is not quite ready for complete release. Release in semver would be 1.0.0.
+     ![GitHub Co-pilot alpha release testing invitation](https://user-images.githubusercontent.com/1316724/142578393-a03e877e-f755-4caa-aee8-91b5bf7638ee.PNG)
 
-## Output of the Implementation stage
+     An Alpha release is the first release of an application. It may not yet be fully feature complete or fully tested and is released to a small group of individuals, typically internal users or users willing to provide feedback for improvements.
 
-The output of the Implementation stage is operational software.
+2. _Beta_ release 
 
-TODO - https://youtu.be/FlZm3nFMIAM - Fireside Chat: DevOps at Amazon with Ken Exner, GM of AWS Developer Tools - AWS Online Tech Talks
+     ![Beta test You Tube](https://user-images.githubusercontent.com/1316724/142579722-d4e2e1ef-5c94-44a4-a2c0-0d159b437e37.PNG)
 
-## Assignment
+     A Beta release happens after an Alpha release. It will be feature complete and well tested however will be made available to a wider user base with the proviso that there may still be bugs in the software. 
 
-Can you research the licences listed below find examples of  pplication that use this kind of licence.
+## Software licensing
+A software license is a legal contract governing how software is used or distributed. There are many different types of software license including:
 
 * proprietary licence
 * end-user licence
@@ -151,6 +154,16 @@ Can you research the licences listed below find examples of  pplication that use
 * workstation licence
 * perpetual licence
 * open-source licence
+
+> _TASK_ - find out the difference between each type of license and try to find an example of a software product which uses each license type
+
+## Output of the Implementation stage
+
+The output of the Implementation stage is operational software.
+
+## Assignment
+
+TODO
 
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/203)

@@ -200,6 +200,9 @@ Commit your code to GitHub and send a link to your coach for review.
 2. Update your portfolio to include a Use Case diagram and User Stories for at least one project you have delivered.
 
 ## Additional resources
+
+[Video - Functional and non-functional requirements explained](https://www.youtube.com/watch?v=3fgfUHKITt)
+
 [TODO - Slides](https://docs.google.com/presentation/d/e/2PACX-1vRguq0BhtWDyTbKfdkobvkPVQ4tQUn5nKNqiCi0mcjjrfa49xYnhSE6g7-6x9tGwc4yhrGeQho60aNG/embed)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/199)
