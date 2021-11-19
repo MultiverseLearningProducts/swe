@@ -20,8 +20,8 @@
       <li>Explain how configuration management techniques are used to control and manage the different software development artefacts through the stages of the SDLC and into live operation.</li>
       <li>Explain the relative advantages and disadvantages of 'phased deployment' versus 'big bang' deployment of software.</li>
       <li>Relate phased deployment and big bang deployment to waterfall and agile methods of development.</li>
-      <li>Explain the role of software developers in ‘early life support’ for operational software.</li>
-      <li>Explain the concepts of ‘release packages’; alpha and beta releases; major and minor releases; software upgrades.</li>
+      <li>Explain the role of software developers in 'early life support' for operational software.</li>
+      <li>Explain the concepts of 'release packages'; alpha and beta releases; major and minor releases; software upgrades.</li>
       <li>Produce an appropriate version numbering system for software releases in a given case.</li>
       <li>Explain the concept of software licensing, and describe the types of licence that can be deployed, including proprietary licence; end-user licence; enterprise licence; site licence; workstation licence; perpetual licence; open-source licence.</li>
     </ul>
@@ -30,18 +30,20 @@
     <p>The input to this phase is tested software.</p>
     <h2>Purpose of Implementation</h2>
     <p>The purpose of the Implementation stage is to make a new system operational. This is achieved through the transfer of the tested software modules to the <strong>live</strong> environment, along with setting up of the data required for the new system.</p>
+    <p>It is critical that earlier stages of the SDLC have included rigorous configuration management (version control) of software components so that it is clear exactly what bug fixes, features and improvements the final 'release package' contains.</p>
     <h2>Planning for Implementation</h2>
     <p>Planning for implementation should happen as early as possible. Consider must be given to:</p>
     <ul>
       <li>when the implementation will take place</li>
-      <li>how you will determine if the implementation was successful</li>
+      <li>how data will be migrated (often done via an <em>Extract-Transform-Load</em> (<em>ETL</em>) process where data is <em>extracted</em> from the old system, <em>transformed</em> into a format suitable for the new system and <em>loaded</em> into the new system)</li>
+      <li>what hardware / infrastructure upgrades will be required</li>
       <li>what training users will need</li>
       <li>what documentation will be required</li>
+      <li>who will be 'on call' to support the release</li>
+      <li>how you will determine if the implementation was successful</li>
+      <li>what happens if it all goes wrong</li>
     </ul>
     <h2>Roles</h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/4499581/79749421-18a99c80-8307-11ea-81b7-2af4a9333ecc.png" alt="roles in implementation stage">
-    </p>
     <table>
       <thead>
         <tr>
@@ -52,11 +54,11 @@
       <tbody>
         <tr>
           <td>Project Manager</td>
-          <td>Plan the implementation activities</td>
+          <td>Plan the implementation activities and oversee the resolution of an 'Early Life' issues (operational issues which occur just after the release)</td>
         </tr>
         <tr>
           <td>End-Users</td>
-          <td>Help to identify training needs. Advise about best way to transition to the new system</td>
+          <td>Help to identify training needs. Advise about best way to transition to the new system.</td>
         </tr>
         <tr>
           <td>Business Analysts</td>
@@ -64,15 +66,15 @@
         </tr>
         <tr>
           <td>Service Manager</td>
-          <td>Understands impact on service levels, timings, comms</td>
+          <td>The Service Manager supports the IT infrastructure and understands how any outage will impact on service level agreements (SLAs)</td>
         </tr>
         <tr>
-          <td>Technical Specialists</td>
-          <td>What order to technically do things in. Best methods to actually deal with data migrations. Early life support (developers, tech support)</td>
+          <td>Developers, technical support staff</td>
+          <td>What order the technical release tasks should be done. Handle data migrations. 'Early life' support (dealing with operational issues which occur just after the release)</td>
         </tr>
         <tr>
           <td>Project Sponsor</td>
-          <td>Green lights the implementation having weighed up the impacts on business</td>
+          <td>Gives the ok to the implementation taking place having weighed up the impacts on business</td>
         </tr>
       </tbody>
     </table>
@@ -195,8 +197,6 @@
         </tr>
       </tbody>
     </table>
-    <p>❓ What kind of software methodology is big bang most suited too?</p>
-    <p>❓ When Apple releases a new version of Mac OS which release methodology do they use?</p>
     <h2>Traceability matrix</h2>
     <iframe src="https://www.youtube.com/embed/cm-cSW66Isc" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <p>A traceability matrix keeps track of the relationship between a requirement and its artefacts (test, code, deployment, version). This way features can be tracked across teams, throughout the SDLC.</p>
@@ -206,21 +206,33 @@
     <p>e.g. <code>10.13.6</code></p>
     <p><code>10</code> is the Major version<br><code>13</code> is the Minor version<br><code>6</code> is the patch number</p>
     <p>The Major version is incremented if you make breaking changes.</p>
-    <p>The minor version is incremented with new features but no breaking changes.</p>
-    <p>The patch number is incremented with bug fixes and improvements.</p>
+    <p>The Minor version is incremented with new features but no breaking changes.</p>
+    <p>The Patch number is incremented with bug fixes and improvements.</p>
     <blockquote>
       <p><em>TASK</em> - Checkout what the semantic version of your iOS or Android operating system is.</p>
     </blockquote>
+    <blockquote>
+      <p><em>TASK</em> - study the versioning strategy for software you use at work such as VSCode, IntelliJ, JUnit.</p>
+    </blockquote>
     <h3>Different phases of release</h3>
-    <p>
-      <img src="https://i0.wp.com/psyongames.com/wp-content/uploads/2016/11/AlphaBeta_ReleaseCore.png?w=1184&#x26;ssl=1" alt="alpha beta 1.0">
-    </p>
-    <p>From the drawing above you can see the purpose of the different phases of release. An Alpha release to a small number of users, often testers, the essential first pass at the core of the application. Beta release opens to a wider user base, the application is not quite ready for complete release. Release in semver would be 1.0.0.</p>
-    <h2>Output of the Implementation stage</h2>
-    <p>The output of the Implementation stage is operational software.</p>
-    <p>TODO - <a href="https://youtu.be/FlZm3nFMIAM">https://youtu.be/FlZm3nFMIAM</a> - Fireside Chat: DevOps at Amazon with Ken Exner, GM of AWS Developer Tools - AWS Online Tech Talks</p>
-    <h2>Assignment</h2>
-    <p>Can you research the licences listed below find examples of pplication that use this kind of licence.</p>
+    <ol>
+      <li>
+        <p><em>Alpha</em> release</p>
+        <p>
+          <img src="https://user-images.githubusercontent.com/1316724/142578393-a03e877e-f755-4caa-aee8-91b5bf7638ee.PNG" alt="GitHub Co-pilot alpha release testing invitation">
+        </p>
+        <p>An Alpha release is the first release of an application. It may not yet be fully feature complete or fully tested and is released to a small group of individuals, typically internal users or users willing to provide feedback for improvements.</p>
+      </li>
+      <li>
+        <p><em>Beta</em> release</p>
+        <p>
+          <img src="https://user-images.githubusercontent.com/1316724/142579722-d4e2e1ef-5c94-44a4-a2c0-0d159b437e37.PNG" alt="Beta test You Tube">
+        </p>
+        <p>A Beta release happens after an Alpha release. It will be feature complete and well tested however will be made available to a wider user base with the proviso that there may still be bugs in the software.</p>
+      </li>
+    </ol>
+    <h2>Software licensing</h2>
+    <p>A software license is a legal contract governing how software is used or distributed. There are many different types of software license including:</p>
     <ul>
       <li>proprietary licence</li>
       <li>end-user licence</li>
@@ -230,6 +242,13 @@
       <li>perpetual licence</li>
       <li>open-source licence</li>
     </ul>
+    <blockquote>
+      <p><em>TASK</em> - find out the difference between each type of license and try to find an example of a software product which uses each license type</p>
+    </blockquote>
+    <h2>Output of the Implementation stage</h2>
+    <p>The output of the Implementation stage is operational software.</p>
+    <h2>Assignment</h2>
+    <p>TODO</p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/203">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk1/day5.html">prev</a>|<a href="/swe/mod3/wk2/day2.html">next</a>
