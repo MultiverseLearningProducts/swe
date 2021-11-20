@@ -28,7 +28,7 @@
       </li>
       <li>Explain the reasons and drivers for changes to software including changed user requirement; problem or incident identified; regulatory or other mandatory change;infrastructure / platform change.</li>
       <li>Describe the purpose of a service level agreement for operational software.</li>
-      <li>Describe in outline a typical process for reporting, logging, and dealing with incidents and problems in operational software, and explain the terms ‘first-line support’ and ‘second-line support’ in this context.</li>
+      <li>Describe in outline a typical process for reporting, logging, and dealing with incidents and problems in operational software, and explain the terms 'first-line support' and 'second-line support' in this context.</li>
       <li>Describe at a high-level problem-solving techniques, including brainstorming; fault tree analysis; Kepner-Tregoe root cause analysis; Ishakawa diagrams (fishbone diagrams); decomposition.</li>
       <li>Explain the importance of managing and controlling changes to operational software.</li>
       <li>Describe in outline a typical process for the control of changes to live software.</li>
@@ -54,6 +54,9 @@
       <li>Performance improvements</li>
       <li>Routine updates and upgrades</li>
     </ul>
+    <h2>Service Level Agreements</h2>
+    <p>A Service Level Agreement (SLA) is a legal agreement between two parties (a supplier and a customer) that defines the services the supplier will deliver and the expected level of service. If the expected level of servie is not met, a financial penalty will be applied.</p>
+    <p>Here is an <a href="https://workspace.google.com/terms/partner_sla.html">example SLA for Google Workspace for ISPs</a>.</p>
     <h2>1st, 2nd, 3rd line support</h2>
     <p>One aspect of this phase of the SDLC is support. This can take the form of either 1st, 2nd or 3rd line support. Often this kind of support is managed by a system. Let us have a look at how it works.</p>
     <table>
@@ -78,10 +81,14 @@
         </tr>
       </tbody>
     </table>
+    <p>Listen to this video to hear more about the life of a Service Desk Support Analyst.</p>
+    <p>Companies typically use Help Desk software such as <a href="https://www.zendesk.co.uk/">ZenDesk</a> or <a href="https://www.liveagent.com/">LiveAgent</a> to handle support queries.</p>
+    <iframe src="https://www.youtube.com/embed/dEOCo7mYYuA" width="776" height="467" allowfullscreen frameborder="0"></iframe>
     <h2>When things go wrong</h2>
-    <p>It happens. Sometimes software breaks in production.</p>
-    <iframe src="https://www.youtube.com/embed/nmjDwNe0BcE" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>RBS was able to find what caused the problem. In the following section we are going to learn about 4 different kinds of structured problem solving techniques.</p>
+    <p>It happens. Sometimes software breaks in production. The important thing is how we identify the root cause and provide a fix.</p>
+    <p>In this video we hear how NASA engineers used problem solving to return the Apollo 13 astraunants safely back to Earth after an explosion in an oxygen tank caused a loss of oxygen, water, electrical power and the loss of use of the propulsion system.</p>
+    <iframe src="https://www.youtube.com/embed/d014W6sjEgE" width="776" height="467" allowfullscreen frameborder="0"></iframe>
+    <p>In the following sections we are going to learn about 4 different kinds of structured problem solving techniques.</p>
     <ul>
       <li>Brainstorming</li>
       <li>Fault tree analysis</li>
@@ -92,47 +99,22 @@
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/80510926-4e87fa00-8973-11ea-8aca-7d5911bd402e.png" alt="brainstorming">
     </p>
-    <p>This is the more informal kind of problem solving and often a starting point. Members of the team pile in ideas as to what have caused a failure. There is no particular structure or order. A collection of possibilities is an easy first step a can then help a team decide what to focus on next.</p>
+    <p>This is the more informal kind of problem solving and often a starting point. Members of the team pile in ideas as to what have caused a failure. There is no particular structure or order.</p>
     <h3>Fault tree analysis</h3>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/80510929-50ea5400-8973-11ea-9be6-3525b691e373.png" alt="fault tree analysis">
     </p>
-    <p>Fault tree analysis is a top-down approach to identify all potential causes leading to a defect. Each cause is further broken down into least possible events or faults. The analysis begins with a major defect. All the potential events – individual or in combination – that may cause the defect are identified. Potential events are further traced down in a similar way to the lowest possible level.</p>
+    <p>Fault tree analysis is a top-down approach to identify all potential causes leading to a defect. Each cause is further broken down into least possible events or faults using Boolean logic (AND or OR gates). The analysis begins with a major defect. All the potential events – (individual or in combination) that may cause the defect are identified. Potential events are further traced down in a similar way to the lowest possible level.</p>
     <h3>Ishakawa (fishbone) diagrams</h3>
+    <p>Ishakawa diagrams show the potential causes of a specific event. Causes are grouped into major categories, typically, People, Process, Equipment, Materials, Environment and Management.</p>
     <p>
       <img src="https://user-images.githubusercontent.com/4499581/80510935-534cae00-8973-11ea-9843-db6da42e890b.png" alt="Ishakawa (fishbone) diagrams">
     </p>
     <iframe src="https://www.youtube.com/embed/mLvizyDFLQ4" width="776" height="467" allowfullscreen frameborder="0"></iframe>
-    <p>How to make your own:</p>
-    <ol>
-      <li>
-        <p>Agree on a problem statement (effect). Write it at the center right of the flipchart or whiteboard. Draw a box around it and draw a horizontal arrow running to it.</p>
-      </li>
-      <li>
-        <p>Brainstorm the major categories of causes of the problem. If this is difficult use generic headings:</p>
-        <ul>
-          <li>Methods</li>
-          <li>Machines (equipment)</li>
-          <li>People (manpower)</li>
-          <li>Materials</li>
-          <li>Measurement</li>
-          <li>Environment</li>
-        </ul>
-      </li>
-      <li>
-        <p>Write the categories of causes as branches from the main arrow.</p>
-      </li>
-      <li>
-        <p>Brainstorm all the possible causes of the problem. Ask “Why does this happen?” As each idea is given, the facilitator writes it as a branch from the appropriate category. Causes can be written in several places if they relate to several categories.</p>
-      </li>
-      <li>
-        <p>Again ask “Why does this happen?” about each cause. Write sub-causes branching off the causes. Continue to ask “Why?” and generate deeper levels of causes. Layers of branches indicate causal relationships.</p>
-      </li>
-      <li>
-        <p>When the group runs out of ideas, focus attention to places on the chart where ideas are few.</p>
-      </li>
-    </ol>
     <h3>Kepner-Tregoe "Root cause analysis"</h3>
+    <p>The Kepner-Tregoe method is systematic method to analyse a problem and find the root cause of the issue, instead of making assumptions and jumping to conclusions. The Apollo 13 Mission Control and NASA engineers used the Kepner-Tregoe methodology to return the astraunants safely back to Earth.</p>
+    <p>Kepner-Tregoe training is rigorous, it requires that trainees work through complex simulations that are extremely intellectually challenging.</p>
+    <p>There are four basic steps when using the Kepner-Tregoe decision matrix:</p>
     <table>
       <thead>
         <tr>
@@ -143,26 +125,28 @@
       <tbody>
         <tr>
           <td align="left">Situational Analysis</td>
-          <td align="left">Clarify the situation, outline concerns and choose a direction.</td>
+          <td align="left">This is used to clarify the problem (what happened)</td>
         </tr>
         <tr>
           <td align="left">Problem Analysis</td>
-          <td align="left">Define the problem and determine its root cause.</td>
+          <td align="left">This is used to find the cause of the problem</td>
         </tr>
         <tr>
           <td align="left">Decision Analysis</td>
-          <td align="left">Identify alternatives and perform a risk analysis for each one.</td>
+          <td align="left">This determines the options for potential problem resolution and the risks associated with each</td>
         </tr>
         <tr>
           <td align="left">Potential Problem Analysis</td>
-          <td align="left">The best of the alternatives is further scrutinised against negative consequences and actions are proposed to minimise the risk.</td>
+          <td align="left">This anticipates future problems and looks at preventative actions</td>
         </tr>
       </tbody>
     </table>
     <h2>Output of the Maintenance stage</h2>
-    <p>The output of the maintenance phase is operational software that satisfies the business needs identified in the first stage of the SDLC.</p>
+    <p>The output of the Maintenance stage is operational software that satisfies the business needs identified in the first stage of the SDLC.</p>
     <h2>Assignment</h2>
     <p>TODO</p>
+    <h2>Additional resources</h2>
+    <p><a href="https://cris.brighton.ac.uk/ws/portalfiles/portal/13872526/Francis_Tsekouras_2020_Apollo_13_Paper_Submitted.pdf">Research paper on the Apollo 13 decision making process</a></p>
     <p>
       <a href="https://platform.multiverse.io/apprentice/attendance-log/204">attendance log</a>
       <a href="/swe">main</a>|<a href="/swe/mod3/wk2/day1.html">prev</a>|<a href="/swe/mod3/wk2/day3.html">next</a>
