@@ -71,11 +71,13 @@ Companies typically use Help Desk software such as [ZenDesk](https://www.zendesk
 
 ## When things go wrong
 
-It happens. Sometimes software breaks in production.
+It happens. Sometimes software breaks in production. The important thing is how we identify the root cause and provide a fix.
 
-!(https://www.youtube.com/embed/nmjDwNe0BcE)
+In this video we hear how NASA engineers used problem solving to return the Apollo 13 astraunants safely back to Earth after an explosion in an oxygen tank caused a loss of oxygen, water, electrical power and the loss of use of the propulsion system.
 
-RBS was able to find what caused the problem. In the following section we are going to learn about 4 different kinds of structured problem solving techniques.
+!(https://www.youtube.com/embed/d014W6sjEgE)
+
+In the following sections we are going to learn about 4 different kinds of structured problem solving techniques.
 
 *   Brainstorming
 *   Fault tree analysis
@@ -103,7 +105,9 @@ Ishakawa diagrams show the potential causes of a specific event. Causes are grou
 !(https://www.youtube.com/embed/mLvizyDFLQ4)
 
 ### Kepner-Tregoe "Root cause analysis"
-The Kepner-Tregoe method is systematic method to analyse a problem and find the root cause of the issue, instead of making assumptions and jumping to conclusions. The Apollo 13 team used the Kepner-Tregoe methodology  to bring back the astronauts stranded in space!
+The Kepner-Tregoe method is systematic method to analyse a problem and find the root cause of the issue, instead of making assumptions and jumping to conclusions. The Apollo 13 Mission Control and NASA engineers used the Kepner-Tregoe methodology to return the astraunants safely back to Earth.
+
+Kepner-Tregoe training is rigorous, it requires that trainees work through complex simulations that are extremely intellectually challenging. 
 
 There are four basic steps when using the Kepner-Tregoe decision matrix:
 
@@ -114,15 +118,15 @@ There are four basic steps when using the Kepner-Tregoe decision matrix:
 |Decision Analysis|This determines the options for potential problem resolution and the risks associated with each|
 |Potential Problem Analysis|This anticipates future problems and looks at preventative actions|
 
-
-
-
 ## Output of the Maintenance stage
 
-The output of the maintenance phase is operational software that satisfies the business needs identified in the first stage of the SDLC.
+The output of the Maintenance stage is operational software that satisfies the business needs identified in the first stage of the SDLC.
 
 ## Assignment
 TODO
+
+## Additional resources
+[Research paper on the Apollo 13 decision making process](https://cris.brighton.ac.uk/ws/portalfiles/portal/13872526/Francis_Tsekouras_2020_Apollo_13_Paper_Submitted.pdf)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/204)
 [main](/swe)|[prev](/swe/mod3/wk2/day1.html)|[next](/swe/mod3/wk2/day3.html)
