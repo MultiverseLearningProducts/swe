@@ -89,7 +89,14 @@ Each iteration consists of the following 4 phases:
 
 ## Agile methodologies
 ### The Agile manifesto
-TODO
+
+The four core values of Agile software development as stated by the Agile Manifesto are:
+* we value individuals and interactions over processes and tools
+* we value working software over comprehensive documentation
+* we value customer collaboration over contract negotiation
+* we value responding to change over following a plan
+
+!(https://www.youtube.com/embed/gf7pBZxOCtY)
 
 ### Scrum
 Scrum proposes just 3 roles in the Agile process:
