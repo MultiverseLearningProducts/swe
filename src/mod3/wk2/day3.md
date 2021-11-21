@@ -22,8 +22,7 @@ Today we look at the primary differences between the Waterfall and Agile softwar
 *   List and describe in outline different agile software development methodologies, including Scrum; Kanban; Extreme Programming (XP); Test Driven Development (TDD).
 *   List and describe in outline different software development methods and approaches including [Unified Process (UP)](https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/); V-model; Spiral; Lean; DevOps.
 *   Recognise that business, market and information needs may lead to the  development of very different software, whilst using similar software development methodologies.
-*   Explain the different business and market contexts that lead to different 
-approaches to software development, including:
+*   Explain the different business and market contexts that lead to different approaches to software development, including:
      Characteristics of market sectors and segments; Business drivers and desired outcomes; Market risk; Operational risk; Legal and regulatory requirements
 *   Distinguish advantages and disadvantages of using either waterfall or agile software development methods based on the factors listed above in a given scenario.
 
@@ -145,13 +144,20 @@ DevOps relies heavily on automation (CI/CD).
 
 !(https://www.youtube.com/embed/IY9WvL95azs)
 
+## What methodology to choose?!
+
+* _Strict regulatory requirements_ - Waterfall
+* _Low customer involvement_ - Waterfall
+* _High customer involvement_ - Agile
+* _Fixed requirements/fixed contract_ - Waterfall
+* _Changing requirements_ - Agile
+
 ## Assignment
 You will be tasked to complete a Code Wars Kata using the XP technique of pair programming. Once the Kata is complete, discuss how you felt about working with someone else, was the Kata faster to solve? Did it take some pressure off? Did you enjoy it?
 
 Discuss the advantages and disadvantages of Waterfall and Agile methodologies and what kinds of projects each one is suitable for. 
 
 Discuss the similarities between Agile and Waterfall methodologies.
-
 
 ## Additional resources
 * [Agile v. Waterfall article](https://thedigitalprojectmanager.com/agile-vs-waterfall/)
