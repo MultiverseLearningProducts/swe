@@ -21,6 +21,12 @@ Today we look at the primary differences between the Waterfall and Agile softwar
 *   Describe the primary similarities and differences between Waterfall and Agile software development methods.
 *   List and describe in outline different agile software development methodologies, including Scrum; Kanban; Extreme Programming (XP); Test Driven Development (TDD).
 *   List and describe in outline different software development methods and approaches including [Unified Process (UP)](https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/); V-model; Spiral; Lean; DevOps.
+*   Recognise that business, market and information needs may lead to the  development of very different software, whilst using similar software development methodologies.
+*   Explain the different business and market contexts that lead to different 
+approaches to software development, including:
+     Characteristics of market sectors and segments; Business drivers and desired outcomes; Market risk; Operational risk; Legal and regulatory requirements
+*   Distinguish advantages and disadvantages of using either waterfall or agile software development methods based on the factors listed above in a given scenario.
+
 
 ## Lean software development
 Lean has its roots in manufacturing and is a set of techniques for cutting waste and doing things 'just in time'. 
@@ -46,7 +52,7 @@ The Waterfall methodology uses a sequential approach to software development. Ea
 ### V-model
 The V-model extends the Waterfall model by focussing on the relationships between each phase of the development life cycle and its associated phase of testing. Test artefacts are produced during requirements analysis (for user acceptance and system testing) and design (for integration and unit testing).
 
-![V Model](https://user-images.githubusercontent.com/1316724/142423248-4d4a7996-8412-4810-acf8-52252b542aaf.png)
+![V Model](https://user-images.githubusercontent.com/1316724/142781595-511a1e63-ce95-46fe-89b2-1c18dcf71efa.PNG)
 
 
 ## Iterative software development methodologies
@@ -58,10 +64,10 @@ The timeline below shows how early iterative software development methodologies 
 The Spiral model is an risk-driven, iterative development process.
 
 The Spiral model has four phases:
-* Determine objectives
-* Identify and resolve risks
-* Develop and test
-* Plan the next iteration
+* _Determine objectives_
+* _Identify and resolve risks_
+* _Develop and test_
+* _Plan the next iteration_
 
 A project repeatedly passes through these phases in iterations named 'Spirals'.
 
@@ -81,7 +87,7 @@ Each iteration consists of the following 4 phases:
 !(https://www.youtube.com/embed/YgkhFH8g0J4)
 
 
-## Agile methodology
+## Agile methodologies
 ### The Agile manifesto
 TODO
 
@@ -101,16 +107,14 @@ Teams use a Kanban board to visualize the status of their tasks. Popular Kanban 
 
 ![Example Kanban board](https://user-images.githubusercontent.com/1316724/142780474-1d9e429f-3800-4d3b-aa96-290e1853ef85.PNG)
 
-!(https://www.youtube.com/embed/iVaFVa7HYj4) 
-
 ### Extreme Programming (XP)
 XP is a lightweight methodology focussed on the coding activity in the SDLC. It describes a better way to programme that takes the pressure off developers and results in higher quality software. 
 
 There are 4 key values in XP:
-* Communication
-* Simplicity
-* Feedback
-* Courage 
+* _Communication_
+* _Simplicity_
+* _Feedback_
+* _Courage_ 
 
 Example XP practices include:
 
@@ -122,7 +126,6 @@ Example XP practices include:
 
 Photo by <a href="https://unsplash.com/@parabol?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Parabol</a> on <a href="https://unsplash.com/s/photos/pair-programming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
-!(https://www.youtube.com/embed/mbmg6iyEbj8)
 
 ### Test Driven Development (TDD)
 Test driven development describes a methodology where tests are written before the code is written. 
@@ -133,6 +136,8 @@ DevOps focusses on the collaboration between developers and the operations team 
 
 DevOps relies heavily on automation (CI/CD).
 
+!(https://www.youtube.com/embed/IY9WvL95azs)
+
 ## Assignment
 You will be tasked to complete a Code Wars Kata using the XP technique of pair programming. Once the Kata is complete, discuss how you felt about working with someone else, was the Kata faster to solve? Did it take some pressure off? Did you enjoy it?
 
@@ -142,11 +147,11 @@ Discuss the similarities between Agile and Waterfall methodologies.
 
 
 ## Additional resources
-!(https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
-
-https://thedigitalprojectmanager.com/agile-vs-waterfall/
-
-https://agility.im/agile-factsheets/
+* [Agile v. Waterfall article](https://thedigitalprojectmanager.com/agile-vs-waterfall/)
+* [Useful agile factsheets](https://agility.im/agile-factsheets/)
+* [Video - what is Kanban](https://www.youtube.com/embed/iVaFVa7HYj4) 
+* [Video - what is XP](https://www.youtube.com/embed/mbmg6iyEbj8)
+* [TODO move - slides](https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/205)
 [main](/swe)|[prev](/swe/mod3/wk2/day2.html)|[next](/swe/mod3/wk2/day4.html)

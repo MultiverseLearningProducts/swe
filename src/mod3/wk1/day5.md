@@ -62,7 +62,7 @@ The earlier in the SDLC we test, the sooner we find issues and avoid shipping fl
 
 The "V" model (also known as the Verification and Validation model) associates a testing phase to each SDLC stage.
 
-![V Model](https://user-images.githubusercontent.com/1316724/142423248-4d4a7996-8412-4810-acf8-52252b542aaf.png)
+![V Model](https://user-images.githubusercontent.com/1316724/142781595-511a1e63-ce95-46fe-89b2-1c18dcf71efa.PNG)
 
 _Static testing_ focusses on the early stages of the SDLC, before code is written. It aims to remove errors which could lead to defects in software code. Examples of static testing include:
 * checking requirements against the business case
