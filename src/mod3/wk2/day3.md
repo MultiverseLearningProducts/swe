@@ -87,6 +87,7 @@ Each iteration consists of the following 4 phases:
 
 
 ## Agile methodologies
+
 ### The Agile manifesto
 
 The four core values of Agile software development as stated by the Agile Manifesto are:
@@ -95,16 +96,27 @@ The four core values of Agile software development as stated by the Agile Manife
 * we value customer collaboration over contract negotiation
 * we value responding to change over following a plan
 
+The [12 principles of Agile](https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/) include _"Our highest priority is to satisfy the customer through early and continuous delivery of valuable software"_. 
+
 !(https://www.youtube.com/embed/gf7pBZxOCtY)
 
-### Scrum
-Scrum proposes just 3 roles in the Agile process:
+### Scrum 
+Scrum is an Agile methodology. Scrum teams are made up of 3 key roles:
 
 * _Product owner_ - represents the customer/project sponsor
-* _Development team_ - the individuals who deliver the software
+* _Development team_ - a self-organising team of individuals who deliver software
 * _Scrum master_ - the person responsible for removing blockers tio allow the team to deliver the goals of the sprint
 
-!(https://www.youtube.com/embed/Pbqaxx7C7pE)
+Scrum teams deliver software in a series of _Sprints_, typically between 1 and 4 weeks long. The product owner prioritises the backlog of tickets and works with the development to determine the goals of each sprint.
+
+The Scrum team meets once a day for a 15 minute standup (Daily Scrum). Here they ask the questions:
+* What did you do yesterday?
+* What will you do today?
+* Are there any blockers in your way?
+
+At the end of a sprint, the Scrum team invites the key stakeholders to a sprint review where the software is demo'd and feedback given. After this, the team run a retrospective to look at how they can improve in future sprints.
+
+!(https://www.youtube.com/watch?v=gy1c4_YixCo)
 
 ### Kanban
 'Kanban' is made up of two Japanese words, 'kan' which means _sign_ and 'ban' which means _board_.
@@ -130,11 +142,11 @@ Example XP practices include:
 
 ![Pair programming](https://user-images.githubusercontent.com/1316724/142780572-2220c2f6-52b9-429d-a706-23f01d8e1b10.jpg)
 
-Photo by <a href="https://unsplash.com/@parabol?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Parabol</a> on <a href="https://unsplash.com/s/photos/pair-programming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by [Parabol](https://unsplash.com/@parabol?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/pair-programming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
   
 
 ### Test Driven Development (TDD)
-Test driven development describes a methodology where tests are written before the code is written. 
+Test driven development describes a methodology where tests are written before the code is written. This helps focus on the purpose of a feature as well as resulting in higher test coverage.
 
 ## DevOps
 The term DevOps combines the terms 'Developers' and 'Operations'. 
@@ -153,18 +165,18 @@ DevOps relies heavily on automation (CI/CD).
 * _Changing requirements_ - Agile
 
 ## Assignment
-You will be tasked to complete a Code Wars Kata using the XP technique of pair programming. Once the Kata is complete, discuss how you felt about working with someone else, was the Kata faster to solve? Did it take some pressure off? Did you enjoy it?
+You will be tasked to complete a [Code Wars Kata](https://www.codewars.com/kata/51b6249c4612257ac0000005) using the XP technique of pair programming. Once the Kata is complete, discuss how you felt about working with someone else, was the Kata faster to solve? Did it take some pressure off? Did you enjoy it?
 
-Discuss the advantages and disadvantages of Waterfall and Agile methodologies and what kinds of projects each one is suitable for. 
+Research the advantages and disadvantages of Waterfall and Agile methodologies and what kinds of projects each one is suitable for. 
 
-Discuss the similarities between Agile and Waterfall methodologies.
+Research the similarities between Agile and Waterfall methodologies.
 
 ## Additional resources
+* [Slides for today's lesson](https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
 * [Agile v. Waterfall article](https://thedigitalprojectmanager.com/agile-vs-waterfall/)
 * [Useful agile factsheets](https://agility.im/agile-factsheets/)
 * [Video - what is Kanban](https://www.youtube.com/embed/iVaFVa7HYj4) 
 * [Video - what is XP](https://www.youtube.com/embed/mbmg6iyEbj8)
-* [TODO move - slides](https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
 
 [attendance log](https://platform.multiverse.io/apprentice/attendance-log/205)
 [main](/swe)|[prev](/swe/mod3/wk2/day2.html)|[next](/swe/mod3/wk2/day4.html)
