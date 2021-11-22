@@ -96,9 +96,11 @@ The four core values of Agile software development as stated by the Agile Manife
 * we value customer collaboration over contract negotiation
 * we value responding to change over following a plan
 
+!(https://www.youtube.com/embed/gf7pBZxOCtY)
+
 The [12 principles of Agile](https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/) include _"Our highest priority is to satisfy the customer through early and continuous delivery of valuable software"_. 
 
-!(https://www.youtube.com/embed/gf7pBZxOCtY)
+!(https://www.youtube.com/watch?v=jSayJF0epJs)
 
 ### Scrum 
 Scrum is an Agile methodology. Scrum teams are made up of 3 key roles:
