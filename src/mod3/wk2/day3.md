@@ -165,6 +165,8 @@ DevOps relies heavily on automation (CI/CD).
 * _High customer involvement_ - Agile
 * _Fixed requirements/fixed contract_ - Waterfall
 * _Changing requirements_ - Agile
+* _Lack of requirements_ - Agile
+* _Safety critical_ - Waterfall
 
 ## Assignment
 You will be tasked to complete a [Code Wars Kata](https://www.codewars.com/kata/51b6249c4612257ac0000005) using the XP technique of pair programming. Once the Kata is complete, discuss how you felt about working with someone else, was the Kata faster to solve? Did it take some pressure off? Did you enjoy it?
