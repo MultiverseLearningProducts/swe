@@ -169,7 +169,9 @@ You will be tasked to complete a [Code Wars Kata](https://www.codewars.com/kata/
 
 Research the advantages and disadvantages of Waterfall and Agile methodologies and what kinds of projects each one is suitable for. 
 
-Research the similarities between Agile and Waterfall methodologies.
+Research the similarities and differences between Agile and Waterfall methodologies and update your portfolio to include this information. 
+
+Update your portfolio to explain what software methodologies you use at work.
 
 ## Additional resources
 * [Slides for today's lesson](https://docs.google.com/presentation/d/e/2PACX-1vTwX_FF-Y7d8lMz-hTKs6VFE2ozsHfMGyPVxYNy3NbjavUt-yKqeBTLk6EfF2aWx0o_SjMlyEBOSWwA/embed?start=false&amp;loop=false&amp;delayms=3000)
