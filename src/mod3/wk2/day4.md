@@ -107,7 +107,9 @@ Service Management ensures that an organisation can efficiently implement, deliv
 * asset management - recording & managing hardware and software assets
 * handling service requests - e.g. software upgrade requests, password changes
 
-## Operations Management
+> _TASK_ - find job adverts for an 'IT Service Manager'. What does their job description involve? What kind of experience does the individual need? What salary can they expect?
+
+## IT Operations Management (ITOM)
 Operations Management manages all the components of an organisation's IT infrastructure and executes routine tasks required to support the operation of applications and services. It is internally focussed. For example:
 
 * installing networks
