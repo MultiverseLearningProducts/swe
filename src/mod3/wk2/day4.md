@@ -55,7 +55,7 @@ combinations of functions.
 * Explain why collaborative approaches are especially important for software development using agile and/or DevOps approaches.
 
 ## SDLC Roles & Responsibilities
-!(https://docs.google.com/presentation/d/e/2PACX-1vQ5LwfgrXbRWI4mbaN37yZqZJ2FlPWiy8u38-kjhItcP68J-3tc8KGsw3YCtqET3JRFqhP6pOGIEZPS/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="444" allowfullscreen="true" mozallowfullscreen="true")
+!(https://docs.google.com/presentation/d/e/2PACX-1vQ5LwfgrXbRWI4mbaN37yZqZJ2FlPWiy8u38-kjhItcP68J-3tc8KGsw3YCtqET3JRFqhP6pOGIEZPS/embed)
 
 Additional reading:
 * https://www.hexacta.com/infographic-software-development-project-roles-and-responsibilities/
