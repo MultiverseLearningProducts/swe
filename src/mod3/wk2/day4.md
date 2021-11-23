@@ -60,6 +60,9 @@ combinations of functions.
 Additional reading:
 * https://www.hexacta.com/infographic-software-development-project-roles-and-responsibilities/
 
+> _TASK_ - find job adverts for some of the generic software job roles above. Read the job descriptions. What kind of experience does the individual need? What salary can they expect?
+
+> _TASK_ - find job adverts for Scrum Master and Product Owner Agile  job roles. Read the job descriptions. What kind of experience does the individual need? What salary can they expect?
 
 ### The role of the Project Manager
 The project management life cycle is usually broken down into four phases: 
@@ -70,36 +73,54 @@ The project management life cycle is usually broken down into four phases:
 
 The _Project Manager_ is responsible for the project's scope, budget, team and resources. They are ultimately accountable for the success or failure of the project. 
 
+### Project Manager versus Scrum Master
+A Scrum Master is NOT the same as a Project Manager.
+
+A Scrum Master:
+* Coaches team on SCRUM principles
+* Facilitates the Daily Scrum (standup)
+* Removes blockers that are hindering team members
+* Ensures good communication between the team members
+
+A Scrum Master does NOT manage budgets or project scope. 
+
+### Product Owners versus Scrum Master
+The Product Owner liaises with the Customer / other stakeholders to understand their needs and then plans and prioritises work for the SCRUM team.
+
+## What is a Stakeholder
+A Stakeholder refers to someone who is directly or indirectly affected by the outcome of a project.
+
 ## Project versus Programme
 PRINCE2 is a project management method. PRINCE2 defines a _project_ as 'a temporary organisation that is created for the purpose of delivering one or more business products according to a specified business case'.
 
 It also defines a _programme_ as a 'group of related projects managed in a coordinated way to obtain benefits and control not available from managing them individually'.
 
-## Service Management
-Service Management ensures that an organisation can efficiently implement, deliver, management, and support IT services e.g.
+> _TASK_ - find job adverts for Project Manager and Programme Manager jobs. Read the job descriptions. Which job role has more responsibility?
+
+## IT Service Management (ITSM)
+Service Management ensures that an organisation can efficiently implement, deliver, management, and support IT services. It is end-user focussed. For example:
 
 * monitoring against SLAs
-* change management
-* incident management
-* asset management
-* service requests e.g. password changes
-* disaster recovery
+* change management - co-ordinating changes to infrastructure and systems
+* running an IT Helpdesk
+* incident management - responding to service disruption
+* asset management - recording & managing hardware and software assets
+* handling service requests - e.g. software upgrade requests, password changes
 
 ## Operations Management
-Operations Management manages all the components of an organisation's IT infrastructure e.g.
+Operations Management manages all the components of an organisation's IT infrastructure and executes routine tasks required to support the operation of applications and services. It is internally focussed. For example:
 
-* network operations
-* provisioning of hardware
-* backups
+* installing networks
+* securing systems
+* installation of hardware
+* performing upgrades
+* performing backups
+* monitoring of performance
 
-## Accountabilities & hierarchies
-SCRUM teams - https://www.bmc.com/blogs/agile-roles-responsibilities/
+## Assignment
+1. Research how software teams are organised in companies such as Google, Amazon, Facebook and Microsoft. Are they functional, cross-functional (matrix) or project based teams? What is the reporting hierarchy?
 
-# Assignment
-Now we have completed the formal learning for the exam, try out these revision resources:
-
-1. [BCS exam - sample questions quiz](https://applied.multiverse.io/mod/quiz/view.php?id=10650)
-2. [Quizlet study aid practice questions](https://quizlet.com/410361547/learn)
+1. Update your portfolio to describe the roles in your software development team and the reporting hierarchy. 
 
 ## Additional resources
 * [PM versus Product Owner](https://www.youtube.com/embed/bEyz2jE43kY)
