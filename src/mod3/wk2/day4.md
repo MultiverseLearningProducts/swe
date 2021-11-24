@@ -120,7 +120,7 @@ Operations Management manages all the components of an organisation's IT infrast
 * monitoring of performance
 
 ## Assignment
-1. Research how software teams are organised in companies such as Google, Amazon, Facebook and Microsoft. Are they functional, cross-functional (matrix) or project based teams? What is the reporting hierarchy?
+1. Research how software teams are organised in companies such as Google, Amazon, Facebook and Spotify. Are they functional, cross-functional (matrix) or project based teams? What is the reporting hierarchy?
 
 1. Update your portfolio to describe the roles in your software development team and the reporting hierarchy. 
 

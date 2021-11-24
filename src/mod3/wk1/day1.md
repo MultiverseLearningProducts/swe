@@ -26,6 +26,7 @@ The exam marks are split as follows:
 * Read the email from exams@multiverse.io entitled "Tech Requirements for your Upcoming BCS Software Development Methodologies Exam" and ensure you have all the pre-requisite hardware and software installed. 
 * Ensure you have completed your registration for the BCS Candidate Portal (you should have received an email from certifications@bcs.uk)previously emailed to you and can login to the BCS Candidate Portal at https://eprofessional.bcs.org/Portal/Candidate/Login
 * Ensure you have an invite in your diary for your exam date sent from exams@multiverse.io
+* Ensure you have completed the "BCS Exams System Check Declaration" form sent by the exma team
 
 # Lesson 1 - The SDLC
 
