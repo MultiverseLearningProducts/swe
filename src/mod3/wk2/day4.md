@@ -96,6 +96,7 @@ A Functional organisation groups people based on their specific skills and knowl
 In a Matrix organisation, individuals work across teams and projects as well as within their own department. An individual will have multiple managers, one managing the project they work on and another who is their line manager for their yearly appraisal. 
 
 This video explains how a Matrix organisation works:
+
 !(https://www.youtube.com/embed/mCHUkLLSXt4)
 
 ## Generic roles in the SDLC
