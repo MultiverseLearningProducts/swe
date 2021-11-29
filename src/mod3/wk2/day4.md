@@ -90,6 +90,38 @@ The Product Owner liaises with the Customer / other stakeholders to understand t
 ## What is a Stakeholder
 A Stakeholder refers to someone who is directly or indirectly affected by the outcome of a project.
 
+## Matrix versus Functional organisation
+A Functional organisation groups people based on their specific skills and knowledge e.g. the Marketing function, the Sales function. 
+
+In a Matrix organisation, individuals work across teams and projects as well as within their own department. An individual will have multiple managers, one managing the project they work on and another who is their line manager for their yearly appraisal. 
+
+This video explains how a Matrix organisation works:
+!(https://www.youtube.com/watch?v=mCHUkLLSXt4&t=8s)
+
+## Generic roles in the SDLC
+(as defined by the BCS!)
+
+### Business roles
+* Project sponsor
+* Business analyst
+* Domain expert
+* End user
+
+### Project roles
+* Project manager
+* Team leader
+* Work package manager
+
+### Technical roles
+* Technical architect
+* Solution developer
+* Solution tester
+
+### Implementation and support roles
+* Release manager
+* Database administrator
+* System administrator
+
 ## Project versus Programme
 PRINCE2 is a project management method. PRINCE2 defines a _project_ as 'a temporary organisation that is created for the purpose of delivering one or more business products according to a specified business case'.
 

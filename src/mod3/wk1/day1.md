@@ -53,7 +53,7 @@ The high level purpose of each stage is described below, we will discuss each st
 |Design|Design the system|
 |Development|Write the code|
 |Testing|Test the software|
-|Implementation|Deploy the software|
+|Implementation/Deployment|Deploy the software|
 |Maintenance|Support the software|
 
 > Remember that your portfolio will need to evidence projects which cover all of the above stages of the software lifecycle (excluding Feasibility Study)
@@ -114,6 +114,13 @@ Costs and benefits can be either:
 
 _Cost Benefit Analysis_ takes into account both the tangible and the non-tangible benefits, 
 _Return on Investment (ROI)_ only takes into account tangible benefits.
+
+Return on Investment is calculated as follows:
+> ROI = Investment Gain / Investment Base
+
+e.g. a property developer purchases a property valued at £400,000. Five years later, the developers sells the property for £600,000.
+
+ROI = (600,000 – 400,000) / (400,000) = 0.5 or 50%
 
 Cost-benefit is calculated as follows:
 > Cost-benefit = Benefit - Cost

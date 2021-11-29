@@ -57,7 +57,7 @@ Usually we think about customers as external to an organisation. For example whe
 
 > "Requirements are not just waiting to be picked from people like apples from a tree. They have to be mined like tin or iron" <small>_Developing Information Systems by James Cadle_</small>
 
-It’s the _Business Analysts_ that will go into an organisation and mine for requirements. How do they do this?
+It’s the _Business Analysts_ that will go into an organisation and elicit requirements. How do they do this?
 
 *   Interviews
 *   Focus groups
