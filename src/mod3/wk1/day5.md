@@ -48,6 +48,8 @@ The purpose of testing software is to ensure the quality of the system is as hig
 1. _Defects_ - bugs in software code
 1. _Failures_ - stopping the system from doing something it should
 
+Think about how important testing is for self-driving cars!
+
 !(https://www.youtube.com/embed/tlThdr3O5Qo)
 
 Tests are based on 2 key principles:
