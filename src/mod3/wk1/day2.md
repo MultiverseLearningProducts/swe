@@ -110,9 +110,9 @@ Non-functional requirements describe the _constraints_ on the system such as sys
 
 |**ID**|**Priority**|**Description**|
 |------|------------|---------------|
-|NFR1|MUST|The home page loads in less than 2 seconds|
-|NFR2|MUST|The system supports up to 1000 concurrent users|
-|NFR3|MUST|Data is held in a Postgres database|
+|NFR1|MUST|The home page loads fast|
+|NFR2|MUST|The system supports many concurrent users|
+|NFR3|MUST|Data is held securely|
 
 Requirements can also be categorised further into:
 
